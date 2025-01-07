@@ -1,0 +1,35 @@
+<template>
+    <lightning-card title="Excel-like Grid">
+      <div class="table-container">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+          <thead>
+            <tr>
+              <th>Select</th>
+              <th>Column 1</th>
+              <th>Column 2</th>
+              <th>Picklist</th>
+            </tr>
+          </thead>
+          <tbody>
+            <template for:each={rows} for:item="row">
+                <tr key={row.id} >
+                    <td>
+                        <lightning-input type="checkbox" data-id={row.id} checked={row.selected} onchange={handleRowSelection}></lightning-input>
+                    </td>
+                    <td>{row.column1}</td>
+                    <td>{row.column2}</td>
+                    <td>
+                        <lightning-combobox 
+                            options={picklistOptions} 
+                            value={row.picklistValue} 
+                            data-id={row.id} 
+                            onchange={handlePicklistChange}>
+                        </lightning-combobox>
+                    </td>
+                </tr>
+            </template>
+          </tbody>
+        </table>
+      </div>
+    </lightning-card>
+  </template>

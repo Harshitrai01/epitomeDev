@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Unit</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Units</value>
+    </caseValues>
+    <layouts>
+        <layout>Unit Layout</layout>
+        <sections>
+            <label><!-- Concerns &amp; Remarks --></label>
+            <section>Concerns &amp; Remarks</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Pricing Information --></label>
+            <section>Pricing Information</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Apartment --></label>
+        <name>Apartment</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Plot --></label>
+        <name>Plot</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Villa --></label>
+        <name>Villa</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

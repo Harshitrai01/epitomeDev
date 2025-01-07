@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Feedback --></label>
+    <name>Feedback__c</name>
+    <picklistValues>
+        <masterLabel>Budget</masterLabel>
+        <translation><!-- Budget --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Casual Enquiry</masterLabel>
+        <translation><!-- Casual Enquiry --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Details Shared</masterLabel>
+        <translation><!-- Details Shared --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Distance Issue</masterLabel>
+        <translation><!-- Distance Issue --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Interested</masterLabel>
+        <translation><!-- Interested --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Junk/Wrong</masterLabel>
+        <translation><!-- Junk/Wrong --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Location</masterLabel>
+        <translation><!-- Location --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>No Number</masterLabel>
+        <translation><!-- No Number --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Not Answering</masterLabel>
+        <translation><!-- Not Answering --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Ring No Response</masterLabel>
+        <translation><!-- Ring No Response --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

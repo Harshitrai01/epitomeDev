@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Budget --></label>
+    <name>Budget__c</name>
+    <picklistValues>
+        <masterLabel>10-20</masterLabel>
+        <translation><!-- 10-20 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>20-40</masterLabel>
+        <translation><!-- 20-40 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>40-60</masterLabel>
+        <translation><!-- 40-60 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>70-80</masterLabel>
+        <translation><!-- 70-80 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>80-1Cr</masterLabel>
+        <translation><!-- 80-1Cr --></translation>
+    </picklistValues>
+</CustomFieldTranslation>
