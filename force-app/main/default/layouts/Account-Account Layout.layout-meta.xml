@@ -39,10 +39,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Phone</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Industry</field>
             </layoutItems>
             <layoutItems>
@@ -56,21 +52,75 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
-        <label>Account Summary</label>
+        <label>Additional Information</label>
         <layoutColumns>
             <layoutItems>
-                <reportChartComponent>
-                    <cacheData>true</cacheData>
-                    <contextFilterableField>ACCOUNT_ID</contextFilterableField>
-                    <hideOnError>true</hideOnError>
-                    <includeContext>true</includeContext>
-                    <reportName>Opportunity_Amount_by_Stage_Sample</reportName>
-                    <showTitle>true</showTitle>
-                    <size>SMALL</size>
-                </reportChartComponent>
+                <behavior>Edit</behavior>
+                <field>Email__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>S_O_W_O_D_O__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Profession__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Marital_Status__c</field>
             </layoutItems>
         </layoutColumns>
-        <style>OneColumn</style>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Phone</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Birthdate__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Designation__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PAN_Card__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <style>TwoColumnsLeftToRight</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
+        <label>Spouse Information</label>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Spouse_Contact_No__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Spouse_DOB__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Spouse_Adhaar_Card__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Spouse_Email_Id__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Spouse_PAN_Card__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
         <customLabel>false</customLabel>
@@ -217,13 +267,6 @@
         </quickActionListItems>
     </quickActionList>
     <relatedLists>
-        <fields>FULL_NAME</fields>
-        <fields>CONTACT.TITLE</fields>
-        <fields>CONTACT.EMAIL</fields>
-        <fields>CONTACT.PHONE1</fields>
-        <relatedList>RelatedContactList</relatedList>
-    </relatedLists>
-    <relatedLists>
         <fields>OPPORTUNITY.NAME</fields>
         <fields>OPPORTUNITY.STAGE_NAME</fields>
         <fields>OPPORTUNITY.AMOUNT</fields>
@@ -231,68 +274,21 @@
         <relatedList>RelatedOpportunityList</relatedList>
     </relatedLists>
     <relatedLists>
-        <fields>CONTRACT.CONTRACT_NUMBER</fields>
-        <fields>CONTRACT.NAME</fields>
-        <fields>CONTRACT.START_DATE</fields>
-        <fields>CONTRACT.END_DATE</fields>
-        <fields>CONTRACT.STATUS</fields>
-        <relatedList>RelatedContractList</relatedList>
+        <fields>NAME</fields>
+        <relatedList>Payment__c.Customer_Name__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <fields>ORDERS.ORDER_NUMBER</fields>
-        <fields>ORDERS.STATUS</fields>
-        <fields>ORDERS.EFFECTIVE_DATE</fields>
-        <fields>CONTRACT.CONTRACT_NUMBER</fields>
-        <fields>ORDERS.TOTAL_AMOUNT</fields>
-        <relatedList>RelatedOrderList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>ACCOUNT.NAME</fields>
-        <fields>OPPORTUNITY.NAME</fields>
-        <fields>PARTNER.ROLE</fields>
-        <relatedList>RelatedPartnerList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>CASES.CASE_NUMBER</fields>
-        <fields>CASES.STATUS</fields>
-        <fields>CASES.CREATED_DATE_DATE_ONLY</fields>
-        <fields>CASES.SUBJECT</fields>
-        <relatedList>RelatedCaseList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>CAMPAIGN.NAME</fields>
-        <fields>CAMPAIGN.CAMPAIGN_TYPE</fields>
-        <fields>CAMPAIGN.START_DATE</fields>
-        <fields>CAMPAIGN.BUDGETED_COST</fields>
-        <fields>CAMPAIGN.STATUS</fields>
-        <relatedList>RelatedAccountCampaignList</relatedList>
+        <fields>FULL_NAME</fields>
+        <fields>CONTACT.TITLE</fields>
+        <fields>CONTACT.EMAIL</fields>
+        <fields>CONTACT.PHONE1</fields>
+        <relatedList>RelatedContactList</relatedList>
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedContentNoteList</relatedList>
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedFileList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>TASK.SUBJECT</fields>
-        <fields>TASK.WHO_NAME</fields>
-        <fields>ACTIVITY.TASK</fields>
-        <fields>TASK.DUE_DATE</fields>
-        <fields>TASK.STATUS</fields>
-        <fields>CORE.USERS.FULL_NAME</fields>
-        <fields>EVENT.LOCATION</fields>
-        <fields>TASK.WHAT_NAME</fields>
-        <relatedList>RelatedActivityList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>TASK.SUBJECT</fields>
-        <fields>TASK.WHO_NAME</fields>
-        <fields>ACTIVITY.TASK</fields>
-        <fields>TASK.DUE_DATE</fields>
-        <fields>EVENT.LOCATION</fields>
-        <fields>CORE.USERS.FULL_NAME</fields>
-        <fields>TASK.WHAT_NAME</fields>
-        <relatedList>RelatedHistoryList</relatedList>
     </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>
@@ -301,7 +297,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h5e000001UqEu</masterLabel>
+        <masterLabel>00hfK000000hH4G</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

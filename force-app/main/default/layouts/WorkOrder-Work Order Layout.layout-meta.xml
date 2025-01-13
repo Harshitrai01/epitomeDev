@@ -173,11 +173,6 @@
         <fields>Status</fields>
         <relatedList>ChildWorkOrders</relatedList>
     </relatedLists>
-    <relatedLists>
-        <fields>Skill</fields>
-        <fields>SkillLevel</fields>
-        <relatedList>SkillRequirements</relatedList>
-    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>

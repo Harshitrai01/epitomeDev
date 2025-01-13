@@ -159,13 +159,13 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-    <label>Unit</label>
+    <label>Plot</label>
     <nameField>
-        <label>Phot Number</label>
+        <label>Plot Number</label>
         <trackHistory>false</trackHistory>
         <type>Text</type>
     </nameField>
-    <pluralLabel>Units</pluralLabel>
+    <pluralLabel>Plots</pluralLabel>
     <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <searchLayouts></searchLayouts>
     <sharingModel>ReadWrite</sharingModel>

@@ -9,4 +9,6 @@
     <tabs>standard-Quote</tabs>
     <tabs>Phase__c</tabs>
     <tabs>Unit__c</tabs>
+    <tabs>Payment__c</tabs>
+    <tabs>Payment_Milestone__c</tabs>
 </CustomApplication>

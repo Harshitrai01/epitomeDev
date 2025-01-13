@@ -1,0 +1,28 @@
+<template>
+    <lightning-card>
+        <template if:true={status}>
+            <div class="status-container" style={statusStyle}>
+                Current Status: {status}
+            </div>
+            <div>
+                <lightning-combobox
+                    label="Change Status"
+                    placeholder="Select a status"
+                    options={statusOptions}
+                    value={selectedStatus}
+                    onchange={handleStatusChange}>
+                </lightning-combobox>
+            </div>
+            <div class="button-container">
+                <lightning-button
+                    label="Update Status"
+                    variant="brand"
+                    onclick={confirmStatusChange}>
+                </lightning-button>
+            </div>
+        </template>
+        <template if:false={status}>
+            <p>Loading...</p>
+        </template>
+    </lightning-card>
+</template>

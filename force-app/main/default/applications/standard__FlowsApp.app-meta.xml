@@ -13,6 +13,8 @@
     <tabs>Phase__c</tabs>
     <tabs>Unit__c</tabs>
     <tabs>standard-Monitor</tabs>
+    <tabs>Payment__c</tabs>
+    <tabs>Payment_Milestone__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>FlowsApp_UtilityBar</utilityBar>
 </CustomApplication>

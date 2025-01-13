@@ -35,15 +35,22 @@
     <tabs>standard-home</tabs>
     <tabs>standard-Contact</tabs>
     <tabs>standard-Account</tabs>
-    <tabs>standard-OmniSupervisor</tabs>
     <tabs>standard-CmsWorkspaces</tabs>
     <tabs>standard-CmsExperiences</tabs>
     <tabs>standard-Macro</tabs>
     <tabs>standard-LightningQuickText</tabs>
     <tabs>standard-Survey</tabs>
+    <tabs>Payment__c</tabs>
+    <tabs>Payment_Milestone__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>PreconfiguredLightningServiceConsole_UtilityBar</utilityBar>
     <workspaceConfig>
+        <mappings>
+            <tab>Payment_Milestone__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Payment__c</tab>
+        </mappings>
         <mappings>
             <tab>standard-Account</tab>
         </mappings>
@@ -64,9 +71,6 @@
         </mappings>
         <mappings>
             <tab>standard-Macro</tab>
-        </mappings>
-        <mappings>
-            <tab>standard-OmniSupervisor</tab>
         </mappings>
         <mappings>
             <tab>standard-Survey</tab>

@@ -23,9 +23,17 @@
     <tabs>standard-File</tabs>
     <tabs>Phase__c</tabs>
     <tabs>Unit__c</tabs>
+    <tabs>Payment__c</tabs>
+    <tabs>Payment_Milestone__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>HVSConsole_UtilityBar</utilityBar>
     <workspaceConfig>
+        <mappings>
+            <tab>Payment_Milestone__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Payment__c</tab>
+        </mappings>
         <mappings>
             <tab>Phase__c</tab>
         </mappings>

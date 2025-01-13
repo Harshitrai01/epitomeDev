@@ -22,6 +22,54 @@
                 <behavior>Readonly</behavior>
                 <field>AccountId</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>AgreementValueWithGst__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>GST__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Is_Manager_Approval_Required__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>IsLocked__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>IsSample__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Opportunity__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Plot_Saleable_Area_In_Sqft__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Project__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Quote_End_Date_Time__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Total_Basic_Cost__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Total_Charge_Amount__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Unit__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -34,11 +82,59 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Description</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>Status</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Description</field>
+                <field>All_Inclusive_Price__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Customer_Name__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Gst_Amount__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Is_Sales_Head_Approval_Required__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>IsQuoteGenerated__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Phase__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Plot_Saleable_Area_In_Sqm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Plot_Dimension__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Quote_Finalization_Approval_Status__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Sales_Value_Of_Unit__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Sales_Head__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Total_Gst_For_Charge__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -165,7 +261,6 @@
         <fields>Name</fields>
         <fields>OpportunityId</fields>
         <fields>ExpirationDate</fields>
-        <fields>Status</fields>
         <fields>Discount</fields>
         <fields>GrandTotal</fields>
     </miniLayout>
@@ -257,24 +352,19 @@
             <sortOrder>16</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>SendEmail</actionName>
+            <actionName>Delete</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>17</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Delete</actionName>
+            <actionName>EmailQuote</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>18</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>EmailQuote</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>19</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>CreatePdf</actionName>
             <actionType>StandardButton</actionType>
-            <sortOrder>20</sortOrder>
+            <sortOrder>19</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <relatedContent>
@@ -297,6 +387,12 @@
             </layoutItem>
         </relatedContentItems>
     </relatedContent>
+    <relatedLists>
+        <fields>OPPORTUNITY.NAME</fields>
+        <fields>ACCOUNT.NAME</fields>
+        <fields>OPPORTUNITY.CLOSE_DATE</fields>
+        <relatedList>Opportunity.Quote__c</relatedList>
+    </relatedLists>
     <relatedLists>
         <fields>QUOTE_LI.PRODUCT2</fields>
         <fields>QUOTE_LI.UNIT_PRICE</fields>
@@ -343,7 +439,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h36000003jARz</masterLabel>
+        <masterLabel>00hfK000000hH4J</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

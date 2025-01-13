@@ -10,7 +10,7 @@
     </brandingSetProperty>
     <brandingSetProperty>
         <propertyName>BRAND_IMAGE</propertyName>
-        <propertyValue></propertyValue>
+        <propertyValue>/file-asset/image600x120?v=1</propertyValue>
     </brandingSetProperty>
     <brandingSetProperty>
         <propertyName>BANNER_IMAGE</propertyName>
@@ -34,7 +34,7 @@
     </brandingSetProperty>
     <brandingSetProperty>
         <propertyName>OVERRIDE_LOADING_PAGE</propertyName>
-        <propertyValue>false</propertyValue>
+        <propertyValue>true</propertyValue>
     </brandingSetProperty>
     <masterLabel>Epitome</masterLabel>
 </BrandingSet>

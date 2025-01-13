@@ -47,7 +47,6 @@
                 <identifier>force_highlightsPanel</identifier>
             </componentInstance>
         </itemInstances>
-        <mode>Replace</mode>
         <name>header</name>
         <type>Region</type>
     </flexiPageRegions>
@@ -58,7 +57,6 @@
                 <identifier>force_detailPanel</identifier>
             </componentInstance>
         </itemInstances>
-        <mode>Replace</mode>
         <name>detailTabContent</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -81,7 +79,6 @@
                 <identifier>detailTab</identifier>
             </componentInstance>
         </itemInstances>
-        <mode>Replace</mode>
         <name>maintabs</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -96,8 +93,7 @@
                 <identifier>flexipage_tabset</identifier>
             </componentInstance>
         </itemInstances>
-        <mode>Replace</mode>
-        <name>main</name>
+        <name>leftcol</name>
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -111,7 +107,6 @@
                 <identifier>runtime_sales_activities_activityPanel</identifier>
             </componentInstance>
         </itemInstances>
-        <mode>Replace</mode>
         <name>activityTabContent</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -170,7 +165,6 @@
                 <identifier>flexipage_tab</identifier>
             </componentInstance>
         </itemInstances>
-        <mode>Replace</mode>
         <name>sidebartabs</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -185,15 +179,13 @@
                 <identifier>flexipage_tabset2</identifier>
             </componentInstance>
         </itemInstances>
-        <mode>Replace</mode>
-        <name>sidebar</name>
+        <name>rightcol</name>
         <type>Region</type>
     </flexiPageRegions>
     <masterLabel>Unit Record Page</masterLabel>
-    <parentFlexiPage>flexipage__default_rec_L</parentFlexiPage>
     <sobjectType>Unit__c</sobjectType>
     <template>
-        <name>flexipage:recordHomeTemplateDesktop</name>
+        <name>flexipage:recordHomeTwoColEqualHeaderTemplateDesktop</name>
     </template>
     <type>RecordPage</type>
 </FlexiPage>

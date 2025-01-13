@@ -153,6 +153,25 @@
         <fields>LEAD.PHONE</fields>
         <relatedList>Lead.Phase__c</relatedList>
     </relatedLists>
+    <relatedLists>
+        <fields>OPPORTUNITY.NAME</fields>
+        <fields>ACCOUNT.NAME</fields>
+        <fields>OPPORTUNITY.CLOSE_DATE</fields>
+        <relatedList>Opportunity.Phase__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>QUOTE.NAME</fields>
+        <fields>OPPORTUNITY.NAME</fields>
+        <fields>QUOTE.ISSYNCING</fields>
+        <fields>QUOTE.EXPIRATIONDATE</fields>
+        <fields>QUOTE.SUBTOTAL</fields>
+        <fields>QUOTE.TOTALPRICE</fields>
+        <relatedList>Quote.Phase__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Payment__c.Phase__c</relatedList>
+    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>

@@ -183,7 +183,15 @@
     <tabs>standard-Lead</tabs>
     <tabs>Phase__c</tabs>
     <tabs>Unit__c</tabs>
+    <tabs>Payment__c</tabs>
+    <tabs>Payment_Milestone__c</tabs>
     <workspaceConfig>
+        <mappings>
+            <tab>Payment_Milestone__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Payment__c</tab>
+        </mappings>
         <mappings>
             <tab>Phase__c</tab>
         </mappings>

@@ -1,0 +1,35 @@
+<template>
+    <lightning-card  icon-name="standard:dashboard">
+        <template if:true={isLoading}>
+            <div class="spinner-container">
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </div>
+        </template>
+        <template if:false={isLoading}>
+            <div class="control-container">
+                <lightning-input
+                    type="toggle"
+                    label="Lead Overload"
+                    checked={isLeadOverload}
+                    onchange={handleToggleChange}>
+                </lightning-input>
+                <lightning-button
+                    label="Show User Data"
+                    onclick={handleShowUserData}
+                    variant="brand">
+                </lightning-button>
+            </div>
+            <template if:true={showUserTable}>
+                <div class="datatable-container">
+                    <lightning-datatable
+                        key-field="UserId"
+                        data={userData}
+                        columns={columns}
+                        draft-values={draftValues}
+                        onsave={handleSave}>
+                    </lightning-datatable>
+                </div>
+            </template>
+        </template>
+    </lightning-card>
+</template>

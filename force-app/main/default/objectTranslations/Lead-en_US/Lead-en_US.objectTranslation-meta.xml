@@ -7,6 +7,10 @@
             <section>Project Information</section>
         </sections>
     </layouts>
+    <quickActions>
+        <label><!-- Schedule Site Visit Event --></label>
+        <name>Schedule_Site_Visit_Event</name>
+    </quickActions>
     <webLinks>
         <label><!-- GoogleMaps --></label>
         <name>GoogleMaps</name>

@@ -8,7 +8,6 @@
             <user>presales2@gmail.com</user>
         </users>
     </queueMembers>
-    <queueRoutingConfig>Pre_Sales_Routing_Configuration</queueRoutingConfig>
     <queueSobject>
         <sobjectType>Lead</sobjectType>
     </queueSobject>

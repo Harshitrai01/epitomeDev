@@ -256,6 +256,11 @@
             <actionType>ProductivityAction</actionType>
             <sortOrder>11</sortOrder>
         </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Lead.Schedule_Site_Visit_Event</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>12</sortOrder>
+        </platformActionListItems>
     </platformActionList>
     <quickActionList>
         <quickActionListItems>
@@ -295,6 +300,18 @@
         </relatedContentItems>
     </relatedContent>
     <relatedLists>
+        <fields>OPPORTUNITY.NAME</fields>
+        <fields>ACCOUNT.NAME</fields>
+        <fields>OPPORTUNITY.CLOSE_DATE</fields>
+        <relatedList>Opportunity.Lead__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>FULL_NAME</fields>
+        <fields>LEAD.COMPANY</fields>
+        <fields>LEAD.PHONE</fields>
+        <relatedList>Lead.Parent_Lead__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <fields>CAMPAIGN.NAME</fields>
         <fields>CAMPAIGN.START_DATE</fields>
         <fields>CAMPAIGN.CAMPAIGN_TYPE</fields>
@@ -302,12 +319,6 @@
         <fields>CM.RESPONDED</fields>
         <fields>CM.LAST_UPDATE</fields>
         <relatedList>RelatedCampaignList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <relatedList>RelatedFileList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <relatedList>RelatedContentNoteList</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>TASK.SUBJECT</fields>
@@ -327,10 +338,10 @@
         <relatedList>RelatedHistoryList</relatedList>
     </relatedLists>
     <relatedLists>
-        <fields>FULL_NAME</fields>
-        <fields>LEAD.COMPANY</fields>
-        <fields>LEAD.PHONE</fields>
-        <relatedList>Lead.Parent_Lead__c</relatedList>
+        <relatedList>RelatedFileList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <relatedList>RelatedContentNoteList</relatedList>
     </relatedLists>
     <runAssignmentRulesDefault>false</runAssignmentRulesDefault>
     <showEmailCheckbox>false</showEmailCheckbox>

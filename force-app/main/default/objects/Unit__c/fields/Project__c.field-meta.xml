@@ -4,7 +4,6 @@
     <deleteConstraint>SetNull</deleteConstraint>
     <label>Project</label>
     <referenceTo>Project__c</referenceTo>
-    <relationshipLabel>Units</relationshipLabel>
     <relationshipName>Units</relationshipName>
     <required>false</required>
     <trackHistory>false</trackHistory>

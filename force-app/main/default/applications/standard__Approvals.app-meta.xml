@@ -8,8 +8,16 @@
     <label>Approvals</label>
     <navType>Console</navType>
     <tabs>standard-ApprovalsHome</tabs>
+    <tabs>Payment__c</tabs>
+    <tabs>Payment_Milestone__c</tabs>
     <uiType>Lightning</uiType>
     <workspaceConfig>
+        <mappings>
+            <tab>Payment_Milestone__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Payment__c</tab>
+        </mappings>
         <mappings>
             <tab>standard-ApprovalsHome</tab>
         </mappings>

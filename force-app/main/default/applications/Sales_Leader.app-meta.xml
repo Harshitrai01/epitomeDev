@@ -23,6 +23,8 @@
     <tabs>standard-Opportunity</tabs>
     <tabs>Phase__c</tabs>
     <tabs>Unit__c</tabs>
+    <tabs>Payment__c</tabs>
+    <tabs>Payment_Milestone__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Sales_Leadership_UtilityBar</utilityBar>
 </CustomApplication>

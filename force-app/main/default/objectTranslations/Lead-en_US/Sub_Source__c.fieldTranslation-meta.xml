@@ -3,11 +3,119 @@
     <label><!-- Sub Source --></label>
     <name>Sub_Source__c</name>
     <picklistValues>
+        <masterLabel>99 acre</masterLabel>
+        <translation><!-- 99 acre --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Activity</masterLabel>
+        <translation><!-- Activity --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>BTL</masterLabel>
+        <translation><!-- BTL --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Channel Partner</masterLabel>
+        <translation><!-- Channel Partner --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Common floor</masterLabel>
+        <translation><!-- Common floor --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Customer</masterLabel>
+        <translation><!-- Customer --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Customer Referral</masterLabel>
+        <translation><!-- Customer Referral --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Direction signages</masterLabel>
+        <translation><!-- Direction signages --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Employee</masterLabel>
+        <translation><!-- Employee --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Employee Referral</masterLabel>
+        <translation><!-- Employee Referral --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Events</masterLabel>
+        <translation><!-- Events --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Facebook</masterLabel>
+        <translation><!-- Facebook --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Google</masterLabel>
+        <translation><!-- Google --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Google Lead Form</masterLabel>
+        <translation><!-- Google Lead Form --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Google Maps</masterLabel>
+        <translation><!-- Google Maps --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Hoarding</masterLabel>
+        <translation><!-- Hoarding --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Instagram</masterLabel>
+        <translation><!-- Instagram --></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>Internet</masterLabel>
         <translation><!-- Internet --></translation>
     </picklistValues>
     <picklistValues>
+        <masterLabel>LinkedIn</masterLabel>
+        <translation><!-- LinkedIn --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Magicbricks</masterLabel>
+        <translation><!-- Magicbricks --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Management</masterLabel>
+        <translation><!-- Management --></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>Media</masterLabel>
         <translation><!-- Media --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Newspaper</masterLabel>
+        <translation><!-- Newspaper --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>TV Ads</masterLabel>
+        <translation><!-- TV Ads --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Vendor</masterLabel>
+        <translation><!-- Vendor --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Way Finder</masterLabel>
+        <translation><!-- Way Finder --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Website</masterLabel>
+        <translation><!-- Website --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Whatsapp</masterLabel>
+        <translation><!-- Whatsapp --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>housing.com</masterLabel>
+        <translation><!-- housing.com --></translation>
     </picklistValues>
 </CustomFieldTranslation>

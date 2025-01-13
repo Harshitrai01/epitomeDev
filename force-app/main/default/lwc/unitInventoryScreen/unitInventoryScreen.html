@@ -1,35 +1,45 @@
 <template>
-    <lightning-card title="Excel-like Grid">
-      <div class="table-container">
-        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
-          <thead>
-            <tr>
-              <th>Select</th>
-              <th>Column 1</th>
-              <th>Column 2</th>
-              <th>Picklist</th>
-            </tr>
-          </thead>
-          <tbody>
-            <template for:each={rows} for:item="row">
-                <tr key={row.id} >
-                    <td>
-                        <lightning-input type="checkbox" data-id={row.id} checked={row.selected} onchange={handleRowSelection}></lightning-input>
-                    </td>
-                    <td>{row.column1}</td>
-                    <td>{row.column2}</td>
-                    <td>
-                        <lightning-combobox 
-                            options={picklistOptions} 
-                            value={row.picklistValue} 
-                            data-id={row.id} 
-                            onchange={handlePicklistChange}>
-                        </lightning-combobox>
-                    </td>
-                </tr>
-            </template>
-          </tbody>
-        </table>
-      </div>
+    <lightning-card  class="slds-m-around_medium">
+        <div class="table-container">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered custom-table">
+                <thead>
+                    <tr >
+                        <template for:each={columnNames} for:item="column">
+                            <th key={column} scope="col">
+                                <div class="slds-truncate" title={column}>{column}</div>
+                            </th>
+                        </template>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={grid} for:item="row">
+                        <tr key={row.Row}>
+                            <td style="width: 64px; height: 20px; text-align: ri;">
+                                <div class="slds-truncate" title={row} >{row.Row}</div>
+                            </td>
+                            <template for:each={row.Co} for:item="column">
+                                <td key={column.key} style = {dynamicStyle}>
+                                    <div class="cell-content"  
+                                        onclick={togglePopover} data-key={column.key}>
+                                        {column.key}
+                                        <template if:true={column.isPopoverVisible}>
+                                            <div class="popover" onmouseleave={handleMouseOut}>
+                                                <ul>
+                                                    <template for:each={column.options} for:item="option">
+                                                        <li key={option} onclick={handleOptionClick} data-option={option} data-key={column.key}>
+                                                            {option}
+                                                        </li>
+                                                    </template>
+                                                </ul>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </td>
+                            </template>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
     </lightning-card>
-  </template>
+</template>

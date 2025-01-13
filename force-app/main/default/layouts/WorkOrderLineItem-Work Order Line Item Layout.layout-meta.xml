@@ -142,11 +142,6 @@
         <fields>Asset</fields>
         <relatedList>ChildWorkOrderLineItems</relatedList>
     </relatedLists>
-    <relatedLists>
-        <fields>Skill</fields>
-        <fields>SkillLevel</fields>
-        <relatedList>SkillRequirements</relatedList>
-    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>

@@ -4,7 +4,6 @@
     <deleteConstraint>SetNull</deleteConstraint>
     <label>Phase</label>
     <referenceTo>Phase__c</referenceTo>
-    <relationshipLabel>Units</relationshipLabel>
     <relationshipName>Units</relationshipName>
     <required>false</required>
     <trackHistory>false</trackHistory>

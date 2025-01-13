@@ -10,8 +10,16 @@
     <tabs>standard-JourneyHome</tabs>
     <tabs>standard-SalesforceJourney</tabs>
     <tabs>standard-JourneyMap</tabs>
+    <tabs>Payment__c</tabs>
+    <tabs>Payment_Milestone__c</tabs>
     <uiType>Lightning</uiType>
     <workspaceConfig>
+        <mappings>
+            <tab>Payment_Milestone__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Payment__c</tab>
+        </mappings>
         <mappings>
             <tab>standard-JourneyHome</tab>
         </mappings>

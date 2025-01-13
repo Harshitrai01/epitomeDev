@@ -56,12 +56,6 @@
             </value>
         </inputParameters>
         <inputParameters>
-            <name>senderAddress</name>
-            <value>
-                <stringValue>harshit.rai@saasworx.ai</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
             <name>emailSubject</name>
             <value>
                 <stringValue>Site Visit Planned</stringValue>

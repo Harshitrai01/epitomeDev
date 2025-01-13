@@ -108,4 +108,16 @@
         <name>standard__PreconfiguredLightningServiceConsole</name>
         <type>CustomApplication</type>
     </appMenuItems>
+    <appMenuItems>
+        <name>Lead_Capture</name>
+        <type>ConnectedApp</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Sales</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Admin_Management</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
 </AppMenu>

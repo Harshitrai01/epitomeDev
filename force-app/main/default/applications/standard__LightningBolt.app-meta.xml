@@ -10,6 +10,8 @@
     <tabs>standard-LightningBoltHome</tabs>
     <tabs>Phase__c</tabs>
     <tabs>Unit__c</tabs>
+    <tabs>Payment__c</tabs>
+    <tabs>Payment_Milestone__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>LightningBolt_UtilityBar</utilityBar>
 </CustomApplication>
