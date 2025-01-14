@@ -128,7 +128,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Create_Task_for_Lead</targetReference>
+                <targetReference>getQueue</targetReference>
             </connector>
             <label>IsNull False</label>
         </rules>
@@ -186,17 +186,17 @@
         <name>Create_Task_for_Lead</name>
         <label>Create Task for Lead</label>
         <locationX>50</locationX>
-        <locationY>566</locationY>
+        <locationY>782</locationY>
         <inputAssignments>
             <field>OwnerId</field>
             <value>
-                <elementReference>getLeadInfo.OwnerId</elementReference>
+                <elementReference>getQueue.Id</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>Subject</field>
             <value>
-                <stringValue>Site Visit</stringValue>
+                <stringValue>Schedules Site Visit</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -229,6 +229,51 @@
         <object>Lead</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordLookups>
+        <name>getQueue</name>
+        <label>getQueue</label>
+        <locationX>50</locationX>
+        <locationY>566</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>updateLeadOwner</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Sales_Queue</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>updateLeadOwner</name>
+        <label>updateLeadOwner</label>
+        <locationX>50</locationX>
+        <locationY>674</locationY>
+        <connector>
+            <targetReference>Create_Task_for_Lead</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>getQueue.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
     <screens>
         <name>Schedule_Site_Visit_Event</name>
         <label>Schedule Site Visit Event</label>

@@ -1,35 +1,54 @@
 <template>
-    <lightning-card  icon-name="standard:dashboard">
+    <lightning-card>
         <template if:true={isLoading}>
             <div class="spinner-container">
                 <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
             </div>
         </template>
         <template if:false={isLoading}>
+            <!-- Pre-Sales Section -->
             <div class="control-container">
+                <h2>Pre-Sales User Data</h2>
                 <lightning-input
                     type="toggle"
-                    label="Lead Overload"
-                    checked={isLeadOverload}
-                    onchange={handleToggleChange}>
+                    label="Pre-Sales Toggle"
+                    checked={isPreSalesActive}
+                    onchange={handlePreSalesToggleChange}>
                 </lightning-input>
-                <lightning-button
-                    label="Show User Data"
-                    onclick={handleShowUserData}
-                    variant="brand">
-                </lightning-button>
+                <template if:true={isPreSalesActive}>
+                    <div class="datatable-container">
+                        <lightning-datatable
+                            key-field="Id"
+                            data={preSalesUserData}
+                            columns={columns}
+                            draft-values={preSalesDraftValues}
+                            onsave={handleSavePreSales}>
+                        </lightning-datatable>
+                    </div>
+                </template>
             </div>
-            <template if:true={showUserTable}>
-                <div class="datatable-container">
-                    <lightning-datatable
-                        key-field="UserId"
-                        data={userData}
-                        columns={columns}
-                        draft-values={draftValues}
-                        onsave={handleSave}>
-                    </lightning-datatable>
-                </div>
-            </template>
+
+            <!-- Sales Section -->
+            <div class="control-container">
+                <h2>Sales User Data</h2>
+                <lightning-input
+                    type="toggle"
+                    label="Sales Toggle"
+                    checked={isSalesActive}
+                    onchange={handleSalesToggleChange}>
+                </lightning-input>
+                <template if:true={isSalesActive}>
+                    <div class="datatable-container">
+                        <lightning-datatable
+                            key-field="Id"
+                            data={salesUserData}
+                            columns={columns}
+                            draft-values={salesDraftValues}
+                            onsave={handleSaveSales}>
+                        </lightning-datatable>
+                    </div>
+                </template>
+            </div>
         </template>
     </lightning-card>
 </template>

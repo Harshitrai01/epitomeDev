@@ -13,20 +13,20 @@
                 </thead>
                 <tbody>
                     <template for:each={grid} for:item="row">
-                        <tr key={row.Row}>
+                        <tr key={row.Rw}>
                             <td style="width: 64px; height: 20px; text-align: ri;">
-                                <div class="slds-truncate" title={row} >{row.Row}</div>
+                                <div class="slds-truncate" title={row} >{row.Rw}</div>
                             </td>
                             <template for:each={row.Co} for:item="column">
-                                <td key={column.key} style = {dynamicStyle}>
+                                <td key={column.id} style={column.st}>
                                     <div class="cell-content"  
-                                        onclick={togglePopover} data-key={column.key}>
-                                        {column.key}
-                                        <template if:true={column.isPopoverVisible}>
-                                            <div class="popover" onmouseleave={handleMouseOut}>
+                                        onclick={togglePopover} data-key={column.id} data-row={row.Rw}>
+                                        {column.id}
+                                        <template if:true={column.Pv}>
+                                            <div class="popover" >
                                                 <ul>
-                                                    <template for:each={column.options} for:item="option">
-                                                        <li key={option} onclick={handleOptionClick} data-option={option} data-key={column.key}>
+                                                    <template for:each={column.op} for:item="option">
+                                                        <li key={option} onclick={handleOptionClick} data-option={option} data-key={column.id} data-row={row.Rw}>
                                                             {option}
                                                         </li>
                                                     </template>

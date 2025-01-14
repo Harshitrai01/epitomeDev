@@ -38,11 +38,11 @@
 }
 
 .popover li:hover {
-    background-color: #f4f4f4;
+    background-color: #f4f6f96a;
 }
 
 .slds-table td:hover {
-    background-color: #f4f6f9 !important; /* Change this to desired hover color */
+    background-color: #f4f6f96a !important; /* Change this to desired hover color */
 }
 /* Remove hover effect from rows if previously added */
 .slds-table tr:hover {

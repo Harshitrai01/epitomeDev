@@ -2,123 +2,159 @@ import { LightningElement, track } from 'lwc';
 import getCustomSetting from '@salesforce/apex/PreSalesController.getCustomSetting';
 import getUserData from '@salesforce/apex/PreSalesController.getUserData';
 import updateUserStatus from '@salesforce/apex/PreSalesController.updateUserStatus';
+import updateCustomSetting from '@salesforce/apex/PreSalesController.updateCustomSetting';
+
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 export default class PreSalesDashboardScreen extends LightningElement {
-    @track isLeadOverload = false; // Holds the toggle value
-    @track userData = []; // Holds the user data for the data table
+    @track isPreSalesActive = false;
+    @track isSalesActive = false;
+    @track preSalesUserData = [];
+    @track salesUserData = [];
+    @track preSalesDraftValues = [];
+    @track salesDraftValues = [];
     @track columns = [
         { label: 'Name', fieldName: 'Name' },
-        { label: 'Status', fieldName: 'Status__c', type: 'picklist', editable: true },
-        { label: 'Capacity', fieldName: 'Capacity__c', type: 'number' },
-        { label: 'Queue', fieldName: 'Queue' },
+        { label: 'Status', fieldName: 'Status__c', editable: true },
     ];
-    @track isLoading = false; // Spinner control
-    @track showUserTable = false; // Controls visibility of the table
+    @track isLoading = false;
 
     connectedCallback() {
         this.isLoading = true;
-        this.loadCustomSetting();
+        this.loadCustomSettings();
     }
 
-    loadCustomSetting() {
-        getCustomSetting({ name: 'Lead OverLoad' })
-            .then(result => {
-                this.isLeadOverload = result === 'true';
+    loadCustomSettings() {
+        Promise.all([
+            getCustomSetting({ name: 'Pre-Sales Assignment' }),
+            getCustomSetting({ name: 'Sales Assignment' }),
+        ])
+            .then(([preSalesResult, salesResult]) => {
+                this.isPreSalesActive = preSalesResult === 'true';
+                this.isSalesActive = salesResult === 'true';
+
             })
             .catch(error => {
-                this.showToast('Error', 'Error loading custom setting', 'error');
+                this.showToast('Error', 'Error loading custom settings', 'error');
                 console.error(error);
             })
             .finally(() => {
-                this.isLoading = false; // Hide spinner
+                if (this.isPreSalesActive) {
+                    this.loadUserData('Pre_Sales_Queue', data => (this.preSalesUserData = data));
+                    //console.log('this.preSalesUserData--->',JSON.stringify(this.preSalesUserData));
+                }
+                if (this.isSalesActive) {
+                    this.loadUserData('Sales_Queue', data => (this.salesUserData = data));
+                    //console.log('this.salesUserData--->',JSON.stringify(this.salesUserData));
+                }
+                this.isLoading = false;
+
             });
     }
 
-    async handleToggleChange(event) {
+    handlePreSalesToggleChange(event) {
         const isChecked = event.target.checked;
-
-        // Show a confirmation dialog to the user
-        const confirmation = await this.showConfirmation('Are you sure you want to Change the Lead Overload status?');
-
-        if (confirmation) {
-            this.isLeadOverload = isChecked;
-
-            if (this.showUserTable) {
-                this.loadUserData();
-            }
-        } else {
-            // Reset the toggle back to its original state if user cancels
-            event.target.checked = this.isLeadOverload;
+        if (!isChecked && !this.isSalesActive) {
+            this.showToast('Error', 'At least one toggle must be active', 'error');
+            event.target.checked = this.isPreSalesActive;
+            return;
+        }
+        this.isPreSalesActive = isChecked;
+        this.updateCustomSetting('Pre-Sales Assignment', isChecked);
+        if (isChecked) {
+            this.loadUserData('Pre_Sales_Queue', data => (this.preSalesUserData = data));
+            console.log('this.preSalesUserData--->',JSON.stringify(this.preSalesUserData));
         }
     }
 
-    showConfirmation(message) {
-        return new Promise(resolve => {
-            const userResponse = window.confirm(message);
-            resolve(userResponse); // Resolves true if user confirms, false otherwise
-        });
+    handleSalesToggleChange(event) {
+        const isChecked = event.target.checked;
+        if (!isChecked && !this.isPreSalesActive) {
+            this.showToast('Error', 'At least one toggle must be active', 'error');
+            event.target.checked = this.isSalesActive;
+            return;
+        }
+        this.isSalesActive = isChecked;
+        this.updateCustomSetting('Sales Assignment', isChecked);
+        if (isChecked) {
+            this.loadUserData('Sales_Queue', data => (this.salesUserData = data));
+            console.log('this.salesUserData--->',JSON.stringify(this.salesUserData));
+        }
     }
 
-    handleShowUserData() {
-        this.showUserTable = true;
-        this.loadUserData();
-    }
-
-    loadUserData() {
-        this.isLoading = true; // Show spinner
-        setTimeout(() => { // Add a 1-second delay
-            getUserData({ isLeadOverload: this.isLeadOverload })
-                .then(result => {
-                    this.userData = JSON.parse(result);
-                    console.log('this.userData-->', JSON.stringify(this.userData));
-                })
-                .catch(error => {
-                    this.showToast('Error', 'Error loading user data', 'error');
-                    console.error(error);
-                })
-                .finally(() => {
-                    this.isLoading = false; // Hide spinner
-                });
-        }, 1000);
-    }
-
-    handleSave(event) {
-        this.isLoading = true; // Show spinner during save
-        setTimeout(() => { // Add a 1-second delay
-            const drafts = event.detail.draftValues.map(draft => {
-                return { Id: draft.UserId, Status__c: draft.Status__c };
+    updateCustomSetting(settingName, value) {
+        this.isLoading = true;
+        updateCustomSetting({ name: settingName, value: value.toString() })
+            .then(() => {
+                this.showToast('Success', `${settingName} updated successfully`, 'success');
+            })
+            .catch(error => {
+                this.showToast('Error', `Error updating ${settingName}`, 'error');
+                console.error(error);
+            })
+            .finally(() => {
+                this.isLoading = false;
             });
+    }
 
-            console.log('drafts:-', JSON.stringify(drafts));
 
-            updateUserStatus({ updates: drafts })
-                .then(() => {
-                    this.showToast('Success', 'User data updated successfully', 'success');
+    loadUserData(queueName, callback) {
+        this.isLoading = true;
+        getUserData({ queueName })
+            .then(result => {
+                callback(JSON.parse(result));
+                console.log('result--->',JSON.stringify(result));
 
-                    // Update the local userData array with the new status
-                    drafts.forEach(draft => {
-                        const user = this.userData.find(user => user.UserId === draft.Id);
-                        if (user) {
-                            user.Status__c = draft.Status__c; // Update the local value
-                        }
-                    });
+            })
+            .catch(error => {
+                this.showToast('Error', `Error loading ${queueName} user data`, 'error');
+                console.error(error);
+            })
+            .finally(() => {
+                this.isLoading = false;
+            });
+    }
 
-                    this.isLoading = false; // Hide spinner after update
-                })
-                .catch(error => {
-                    this.showToast('Error', 'Error updating user data', 'error');
-                    console.error(error);
-                    this.isLoading = false;
-                });
-        }, 1000);
+    handleSavePreSales(event) {
+        this.handleSave(event, this.preSalesDraftValues, 'Pre_Sales_Queue');
+    }
+
+    handleSaveSales(event) {
+        this.handleSave(event, this.salesDraftValues, 'Sales_Queue');
+    }
+
+    handleSave(event, draftValues, queueName) {
+        draftValues.push(...event.detail.draftValues);
+        if (queueName === 'Pre_Sales_Queue' && this.salesDraftValues.length > 0) {
+            this.showToast('Error', 'Cannot save data for both queues simultaneously', 'error');
+            return;
+        }
+        if (queueName === 'Sales_Queue' && this.preSalesDraftValues.length > 0) {
+            this.showToast('Error', 'Cannot save data for both queues simultaneously', 'error');
+            return;
+        }
+
+        this.isLoading = true;
+        console.log('draftValues-->',JSON.stringify(draftValues));
+        updateUserStatus({ userStatusData: JSON.stringify(draftValues) })
+            .then(() => {
+                this.showToast('Success', `${queueName} data updated successfully`, 'success');
+            })
+            .catch(error => {
+                this.showToast('Error', `Error updating ${queueName} data`, 'error');
+                console.error(error);
+            })
+            .finally(() => {
+                this.isLoading = false;
+                draftValues.length = 0; // Clear the draft values after save
+            });
     }
 
     showToast(title, message, variant) {
         const evt = new ShowToastEvent({
             title,
             message,
-            variant
+            variant,
         });
         this.dispatchEvent(evt);
     }
