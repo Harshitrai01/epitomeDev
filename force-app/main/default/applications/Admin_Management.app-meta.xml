@@ -15,6 +15,9 @@
     <label>Admin Management</label>
     <navType>Standard</navType>
     <tabs>standard-home</tabs>
+    <tabs>Additional_Charges__c</tabs>
+    <tabs>Quote__c</tabs>
+    <tabs>Lead_Plot__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Admin_Management_UtilityBar</utilityBar>
 </CustomApplication>

@@ -1,0 +1,27 @@
+<template>
+	<div class=" body">
+		<div class="main-container center">
+			<!-- Progress Indicator -->
+			<div class="circle-container center">
+				<div class="semicircle"></div>
+				<div class="semicircle"></div>
+				<div class="semicircle"></div>
+				<div class="outermost-circle"></div>
+			</div>
+			<!-- Timer -->
+			<div class="timer-container center">
+				<div class="timer center">
+					<template if:true={isExpired}>
+						<div class="blinking-red larger-counter">{remainingTime}</div>
+					</template>
+					<template if:true={aboutFinish}>
+						<div class="blinking-yellow larger-counter">{remainingTime}</div>
+					</template>
+					<template if:true={normalformate}>
+						<div class="larger-counter">{remainingTime}</div>
+					</template>
+				</div>
+			</div>
+		</div>
+		</div>
+</template>

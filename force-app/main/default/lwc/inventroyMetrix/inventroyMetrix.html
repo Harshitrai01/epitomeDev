@@ -1,0 +1,455 @@
+<template>
+
+	<template if:true={Loading}>
+		<lightning-card variant="Narrow" title="INVENTORY MATRIX" icon-name="standard:account">
+			<lightning-spinner size="medium"></lightning-spinner>
+		</lightning-card>
+	</template>
+
+	<template if:true={showdropDownScreen}>
+		<lightning-card variant="Narrow" title="INVENTORY MATRIX" icon-name="standard:account">
+			<lightning-layout vertical-align="center" horizontal-align="center" class="x-small">
+				<lightning-layout-item padding="around-small">
+					<lightning-combobox label="Select Project" placeholder="None" value={strProjectID}
+						options={projectOption} disabled onchange={handleProjectChange}>
+					</lightning-combobox>
+				</lightning-layout-item>
+				<lightning-layout-item padding="around-small">
+					<lightning-combobox label="Select Phase" disabled={desablePhase} placeholder="None"
+						value={strPhaseID} options={phaseOption} onchange={handlePhaseChange}>
+					</lightning-combobox>
+				</lightning-layout-item>
+				<template if:true={ShowTowerOption}>
+					<lightning-layout-item padding="around-small">
+						<lightning-combobox label="Select Tower" disabled={desableTower} placeholder="None"
+							value={strTowerID} options={towerOption} onchange={handleTowerChange}>
+						</lightning-combobox>
+					</lightning-layout-item>
+				</template>
+				<lightning-layout-item padding="around-small">
+					<lightning-combobox label="Select Status" disabled={desableStatus} placeholder="None"
+						value={strStatusValue} options={StatusOption} onchange={handleStatusChange}>
+					</lightning-combobox>
+				</lightning-layout-item>
+				<template if:true={ShowTowerOption}>
+					<lightning-layout-item padding="around-small">
+						<lightning-combobox label="Select Typology" disabled={desableTypology} placeholder="None"
+							value={strTypologyValue} options={TypologyOption} onchange={handleTypologyChange}>
+						</lightning-combobox>
+					</lightning-layout-item>
+				</template>
+				<template if:false={ShowTowerOption}>
+					<lightning-layout-item padding="around-small">
+						<lightning-combobox label="Select Facing" disabled={desableFacing} placeholder="None"
+							value={strFaceValue} options={FacingOption} onchange={handleFaceChange}>
+						</lightning-combobox>
+					</lightning-layout-item>
+					<!-- <lightning-layout-item padding="around-small">
+						<lightning-combobox label="Select Status" disabled={desableStatus} placeholder="None"
+							value={strStatusValue} options={StatusOption} onchange={handleStatusChange}>
+						</lightning-combobox>
+					</lightning-layout-item> -->
+					<lightning-layout-item padding="around-small">
+						<lightning-combobox label="Select Dimension" disabled={desableDimension} placeholder="None"
+							value={strDimensionValue} options={DimensionOption} onchange={handleDimensionChange}>
+						</lightning-combobox>
+					</lightning-layout-item>
+				</template>
+			</lightning-layout>
+		</lightning-card>
+	</template>
+
+	<template if:true={errorMessage}>
+		<lightning-layout-item size="12" padding="around-small">
+			<div class="slds-card slds-theme_shade">
+				<div class="slds-card__header slds-grid">
+					<div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+						<span class="slds-assistive-text">info</span>
+						<span class="slds-icon_container slds-icon-utility-user slds-m-right_x-small"
+							title="Description of icon when needed">
+							<svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+								<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+							</svg>
+						</span>
+						<h2> {materixErrorMessage}
+						</h2>
+					</div>
+				</div>
+			</div>
+		</lightning-layout-item>
+	</template>
+
+	<template if:true={showMetrix}>
+		<lightning-card>
+			<section class="slds-p-around_large">
+				<div class="slds-grid slds-gutters slds-grid_align-end">
+					<div class="slds-col">
+						<div class="slds-grid slds-grid_vertical-align-center">
+							<span class="legend slds-m-right_xxx-small" style={availableColorIndicator}>&nbsp;</span>
+							Available
+						</div>
+					</div>
+					<div class="slds-col">
+						<div class="slds-grid slds-grid_vertical-align-center">
+							<span class="legend slds-m-right_xxx-small" style={bookedColorCoderIndicator}>&nbsp;</span>
+							Booked
+						</div>
+					</div>
+					<div class="slds-col">
+						<div class="slds-grid slds-grid_vertical-align-center">
+							<span class="legend slds-m-right_xxx-small" style={blockedColorCodeIndicator}>&nbsp;</span>
+							Blocked
+						</div>
+					</div>
+					<div class="slds-col">
+						<div class=" slds-grid slds-grid_vertical-align-center">
+							<span class="legend slds-m-right_xxx-small" style={reservedColorCodeIndicator}>&nbsp;</span>
+							Reserved
+						</div>
+					</div>
+					<div class="slds-col">
+						<div class=" slds-grid slds-grid_vertical-align-center">
+							<span class="legend slds-m-right_xxx-small"
+								style={notforsaleColorCodeIndicator}>&nbsp;</span>
+							Not For Sale
+						</div>
+					</div>
+					<div class="slds-col">
+						<div class=" slds-grid slds-grid_vertical-align-center">
+							<span class="legend slds-m-right_xxx-small" style={onHoldColorCodeIndicator}>&nbsp;</span>
+							On Hold
+						</div>
+					</div>
+					<div class="slds-col">
+						<div class=" slds-grid slds-grid_vertical-align-center">
+							<span class="legend slds-m-right_xxx-small" style={onSoldColorCodeIndicator}>&nbsp;</span>
+							Sold
+						</div>
+					</div>
+				</div>
+			</section>
+			<lightning-layout vertical-align="center" class="x-small">
+				<lightning-layout-item size="10" padding="around-small" class="slds-align_absolute-center">
+					<template if:false={showmatrix}>
+						<div class="slds-scrollable" style="overflow-y: auto;  overflow-x: auto;">
+							<lightning-spinner size="large"></lightning-spinner>
+						</div>
+					</template>
+					<template if:true={showmatrix}>
+						<div class="slds-scrollable" style="overflow-y: auto;  overflow-x: auto;">
+							<table style="width: 100%;">
+								<tbody>
+									<tr onmouseover={hideHoverWizard}>
+										<td class="my-cell">FLOOR NO.</td>
+										<template for:each={flatList} for:item="floarPlan" for:index="index">
+											<td key={floarPlan} class="my-cell">{floarPlan}</td>
+										</template>
+									</tr>
+									<template for:each={FloarDeatil} for:item="floarPlan" for:index="index">
+										<tr key={floarPlan.floarNUmber}>
+											<td class="my-cell slds-p-around_none" onmouseover={hideHoverWizard}>
+												<div>{floarPlan.floarNUmber}</div>
+											</td>
+											<template for:each={floarPlan.FloarmetrixDeatils} for:item="material">
+												<td class="my-cell slds-p-around_none" key={material.unitId}>
+													<div class="slds-p-around_x-small" data-materialid={material.unitId}
+														style={material.colourCode}>
+														<span onclick={handelHover} data-materialid={material.unitId}
+															data-unitname={material.unitName}
+															data-status={material.statusAbbrivation}>{material.statusAbbrivation}</span>
+													</div>
+												</td>
+											</template>
+										</tr>
+									</template>
+								</tbody>
+							</table>
+						</div>
+					</template>
+
+				</lightning-layout-item>
+			</lightning-layout>
+		</lightning-card>
+	</template>
+
+	<template if:true={showPlotMetrix}>
+		<lightning-card>
+			<section class="slds-p-around_large">
+				<div class="slds-grid slds-gutters slds-grid_align-end">
+					<div class="slds-col">
+						<div class="slds-grid slds-grid_vertical-align-center">
+							<span class="legend slds-m-right_xxx-small" style={availableColorIndicator}>&nbsp;</span>
+							Available
+						</div>
+					</div>
+					<div class="slds-col">
+						<div class="slds-grid slds-grid_vertical-align-center">
+							<span class="legend slds-m-right_xxx-small" style={bookedColorCoderIndicator}>&nbsp;</span>
+							Booked
+						</div>
+					</div>
+					<div class="slds-col">
+						<div class="slds-grid slds-grid_vertical-align-center">
+							<span class="legend slds-m-right_xxx-small" style={blockedColorCodeIndicator}>&nbsp;</span>
+							Blocked
+						</div>
+					</div>
+					<div class="slds-col">
+						<div class=" slds-grid slds-grid_vertical-align-center">
+							<span class="legend slds-m-right_xxx-small" style={reservedColorCodeIndicator}>&nbsp;</span>
+							Reserved
+						</div>
+					</div>
+					<div class="slds-col">
+						<div class=" slds-grid slds-grid_vertical-align-center">
+							<span class="legend slds-m-right_xxx-small"
+								style={notforsaleColorCodeIndicator}>&nbsp;</span>
+							Not For Sale
+						</div>
+					</div>
+					<div class="slds-col">
+						<div class=" slds-grid slds-grid_vertical-align-center">
+							<span class="legend slds-m-right_xxx-small" style={onHoldColorCodeIndicator}>&nbsp;</span>
+							On Hold
+						</div>
+					</div>
+					<div class="slds-col">
+						<div class=" slds-grid slds-grid_vertical-align-center">
+							<span class="legend slds-m-right_xxx-small" style={onSoldColorCodeIndicator}>&nbsp;</span>
+							Sold
+						</div>
+					</div>
+				</div>
+			</section>
+			<lightning-layout vertical-align="center" class="x-small ">
+				<lightning-layout-item size="10" padding="around-small" class="slds-align_absolute-center">
+					<!-- customTable.html -->
+					<div class="slds-table_header">
+						<table class="slds-table slds-table_cell-buffer slds-table_bordered">
+							<thead>
+								<tr class="slds-text-title_caps">
+									<template if:true={isPlotOption}>
+
+										<th scope="col">
+											<div class="slds-truncate" title="Column 2">Plot Number</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Column 3">Facing</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Column 3">Saleable Area (In Sq Ft)</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Column 3">Saleable Area (In Sq Mtr)</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Column 3">Plot Dimension</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Column 3">Status</div>
+										</th>
+									</template>
+									<template if:true={isVillaOption}>
+										<!-- <th scope="col">
+											<div class="slds-truncate" title="Column 1">Sr.NO.</div>
+										</th> -->
+										<th scope="col">
+											<div class="slds-truncate" title="Column 2">Plot Number</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Column 3">Facing</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Column 3">Typology</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Column 3">Super Builtup Area (In Sqm)
+											</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Column 3">Super Builtup Area (In Sqft)
+											</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Column 3">RERA Carpet Area (In sqm)</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Column 3">RERA Carpet Area (In sqft)</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Column 3">Plot Area (In Sqm)</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Column 3">Plot Area (In Sqft)</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Column 3">Plot Dimension</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Column 3">Status</div>
+										</th>
+									</template>
+								</tr>
+							</thead>
+							<template if:true={showbody}>
+								<tbody>
+									<template for:each={plotList} for:item="row">
+										<tr onclick={handelQuoteScreen} data-id={row.Id} key={row.Id}
+											data-status={row.Status} style={row.colourCode}>
+											<template if:true={isPlotOption}>
+												<td data-label="Column 1">
+													<div class="slds-truncate" title={row.SerialNumber}>
+														{row.SerialNumber}
+													</div>
+												</td>
+												<td data-label="Column 3">
+													<div class="slds-truncate" title={row.Facing}>{row.Facing}</div>
+												</td>
+												<td data-label="Column 3">
+													<div class="slds-truncate" title={row.Facing}>
+														{row.plotSaleableAreaInSqft}</div>
+												</td>
+												<td data-label="Column 3">
+													<div class="slds-truncate" title={row.Facing}>
+														{row.plotSaleableAreaInSqm}</div>
+												</td>
+												<td data-label="Column 3">
+													<div class="slds-truncate" title={row.PlotDimension}>
+														{row.PlotDimension}</div>
+												</td>
+												<td data-label="Column 3">
+													<div class="slds-truncate" title={row.Status}>{row.Status}</div>
+												</td>
+											</template>
+											<template if:true={isVillaOption}>
+												<td data-label="Column 1">
+													<div class="slds-truncate" title={row.SerialNumber}>
+														{row.SerialNumber}
+													</div>
+												</td>
+												<td data-label="Column 2">
+													<div class="slds-truncate" title={row.Name}>{row.Name}</div>
+												</td>
+												<td data-label="Column 3">
+													<div class="slds-truncate" title={row.Facing}>{row.Facing}</div>
+												</td>
+												<td data-label="Column 4">
+													<div class="slds-truncate" title={row.Typology}>{row.Typology}</div>
+												</td>
+												<td data-label="Column 6">
+													<div class="slds-truncate" title={row.SuperBuiltupAreaInSqm}>
+														{row.SuperBuiltupAreaInSqm}</div>
+												</td>
+												<td data-label="Column 5">
+													<div class="slds-truncate" title={row.SuperBuiltupAreaInSqft}>
+														{row.SuperBuiltupAreaInSqft}</div>
+												</td>
+												<td data-label="Column 8">
+													<div class="slds-truncate" title={row.RERACarpetAreaInsqm}>
+														{row.RERACarpetAreaInsqm}</div>
+												</td>
+												<td data-label="Column 7">
+													<div class="slds-truncate" title={row.RERACarpetAreaInsqft}>
+														{row.RERACarpetAreaInsqft}</div>
+												</td>
+												<td data-label="Column 9">
+													<div class="slds-truncate" title={row.PlotAreaInSqm}>
+														{row.PlotAreaInSqm}
+													</div>
+												</td>
+												<td data-label="Column 10">
+													<div class="slds-truncate" title={row.PlotAreaInSqft}>
+														{row.PlotAreaInSqft}
+													</div>
+												</td>
+												<td data-label="Column 11">
+													<div class="slds-truncate" title={row.PlotDimension}>
+														{row.PlotDimension}
+													</div>
+												</td>
+												<td data-label="Column 12">
+													<div class="slds-truncate" title={row.Status}>{row.Status}</div>
+												</td>
+											</template>
+										</tr>
+									</template>
+								</tbody>
+							</template>
+						</table>
+						<template if:false={showbody}>
+							<lightning-layout-item size="12" padding="around-small">
+								<div class="slds-card slds-theme_shade" style="width: -webkit-fill-available">
+									<div class="slds-card__header slds-grid">
+										<div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+											<span class="slds-assistive-text">info</span>
+											<span
+												class="slds-icon_container slds-icon-utility-user slds-m-right_x-small"
+												title="Description of icon when needed">
+												<svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+													<use
+														xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning">
+													</use>
+												</svg>
+											</span>
+											<h2> No record found please adjust your filter
+											</h2>
+										</div>
+									</div>
+								</div>
+							</lightning-layout-item>
+						</template>
+					</div>
+				</lightning-layout-item>
+			</lightning-layout>
+		</lightning-card>
+	</template>
+
+	<template if:true={openModelBox}>
+		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+			aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open"
+			style="backdrop-filter: blur(3px) brightness(0.5);">
+			<div class="slds-modal__container">
+				<header class="slds-modal__header">
+					<!-- sldsValidatorIgnoreNextLine -->
+					<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+						title="Close" onclick={closeModal}>
+						<lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+							size="small"></lightning-icon>
+						<span class="slds-assistive-text">Close</span>
+					</button>
+					<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Unit Info-
+						{modelBoxUnitName}</h2>
+				</header>
+				<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+					<div class="slds-modal__container" style="padding:0;">
+						<lightning-record-view-form object-api-name="Unit__c" record-id={modelBoxRecordId}>
+							<table
+								class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped custom-table">
+								<tbody>
+									<template for:each={fieldsetValue} for:item="eachField">
+										<tr key={eachField}>
+											<td style="padding: 0px 0px 0px 10px;">
+												<lightning-output-field key={eachField} field-name={eachField}>
+												</lightning-output-field>
+											</td>
+										</tr>
+
+									</template>
+								</tbody>
+							</table>
+						</lightning-record-view-form>
+						<template if:true={showButton}>
+							<div class="slds-grid slds-gutters" style="margin-top: 9px;">
+								<div class="slds-col" style="text-align: center;">
+									<lightning-button label="Generate Quote" name="Quote" onclick={handelQuoteScreen}>
+									</lightning-button>
+								</div>
+							</div>
+						</template>
+					</div>
+				</div>
+			</div>
+		</section>
+	</template>
+
+</template>

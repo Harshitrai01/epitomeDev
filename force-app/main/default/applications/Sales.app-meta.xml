@@ -17,6 +17,9 @@
     <tabs>standard-home</tabs>
     <tabs>standard-Account</tabs>
     <tabs>standard-Opportunity</tabs>
+    <tabs>Additional_Charges__c</tabs>
+    <tabs>Quote__c</tabs>
+    <tabs>Lead_Plot__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Sales_UtilityBar1</utilityBar>
 </CustomApplication>

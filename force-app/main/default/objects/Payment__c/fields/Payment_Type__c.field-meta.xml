@@ -11,14 +11,14 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Booking Amount - Up to 10% payments</fullName>
+                <fullName>Online</fullName>
                 <default>false</default>
-                <label>Booking Amount - Up to 10% payments</label>
+                <label>Online</label>
             </value>
             <value>
-                <fullName>Collection - Rest all payment</fullName>
+                <fullName>Bank (Cheque/Neft)</fullName>
                 <default>false</default>
-                <label>Collection - Rest all payment</label>
+                <label>Bank (Cheque/Neft)</label>
             </value>
         </valueSetDefinition>
     </valueSet>

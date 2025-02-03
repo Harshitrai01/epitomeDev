@@ -14,5 +14,7 @@
     <tabs>Phase__c</tabs>
     <tabs>Unit__c</tabs>
     <tabs>Payment__c</tabs>
-    <tabs>Payment_Milestone__c</tabs>
+    <tabs>Additional_Charges__c</tabs>
+    <tabs>Quote__c</tabs>
+    <tabs>Lead_Plot__c</tabs>
 </CustomApplication>

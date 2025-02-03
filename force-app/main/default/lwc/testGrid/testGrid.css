@@ -1,0 +1,17 @@
+/* Remove row highlight */
+.custom-table tr:hover {
+    background-color: transparent !important;
+}
+
+/* Ensure cell borders remain visible */
+.custom-table td, .custom-table th {
+    border: 1px solid #d8d8d8 !important; /* Reapply borders */
+    padding: 8px; /* Adjust spacing for better readability */
+    text-align: left; /* Ensure proper text alignment */
+}
+
+/* Apply hover effect to individual cells */
+.custom-table td:hover {
+    background-color: #f3f3f3 !important; /* Light gray highlight */
+    transition: background-color 0.2s ease-in-out;
+}

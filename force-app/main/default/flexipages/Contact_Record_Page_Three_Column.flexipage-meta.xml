@@ -455,6 +455,42 @@
                 <identifier>RecordNameField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Aadhaar_Card__c</fieldItem>
+                <identifier>RecordAadhaar_Card__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.PAN_Card__c</fieldItem>
+                <identifier>RecordPAN_Card__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Date_Of_Birth__c</fieldItem>
+                <identifier>RecordDate_Of_Birth__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Same_As_Permanent_Address__c</fieldItem>
+                <identifier>RecordSame_As_Permanent_Address__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Permanent_Address__c</fieldItem>
+                <identifier>RecordPermanent_Address__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Correspondence_Address__c</fieldItem>
+                <identifier>RecordCorrespondence_Address__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-47396b09-68af-4166-943f-4fca64ddb4d8</name>
         <type>Facet</type>
     </flexiPageRegions>

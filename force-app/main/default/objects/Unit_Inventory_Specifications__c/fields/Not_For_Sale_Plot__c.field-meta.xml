@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Not_For_Sale_Plot__c</fullName>
+    <description>Color of Not For Sale Plot, Value should be in HEX</description>
+    <externalId>false</externalId>
+    <label>Not For Sale Plot</label>
+    <length>10</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

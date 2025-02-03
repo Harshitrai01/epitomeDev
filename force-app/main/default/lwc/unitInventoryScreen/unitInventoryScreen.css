@@ -40,14 +40,134 @@
 .popover li:hover {
     background-color: #f4f6f96a;
 }
+.slds-table tbody tr td:hover {
+    background-color: #e0e0e0;  /* Highlight color */
+    cursor: pointer;
+}
 
+/* Remove hover effect from the entire row */
+.slds-table tbody tr:hover {
+    background-color: transparent;  /* No background on row hover */
+}
 .slds-table td:hover {
-    background-color: #f4f6f96a !important; /* Change this to desired hover color */
+    background-color: #f4f6f96a !important; 
 }
 /* Remove hover effect from rows if previously added */
 .slds-table tr:hover {
     background-color: transparent !important;
 }
 .custom-table tr {
-    background-color: transparent !important; /* Prevent row-level styles */
+    background-color: transparent !important; 
+}
+.small-card {
+    max-width: 50px; /* Set a fixed or dynamic width */
+    padding: 8px; /* Reduce padding */
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px; /* Adjust the margin as needed */
+}
+.zoom-controls {
+    display: flex;
+    justify-content: right;
+    gap: 10px;
+    /* margin-bottom: 5px; */
+    padding-top: 25px; 
+}
+
+.zoom-wrapper {
+    transition: transform 0.3s ease-in-out;
+    transform-origin: top left;
+}
+.slds-combobox_container {
+    background-color: white;
+}
+.footer_button{
+    justify-content: center;
+    display: grid;
+    grid-auto-flow: column;
+}
+.selected-cell {
+    background-color: #90caf9; /* Light Blue */
+    border: 2px solid #1976d2; /* Dark Blue */
+}
+.cell-style {
+    font-weight: 700;
+}
+.filter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    margin-bottom: 5px;
+}
+.left-section {
+    flex: 1; /* Balances the layout */
+}
+.av {
+    background-color: var(--available-plot-color);
+}
+.hd {
+    background-color: var(--hold-plot-color);
+}
+.bk {
+    background-color: var(--booked-plot-color);
+}
+.tb {
+    background-color: var(--tempBlockPlot-plot-color);
+}
+.bl {
+    background-color: var(--blockedPlot-plot-color);
+}
+.sd {
+    background-color: var(--soldPlot-plot-color);
+}
+.rg {
+    background-color: var(--regPlot-plot-color);
+}
+.mb {
+    background-color: var(--managBlockedPlot-plot-color);
+}
+.mg {
+    background-color: var(--mortgagePlot-plot-color);
+}
+.ns {
+    background-color: var(--notForSalePlot-plot-color);
+}
+.ml {
+    background-color: var(--multiSelect-color);
+}
+.rd {
+    background-color: var(--road-color);
+}
+.gd {
+    background-color: var(--garden-color);
+}
+
+.selected-filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 8px; /* Adjust spacing as needed */
+}
+
+.selected-pill {
+    margin-right: 8px; /* Space between pills */
+    margin-bottom: 8px; /* Space between rows of pills */
+}
+
+.filter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.slds-m-top_small {
+    margin-top: 10px;
+}
+
+/* Add additional padding for better appearance */
+.slds-m-bottom_medium {
+    margin-bottom: 12px;
 }

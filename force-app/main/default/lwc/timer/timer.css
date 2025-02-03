@@ -1,0 +1,150 @@
+.timer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 330px;
+   text-align: center;
+  z-index: 6;
+ 
+}
+.border-margin{
+  border: 2px solid #d0cccc;
+  border-radius: 5px;
+  padding: 5px;
+ 
+}
+.countdown {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+}
+.blinking-red {
+    animation: blinking 1s linear infinite;
+  }
+ 
+.blinking-yellow {
+    animation: blinkingyellow 1s linear infinite;
+  }
+.timerExpired {
+    color: red;
+    animation: blink 1s infinite;
+}
+ 
+ 
+.larger-counter {
+    font-size: 35px;
+    font-weight: bold;
+  color: #0aa00c;
+    padding: 10px;
+}
+ 
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+ 
+.larger-button {
+    font-size: 16px; 
+    padding: 8px 16px;
+}
+ 
+  @keyframes blinkingyellow {
+    0% {
+      color:rgb(255 126 0);
+    }
+    50% {
+      color: transparent;
+    }
+    100% {
+      color:rgb(255 126 0);
+    }
+}
+ 
+@keyframes blinking {
+    0% {
+      color: red;
+    }
+    50% {
+      color: transparent;
+    }
+    100% {
+      color: red;
+    }
+}
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.body{
+  font-family: 'Heebo',sans-serif;
+  color: #088b8b;
+}
+.center{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-container{
+  width: 100% !important;
+  height:13rem !important;
+  /* background-color: white !important; */
+  position: static !important;
+}
+.circle-container{
+  width: 200px !important;
+  height:200px !important;
+  background-color: #ddd !important;
+  border-radius: 50% !important;
+  position:absolute !important;
+  overflow: hidden !important;
+  z-index:1 !important;
+}
+.semicircle{
+  width:50%;
+  height:100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: right center;
+  transition: transform 0.5s ease-in-out;
+}
+.semicircle:nth-child(1){
+  background-color: #088b8b;
+  z-index: 2;
+}
+.semicircle:nth-child(2){
+  background-color: #088b8b;
+  z-index: 3;
+}
+.semicircle:nth-child(3){
+  background-color: #ddd;
+  z-index: 4;
+  /* display: none; */
+}
+.outermost-circle{
+  width: 190px;
+  height:190px;
+  background-color: whitesmoke;
+  border-radius: 50%;
+  z-index: 5;
+  /* display:none; */
+}
+.timer{
+  width: 400px;
+  height: 100px;
+  z-index: 7;
+}
+
+.timer div{
+  font-size: 40px;
+  font-weight: 100;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px 0 10px;
+}

@@ -3,11 +3,11 @@
     <label><!-- Payment Type --></label>
     <name>Payment_Type__c</name>
     <picklistValues>
-        <masterLabel>Booking Amount - Up to 10% payments</masterLabel>
-        <translation><!-- Booking Amount - Up to 10% payments --></translation>
+        <masterLabel>Bank (Cheque/Neft)</masterLabel>
+        <translation><!-- Bank (Cheque/Neft) --></translation>
     </picklistValues>
     <picklistValues>
-        <masterLabel>Collection - Rest all payment</masterLabel>
-        <translation><!-- Collection - Rest all payment --></translation>
+        <masterLabel>Online</masterLabel>
+        <translation><!-- Online --></translation>
     </picklistValues>
 </CustomFieldTranslation>

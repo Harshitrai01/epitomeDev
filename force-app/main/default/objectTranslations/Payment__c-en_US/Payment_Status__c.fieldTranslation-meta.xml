@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Payment Status --></label>
+    <name>Payment_Status__c</name>
+    <picklistValues>
+        <masterLabel>active</masterLabel>
+        <translation><!-- active --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>failure</masterLabel>
+        <translation><!-- failure --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>success</masterLabel>
+        <translation><!-- success --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>userCancelled</masterLabel>
+        <translation><!-- userCancelled --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

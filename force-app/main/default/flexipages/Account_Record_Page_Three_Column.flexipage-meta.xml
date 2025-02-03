@@ -623,6 +623,18 @@
                 <identifier>RecordSpouse_Adhaar_Card__cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.IFSC_Code__c</fieldItem>
+                <identifier>RecordIFSC_Code__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Branch_Name__c</fieldItem>
+                <identifier>RecordBranch_Name__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-9317228b-9000-4df5-9218-7d1560529bcc</name>
         <type>Facet</type>
     </flexiPageRegions>

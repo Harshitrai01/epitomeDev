@@ -1,10 +1,9 @@
+/**
+ * Author: Varun Rawal
+ * Description: Apex Controller for handling Pre-Sales functionalities, including user updates, queue management,
+ * custom settings retrieval and updates, batch scheduling, and picklist value fetching.
+ */
 public with sharing class PreSalesController {
-
-    /**
-     * Retrieves the value of a custom setting by its name.
-     * @param name The name of the custom setting.
-     * @return The value of the custom setting as a string.
-     */
     @AuraEnabled(cacheable=true)
     public static String getCustomSetting(String name) {
         try {
@@ -14,22 +13,55 @@ public with sharing class PreSalesController {
                 WHERE Name = :name 
                 LIMIT 1
             ];
+            system.debug(name+' value:- '+customSetting.Value__c);
             return customSetting.Value__c;
         } catch (Exception e) {
             System.debug('Error retrieving custom setting: ' + e.getMessage());
             throw new AuraHandledException('Failed to retrieve custom setting.');
         }
     }
-
-    /**
-     * Retrieves user data based on the provided queue name.
-     * @param queueName The name of the queue to fetch users for.
-     * @return A JSON string containing the user data.
-     */
-    @AuraEnabled(cacheable=true)
-    public static String getUserData(String queueName) {
+    
+    @AuraEnabled
+    public static void updateUserStatus(String userStatusData) {
         try {
-            // Retrieve the group (queue) ID based on the queue name
+            system.debug('userStatusData-->'+userStatusData);
+            if (String.isEmpty(userStatusData)) {
+                throw new AuraHandledException('Input string is empty.');
+            }
+            List<User> userList = (List<User>) JSON.deserialize(userStatusData, List<User>.class);
+            system.debug('userList-->'+userList);
+            if (!userList.isEmpty()) {
+                update userList;
+            }
+        } catch (Exception e) {
+            System.debug('Error updating user status: ' + e.getMessage());
+            throw new AuraHandledException('Failed to update user status.');
+        }
+    }
+    
+    @AuraEnabled
+    public static void updateCustomSetting(String name, String value) {
+        try {
+            Pre_Sales_Data__c customSetting = [
+                SELECT Id, Value__c
+                FROM Pre_Sales_Data__c
+                WHERE Name = :name
+                LIMIT 1
+            ];
+            customSetting.Value__c = value;
+            update customSetting;
+        } catch (Exception e) {
+            System.debug('Error updating custom setting: ' + e.getMessage());
+            throw new AuraHandledException('Failed to update custom setting.');
+        }
+    }
+    
+    @AuraEnabled
+    public static List<UserWrapper> getUsersData(String queueName) {
+        try {
+            if (String.isBlank(queueName)) {
+                throw new AuraHandledException('Queue name cannot be empty.');
+            }
             Group grp = [
                 SELECT Id 
                 FROM Group 
@@ -37,103 +69,120 @@ public with sharing class PreSalesController {
                 AND Type = 'Queue' 
                 LIMIT 1
             ];
-
-            // Fetch all GroupMember entries for the group
             List<GroupMember> groupMembers = [
                 SELECT UserOrGroupId 
                 FROM GroupMember 
                 WHERE GroupId = :grp.Id
             ];
-
-            // Collect all User IDs
             Set<Id> userIds = new Set<Id>();
             for (GroupMember gm : groupMembers) {
                 userIds.add(gm.UserOrGroupId);
             }
-
-            // Fetch user data for the collected IDs
             List<User> users = [
-                SELECT Id, Name, Status__c 
+                SELECT Id, Name, Email, Status__c, Capacity__c, Pre_Sales_Lead_Assignment__c, Username
                 FROM User 
                 WHERE Id IN :userIds 
                 ORDER BY Name
             ];
-
-            return JSON.serialize(users);
+            List<UserWrapper> wrappedUsers = new List<UserWrapper>();
+            for (User user : users) {
+                wrappedUsers.add(new UserWrapper(
+                    user.Id,
+                    user.Name,
+                    user.Username,
+                    user.Email,
+                    user.Status__c,
+                    user.Capacity__c,
+                    false,
+                    user.Pre_Sales_Lead_Assignment__c
+                ));
+            }
+            return wrappedUsers;
         } catch (Exception e) {
             System.debug('Error retrieving user data: ' + e.getMessage());
-            throw new AuraHandledException('Failed to retrieve user data.');
+            throw new AuraHandledException('Failed to fetch users.');
         }
     }
-
-       /**
-     * Updates the status of users based on a string containing user data.
-     * The input string should be in the format: "UserId1:Status1,UserId2:Status2"
-     * @param userStatusData A string containing user IDs and their corresponding statuses.
-     */
-    @AuraEnabled
-    public static void updateUserStatus(String userStatusData) {
+    
+    @AuraEnabled(cacheable=true)
+    public static List<String> getPicklistValues() {
         try {
-            // Validate input
-            system.debug('userStatusData-->'+userStatusData);
-            if (String.isEmpty(userStatusData)) {
-                throw new AuraHandledException('Input string is empty.');
+            List<String> statusValues = new List<String>();
+            Schema.DescribeFieldResult fieldResult = User.Status__c.getDescribe();
+            for (Schema.PicklistEntry entry : fieldResult.getPicklistValues()) {
+                statusValues.add(entry.getLabel());
             }
-            
-            // Split the input string into individual user-status pairs
-            List<String> userStatusPairs = userStatusData.split(',');
-            List<User> userList = (List<User>) JSON.deserialize(userStatusData, List<User>.class);
-            system.debug('userList-->'+userList);
-
-
-            // Prepare a list of users to update
-            List<User> usersToUpdate = new List<User>();
-            for (String pair : userStatusPairs) {
-                // Split each pair into user ID and status
-                List<String> userAndStatus = pair.split(':');
-                if (userAndStatus.size() == 2) {
-                    String userId = userAndStatus[0];
-                    String status = userAndStatus[1];
-
-                    // Add the user to the list with the new status
-                    usersToUpdate.add(new User(Id = userId, Status__c = status));
-                } else {
-                    throw new AuraHandledException('Invalid format for user-status pair: ' + pair);
-                }
-            }
-
-            // Perform update if the list is not empty
-            if (!usersToUpdate.isEmpty()) {
-                update usersToUpdate;
-            }
+            return statusValues;
         } catch (Exception e) {
-            System.debug('Error updating user status: ' + e.getMessage());
-            throw new AuraHandledException('Failed to update user status.');
+            System.debug('Error fetching picklist values: ' + e.getMessage());
+            throw new AuraHandledException('Failed to retrieve picklist values.');
         }
     }
-
-    /**
- * Updates the value of a custom setting.
- * @param name The name of the custom setting to update.
- * @param value The new value for the custom setting.
- */
-@AuraEnabled
-public static void updateCustomSetting(String name, String value) {
-    try {
-        Pre_Sales_Data__c customSetting = [
-            SELECT Id, Value__c
-            FROM Pre_Sales_Data__c
-            WHERE Name = :name
-            LIMIT 1
-        ];
-        customSetting.Value__c = value;
-        update customSetting;
-    } catch (Exception e) {
-        System.debug('Error updating custom setting: ' + e.getMessage());
-        throw new AuraHandledException('Failed to update custom setting.');
+    
+    public class UserWrapper {
+        @AuraEnabled public Id userId;
+        @AuraEnabled public String name;
+        @AuraEnabled public String userName;
+        @AuraEnabled public String email;
+        @AuraEnabled public String status;
+        @AuraEnabled public Decimal capacity;
+        @AuraEnabled public Boolean userChange;
+        @AuraEnabled public Boolean leadAssignment;
+        public UserWrapper(Id userId, String name, String userName, String email, String status, Decimal capacity, boolean userChange, boolean leadAssignment) {
+            this.userId = userId;
+            this.name = name;
+            this.userName = userName;
+            this.email = email;
+            this.status = status;
+            this.capacity = capacity;
+            this.userChange = userChange;
+            this.leadAssignment = leadAssignment;
+        }
     }
-}
-
-
-
+    
+    public class ToastResponse {
+        @AuraEnabled public Boolean isSuccess;
+        @AuraEnabled public String message;
+        public ToastResponse(Boolean isSuccess, String message) {
+            this.isSuccess = isSuccess;
+            this.message = message;
+        }
+    }
+    
+    @AuraEnabled
+    public static ToastResponse scheduleBatch(Integer minuteInterval) {
+        try {
+            if (minuteInterval == null || minuteInterval <= 0 || minuteInterval > 59) {
+                return new ToastResponse(false, 'Invalid minute interval. Please provide a value between 1 and 59.');
+            }
+            String jobName = 'LeadNotificationBatch_' + System.now().getTime();
+            String nextFireTime = '0 ' + minuteInterval + ' * * * ?';
+            System.schedule(jobName, nextFireTime, new LeadNotificationBatch());
+            return new ToastResponse(true, 'Scheduled job "' + jobName + '" to run every ' + minuteInterval + ' minute(s).');
+        } catch (Exception e) {
+            return new ToastResponse(false, 'Failed to schedule job: ' + e.getMessage());
+        }
+    }
+    
+    @AuraEnabled
+    public static ToastResponse deleteScheduledJob() {
+        try {
+            List<CronTrigger> scheduledJobs = [
+                SELECT Id, State, CronJobDetail.Name  
+                FROM CronTrigger  
+                WHERE CronJobDetail.Name LIKE '%LeadNotificationBatch%'
+            ];
+            if (!scheduledJobs.isEmpty()) {
+                for (CronTrigger job : scheduledJobs) {
+                    if (job.State != 'DELETED') {
+                        System.abortJob(job.Id);
+                    }
+                }
+                return new ToastResponse(true, 'Scheduled jobs for LeadNotificationBatch deleted.');
+            }
+            return new ToastResponse(false, 'No scheduled jobs found.');
+        } catch (Exception e) {
+            return new ToastResponse(false, 'Failed to delete the scheduled job: ' + e.getMessage());
+        }
+    }
 }

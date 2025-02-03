@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Custom_Notification_to_Users</name>
+        <label>Send Custom Notification to Users</label>
+        <locationX>182</locationX>
+        <locationY>1739</locationY>
+        <actionName>customNotificationAction</actionName>
+        <actionType>customNotificationAction</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>customNotifTypeId</name>
+            <value>
+                <elementReference>get_Custom_Notification.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientIds</name>
+            <value>
+                <elementReference>ownerIds</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>title</name>
+            <value>
+                <stringValue>Duplicate Lead Alert</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>body</name>
+            <value>
+                <elementReference>NotificationBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>targetId</name>
+            <value>
+                <elementReference>$Record.Parent_Lead__c</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>customNotificationAction</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>63.0</apiVersion>
+    <assignments>
+        <name>assign_Lead_Owner</name>
+        <label>assign Lead Owner</label>
+        <locationX>446</locationX>
+        <locationY>1271</locationY>
+        <assignmentItems>
+            <assignToReference>ownerIds</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>loop_over_Opportunity.OwnerId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>loop_over_Opportunity</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Lead_Owner_Assignment</name>
+        <label>Lead Owner Assignment</label>
+        <locationX>50</locationX>
+        <locationY>755</locationY>
+        <assignmentItems>
+            <assignToReference>ownerIds</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>$Record.Parent_Lead__r.OwnerId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>loop_over_Opportunity</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Check_Duplicate</name>
+        <label>Check Duplicate</label>
+        <locationX>336</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Lead_is_Duplicate</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.isDuplicate__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>get_Related_Opportunity</targetReference>
+            </connector>
+            <label>Lead is Duplicate</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>check_if_Owner_in_List</name>
+        <label>check if Owner in List</label>
+        <locationX>424</locationX>
+        <locationY>1055</locationY>
+        <defaultConnector>
+            <targetReference>Check_Opportunity_Owner_is_queue</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Owner_in_List</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ownerIds</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <elementReference>loop_over_Opportunity.OwnerId</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>loop_over_Opportunity</targetReference>
+            </connector>
+            <label>Owner in List</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Opportunity_Owner_is_queue</name>
+        <label>Check Opportunity Owner is queue</label>
+        <locationX>578</locationX>
+        <locationY>1163</locationY>
+        <defaultConnector>
+            <targetReference>loop_over_Opportunity</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Opportunity_Owner_is_Queue</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>loop_over_Opportunity.OwnerId</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>005</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>assign_Lead_Owner</targetReference>
+            </connector>
+            <label>Opportunity Owner is Queue</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Parent_Lead_Owner_is_queue</name>
+        <label>Check Parent Lead Owner is queue</label>
+        <locationX>182</locationX>
+        <locationY>647</locationY>
+        <defaultConnector>
+            <targetReference>loop_over_Opportunity</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Lead_Owner_is_Queue</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Parent_Lead__r.OwnerId</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>005</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Lead_Owner_Assignment</targetReference>
+            </connector>
+            <label>Lead Owner is Queue</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Lead_New_or_Updated</name>
+        <label>Lead New or Updated</label>
+        <locationX>501</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Lead Updated</defaultConnectorLabel>
+        <rules>
+            <name>Lead_New</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>isNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Duplicate</targetReference>
+            </connector>
+            <label>Lead New</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>isNew</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <interviewLabel>Lead Record Triggered Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Lead Record Triggered Flow(After Flow)</label>
+    <loops>
+        <name>loop_over_Opportunity</name>
+        <label>loop over Opportunity</label>
+        <locationX>182</locationX>
+        <locationY>947</locationY>
+        <collectionReference>get_Related_Opportunity</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>check_if_Owner_in_List</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>get_Custom_Notification</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>get_Custom_Notification</name>
+        <label>get Custom Notification</label>
+        <locationX>182</locationX>
+        <locationY>1631</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Send_Custom_Notification_to_Users</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Lead_Assignment_Notification</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>CustomNotificationType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_Related_Opportunity</name>
+        <label>get Related Opportunity</label>
+        <locationX>182</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_Parent_Lead_Owner_is_queue</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Lead__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>375</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Lead_New_or_Updated</targetReference>
+        </connector>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>NotificationBody</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>A duplicate lead has been detected for {!$Record.Parent_Lead__r.Name}. Please review and take action to merge or delete the duplicate.
+               Lead Details:Lead Source: {!$Record.LeadSource}
+               Lead Sub-Source: {!$Record.Sub_Source__c}</text>
+    </textTemplates>
+    <variables>
+        <name>ownerIds</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

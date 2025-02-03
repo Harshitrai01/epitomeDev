@@ -41,15 +41,23 @@
     <tabs>standard-LightningQuickText</tabs>
     <tabs>standard-Survey</tabs>
     <tabs>Payment__c</tabs>
-    <tabs>Payment_Milestone__c</tabs>
+    <tabs>Additional_Charges__c</tabs>
+    <tabs>Quote__c</tabs>
+    <tabs>Lead_Plot__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>PreconfiguredLightningServiceConsole_UtilityBar</utilityBar>
     <workspaceConfig>
         <mappings>
-            <tab>Payment_Milestone__c</tab>
+            <tab>Additional_Charges__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Lead_Plot__c</tab>
         </mappings>
         <mappings>
             <tab>Payment__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Quote__c</tab>
         </mappings>
         <mappings>
             <tab>standard-Account</tab>

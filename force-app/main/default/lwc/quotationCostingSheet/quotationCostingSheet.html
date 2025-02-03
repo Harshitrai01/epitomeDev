@@ -1,0 +1,474 @@
+<template>
+	<template if:true={isQuotationSheet}>
+	<!-- <template if:true={isLoading}>
+		<lightning-spinner variant="brand" size="medium"> </lightning-spinner>
+	</template> -->
+	<template if:false={isLoading}>
+		<lightning-card>
+			<lightning-layout horizontal-align="space" class="x-small">
+				<lightning-layout-item size="2" padding="around-medium" class="slds-align_absolute-left">
+					<div class="slds-grid slds-gutters">
+						<div class="slds-col">
+							<div class="header">Quotation</div>
+						</div>
+					</div>
+					<div class="slds-grid slds-gutters">
+						<div class="slds-col" style="margin-top:0px; width: 60%;">
+							<lightning-input disabled="true" type="text" label="" placeholder="type here..."
+								value={quoteData.Name} data-namevalue="Name" onchange={handelHeaderChange}>
+							</lightning-input>
+						</div>
+					</div>
+				</lightning-layout-item>
+				<lightning-layout-item size="2" padding="around-medium" class="slds-align_absolute-left">
+					<div class="slds-grid slds-gutters">
+						<div class="slds-col">
+							<div class="header">Is Sample</div>
+						</div>
+					</div>
+					<div class="slds-grid slds-gutters">
+						<div class="slds-col" style="margin-top: 14px; width: 60%;">
+							<lightning-input type="checkbox" label="" disabled={isLocked} name="IsSample__c"
+								checked={isChecked} onchange={handleTextChnage}></lightning-input>
+						</div>
+					</div>
+				</lightning-layout-item>
+				<lightning-layout-item size="2" padding="around-medium" class="slds-align_absolute-left">
+
+					<div class="slds-grid slds-gutters">
+						<div class="slds-col">
+							<div class="header">Quotation Date</div>
+						</div>
+					</div>
+					<div class="slds-grid slds-gutters">
+						<div class="slds-col" style="margin-top: 0px; width: 60%;">
+							<lightning-input type="date" name="input2" label="" disabled="true"
+								value={quoteData.CreatedDate}></lightning-input>
+						</div>
+					</div>
+				</lightning-layout-item>
+				<lightning-layout-item size="2" padding="around-medium" class="slds-align_absolute-left">
+
+					<div class="slds-grid slds-gutters">
+						<div class="slds-col">
+							<div class="header">Approval Status</div>
+						</div>
+					</div>
+					<div class="slds-grid slds-gutters">
+						<div class="slds-col" style="margin-top: 0px; width: 60%;">
+							<lightning-input name="input2" label="" disabled="true"
+								value={quoteData.Approval_Status__c}></lightning-input>
+						</div>
+					</div>
+				</lightning-layout-item>
+				<lightning-layout-item size="2" padding="around-medium" class="slds-align_absolute-left">
+
+					<template if:false={isFinalizedQuoteDisabled}>
+						<div>
+							<lightning-button variant="brand" label="Finalize Quote" title="Finalize Quote"
+								disabled={isFinalizedQuoteDisabled} onclick={handleFinalizeQuote}></lightning-button>
+						</div>
+					</template>
+
+					<template if:true={isFinalizedQuoteDisabled}>
+
+						<div>
+							<div class="header">Quote Is Finalized </div>
+						</div>
+						<div style="margin-top: 10px;">
+							<lightning-button variant="brand" label="Booking Form" title="Booking Form"
+								onclick={handleBookingForm}>
+							</lightning-button>
+						</div>
+
+					</template>
+					
+
+
+				</lightning-layout-item>
+			</lightning-layout>
+		</lightning-card>
+		<lightning-card>
+			<lightning-layout horizontal-align="space" class="x-small">
+				<lightning-layout-item size="4" padding="around-medium" class="slds-align_absolute-left">
+					<div class="componentWrapper">
+						<div class="header">Basic Unit Detail</div>
+						<div class="box slds-theme–default table-container">
+							<table
+								class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped custom-table">
+								<thead>
+									<tr>
+										<td><b>Record Details</b></td>
+										<td><b>Record Values</b></td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Customer Name</td>
+										<td>{leadRecord}</td>
+									</tr>
+									<template if:true={isPlot}>
+										<tr>
+											<td>Phase</td>
+											<td>{phaseName}</td>
+										</tr>
+										<tr>
+											<td>Plot Name</td>
+											<td>{plotName}</td>
+										</tr>
+										<tr>
+											<td>Facing</td>
+											<td>{plotFace}</td>
+										</tr>
+										<tr>
+											<td>Plot Size</td>
+											<td>{plotSize}</td>
+										</tr>
+										<tr>
+											<td>Flat Number</td>
+											<td>{plotFlatNumber}</td>
+										</tr>
+										<tr>
+											<td>Floor Number</td>
+											<td>{plotFloorNumber}</td>
+										</tr>
+										<tr>
+											<td>Unit Code</td>
+											<td>{plotUnitCode}</td>
+										</tr>
+									</template>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</lightning-layout-item>
+
+				<lightning-layout-item size="4" padding="around-medium" class="slds-align_absolute-left">
+					<div class="componentWrapper">
+						<div class="header">Unit Cost Detail</div>
+						<div class="box slds-theme–default table-container">
+							<table
+								class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped custom-table">
+								<thead>
+									<tr>
+										<td><b>Record Details</b></td>
+										<td><b>Original Record Values</b></td>
+										<td><b>Changed Record Values</b></td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Base Price Per Sq Yd </td>
+										<td>{plotBasePrice}</td>
+										<td>
+											<lightning-input value={quoteRecordToSave.Base_Price_Per_Sq_Yard__c}
+												disabled={isLocked} name="Base_Price_Per_Sq_Yard__c"
+												placeholder={quoteData.Base_Price_Per_Sq_Yard__c}
+												onchange={handleTextChnage}></lightning-input>
+										</td>
+									</tr>
+									<template if:true={isPlot}>
+										<tr>
+											<td>Unit Code.</td>
+											<td>{plotUnitCode}</td>
+											<td>{plotUnitCode}</td>
+										</tr>
+										<tr>
+											<td>Plot Dimension</td>
+											<td>{plotDimension}</td>
+											<td>{plotDimension}</td>
+										</tr>
+										<tr>
+											<td>Facing</td>
+											<td>{plotFace}</td>
+											<td>{plotFace}</td>
+										</tr>
+									</template>
+									<tr>
+										<td>Total Base Rate</td>
+										<td>
+											<lightning-formatted-number value={quoteData.Total_Basic_Cost__c}
+												format-style="decimal" minimum-integer-digits="2">
+											</lightning-formatted-number>
+										</td>
+										<td>
+											<lightning-formatted-number value={quoteData.Total_Basic_Cost__c}
+												format-style="decimal" minimum-integer-digits="2">
+											</lightning-formatted-number>
+										</td>
+									</tr>
+									<tr class="importantRow">
+										<td class="slds-cell-wrap">Total GST For Charge(₹)</td>
+										<td>
+											<lightning-formatted-number value={quoteData.Total_Gst_For_Charge__c}
+												format-style="decimal" minimum-integer-digits="2">
+											</lightning-formatted-number>
+										</td>
+										<td>
+											<lightning-formatted-number value={quoteData.Total_Gst_For_Charge__c}
+												format-style="decimal" minimum-integer-digits="2">
+											</lightning-formatted-number>
+										</td>
+									</tr>
+									<tr class="importantRow">
+										<td class="slds-cell-wrap">Total Charge Amount (₹) </td>
+										<td>
+											<lightning-formatted-number value={quoteData.Total_Charge_Amount__c}
+												format-style="decimal" minimum-integer-digits="2">
+											</lightning-formatted-number>
+										</td>
+										<td>
+											<lightning-formatted-number value={quoteData.Total_Charge_Amount__c}
+												format-style="decimal" minimum-integer-digits="2">
+											</lightning-formatted-number>
+										</td>
+									</tr>
+									<tr class="importantRow">
+										<td class="slds-cell-wrap">Agreement Value with GST(₹)</td>
+										<td>
+											<lightning-formatted-number value={quoteData.AgreementValueWithGst__c}
+												format-style="decimal" minimum-integer-digits="2">
+											</lightning-formatted-number>
+										</td>
+										<td>
+											<lightning-formatted-number value={quoteData.AgreementValueWithGst__c}
+												format-style="decimal" minimum-integer-digits="2">
+											</lightning-formatted-number>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</lightning-layout-item>
+
+				<lightning-layout-item size="4" padding="around-medium" class="slds-align_absolute-left">
+					<div class="componentWrapper">
+						<div class="header">Additional Charges</div>
+						<div class="box slds-theme–default table-container">
+							<table
+								class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped custom-table">
+								<thead>
+									<tr class="slds-text-title_caps">
+										<th scope="col">
+											<div class="slds-truncate" title="Name">Name</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Name">Actual Price</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Name">Final Price</div>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="importantRow">
+										<td data-label="Column 1">
+											<div class="slds-truncate slds-cell-wrap" title="Total Gst">Price For North
+												East
+											</div>
+										</td>
+										<td data-label="Column 1">
+											<div class="slds-truncate" title={priceForNorthEast}>
+												<lightning-formatted-number value={priceForNorthEast}
+													format-style="decimal" minimum-integer-digits="2">
+												</lightning-formatted-number>
+											</div>
+										</td>
+										<td data-label="Column 1">
+											<lightning-input value={quoteRecordToSave.Price_For_North_East__c}
+												disabled={isLocked} name="Price_For_North_East__c"
+												placeholder={quoteData.Price_For_North_East__c}
+												onchange={handleTextChnage}></lightning-input>
+										</td>
+									</tr>
+									<tr class="importantRow">
+										<td data-label="Column 1 ">
+											<div class="slds-truncate slds-cell-wrap" title="Total Other charges">Other
+												Corners
+											</div>
+										</td>
+										<td data-label="Column 1 ">
+											<div class="slds-truncate" title={otherCorners}>
+												<lightning-formatted-number value={otherCorners} format-style="decimal"
+													minimum-integer-digits="2"></lightning-formatted-number>
+											</div>
+										</td>
+										<td data-label="Column 1 ">
+											<lightning-input value={quoteRecordToSave.Other_Corners__c}
+												disabled={isLocked} name="Other_Corners__c"
+												placeholder={quoteData.Other_Corners__c} onchange={handleTextChnage}>
+											</lightning-input>
+										</td>
+									</tr>
+									<tr class="importantRow">
+										<td data-label="Column 1 ">
+											<div class="slds-truncate slds-cell-wrap"
+												title="All Inclusive Price (₹) (excluding SD & Regn)">East
+											</div>
+										</td>
+										<td data-label="Column 1">
+											<div class="slds-truncate" title={east}>
+												<lightning-formatted-number value={east} format-style="decimal"
+													minimum-integer-digits="2"></lightning-formatted-number>
+											</div>
+										</td>
+										<td data-label="Column 1">
+											<lightning-input value={quoteRecordToSave.East__c} disabled={isLocked}
+												name="East__c" placeholder={quoteData.East__c}
+												onchange={handleTextChnage}></lightning-input>
+										</td>
+									</tr>
+									<tr class="importantRow">
+										<td data-label="Column 1 ">
+											<div class="slds-truncate slds-cell-wrap"
+												title="All Inclusive Price (₹) (excluding SD & Regn)">100 Ft Road Plots
+											</div>
+										</td>
+										<td data-label="Column 1">
+											<div class="slds-truncate" title={hundredFtRoadPlots}>
+												<lightning-formatted-number value={hundredFtRoadPlots}
+													format-style="decimal" minimum-integer-digits="2">
+												</lightning-formatted-number>
+											</div>
+										</td>
+										<td data-label="Column 1">
+											<lightning-input value={quoteRecordToSave.X100_Ft_Road_Plots__c}
+												disabled={isLocked} name="X100_Ft_Road_Plots__c"
+												placeholder={quoteData.X100_Ft_Road_Plots__c}
+												onchange={handleTextChnage}></lightning-input>
+										</td>
+									</tr>
+									<tr class="importantRow">
+										<td data-label="Column 1 ">
+											<div class="slds-truncate slds-cell-wrap"
+												title="All Inclusive Price (₹) (excluding SD & Regn)">Premium Plots
+											</div>
+										</td>
+										<td data-label="Column 1">
+											<div class="slds-truncate" title={premiumPlots}>
+												<lightning-formatted-number value={premiumPlots} format-style="decimal"
+													minimum-integer-digits="2"></lightning-formatted-number>
+											</div>
+										</td>
+										<td data-label="Column 1">
+											<lightning-input value={quoteRecordToSave.Premium_Plots__c}
+												disabled={isLocked} name="Premium_Plots__c"
+												placeholder={quoteData.Premium_Plots__c} onchange={handleTextChnage}>
+											</lightning-input>
+										</td>
+									</tr>
+									<tr class="importantRow">
+										<td data-label="Column 1 ">
+											<div class="slds-truncate slds-cell-wrap"
+												title="All Inclusive Price (₹) (excluding SD & Regn)">Rate Per Sq. Yd
+											</div>
+										</td>
+										<td data-label="Column 1">
+											<div class="slds-truncate" title={ratePerSqYd}>
+												<lightning-formatted-number value={ratePerSqYd} format-style="decimal"
+													minimum-integer-digits="2"></lightning-formatted-number>
+											</div>
+										</td>
+										<td data-label="Column 1">
+											<lightning-input value={quoteRecordToSave.Rate_Per_Sq_Yd__c}
+												disabled={isLocked} name="Rate_Per_Sq_Yd__c"
+												placeholder={quoteData.Rate_Per_Sq_Yd__c} onchange={handleTextChnage}>
+											</lightning-input>
+										</td>
+									</tr>
+									<tr class="importantRow">
+										<td data-label="Column 1 ">
+											<div class="slds-truncate slds-cell-wrap"
+												title="All Inclusive Price (₹) (excluding SD & Regn)">Corpus Fund & Club
+												House Payable
+											</div>
+										</td>
+										<td data-label="Column 1">
+											<div class="slds-truncate" title={corpusFundAndClubHousePayable}>
+												<lightning-formatted-number value={corpusFundAndClubHousePayable}
+													format-style="decimal" minimum-integer-digits="2">
+												</lightning-formatted-number>
+											</div>
+										</td>
+										<td data-label="Column 1">
+											<lightning-input
+												value={quoteRecordToSave.Corpus_Fund_and_Club_House_Payable__c}
+												disabled={isLocked} name="Corpus_Fund_and_Club_House_Payable__c"
+												placeholder={quoteData.Corpus_Fund_and_Club_House_Payable__c}
+												onchange={handleTextChnage}></lightning-input>
+										</td>
+									</tr>
+									<tr class="importantRow">
+										<td data-label="Column 1 ">
+											<div class="slds-truncate slds-cell-wrap"
+												title="All Inclusive Price (₹) (excluding SD & Regn)">Legal And
+												Documentation Charges
+											</div>
+										</td>
+										<td data-label="Column 1">
+											<div class="slds-truncate" title={legalAndDocumentationCharges}>
+												<lightning-formatted-number value={legalAndDocumentationCharges}
+													format-style="decimal" minimum-integer-digits="2">
+												</lightning-formatted-number>
+											</div>
+										</td>
+										<td data-label="Column 1">
+											<lightning-input
+												value={quoteRecordToSave.Legal_And_Documentation_Charges__c}
+												disabled={isLocked} name="Legal_And_Documentation_Charges__c"
+												placeholder={quoteData.Legal_And_Documentation_Charges__c}
+												onchange={handleTextChnage}></lightning-input>
+										</td>
+									</tr>
+									<tr class="importantRow">
+										<td data-label="Column 1 ">
+											<div class="slds-truncate slds-cell-wrap"
+												title="All Inclusive Price (₹) (excluding SD & Regn)">Registration
+												Charges
+											</div>
+										</td>
+										<td data-label="Column 1">
+											<div class="slds-truncate" title={registrationChargesAsApplicable}>
+												<lightning-formatted-number value={registrationChargesAsApplicable}
+													format-style="decimal" minimum-integer-digits="2">
+												</lightning-formatted-number>
+											</div>
+										</td>
+										<td data-label="Column 1">
+											<lightning-input value={quoteRecordToSave.Registration_Charges__c}
+												disabled={isLocked} name="Registration_Charges__c"
+												placeholder={quoteData.Registration_Charges__c}
+												onchange={handleTextChnage}></lightning-input>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</lightning-layout-item>
+			</lightning-layout>
+
+			<div style="display: flex; justify-content: center; align-items: center; gap: 10px;"
+				class="button-container">
+				<div>
+					<lightning-button variant="brand" label="Save Quote" title="Save" disabled={isLocked}
+						onclick={handleSaveRecord}>
+					</lightning-button>
+				</div>
+				<div>
+					<lightning-button variant="brand" label="Send Quote" title="Send Quote"
+						disabled={isFinalizedQuoteDisabled} onclick={handleSendQuotePdf}>
+					</lightning-button>
+				</div>
+			</div>
+		</lightning-card>
+	</template>
+
+</template>
+<template if:true={isBookingForm}>
+						<c-booking-form record-id={quoteId} >
+					</c-booking-form>
+
+					</template>
+</template>

@@ -1,0 +1,40 @@
+<template>
+    <lightning-card  class="slds-m-around_medium">
+        <div class="table-container" style="overflow: auto;">
+            <div class="zoom-wrapper" style="transform: scale(1);" id="zoomTable">
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered custom-table">
+                    <thead>
+                        <tr >
+                            <template for:each={columnNames} for:item="column">
+                                <th key={column} scope="col">
+                                    <div class="slds-truncate" title={column} >{column}</div>
+                                </th>
+                            </template>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={grid} for:item="row">
+                            <tr key={row.Rw}>
+                                <td style="width: 64px; height: 20px; text-align: left;">
+                                    <div class="slds-truncate" title={row} >{row.Rw}</div>
+                                </td>
+                                <template for:each={row.Co} for:item="column">
+                                    <td key={column.id}
+                                        
+                                        style="font-weight: 700;"
+                                        >
+                                        <div class="cell-content" >
+                                            <p>{column.pN}
+                                            </p>
+                                        </div>
+                                    </td>
+                                    
+                                </template>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </lightning-card>
+</template>

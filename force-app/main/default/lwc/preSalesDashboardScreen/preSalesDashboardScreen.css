@@ -2,27 +2,241 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Full viewport height */
-    background-color: #f4f6f9; /* Light background for spinner */
+    height: 100px;
 }
 
-.control-container {
-    text-align: center;
-    margin: 20px;
-    padding: 10px;
-    border-bottom: 1px solid #ddd; /* Divider for better UI */
-    background-color: #ffffff; /* White background for controls */
+.leadAssignmentToggle {
+    display: inline-block !important;
 }
 
-.control-container lightning-input {
-    margin-right: 20px; /* Space between toggle and button */
-}
-
-.datatable-container {
-    padding: 20px;
-    margin: 0 auto;
-    /* max-width: 90%; Restrict the datatable width */
-    background-color: #ffffff;
+.main-container {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f6f9;
+    /* Subtle background color */
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for emphasis */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Light shadow for depth */
 }
+
+.section-container {
+    background-color: #ffffff;
+    /* White background for sections */
+    border: 1px solid #e0e0e0;
+    /* Light border */
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+    width: 90%;
+    /* Consistent width */
+    max-width: 100%;
+    /* Limit max width */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    /* Smooth hover effect */
+}
+
+.section-container:hover {
+    transform: translateY(-5px);
+    /* Slight lift on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    /* Enhanced shadow on hover */
+}
+
+.section-header {
+    font-size: 1.8rem;
+    /* Slightly larger font */
+    color: #2c3e50;
+    /* Darker text for better readability */
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    /* Subtle spacing for elegance */
+}
+
+.toggle-input {
+    margin-bottom: 1rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    /* Pointer to indicate interactivity */
+}
+
+.slds-table {
+    margin-top: 1.5rem;
+    width: 100%;
+    /* Ensure the table takes full width */
+    border-collapse: separate;
+    border-spacing: 0;
+    /* Reset default spacing */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.slds-table_bordered {
+    border: 1px solid #e0e0e0;
+    /* Light border around the table */
+}
+
+.slds-table_cell-buffer {
+    padding: 14px;
+    /* Balanced padding */
+}
+
+.slds-text-title_caps {
+    text-align: center;
+    /* Center column titles */
+    font-size: 1rem;
+    font-weight: bold;
+    color: #34495e;
+    /* Darker text for headers */
+    text-transform: uppercase;
+}
+
+td,
+th {
+    text-align: center;
+    /* Center-align table data */
+    padding: 12px;
+    color: #34495e;
+    /* Consistent text color */
+    border-bottom: 1px solid #e0e0e0;
+    /* Light bottom border */
+}
+
+tr:hover {
+    background-color: #f2f2f2;
+    /* Highlight row on hover */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    /* margin-top: 1.5rem; */
+}
+
+.refresh-button-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+button {
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: none;
+    background-color: #007bff;
+    /* Primary button color */
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+    /* Darker blue on hover */
+    transform: scale(1.05);
+    /* Slight zoom on hover */
+}
+
+button:active {
+    transform: scale(0.98);
+    /* Slight shrink on click */
+}
+
+.lightning-icon {
+    margin: 0 auto;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .section-container {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .section-header {
+        font-size: 1.5rem;
+    }
+
+    td,
+    th {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+}
+
+.capacity-column {
+    width: 10%;
+    /* Adjust width as needed, e.g., 10% of the table width */
+    min-width: 80px;
+    /* Optional: ensure a reasonable minimum width */
+    max-width: 100px;
+    /* Optional: set a maximum width */
+}
+
+.capacity-column-cell input {
+    width: 100%;
+    /* Ensure the input fits within the reduced column width */
+    text-align: center;
+    /* Center-align the input text */
+}
+
+td {
+    text-align: center;
+    padding: 12px;
+    color: #34495e;
+    /* Consistent text color */
+    border-bottom: 1px solid #e0e0e0;
+    max-width: 120px;
+    /* Ensure the max-width is consistent */
+}
+.slds-modal__header {
+    position: relative;
+}
+
+.top-right-toggle {
+    position: absolute;
+    top: 15%;
+    right: 0;
+    margin: 10px;
+}
+.top-bottom-toggle {
+    position: relative;
+    top: 15% !important ;
+    right: 0;
+    margin: 10px;
+}
+
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px; /* Adjust the gap between inputs as needed */
+}
+
+.input-item {
+    flex: 1;
+}
+
+.slds-modal__footer {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+
+/* Responsive Adjustments */
+/* @media (max-width: 768px) {
+    .capacity-column {
+        width: 15%;
+    }
+} */

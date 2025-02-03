@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Additional Charges --></label>
+    <name>Additional_Charges__c</name>
+    <picklistValues>
+        <masterLabel>Legal and Registration</masterLabel>
+        <translation><!-- Legal and Registration --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Particulars</masterLabel>
+        <translation><!-- Particulars --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Plot</masterLabel>
+        <translation><!-- Plot --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

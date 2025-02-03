@@ -1,0 +1,316 @@
+<apex:page renderAs="pdf" standardController="Quote__c" showHeader="false" sidebar="false" extensions="QuotePdfController">
+<div class="content-section">
+    <table class="table" style="width: 100%; border-collapse: collapse;">
+        <tbody>
+            <tr>
+                <td style="border: 1px solid #000; text-align: center; vertical-align: middle;">
+    				<img src="{!URLFOR($Resource.EpitomeLogo)}" alt="Epitome Logo" style="width: 120px; height: 90px;" />
+				</td>
+            </tr>
+            <tr style="font-size: 12px;">
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;">
+    				COST DETAILING
+				</td>
+            </tr>
+        </tbody>
+    </table>
+    
+        <table class="table" style="width: 100%; border-collapse: collapse;">
+        <tbody>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000; width:20%;">Name Of The Client</td>
+                <td style="border: 1px solid #000;text-align: center; width:5%;">:</td>
+                <td style="border: 1px solid #000;width:20%;text-align: center;">{!quote.Lead__r.Name}</td>
+                <td style="border: 1px solid #000;width:20%;">Date Of Booking</td>
+                <td style="border: 1px solid #000;width:10%;text-align: center;"></td>
+                <td style="border: 1px solid #000;text-align: center;width:5%;">:</td>
+                <td style="border: 1px solid #000;width:20%;text-align: center;">{!dateOfBooking}</td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000; width:20%;">Contact No.</td>
+                <td style="border: 1px solid #000;text-align: center; width:5%;">:</td>
+                <td style="border: 1px solid #000;width:20%;text-align: center;">{!quote.Lead__r.Phone}</td>
+                <td style="border: 1px solid #000;width:20%;">Plot No.</td>
+                <td style="border: 1px solid #000;width:10%;text-align: center;"></td>
+                <td style="border: 1px solid #000;text-align: center;width:5%;">:</td>
+                <td style="border: 1px solid #000;width:20%;text-align: center;">{!quote.Plot__r.Name}</td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000; width:20%;">Funding Bank</td>
+                <td style="border: 1px solid #000;text-align: center; width:5%;">:</td>
+                <td style="border: 1px solid #000;width:20%;text-align: center;"></td>
+                <td style="border: 1px solid #000;width:20%;">Facing</td>
+                <td style="border: 1px solid #000;width:10%;text-align: center;"></td>
+                <td style="border: 1px solid #000;text-align: center;width:5%;">:</td>
+                <td style="border: 1px solid #000;width:20%;text-align: center;">{!quote.Plot__r.Plot_Facing__c}</td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000; width:20%;">Loan A/c No</td>
+                <td style="border: 1px solid #000;text-align: center; width:5%;">:</td>
+                <td style="border: 1px solid #000;width:20%;text-align: center;"></td>
+                <td style="border: 1px solid #000;width:20%;">Sq. Yards</td>
+                <td style="border: 1px solid #000;width:10%;text-align: center;"></td>
+                <td style="border: 1px solid #000;text-align: center;width:5%;">:</td>
+                <td style="border: 1px solid #000;width:20%;text-align: center;">{!quote.Plot__r.Plot_Size__c}</td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000; width:20%;">Contact Person</td>
+                <td style="border: 1px solid #000;text-align: center; width:5%;">:</td>
+                <td style="border: 1px solid #000;width:20%;text-align: center;"></td>
+                <td style="border: 1px solid #000;width:20%;">Basic Price</td>
+                <td style="border: 1px solid #000;width:10%;text-align: center;"></td>
+                <td style="border: 1px solid #000;text-align: center;width:5%;">:</td>
+                <td style="border: 1px solid #000;width:20%;text-align: center;">
+                    <apex:outputText value="{!IF(ISBLANK(quote.Base_Price_Per_Sq_Yard__c), quote.Plot__r.Base_Price_per_Sq_Ft__c, quote.Base_Price_Per_Sq_Yard__c)}" />
+                </td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000; width:20%;">Contact No.</td>
+                <td style="border: 1px solid #000;text-align: center; width:5%;">:</td>
+                <td style="border: 1px solid #000;width:20%;text-align: center;"></td>
+                <td style="border: 1px solid #000;width:20%;">Price For North East</td>
+                <td style="border: 1px solid #000;width:10%;text-align: center;"></td>
+                <td style="border: 1px solid #000;text-align: center;width:5%;">:</td>
+                <td style="border: 1px solid #000;width:20%;text-align: center;">{!quote.Price_For_North_East__c}</td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000; width:20%;" rowspan="6" colspan="3"></td>
+                <td style="border: 1px solid #000;width:20%;">Other Corners</td>
+                <td style="border: 1px solid #000;width:10%;text-align: center;"></td>
+                <td style="border: 1px solid #000;text-align: center;width:5%;">:</td>
+                <td style="border: 1px solid #000;width:20%;text-align: center;">{!quote.Other_Corners__c}</td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000;width:20%;">East</td>
+                <td style="border: 1px solid #000;width:10%;text-align: center;"></td>
+                <td style="border: 1px solid #000;text-align: center;width:5%;">:</td>
+                <td style="border: 1px solid #000;width:20%;text-align: center;">{!quote.East__c}</td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000;width:20%;">100 Ft Road Plots</td>
+                <td style="border: 1px solid #000;width:10%;text-align: center;"></td>
+                <td style="border: 1px solid #000;text-align: center;width:5%;">:</td>
+                <td style="border: 1px solid #000;width:20%;text-align: center;">{!quote.X100_Ft_Road_Plots__c}</td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000;width:20%;">Premium Plots</td>
+                <td style="border: 1px solid #000;width:10%;text-align: center;"></td>
+                <td style="border: 1px solid #000;text-align: center;width:5%;">:</td>
+                <td style="border: 1px solid #000;width:20%;text-align: center;">{!quote.Premium_Plots__c}</td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000;width:20%;">Rate Per Sq. Yd</td>
+                <td style="border: 1px solid #000;width:10%;text-align: center;"></td>
+                <td style="border: 1px solid #000;text-align: center;width:5%;">:</td>
+                <td style="border: 1px solid #000;width:20%;text-align: center;">{!quote.Rate_Per_Sq_Yd__c}</td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000;width:20%;">Total Unit Cost</td>
+                <td style="border: 1px solid #000;width:10%;text-align: center;"></td>
+                <td style="border: 1px solid #000;text-align: center;width:5%;">:</td>
+                <td style="border: 1px solid #000;width:20%;text-align: center;">500000</td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="7">
+    				PAYMENT SCHEDULE
+				</td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="5">
+    				Particulars
+				</td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1">
+    				
+				</td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1">
+    				Amount In Rs.
+				</td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000;" colspan="5">
+    				Unit cost agreed at the time of booking
+				</td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000; padding: 8px;" colspan="5"></td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000; font-weight: bold; text-align: right;" colspan="5">Total</td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000;" colspan="5">Schedule of payment</td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000;text-align: center;" colspan="1">S.No</td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="3">Payment Schedule</td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1">
+                    InstallmentAmount
+                </td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000; text-align: center;" colspan="1">1</td>
+                <td style="border: 1px solid #000;" colspan="3">Booking Advance</td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1">
+                    500000
+                </td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000; text-align: center;" colspan="1">2</td>
+                <td style="border: 1px solid #000;" colspan="3">Balance payable @ Registration (with in 30 days)</td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1">
+                    500000
+                </td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000; text-align: center;" colspan="1"></td>
+                <td style="border: 1px solid #000;" colspan="3"></td>
+                <td style="border: 1px solid #000; text-align: right; font-weight: bold;" colspan="1">Total</td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1">
+                    500000
+                </td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000;" colspan="5">Payable at the time of Registration</td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000;text-align: center;" colspan="1">S.No</td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="2">Particulars</td>
+                <td style="border: 1px solid #000; text-align: center;" colspan="1">Amount In</td>
+                <td style="border: 1px solid #000; text-align: center;" colspan="1">GST @18%</td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1">
+                    Amount In
+                </td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000;text-align: center;" colspan="1">1</td>
+                <td style="border: 1px solid #000;" colspan="2">Corpus Fund and Club House Payable along with the final installment</td>
+                <td style="border: 1px solid #000; text-align: center;" colspan="1">{!quote.Corpus_Fund_and_Club_House_Payable__c}</td>
+                <td style="border: 1px solid #000; text-align: center;" colspan="1">47,997</td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1">314647</td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000; text-align: center;" colspan="1"></td>
+                <td style="border: 1px solid #000;" colspan="3"></td>
+                <td style="border: 1px solid #000; text-align: right; font-weight: bold;" colspan="1">Total</td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1">
+                    500000
+                </td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000;" colspan="5">Payable at the time of Registration (Subject to Change)</td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000;text-align: center;" colspan="1">1</td>
+                <td style="border: 1px solid #000;" colspan="2">Legal and Documentation Charges</td>
+                <td style="border: 1px solid #000; text-align: center;" colspan="1">{!quote.Legal_And_Documentation_Charges__c}</td>
+                <td style="border: 1px solid #000; text-align: center;" colspan="1">47,997</td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1">25000</td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000;text-align: center;" colspan="1"></td>
+                <td style="border: 1px solid #000;" colspan="2">Registration Charges as applicable on the day of Registration</td>
+                <td style="border: 1px solid #000; text-align: center;" colspan="1">{!quote.Registration_Charges__c}</td>
+                <td style="border: 1px solid #000; text-align: center;" colspan="1"></td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000; text-align: right; font-weight: bold;" colspan="5">Total</td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1">
+                    5939297
+                </td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000; padding: 8px;" colspan="5"></td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000; text-align: right; font-weight: bold;" colspan="5">Grand Total</td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1"></td>
+                <td style="border: 1px solid #000; text-align: center; font-weight: bold;" colspan="1">
+                    5939297
+                </td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000;" colspan="7">POST DATED CHEQUES TO BE DRAWN ON AS PER THE DETAILS MENTIONED ABOVE.</td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000;" colspan="7">GST, REGISTRATION CHARGES AND OTHER GOVT. LEVIES IF ANY - AS APPLICABLE ON THE DAY OF REGISTRATION</td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000;" colspan="3">1) INSTALLMENTS </td>
+                <td style="border: 1px solid #000;" colspan="4">Epitome Projects LLP</td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000;" colspan="3">2) MAINTENANCE CHARGES &amp; CAUTION </td>
+                <td style="border: 1px solid #000;" colspan="4">Epitome Projects LLP</td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000;" colspan="3">3) CORPUS FUND  </td>
+                <td style="border: 1px solid #000;" colspan="4">Epitome Projects LLP</td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000; padding: 8px;" colspan="7"></td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000;text-align: center;" colspan="1">1 </td>
+                <td style="border: 1px solid #000;" colspan="6">PDC's submitted shall be returned to customers in line with disbursements made by the banker as per the schedule.</td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000;text-align: center;" colspan="1">2 </td>
+                <td style="border: 1px solid #000;" colspan="6">All consent letters from the customers addressed to respective banks shall be given at the time of entering into 'AOS' /</td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000;text-align: center;" colspan="1">3 </td>
+                <td style="border: 1px solid #000;" colspan="6">Registration shall commence on payment of 100%.</td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000;text-align: center;" colspan="1">4 </td>
+                <td style="border: 1px solid #000;" colspan="6">Note: Corpus Fund and Club House Charges for the bigger Size Units than 266.65 is 3,50,000/- and GST.</td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000; padding: 8px;" colspan="7"></td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000; padding: 8px;" colspan="1">PREPARED BY</td>
+                <td style="border: 1px solid #000; padding: 8px;" colspan="1">AUTHORISED</td>
+                <td style="border: 1px solid #000; padding: 8px;" colspan="1"></td>
+                <td style="border: 1px solid #000; padding: 8px;" colspan="1"></td>
+                <td style="border: 1px solid #000; padding: 8px;" colspan="1">SIGNATURE OF THE CUSTOMER</td>
+                <td style="border: 1px solid #000; padding: 8px;" colspan="1"></td>
+                <td style="border: 1px solid #000; padding: 8px;" colspan="1">APPROVED BY</td>
+    		</tr>
+            <tr style="font-size: 12px;width: 100%">
+                <td style="border: 1px solid #000; padding: 8px;" colspan="7"></td>
+    		</tr>
+        </tbody>
+    </table>
+    
+</div>
+
+</apex:page>

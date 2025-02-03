@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>testDashboard</label>
+    <protected>false</protected>
+    <values>
+        <field>EasyCollectKey__c</field>
+        <value xsi:type="xsd:string">0EUZ1OAK0</value>
+    </values>
+    <values>
+        <field>EasyCollectSalt__c</field>
+        <value xsi:type="xsd:string">HT47TLT3N</value>
+    </values>
+    <values>
+        <field>InstaCollectKey__c</field>
+        <value xsi:type="xsd:string">D9AF6DAD60</value>
+    </values>
+    <values>
+        <field>InstaCollectSalt__c</field>
+        <value xsi:type="xsd:string">D91E29CE94</value>
+    </values>
+</CustomMetadata>

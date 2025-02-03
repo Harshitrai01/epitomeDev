@@ -1,0 +1,290 @@
+<apex:page applyBodyTag="false" applyHtmlTag="false" showQuickActionVfHeader="false" standardStylesheets="false" showHeader="false" docType="html-5.0" renderAs="pdf">
+    <style>
+        body {
+        font-family: sans-serif;
+        } 
+        .box {
+        border: 1px solid #000000;
+        padding: 5px;
+        overflow-wrap: break-word;
+        }
+    </style>
+    <html>
+        <body>
+            <div style="position: relative;">
+                <table style="position:relative;left: 0px; width: 100%; font-size: 10.5px;">
+                    <tr>
+                       <td style="width:20%;">
+                         	<img src="{!URLFOR($Resource.EpitomeLogo)}" alt="Epitome Logo" style="width: 120px; height: 90px;" />  </td>
+                        
+                        <td style="width:20%;">
+                            <table style="position:relative;font-size: 15px;text-align:right;margin-left:250px;">
+                                <tr>
+                                    <td style="text-align: right;font-size: 20px;margin-left:250px;">
+												BOOKING FORM                                        
+                                           </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+          
+            <!-- Box below the BOOKING FORM text -->
+            <!--section 1-->
+            <table style="padding:5px;width: 100%; border-top: 1px solid #000000;border-right: 1px solid #000000;border-left: 1px solid #000000; margin-top: 10px;">
+                <tr>
+                    <td style="padding:5px;font-size: 15px; width: 20%;"><b>PROJECT NAME:</b></td>
+                    <td style="padding:5px;font-size: 15px; width: 80%; text-align: center; border-bottom: 2px dotted;">
+                        <apex:outputPanel ></apex:outputPanel>
+                        <apex:outputPanel >Epitome Integrated City</apex:outputPanel>
+                    </td>
+                </tr>
+            </table>
+            <table style="padding:5px;width: 100%; border-right: 1px solid #000000;border-left: 1px solid #000000;">
+                <tr style="width:100%;">
+                    <td style="padding: 5px; font-size: 14px; width: 11%;"><b>PLOT NO:</b></td>
+                    <td style="padding: 5px; font-size: 14px; width: 22%;max-width:22; text-align: center; border-bottom: 2px dotted;">
+                        <apex:outputPanel ></apex:outputPanel>
+                        <apex:outputPanel >1503</apex:outputPanel>
+                    </td>
+                    <td style="padding: 5px; font-size: 14px; width: 11%;"><b>PHASE:</b></td>
+                    <td style="padding: 5px; font-size: 14px; width: 22%;max-width:22; text-align: center; border-bottom: 2px dotted;">
+                        <apex:outputPanel ></apex:outputPanel>
+                        <apex:outputPanel >1</apex:outputPanel>
+                    </td>
+                    <td style="padding: 5px; font-size: 14px; width: 22%;"><b>BOOKING VALUE:</b></td>
+                    <td style="padding: 5px; font-size: 14px; width: 22%; max-width:22;text-align: center; border-bottom: 2px dotted;">
+                      <!--   <apex:outputPanel >
+                            <apex:outputText value="{0, date, MM/dd/yyyy}">
+                               <apex:param /> 
+                            </apex:outputText>
+                        </apex:outputPanel>-->
+                        <apex:outputPanel >8532800</apex:outputPanel>
+                    </td>
+                </tr>
+            </table>
+            <!--section 2 Personal Details-->
+             <!-- <table style="padding:5px;width: 100%; border-right: 1px solid #000000;border-top: 1px solid #000000;border-top: 1px solid #000000;border-left: 1px solid #000000;border-bottom: 1px solid #000000;background-color:#000000;color:#FFFFFF">
+              <tr style="width:100%;">
+                    <td style="padding: 5px; font-size: 18px; width: 45%; text-align: center;"><b>PERSONAL INFORMATION</b></td>
+                </tr>
+            </table>-->
+             <table style="padding:5px;width: 100%;border-right: 1px solid #000000;border-left: 1px solid #000000;">
+                <tr style="width:100%;">
+                    <td style="padding: 5px; font-size: 14px; width: 21%;"><b>APPLICANT NAME:</b></td>
+                    <td style="padding: 5px; font-size: 14px; width: 30%;max-width:33%; text-align: center; border-bottom: 2px dotted;">
+                        <!-- <apex:outputPanel rendered="{!NOT(ISNULL(oppList.AccountId__r.PAN_Card__c))}">{!oppList.AccountId__r.PAN_Card__c}</apex:outputPanel>
+                        <apex:outputPanel rendered="{!ISNULL(oppList.AccountId__r.PAN_Card__c)}">-</apex:outputPanel> -->
+                        <apex:outputPanel >Srividhiya Sanakkayala</apex:outputPanel>
+                    </td>
+                    <td style="padding: 5px; font-size: 14px; width: 21%;"><b>DATE OF BIRTH:</b></td>
+                    <td style="padding: 5px; font-size: 14px; width: 39%;max-width: 39%; text-align: center; border-bottom: 2px dotted;">
+                        <!-- <apex:outputPanel rendered="{!NOT(ISNULL(oppList.AccountId__r.Marital_Status__c))}">{!oppList.AccountId__r.Marital_Status__c}</apex:outputPanel>
+                        <apex:outputPanel rendered="{!ISNULL(oppList.AccountId__r.Marital_Status__c)}">-</apex:outputPanel> -->
+                        <apex:outputPanel >25-08-1982</apex:outputPanel>
+                    </td>
+                </tr>
+            </table>
+             <table style="padding:5px;width: 100%;border-right: 1px solid #000000;border-left: 1px solid #000000;">
+                <tr style="width:100%;">
+                    <td style="padding: 5px; font-size: 14px; width: 21%;"><b>AADHAAR NO:</b></td>
+                    <td style="padding: 5px; font-size: 14px; width: 30%;max-width:33%; text-align: center; border-bottom: 2px dotted;">
+                        <!-- <apex:outputPanel rendered="{!NOT(ISNULL(oppList.AccountId__r.PAN_Card__c))}">{!oppList.AccountId__r.PAN_Card__c}</apex:outputPanel>
+                        <apex:outputPanel rendered="{!ISNULL(oppList.AccountId__r.PAN_Card__c)}">-</apex:outputPanel> -->
+                        <apex:outputPanel >329712451456</apex:outputPanel>
+                    </td>
+                    <td style="padding: 5px; font-size: 14px; width: 10%;"><b>PAN NO:</b></td>
+                    <td style="padding: 5px; font-size: 14px; width: 39%;max-width: 39%; text-align: center; border-bottom: 2px dotted;">
+                        <!-- <apex:outputPanel rendered="{!NOT(ISNULL(oppList.AccountId__r.Marital_Status__c))}">{!oppList.AccountId__r.Marital_Status__c}</apex:outputPanel>
+                        <apex:outputPanel rendered="{!ISNULL(oppList.AccountId__r.Marital_Status__c)}">-</apex:outputPanel> -->
+                        <apex:outputPanel >FHOPT7896L</apex:outputPanel>
+                    </td>
+                </tr>
+            </table>
+              <table style="padding:5px;width: 100%; border-right: 1px solid #000000; border-left: 1px solid #000000;">
+                <tr style="width:100%">
+                    <td style="padding: 5px; font-size: 15px; width: 10%;"><b>ADDRESS:</b></td>
+                    <td style="padding:5px;font-size: 15px; width: 80%;max-width: 80%; text-align: center; border-bottom: 2px dotted;">
+                        <!-- <apex:outputPanel rendered="{!NOT(ISNULL(addressLine1))}">{!addressLine1}</apex:outputPanel>
+                        <apex:outputPanel rendered="{!ISNULL(addressLine1)}">-</apex:outputPanel> -->
+                        <apex:outputPanel >508,Sindhu Blossoms</apex:outputPanel>
+                    </td>
+                </tr>
+            </table>
+            <table style="padding:5px;width: 100%; border-right: 1px solid #000000; border-left: 1px solid #000000;">
+                <tr style="width:100%">
+                    <td style="padding:5px;font-size: 15px; width: 90%;max-width: 90%; text-align: center; border-bottom: 2px dotted;">
+                        <!-- <apex:outputPanel rendered="{!NOT(ISNULL(addressLine2))}">{!addressLine2}</apex:outputPanel>
+                        <apex:outputPanel rendered="{!ISNULL(addressLine2)}">-</apex:outputPanel> -->
+                        <apex:outputPanel >3rd Street, Hanuman Nagar, Shilpa Park</apex:outputPanel>
+                    </td>
+                </tr>
+            </table>
+             <table style="padding:5px;width: 100%; border-right: 1px solid #000000; border-left: 1px solid #000000;">
+                <tr style="width:100%">
+                    <td style="padding:5px;font-size: 15px; width: 90%;max-width: 90%; text-align: center; border-bottom: 2px dotted;">
+                        <!-- <apex:outputPanel rendered="{!NOT(ISNULL(addressLine2))}">{!addressLine2}</apex:outputPanel>
+                        <apex:outputPanel rendered="{!ISNULL(addressLine2)}">-</apex:outputPanel> -->
+                        <apex:outputPanel >Kondapur, Hyderabad, 500084</apex:outputPanel>
+                    </td>
+                </tr>
+            </table>
+             <table style="padding:5px;width: 100%;border-right: 1px solid #000000;border-left: 1px solid #000000;">
+                <tr style="width:100%;">
+                    <td style="padding: 5px; font-size: 14px; width: 10%;"><b>MOBILE:</b></td>
+                    <td style="padding: 5px; font-size: 14px; width: 30%;max-width:30%; text-align: center; border-bottom: 2px dotted;">
+                      <!--    <apex:outputPanel >
+                          <apex:outputText value="{0, date, MM/dd/yyyy}">
+                                <apex:param value="{!oppList.AccountId__r.PersonBirthdate}" /> 
+                            </apex:outputText>
+                        </apex:outputPanel> -->
+                        <apex:outputPanel >8971402402</apex:outputPanel>
+                    </td>
+                    <td style="padding: 5px; font-size: 14px; width: 12%;"><b>PHONE NO:</b></td>
+                    <td style="padding: 5px; font-size: 14px; width: 38%;max-width: 38%; text-align: center; border-bottom: 2px dotted;">
+                        <!-- <apex:outputPanel rendered="{!NOT(ISNULL(oppList.AccountId__r.SO_WO_DO__c))}">{!oppList.AccountId__r.SO_WO_DO__c}</apex:outputPanel>
+                        <apex:outputPanel rendered="{!ISNULL(oppList.AccountId__r.SO_WO_DO__c)}">-</apex:outputPanel> -->
+                    </td>
+                </tr>
+            </table>
+            <table style="padding:5px;width: 100%;border-right: 1px solid #000000;border-left: 1px solid #000000;">
+                <tr>
+                    <td style="padding:5px;font-size: 14px; width: 15%;"><b>EMAIL ID:</b></td>
+                    <td style="padding:5px;font-size: 14px; width: 82%;max-width: 82%; text-align: center; border-bottom: 2px dotted;">
+                        <!-- <apex:outputPanel rendered="{!NOT(ISNULL(oppList.AccountId__r.Designation__c))}">{!oppList.AccountId__r.Designation__c}</apex:outputPanel>
+                        <apex:outputPanel rendered="{!ISNULL(oppList.AccountId__r.Designation__c)}">-</apex:outputPanel> -->
+                        <apex:outputPanel >kb.sravanam@gmail.com</apex:outputPanel>
+                    </td>
+                </tr>
+            </table>
+             <table style="padding:5px;width: 100%;border-right: 1px solid #000000;border-left: 1px solid #000000;">
+                <tr>
+                    <td style="padding:5px;font-size: 14px; width: 18%;"><b>LEAD SOURCE:</b></td>
+                    <td style="padding:5px;font-size: 14px; width: 82%;max-width: 82%; text-align: center; border-bottom: 2px dotted;">
+                        <!-- <apex:outputPanel rendered="{!NOT(ISNULL(oppList.AccountId__r.Designation__c))}">{!oppList.AccountId__r.Designation__c}</apex:outputPanel>
+                        <apex:outputPanel rendered="{!ISNULL(oppList.AccountId__r.Designation__c)}">-</apex:outputPanel> -->
+                        <apex:outputPanel >IT</apex:outputPanel>
+                    </td>
+                </tr>
+            </table>
+             <table style="padding:5px;width: 100%;border-right: 1px solid #000000;border-left: 1px solid #000000;">
+                <tr>
+                    <td style="padding:5px;font-size: 14px; width: 22%;"><b>LEAD SUBSOURCE:</b></td>
+                    <td style="padding:5px;font-size: 14px; width: 82%;max-width: 82%; text-align: center; border-bottom: 2px dotted;">
+                        <!-- <apex:outputPanel rendered="{!NOT(ISNULL(oppList.AccountId__r.Designation__c))}">{!oppList.AccountId__r.Designation__c}</apex:outputPanel>
+                        <apex:outputPanel rendered="{!ISNULL(oppList.AccountId__r.Designation__c)}">-</apex:outputPanel> -->
+                        <apex:outputPanel >Social Media</apex:outputPanel>
+                    </td>
+                </tr>
+            </table>
+             <table style="padding:5px;width: 100%;border-right: 1px solid #000000;border-left: 1px solid #000000;">
+                <tr>
+                    <td style="padding:5px;font-size: 14px; width: 23%;"><b>BANK FOR LOAN:</b></td>
+                    <td style="padding:5px;font-size: 14px; width: 82%;max-width: 82%; text-align: center; border-bottom: 2px dotted;">
+                        <!-- <apex:outputPanel rendered="{!NOT(ISNULL(oppList.AccountId__r.Designation__c))}">{!oppList.AccountId__r.Designation__c}</apex:outputPanel>
+                        <apex:outputPanel rendered="{!ISNULL(oppList.AccountId__r.Designation__c)}">-</apex:outputPanel> -->
+                        <apex:outputPanel >Yes</apex:outputPanel>
+                    </td>
+                </tr>
+            </table>
+             <table style="padding:5px;width: 100%;border-right: 1px solid #000000;border-left: 1px solid #000000;">
+                <tr>
+                    <td style="padding:5px;font-size: 14px; width: 32%;"><b>NAME OF SALES EXECUTIVE:</b></td>
+                    <td style="padding:5px;font-size: 14px; width: 82%;max-width: 82%; text-align: center; border-bottom: 2px dotted;">
+                        <!-- <apex:outputPanel rendered="{!NOT(ISNULL(oppList.AccountId__r.Designation__c))}">{!oppList.AccountId__r.Designation__c}</apex:outputPanel>
+                        <apex:outputPanel rendered="{!ISNULL(oppList.AccountId__r.Designation__c)}">-</apex:outputPanel> -->
+                        <apex:outputPanel >Sapavat Mounika</apex:outputPanel>
+                    </td>
+                </tr>
+            </table>
+             <table style="padding:5px;width: 100%;border-right: 1px solid #000000;border-left: 1px solid #000000;">
+                <tr>
+                    <td style="padding:5px;font-size: 14px; width: 22%;"><b>DATE OF BOOKING:</b></td>
+                    <td style="padding:5px;font-size: 14px; width: 82%;max-width: 82%; text-align: center; border-bottom: 2px dotted;">
+                        <!-- <apex:outputPanel rendered="{!NOT(ISNULL(oppList.AccountId__r.Designation__c))}">{!oppList.AccountId__r.Designation__c}</apex:outputPanel>
+                        <apex:outputPanel rendered="{!ISNULL(oppList.AccountId__r.Designation__c)}">-</apex:outputPanel> -->
+                        <apex:outputPanel >28-12-2024</apex:outputPanel>
+                    </td>
+                </tr>
+                   <tr width="100%">
+                            <td colspan="10" width="100%"  style="margin-bottom:100px;">
+                                <table style=' border-collapse: collapse; margin-left : 5px;  width:95%;margin-top:15px;
+                                              font-family: sans-serif;font-size: 14px; align-items : center;border-bottom:0;border-left:0.01px solid solid;'>
+                                    <tr width="100%">
+                                        <td style='border: 1px solid #000;border-left:1px solid #000; text-align: Center; padding:1px; width:50%;'><b>PAYMENT PATTERN</b></td>
+                                        <td  style='border: 1px solid #000; text-align: Center;padding:1px; width:50%;'>
+                                        <!--    <apex:outputPanel rendered="{!NOT(ISNULL(payment.Transaction_Number_Cheque_Number__c))}">{!payment.Transaction_Number_Cheque_Number__c}</apex:outputPanel>
+                                            <apex:outputPanel rendered="{!ISNULL(payment.Transaction_Number_Cheque_Number__c)}">-</apex:outputPanel>
+                                       -->
+                                            <apex:outputPanel ><b>PERCENTAGE OF PATTERN</b></apex:outputPanel>
+                                        </td>
+                                    </tr>
+                                    <tr width="100%">
+                                        <td style='border: 1px solid #000;border-left:1px solid #000; text-align: Center; padding:1px; width:50%;'>Booking Amount </td>
+                                        <td  style='border: 1px solid #000; text-align: Center;padding:1px; width:50%;'>
+                                          <!--  
+                                            <apex:outputPanel rendered="{!NOT(ISNULL(payment.Date__c))}">
+                                                <apex:outputText value="{0, date, MM/dd/yyyy}">
+                                                    <apex:param value="{!payment.Date__c}" />
+                                                </apex:outputText>
+                                            </apex:outputPanel>
+                                            <apex:outputPanel rendered="{!ISNULL(payment.Date__c)}">-</apex:outputPanel>
+                                      -->
+                                            <apex:outputPanel >10% of the sale value</apex:outputPanel>
+                                        </td>
+                                    </tr>
+                                    <tr width="100%">
+                                        <td style='border: 1px solid #000;border-left:1px solid #000; text-align: Center; padding:1px; width:50%;'>Registration within 30 days</td>
+                                        <td  style='border: 1px solid #000; text-align: Center;padding:1px; width:50%;'>
+                                       <!--     <apex:outputPanel rendered="{!NOT(ISNULL(payment.Bank_Name__c))}">{!payment.Bank_Name__c}</apex:outputPanel>
+                                            <apex:outputPanel rendered="{!ISNULL(payment.Bank_Name__c)}">-</apex:outputPanel>
+                                      -->
+                                            <apex:outputPanel >90% of sale value</apex:outputPanel>
+                                        </td>
+                                    </tr> 
+                                </table>     
+                            </td>
+                        </tr>
+           
+            </table>
+          
+           
+            <!--section 7 Signatory-->
+            <table style="padding: 5px; width: 100%;border-right: 1px solid #000000;border-left: 1px solid #000000;">
+                <tr>
+                    <td style="padding: 5px; width: 33%; text-align: center;">
+                        <div style="border-bottom: 1px solid #000000; padding: 20px;">
+                            <div style="font-size: 14px;"></div>
+                        </div>
+                        <div style="padding: 10px; font-size: 14px;">SALES EXECUTIVE SIGNATURE</div>
+                    </td>
+                    <td style="padding: 5px; width: 33%; max-width: 33%; text-align: center;">
+                       
+                        <div style="padding: 10px; font-size: 14px;"></div>
+                    </td>
+                    <td style="padding: 5px; width: 43%; max-width: 33%; text-align: center;">
+                        <div style="border-bottom: 1px solid #000000; padding: 20px;">
+                            <div style="font-size: 14px;"></div>
+                        </div>
+                        <div style="padding: 10px; font-size: 14px;">CUSTOMER <br/>SIGNATURE   </div>
+                    </td>
+                </tr>
+            </table>
+            <table style="width:100%;border-right: 1px solid #000000;border-left: 1px solid #000000;">
+             
+            </table>
+            <!--section 7 Terms and Condition-->
+           
+                
+      <table style="padding: 1px; width: 100%;border-right: 1px solid #000000;border-left: 1px solid #000000;border-bottom: 1px solid #000000;">
+                <tr>
+                    <td style="padding: 5px; font-size: 8.5px;width:100%;">Epitome Projects LLP<br/>Corporate Office - Sy. No. 64, Commercial Sector – III, Ground Floor and First Floor, Plot No. C2, HUDA Techno Enclave, Madhapur, Serilingampalle (M), Telangana 500081<br/>www.epitomeprojects.in</td>
+                </tr>
+         
+            </table>
+           
+           
+        </body>
+    </html>
+</apex:page>

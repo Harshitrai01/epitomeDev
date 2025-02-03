@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Values__c</fullName>
+    <label>Values</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Additional_Charges__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Price For North East</fullName>
+                <default>false</default>
+                <label>Price For North East</label>
+            </value>
+            <value>
+                <fullName>Other Corners</fullName>
+                <default>false</default>
+                <label>Other Corners</label>
+            </value>
+            <value>
+                <fullName>East</fullName>
+                <default>false</default>
+                <label>East</label>
+            </value>
+            <value>
+                <fullName>100 Ft Road Plots</fullName>
+                <default>false</default>
+                <label>100 Ft Road Plots</label>
+            </value>
+            <value>
+                <fullName>Premium Plots</fullName>
+                <default>false</default>
+                <label>Premium Plots</label>
+            </value>
+            <value>
+                <fullName>Rate Per Sq. Yd</fullName>
+                <default>false</default>
+                <label>Rate Per Sq. Yd</label>
+            </value>
+            <value>
+                <fullName>Legal And Documentation Charges</fullName>
+                <default>false</default>
+                <label>Legal And Documentation Charges</label>
+            </value>
+            <value>
+                <fullName>Registration Charges As Applicable On The Day Of Registration</fullName>
+                <default>false</default>
+                <label>Registration Charges As Applicable On The Day Of Registration</label>
+            </value>
+            <value>
+                <fullName>Corpus Fund and Club House Payable</fullName>
+                <default>false</default>
+                <label>Corpus Fund and Club House Payable</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Plot</controllingFieldValue>
+            <valueName>Price For North East</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Plot</controllingFieldValue>
+            <valueName>Other Corners</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Plot</controllingFieldValue>
+            <valueName>East</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Plot</controllingFieldValue>
+            <valueName>100 Ft Road Plots</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Plot</controllingFieldValue>
+            <valueName>Premium Plots</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Plot</controllingFieldValue>
+            <valueName>Rate Per Sq. Yd</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Particulars</controllingFieldValue>
+            <valueName>Corpus Fund and Club House Payable</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Legal and Registration</controllingFieldValue>
+            <valueName>Legal And Documentation Charges</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Legal and Registration</controllingFieldValue>
+            <valueName>Registration Charges As Applicable On The Day Of Registration</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

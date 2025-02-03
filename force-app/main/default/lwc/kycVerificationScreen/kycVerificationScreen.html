@@ -1,0 +1,109 @@
+<template>
+    <lightning-card class="custom-card-width">
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading..." size="medium"></lightning-spinner>
+        </template>
+        <!-- Header -->
+        <div class="slds-p-around_medium slds-border_bottom slds-grid slds-grid_vertical-align-center">
+            <lightning-icon icon-name="standard:portal_roles" size="medium" class="slds-m-right_small"></lightning-icon>
+            <div>
+                <h2 class="slds-text-heading_medium">KYC Document Verification</h2>
+                <p class="slds-text-body_small">
+                    Please upload the required KYC documents to verify your identity. Supported formats: PDF, PNG, JPEG.
+                </p>
+            </div>
+        </div>
+        <!-- Body -->
+        <div class="slds-p-around_medium ">
+            <div class="slds-m-bottom_medium">
+                <lightning-combobox
+                    name="contacts"
+                    label="Select Contact"
+                    placeholder="Select Contact From Here..."
+                    options={contacts}
+                    value={selecedContactId}
+                    onchange={handleContactSelection}>
+                </lightning-combobox>
+            </div>
+            <!-- Aadhaar Upload -->
+            <div class="slds-m-bottom_medium upload-section">
+                <lightning-file-upload
+                    label="Upload Aadhaar"
+                    name="aadhaarUpload"
+                    accept={acceptedFormats}
+                    record-id={contactId}
+                    onuploadfinished={handleAadhaarUploadFinished}
+                    multiple=false
+                    required = true
+                    disabled={isContactTagged}>
+                </lightning-file-upload>
+                <div class="upload-status-container" style="min-height: 25px;">
+                    <template if:true={aadhaarFileId}>
+                        <div>
+                            <lightning-icon icon-name="utility:check" size="small" class="slds-icon-text-success"></lightning-icon>
+                            <span class="slds-m-left_x-small">Aadhaar uploaded successfully!</span>
+                        </div>
+                    </template>
+                </div>
+            </div>
+
+            <!-- PAN Upload -->
+            <div class="slds-m-bottom_medium upload-section">
+                <lightning-file-upload
+                    label="Upload PAN"
+                    name="panUpload"
+                    accept={acceptedFormats}
+                    record-id={contactId}
+                    onuploadfinished={handlePanUploadFinished}
+                    multiple=false
+                    required = true
+                    disabled={isContactTagged}>
+                </lightning-file-upload>
+                <div class="upload-status-container" style="min-height: 25px;">
+                    <template if:true={panFileId}>
+                        <div>
+                            <lightning-icon icon-name="utility:check" size="small" class="slds-icon-text-success"></lightning-icon>
+                            <span class="slds-m-left_x-small">PAN uploaded successfully!</span>
+                        </div>
+                    </template>
+                </div>
+            </div>
+
+            <!-- Other Document Upload -->
+            <div class="slds-m-bottom_medium upload-section">
+                <lightning-file-upload
+                    label="Upload Other Document"
+                    name="otherDocUpload"
+                    accept={acceptedFormats}
+                    record-id={contactId}
+                    onuploadfinished={handleOtherDocUploadFinished}
+                    multiple=false
+                    disabled={isContactTagged}>
+                </lightning-file-upload>
+                <div class="upload-status-container" style="min-height: 25px;">
+                    <template if:true={otherDocFileId}>
+                        <div>
+                            <lightning-icon icon-name="utility:check" size="small" class="slds-icon-text-success"></lightning-icon>
+                            <span class="slds-m-left_x-small">Other document uploaded successfully!</span>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="slds-p-around_medium slds-border_top slds-text-align_center">
+            <lightning-button
+                label="Cancel"
+                variant="neutral"
+                onclick={handleCancel}
+                class="slds-m-right_small">
+            </lightning-button>
+            <lightning-button
+                label="Save"
+                variant="brand"
+                onclick={handleSave}>
+            </lightning-button>
+        </div>
+    </lightning-card>
+</template>

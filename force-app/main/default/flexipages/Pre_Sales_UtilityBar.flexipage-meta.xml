@@ -6,7 +6,7 @@
                 <componentInstanceProperties>
                     <name>eager</name>
                     <type>decorator</type>
-                    <value>false</value>
+                    <value>true</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>height</name>
@@ -16,7 +16,7 @@
                 <componentInstanceProperties>
                     <name>icon</name>
                     <type>decorator</type>
-                    <value>status_code</value>
+                    <value>user</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>
@@ -33,8 +33,8 @@
                     <type>decorator</type>
                     <value>340</value>
                 </componentInstanceProperties>
-                <componentName>userStatusScreenCmp</componentName>
-                <identifier>userStatusScreenCmp</identifier>
+                <componentName>UserStatusUtility</componentName>
+                <identifier>UserStatusUtility</identifier>
             </componentInstance>
         </itemInstances>
         <name>utilityItems</name>

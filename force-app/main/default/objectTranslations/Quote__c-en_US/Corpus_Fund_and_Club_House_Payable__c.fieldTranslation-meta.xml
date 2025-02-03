@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Corpus Fund and Club House Payable --></label>
+    <name>Corpus_Fund_and_Club_House_Payable__c</name>
+</CustomFieldTranslation>

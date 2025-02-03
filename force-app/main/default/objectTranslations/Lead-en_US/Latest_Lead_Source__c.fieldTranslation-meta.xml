@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Latest Lead Source --></label>
+    <name>Latest_Lead_Source__c</name>
+    <picklistValues>
+        <masterLabel>Activity</masterLabel>
+        <translation><!-- Activity --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Advertisement</masterLabel>
+        <translation><!-- Advertisement --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>CP Walkin</masterLabel>
+        <translation><!-- CP Walkin --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>CTI</masterLabel>
+        <translation><!-- CTI --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Campaigns</masterLabel>
+        <translation><!-- Campaigns --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Channel Partner</masterLabel>
+        <translation><!-- Channel Partner --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Customer Event</masterLabel>
+        <translation><!-- Customer Event --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Digital</masterLabel>
+        <translation><!-- Digital --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Direct Walkin</masterLabel>
+        <translation><!-- Direct Walkin --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Employee Referral</masterLabel>
+        <translation><!-- Employee Referral --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Events</masterLabel>
+        <translation><!-- Events --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Existing Customer</masterLabel>
+        <translation><!-- Existing Customer --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>External Referral</masterLabel>
+        <translation><!-- External Referral --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Google AdWords</masterLabel>
+        <translation><!-- Google AdWords --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mcube - Outdoor</masterLabel>
+        <translation><!-- Mcube - Outdoor --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mcube - Print</masterLabel>
+        <translation><!-- Mcube - Print --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Newspaper</masterLabel>
+        <translation><!-- Newspaper --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Online Portal</masterLabel>
+        <translation><!-- Online Portal --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Other</masterLabel>
+        <translation><!-- Other --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Outdoor</masterLabel>
+        <translation><!-- Outdoor --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Partner</masterLabel>
+        <translation><!-- Partner --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Property Portals</masterLabel>
+        <translation><!-- Property Portals --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Purchased List</masterLabel>
+        <translation><!-- Purchased List --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Radio Jingles</masterLabel>
+        <translation><!-- Radio Jingles --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Referral</masterLabel>
+        <translation><!-- Referral --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Referral Walkin</masterLabel>
+        <translation><!-- Referral Walkin --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>TV Ads</masterLabel>
+        <translation><!-- TV Ads --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Trade Show</masterLabel>
+        <translation><!-- Trade Show --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Vendor</masterLabel>
+        <translation><!-- Vendor --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Webinar</masterLabel>
+        <translation><!-- Webinar --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Website</masterLabel>
+        <translation><!-- Website --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>WhatsApp</masterLabel>
+        <translation><!-- WhatsApp --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -11,6 +11,10 @@
     <layouts>
         <layout>Unit Layout</layout>
         <sections>
+            <label><!-- Boundaries Of Plot --></label>
+            <section>Boundaries Of Plot</section>
+        </sections>
+        <sections>
             <label><!-- Concerns &amp; Remarks --></label>
             <section>Concerns &amp; Remarks</section>
         </sections>
@@ -21,6 +25,10 @@
         <sections>
             <label><!-- Pricing Information --></label>
             <section>Pricing Information</section>
+        </sections>
+        <sections>
+            <label><!-- Virtual Account Details --></label>
+            <section>Virtual Account Details</section>
         </sections>
     </layouts>
     <recordTypes>

@@ -1,0 +1,5 @@
+<aura:component implements="lightning:isUrlAddressable,lightning:actionOverride,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+<aura:attribute name="showRecordTypeScreen" default = "true" type="Boolean"></aura:attribute>
+ 
+    <c:generateBookingForm showRecordTypeScreen = "{!v.showRecordTypeScreen}" onclosedmodal="{!c.closedModel}"></c:generateBookingForm>
+</aura:component>

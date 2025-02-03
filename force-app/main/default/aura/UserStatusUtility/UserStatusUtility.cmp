@@ -1,0 +1,6 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" controller="UserStatusController">
+    <aura:attribute name="userStatus" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <lightning:utilityBarAPI aura:id="utilitybar" />
+    <c:userStatusScreenCmp onvaluechange="{!c.getValueFromLwc}" />
+</aura:component>

@@ -14,17 +14,25 @@
     <tabs>Phase__c</tabs>
     <tabs>Unit__c</tabs>
     <tabs>Payment__c</tabs>
-    <tabs>Payment_Milestone__c</tabs>
+    <tabs>Additional_Charges__c</tabs>
+    <tabs>Quote__c</tabs>
+    <tabs>Lead_Plot__c</tabs>
     <uiType>Lightning</uiType>
     <workspaceConfig>
         <mappings>
-            <tab>Payment_Milestone__c</tab>
+            <tab>Additional_Charges__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Lead_Plot__c</tab>
         </mappings>
         <mappings>
             <tab>Payment__c</tab>
         </mappings>
         <mappings>
             <tab>Phase__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Quote__c</tab>
         </mappings>
         <mappings>
             <tab>Unit__c</tab>

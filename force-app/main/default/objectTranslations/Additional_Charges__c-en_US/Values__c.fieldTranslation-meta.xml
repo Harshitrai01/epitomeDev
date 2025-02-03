@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Values --></label>
+    <name>Values__c</name>
+    <picklistValues>
+        <masterLabel>100 Ft Road Plots</masterLabel>
+        <translation><!-- 100 Ft Road Plots --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Corpus Fund and Club House Payable</masterLabel>
+        <translation><!-- Corpus Fund and Club House Payable --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>East</masterLabel>
+        <translation><!-- East --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Legal And Documentation Charges</masterLabel>
+        <translation><!-- Legal And Documentation Charges --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Other Corners</masterLabel>
+        <translation><!-- Other Corners --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Premium Plots</masterLabel>
+        <translation><!-- Premium Plots --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Price For North East</masterLabel>
+        <translation><!-- Price For North East --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Rate Per Sq. Yd</masterLabel>
+        <translation><!-- Rate Per Sq. Yd --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Registration Charges As Applicable On The Day Of Registration</masterLabel>
+        <translation><!-- Registration Charges As Applicable On The Day Of Registration --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -16,7 +16,7 @@ export default class UserStatusScreenCmp extends LightningElement {
         if (data) {
             this.status = data;
             this.selectedStatus = data;
-            this.priorStatus=data;
+            this.priorStatus = data;
             this.setStatusStyle(data);
             console.log('status:', JSON.stringify(this.status));
         } else {
@@ -63,9 +63,9 @@ export default class UserStatusScreenCmp extends LightningElement {
                 } else {
                     const result = await updateUserStatus({ newStatus: this.selectedStatus });
                     this.status = this.selectedStatus;
-                    this.priorStatus=this.selectedStatus;
+                    this.priorStatus = this.selectedStatus;
                     this.setStatusStyle(this.selectedStatus);
-
+                    this.handleAuraChange();
                     this.dispatchEvent(
                         new ShowToastEvent({
                             title: 'Success',
@@ -86,4 +86,12 @@ export default class UserStatusScreenCmp extends LightningElement {
             }
         }
     }
+    handleAuraChange() {
+    const valueChangeEvent = new CustomEvent("valuechange", {
+        detail: { value: this.selectedStatus }
+    });
+    // Fire the custom event
+    this.dispatchEvent(valueChangeEvent);
+}
+
 }

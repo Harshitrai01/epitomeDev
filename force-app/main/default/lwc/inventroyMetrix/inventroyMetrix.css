@@ -1,0 +1,125 @@
+.my-cell {
+    border: 1px solid #0c0c0c;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+    min-width: 5em;
+}
+
+.my-cell:hover {
+    border: 2.5px solid red;
+}
+
+.tshow {
+    display: block !important;
+}
+
+.ctip-hide {
+    display: none;
+}
+
+.dynamic-element {
+    animation: colorChangeAnimation 1s linear infinite;
+    /* No background-color property here */
+}
+
+@keyframes colorChangeAnimation {
+    0% {
+        opacity: 0.5;
+        /* Start with default color */
+    }
+
+    50% {
+        opacity: 1;
+        /* Color to change to */
+    }
+
+    100% {
+        opacity: 0.5;
+        /* Back to default color */
+    }
+
+}
+
+.customPopover {
+    position: absolute;
+    border: 1px solid black;
+    background: white;
+    border-radius: 10px;
+    /* transform: translate(4px, -43%); */
+    /* min-width:var(--c-popoverWidth); */
+}
+
+.customPopover .slds-form-element {
+    display: flex;
+    text-align: left;
+    align-items: center;
+    background-color: white;
+    margin-bottom: 0px;
+    /* border: 1.1px solid #0c0c0c; */
+}
+
+.customPopover .slds-form-element>span.slds-form-element__label,
+.customPopover.slds-popover *:last-child {
+    min-width: calc(var(--c-popoverWidth) / 2);
+
+}
+
+.customPopover {
+    transform: translate(28px, 0%);
+    min-width: var(--c-popoverWidth);
+}
+
+.customPopover .slds-form-element .slds-form-element__label,
+.customPopover .slds-form-element .slds-form-element__static {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 1);
+    overflow: hidden;
+    min-width: 45%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.customPopover .slds-form-element .slds-form-element__label {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.customPopover .slds-form-element__icon {
+    display: none;
+}
+
+.customPopover .slds-form-element__control {
+    text-align: end;
+    text-align: right;
+}
+
+.slds-form-element__control {
+    text-align: right;
+}
+
+.customPopover .slds-form-element_stacked .slds-form-element__control {
+    text-align: right;
+}
+
+.legend {
+    width: 11px;
+    height: 11px;
+    border-radius: 2px;
+    opacity: 1;
+}
+
+.slds-table_header {
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.slds-table {
+    width: 100%;
+    white-space: nowrap;
+}
+
+.slds-table th,
+.slds-table td {
+    padding: 8px;
+    border: 1px solid #ccc;
+}

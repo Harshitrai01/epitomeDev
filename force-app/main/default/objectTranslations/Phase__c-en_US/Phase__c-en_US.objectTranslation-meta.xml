@@ -24,4 +24,8 @@
         </sections>
     </layouts>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- You cannot modify this field once it has been set. --></errorMessage>
+        <name>Restrict_Field_Update</name>
+    </validationRules>
 </CustomObjectTranslation>

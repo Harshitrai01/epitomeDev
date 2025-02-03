@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Status --></label>
+    <name>Status__c</name>
+    <picklistValues>
+        <masterLabel>Available</masterLabel>
+        <translation><!-- Available --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Blocked</masterLabel>
+        <translation><!-- Blocked --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Booked</masterLabel>
+        <translation><!-- Booked --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Hold</masterLabel>
+        <translation><!-- Hold --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Management Blocked</masterLabel>
+        <translation><!-- Management Blocked --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mortgage</masterLabel>
+        <translation><!-- Mortgage --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Not For Sale</masterLabel>
+        <translation><!-- Not For Sale --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Registered</masterLabel>
+        <translation><!-- Registered --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sold</masterLabel>
+        <translation><!-- Sold --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Temp Blocked</masterLabel>
+        <translation><!-- Temp Blocked --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

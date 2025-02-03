@@ -1,0 +1,292 @@
+<template>
+	
+
+
+        <!-- Modal/Popup Header -->
+        <!-- <header class="slds-modal__header">
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
+            </button>
+            <h2 class="slds-text-heading_medium">BOOKING FORM DETAIL'S</h2>
+        </header> -->
+		  <template if:true={isModalOpen}>
+<section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+    <div class="slds-modal__container">
+        <header class="slds-modal__header">
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
+            </button>
+            <h2 class="slds-text-heading_medium">Booking Form</h2>
+        </header>
+		 <div class="slds-modal__content slds-p-around_medium" >
+	<div class="card-container">
+		<article class="slds-card">
+			
+			<div class="slds-card__body slds-card__body_inner">
+				<template if:true={isLoading}>
+					<lightning-spinner variant="brand" alternative-text="Loading" size="large"></lightning-spinner>
+				</template>
+				
+					<lightning-accordion allow-multiple-sections-open active-section-name={activeSections}
+						class="applicant-details-sections">
+						<lightning-accordion-section name="A" label="Basic Information">
+							<lightning-layout multiple-rows>
+								<lightning-layout-item flexibility="auto" padding="around-small" size="12"
+									small-device-size="12" medium-device-size="6" large-device-size="6">
+									<lightning-input data-label="primaryApplicantRequiredFields" label="Project Name"
+										type="text" 
+										value="Epitome" disabled>
+									</lightning-input>
+								</lightning-layout-item>
+									<lightning-layout-item flexibility="auto" padding="around-small" size="12"
+									small-device-size="12" medium-device-size="6" large-device-size="6">
+									<lightning-combobox data-label="primaryApplicantRequiredFields"
+										name="typeOfBooking" label="Type Of Booking" onchange={handleValueChange}
+										value={bookingFormData.typeOfBooking}
+										options={picklistOptions.typeOfBookingOptions} required>
+									</lightning-combobox>
+									</lightning-layout-item>
+							</lightning-layout>
+						</lightning-accordion-section>
+						<lightning-accordion-section name="B" label="Primary Information">
+							<lightning-layout multiple-rows>
+							
+								 <lightning-layout-item flexibility="auto" padding="around-small" size="12"
+									small-device-size="12" medium-device-size="6" large-device-size="6">
+									<lightning-input data-label="primaryApplicantRequiredFields" type="text"
+										variant="standard" name="accountName" label="First Name" onchange={handleValueChange}
+										value={bookingFormData.accountName} required>
+									</lightning-input>
+								</lightning-layout-item>
+								<lightning-layout-item flexibility="auto" padding="around-small" size="12"
+									small-device-size="12" medium-device-size="6" large-device-size="6">
+									<lightning-input data-label="primaryApplicantRequiredFields" type="email"
+										variant="standard" name="accountEmailId" label="Email Id"
+										onchange={handleValueChange} value={bookingFormData.accountEmailId} >
+									</lightning-input>
+								</lightning-layout-item>
+								<lightning-layout-item flexibility="auto" padding="around-small" size="12"
+									small-device-size="12" medium-device-size="6" large-device-size="6">
+									<lightning-input data-label="primaryApplicantRequiredFields" type="tel"
+										variant="standard" name="accountContactNo" label="Contact No"
+										onchange={handleValueChange} value={bookingFormData.accountContactNo} >
+									</lightning-input>
+								</lightning-layout-item>
+								<lightning-layout-item flexibility="auto" padding="around-small" size="12"
+									small-device-size="12" medium-device-size="12" large-device-size="12">
+									<lightning-input data-label="primaryApplicantRequiredFields" type="checkbox"
+										variant="standard" name="accountSameAsPermanentAddress"
+										label="Same as Permanent Address" onchange={handleValueChange}
+										value={bookingFormData.accountSameAsPermanentAddress}
+										checked={bookingFormData.accountSameAsPermanentAddress}></lightning-input>
+								</lightning-layout-item>
+								<lightning-layout-item flexibility="auto" padding="around-small" size="12"
+									small-device-size="12" medium-device-size="6" large-device-size="6">
+									<lightning-input-address data-label="primaryApplicantRequiredFields"
+										name="accountPermanentAddress" address-label="Permanent Address"
+										street-label="Street" city-label="City" country-label="Country"
+										province-label="State" postal-code-label="Postal Code"
+										street={bookingFormData.accountPermanentAddressStreet}
+										city={bookingFormData.accountPermanentAddressCity}
+										country={bookingFormData.accountPermanentAddressCountry}
+										province={bookingFormData.accountPermanentAddressState}
+										postal-code={bookingFormData.accountPermanentAddressPostalCode}
+										
+										onchange={handlePermanentAddressChange} required>
+									</lightning-input-address>
+								</lightning-layout-item>
+								<lightning-layout-item flexibility="auto" padding="around-small" size="12"
+									small-device-size="12" medium-device-size="6" large-device-size="6">
+									<template if:true={bookingFormData.accountSameAsPermanentAddress}>
+										<lightning-input-address 
+										data-label="primaryApplicantRequiredFields"
+										data-name="accountCorrespondenceAddress"
+										name="accountCorrespondenceAddress" 
+										address-label="Correspondence Address"
+										street-label="Street" 
+										street-name="accountCorrespondenceAddressStreet"
+										city-label="City" 
+										country-label="Country" 
+										province-label="State"
+										postal-code-label="Postal Code"
+										street={bookingFormData.accountCorrespondenceAddressStreet}
+										city={bookingFormData.accountCorrespondenceAddressCity}
+										country={bookingFormData.accountCorrespondenceAddressCountry}
+										province={bookingFormData.accountCorrespondenceAddressState}
+										postal-code={bookingFormData.accountCorrespondenceAddressPostalCode}
+										onchange={handleCorrespondenceAddressChange}
+										disabled={bookingFormData.accountSameAsPermanentAddress}>
+									</lightning-input-address>
+									</template>
+									<template if:false={bookingFormData.accountSameAsPermanentAddress}>
+										<lightning-input-address 
+										data-label="primaryApplicantRequiredFields"
+										data-name="accountCorrespondenceAddress"
+										name="accountCorrespondenceAddress" 
+										address-label="Correspondence Address"
+										street-label="Street" 
+										street-name="accountCorrespondenceAddressStreet"
+										city-label="City" 
+										country-label="Country" 
+										province-label="State"
+										postal-code-label="Postal Code"
+										street={bookingFormData.accountCorrespondenceAddressStreet}
+										city={bookingFormData.accountCorrespondenceAddressCity}
+										country={bookingFormData.accountCorrespondenceAddressCountry}
+										province={bookingFormData.accountCorrespondenceAddressState}
+										postal-code={bookingFormData.accountCorrespondenceAddressPostalCode}
+										onchange={handleCorrespondenceAddressChange}
+										required={bookingFormData.accountSameAsPermanentAddressNeeded}>
+										</lightning-input-address>
+									</template>
+								</lightning-layout-item>
+							
+							
+							</lightning-layout>
+						</lightning-accordion-section>
+						
+						<lightning-accordion-section name="D" label="Contact Detail's">
+							<lightning-layout multiple-rows>
+								 <lightning-layout-item flexibility="auto" padding="around-small" size="12"
+									small-device-size="12" medium-device-size="6" large-device-size="6">
+									<lightning-input data-label="primaryApplicantRequiredFields" type="text"
+										variant="standard" name="quoteContactName" label="Contact Name" onchange={handleValueChange}
+										value={bookingFormData.quoteContactName} required>
+									</lightning-input>
+								</lightning-layout-item>
+								<lightning-layout-item flexibility="auto" padding="around-small" size="12"
+									small-device-size="12" medium-device-size="6" large-device-size="6">
+									<lightning-input data-label="primaryApplicantRequiredFields" type="email"
+										variant="standard" name="quoteContactEmailId" label="Email Id"
+										onchange={handleValueChange} value={bookingFormData.quoteContactEmailId} >
+									</lightning-input>
+								</lightning-layout-item>
+								<lightning-layout-item flexibility="auto" padding="around-small" size="12"
+									small-device-size="12" medium-device-size="6" large-device-size="6">
+									<lightning-input data-label="primaryApplicantRequiredFields" type="tel"
+										variant="standard" name="quoteContactNo" label="Contact No"
+										onchange={handleValueChange} value={bookingFormData.quoteContactNo} >
+									</lightning-input>
+								</lightning-layout-item>
+								<lightning-layout-item flexibility="auto" padding="around-small" size="12"
+									small-device-size="12" medium-device-size="6" large-device-size="6">
+									<lightning-input data-label="primaryApplicantRequiredFields" type="tel"
+										variant="standard" name="quoteContactAadhaar" label="Aadhaar Card"
+										onchange={handleValueChange} value={bookingFormData.quoteContactAadhaar}
+										min-length="12" max-length="12"
+										message-when-too-short="Enter a valid aadhaar card number" pattern="[0-9]{12}"
+										message-when-pattern-mismatch="Enter a valid aadhaar card number format"
+										required></lightning-input>
+									</lightning-layout-item>
+								<lightning-layout-item flexibility="auto" padding="around-small" size="12"
+									small-device-size="12" medium-device-size="6" large-device-size="6">
+									<lightning-input data-label="primaryApplicantRequiredFields" type="text"
+										variant="standard" name="quoteContactPan" label="Pan Card"
+										onchange={handleValueChange} min-length="10" max-length="10"
+										message-when-too-short="Enter a valid pan card number"
+										pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"
+										message-when-pattern-mismatch="Enter a valid pan card number format"
+										value={bookingFormData.quoteContactPan} required>
+									</lightning-input>
+								</lightning-layout-item>
+								<lightning-layout-item flexibility="auto" padding="around-small" size="12"
+									small-device-size="12" medium-device-size="6" large-device-size="6">
+									<lightning-input data-label="primaryApplicantRequiredFields" type="date"
+										variant="standard" name="quoteContactDOB" label="Date Of Birth"
+										onchange={handleValueChange} value={bookingFormData.quoteContactDOB}
+										max={eighteenYearsBackDate}
+										message-when-range-overflow="Date of Birth cannot be a future date or must be 18 years old or above"
+										required>
+									</lightning-input>
+								</lightning-layout-item>
+								
+							</lightning-layout>
+						</lightning-accordion-section>
+						<lightning-accordion-section name="E" label="Plot Information">
+							<lightning-layout multiple-rows>
+								<lightning-layout-item flexibility="auto" padding="around-small" size="12"
+									small-device-size="12" medium-device-size="6" large-device-size="6">
+								 <lightning-record-picker
+                                            label="Plot"
+                                            placeholder="Search Plot..."
+                                            object-api-name="Unit__c"
+                                            name="quotePlot" data-label="primaryApplicantRequiredFields"  value={bookingFormData.quotePlot} onchange={handleValueChange}   required 
+                                            
+                                        >
+                                        </lightning-record-picker>
+								</lightning-layout-item>
+								
+								  <lightning-layout-item flexibility="auto" padding="around-small" size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+                                        <lightning-input label="Phase" type="text"
+                                         name="unitPlotPhase" 
+                                         onchange={handleValueChange} value={unitPlotPhase} required disabled></lightning-input>
+                                     
+                                       
+                            </lightning-layout-item>
+                             <lightning-layout-item flexibility="auto" padding="around-small" size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+                                        <lightning-input label="Plot Size" type="text"
+                                         name="unitPlotSize" 
+                                         onchange={handleValueChange}  value={unitPlotSize} required disabled></lightning-input>
+                            </lightning-layout-item>
+                             <lightning-layout-item flexibility="auto" padding="around-small" size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+                                        <lightning-input label="Plot Price" type="text"
+                                         name="unitPlotPrize" 
+                                         onchange={handleValueChange}  value={unitPlotPrize} required disabled></lightning-input>
+                                     
+                                       
+                            </lightning-layout-item>
+                             <lightning-layout-item flexibility="auto" padding="around-small" size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+                                <lightning-input label="Plot Facing" type="text"
+                                 name="unitPlotFacing" 
+                                         onchange={handleValueChange} value={unitPlotFacing} required disabled></lightning-input>
+                            </lightning-layout-item>
+                             <lightning-layout-item flexibility="auto" padding="around-small" size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+                                        <lightning-input label="Unit Code" type="text"
+                                         name="unitPlotUnitCode" 
+                                         onchange={handleValueChange} value={unitPlotUnitCode}  required disabled></lightning-input>
+                                     
+                                       
+                            </lightning-layout-item>
+							<lightning-layout-item flexibility="auto" padding="around-small" size="12"
+									small-device-size="12" medium-device-size="6" large-device-size="6">
+									<lightning-input data-label="primaryApplicantRequiredFields" type="number"
+										variant="standard" name="opportunityBookingAmount" label="Booking Amount Rs."
+										onchange={handleValueChange} value={bookingFormData.opportunityBookingAmount}
+										formatter="currency" step="0.01" required>
+									</lightning-input>
+								</lightning-layout-item>
+								
+							</lightning-layout>
+						</lightning-accordion-section>
+					</lightning-accordion>
+				
+				
+				
+			</div>
+		
+		</article>
+	</div>
+		 </div>
+		           <footer class="slds-modal__footer">
+           
+          	<lightning-layout>
+					<lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6" style="text-align: left;">
+						<lightning-button variant="neutral" label="Cancel" title="cancel" onclick={handleCancelClick} disabled={isLoading}></lightning-button>
+					</lightning-layout-item>
+					<lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6" style="text-align: right;">
+						
+						<div style="display: flex; justify-content: flex-end;">
+						
+								<lightning-button variant="brand" label="Submit" title="submit" name="pageThree" onclick={handleSaveAndNextClick} disabled={isLoading}></lightning-button>
+					
+						</div>
+					</lightning-layout-item>
+				</lightning-layout>
+        </footer>
+    </div>
+		  </section>
+<div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+
+
+</template>

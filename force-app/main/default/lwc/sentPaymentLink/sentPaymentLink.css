@@ -1,0 +1,26 @@
+.header {
+    border-bottom: 1px solid #d8dde6;
+    margin-bottom: 1rem;
+}
+
+.footer {
+    border-top: 1px solid #d8dde6;
+    margin-top: 1rem;
+    padding-top: 1rem;
+}
+
+.slds-p-right_small {
+    padding-right: 0.5rem;
+}
+
+.slds-p-left_small {
+    padding-left: 0.5rem;
+}
+
+.slds-m-top_small {
+    margin-top: 0.5rem;
+}
+
+.slds-m-bottom_medium {
+    margin-bottom: 1rem;
+}

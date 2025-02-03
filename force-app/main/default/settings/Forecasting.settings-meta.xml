@@ -228,6 +228,10 @@
             <label>Fiscal Period</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>OPPORTUNITY.RECORDTYPE</field>
+            <label>Opportunity Record Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <label>Last Activity</label>
         </opportunityListFieldsLabelMappings>
@@ -242,6 +246,10 @@
         <opportunityListFieldsLabelMappings>
             <field>FORECASTEDMFJVALUE</field>
             <label>Manager Judgment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGSj</field>
+            <label>10% Collected</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNU5</field>
@@ -272,6 +280,14 @@
             <label>Allotment Letter Submitted</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMJd</field>
+            <label>AOS Handover Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMGP</field>
+            <label>AOS Stage</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNib</field>
             <label>Balance Due Amount</label>
         </opportunityListFieldsLabelMappings>
@@ -284,6 +300,10 @@
             <label>Budget Confirmed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGCb</field>
+            <label>Collected Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
         </opportunityListFieldsLabelMappings>
@@ -294,6 +314,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNp3</field>
             <label>Customer Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMBZ</field>
+            <label>Customer Type</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNqf</field>
@@ -328,6 +352,10 @@
             <label>Final Unit Cancellation Approval Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000ApTjl</field>
+            <label>First Booking Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOA1</field>
             <label>Funding Type</label>
         </opportunityListFieldsLabelMappings>
@@ -342,6 +370,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOGT</field>
             <label>Is Demand Letter Sent</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqT49</field>
+            <label>KYC Verification</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -360,8 +392,16 @@
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMMr</field>
+            <label>NOC</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOYD</field>
             <label>Occupation</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGPV</field>
+            <label>Outstanding Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOgH</field>
@@ -428,6 +468,10 @@
             <label>Sales User</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGHR</field>
+            <label>Sale Value Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPFl</field>
             <label>Specify Country</label>
         </opportunityListFieldsLabelMappings>
@@ -454,6 +498,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqM6j</field>
+            <label>Type of Booking</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPZ7</field>
@@ -519,10 +567,12 @@
             <field>OPPORTUNITY.FISCAL_YEAR</field>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
             <field>OPPORTUNITY.FISCAL_PERIOD</field>
+            <field>OPPORTUNITY.RECORDTYPE</field>
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>FORECASTEDMFJVALUE</field>
+            <field>00NO400000AqGSj</field>
             <field>00NO400000AcNU5</field>
             <field>00NO400000AcNVh</field>
             <field>00NO400000AcNXJ</field>
@@ -530,12 +580,16 @@
             <field>00NO400000AcNdl</field>
             <field>00NO400000AcNfN</field>
             <field>00NO400000AcNgz</field>
+            <field>00NO400000AqMJd</field>
+            <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
             <field>00NO400000AcNkD</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
+            <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
             <field>00NO400000AcNsH</field>
             <field>00NO400000AcNtt</field>
@@ -544,15 +598,19 @@
             <field>00NO400000AcO3Z</field>
             <field>00NfK000003tpHw</field>
             <field>00NO400000AcO8P</field>
+            <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000AcOd3</field>
+            <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -569,6 +627,7 @@
             <field>00NfK000003tpHx</field>
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
+            <field>00NO400000AqGHR</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
@@ -576,6 +635,7 @@
             <field>00NO400000AcPVt</field>
             <field>00NO400000AcOtC</field>
             <field>00NO400000AcPXV</field>
+            <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
@@ -726,6 +786,10 @@
             <label>Fiscal Period</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>OPPORTUNITY.RECORDTYPE</field>
+            <label>Opportunity Record Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <label>Last Activity</label>
         </opportunityListFieldsLabelMappings>
@@ -740,6 +804,10 @@
         <opportunityListFieldsLabelMappings>
             <field>FORECASTEDMFJVALUE</field>
             <label>Manager Judgment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGSj</field>
+            <label>10% Collected</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNU5</field>
@@ -770,6 +838,14 @@
             <label>Allotment Letter Submitted</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMJd</field>
+            <label>AOS Handover Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMGP</field>
+            <label>AOS Stage</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNib</field>
             <label>Balance Due Amount</label>
         </opportunityListFieldsLabelMappings>
@@ -782,6 +858,10 @@
             <label>Budget Confirmed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGCb</field>
+            <label>Collected Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
         </opportunityListFieldsLabelMappings>
@@ -792,6 +872,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNp3</field>
             <label>Customer Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMBZ</field>
+            <label>Customer Type</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNqf</field>
@@ -826,6 +910,10 @@
             <label>Final Unit Cancellation Approval Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000ApTjl</field>
+            <label>First Booking Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOA1</field>
             <label>Funding Type</label>
         </opportunityListFieldsLabelMappings>
@@ -840,6 +928,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOGT</field>
             <label>Is Demand Letter Sent</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqT49</field>
+            <label>KYC Verification</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -858,8 +950,16 @@
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMMr</field>
+            <label>NOC</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOYD</field>
             <label>Occupation</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGPV</field>
+            <label>Outstanding Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOgH</field>
@@ -926,6 +1026,10 @@
             <label>Sales User</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGHR</field>
+            <label>Sale Value Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPFl</field>
             <label>Specify Country</label>
         </opportunityListFieldsLabelMappings>
@@ -952,6 +1056,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqM6j</field>
+            <label>Type of Booking</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPZ7</field>
@@ -1017,10 +1125,12 @@
             <field>OPPORTUNITY.FISCAL_YEAR</field>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
             <field>OPPORTUNITY.FISCAL_PERIOD</field>
+            <field>OPPORTUNITY.RECORDTYPE</field>
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>FORECASTEDMFJVALUE</field>
+            <field>00NO400000AqGSj</field>
             <field>00NO400000AcNU5</field>
             <field>00NO400000AcNVh</field>
             <field>00NO400000AcNXJ</field>
@@ -1028,12 +1138,16 @@
             <field>00NO400000AcNdl</field>
             <field>00NO400000AcNfN</field>
             <field>00NO400000AcNgz</field>
+            <field>00NO400000AqMJd</field>
+            <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
             <field>00NO400000AcNkD</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
+            <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
             <field>00NO400000AcNsH</field>
             <field>00NO400000AcNtt</field>
@@ -1042,15 +1156,19 @@
             <field>00NO400000AcO3Z</field>
             <field>00NfK000003tpHw</field>
             <field>00NO400000AcO8P</field>
+            <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000AcOd3</field>
+            <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -1067,6 +1185,7 @@
             <field>00NfK000003tpHx</field>
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
+            <field>00NO400000AqGHR</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
@@ -1074,6 +1193,7 @@
             <field>00NO400000AcPVt</field>
             <field>00NO400000AcOtC</field>
             <field>00NO400000AcPXV</field>
+            <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
@@ -1228,6 +1348,10 @@
             <label>Fiscal Period</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>OPPORTUNITY.RECORDTYPE</field>
+            <label>Opportunity Record Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <label>Last Activity</label>
         </opportunityListFieldsLabelMappings>
@@ -1242,6 +1366,10 @@
         <opportunityListFieldsLabelMappings>
             <field>FORECASTEDMFJVALUE</field>
             <label>Manager Judgment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGSj</field>
+            <label>10% Collected</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNU5</field>
@@ -1272,6 +1400,14 @@
             <label>Allotment Letter Submitted</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMJd</field>
+            <label>AOS Handover Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMGP</field>
+            <label>AOS Stage</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNib</field>
             <label>Balance Due Amount</label>
         </opportunityListFieldsLabelMappings>
@@ -1284,6 +1420,10 @@
             <label>Budget Confirmed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGCb</field>
+            <label>Collected Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
         </opportunityListFieldsLabelMappings>
@@ -1294,6 +1434,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNp3</field>
             <label>Customer Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMBZ</field>
+            <label>Customer Type</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNqf</field>
@@ -1328,6 +1472,10 @@
             <label>Final Unit Cancellation Approval Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000ApTjl</field>
+            <label>First Booking Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOA1</field>
             <label>Funding Type</label>
         </opportunityListFieldsLabelMappings>
@@ -1342,6 +1490,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOGT</field>
             <label>Is Demand Letter Sent</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqT49</field>
+            <label>KYC Verification</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -1360,8 +1512,16 @@
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMMr</field>
+            <label>NOC</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOYD</field>
             <label>Occupation</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGPV</field>
+            <label>Outstanding Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOgH</field>
@@ -1428,6 +1588,10 @@
             <label>Sales User</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGHR</field>
+            <label>Sale Value Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPFl</field>
             <label>Specify Country</label>
         </opportunityListFieldsLabelMappings>
@@ -1454,6 +1618,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqM6j</field>
+            <label>Type of Booking</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPZ7</field>
@@ -1520,10 +1688,12 @@
             <field>OPPORTUNITY.FISCAL_YEAR</field>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
             <field>OPPORTUNITY.FISCAL_PERIOD</field>
+            <field>OPPORTUNITY.RECORDTYPE</field>
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>FORECASTEDMFJVALUE</field>
+            <field>00NO400000AqGSj</field>
             <field>00NO400000AcNU5</field>
             <field>00NO400000AcNVh</field>
             <field>00NO400000AcNXJ</field>
@@ -1531,12 +1701,16 @@
             <field>00NO400000AcNdl</field>
             <field>00NO400000AcNfN</field>
             <field>00NO400000AcNgz</field>
+            <field>00NO400000AqMJd</field>
+            <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
             <field>00NO400000AcNkD</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
+            <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
             <field>00NO400000AcNsH</field>
             <field>00NO400000AcNtt</field>
@@ -1545,15 +1719,19 @@
             <field>00NO400000AcO3Z</field>
             <field>00NfK000003tpHw</field>
             <field>00NO400000AcO8P</field>
+            <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000AcOd3</field>
+            <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -1570,6 +1748,7 @@
             <field>00NfK000003tpHx</field>
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
+            <field>00NO400000AqGHR</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
@@ -1577,6 +1756,7 @@
             <field>00NO400000AcPVt</field>
             <field>00NO400000AcOtC</field>
             <field>00NO400000AcPXV</field>
+            <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
@@ -1727,6 +1907,10 @@
             <label>Fiscal Period</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>OPPORTUNITY.RECORDTYPE</field>
+            <label>Opportunity Record Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <label>Last Activity</label>
         </opportunityListFieldsLabelMappings>
@@ -1741,6 +1925,10 @@
         <opportunityListFieldsLabelMappings>
             <field>FORECASTEDMFJVALUE</field>
             <label>Manager Judgment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGSj</field>
+            <label>10% Collected</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNU5</field>
@@ -1771,6 +1959,14 @@
             <label>Allotment Letter Submitted</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMJd</field>
+            <label>AOS Handover Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMGP</field>
+            <label>AOS Stage</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNib</field>
             <label>Balance Due Amount</label>
         </opportunityListFieldsLabelMappings>
@@ -1783,6 +1979,10 @@
             <label>Budget Confirmed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGCb</field>
+            <label>Collected Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
         </opportunityListFieldsLabelMappings>
@@ -1793,6 +1993,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNp3</field>
             <label>Customer Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMBZ</field>
+            <label>Customer Type</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNqf</field>
@@ -1827,6 +2031,10 @@
             <label>Final Unit Cancellation Approval Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000ApTjl</field>
+            <label>First Booking Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOA1</field>
             <label>Funding Type</label>
         </opportunityListFieldsLabelMappings>
@@ -1841,6 +2049,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOGT</field>
             <label>Is Demand Letter Sent</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqT49</field>
+            <label>KYC Verification</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -1859,8 +2071,16 @@
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMMr</field>
+            <label>NOC</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOYD</field>
             <label>Occupation</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGPV</field>
+            <label>Outstanding Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOgH</field>
@@ -1927,6 +2147,10 @@
             <label>Sales User</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGHR</field>
+            <label>Sale Value Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPFl</field>
             <label>Specify Country</label>
         </opportunityListFieldsLabelMappings>
@@ -1953,6 +2177,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqM6j</field>
+            <label>Type of Booking</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPZ7</field>
@@ -2018,10 +2246,12 @@
             <field>OPPORTUNITY.FISCAL_YEAR</field>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
             <field>OPPORTUNITY.FISCAL_PERIOD</field>
+            <field>OPPORTUNITY.RECORDTYPE</field>
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>FORECASTEDMFJVALUE</field>
+            <field>00NO400000AqGSj</field>
             <field>00NO400000AcNU5</field>
             <field>00NO400000AcNVh</field>
             <field>00NO400000AcNXJ</field>
@@ -2029,12 +2259,16 @@
             <field>00NO400000AcNdl</field>
             <field>00NO400000AcNfN</field>
             <field>00NO400000AcNgz</field>
+            <field>00NO400000AqMJd</field>
+            <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
             <field>00NO400000AcNkD</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
+            <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
             <field>00NO400000AcNsH</field>
             <field>00NO400000AcNtt</field>
@@ -2043,15 +2277,19 @@
             <field>00NO400000AcO3Z</field>
             <field>00NfK000003tpHw</field>
             <field>00NO400000AcO8P</field>
+            <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000AcOd3</field>
+            <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -2068,6 +2306,7 @@
             <field>00NfK000003tpHx</field>
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
+            <field>00NO400000AqGHR</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
@@ -2075,6 +2314,7 @@
             <field>00NO400000AcPVt</field>
             <field>00NO400000AcOtC</field>
             <field>00NO400000AcPXV</field>
+            <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
@@ -2229,6 +2469,10 @@
             <label>Fiscal Period</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>OPPORTUNITY.RECORDTYPE</field>
+            <label>Opportunity Record Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <label>Last Activity</label>
         </opportunityListFieldsLabelMappings>
@@ -2243,6 +2487,10 @@
         <opportunityListFieldsLabelMappings>
             <field>FORECASTEDMFJVALUE</field>
             <label>Manager Judgment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGSj</field>
+            <label>10% Collected</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNU5</field>
@@ -2273,6 +2521,14 @@
             <label>Allotment Letter Submitted</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMJd</field>
+            <label>AOS Handover Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMGP</field>
+            <label>AOS Stage</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNib</field>
             <label>Balance Due Amount</label>
         </opportunityListFieldsLabelMappings>
@@ -2285,6 +2541,10 @@
             <label>Budget Confirmed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGCb</field>
+            <label>Collected Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
         </opportunityListFieldsLabelMappings>
@@ -2295,6 +2555,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNp3</field>
             <label>Customer Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMBZ</field>
+            <label>Customer Type</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNqf</field>
@@ -2329,6 +2593,10 @@
             <label>Final Unit Cancellation Approval Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000ApTjl</field>
+            <label>First Booking Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOA1</field>
             <label>Funding Type</label>
         </opportunityListFieldsLabelMappings>
@@ -2343,6 +2611,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOGT</field>
             <label>Is Demand Letter Sent</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqT49</field>
+            <label>KYC Verification</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -2361,8 +2633,16 @@
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMMr</field>
+            <label>NOC</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOYD</field>
             <label>Occupation</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGPV</field>
+            <label>Outstanding Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOgH</field>
@@ -2429,6 +2709,10 @@
             <label>Sales User</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGHR</field>
+            <label>Sale Value Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPFl</field>
             <label>Specify Country</label>
         </opportunityListFieldsLabelMappings>
@@ -2455,6 +2739,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqM6j</field>
+            <label>Type of Booking</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPZ7</field>
@@ -2521,10 +2809,12 @@
             <field>OPPORTUNITY.FISCAL_YEAR</field>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
             <field>OPPORTUNITY.FISCAL_PERIOD</field>
+            <field>OPPORTUNITY.RECORDTYPE</field>
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>FORECASTEDMFJVALUE</field>
+            <field>00NO400000AqGSj</field>
             <field>00NO400000AcNU5</field>
             <field>00NO400000AcNVh</field>
             <field>00NO400000AcNXJ</field>
@@ -2532,12 +2822,16 @@
             <field>00NO400000AcNdl</field>
             <field>00NO400000AcNfN</field>
             <field>00NO400000AcNgz</field>
+            <field>00NO400000AqMJd</field>
+            <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
             <field>00NO400000AcNkD</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
+            <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
             <field>00NO400000AcNsH</field>
             <field>00NO400000AcNtt</field>
@@ -2546,15 +2840,19 @@
             <field>00NO400000AcO3Z</field>
             <field>00NfK000003tpHw</field>
             <field>00NO400000AcO8P</field>
+            <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000AcOd3</field>
+            <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -2571,6 +2869,7 @@
             <field>00NfK000003tpHx</field>
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
+            <field>00NO400000AqGHR</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
@@ -2578,6 +2877,7 @@
             <field>00NO400000AcPVt</field>
             <field>00NO400000AcOtC</field>
             <field>00NO400000AcPXV</field>
+            <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
@@ -2728,6 +3028,10 @@
             <label>Fiscal Period</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>OPPORTUNITY.RECORDTYPE</field>
+            <label>Opportunity Record Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <label>Last Activity</label>
         </opportunityListFieldsLabelMappings>
@@ -2742,6 +3046,10 @@
         <opportunityListFieldsLabelMappings>
             <field>FORECASTEDMFJVALUE</field>
             <label>Manager Judgment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGSj</field>
+            <label>10% Collected</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNU5</field>
@@ -2772,6 +3080,14 @@
             <label>Allotment Letter Submitted</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMJd</field>
+            <label>AOS Handover Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMGP</field>
+            <label>AOS Stage</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNib</field>
             <label>Balance Due Amount</label>
         </opportunityListFieldsLabelMappings>
@@ -2784,6 +3100,10 @@
             <label>Budget Confirmed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGCb</field>
+            <label>Collected Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
         </opportunityListFieldsLabelMappings>
@@ -2794,6 +3114,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNp3</field>
             <label>Customer Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMBZ</field>
+            <label>Customer Type</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNqf</field>
@@ -2828,6 +3152,10 @@
             <label>Final Unit Cancellation Approval Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000ApTjl</field>
+            <label>First Booking Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOA1</field>
             <label>Funding Type</label>
         </opportunityListFieldsLabelMappings>
@@ -2842,6 +3170,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOGT</field>
             <label>Is Demand Letter Sent</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqT49</field>
+            <label>KYC Verification</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -2860,8 +3192,16 @@
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMMr</field>
+            <label>NOC</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOYD</field>
             <label>Occupation</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGPV</field>
+            <label>Outstanding Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOgH</field>
@@ -2928,6 +3268,10 @@
             <label>Sales User</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGHR</field>
+            <label>Sale Value Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPFl</field>
             <label>Specify Country</label>
         </opportunityListFieldsLabelMappings>
@@ -2954,6 +3298,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqM6j</field>
+            <label>Type of Booking</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPZ7</field>
@@ -3019,10 +3367,12 @@
             <field>OPPORTUNITY.FISCAL_YEAR</field>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
             <field>OPPORTUNITY.FISCAL_PERIOD</field>
+            <field>OPPORTUNITY.RECORDTYPE</field>
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>FORECASTEDMFJVALUE</field>
+            <field>00NO400000AqGSj</field>
             <field>00NO400000AcNU5</field>
             <field>00NO400000AcNVh</field>
             <field>00NO400000AcNXJ</field>
@@ -3030,12 +3380,16 @@
             <field>00NO400000AcNdl</field>
             <field>00NO400000AcNfN</field>
             <field>00NO400000AcNgz</field>
+            <field>00NO400000AqMJd</field>
+            <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
             <field>00NO400000AcNkD</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
+            <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
             <field>00NO400000AcNsH</field>
             <field>00NO400000AcNtt</field>
@@ -3044,15 +3398,19 @@
             <field>00NO400000AcO3Z</field>
             <field>00NfK000003tpHw</field>
             <field>00NO400000AcO8P</field>
+            <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000AcOd3</field>
+            <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -3069,6 +3427,7 @@
             <field>00NfK000003tpHx</field>
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
+            <field>00NO400000AqGHR</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
@@ -3076,6 +3435,7 @@
             <field>00NO400000AcPVt</field>
             <field>00NO400000AcOtC</field>
             <field>00NO400000AcPXV</field>
+            <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
@@ -3230,6 +3590,10 @@
             <label>Fiscal Period</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>OPPORTUNITY.RECORDTYPE</field>
+            <label>Opportunity Record Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <label>Last Activity</label>
         </opportunityListFieldsLabelMappings>
@@ -3244,6 +3608,10 @@
         <opportunityListFieldsLabelMappings>
             <field>FORECASTEDMFJVALUE</field>
             <label>Manager Judgment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGSj</field>
+            <label>10% Collected</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNU5</field>
@@ -3274,6 +3642,14 @@
             <label>Allotment Letter Submitted</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMJd</field>
+            <label>AOS Handover Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMGP</field>
+            <label>AOS Stage</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNib</field>
             <label>Balance Due Amount</label>
         </opportunityListFieldsLabelMappings>
@@ -3286,6 +3662,10 @@
             <label>Budget Confirmed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGCb</field>
+            <label>Collected Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
         </opportunityListFieldsLabelMappings>
@@ -3296,6 +3676,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNp3</field>
             <label>Customer Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMBZ</field>
+            <label>Customer Type</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNqf</field>
@@ -3330,6 +3714,10 @@
             <label>Final Unit Cancellation Approval Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000ApTjl</field>
+            <label>First Booking Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOA1</field>
             <label>Funding Type</label>
         </opportunityListFieldsLabelMappings>
@@ -3344,6 +3732,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOGT</field>
             <label>Is Demand Letter Sent</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqT49</field>
+            <label>KYC Verification</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -3362,8 +3754,16 @@
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMMr</field>
+            <label>NOC</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOYD</field>
             <label>Occupation</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGPV</field>
+            <label>Outstanding Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOgH</field>
@@ -3430,6 +3830,10 @@
             <label>Sales User</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGHR</field>
+            <label>Sale Value Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPFl</field>
             <label>Specify Country</label>
         </opportunityListFieldsLabelMappings>
@@ -3456,6 +3860,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqM6j</field>
+            <label>Type of Booking</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPZ7</field>
@@ -3522,10 +3930,12 @@
             <field>OPPORTUNITY.FISCAL_YEAR</field>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
             <field>OPPORTUNITY.FISCAL_PERIOD</field>
+            <field>OPPORTUNITY.RECORDTYPE</field>
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>FORECASTEDMFJVALUE</field>
+            <field>00NO400000AqGSj</field>
             <field>00NO400000AcNU5</field>
             <field>00NO400000AcNVh</field>
             <field>00NO400000AcNXJ</field>
@@ -3533,12 +3943,16 @@
             <field>00NO400000AcNdl</field>
             <field>00NO400000AcNfN</field>
             <field>00NO400000AcNgz</field>
+            <field>00NO400000AqMJd</field>
+            <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
             <field>00NO400000AcNkD</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
+            <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
             <field>00NO400000AcNsH</field>
             <field>00NO400000AcNtt</field>
@@ -3547,15 +3961,19 @@
             <field>00NO400000AcO3Z</field>
             <field>00NfK000003tpHw</field>
             <field>00NO400000AcO8P</field>
+            <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000AcOd3</field>
+            <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -3572,6 +3990,7 @@
             <field>00NfK000003tpHx</field>
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
+            <field>00NO400000AqGHR</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
@@ -3579,6 +3998,7 @@
             <field>00NO400000AcPVt</field>
             <field>00NO400000AcOtC</field>
             <field>00NO400000AcPXV</field>
+            <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
@@ -3729,6 +4149,10 @@
             <label>Fiscal Period</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>OPPORTUNITY.RECORDTYPE</field>
+            <label>Opportunity Record Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <label>Last Activity</label>
         </opportunityListFieldsLabelMappings>
@@ -3743,6 +4167,10 @@
         <opportunityListFieldsLabelMappings>
             <field>FORECASTEDMFJVALUE</field>
             <label>Manager Judgment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGSj</field>
+            <label>10% Collected</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNU5</field>
@@ -3773,6 +4201,14 @@
             <label>Allotment Letter Submitted</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMJd</field>
+            <label>AOS Handover Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMGP</field>
+            <label>AOS Stage</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNib</field>
             <label>Balance Due Amount</label>
         </opportunityListFieldsLabelMappings>
@@ -3785,6 +4221,10 @@
             <label>Budget Confirmed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGCb</field>
+            <label>Collected Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
         </opportunityListFieldsLabelMappings>
@@ -3795,6 +4235,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNp3</field>
             <label>Customer Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMBZ</field>
+            <label>Customer Type</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNqf</field>
@@ -3829,6 +4273,10 @@
             <label>Final Unit Cancellation Approval Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000ApTjl</field>
+            <label>First Booking Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOA1</field>
             <label>Funding Type</label>
         </opportunityListFieldsLabelMappings>
@@ -3843,6 +4291,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOGT</field>
             <label>Is Demand Letter Sent</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqT49</field>
+            <label>KYC Verification</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -3861,8 +4313,16 @@
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMMr</field>
+            <label>NOC</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOYD</field>
             <label>Occupation</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGPV</field>
+            <label>Outstanding Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOgH</field>
@@ -3929,6 +4389,10 @@
             <label>Sales User</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGHR</field>
+            <label>Sale Value Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPFl</field>
             <label>Specify Country</label>
         </opportunityListFieldsLabelMappings>
@@ -3955,6 +4419,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqM6j</field>
+            <label>Type of Booking</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPZ7</field>
@@ -4020,10 +4488,12 @@
             <field>OPPORTUNITY.FISCAL_YEAR</field>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
             <field>OPPORTUNITY.FISCAL_PERIOD</field>
+            <field>OPPORTUNITY.RECORDTYPE</field>
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>FORECASTEDMFJVALUE</field>
+            <field>00NO400000AqGSj</field>
             <field>00NO400000AcNU5</field>
             <field>00NO400000AcNVh</field>
             <field>00NO400000AcNXJ</field>
@@ -4031,12 +4501,16 @@
             <field>00NO400000AcNdl</field>
             <field>00NO400000AcNfN</field>
             <field>00NO400000AcNgz</field>
+            <field>00NO400000AqMJd</field>
+            <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
             <field>00NO400000AcNkD</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
+            <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
             <field>00NO400000AcNsH</field>
             <field>00NO400000AcNtt</field>
@@ -4045,15 +4519,19 @@
             <field>00NO400000AcO3Z</field>
             <field>00NfK000003tpHw</field>
             <field>00NO400000AcO8P</field>
+            <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000AcOd3</field>
+            <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -4070,6 +4548,7 @@
             <field>00NfK000003tpHx</field>
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
+            <field>00NO400000AqGHR</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
@@ -4077,6 +4556,7 @@
             <field>00NO400000AcPVt</field>
             <field>00NO400000AcOtC</field>
             <field>00NO400000AcPXV</field>
+            <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
@@ -4231,6 +4711,10 @@
             <label>Fiscal Period</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>OPPORTUNITY.RECORDTYPE</field>
+            <label>Opportunity Record Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <label>Last Activity</label>
         </opportunityListFieldsLabelMappings>
@@ -4245,6 +4729,10 @@
         <opportunityListFieldsLabelMappings>
             <field>FORECASTEDMFJVALUE</field>
             <label>Manager Judgment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGSj</field>
+            <label>10% Collected</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNU5</field>
@@ -4275,6 +4763,14 @@
             <label>Allotment Letter Submitted</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMJd</field>
+            <label>AOS Handover Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMGP</field>
+            <label>AOS Stage</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNib</field>
             <label>Balance Due Amount</label>
         </opportunityListFieldsLabelMappings>
@@ -4287,6 +4783,10 @@
             <label>Budget Confirmed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGCb</field>
+            <label>Collected Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
         </opportunityListFieldsLabelMappings>
@@ -4297,6 +4797,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNp3</field>
             <label>Customer Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMBZ</field>
+            <label>Customer Type</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNqf</field>
@@ -4331,6 +4835,10 @@
             <label>Final Unit Cancellation Approval Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000ApTjl</field>
+            <label>First Booking Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOA1</field>
             <label>Funding Type</label>
         </opportunityListFieldsLabelMappings>
@@ -4345,6 +4853,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOGT</field>
             <label>Is Demand Letter Sent</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqT49</field>
+            <label>KYC Verification</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -4363,8 +4875,16 @@
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMMr</field>
+            <label>NOC</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOYD</field>
             <label>Occupation</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGPV</field>
+            <label>Outstanding Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOgH</field>
@@ -4431,6 +4951,10 @@
             <label>Sales User</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGHR</field>
+            <label>Sale Value Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPFl</field>
             <label>Specify Country</label>
         </opportunityListFieldsLabelMappings>
@@ -4457,6 +4981,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqM6j</field>
+            <label>Type of Booking</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPZ7</field>
@@ -4523,10 +5051,12 @@
             <field>OPPORTUNITY.FISCAL_YEAR</field>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
             <field>OPPORTUNITY.FISCAL_PERIOD</field>
+            <field>OPPORTUNITY.RECORDTYPE</field>
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>FORECASTEDMFJVALUE</field>
+            <field>00NO400000AqGSj</field>
             <field>00NO400000AcNU5</field>
             <field>00NO400000AcNVh</field>
             <field>00NO400000AcNXJ</field>
@@ -4534,12 +5064,16 @@
             <field>00NO400000AcNdl</field>
             <field>00NO400000AcNfN</field>
             <field>00NO400000AcNgz</field>
+            <field>00NO400000AqMJd</field>
+            <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
             <field>00NO400000AcNkD</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
+            <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
             <field>00NO400000AcNsH</field>
             <field>00NO400000AcNtt</field>
@@ -4548,15 +5082,19 @@
             <field>00NO400000AcO3Z</field>
             <field>00NfK000003tpHw</field>
             <field>00NO400000AcO8P</field>
+            <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000AcOd3</field>
+            <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -4573,6 +5111,7 @@
             <field>00NfK000003tpHx</field>
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
+            <field>00NO400000AqGHR</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
@@ -4580,6 +5119,7 @@
             <field>00NO400000AcPVt</field>
             <field>00NO400000AcOtC</field>
             <field>00NO400000AcPXV</field>
+            <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
@@ -4730,6 +5270,10 @@
             <label>Fiscal Period</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>OPPORTUNITY.RECORDTYPE</field>
+            <label>Opportunity Record Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <label>Last Activity</label>
         </opportunityListFieldsLabelMappings>
@@ -4744,6 +5288,10 @@
         <opportunityListFieldsLabelMappings>
             <field>FORECASTEDMFJVALUE</field>
             <label>Manager Judgment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGSj</field>
+            <label>10% Collected</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNU5</field>
@@ -4774,6 +5322,14 @@
             <label>Allotment Letter Submitted</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMJd</field>
+            <label>AOS Handover Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMGP</field>
+            <label>AOS Stage</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNib</field>
             <label>Balance Due Amount</label>
         </opportunityListFieldsLabelMappings>
@@ -4786,6 +5342,10 @@
             <label>Budget Confirmed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGCb</field>
+            <label>Collected Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
         </opportunityListFieldsLabelMappings>
@@ -4796,6 +5356,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNp3</field>
             <label>Customer Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMBZ</field>
+            <label>Customer Type</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNqf</field>
@@ -4830,6 +5394,10 @@
             <label>Final Unit Cancellation Approval Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000ApTjl</field>
+            <label>First Booking Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOA1</field>
             <label>Funding Type</label>
         </opportunityListFieldsLabelMappings>
@@ -4844,6 +5412,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOGT</field>
             <label>Is Demand Letter Sent</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqT49</field>
+            <label>KYC Verification</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -4862,8 +5434,16 @@
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMMr</field>
+            <label>NOC</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOYD</field>
             <label>Occupation</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGPV</field>
+            <label>Outstanding Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOgH</field>
@@ -4930,6 +5510,10 @@
             <label>Sales User</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGHR</field>
+            <label>Sale Value Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPFl</field>
             <label>Specify Country</label>
         </opportunityListFieldsLabelMappings>
@@ -4956,6 +5540,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqM6j</field>
+            <label>Type of Booking</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPZ7</field>
@@ -5021,10 +5609,12 @@
             <field>OPPORTUNITY.FISCAL_YEAR</field>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
             <field>OPPORTUNITY.FISCAL_PERIOD</field>
+            <field>OPPORTUNITY.RECORDTYPE</field>
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>FORECASTEDMFJVALUE</field>
+            <field>00NO400000AqGSj</field>
             <field>00NO400000AcNU5</field>
             <field>00NO400000AcNVh</field>
             <field>00NO400000AcNXJ</field>
@@ -5032,12 +5622,16 @@
             <field>00NO400000AcNdl</field>
             <field>00NO400000AcNfN</field>
             <field>00NO400000AcNgz</field>
+            <field>00NO400000AqMJd</field>
+            <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
             <field>00NO400000AcNkD</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
+            <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
             <field>00NO400000AcNsH</field>
             <field>00NO400000AcNtt</field>
@@ -5046,15 +5640,19 @@
             <field>00NO400000AcO3Z</field>
             <field>00NfK000003tpHw</field>
             <field>00NO400000AcO8P</field>
+            <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000AcOd3</field>
+            <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -5071,6 +5669,7 @@
             <field>00NfK000003tpHx</field>
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
+            <field>00NO400000AqGHR</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
@@ -5078,6 +5677,7 @@
             <field>00NO400000AcPVt</field>
             <field>00NO400000AcOtC</field>
             <field>00NO400000AcPXV</field>
+            <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
@@ -5232,6 +5832,10 @@
             <label>Fiscal Period</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>OPPORTUNITY.RECORDTYPE</field>
+            <label>Opportunity Record Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <label>Last Activity</label>
         </opportunityListFieldsLabelMappings>
@@ -5246,6 +5850,10 @@
         <opportunityListFieldsLabelMappings>
             <field>FORECASTEDMFJVALUE</field>
             <label>Manager Judgment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGSj</field>
+            <label>10% Collected</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNU5</field>
@@ -5276,6 +5884,14 @@
             <label>Allotment Letter Submitted</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMJd</field>
+            <label>AOS Handover Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMGP</field>
+            <label>AOS Stage</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNib</field>
             <label>Balance Due Amount</label>
         </opportunityListFieldsLabelMappings>
@@ -5288,6 +5904,10 @@
             <label>Budget Confirmed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGCb</field>
+            <label>Collected Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
         </opportunityListFieldsLabelMappings>
@@ -5298,6 +5918,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNp3</field>
             <label>Customer Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMBZ</field>
+            <label>Customer Type</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNqf</field>
@@ -5332,6 +5956,10 @@
             <label>Final Unit Cancellation Approval Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000ApTjl</field>
+            <label>First Booking Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOA1</field>
             <label>Funding Type</label>
         </opportunityListFieldsLabelMappings>
@@ -5346,6 +5974,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOGT</field>
             <label>Is Demand Letter Sent</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqT49</field>
+            <label>KYC Verification</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -5364,8 +5996,16 @@
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMMr</field>
+            <label>NOC</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOYD</field>
             <label>Occupation</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGPV</field>
+            <label>Outstanding Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOgH</field>
@@ -5432,6 +6072,10 @@
             <label>Sales User</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGHR</field>
+            <label>Sale Value Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPFl</field>
             <label>Specify Country</label>
         </opportunityListFieldsLabelMappings>
@@ -5458,6 +6102,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqM6j</field>
+            <label>Type of Booking</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPZ7</field>
@@ -5524,10 +6172,12 @@
             <field>OPPORTUNITY.FISCAL_YEAR</field>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
             <field>OPPORTUNITY.FISCAL_PERIOD</field>
+            <field>OPPORTUNITY.RECORDTYPE</field>
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>FORECASTEDMFJVALUE</field>
+            <field>00NO400000AqGSj</field>
             <field>00NO400000AcNU5</field>
             <field>00NO400000AcNVh</field>
             <field>00NO400000AcNXJ</field>
@@ -5535,12 +6185,16 @@
             <field>00NO400000AcNdl</field>
             <field>00NO400000AcNfN</field>
             <field>00NO400000AcNgz</field>
+            <field>00NO400000AqMJd</field>
+            <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
             <field>00NO400000AcNkD</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
+            <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
             <field>00NO400000AcNsH</field>
             <field>00NO400000AcNtt</field>
@@ -5549,15 +6203,19 @@
             <field>00NO400000AcO3Z</field>
             <field>00NfK000003tpHw</field>
             <field>00NO400000AcO8P</field>
+            <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000AcOd3</field>
+            <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -5574,6 +6232,7 @@
             <field>00NfK000003tpHx</field>
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
+            <field>00NO400000AqGHR</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
@@ -5581,6 +6240,7 @@
             <field>00NO400000AcPVt</field>
             <field>00NO400000AcOtC</field>
             <field>00NO400000AcPXV</field>
+            <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
@@ -5731,6 +6391,10 @@
             <label>Fiscal Period</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>OPPORTUNITY.RECORDTYPE</field>
+            <label>Opportunity Record Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <label>Last Activity</label>
         </opportunityListFieldsLabelMappings>
@@ -5745,6 +6409,10 @@
         <opportunityListFieldsLabelMappings>
             <field>FORECASTEDMFJVALUE</field>
             <label>Manager Judgment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGSj</field>
+            <label>10% Collected</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNU5</field>
@@ -5775,6 +6443,14 @@
             <label>Allotment Letter Submitted</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMJd</field>
+            <label>AOS Handover Type</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMGP</field>
+            <label>AOS Stage</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNib</field>
             <label>Balance Due Amount</label>
         </opportunityListFieldsLabelMappings>
@@ -5787,6 +6463,10 @@
             <label>Budget Confirmed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGCb</field>
+            <label>Collected Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
         </opportunityListFieldsLabelMappings>
@@ -5797,6 +6477,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNp3</field>
             <label>Customer Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMBZ</field>
+            <label>Customer Type</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNqf</field>
@@ -5831,6 +6515,10 @@
             <label>Final Unit Cancellation Approval Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000ApTjl</field>
+            <label>First Booking Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOA1</field>
             <label>Funding Type</label>
         </opportunityListFieldsLabelMappings>
@@ -5845,6 +6533,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOGT</field>
             <label>Is Demand Letter Sent</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqT49</field>
+            <label>KYC Verification</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -5863,8 +6555,16 @@
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqMMr</field>
+            <label>NOC</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOYD</field>
             <label>Occupation</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGPV</field>
+            <label>Outstanding Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOgH</field>
@@ -5931,6 +6631,10 @@
             <label>Sales User</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqGHR</field>
+            <label>Sale Value Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPFl</field>
             <label>Specify Country</label>
         </opportunityListFieldsLabelMappings>
@@ -5957,6 +6661,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AqM6j</field>
+            <label>Type of Booking</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPZ7</field>
@@ -6022,10 +6730,12 @@
             <field>OPPORTUNITY.FISCAL_YEAR</field>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
             <field>OPPORTUNITY.FISCAL_PERIOD</field>
+            <field>OPPORTUNITY.RECORDTYPE</field>
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
             <field>FORECASTEDMFJVALUE</field>
+            <field>00NO400000AqGSj</field>
             <field>00NO400000AcNU5</field>
             <field>00NO400000AcNVh</field>
             <field>00NO400000AcNXJ</field>
@@ -6033,12 +6743,16 @@
             <field>00NO400000AcNdl</field>
             <field>00NO400000AcNfN</field>
             <field>00NO400000AcNgz</field>
+            <field>00NO400000AqMJd</field>
+            <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
             <field>00NO400000AcNkD</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
+            <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
             <field>00NO400000AcNsH</field>
             <field>00NO400000AcNtt</field>
@@ -6047,15 +6761,19 @@
             <field>00NO400000AcO3Z</field>
             <field>00NfK000003tpHw</field>
             <field>00NO400000AcO8P</field>
+            <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000AcOd3</field>
+            <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -6072,6 +6790,7 @@
             <field>00NfK000003tpHx</field>
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
+            <field>00NO400000AqGHR</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
@@ -6079,6 +6798,7 @@
             <field>00NO400000AcPVt</field>
             <field>00NO400000AcOtC</field>
             <field>00NO400000AcPXV</field>
+            <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>

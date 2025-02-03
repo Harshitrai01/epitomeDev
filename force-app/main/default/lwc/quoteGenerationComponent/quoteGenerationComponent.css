@@ -1,0 +1,70 @@
+dummyClass {
+    border: 1px solid #0c0c0c;
+}
+
+.plotDetails{
+    border: 1px solid #d8dde6; 
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
+    padding: 2px;
+    background-color: #ffffff;
+}
+
+.tbaleDetails{
+    border: 1px solid #d8dde6; 
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
+    padding: 10px; /* Padding for inner spacing */
+    background-color: #ffffff; 
+    margin-top: 10px;
+}
+
+.custom-button:hover {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+    transition: box-shadow 0.3s ease; /* Smooth transition effect */
+}
+
+.datatable-container {
+    padding: 1px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: #f9f9f9;
+    margin-top: 20px;
+    /* max-height: 400px; 
+    overflow-y: auto;  */
+}
+ 
+.datatable-header {
+    background-color: #0070d2;
+    color: white;
+    font-weight: bold;
+}
+
+
+.datatable-row {
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
+}
+
+.datatable-row:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.datatable-cell {
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.datatable-button {
+    background-color: #0070d2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.datatable-button:hover {
+    background-color: #005bb5;
+}

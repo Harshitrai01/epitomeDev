@@ -1,0 +1,476 @@
+<template>
+	<template if:true={isLoading}>
+		<lightning-spinner variant="brand" size="medium"> </lightning-spinner>
+	</template>
+	<template if:false={isLoading}>
+		<lightning-card>
+			<lightning-layout horizontal-align="space" class="x-small">
+				<lightning-layout-item size="4" padding="around-medium" class="slds-align_absolute-left">
+					<div class="slds-grid slds-gutters">
+						<div class="slds-col">
+							<div class="header">Quotation</div>
+						</div>
+					</div>
+					<div class="slds-grid slds-gutters">
+						<div class="slds-col" style="margin-top:0px; width: 60%;">
+							<lightning-input disabled={isdisabled} type="text" label="" placeholder="type here..."
+								value={quoteData.Name} data-namevalue="Name"
+								onchange={handelHeaderChange}></lightning-input>
+						</div>
+					</div>
+				</lightning-layout-item>
+				<lightning-layout-item size="4" padding="around-medium" class="slds-align_absolute-left">
+					<div class="slds-grid slds-gutters">
+						<div class="slds-col">
+							<div class="header">Is Sample</div>
+						</div>
+					</div>
+					<div class="slds-grid slds-gutters">
+						<div class="slds-col" style="margin-top: 14px; width: 60%;">
+							<lightning-input type="checkbox" data-namevalue="IsSample" label="" disabled={isdisabled}
+								checked={quoteData.IsSample__c} onchange={handelHeaderChange}></lightning-input>
+						</div>
+					</div>
+				</lightning-layout-item>
+				<lightning-layout-item size="4" padding="around-medium" class="slds-align_absolute-left">
+
+					<div class="slds-grid slds-gutters">
+						<div class="slds-col">
+							<div class="header">Quotation Date</div>
+						</div>
+					</div>
+					<div class="slds-grid slds-gutters">
+						<div class="slds-col" style="margin-top: 0px; width: 60%;">
+							<lightning-input type="date" name="input2" label="" disabled
+								value={quoteData.CreatedDate}></lightning-input>
+						</div>
+					</div>
+				</lightning-layout-item>
+			</lightning-layout>
+		</lightning-card>
+		<lightning-card>
+			<lightning-layout horizontal-align="space" class="x-small">
+				<lightning-layout-item size="4" padding="around-medium" class="slds-align_absolute-left">
+					<div class="componentWrapper">
+						<div class="header">Basic Unit Detail</div>
+						<div class="box slds-theme–default table-container">
+							<table
+								class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped custom-table">
+								<thead>
+									<tr>
+										<td><b>Record Details</b></td>
+										<td><b>Record Values</b></td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Customer Name</td>
+										<td>{OpportunityRecord}</td>
+									</tr>
+									<template if:true={isPlot}>
+										<tr>
+											<td>Phase</td>
+											<td>{quoteData.Phase__r.Name}</td>
+										</tr>
+										<tr>
+											<td>Plot Name</td>
+											<td>{quoteData.Unit__r.Name}</td>
+										</tr>
+										<tr>
+											<td>Facing</td>
+											<td>{quoteData.Unit__r.Plot_Facing__c}</td>
+										</tr>
+										<tr>
+											<td>Plot Size</td>
+											<td>{quoteData.Unit__r.Plot_Size__c}</td>
+										</tr>
+										<tr>
+											<td>Flat Number</td>
+											<td>{quoteData.Unit__r.Flat_Number__c}</td>
+										</tr>
+                                        <tr>
+											<td>Floor Number</td>
+											<td>{quoteData.Unit__r.Floor_Number__c}</td>
+										</tr>
+                                        <tr>
+											<td>Unit Code</td>
+											<td>{quoteData.Unit__r.Unit_Code__c}</td>
+										</tr>
+									</template>
+								</tbody>
+							</table>
+							<template if:true={isShowModal}>
+								<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01"
+									aria-modal="true" aria-describedby="modal-content-id-1"
+									class="slds-modal slds-fade-in-open">
+									<div class="slds-modal__container">
+										<!-- modal header start -->
+										<header class="slds-modal__header">
+											<button
+												class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+												title="Close" onclick={hideModalBox}>
+												<lightning-icon icon-name="utility:close" alternative-text="close"
+													variant="inverse" size="small"></lightning-icon>
+												<span class="slds-assistive-text">Close</span>
+											</button>
+											<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+												Apply
+												Discount
+											</h2>
+										</header>
+
+										<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+											<div style="text-align : center; margin-bottom : 10px"><b> Select Discount
+													type
+												</b>
+											</div>
+											<div class="slds-grid slds-gutters" style="margin-left: 8rem;">
+												<div class="slds-col slds-size_1-of-2">
+													<label>
+														<input type="radio" name="Per Sqft" onclick={handleRadioChange}
+															checked={isLumpsumDiscount}>Per Sqft
+													</label>
+												</div>
+												<div class="slds-col  slds-size_1-of-2">
+													<label>
+														<input type="radio" name="Scheme" title={titleInfo}
+															disabled={noSceme} onclick={handleRadioChange}
+															checked={isSchemeDiscount}>Scheme
+													</label>
+												</div>
+											</div>
+
+											<div style="margin-top :10px">
+												<template if:true={showSchemeLookup}>
+													<div class="slds-form-element slds-form-element_horizontal">
+														<label class="slds-form-element__label"
+															for="GenderId">Campaign</label>
+														<div class="slds-form-element__control">
+															<lightning-combobox name="Campaign_Discount__c"
+																label="Scheme" variant="label-hidden" id="GenderId"
+																placeholder="Select Campaign" value={campaignValue}
+																options={activeCampaignOptions} onchange={handleChange}>
+															</lightning-combobox>
+														</div>
+													</div>
+												</template>
+												<template if:true={showLumpsumDiscount}>
+													<div class="slds-form-element slds-form-element_horizontal">
+														<label class="slds-form-element__label" for="GenderId">Discount
+															(Per Sqft)</label>
+														<div class="slds-form-element__control">
+															<lightning-input type="Number" variant="label-hidden"
+																label="Discount (Lumpsum)" name="Discount_Lumpsum__c"
+																placeholder="type here..."  step="0.01" onchange={handleChange}>
+															</lightning-input>
+														</div>
+													</div>
+												</template>
+											</div>
+										</div>
+										<footer class="slds-modal__footer">
+											<lightning-button variant="Brand" label="Apply" onclick={applyDiscount}>
+											</lightning-button>
+											<button class="slds-button slds-button_neutral" onclick={hideModalBox}
+												style="margin-left : 10px">Cancel</button>
+										</footer>
+									</div>
+								</section>
+								<div class="slds-backdrop slds-backdrop_open"></div>
+							</template>
+						</div>
+					</div>
+
+					<div style="margin-top : 20px">
+						<template if:true={discountApplied}>
+							<div class="componentWrapper">
+								<div class="header">Discount Details</div>
+								<div class="box slds-theme–default table-container">
+									<table
+										class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped custom-table">
+										<tbody>
+											<tr>
+												<td>Discount Type</td>
+												<td>{quoteData.Discount_Type__c}</td>
+											</tr>
+											<tr>
+												<td>Discount</td>
+												<td>{quoteData.Discount_Value__c}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</template>
+					</div>
+					<div style="text-align : center; margin-top : 20px">
+						<template if:false={removeDiscount}>
+							<lightning-button variant="Brand" label="Apply Discount" disabled={isdisabled}
+								onclick={handleApplyDiscount}>
+							</lightning-button>
+						</template>
+						<template if:true={removeDiscount}>
+							<lightning-button variant="Brand" label="Remove Discount" disabled={isdisabled}
+								onclick={handleRemoveDiscount}>
+							</lightning-button>
+						</template>
+					</div>
+				</lightning-layout-item>
+
+				<lightning-layout-item size="4" padding="around-medium" class="slds-align_absolute-left">
+					<div class="componentWrapper">
+						<div class="header">Unit Cost Detail</div>
+						<div class="box slds-theme–default table-container">
+							<table
+								class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped custom-table">
+								<thead>
+									<tr>
+										<td><b>Record Details</b></td>
+										<td><b>Record Values</b></td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Base Price Per Sft </td>
+										<td>{quoteData.Unit__r.Base_Price_per_Sq_Ft__c}</td>
+									</tr>
+									<!-- <template for:each={plcList} for:item="row">
+										<tr key={row.label}>
+											<td>{row.label}</td>
+											<td>{row.value}</td>
+										</tr>
+									</template> -->
+									<template if:true={isPlot}>
+										<tr>
+											<td>Plot No.</td>
+											<td>{quoteData.Unit__r.Unit_Code__c}</td>
+										</tr>
+										<tr>
+											<td>Plot Dimension</td>
+											<td>{quoteData.Plot_Dimension__c}</td>
+										</tr>
+										<tr>
+											<td>Facing</td>
+											<td>{quoteData.Unit__r.Plot_Facing__c}</td>
+										</tr>
+									</template>
+									<tr>
+										<td>Total Base Rate</td>
+										<td><lightning-formatted-number value={quoteData.Total_Basic_Cost__c}
+												format-style="decimal"
+												minimum-integer-digits="2"></lightning-formatted-number></td>
+									</tr>
+									<tr class="importantRow">
+										<td class="slds-cell-wrap">Total GST For Charge(₹)</td>
+										<td><lightning-formatted-number value={quoteData.Total_Gst_For_Charge__c}
+												format-style="decimal"
+												minimum-integer-digits="2"></lightning-formatted-number></td>
+									</tr>
+									<tr class="importantRow">
+										<td class="slds-cell-wrap">Total Charge Amount (₹) </td>
+										<td><lightning-formatted-number value={quoteData.Total_Charge_Amount__c}
+												format-style="decimal"
+												minimum-integer-digits="2"></lightning-formatted-number></td>
+									</tr>
+									<tr class="importantRow">
+										<td class="slds-cell-wrap">Agreement Value with GST(₹)</td>
+										<td><lightning-formatted-number value={quoteData.AgreementValueWithGst__c}
+												format-style="decimal"
+												minimum-integer-digits="2"></lightning-formatted-number></td>
+									</tr>
+									
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<!-- <div class="componentWrapper">
+						<div class="header">Payment Milestone</div>
+						<div class="box slds-theme–default table-container">
+							<table
+								class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped custom-table">
+								<thead>
+									<tr class="slds-text-title_caps">
+										<th scope="col">
+											<div class="slds-truncate" title="Construction Milestone">Construction
+												Milestone
+											</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Percemtage">% </div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Amount (Inclusive of GST)">Amount
+												(Inclusive
+												of GST)</div>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<template for:each={milestonePlane} for:item="row">
+										<tr key={row.Id}>
+											<td data-label="Column 1">
+												<div class="slds-truncate slds-cell-wrap" title={row.Name}>{row.Name}
+												</div>
+											</td>
+											<td data-label="Column 1">
+												<div class="slds-truncate slds-cell-wrap" title={row.percentage}>
+													{row.percentage}
+												</div>
+											</td>
+											<td data-label="Column 1">
+												<div class="slds-truncate" title={row.percentageCostValue}>
+													<lightning-formatted-number value={row.percentageCostValue}
+														format-style="decimal"
+														minimum-integer-digits="2"></lightning-formatted-number>
+												</div>
+											</td>
+										</tr>
+									</template>
+									<tr class="importantRow">
+										<td data-label="Column 1">
+											<div class="slds-truncate slds-cell-wrap"
+												title="Additional Charges (at the time of Registration)">
+												Additional Charges (at the time of Registration)
+											</div>
+										</td>
+										<td data-label="Column 1">
+											<div class="slds-truncate" title="">
+											</div>
+										</td>
+										<td data-label="Column 1">
+											<div class="slds-truncate" title={TotalChargeAmount}>
+												<lightning-formatted-number value={TotalChargeAmount}
+													format-style="decimal"
+													minimum-integer-digits="2"></lightning-formatted-number>
+											</div>
+										</td>
+									</tr>
+									<tr class="importantRow">
+										<td data-label="Column 1">
+											<div class="slds-truncate slds-cell-wrap"
+												title="All Inclusive Price (₹) (excluding SD & Regn)">All
+												Inclusive Price (₹) (excluding SD & Regn)
+											</div>
+										</td>
+										<td data-label="Column 1">
+											<div class="slds-truncate" title="">
+											</div>
+										</td>
+										<td data-label="Column 1">
+											<div class="slds-truncate" title={AllInclusivePrice}>
+												<lightning-formatted-number value={AllInclusivePrice}
+													format-style="decimal"
+													minimum-integer-digits="2"></lightning-formatted-number>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div> -->
+				</lightning-layout-item>
+
+				<lightning-layout-item size="4" padding="around-medium" class="slds-align_absolute-left">
+					<template if:true={showTimer}>
+						<div class="componentWrapper">
+							<div class="header">Timer</div>
+							<div class="slds-m-bottom_medium">
+								<c-timer record-id={quoteData.Id} progress-color="#b55435"></c-timer>
+							</div>
+						</div>
+					</template>
+
+					<div class="componentWrapper">
+						<div class="header">Additional Charges</div>
+						<div class="box slds-theme–default table-container">
+							<table
+								class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped custom-table">
+								<thead>
+									<tr class="slds-text-title_caps">
+										<th scope="col">
+											<div class="slds-truncate" title="Name">Name</div>
+										</th>
+										<th scope="col">
+											<div class="slds-truncate" title="Name">Value</div>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<template for:each={Charges} for:item="row">
+										<tr key={row.Id}>
+											<td data-label="Column 1">
+												<div class="slds-truncate slds-cell-wrap" title={row.Name}>{row.Name}
+												</div>
+											</td>
+											<td data-label="Column 1">
+												<div class="slds-truncate slds-cell-wrap" title={row.calculatedValue}>
+													<lightning-formatted-number value={row.calculatedValue}
+														format-style="decimal"
+														minimum-integer-digits="2"></lightning-formatted-number>
+												</div>
+											</td>
+										</tr>
+									</template>
+									<tr class="importantRow">
+										<td data-label="Column 1">
+											<div class="slds-truncate slds-cell-wrap" title="Total Gst">Total GST
+											</div>
+										</td>
+										<td data-label="Column 1">
+											<div class="slds-truncate" title={TotalGstforCharge}>
+												<lightning-formatted-number value={TotalGstforCharge}
+													format-style="decimal"
+													minimum-integer-digits="2"></lightning-formatted-number>
+											</div>
+										</td>
+									</tr>
+									<tr class="importantRow">
+										<td data-label="Column 1 ">
+											<div class="slds-truncate slds-cell-wrap" title="Total Other charges">Total
+												Other charges
+											</div>
+										</td>
+										<td data-label="Column 1 ">
+											<div class="slds-truncate" title={TotalChargeAmount}>
+												<lightning-formatted-number value={TotalChargeAmount}
+													format-style="decimal"
+													minimum-integer-digits="2"></lightning-formatted-number>
+											</div>
+										</td>
+									</tr>
+									<tr class="importantRow">
+										<td data-label="Column 1 ">
+											<div class="slds-truncate slds-cell-wrap"
+												title="All Inclusive Price (₹) (excluding SD & Regn)">All
+												Inclusive Price (₹) (excluding SD & Regn)
+											</div>
+										</td>
+										<td data-label="Column 1">
+											<div class="slds-truncate" title={AllInclusivePrice}>
+												<lightning-formatted-number value={AllInclusivePrice}
+													format-style="decimal"
+													minimum-integer-digits="2"></lightning-formatted-number>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</lightning-layout-item>
+			</lightning-layout>
+
+			<lightning-layout horizontal-align="space">
+				<lightning-layout-item size="1" padding="around-medium" class="slds-align_absolute-right">
+					<div>
+						<lightning-button variant="brand" label="Save" disabled={isdisabled} title="Save"
+							onclick={handleSaveRecord}></lightning-button>
+					</div>
+				</lightning-layout-item>
+			</lightning-layout>
+		</lightning-card>
+	</template>
+
+</template>
