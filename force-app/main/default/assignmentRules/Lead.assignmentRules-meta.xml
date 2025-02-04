@@ -2,10 +2,23 @@
 <AssignmentRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <assignmentRule>
         <fullName>Sales Prospecting Bot</fullName>
-        <active>true</active>
+        <active>false</active>
         <ruleEntry>
             <assignedTo>Pre_Sales_Queue</assignedTo>
             <assignedToType>Queue</assignedToType>
+        </ruleEntry>
+    </assignmentRule>
+    <assignmentRule>
+        <fullName>Whatsapp Lead Assignment</fullName>
+        <active>true</active>
+        <ruleEntry>
+            <assignedTo>sachin.khanna@saasworx.ai</assignedTo>
+            <assignedToType>User</assignedToType>
+            <criteriaItems>
+                <field>Lead.LeadSource</field>
+                <operation>equals</operation>
+                <value>WhatsApp</value>
+            </criteriaItems>
         </ruleEntry>
     </assignmentRule>
 </AssignmentRules>

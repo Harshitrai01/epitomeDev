@@ -1,350 +1,354 @@
-<apex:page renderAs="pdf">
+<apex:page renderAs="pdf" showHeader="false" applyBodyTag="false" standardStylesheets="false" controller="IdbiJuSbiAosController">
     <h2 style="text-align: center;">AGREEMENT OF SALE</h2>
     
-    <p style="margin-bottom: 10px;">This Agreement of Sale (“Agreement”) executed on this ____ day of ____________, 2024, by and between:</p>
-
+    <p style="margin-bottom: 10px;">This Agreement of Sale (“Agreement”) executed on this {!currentDate}, by and between:</p>
+    
     <p style="margin-bottom: 10px;">
         <strong>EPITOME PROJECTS LLP</strong> (CIN No. AAR-2975, PAN: AASFV6192L),<br/>
         registered in India, having its office at: Plot No. C2, Commercial Sector III, Huda Techno Enclave, Sy. No. 64, Madhapur (V), Serilingampally (M), Ranga Reddy District, Telangana Pin Code: 500081.<br/>
         (Hereinafter referred to as the "Landowner No. 1")
     </p>
-
-    <p style="margin-bottom: 10px;">
-        <strong>SANDEEPA JETTA</strong> W/o. SRIKANTH JETTA, aged about 33 years, Occupation: Housewife,<br/>
-        R/o. H.No.2-1-27/30, Saraswathi Colony, Uppal Khalsa (M), Uppal, Medchal-Malkajigiri, Telangana, Pin Code: 500039.<br/>
-        (Hereinafter referred to as the "Landowner No. 2")
-    </p>
-
-    <p style="margin-bottom: 10px;">
-        <strong>VAKATI BHAGYA SREE</strong> D/o. V. GNANAIAH, aged about 29 years, Occupation: Private Employee,<br/>
-        R/o. H.No.30-276/42/14/A, Brundavan Colony, Near Petrol Bunk, Old Safilguda, Malkajgiri, Hyderabad, Telangana, Pin Code: 500056.
-    </p>
     
-    <p style="margin-bottom: 10px;">
-    <strong>Aadhaar No. XXXX XXXX 8013.</strong> (Hereinafter referred to as the "Landowner No. 3")
-</p>
-
-<p style="margin-bottom: 10px;">
-    <strong>KUMBHAM SRINIVAS REDDY</strong> S/o. RANGA REDDY, aged about 46 years, Occupation: Farmer,<br/>
-    R/o. H.No.1-34, Kalvakuntla (V), Munugode (M), Nalgonda District, Telangana, Pin Code: 504244.<br/>
-    Aadhaar No. XXXX XXXX 6872.<br/>
-    (Hereinafter referred to as the "Landowner No. 4")
-</p>
-<p style="margin-bottom: 10px;">
-    <strong>S.No.2 to 4 represented by their Development Agreement cum General Power of Attorney Holder:</strong>
-</p>
-
-<p style="margin-bottom: 10px;">
-    <strong>EPITOME PROJECTS LLP</strong> (CIN No. AAR-2975, PAN: AASFV6192L), Registered in India, having its office at: Plot No. C2, Commercial Sector III, Huda Techno Enclave, Sy. No. 64, Madhapur (V), Serilingampally (M), Ranga Reddy District, Telangana, Pin Code: 500081.
-    Represented by its Authorized Signatory: <strong>Sri NISHANT</strong> S/o. AKULA SATHYANARAYANA, aged about 36 years, R/o. Pot Market, Secunderabad, Hyderabad (Aadhaar No. XXXX XXXX 9409) authorized vide board resolution dated 24th September, 2024.
-</p>
-<p style="margin-bottom: 10px;">
-    (Hereinafter referred to as the “Promoter”). As the “Promoter”, the “Landowner No.1” and also as the “DAPGA Holder” of “Landowner No.2”, “Landowner No.3” and “Landowner No.4” by virtue of four separate registered deeds of Development Agreement cum General Power of Attorney “DAGPA” Dated: 04/01/2021 in the O/o. S.R.O. Choutuppal (2313), registered as:<br/>
-    (1). Doct.No.117/2021 of Book-I – “Landowner No.2”,<br/>
-    (2). Doct.No.118/2021 of Book-I – “Landowner No.3”,<br/>
-    (3). Doct.No.119/2021 of Book-I – “Landowner No.4”,<br/>
-    (4). Doct.No.120/2021 of Book-I – “Landowner No.4”.
-    </p>
-
-<p style="margin-bottom: 10px;">
-    (Hereinafter referred to as the “Promoter / Vendor” (which expression shall unless repugnant to the context or meaning thereof be deemed to mean and include its successor-in-interest, and permitted assigns) on the First Part;)
-</p>
-	<p style="margin-bottom: 10px; text-align: center; font-weight:bold">
-    AND
-    </p>
+    <apex:variable var="landownerCount" value="{!2}" />
     
-    <p style="margin-bottom: 10px;">
-    <strong>NAVYASRI VEERAVALLI</strong>, D/o. VEERAVALLI THRIMURTHULU, aged about 36 years, Occupation: Home Maker,<br/>
-    R/o. Plot No. 223, Road No. 07, Thulasi Vanam Colony, Beeramguda, Hyderabad, Telangana, 502032,<br/>
-    Aadhaar No. 2714 1196 3392, PAN: ALGPV7518K, Phone No. 7207240996.<br/>
-    </p>
+    <apex:repeat value="{!contactDetailsList}" var="contactDetail">
         <p style="margin-bottom: 10px;">
+            <strong>{!contactDetail.Salutation} {!contactDetail.name}</strong>, aged {!contactDetail.age} years, 
+            <strong>Occupation</strong>: {!contactDetail.occupation}, 
+            <strong>Address</strong>: {!contactDetail.address}, 
+            <strong>Aadhar No.</strong>: {!contactDetail.maskedAadhaar}
+            (Hereinafter referred to as the "Landowner No. {!landownerCount}")
+        </p>
+        <apex:variable var="landownerCount" value="{!landownerCount + 1}" />
+    </apex:repeat>
+    
+    
+    <p style="margin-bottom: 10px;">
+        <strong>KUMBHAM SRINIVAS REDDY</strong> S/o. RANGA REDDY, aged about 46 years, Occupation: Farmer,<br/>
+        R/o. H.No.1-34, Kalvakuntla (V), Munugode (M), Nalgonda District, Telangana, Pin Code: 504244.<br/>
+        Aadhaar No. XXXX XXXX 6872.<br/>
+        (Hereinafter referred to as the "Landowner No. 4")
+    </p>
+    <p style="margin-bottom: 10px;">
+        <strong>S.No.2 to 4 represented by their Development Agreement cum General Power of Attorney Holder:</strong>
+    </p>
+    
+    <p style="margin-bottom: 10px;">
+        <strong>EPITOME PROJECTS LLP</strong> (CIN No. AAR-2975, PAN: AASFV6192L), Registered in India, having its office at: Plot No. C2, Commercial Sector III, Huda Techno Enclave, Sy. No. 64, Madhapur (V), Serilingampally (M), Ranga Reddy District, Telangana, Pin Code: 500081.
+        Represented by its Authorized Signatory: {!opportunityRecord.Contact__r.Salutation}. 
+                {!opportunityRecord.Account.Name}, aged {!calculatedAge} years, 
+                {!opportunityRecord.Account.BillingStreet}, {!opportunityRecord.Account.BillingCity}, 
+                {!opportunityRecord.Account.BillingState}, {!opportunityRecord.Account.BillingCountry}, 
+                {!opportunityRecord.Account.BillingPostalCode} 
+                (AadharNo. {!maskedAadhaar}) authorized vide board resolution dated 24th September, 2024.
+    </p>
+    <p style="margin-bottom: 10px;">
+        (Hereinafter referred to as the “Promoter”). As the “Promoter”, the “Landowner No.1” and also as the “DAPGA Holder” of “Landowner No.2”, “Landowner No.3” and “Landowner No.4” by virtue of four separate registered deeds of Development Agreement cum General Power of Attorney “DAGPA” Dated: 04/01/2021 in the O/o. S.R.O. Choutuppal (2313), registered as:<br/>
+        (1). Doct.No.117/2021 of Book-I – “Landowner No.2”,<br/>
+        (2). Doct.No.118/2021 of Book-I – “Landowner No.3”,<br/>
+        (3). Doct.No.119/2021 of Book-I – “Landowner No.4”,<br/>
+        (4). Doct.No.120/2021 of Book-I – “Landowner No.4”.
+    </p>
+    
+    <p style="margin-bottom: 10px;">
+        (Hereinafter referred to as the “Promoter / Vendor” (which expression shall unless repugnant to the context or meaning thereof be deemed to mean and include its successor-in-interest, and permitted assigns) on the First Part;)
+    </p>
+    <p style="margin-bottom: 10px; text-align: center; font-weight:bold">
+        AND
+    </p>
+    
+    <p style="margin-bottom: 10px;">
+        <strong>NAVYASRI VEERAVALLI</strong>, D/o. VEERAVALLI THRIMURTHULU, aged about 36 years, Occupation: Home Maker,<br/>
+        R/o. Plot No. 223, Road No. 07, Thulasi Vanam Colony, Beeramguda, Hyderabad, Telangana, 502032,<br/>
+        Aadhaar No. 2714 1196 3392, PAN: ALGPV7518K, Phone No. 7207240996.<br/>
+    </p>
+    <p style="margin-bottom: 10px;">
         (Hereinafter referred to as the “Purchaser(s)” (which expression shall unless repugnant to the context or meaning thereof be deemed to mean and include his/her/their heirs, executors, administrators, successors-in-interest and permitted assigns) on the Other Part;)
-</p>
-
-<p style="margin-bottom: 10px;">
-    The “Vendor(s)” and “Purchaser(s)” shall hereinafter collectively be referred to as the “Parties” and individually as a “Party”.
-</p>
+    </p>
     
-<p style="margin-bottom: 10px;">
-    <strong>WHEREAS:</strong>
-</p>
-
-<p style="margin-bottom: 10px;">
-    (A) The Landowner No.1 - “EPITOME PROJECTS LLP” herein has acquired land totally admeasuring Ac. 242-12.5 Gts., (or) 11,72,792.5 Square Yards in Thangadpally Village under various Sale Deeds registered in the O/o. SRO Choutuppal (2313) as detailed hereunder:
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    1. In Sy.No.685 adm. Ac. 11-00 Gts., or 53240 Sq. Yds., having purchased the same from: M/s. Lumex Town Planners Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.5903/2020 of Bk-I, dt.24/12/2020;
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    2. In Sy.No.702 adm. Ac. 43-33 Gts., or 212113 Sq. Yds., having purchased the same from: M/s. Basalt Town Planners Pvt. Ltd., rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through a Sale Deed vide Doct.No.6142/2021 of Bk-I, dt.06/08/2021;
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    3. In Sy.No.686 adm. Ac. 3-12 Gts., or 15972 Sq. Yds., and Sy.No.687 adm. Ac. 8-27.5 Gts., or 42047.5 Sq. Yds., totally admeasuring Ac. 11-39.5 Gts., or 58019.5 Sq. Yds., having purchased the same from: M/s. Lily Infra Build Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed.
-</p>
+    <p style="margin-bottom: 10px;">
+        The “Vendor(s)” and “Purchaser(s)” shall hereinafter collectively be referred to as the “Parties” and individually as a “Party”.
+    </p>
     
-<p style="margin-bottom: 10px; margin-left: 15px; font-weight:bold">
-    Deed vide Doct.No.8223/2021 of Bk-I, dt.30/10/2021; 
-</p>
+    <p style="margin-bottom: 10px;">
+        <strong>WHEREAS:</strong>
+    </p>
     
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    4. In Sy.No.684 adm. Ac. 5-00 Gts., or 24200 Sq. Yds., having purchased the same from: M/s. Lumex Town Planners Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.8224/2021 of Bk-I, dt.30/10/2021; 
-</p>
+    <p style="margin-bottom: 10px;">
+        (A) The Landowner No.1 - “EPITOME PROJECTS LLP” herein has acquired land totally admeasuring Ac. 242-12.5 Gts., (or) 11,72,792.5 Square Yards in Thangadpally Village under various Sale Deeds registered in the O/o. SRO Choutuppal (2313) as detailed hereunder:
+    </p>
     
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    5. In Sy.No.704 adm. Ac. 4-03 Gts., or 19723 Sq. Yds., and Sy.No.702 adm. Ac. 2-18 Gts., or 11858 Sq. Yds., totally admeasuring Ac. 6-21 Gts., or 31581 Sq. Yds., having purchased the same from: M/s. Mica Town Planners Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.8221/2021 of Bk-I, dt.30/10/2021;
-</p>
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        1. In Sy.No.685 adm. Ac. 11-00 Gts., or 53240 Sq. Yds., having purchased the same from: M/s. Lumex Town Planners Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.5903/2020 of Bk-I, dt.24/12/2020;
+    </p>
     
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    6. In Sy.No.685 adm. Ac. 3-04 Gts., or 15004 Sq. Yds., having purchased the same from: M/s. Lumex Town Planners Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.8222/2021 of Bk-I, dt. 30/10/2021; 
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    7. In Sy.Nos.688, 689, 690, 691 totally adm. Ac.41-36 Gts., or 202796 Sq. Yds., having purchased the same from: M/s. Cameo Town Planners Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.8226/2021 of Bk-I, dt.30/10/2021;
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    8. In Sy.No.704/1 adm. Ac. 4-03 Gts., or 19723 Sq. Yds., and Sy.No.703 adm. Ac. 4-06 Gts., or 20086 Sq. Yds., totally admeasuring Ac. 8-09 Gts., or 39809 Sq. Yds., having purchased the same from: M/s. Orchard Buildwell Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.8227/2021 of Bk-I, dt.30/10/2021;
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    9. In Sy.No.689/3 adm. Ac. 1-00 Gts., or 4840 Sq. Yds., having purchased the same from: M/s. Mica Town Planners Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.8271/2021 of Bk-I, dt.01/11/2021;
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    10. In Sy.No.686 adm. Ac. 4-00 Gts., or 19360 Sq. Yds., having purchased the same from: M/s. Lily Infra Build Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.8272/2021 of Bk-I, dt.01/11/2021;
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    11. In Sy.No.689/A adm. Ac. 1-00 Gts., or 4840 Sq. Yds., having purchased the same from: M/s. Mulberry Housing And Land Developers Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.8945/2021 of Bk-I, dt.26/11/2021;
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    12. In Sy.No.684 adm. Ac. 15-19 Gts., or 74899 Sq. Yds., and Sy.No.667 adm. Ac. 5-35 Gts., or 28435 Sq. Yds., totally admeasuring Ac. 21-14 Gts., or 103334 Sq. Yds., having purchased the same from: M/s. Lumex Town Planners Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.8946/2021 of Bk-I, dt.26/11/2021;
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    13. In Sy. Nos. 688, 689, 690, 691 adm. Ac. 5-15 Gts., or 26015 Sq. Yds., having purchased the same from: M/s. Cameo Town Planners Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.8947/2021 of Bk-I, dt.26/11/2021;
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    14. In Sy.No.685/AA/1 adm. Ac. 2-00 Gts., or 9680 Sq. Yds., having purchased the same from: M/s. Nelson Housing And Land Developers Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.5171/2022 of Bk-I, dt.21/06/2022;
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    15. In Sy.No.667 adm. Ac. 4-00 Gts., or 19360 Sq. Yds., having purchased the same from: M/s. Lumex Town Planners Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.5173/2022 of Bk-I, dt.21/06/2022;
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    16. In Sy.No.695 adm. Ac. 8-14 Gts., or 40414 Sq. Yds., having purchased the same from: M/s. Lily Infra Build Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.5174/2022 of Bk-I, dt.21/06/2022;
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    17. In Sy.No.646 (Adm. Ac.5-00 Gts.), Sy.No.648 (Adm. Ac.6-39 Gts.) Sy.No.647 (Adm. Ac.8-30 Gts.), Sy.No.664 (Adm. Ac.2-08 Gts.), Sy.No.665 (Adm. Ac.0-12 Gts.), Sy.No.666 (Adm. Ac.6-21 Gts.) totally adm. Ac.29-30 Gts., or 143990 Sq.Yds., having purchased the same from: M/s. Clyde Town Planners Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.5274/2022 of Bk-I, dt.23/06/2022;
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    18. In Sy.No.648 adm. Ac. 4-10 Gts., or 20570 Sq. Yds., having purchased the same from: M/s. Clyde Town Planners Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.566/2023 of Bk-I, dt.23/01/2023;
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    19. In Sy.No.648 adm. Ac. 3-30 Gts., or 18150 Sq. Yds., having purchased the same from: M/s. Clyde Town Planners Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.464/2023 of Bk-I, dt.21/01/2023;
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    20. In Sy.No.683/1 adm. Ac. 0-24 Gts., or 2904 Sq. Yds., having purchased the same from: M/s. Orchard Buildwell Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.465/2023 of Bk-I, dt.21/01/2023;
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    21. In Sy.No.697 adm. Ac. 2-00 Gts., or 9680 Sq. Yds., having purchased the same from: M/s. Lily Infra Build Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.466/2023 of Bk-I, dt.21/01/2023;
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    22. In Sy.No.694 adm. Ac. 11-27 Gts., or 56507 Sq. Yds., Sy.No.697 adm. Ac. 0-24 Gts., or 2904 Sq. Yds., totally admeasuring Ac. 12-11 Gts., or 59411 Sq. Yds., having purchased the same from: M/s. Lily Infra Build Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.467/2023 of Bk-I, dt.21/01/2023;
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    23. In Sy.No.697 adm. Ac. 11-02 Gts., or 53482 Sq. Yds., having purchased the same from: M/s. Lily Infra Build Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.1578/2023 of Bk-I, dt.25/02/2023.
-</p>
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        2. In Sy.No.702 adm. Ac. 43-33 Gts., or 212113 Sq. Yds., having purchased the same from: M/s. Basalt Town Planners Pvt. Ltd., rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through a Sale Deed vide Doct.No.6142/2021 of Bk-I, dt.06/08/2021;
+    </p>
     
-<p style="margin-bottom: 10px;">
-    (B) The Landowner No.1 - “EPITOME PROJECTS LLP” herein has also acquired land admeasuring Ac. 115-39 Gts., (or) 5,61,319 Sq. Yds. land in Devulamma Nagaram Village under various Sale Deeds registered in the O/o. SRO Choutuppal (2313)as detailed hereunder: 
-</p>
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        3. In Sy.No.686 adm. Ac. 3-12 Gts., or 15972 Sq. Yds., and Sy.No.687 adm. Ac. 8-27.5 Gts., or 42047.5 Sq. Yds., totally admeasuring Ac. 11-39.5 Gts., or 58019.5 Sq. Yds., having purchased the same from: M/s. Lily Infra Build Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed.
+    </p>
     
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    1. In Sy.No.61/A3 (Adm. Ac. 1-01 Gts.), Sy.No.62/A3 (Adm. Ac. 1-13 Gts.), Sy.No.63/A3 (Adm.Ac. 0-35 Gts.), Sy.No.65/A3 (Adm. Ac. 1-04 Gts.), Sy.No.66/A3 (Adm. Ac. 1-09 Gts.), Sy.No.71/A3 (Adm. Ac. 0-22 Gts.), Sy.No.61/A4 (Adm. Ac. 1-01 Gts.), Sy.No.62/A4 (Adm. Ac. 1-13 Gts.), Sy.No.63/A4 (Adm. Ac. 0-36 Gts.), Sy.No.65/A4 (Adm. Ac. 1-03 Gts.), Sy.No.66/A4 (Adm. Ac. 1-08 Gts.), Sy.No.71/A4 (Adm. Ac. 0-22 Gts.), Sy.No.61/A6 (Adm. Ac. 1-00 Gts.), Sy.No.62/A6 (Adm. Ac. 1-14 Gts.), Sy.No.63/A6 (Adm. Ac. 0-36 Gts.), Sy.No.65/A6 (Adm. Ac. 1-03 Gts.), Sy.No.66/A6 (Adm. Ac. 1-08 Gts.), Sy.No.71/A6 (Adm. Ac. 0-22 Gts.), Sy.No.61/AA (Adm. Ac. 1-21 Gts.), Sy.No.62/AA (Adm. Ac. 2-00 Gts.), Sy.No.63/AA (Adm. Ac. 1-14 Gts.), Sy.No.65/AA (Adm. Ac. 1-25 Gts.), Sy.No.66/AA (Adm. Ac. 1-08 Gts.), Sy.No.61/E (Adm. Ac. 1-21 Gts.), Sy.No.62/E (Adm. Ac. 2-00 Gts.), Sy.No.63/E (Adm. Ac. 1-13 Gts.), Sy.No.65/E (Adm. Ac. 1-25 Gts.), Sy.No.66/E (Adm. Ac. 0-32 Gts.), Sy.No.71/U (Adm. Ac. 0-33 Gts.), Sy.No.71/AA (Adm. Ac. 0-33 Gts.) totally admeasuring Ac. 34-35 Gts., or 168795 Sq. Yds., having purchased the same from: M/s. Victory Infra Build Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.5904/2020 of Bk-I, dt.24/12/2020; 
-</p>
+    <p style="margin-bottom: 10px; margin-left: 15px; font-weight:bold">
+        Deed vide Doct.No.8223/2021 of Bk-I, dt.30/10/2021; 
+    </p>
     
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    2. In Sy.No.67 (Adm. Ac. 0-24 Gts.), Sy.No.68 (Adm. Ac. 0-20 Gts.), Sy.No.69 (Adm. Ac. 0-22 Gts.), Sy.No.70 (Adm. Ac. 0-12 Gts.) and Sy.No.68 (Adm. Ac. 0-26 Gts.), Sy.No.69 (Adm. Ac. 0-27 Gts.), Sy.No.70 (Adm. Ac. 0-28 Gts.) and Sy.No.67/AA (Adm. Ac. 3-23 Gts.), Sy.No.68 (Adm. Ac. 1-17 Gts.), Sy.No.70/E (Adm. Ac. 2-10 Gts.), Sy.No.68 (Adm. Ac. 1-24 Gts.), Sy.No.69 (Adm. Ac. 3-13 Gts.) and Sy.No.67 (Adm. Ac. 0-12 Gts.), Sy.No.68 (Adm. Ac. 0-10 Gts.), Sy.No.69 (Adm. Ac. 0-12 Gts.), Sy.No.70 (Adm. Ac. 0-06 Gts.), Sy.No.67 (Adm. Ac. 0-12 Gts.), Sy.No.68 (Adm. Ac. 0-10 Gts.), Sy.No.69 (Adm. Ac. 0-11 Gts.), Sy.No.70 (Adm. Ac. 0-06 Gts.) totally admeasuring Ac. 18-05 Gts., or 87725 Sq. Yds., having purchased the same from: M/s. Snowberry Town Planners Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through a Sale Deed vide Doct.No.5905/2020 of Bk-I, dt.24/12/2020;
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    3. In Sy.No.61 (Adm. Ac. 1-01 Gts.), Sy.No.65 (Adm. Ac. 1-03 Gts.), Sy.No.62 (Adm. Ac. 1-13 Gts.), Sy.No.66 (Adm. Ac. 1-09 Gts.), Sy.No.63 (Adm. Ac. 0-36 Gts.), Sy.No.71 (Adm. Ac. 0-22 Gts.), Sy.No.65 (Adm. Ac. 1-03 Gts.), Sy.No.61 (Adm. Ac. 1-01 Gts.), Sy.No.66 (Adm. Ac. 1-08 Gts.), Sy.No.62 (Adm. Ac. 1-13 Gts.), Sy.No.71 (Adm. Ac. 0-22 Gts.), Sy.No.63 (Adm. Ac. 0-35 Gts.), Sy.No.61 (Adm. Ac. 1-01 Gts.), Sy.No.65 (Adm. Ac. 1-04 Gts.), Sy.No.62 (Adm. Ac. 1-14 Gts.), Sy.No.66 (Adm. Ac. 1-08 Gts.), Sy.No.63 (Adm. Ac. 0-36 Gts.), Sy.No.71 (Adm.Ac. 0-22 Gts.), Sy.No.62 (Adm. Ac. 1-38 Gts.), Sy.No.61 (Adm. Ac. 3-02 Gts.), Sy.No.67 (Adm. Ac. 2-21 Gts.), Sy.No.67 (Adm. Ac. 0-24 Gts.), Sy.No.68 (Adm. Ac. 1-15 Gts.), Sy.No.69 (Adm. Ac. 1-21 Gts.), Sy.No.70 (Adm. Ac. 1-00 Gts.), Sy.No.68 (Adm. Ac. 0-25 Gts.), Sy.No.69 (Adm. Ac. 0-28 Gts.), Sy.No.70 (Adm. Ac. 0-28 Gts.), Sy.No.66 (Adm. Ac. 3-25 Gts.), Sy.No.69 (Adm.Ac. 1-13 Gts.), Sy.No.67 (Adm. Ac. 0-36 Gts.), Sy.No.69 (Adm. Ac. 1-12 Gts.), Sy.No.67 (Adm. Ac. 0-36 Gts.), Sy.No.70 (Adm. Ac. 0-28 Gts.), Sy.No.68 (Adm. Ac. 1-07 Gts.), Sy.No.70 (Adm. Ac. 0-38 Gts.), Sy.No.68 (Adm. Ac. 1-09 Gts.), Sy.No.70 (Adm. Ac. 0-38 Gts.), Sy.No.62 (Adm. Ac. 0-28 Gts.), Sy.No.65 (Adm. Ac. 1-03 Gts.), Sy.No.62 (Adm. Ac. 0-28 Gts.), Sy.No.66 (Adm. Ac. 0-22 Gts.), Sy.No.62 (Adm. Ac. 0-27 Gts.), Sy.No.66 (Adm. Ac. 0-21 Gts.), Sy.No.63 (Adm. Ac. 0-35 Gts.), Sy.No.66 (Adm. Ac. 0-22 Gts.), Sy.No.63 (Adm. Ac. 0-36 Gts.), Sy.No.71 (Adm. Ac. 0-22 Gts.), Sy.No.63 (Adm. Ac. 0-36 Gts.), Sy.No.71 (Adm. Ac. 0-22 Gts.), Sy.No.65 (Adm. Ac. 1-03 Gts.), Sy.No.71 (Adm. Ac. 0-22 Gts.), Sy.No.65 (Adm. Ac. 1-03 Gts.) totally admeasuring Ac. 56-25 Gts., or 274065 Sq. Yds., having purchased the same from: M/s. Wave Lakewoods Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.5906/2020 of Bk-I, dt.24/12/2020;
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    4. In Sy.No.97 (Adm. Ac. 1-23 Gts.), Sy.No.98 (Adm. Ac. 2-02 Gts.), Sy.No.99 (Adm. Ac. 0-13 Gts.), Sy.No.100 (Adm. Ac. 0-16 Gts.), totally admeasuring Ac. 4-14 Gts., or 21054 Sq. Yds., having purchased the same from: M/s. Wave Lakewoods Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through a Sale Deed vide Doct. No. 8225/2021 of Bk-I, dt.30/10/2021;
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    5. In Sy.No.72 admeasuring Ac. 2-00 Gts., or 9680 Sq. Yds., having purchased the same from: M/s. Opal Infra Projects Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through a Sale Deed vide Doct. No. 5172/2022 of Bk-I, dt.21/06/2022;
-</p>
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        4. In Sy.No.684 adm. Ac. 5-00 Gts., or 24200 Sq. Yds., having purchased the same from: M/s. Lumex Town Planners Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.8224/2021 of Bk-I, dt.30/10/2021; 
+    </p>
     
-<p style="margin-bottom: 10px;">
-    (C) The Landowner No.1 - “EPITOME PROJECTS LLP” herein has acquired land in Sy.No.689/RU admeasuring Ac.1-01 Gts., (or) 4961 Sq. Yards, Situated at Thangadpally Village, Choutuppal Mandal, Yadadri - Bhuvanagiri District, under Choutuppal Municipality, Telangana, by virtue of Sale Deed vide Doct.No.237/2023 of Bk-I, dt.02/02/2023 in the O/o. Tahsildar and Jt. Sub-Registrar, Choutuppal (M), Yadadri Bhuvanagiri (D). Further the said land has been converted into NALA vide proceedings No. 2300109903, dt.09/02/2023 issued by the Competent Authority and Tahsildar Choutuppal (M), Yadadri Bhuvanagiri (D).
-</p>
-<p style="margin-bottom: 10px;">
-    (D) The Landowner No.2 - “SANDEEPA JETTA” herein has acquired land in Sy.No.683/2/2 admeasuring Ac.1-00 Gts., (or) 4840 Sq. Yards, Situated at Thangadpally Village, Choutuppal Mandal, Yadadri - Bhuvanagiri District, under Choutuppal Municipality, Telangana, by virtue of Sale Deed vide Doct.No.129/2021 of Bk-I, dt.24/12/2020 in the O/o. Tahsildar and Jt. Sub- Registrar, Choutuppal (M), Yadadri Bhuvanagiri (D). Further the above said property belonging to the Landowner No.2 herein is situated in a suitable locality, therefore the Landowner No.2 herein for her mutual benefit has intended to develop the above said land belonging to the Landowner No.2, and the said land has been converted to Non-Agriculture land with NALA transaction No.: 2000556065, dt.31/12/2020 registered in the O/o. Tahsildar Choutuppal (M), Yadadri Bhuvanagiri (D). Accordingly, the Promoter herein entered into Development Agreement with the Landowner No.2 with respect to the land in Sy.No.683/2/2 admeasuring Ac.1-00 Gts., (or) 4840 Sq. Yards, Situated at Thangadpally Village, Choutuppal Mandal, Yadadri - Bhuvanagiri District, under Choutuppal Municipality, Telangana through a Development Agreement cum General Power of Attorney “DAGPA”vide Doct.No.117/2021 of Bk-I,Dt.04/01/2021 registered in the O/o. S.R.O. Choutuppal (2313) read along with a Supplementary Agreement to the “DAGPA” vide Doct.No.7288/2022 of Bk-I, Dt.20/09/2022 in the O/o. S.R.O. Choutuppal (2313).
-</p>
-<p style="margin-bottom: 10px;">
-    (E) The Landowner No.3 - “VAKATI BHAGYA SREE” herein has acquired land in Sy.No.683/2/2 admeasuring Ac.0-20 Gts., (or) 2420 Sq. Yards, Situated at Thangadpally Village, Choutuppal Mandal, Yadadri - Bhuvanagiri District, under Choutuppal Municipality, Telangana, by virtue of Sale Deed vide Doct.No.128/2020 of Bk-I, dt.24/12/2020 in the O/o. Tahsildar and Jt. Sub-Registrar, Choutuppal (M), Yadadri Bhuvanagiri (D). Further the above said property belonging to the Landowner No.3 herein is situated in a suitable locality, therefore the Landowner No.3 herein for her mutual benefit has intended to develop the above said land belonging to the Landowner No.3, and the said land has been converted to Non-Agriculture land with NALA transaction No.: 2000556059, dt.31/12/2020 in the O/o. Tahsildar Choutuppal (M), Yadadri Bhuvanagiri (D). Accordingly, the Promoter herein entered into Development Agreement with the Landowner No.3 with respect to land forming part of Sy.No.683/2/2 admeasuring Ac.0- 20 Gts., (or) 2420 Sq. Yards, Situated at Thangadpally Village, Choutuppal Mandal, Yadadri - Bhuvanagiri District, under Choutuppal Municipality, Telangana through a Development Agreement cum General Power of Attorney “DAGPA”vide Doct.No.118/2021 of Bk- I,Dt.04/01/2021 registered in the O/o. S.R.O. Choutuppal (2313) read along with a Supplementary Agreement to the “DAGPA” vide Doct.No.7287/2022 of Bk-I, Dt.20/09/2022 in the O/o. S.R.O. Choutuppal (2313).
-</p>
-<p style="margin-bottom: 10px;">
-    (F) The Landowner No.4 - “KUMBHAM SRINIVAS REDDY” herein has acquired land in Sy.No.683/A1/2 admeasuring Ac.3-2850 Gts., and Sy.No.683/A1/1 admeasuring Ac.2-0850 Gts., totally admeasuring Ac. 5-37 Gts., (or) 28677 Sq. Yards, Situated at Thangadpally Village, Choutuppal Mandal, Yadadri -Bhuvanagiri District, under Choutuppal Municipality, Telangana, by virtue of two Sale Deeds vide (1) Doct.No.127/2020 of Bk-I and (2) Doct.No.130/2020 of Bk-I, dt.24/12/2020 both are registered in the O/o. Tahsildar and Jt. Sub-Registrar, Choutuppal (M), Yadadri Bhuvanagiri (D). Further the above said property of Landowner No.4 herein is situated in a suitable locality, therefore the Landowner No.4 herein for his mutual benefit has intended to develop the above said land belonging Landowner No.4, and the said land has been converted to Non-Agriculture land with NALA transaction No.: 2000561145, dt.31/12/2020 in the O/o. Tahsildar Choutuppal (M), Yadadri Bhuvanagiri (D). Accordingly, the Promoter herein entered into Development Agreement with the Landowner No.4 with respect to the land in Sy.No.683/A1/2 admeasuring Ac.3-2850 Gts., and Sy.No.683/A1/1 admeasuring Ac.2-0850 Gts., totally admeasuring Ac. 5-37 Gts., (or) 28677 Sq. Yards, Situated at Thangadpally Village, Choutuppal (M), Yadadri Bhuvanagiri (D), under Choutuppal Municipality, Telangana, through a Development Agreement cum General Power of Attorney “DAGPA”vide Doct.No.119/2021 of Bk-I,Dt.04/01/2021 registered in the O/o. S.R.O. Choutuppal (2313) read along with a Supplementary Agreement to the “DAGPA” vide Doct.No.3136/2024 of Bk-I, Dt.07/05/2024 in the O/o. S.R.O. Choutuppal (2313).
-</p>
-<p style="margin-bottom: 10px;">
-    (G) <strong>The Landowner No.4 - “KUMBHAM SRINIVAS REDDY”</strong> herein has also acquired land in Sy.No.72/E admeasuring Ac.1-08 Gts., (or) 5808 Sq. Yards, Situated at Devlamma Nagaram Village, Choutuppal (M), Yadadri Bhuvanagiri (D), under Devulamma Nagaram Gram Panchayat, Telangana, by virtue of Sale Deed vide Doct.No.1/2021 of Bk-I, dt.02/01/2021 registered in the O/o. Tahsildar and Jt. Sub-Registrar, Choutuppal (M), Yadadri Bhuvanagiri (D). Further the above said property belonging to the Landowner No.4 herein is situated in a suitable locality, therefore the Landowner No.4 herein for his mutual benefit has intended to develop the above said land belonging Landowner No.4, and the said land has been converted to Non-Agriculture land with NALA Transaction No.: 2100001848, dt.04/01/2021 in the O/o. Tahsildar Choutuppal Mandal, Yadadri - Bhuvanagiri District. Accordingly, the Promoter herein entered into Development Agreement with the Landowner No.4 with respect to the land in Sy.No.72/E admeasuring Ac.1-08 Gts., (or) 5808 Sq. Yards, Situated at Devlamma Nagaram Village, Choutuppal Mandal, Yadadri - Bhuvanagiri District, under Devulamma Nagaram Gram Panchayat, Telangana, through a Development Agreement cum General Power of Attorney “DAGPA”vide Doct.No.120/2021 of Bk-I, Dt.04/01/2021 registered in the O/o. S.R.O. Choutuppal (2313) read along with a Supplementary Agreement to the “DAGPA” vide Doct.No.3136/2024 of Bk-I, Dt.07/05/2024 in the O/o. S.R.O. Choutuppal (2313).
-</p>
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        5. In Sy.No.704 adm. Ac. 4-03 Gts., or 19723 Sq. Yds., and Sy.No.702 adm. Ac. 2-18 Gts., or 11858 Sq. Yds., totally admeasuring Ac. 6-21 Gts., or 31581 Sq. Yds., having purchased the same from: M/s. Mica Town Planners Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.8221/2021 of Bk-I, dt.30/10/2021;
+    </p>
     
-<p>
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        6. In Sy.No.685 adm. Ac. 3-04 Gts., or 15004 Sq. Yds., having purchased the same from: M/s. Lumex Town Planners Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.8222/2021 of Bk-I, dt. 30/10/2021; 
+    </p>
     
-</p>
-
-<div style="margin-bottom: 10px;">
-    (H) <strong>The Vendor</strong> herein as the 'Landowner No.1', and also as the 'DAPGA Holder' of 'Landowner No.2', 'Landowner No.3', and 'Landowner No.4' by virtue of four (4) individual deeds of Development Agreement cum General Power of Attorney (“DAGPA”) in the O/o. the SRO Choutuppal (2313), vide follows:
-    <ul>
-        <li>DAGPA Doct.No.117/2021 of Bk-I dt.04/01/2021, supplemented by a Supplementary Agreement to the 'DAGPA' vide Doct.No.7288/2022 of Bk-I, dt.20/09/2022-'Landowner No.2',</li>
-        <li>DAGPA Doct.No.118/2021 of Bk-I dt.04/01/2021, supplemented by a Supplementary Agreement to the 'DAGPA' vide Doct.No.7287/2022 of Bk-I, dt.20/09/2022 - 'Landowner No.3',</li>
-        <li>DAGPA Doct.No.119/2021 of Bk-I dt.04/01/2021,</li>
-        <li>DAGPA Doct.No.120/2021 of Bk-I dt.04/01/2021, with both S.No.(3) and S.No.(4) supplemented by a Supplementary Agreement to the 'DAGPA' vide Doct.No.3136/2024 of Bk-I, dt.07/05/2024 - 'Landowner No.4'.</li>
-    </ul>
-</div>
-
-<p style="margin-bottom: 10px;">
-    (I) The land acquired, as detailed in Clauses (A), (B), (C), (D), (E), (F), and (G) above, forming a contiguous parcel, has been earmarked for the development of a residential project. The Vendor after obtaining permission from the Hyderabad Metropolitan Development Authority (HMDA) to develop the Project, as per Layout Permit No. 08/LO/Plg/HMDA/2021, dated 17-04-2021, issued by the Hyderabad Metropolitan Development Authority (HMDA) has commenced the development of the project. The project is located in various survey numbers within Thangadpally (V), under Choutuppal Municipality (Sy.Nos.646/P, 647, 648, 666, 667/P, 683/P, 684/P, 685/P, 686/P, 687/P, 688, 689, 690, 691, 694, 695, 697, 702/P, 703 and 704), and Devulamma Nagaram (V), Choutuppal Municipality (Sy. Nos. 61, 62, 63/P, 65, 66, 67/P, 68, 69, 70, 71, 72/P, 97/P, 98/P, 99/P and 100/P), comprising residential plots, spanning a total area of Ac.367-14.4 Gts., under the name 'EPITOME INTEGRATED CITY' (“Project”). Furthermore, the Vendor also states that as the Promoter, the Project has been registered under the provisions of the Act with the Telangana Real Estate Regulatory Authority (TS-RERA) in Hyderabad on 17/06/2021, with registration number P02000003057.
-</p>
-
-<p style="margin-bottom: 10px;">
-    (J) The Vendor herein declares that all legal formalities, concerning the right, title, and interest in the Said Land, where the development of the Project is proposed, have been completed. The Vendor holds unfettered exclusive alienable rights over the mentioned property in an absolute manner. As a result, the Vendor offers to sell the saleable extent of land in the project in the form of Plots, free from all encumbrances and charges, to intending purchasers and the Vendor herein as the 'Promoter of the Project', is fully competent to enter into this deed.
-</p>
-
-<p style="margin-bottom: 10px;">
-    (K) The Vendor as the Promoter is developing the above-mentioned approved Project with development activities such as levelling, laying down of drainage lines, water lines, electricity lines etc., as more fully enumerated in the Annexure A attached herewith.
-</p>
-
-<p style="margin-bottom: 10px;">
-    (L) The Purchaser/s herein has/have approached the Vendor and expressed his/her/their desire to purchase the part and parcel of the land marked as Plot No. 1613 admeasuring 266.65 Sq.Yards (or) 222.96 Sq.Mtrs in Sy. Nos. 646/P, 647, 648, 666, 667/P, 683/P, 684/P, 685/P, 686/P, 687/P, 688, 689, 690, 691, 694, 695, 697, 702/P, 703 and 704 within Thangadpally Village, Chotuppal Mandal, Yadadri- Bhuvanagiri District, under Choutuppal Municipality, Telangana. This plot/s is/are an integral part of the 'EPITOME INTEGRATED CITY' project, which comprises residential plots covering a total area of Ac.367-14.4 Gts. The project spans across various Sy.Nos. within Thangadpally Village under Choutuppal Municipality (Sy.Nos.646/P, 647, 648, 666, 667/P, 683/P, 684/P, 685/P, 686/P, 687/P, 688, 689, 690, 691, 694, 695, 697, 702/P, 703 and 704), and Devulamma Nagaram Village under Devulamma Nagaram Gram Panchayat (Sy.Nos.61, 62, 63/P, 65, 66, 67/P, 68, 69, 70, 71, 72/P, 97/P, 98/P, 99/P and 100/P), in accordance with the approved Layout Plan under Layout Permit No. 08/LO/Plg/HMDA/2021, dt.17/04/2021, issued by the Hyderabad Metropolitan Development Authority (HMDA), (hereinafter referred to as the "Schedule Property" more particularly described in Schedule hereunder for the sake of brevity);
-</p>
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        7. In Sy.Nos.688, 689, 690, 691 totally adm. Ac.41-36 Gts., or 202796 Sq. Yds., having purchased the same from: M/s. Cameo Town Planners Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.8226/2021 of Bk-I, dt.30/10/2021;
+    </p>
     
-<p style="margin-bottom: 10px;">
-    (M) In accordance with the terms and conditions outlined in this Agreement and mutually agreed upon by the Parties, the Vendor/Promoter offered to sell open Plot i.e., Schedule of Property @ Rs. 9500/- (Rupees Nine Thousand Five Hundred only) per square yard applicable on the extent of plot under this Agreement. The Purchaser/s hereby agree to pay the aforementioned cost applicable to the Vendor/Promoter as per the terms of this Agreement.
-</p>
-
-<p style="margin-bottom: 10px;">
-    (N) The Parties have gone through all the terms and conditions set out in this Agreement and understood the mutual rights and obligations detailed herein;
-</p>
-
-<p style="margin-bottom: 10px;">
-    (O) In accordance with the terms and conditions set out in this Agreement and as mutually agreed upon by and between the Parties, the Promoter hereby agrees to sell and the Purchaser(s) hereby agree/s to purchase the Schedule Property described in the schedule of the property hereunder.
-</p>
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        8. In Sy.No.704/1 adm. Ac. 4-03 Gts., or 19723 Sq. Yds., and Sy.No.703 adm. Ac. 4-06 Gts., or 20086 Sq. Yds., totally admeasuring Ac. 8-09 Gts., or 39809 Sq. Yds., having purchased the same from: M/s. Orchard Buildwell Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.8227/2021 of Bk-I, dt.30/10/2021;
+    </p>
     
-<p style="margin-bottom: 10px; font-weight:bold">
-    NOW THEREFORE THIS AGREEMENT OF SALE WITNESSES AS FOLLOWS : Top of Form 
-</p>
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        9. In Sy.No.689/3 adm. Ac. 1-00 Gts., or 4840 Sq. Yds., having purchased the same from: M/s. Mica Town Planners Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.8271/2021 of Bk-I, dt.01/11/2021;
+    </p>
     
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    1. The Vendor hereby offers to sell the Schedule Property to the Purchaser/s, for a total sale consideration of Rs.25,33,175/- (Rupees Twenty Five Lakhs, Thirty Three Thousand, One Hundred and Seventy Five only) (“Total Price”) and the Purchaser/s has / have accepted the offer and agreed to purchase the same for the said consideration subject to the terms and conditions agreed herein.
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    2. The Purchaser/s herein paid an amount of Rs.1,00,000/- (Rupees One Lakh Only) through online transfer vide Transaction /Ref. No. DKW4248781 dated 28-11-2024, credited to the Account of Vendor. These payment/s serves as token of advance towards the sale consideration, constituting part of the total sale consideration.
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    3. The remaining balance sale consideration of Rs.24,33,175/- (Rupees Twenty Four Lakhs, Thirty Three Thousand, One Hundred and Seventy Five only) shall be paid within Thirty (30) days from the date of this Agreement.
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    4. That the Vendor herein shall obtain and furnish all the required documents to the Purchaser, essential for the effective transfer of title over the Schedule Property in favour of the Purchaser/s.
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    5. The Vendor is aware that the Purchaser/s has/have agreed to purchase the said Schedule Property relying on the covenants, representations and warranties given by the Vendor and the related documents provided by the Vendor pertaining to the Schedule Property.
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    6. The Vendor hereby agrees to execute a registered sale deed in favour of the Purchaser/s immediately upon the receipt of the entire Total Price from the Purchaser/s.
-</p>
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        10. In Sy.No.686 adm. Ac. 4-00 Gts., or 19360 Sq. Yds., having purchased the same from: M/s. Lily Infra Build Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.8272/2021 of Bk-I, dt.01/11/2021;
+    </p>
     
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    7. The Vendor and Purchaser have agreed that upon full payment of the Total Price, the registration of Schedule Property shall be completed within 30 (thirty) days from the date of this Agreement and completion of the works by the Vendor such as demarcation of Schedule Property with plot number(s) as per the approved layout plan, provision for sewage line, water supply line, stormwater, electrical lines, street lights and BT road to access the Schedule Property, as shown in the approved layout.
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    8. The Vendor hereby declares and assures the Purchaser/s that the Schedule Property is free from all encumbrances, charges, claims, and legal disputes. It has not been offered as security to any authority prior to this Agreement. Furthermore, the Vendor agrees to facilitate the issuance of a No Objection Certificate (NOC) from the Financial Institution(s) / Bank(s) which is essential as per the legal opinion with respect to other plots by the Vendor.
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    9. The Vendor further declares and covenants that peaceful possession of the Schedule Property shall be delivered to the Purchaser/s at the time of registration of the sale deed. Thereafter, the Purchaser/s is/are entitled to remain in possession of the Schedule Property and enjoy the same, with unfettered ownership rights over the said plot, to have and to hold forever.
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    10. It is pertinent to mention that relying on the covenants, representations, and warranties provided by the Vendor to the competent authorities such as TS-RERA and HMDA in relation to the sale of plots to the intending purchasers, the parties herein are entering into this Agreement of Sale, and agree to adhere accordingly.
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    11. The plots acquired under this Agreement cannot be resold to third parties directly for a minimum period of 3 years. However, if the Purchaser/s intend/s to dispose, convey, or transfer the plot acquired by him/her, either by way of sale or gift, to meet his/her dire need of time, they may do so with a No Objection Certificate (NOC) from the “EPITOME PROJECTS LLP”. The NOC is mandatory for the registration of either a Sale Deed or a Gift Deed or any relevant deed for property transfer within the period of 3 years from the date of this Agreement of Sale.
-</p>
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        11. In Sy.No.689/A adm. Ac. 1-00 Gts., or 4840 Sq. Yds., having purchased the same from: M/s. Mulberry Housing And Land Developers Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.8945/2021 of Bk-I, dt.26/11/2021;
+    </p>
     
-<p style="margin-bottom: 10px; margin-left: 25px;">
-    (a) Notwithstanding above, if the Purchaser commits default in respect of the loan availed by him/her against the security of the property, the Bank is entitled to sell the Property/enforce the security in accordance with law without NOC from “EPITOME PROJECTS LLP”. 
-</p>
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        12. In Sy.No.684 adm. Ac. 15-19 Gts., or 74899 Sq. Yds., and Sy.No.667 adm. Ac. 5-35 Gts., or 28435 Sq. Yds., totally admeasuring Ac. 21-14 Gts., or 103334 Sq. Yds., having purchased the same from: M/s. Lumex Town Planners Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.8946/2021 of Bk-I, dt.26/11/2021;
+    </p>
     
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    12. The Vendor further declares and covenants that all the rights, title and interest in and over the Schedule Property including the easements, advantages, liberties, advantages and appurtenances and all that is owned and possessed by the Vendor will be absolutely conveyed to the Purchaser/s after registration of the sale deed in favour of Purchaser/s.
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    13. The Vendor remains responsible for title-related issues both during and prior to peaceful occupancy. Except disclosed, the Vendor declares that the Schedule Property is unencumbered, with no mortgages, charges, prior assignments, or legal disputes, and affirms its authority to transfer ownership to the Purchaser/s.
-</p>
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        13. In Sy. Nos. 688, 689, 690, 691 adm. Ac. 5-15 Gts., or 26015 Sq. Yds., having purchased the same from: M/s. Cameo Town Planners Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.8947/2021 of Bk-I, dt.26/11/2021;
+    </p>
     
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    14. The Vendor hereby assures the Purchaser that the property is free from any concealed material facts that could adversely affect its title. The Vendor indemnifies the Purchaser/s against any losses resulting from defects in the property's title.
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    15. The Purchaser/s agree to pay all taxes related to the Schedule Property from the date of the Sale Deed in the name of the Purchaser/s or their nominee(s). These taxes may include property tax, outgoing taxes, duties, charges, expenses, cess, and others.
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    16. The Vendor/Promoter herein undertakes to develop the activities and specifications of development mentioned in Annexure A (Scope and Development works in the Project) given in the last page of this Agreement of Sale for the benefit of the Purchaser/s with respect to the Schedule Property, as promised to them, on the condition that the project will be completed within the agreed timelines permitted by competent authorities such as HMDA and TS-RERA.
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    17. The Purchaser/s shall bear all expenses of the sale, such as stamp duty, registration fees, and drafting charges, in respect of the Sale Deed(s) in favor of Purchaser/s or his/her/their nominee or nominees.
-</p>
-
-<p style="margin-bottom: 10px; margin-left: 15px;">
-    18. The Vendor herein assure and undertakes the Purchaser/s that the Schedule Property shown in the schedule affected by this Document is neither Government Land nor assigned land within the meaning of T.S. (A.P) Assigned Lands (Prohibition of Transfers) Act No.9 of 1977 and is not mentioned in the prohibited list of lands given in the Dharani Portal of TS Govt. There is no House or any type of construction on it. The said land is not under mortgage and does not belong to Government Agencies and their undertakings such as T.S. State Wakf Board, T.S. Bhoodan Yagna Board, Charitable and Hindu Religious Institutions, and Endowments. Additionally, it is not Inam Land, nor is it surplus land under ceiling law, and is not prohibited by any existing Act or Act No.19 of 2007. Furthermore, there are no Protected Tenants over the said land.
-</p>
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        14. In Sy.No.685/AA/1 adm. Ac. 2-00 Gts., or 9680 Sq. Yds., having purchased the same from: M/s. Nelson Housing And Land Developers Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.5171/2022 of Bk-I, dt.21/06/2022;
+    </p>
     
-<p style="margin-bottom: 10px; text-align:center; font-weight: bold">
-    SCHEDULE OF THE PROPERTY 
-</p>
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        15. In Sy.No.667 adm. Ac. 4-00 Gts., or 19360 Sq. Yds., having purchased the same from: M/s. Lumex Town Planners Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.5173/2022 of Bk-I, dt.21/06/2022;
+    </p>
     
-<p style="margin-bottom: 10px;">
-    All that the part and parcel of the land marked as Plot No. 1613 admeasuring 266.65 Sq.Yards (or) 222.96 Sq. Mtrs., in Sy. Nos. 646/P, 647, 648, 666, 667/P, 683/P, 684/P, 685/P, 686/P, 687/P, 688, 689, 690, 691, 694, 695, 697, 702/P, 703 and 704 within Thangadpally Village, Choutuppal Mandal, Yadadri - Bhuvanagiri District, under Choutuppal Municipality, Telangana. This Plot/s is/are an integral part of the 'EPITOME
-</p>
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        16. In Sy.No.695 adm. Ac. 8-14 Gts., or 40414 Sq. Yds., having purchased the same from: M/s. Lily Infra Build Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.5174/2022 of Bk-I, dt.21/06/2022;
+    </p>
     
-<p style="margin-bottom: 10px;">
-    INTEGRATED CITY' Project, which comprises Residential Plots covering a total area of Ac.367-14.4 Gts. The Project spans across various Survey Numbers within Thangadpally Village under Choutuppal Municipality (Sy.Nos.646/P, 647, 648, 666, 667/P, 683/P, 684/P, 685/P, 686/P, 687/P, 688, 689, 690, 691, 694, 695, 697, 702/P, 703 and 704), and Devulamma Nagaram Village under Devulamma Nagaram Gram Panchayat (Sy.Nos.61, 62, 63/P, 65, 66, 67/P, 68, 69, 70, 71, 72/P, 97/P, 98/P, 99/P and 100/P), in accordance with the approved layout plan under Layout Permit No. 08/LO/Plg/HMDA/2021, dated 17/04/2021, issued by the Hyderabad Metropolitan Development Authority (HMDA) and the said Plot is bounded as follows: 
-</p>
-
-        <table style="margin: 20px auto; border-collapse: collapse; width: 50%; border: 1px solid black;">
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        17. In Sy.No.646 (Adm. Ac.5-00 Gts.), Sy.No.648 (Adm. Ac.6-39 Gts.) Sy.No.647 (Adm. Ac.8-30 Gts.), Sy.No.664 (Adm. Ac.2-08 Gts.), Sy.No.665 (Adm. Ac.0-12 Gts.), Sy.No.666 (Adm. Ac.6-21 Gts.) totally adm. Ac.29-30 Gts., or 143990 Sq.Yds., having purchased the same from: M/s. Clyde Town Planners Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.5274/2022 of Bk-I, dt.23/06/2022;
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        18. In Sy.No.648 adm. Ac. 4-10 Gts., or 20570 Sq. Yds., having purchased the same from: M/s. Clyde Town Planners Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.566/2023 of Bk-I, dt.23/01/2023;
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        19. In Sy.No.648 adm. Ac. 3-30 Gts., or 18150 Sq. Yds., having purchased the same from: M/s. Clyde Town Planners Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.464/2023 of Bk-I, dt.21/01/2023;
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        20. In Sy.No.683/1 adm. Ac. 0-24 Gts., or 2904 Sq. Yds., having purchased the same from: M/s. Orchard Buildwell Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.465/2023 of Bk-I, dt.21/01/2023;
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        21. In Sy.No.697 adm. Ac. 2-00 Gts., or 9680 Sq. Yds., having purchased the same from: M/s. Lily Infra Build Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.466/2023 of Bk-I, dt.21/01/2023;
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        22. In Sy.No.694 adm. Ac. 11-27 Gts., or 56507 Sq. Yds., Sy.No.697 adm. Ac. 0-24 Gts., or 2904 Sq. Yds., totally admeasuring Ac. 12-11 Gts., or 59411 Sq. Yds., having purchased the same from: M/s. Lily Infra Build Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.467/2023 of Bk-I, dt.21/01/2023;
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        23. In Sy.No.697 adm. Ac. 11-02 Gts., or 53482 Sq. Yds., having purchased the same from: M/s. Lily Infra Build Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.1578/2023 of Bk-I, dt.25/02/2023.
+    </p>
+    
+    <p style="margin-bottom: 10px;">
+        (B) The Landowner No.1 - “EPITOME PROJECTS LLP” herein has also acquired land admeasuring Ac. 115-39 Gts., (or) 5,61,319 Sq. Yds. land in Devulamma Nagaram Village under various Sale Deeds registered in the O/o. SRO Choutuppal (2313)as detailed hereunder: 
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        1. In Sy.No.61/A3 (Adm. Ac. 1-01 Gts.), Sy.No.62/A3 (Adm. Ac. 1-13 Gts.), Sy.No.63/A3 (Adm.Ac. 0-35 Gts.), Sy.No.65/A3 (Adm. Ac. 1-04 Gts.), Sy.No.66/A3 (Adm. Ac. 1-09 Gts.), Sy.No.71/A3 (Adm. Ac. 0-22 Gts.), Sy.No.61/A4 (Adm. Ac. 1-01 Gts.), Sy.No.62/A4 (Adm. Ac. 1-13 Gts.), Sy.No.63/A4 (Adm. Ac. 0-36 Gts.), Sy.No.65/A4 (Adm. Ac. 1-03 Gts.), Sy.No.66/A4 (Adm. Ac. 1-08 Gts.), Sy.No.71/A4 (Adm. Ac. 0-22 Gts.), Sy.No.61/A6 (Adm. Ac. 1-00 Gts.), Sy.No.62/A6 (Adm. Ac. 1-14 Gts.), Sy.No.63/A6 (Adm. Ac. 0-36 Gts.), Sy.No.65/A6 (Adm. Ac. 1-03 Gts.), Sy.No.66/A6 (Adm. Ac. 1-08 Gts.), Sy.No.71/A6 (Adm. Ac. 0-22 Gts.), Sy.No.61/AA (Adm. Ac. 1-21 Gts.), Sy.No.62/AA (Adm. Ac. 2-00 Gts.), Sy.No.63/AA (Adm. Ac. 1-14 Gts.), Sy.No.65/AA (Adm. Ac. 1-25 Gts.), Sy.No.66/AA (Adm. Ac. 1-08 Gts.), Sy.No.61/E (Adm. Ac. 1-21 Gts.), Sy.No.62/E (Adm. Ac. 2-00 Gts.), Sy.No.63/E (Adm. Ac. 1-13 Gts.), Sy.No.65/E (Adm. Ac. 1-25 Gts.), Sy.No.66/E (Adm. Ac. 0-32 Gts.), Sy.No.71/U (Adm. Ac. 0-33 Gts.), Sy.No.71/AA (Adm. Ac. 0-33 Gts.) totally admeasuring Ac. 34-35 Gts., or 168795 Sq. Yds., having purchased the same from: M/s. Victory Infra Build Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.5904/2020 of Bk-I, dt.24/12/2020; 
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        2. In Sy.No.67 (Adm. Ac. 0-24 Gts.), Sy.No.68 (Adm. Ac. 0-20 Gts.), Sy.No.69 (Adm. Ac. 0-22 Gts.), Sy.No.70 (Adm. Ac. 0-12 Gts.) and Sy.No.68 (Adm. Ac. 0-26 Gts.), Sy.No.69 (Adm. Ac. 0-27 Gts.), Sy.No.70 (Adm. Ac. 0-28 Gts.) and Sy.No.67/AA (Adm. Ac. 3-23 Gts.), Sy.No.68 (Adm. Ac. 1-17 Gts.), Sy.No.70/E (Adm. Ac. 2-10 Gts.), Sy.No.68 (Adm. Ac. 1-24 Gts.), Sy.No.69 (Adm. Ac. 3-13 Gts.) and Sy.No.67 (Adm. Ac. 0-12 Gts.), Sy.No.68 (Adm. Ac. 0-10 Gts.), Sy.No.69 (Adm. Ac. 0-12 Gts.), Sy.No.70 (Adm. Ac. 0-06 Gts.), Sy.No.67 (Adm. Ac. 0-12 Gts.), Sy.No.68 (Adm. Ac. 0-10 Gts.), Sy.No.69 (Adm. Ac. 0-11 Gts.), Sy.No.70 (Adm. Ac. 0-06 Gts.) totally admeasuring Ac. 18-05 Gts., or 87725 Sq. Yds., having purchased the same from: M/s. Snowberry Town Planners Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through a Sale Deed vide Doct.No.5905/2020 of Bk-I, dt.24/12/2020;
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        3. In Sy.No.61 (Adm. Ac. 1-01 Gts.), Sy.No.65 (Adm. Ac. 1-03 Gts.), Sy.No.62 (Adm. Ac. 1-13 Gts.), Sy.No.66 (Adm. Ac. 1-09 Gts.), Sy.No.63 (Adm. Ac. 0-36 Gts.), Sy.No.71 (Adm. Ac. 0-22 Gts.), Sy.No.65 (Adm. Ac. 1-03 Gts.), Sy.No.61 (Adm. Ac. 1-01 Gts.), Sy.No.66 (Adm. Ac. 1-08 Gts.), Sy.No.62 (Adm. Ac. 1-13 Gts.), Sy.No.71 (Adm. Ac. 0-22 Gts.), Sy.No.63 (Adm. Ac. 0-35 Gts.), Sy.No.61 (Adm. Ac. 1-01 Gts.), Sy.No.65 (Adm. Ac. 1-04 Gts.), Sy.No.62 (Adm. Ac. 1-14 Gts.), Sy.No.66 (Adm. Ac. 1-08 Gts.), Sy.No.63 (Adm. Ac. 0-36 Gts.), Sy.No.71 (Adm.Ac. 0-22 Gts.), Sy.No.62 (Adm. Ac. 1-38 Gts.), Sy.No.61 (Adm. Ac. 3-02 Gts.), Sy.No.67 (Adm. Ac. 2-21 Gts.), Sy.No.67 (Adm. Ac. 0-24 Gts.), Sy.No.68 (Adm. Ac. 1-15 Gts.), Sy.No.69 (Adm. Ac. 1-21 Gts.), Sy.No.70 (Adm. Ac. 1-00 Gts.), Sy.No.68 (Adm. Ac. 0-25 Gts.), Sy.No.69 (Adm. Ac. 0-28 Gts.), Sy.No.70 (Adm. Ac. 0-28 Gts.), Sy.No.66 (Adm. Ac. 3-25 Gts.), Sy.No.69 (Adm.Ac. 1-13 Gts.), Sy.No.67 (Adm. Ac. 0-36 Gts.), Sy.No.69 (Adm. Ac. 1-12 Gts.), Sy.No.67 (Adm. Ac. 0-36 Gts.), Sy.No.70 (Adm. Ac. 0-28 Gts.), Sy.No.68 (Adm. Ac. 1-07 Gts.), Sy.No.70 (Adm. Ac. 0-38 Gts.), Sy.No.68 (Adm. Ac. 1-09 Gts.), Sy.No.70 (Adm. Ac. 0-38 Gts.), Sy.No.62 (Adm. Ac. 0-28 Gts.), Sy.No.65 (Adm. Ac. 1-03 Gts.), Sy.No.62 (Adm. Ac. 0-28 Gts.), Sy.No.66 (Adm. Ac. 0-22 Gts.), Sy.No.62 (Adm. Ac. 0-27 Gts.), Sy.No.66 (Adm. Ac. 0-21 Gts.), Sy.No.63 (Adm. Ac. 0-35 Gts.), Sy.No.66 (Adm. Ac. 0-22 Gts.), Sy.No.63 (Adm. Ac. 0-36 Gts.), Sy.No.71 (Adm. Ac. 0-22 Gts.), Sy.No.63 (Adm. Ac. 0-36 Gts.), Sy.No.71 (Adm. Ac. 0-22 Gts.), Sy.No.65 (Adm. Ac. 1-03 Gts.), Sy.No.71 (Adm. Ac. 0-22 Gts.), Sy.No.65 (Adm. Ac. 1-03 Gts.) totally admeasuring Ac. 56-25 Gts., or 274065 Sq. Yds., having purchased the same from: M/s. Wave Lakewoods Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through Sale Deed vide Doct.No.5906/2020 of Bk-I, dt.24/12/2020;
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        4. In Sy.No.97 (Adm. Ac. 1-23 Gts.), Sy.No.98 (Adm. Ac. 2-02 Gts.), Sy.No.99 (Adm. Ac. 0-13 Gts.), Sy.No.100 (Adm. Ac. 0-16 Gts.), totally admeasuring Ac. 4-14 Gts., or 21054 Sq. Yds., having purchased the same from: M/s. Wave Lakewoods Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through a Sale Deed vide Doct. No. 8225/2021 of Bk-I, dt.30/10/2021;
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        5. In Sy.No.72 admeasuring Ac. 2-00 Gts., or 9680 Sq. Yds., having purchased the same from: M/s. Opal Infra Projects Private Limited, rep. by its Authorized Signatories: (i) Puneet Sharma, S/o. Hari Mohan Sharma and (ii) Manmeet Singh Chadha, S/o. Taranjeet Singh Chadha through a Sale Deed vide Doct. No. 5172/2022 of Bk-I, dt.21/06/2022;
+    </p>
+    
+    <p style="margin-bottom: 10px;">
+        (C) The Landowner No.1 - “EPITOME PROJECTS LLP” herein has acquired land in Sy.No.689/RU admeasuring Ac.1-01 Gts., (or) 4961 Sq. Yards, Situated at Thangadpally Village, Choutuppal Mandal, Yadadri - Bhuvanagiri District, under Choutuppal Municipality, Telangana, by virtue of Sale Deed vide Doct.No.237/2023 of Bk-I, dt.02/02/2023 in the O/o. Tahsildar and Jt. Sub-Registrar, Choutuppal (M), Yadadri Bhuvanagiri (D). Further the said land has been converted into NALA vide proceedings No. 2300109903, dt.09/02/2023 issued by the Competent Authority and Tahsildar Choutuppal (M), Yadadri Bhuvanagiri (D).
+    </p>
+    <p style="margin-bottom: 10px;">
+        (D) The Landowner No.2 - “SANDEEPA JETTA” herein has acquired land in Sy.No.683/2/2 admeasuring Ac.1-00 Gts., (or) 4840 Sq. Yards, Situated at Thangadpally Village, Choutuppal Mandal, Yadadri - Bhuvanagiri District, under Choutuppal Municipality, Telangana, by virtue of Sale Deed vide Doct.No.129/2021 of Bk-I, dt.24/12/2020 in the O/o. Tahsildar and Jt. Sub- Registrar, Choutuppal (M), Yadadri Bhuvanagiri (D). Further the above said property belonging to the Landowner No.2 herein is situated in a suitable locality, therefore the Landowner No.2 herein for her mutual benefit has intended to develop the above said land belonging to the Landowner No.2, and the said land has been converted to Non-Agriculture land with NALA transaction No.: 2000556065, dt.31/12/2020 registered in the O/o. Tahsildar Choutuppal (M), Yadadri Bhuvanagiri (D). Accordingly, the Promoter herein entered into Development Agreement with the Landowner No.2 with respect to the land in Sy.No.683/2/2 admeasuring Ac.1-00 Gts., (or) 4840 Sq. Yards, Situated at Thangadpally Village, Choutuppal Mandal, Yadadri - Bhuvanagiri District, under Choutuppal Municipality, Telangana through a Development Agreement cum General Power of Attorney “DAGPA”vide Doct.No.117/2021 of Bk-I,Dt.04/01/2021 registered in the O/o. S.R.O. Choutuppal (2313) read along with a Supplementary Agreement to the “DAGPA” vide Doct.No.7288/2022 of Bk-I, Dt.20/09/2022 in the O/o. S.R.O. Choutuppal (2313).
+    </p>
+    <p style="margin-bottom: 10px;">
+        (E) The Landowner No.3 - “VAKATI BHAGYA SREE” herein has acquired land in Sy.No.683/2/2 admeasuring Ac.0-20 Gts., (or) 2420 Sq. Yards, Situated at Thangadpally Village, Choutuppal Mandal, Yadadri - Bhuvanagiri District, under Choutuppal Municipality, Telangana, by virtue of Sale Deed vide Doct.No.128/2020 of Bk-I, dt.24/12/2020 in the O/o. Tahsildar and Jt. Sub-Registrar, Choutuppal (M), Yadadri Bhuvanagiri (D). Further the above said property belonging to the Landowner No.3 herein is situated in a suitable locality, therefore the Landowner No.3 herein for her mutual benefit has intended to develop the above said land belonging to the Landowner No.3, and the said land has been converted to Non-Agriculture land with NALA transaction No.: 2000556059, dt.31/12/2020 in the O/o. Tahsildar Choutuppal (M), Yadadri Bhuvanagiri (D). Accordingly, the Promoter herein entered into Development Agreement with the Landowner No.3 with respect to land forming part of Sy.No.683/2/2 admeasuring Ac.0- 20 Gts., (or) 2420 Sq. Yards, Situated at Thangadpally Village, Choutuppal Mandal, Yadadri - Bhuvanagiri District, under Choutuppal Municipality, Telangana through a Development Agreement cum General Power of Attorney “DAGPA”vide Doct.No.118/2021 of Bk- I,Dt.04/01/2021 registered in the O/o. S.R.O. Choutuppal (2313) read along with a Supplementary Agreement to the “DAGPA” vide Doct.No.7287/2022 of Bk-I, Dt.20/09/2022 in the O/o. S.R.O. Choutuppal (2313).
+    </p>
+    <p style="margin-bottom: 10px;">
+        (F) The Landowner No.4 - “KUMBHAM SRINIVAS REDDY” herein has acquired land in Sy.No.683/A1/2 admeasuring Ac.3-2850 Gts., and Sy.No.683/A1/1 admeasuring Ac.2-0850 Gts., totally admeasuring Ac. 5-37 Gts., (or) 28677 Sq. Yards, Situated at Thangadpally Village, Choutuppal Mandal, Yadadri -Bhuvanagiri District, under Choutuppal Municipality, Telangana, by virtue of two Sale Deeds vide (1) Doct.No.127/2020 of Bk-I and (2) Doct.No.130/2020 of Bk-I, dt.24/12/2020 both are registered in the O/o. Tahsildar and Jt. Sub-Registrar, Choutuppal (M), Yadadri Bhuvanagiri (D). Further the above said property of Landowner No.4 herein is situated in a suitable locality, therefore the Landowner No.4 herein for his mutual benefit has intended to develop the above said land belonging Landowner No.4, and the said land has been converted to Non-Agriculture land with NALA transaction No.: 2000561145, dt.31/12/2020 in the O/o. Tahsildar Choutuppal (M), Yadadri Bhuvanagiri (D). Accordingly, the Promoter herein entered into Development Agreement with the Landowner No.4 with respect to the land in Sy.No.683/A1/2 admeasuring Ac.3-2850 Gts., and Sy.No.683/A1/1 admeasuring Ac.2-0850 Gts., totally admeasuring Ac. 5-37 Gts., (or) 28677 Sq. Yards, Situated at Thangadpally Village, Choutuppal (M), Yadadri Bhuvanagiri (D), under Choutuppal Municipality, Telangana, through a Development Agreement cum General Power of Attorney “DAGPA”vide Doct.No.119/2021 of Bk-I,Dt.04/01/2021 registered in the O/o. S.R.O. Choutuppal (2313) read along with a Supplementary Agreement to the “DAGPA” vide Doct.No.3136/2024 of Bk-I, Dt.07/05/2024 in the O/o. S.R.O. Choutuppal (2313).
+    </p>
+    <p style="margin-bottom: 10px;">
+        (G) <strong>The Landowner No.4 - “KUMBHAM SRINIVAS REDDY”</strong> herein has also acquired land in Sy.No.72/E admeasuring Ac.1-08 Gts., (or) 5808 Sq. Yards, Situated at Devlamma Nagaram Village, Choutuppal (M), Yadadri Bhuvanagiri (D), under Devulamma Nagaram Gram Panchayat, Telangana, by virtue of Sale Deed vide Doct.No.1/2021 of Bk-I, dt.02/01/2021 registered in the O/o. Tahsildar and Jt. Sub-Registrar, Choutuppal (M), Yadadri Bhuvanagiri (D). Further the above said property belonging to the Landowner No.4 herein is situated in a suitable locality, therefore the Landowner No.4 herein for his mutual benefit has intended to develop the above said land belonging Landowner No.4, and the said land has been converted to Non-Agriculture land with NALA Transaction No.: 2100001848, dt.04/01/2021 in the O/o. Tahsildar Choutuppal Mandal, Yadadri - Bhuvanagiri District. Accordingly, the Promoter herein entered into Development Agreement with the Landowner No.4 with respect to the land in Sy.No.72/E admeasuring Ac.1-08 Gts., (or) 5808 Sq. Yards, Situated at Devlamma Nagaram Village, Choutuppal Mandal, Yadadri - Bhuvanagiri District, under Devulamma Nagaram Gram Panchayat, Telangana, through a Development Agreement cum General Power of Attorney “DAGPA”vide Doct.No.120/2021 of Bk-I, Dt.04/01/2021 registered in the O/o. S.R.O. Choutuppal (2313) read along with a Supplementary Agreement to the “DAGPA” vide Doct.No.3136/2024 of Bk-I, Dt.07/05/2024 in the O/o. S.R.O. Choutuppal (2313).
+    </p>
+    
+    <p>
+        
+    </p>
+    
+    <div style="margin-bottom: 10px;">
+        (H) <strong>The Vendor</strong> herein as the 'Landowner No.1', and also as the 'DAPGA Holder' of 'Landowner No.2', 'Landowner No.3', and 'Landowner No.4' by virtue of four (4) individual deeds of Development Agreement cum General Power of Attorney (“DAGPA”) in the O/o. the SRO Choutuppal (2313), vide follows:
+        <ul>
+            <li>DAGPA Doct.No.117/2021 of Bk-I dt.04/01/2021, supplemented by a Supplementary Agreement to the 'DAGPA' vide Doct.No.7288/2022 of Bk-I, dt.20/09/2022-'Landowner No.2',</li>
+            <li>DAGPA Doct.No.118/2021 of Bk-I dt.04/01/2021, supplemented by a Supplementary Agreement to the 'DAGPA' vide Doct.No.7287/2022 of Bk-I, dt.20/09/2022 - 'Landowner No.3',</li>
+            <li>DAGPA Doct.No.119/2021 of Bk-I dt.04/01/2021,</li>
+            <li>DAGPA Doct.No.120/2021 of Bk-I dt.04/01/2021, with both S.No.(3) and S.No.(4) supplemented by a Supplementary Agreement to the 'DAGPA' vide Doct.No.3136/2024 of Bk-I, dt.07/05/2024 - 'Landowner No.4'.</li>
+        </ul>
+    </div>
+    
+    <p style="margin-bottom: 10px;">
+        (I) The land acquired, as detailed in Clauses (A), (B), (C), (D), (E), (F), and (G) above, forming a contiguous parcel, has been earmarked for the development of a residential project. The Vendor after obtaining permission from the Hyderabad Metropolitan Development Authority (HMDA) to develop the Project, as per Layout Permit No. 08/LO/Plg/HMDA/2021, dated 17-04-2021, issued by the Hyderabad Metropolitan Development Authority (HMDA) has commenced the development of the project. The project is located in various survey numbers within Thangadpally (V), under Choutuppal Municipality (Sy.Nos.646/P, 647, 648, 666, 667/P, 683/P, 684/P, 685/P, 686/P, 687/P, 688, 689, 690, 691, 694, 695, 697, 702/P, 703 and 704), and Devulamma Nagaram (V), Choutuppal Municipality (Sy. Nos. 61, 62, 63/P, 65, 66, 67/P, 68, 69, 70, 71, 72/P, 97/P, 98/P, 99/P and 100/P), comprising residential plots, spanning a total area of Ac.367-14.4 Gts., under the name 'EPITOME INTEGRATED CITY' (“Project”). Furthermore, the Vendor also states that as the Promoter, the Project has been registered under the provisions of the Act with the Telangana Real Estate Regulatory Authority (TS-RERA) in Hyderabad on 17/06/2021, with registration number P02000003057.
+    </p>
+    
+    <p style="margin-bottom: 10px;">
+        (J) The Vendor herein declares that all legal formalities, concerning the right, title, and interest in the Said Land, where the development of the Project is proposed, have been completed. The Vendor holds unfettered exclusive alienable rights over the mentioned property in an absolute manner. As a result, the Vendor offers to sell the saleable extent of land in the project in the form of Plots, free from all encumbrances and charges, to intending purchasers and the Vendor herein as the 'Promoter of the Project', is fully competent to enter into this deed.
+    </p>
+    
+    <p style="margin-bottom: 10px;">
+        (K) The Vendor as the Promoter is developing the above-mentioned approved Project with development activities such as levelling, laying down of drainage lines, water lines, electricity lines etc., as more fully enumerated in the Annexure A attached herewith.
+    </p>
+    
+    <p style="margin-bottom: 10px;">
+        (L) The Purchaser/s herein has/have approached the Vendor and expressed his/her/their desire to purchase the part and parcel of the land marked as Plot No. 1613 admeasuring 266.65 Sq.Yards (or) 222.96 Sq.Mtrs in Sy. Nos. 646/P, 647, 648, 666, 667/P, 683/P, 684/P, 685/P, 686/P, 687/P, 688, 689, 690, 691, 694, 695, 697, 702/P, 703 and 704 within Thangadpally Village, Chotuppal Mandal, Yadadri- Bhuvanagiri District, under Choutuppal Municipality, Telangana. This plot/s is/are an integral part of the 'EPITOME INTEGRATED CITY' project, which comprises residential plots covering a total area of Ac.367-14.4 Gts. The project spans across various Sy.Nos. within Thangadpally Village under Choutuppal Municipality (Sy.Nos.646/P, 647, 648, 666, 667/P, 683/P, 684/P, 685/P, 686/P, 687/P, 688, 689, 690, 691, 694, 695, 697, 702/P, 703 and 704), and Devulamma Nagaram Village under Devulamma Nagaram Gram Panchayat (Sy.Nos.61, 62, 63/P, 65, 66, 67/P, 68, 69, 70, 71, 72/P, 97/P, 98/P, 99/P and 100/P), in accordance with the approved Layout Plan under Layout Permit No. 08/LO/Plg/HMDA/2021, dt.17/04/2021, issued by the Hyderabad Metropolitan Development Authority (HMDA), (hereinafter referred to as the "Schedule Property" more particularly described in Schedule hereunder for the sake of brevity);
+    </p>
+    
+    <p style="margin-bottom: 10px;">
+        (M) In accordance with the terms and conditions outlined in this Agreement and mutually agreed upon by the Parties, the Vendor/Promoter offered to sell open Plot i.e., Schedule of Property @ Rs. 9500/- (Rupees Nine Thousand Five Hundred only) per square yard applicable on the extent of plot under this Agreement. The Purchaser/s hereby agree to pay the aforementioned cost applicable to the Vendor/Promoter as per the terms of this Agreement.
+    </p>
+    
+    <p style="margin-bottom: 10px;">
+        (N) The Parties have gone through all the terms and conditions set out in this Agreement and understood the mutual rights and obligations detailed herein;
+    </p>
+    
+    <p style="margin-bottom: 10px;">
+        (O) In accordance with the terms and conditions set out in this Agreement and as mutually agreed upon by and between the Parties, the Promoter hereby agrees to sell and the Purchaser(s) hereby agree/s to purchase the Schedule Property described in the schedule of the property hereunder.
+    </p>
+    
+    <p style="margin-bottom: 10px; font-weight:bold">
+        NOW THEREFORE THIS AGREEMENT OF SALE WITNESSES AS FOLLOWS : Top of Form 
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        1. The Vendor hereby offers to sell the Schedule Property to the Purchaser/s, for a total sale consideration of Rs.25,33,175/- (Rupees Twenty Five Lakhs, Thirty Three Thousand, One Hundred and Seventy Five only) (“Total Price”) and the Purchaser/s has / have accepted the offer and agreed to purchase the same for the said consideration subject to the terms and conditions agreed herein.
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        2. The Purchaser/s herein paid an amount of Rs.1,00,000/- (Rupees One Lakh Only) through online transfer vide Transaction /Ref. No. DKW4248781 dated 28-11-2024, credited to the Account of Vendor. These payment/s serves as token of advance towards the sale consideration, constituting part of the total sale consideration.
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        3. The remaining balance sale consideration of Rs.24,33,175/- (Rupees Twenty Four Lakhs, Thirty Three Thousand, One Hundred and Seventy Five only) shall be paid within Thirty (30) days from the date of this Agreement.
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        4. That the Vendor herein shall obtain and furnish all the required documents to the Purchaser, essential for the effective transfer of title over the Schedule Property in favour of the Purchaser/s.
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        5. The Vendor is aware that the Purchaser/s has/have agreed to purchase the said Schedule Property relying on the covenants, representations and warranties given by the Vendor and the related documents provided by the Vendor pertaining to the Schedule Property.
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        6. The Vendor hereby agrees to execute a registered sale deed in favour of the Purchaser/s immediately upon the receipt of the entire Total Price from the Purchaser/s.
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        7. The Vendor and Purchaser have agreed that upon full payment of the Total Price, the registration of Schedule Property shall be completed within 30 (thirty) days from the date of this Agreement and completion of the works by the Vendor such as demarcation of Schedule Property with plot number(s) as per the approved layout plan, provision for sewage line, water supply line, stormwater, electrical lines, street lights and BT road to access the Schedule Property, as shown in the approved layout.
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        8. The Vendor hereby declares and assures the Purchaser/s that the Schedule Property is free from all encumbrances, charges, claims, and legal disputes. It has not been offered as security to any authority prior to this Agreement. Furthermore, the Vendor agrees to facilitate the issuance of a No Objection Certificate (NOC) from the Financial Institution(s) / Bank(s) which is essential as per the legal opinion with respect to other plots by the Vendor.
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        9. The Vendor further declares and covenants that peaceful possession of the Schedule Property shall be delivered to the Purchaser/s at the time of registration of the sale deed. Thereafter, the Purchaser/s is/are entitled to remain in possession of the Schedule Property and enjoy the same, with unfettered ownership rights over the said plot, to have and to hold forever.
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        10. It is pertinent to mention that relying on the covenants, representations, and warranties provided by the Vendor to the competent authorities such as TS-RERA and HMDA in relation to the sale of plots to the intending purchasers, the parties herein are entering into this Agreement of Sale, and agree to adhere accordingly.
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        11. The plots acquired under this Agreement cannot be resold to third parties directly for a minimum period of 3 years. However, if the Purchaser/s intend/s to dispose, convey, or transfer the plot acquired by him/her, either by way of sale or gift, to meet his/her dire need of time, they may do so with a No Objection Certificate (NOC) from the “EPITOME PROJECTS LLP”. The NOC is mandatory for the registration of either a Sale Deed or a Gift Deed or any relevant deed for property transfer within the period of 3 years from the date of this Agreement of Sale.
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 25px;">
+        (a) Notwithstanding above, if the Purchaser commits default in respect of the loan availed by him/her against the security of the property, the Bank is entitled to sell the Property/enforce the security in accordance with law without NOC from “EPITOME PROJECTS LLP”. 
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        12. The Vendor further declares and covenants that all the rights, title and interest in and over the Schedule Property including the easements, advantages, liberties, advantages and appurtenances and all that is owned and possessed by the Vendor will be absolutely conveyed to the Purchaser/s after registration of the sale deed in favour of Purchaser/s.
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        13. The Vendor remains responsible for title-related issues both during and prior to peaceful occupancy. Except disclosed, the Vendor declares that the Schedule Property is unencumbered, with no mortgages, charges, prior assignments, or legal disputes, and affirms its authority to transfer ownership to the Purchaser/s.
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        14. The Vendor hereby assures the Purchaser that the property is free from any concealed material facts that could adversely affect its title. The Vendor indemnifies the Purchaser/s against any losses resulting from defects in the property's title.
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        15. The Purchaser/s agree to pay all taxes related to the Schedule Property from the date of the Sale Deed in the name of the Purchaser/s or their nominee(s). These taxes may include property tax, outgoing taxes, duties, charges, expenses, cess, and others.
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        16. The Vendor/Promoter herein undertakes to develop the activities and specifications of development mentioned in Annexure A (Scope and Development works in the Project) given in the last page of this Agreement of Sale for the benefit of the Purchaser/s with respect to the Schedule Property, as promised to them, on the condition that the project will be completed within the agreed timelines permitted by competent authorities such as HMDA and TS-RERA.
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        17. The Purchaser/s shall bear all expenses of the sale, such as stamp duty, registration fees, and drafting charges, in respect of the Sale Deed(s) in favor of Purchaser/s or his/her/their nominee or nominees.
+    </p>
+    
+    <p style="margin-bottom: 10px; margin-left: 15px;">
+        18. The Vendor herein assure and undertakes the Purchaser/s that the Schedule Property shown in the schedule affected by this Document is neither Government Land nor assigned land within the meaning of T.S. (A.P) Assigned Lands (Prohibition of Transfers) Act No.9 of 1977 and is not mentioned in the prohibited list of lands given in the Dharani Portal of TS Govt. There is no House or any type of construction on it. The said land is not under mortgage and does not belong to Government Agencies and their undertakings such as T.S. State Wakf Board, T.S. Bhoodan Yagna Board, Charitable and Hindu Religious Institutions, and Endowments. Additionally, it is not Inam Land, nor is it surplus land under ceiling law, and is not prohibited by any existing Act or Act No.19 of 2007. Furthermore, there are no Protected Tenants over the said land.
+    </p>
+    
+    <p style="margin-bottom: 10px; text-align:center; font-weight: bold">
+        SCHEDULE OF THE PROPERTY 
+    </p>
+    
+    <p style="margin-bottom: 10px;">
+        All that the part and parcel of the land marked as Plot No. 1613 admeasuring 266.65 Sq.Yards (or) 222.96 Sq. Mtrs., in Sy. Nos. 646/P, 647, 648, 666, 667/P, 683/P, 684/P, 685/P, 686/P, 687/P, 688, 689, 690, 691, 694, 695, 697, 702/P, 703 and 704 within Thangadpally Village, Choutuppal Mandal, Yadadri - Bhuvanagiri District, under Choutuppal Municipality, Telangana. This Plot/s is/are an integral part of the 'EPITOME
+    </p>
+    
+    <p style="margin-bottom: 10px;">
+        INTEGRATED CITY' Project, which comprises Residential Plots covering a total area of Ac.367-14.4 Gts. The Project spans across various Survey Numbers within Thangadpally Village under Choutuppal Municipality (Sy.Nos.646/P, 647, 648, 666, 667/P, 683/P, 684/P, 685/P, 686/P, 687/P, 688, 689, 690, 691, 694, 695, 697, 702/P, 703 and 704), and Devulamma Nagaram Village under Devulamma Nagaram Gram Panchayat (Sy.Nos.61, 62, 63/P, 65, 66, 67/P, 68, 69, 70, 71, 72/P, 97/P, 98/P, 99/P and 100/P), in accordance with the approved layout plan under Layout Permit No. 08/LO/Plg/HMDA/2021, dated 17/04/2021, issued by the Hyderabad Metropolitan Development Authority (HMDA) and the said Plot is bounded as follows: 
+    </p>
+    
+    <table style="margin: 20px auto; border-collapse: collapse; width: 50%; border: 1px solid black;">
         <tr>
             <th style="padding: 10px; text-align: left; background-color: #f2f2f2; border: 1px solid black;">Direction</th>
             <th style="padding: 10px; text-align: left; background-color: #f2f2f2; border: 1px solid black;">Boundary</th>
@@ -367,7 +371,7 @@
         </tr>
     </table>
     
-        <h2 style="text-align: center;">ANNEXURE - A (SCOPE OF DEVELOPMENT WORK IN THE PROJECT)</h2>
+    <h2 style="text-align: center;">ANNEXURE - A (SCOPE OF DEVELOPMENT WORK IN THE PROJECT)</h2>
     
     <table style="margin: 20px auto; border-collapse: collapse; width: 60%; border: 1px solid black; font-size: 12px;">
         <tr>

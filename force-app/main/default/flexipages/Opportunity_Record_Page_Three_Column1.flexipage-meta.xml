@@ -10,6 +10,9 @@
                             <value>Opportunity.Send_Payment_Link</value>
                         </valueListItems>
                         <valueListItems>
+                            <value>Opportunity.Initiate_Refund</value>
+                        </valueListItems>
+                        <valueListItems>
                             <value>Clone</value>
                         </valueListItems>
                         <valueListItems>
@@ -51,6 +54,9 @@
                                     <rightValue>Rejected</rightValue>
                                 </criteria>
                             </visibilityRule>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Opportunity.Demand_Letter</value>
                         </valueListItems>
                     </valueList>
                 </componentInstanceProperties>
@@ -374,6 +380,12 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.KYC_Verification__c</fieldItem>
                 <identifier>RecordKYC_Verification__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Loan_Eligible_Amount__c</fieldItem>
+                <identifier>RecordLoan_Eligible_Amount__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-bda0868e-f60d-43d1-bc15-da4b2cf8d682</name>

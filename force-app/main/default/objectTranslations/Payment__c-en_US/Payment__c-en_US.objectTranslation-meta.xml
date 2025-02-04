@@ -26,6 +26,10 @@
             <label><!-- Payment Information --></label>
             <section>Payment Information</section>
         </sections>
+        <sections>
+            <label><!-- Refund Details --></label>
+            <section>Refund Details</section>
+        </sections>
     </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -364,6 +364,10 @@
             <label>GST Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtMUL</field>
+            <label>Gupshup Global Opt In</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcODF</field>
             <label>Inquiry Type</label>
         </opportunityListFieldsLabelMappings>
@@ -382,6 +386,14 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtZQn</field>
+            <label>Loan Eligible Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Atat7</field>
+            <label>Loan Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHy</field>
@@ -424,12 +436,20 @@
             <label>Phase</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AuD6T</field>
+            <label>Phase Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOun</field>
             <label>Plot</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcP2r</field>
             <label>Plot Dimension</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AuD3F</field>
+            <label>Plot Name</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcObS</field>
@@ -494,6 +514,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOtC</field>
             <label>Total Sale Price with GST</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtMUK</field>
+            <label>Tracking Number</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPXV</field>
@@ -601,11 +625,14 @@
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
+            <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
+            <field>00NO400000AtZQn</field>
+            <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000AcOd3</field>
             <field>00NO400000AqMMr</field>
@@ -616,8 +643,10 @@
             <field>00NO400000AcOjV</field>
             <field>00NO400000AcOtB</field>
             <field>00NO400000AcP1F</field>
+            <field>00NO400000AuD6T</field>
             <field>00NO400000AcOun</field>
             <field>00NO400000AcP2r</field>
+            <field>00NO400000AuD3F</field>
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
@@ -634,6 +663,7 @@
             <field>00NO400000AcPSf</field>
             <field>00NO400000AcPVt</field>
             <field>00NO400000AcOtC</field>
+            <field>00NO400000AtMUK</field>
             <field>00NO400000AcPXV</field>
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
@@ -922,6 +952,10 @@
             <label>GST Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtMUL</field>
+            <label>Gupshup Global Opt In</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcODF</field>
             <label>Inquiry Type</label>
         </opportunityListFieldsLabelMappings>
@@ -940,6 +974,14 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtZQn</field>
+            <label>Loan Eligible Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Atat7</field>
+            <label>Loan Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHy</field>
@@ -982,12 +1024,20 @@
             <label>Phase</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AuD6T</field>
+            <label>Phase Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOun</field>
             <label>Plot</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcP2r</field>
             <label>Plot Dimension</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AuD3F</field>
+            <label>Plot Name</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcObS</field>
@@ -1052,6 +1102,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOtC</field>
             <label>Total Sale Price with GST</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtMUK</field>
+            <label>Tracking Number</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPXV</field>
@@ -1159,11 +1213,14 @@
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
+            <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
+            <field>00NO400000AtZQn</field>
+            <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000AcOd3</field>
             <field>00NO400000AqMMr</field>
@@ -1174,8 +1231,10 @@
             <field>00NO400000AcOjV</field>
             <field>00NO400000AcOtB</field>
             <field>00NO400000AcP1F</field>
+            <field>00NO400000AuD6T</field>
             <field>00NO400000AcOun</field>
             <field>00NO400000AcP2r</field>
+            <field>00NO400000AuD3F</field>
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
@@ -1192,6 +1251,7 @@
             <field>00NO400000AcPSf</field>
             <field>00NO400000AcPVt</field>
             <field>00NO400000AcOtC</field>
+            <field>00NO400000AtMUK</field>
             <field>00NO400000AcPXV</field>
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
@@ -1484,6 +1544,10 @@
             <label>GST Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtMUL</field>
+            <label>Gupshup Global Opt In</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcODF</field>
             <label>Inquiry Type</label>
         </opportunityListFieldsLabelMappings>
@@ -1502,6 +1566,14 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtZQn</field>
+            <label>Loan Eligible Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Atat7</field>
+            <label>Loan Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHy</field>
@@ -1544,12 +1616,20 @@
             <label>Phase</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AuD6T</field>
+            <label>Phase Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOun</field>
             <label>Plot</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcP2r</field>
             <label>Plot Dimension</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AuD3F</field>
+            <label>Plot Name</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcObS</field>
@@ -1614,6 +1694,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOtC</field>
             <label>Total Sale Price with GST</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtMUK</field>
+            <label>Tracking Number</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPXV</field>
@@ -1722,11 +1806,14 @@
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
+            <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
+            <field>00NO400000AtZQn</field>
+            <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000AcOd3</field>
             <field>00NO400000AqMMr</field>
@@ -1737,8 +1824,10 @@
             <field>00NO400000AcOjV</field>
             <field>00NO400000AcOtB</field>
             <field>00NO400000AcP1F</field>
+            <field>00NO400000AuD6T</field>
             <field>00NO400000AcOun</field>
             <field>00NO400000AcP2r</field>
+            <field>00NO400000AuD3F</field>
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
@@ -1755,6 +1844,7 @@
             <field>00NO400000AcPSf</field>
             <field>00NO400000AcPVt</field>
             <field>00NO400000AcOtC</field>
+            <field>00NO400000AtMUK</field>
             <field>00NO400000AcPXV</field>
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
@@ -2043,6 +2133,10 @@
             <label>GST Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtMUL</field>
+            <label>Gupshup Global Opt In</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcODF</field>
             <label>Inquiry Type</label>
         </opportunityListFieldsLabelMappings>
@@ -2061,6 +2155,14 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtZQn</field>
+            <label>Loan Eligible Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Atat7</field>
+            <label>Loan Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHy</field>
@@ -2103,12 +2205,20 @@
             <label>Phase</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AuD6T</field>
+            <label>Phase Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOun</field>
             <label>Plot</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcP2r</field>
             <label>Plot Dimension</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AuD3F</field>
+            <label>Plot Name</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcObS</field>
@@ -2173,6 +2283,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOtC</field>
             <label>Total Sale Price with GST</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtMUK</field>
+            <label>Tracking Number</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPXV</field>
@@ -2280,11 +2394,14 @@
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
+            <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
+            <field>00NO400000AtZQn</field>
+            <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000AcOd3</field>
             <field>00NO400000AqMMr</field>
@@ -2295,8 +2412,10 @@
             <field>00NO400000AcOjV</field>
             <field>00NO400000AcOtB</field>
             <field>00NO400000AcP1F</field>
+            <field>00NO400000AuD6T</field>
             <field>00NO400000AcOun</field>
             <field>00NO400000AcP2r</field>
+            <field>00NO400000AuD3F</field>
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
@@ -2313,6 +2432,7 @@
             <field>00NO400000AcPSf</field>
             <field>00NO400000AcPVt</field>
             <field>00NO400000AcOtC</field>
+            <field>00NO400000AtMUK</field>
             <field>00NO400000AcPXV</field>
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
@@ -2605,6 +2725,10 @@
             <label>GST Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtMUL</field>
+            <label>Gupshup Global Opt In</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcODF</field>
             <label>Inquiry Type</label>
         </opportunityListFieldsLabelMappings>
@@ -2623,6 +2747,14 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtZQn</field>
+            <label>Loan Eligible Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Atat7</field>
+            <label>Loan Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHy</field>
@@ -2665,12 +2797,20 @@
             <label>Phase</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AuD6T</field>
+            <label>Phase Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOun</field>
             <label>Plot</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcP2r</field>
             <label>Plot Dimension</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AuD3F</field>
+            <label>Plot Name</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcObS</field>
@@ -2735,6 +2875,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOtC</field>
             <label>Total Sale Price with GST</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtMUK</field>
+            <label>Tracking Number</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPXV</field>
@@ -2843,11 +2987,14 @@
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
+            <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
+            <field>00NO400000AtZQn</field>
+            <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000AcOd3</field>
             <field>00NO400000AqMMr</field>
@@ -2858,8 +3005,10 @@
             <field>00NO400000AcOjV</field>
             <field>00NO400000AcOtB</field>
             <field>00NO400000AcP1F</field>
+            <field>00NO400000AuD6T</field>
             <field>00NO400000AcOun</field>
             <field>00NO400000AcP2r</field>
+            <field>00NO400000AuD3F</field>
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
@@ -2876,6 +3025,7 @@
             <field>00NO400000AcPSf</field>
             <field>00NO400000AcPVt</field>
             <field>00NO400000AcOtC</field>
+            <field>00NO400000AtMUK</field>
             <field>00NO400000AcPXV</field>
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
@@ -3164,6 +3314,10 @@
             <label>GST Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtMUL</field>
+            <label>Gupshup Global Opt In</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcODF</field>
             <label>Inquiry Type</label>
         </opportunityListFieldsLabelMappings>
@@ -3182,6 +3336,14 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtZQn</field>
+            <label>Loan Eligible Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Atat7</field>
+            <label>Loan Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHy</field>
@@ -3224,12 +3386,20 @@
             <label>Phase</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AuD6T</field>
+            <label>Phase Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOun</field>
             <label>Plot</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcP2r</field>
             <label>Plot Dimension</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AuD3F</field>
+            <label>Plot Name</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcObS</field>
@@ -3294,6 +3464,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOtC</field>
             <label>Total Sale Price with GST</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtMUK</field>
+            <label>Tracking Number</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPXV</field>
@@ -3401,11 +3575,14 @@
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
+            <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
+            <field>00NO400000AtZQn</field>
+            <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000AcOd3</field>
             <field>00NO400000AqMMr</field>
@@ -3416,8 +3593,10 @@
             <field>00NO400000AcOjV</field>
             <field>00NO400000AcOtB</field>
             <field>00NO400000AcP1F</field>
+            <field>00NO400000AuD6T</field>
             <field>00NO400000AcOun</field>
             <field>00NO400000AcP2r</field>
+            <field>00NO400000AuD3F</field>
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
@@ -3434,6 +3613,7 @@
             <field>00NO400000AcPSf</field>
             <field>00NO400000AcPVt</field>
             <field>00NO400000AcOtC</field>
+            <field>00NO400000AtMUK</field>
             <field>00NO400000AcPXV</field>
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
@@ -3726,6 +3906,10 @@
             <label>GST Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtMUL</field>
+            <label>Gupshup Global Opt In</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcODF</field>
             <label>Inquiry Type</label>
         </opportunityListFieldsLabelMappings>
@@ -3744,6 +3928,14 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtZQn</field>
+            <label>Loan Eligible Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Atat7</field>
+            <label>Loan Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHy</field>
@@ -3786,12 +3978,20 @@
             <label>Phase</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AuD6T</field>
+            <label>Phase Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOun</field>
             <label>Plot</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcP2r</field>
             <label>Plot Dimension</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AuD3F</field>
+            <label>Plot Name</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcObS</field>
@@ -3856,6 +4056,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOtC</field>
             <label>Total Sale Price with GST</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtMUK</field>
+            <label>Tracking Number</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPXV</field>
@@ -3964,11 +4168,14 @@
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
+            <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
+            <field>00NO400000AtZQn</field>
+            <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000AcOd3</field>
             <field>00NO400000AqMMr</field>
@@ -3979,8 +4186,10 @@
             <field>00NO400000AcOjV</field>
             <field>00NO400000AcOtB</field>
             <field>00NO400000AcP1F</field>
+            <field>00NO400000AuD6T</field>
             <field>00NO400000AcOun</field>
             <field>00NO400000AcP2r</field>
+            <field>00NO400000AuD3F</field>
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
@@ -3997,6 +4206,7 @@
             <field>00NO400000AcPSf</field>
             <field>00NO400000AcPVt</field>
             <field>00NO400000AcOtC</field>
+            <field>00NO400000AtMUK</field>
             <field>00NO400000AcPXV</field>
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
@@ -4285,6 +4495,10 @@
             <label>GST Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtMUL</field>
+            <label>Gupshup Global Opt In</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcODF</field>
             <label>Inquiry Type</label>
         </opportunityListFieldsLabelMappings>
@@ -4303,6 +4517,14 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtZQn</field>
+            <label>Loan Eligible Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Atat7</field>
+            <label>Loan Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHy</field>
@@ -4345,12 +4567,20 @@
             <label>Phase</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AuD6T</field>
+            <label>Phase Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOun</field>
             <label>Plot</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcP2r</field>
             <label>Plot Dimension</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AuD3F</field>
+            <label>Plot Name</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcObS</field>
@@ -4415,6 +4645,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOtC</field>
             <label>Total Sale Price with GST</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtMUK</field>
+            <label>Tracking Number</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPXV</field>
@@ -4522,11 +4756,14 @@
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
+            <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
+            <field>00NO400000AtZQn</field>
+            <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000AcOd3</field>
             <field>00NO400000AqMMr</field>
@@ -4537,8 +4774,10 @@
             <field>00NO400000AcOjV</field>
             <field>00NO400000AcOtB</field>
             <field>00NO400000AcP1F</field>
+            <field>00NO400000AuD6T</field>
             <field>00NO400000AcOun</field>
             <field>00NO400000AcP2r</field>
+            <field>00NO400000AuD3F</field>
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
@@ -4555,6 +4794,7 @@
             <field>00NO400000AcPSf</field>
             <field>00NO400000AcPVt</field>
             <field>00NO400000AcOtC</field>
+            <field>00NO400000AtMUK</field>
             <field>00NO400000AcPXV</field>
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
@@ -4847,6 +5087,10 @@
             <label>GST Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtMUL</field>
+            <label>Gupshup Global Opt In</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcODF</field>
             <label>Inquiry Type</label>
         </opportunityListFieldsLabelMappings>
@@ -4865,6 +5109,14 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtZQn</field>
+            <label>Loan Eligible Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Atat7</field>
+            <label>Loan Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHy</field>
@@ -4907,12 +5159,20 @@
             <label>Phase</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AuD6T</field>
+            <label>Phase Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOun</field>
             <label>Plot</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcP2r</field>
             <label>Plot Dimension</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AuD3F</field>
+            <label>Plot Name</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcObS</field>
@@ -4977,6 +5237,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOtC</field>
             <label>Total Sale Price with GST</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtMUK</field>
+            <label>Tracking Number</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPXV</field>
@@ -5085,11 +5349,14 @@
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
+            <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
+            <field>00NO400000AtZQn</field>
+            <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000AcOd3</field>
             <field>00NO400000AqMMr</field>
@@ -5100,8 +5367,10 @@
             <field>00NO400000AcOjV</field>
             <field>00NO400000AcOtB</field>
             <field>00NO400000AcP1F</field>
+            <field>00NO400000AuD6T</field>
             <field>00NO400000AcOun</field>
             <field>00NO400000AcP2r</field>
+            <field>00NO400000AuD3F</field>
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
@@ -5118,6 +5387,7 @@
             <field>00NO400000AcPSf</field>
             <field>00NO400000AcPVt</field>
             <field>00NO400000AcOtC</field>
+            <field>00NO400000AtMUK</field>
             <field>00NO400000AcPXV</field>
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
@@ -5406,6 +5676,10 @@
             <label>GST Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtMUL</field>
+            <label>Gupshup Global Opt In</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcODF</field>
             <label>Inquiry Type</label>
         </opportunityListFieldsLabelMappings>
@@ -5424,6 +5698,14 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtZQn</field>
+            <label>Loan Eligible Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Atat7</field>
+            <label>Loan Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHy</field>
@@ -5466,12 +5748,20 @@
             <label>Phase</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AuD6T</field>
+            <label>Phase Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOun</field>
             <label>Plot</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcP2r</field>
             <label>Plot Dimension</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AuD3F</field>
+            <label>Plot Name</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcObS</field>
@@ -5536,6 +5826,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOtC</field>
             <label>Total Sale Price with GST</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtMUK</field>
+            <label>Tracking Number</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPXV</field>
@@ -5643,11 +5937,14 @@
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
+            <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
+            <field>00NO400000AtZQn</field>
+            <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000AcOd3</field>
             <field>00NO400000AqMMr</field>
@@ -5658,8 +5955,10 @@
             <field>00NO400000AcOjV</field>
             <field>00NO400000AcOtB</field>
             <field>00NO400000AcP1F</field>
+            <field>00NO400000AuD6T</field>
             <field>00NO400000AcOun</field>
             <field>00NO400000AcP2r</field>
+            <field>00NO400000AuD3F</field>
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
@@ -5676,6 +5975,7 @@
             <field>00NO400000AcPSf</field>
             <field>00NO400000AcPVt</field>
             <field>00NO400000AcOtC</field>
+            <field>00NO400000AtMUK</field>
             <field>00NO400000AcPXV</field>
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
@@ -5968,6 +6268,10 @@
             <label>GST Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtMUL</field>
+            <label>Gupshup Global Opt In</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcODF</field>
             <label>Inquiry Type</label>
         </opportunityListFieldsLabelMappings>
@@ -5986,6 +6290,14 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtZQn</field>
+            <label>Loan Eligible Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Atat7</field>
+            <label>Loan Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHy</field>
@@ -6028,12 +6340,20 @@
             <label>Phase</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AuD6T</field>
+            <label>Phase Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOun</field>
             <label>Plot</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcP2r</field>
             <label>Plot Dimension</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AuD3F</field>
+            <label>Plot Name</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcObS</field>
@@ -6098,6 +6418,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOtC</field>
             <label>Total Sale Price with GST</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtMUK</field>
+            <label>Tracking Number</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPXV</field>
@@ -6206,11 +6530,14 @@
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
+            <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
+            <field>00NO400000AtZQn</field>
+            <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000AcOd3</field>
             <field>00NO400000AqMMr</field>
@@ -6221,8 +6548,10 @@
             <field>00NO400000AcOjV</field>
             <field>00NO400000AcOtB</field>
             <field>00NO400000AcP1F</field>
+            <field>00NO400000AuD6T</field>
             <field>00NO400000AcOun</field>
             <field>00NO400000AcP2r</field>
+            <field>00NO400000AuD3F</field>
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
@@ -6239,6 +6568,7 @@
             <field>00NO400000AcPSf</field>
             <field>00NO400000AcPVt</field>
             <field>00NO400000AcOtC</field>
+            <field>00NO400000AtMUK</field>
             <field>00NO400000AcPXV</field>
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
@@ -6527,6 +6857,10 @@
             <label>GST Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtMUL</field>
+            <label>Gupshup Global Opt In</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcODF</field>
             <label>Inquiry Type</label>
         </opportunityListFieldsLabelMappings>
@@ -6545,6 +6879,14 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtZQn</field>
+            <label>Loan Eligible Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Atat7</field>
+            <label>Loan Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHy</field>
@@ -6587,12 +6929,20 @@
             <label>Phase</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AuD6T</field>
+            <label>Phase Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOun</field>
             <label>Plot</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcP2r</field>
             <label>Plot Dimension</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AuD3F</field>
+            <label>Plot Name</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcObS</field>
@@ -6657,6 +7007,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOtC</field>
             <label>Total Sale Price with GST</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AtMUK</field>
+            <label>Tracking Number</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPXV</field>
@@ -6764,11 +7118,14 @@
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
+            <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
+            <field>00NO400000AtZQn</field>
+            <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000AcOd3</field>
             <field>00NO400000AqMMr</field>
@@ -6779,8 +7136,10 @@
             <field>00NO400000AcOjV</field>
             <field>00NO400000AcOtB</field>
             <field>00NO400000AcP1F</field>
+            <field>00NO400000AuD6T</field>
             <field>00NO400000AcOun</field>
             <field>00NO400000AcP2r</field>
+            <field>00NO400000AuD3F</field>
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
@@ -6797,6 +7156,7 @@
             <field>00NO400000AcPSf</field>
             <field>00NO400000AcPVt</field>
             <field>00NO400000AcOtC</field>
+            <field>00NO400000AtMUK</field>
             <field>00NO400000AcPXV</field>
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>

@@ -4,11 +4,11 @@ public class RetailAosController {
     public Integer calculatedAge { get; set; }
     public String maskedAadhaar { get; set; }
     public List<ContactDetails> contactDetailsList { get; set; }
-    public Unit__c plotRecord { get; set; }
     public String saleAmountInWords { get; set; }
     public String balanceAmountInWords { get; set; }
     public String paidAmountInWords { get; set; }
     public List<PaymentDetails> approvedPayments { get; set; }
+    public Double plotSizeInSqM { get; set; } // To store plot size in square meters
 
     public RetailAosController() {
         try {
@@ -19,8 +19,9 @@ public class RetailAosController {
                 try {
                     opportunityRecord = [SELECT Id, AccountId, Account.Name, Contact__r.Salutation, Account.BillingStreet, 
                                          Account.BillingCity, Account.BillingState, Account.BillingCountry, Account.BillingPostalCode,
-                                         Contact__r.Aadhaar_Card__c, Contact__r.Date_Of_Birth__c, Unit__r.Name, Unit__r.Plot_Size__c, 
-                                         Unit__r.Plot_Price__c, Sale_Value_Amount__c, Collected_Amount__c, Outstanding_Amount__c
+                                         Contact__r.Aadhaar_Card__c, Contact__r.Date_Of_Birth__c, Unit__r.Name, Unit__r.Plot_Size__c,
+                                         Unit__r.North__r.Name, Unit__r.South__r.Name,Unit__r.West__r.Name, Unit__r.East__r.Name,
+                                         Unit__r.Plot_Price__c, Sale_Value_Amount__c, Collected_Amount__c, Outstanding_Amount__c,Unit__r.Base_Price_per_Sq_Ft__c
                                          FROM Opportunity WHERE Id = :opportunityId LIMIT 1];
                 } catch (Exception e) {
                     System.debug('Error fetching Opportunity: ' + e.getMessage());
@@ -30,6 +31,11 @@ public class RetailAosController {
                 saleAmountInWords = NumberToCharacter.getNumberTOWordConvertion(opportunityRecord.Sale_Value_Amount__c);
                 balanceAmountInWords = NumberToCharacter.getNumberTOWordConvertion(opportunityRecord.Outstanding_Amount__c);
                 paidAmountInWords = NumberToCharacter.getNumberTOWordConvertion(opportunityRecord.Collected_Amount__c);
+
+                // Extract plot size in square feet and convert to square meters
+                if (opportunityRecord.Unit__r.Plot_Size__c != null) {
+                    plotSizeInSqM = convertPlotSizeToSqM(opportunityRecord.Unit__r.Plot_Size__c);
+                }
 
                 if (opportunityRecord.Contact__r != null) {
                     if (opportunityRecord.Contact__r.Date_Of_Birth__c != null) {
@@ -109,30 +115,37 @@ public class RetailAosController {
         return (aadhaar != null && aadhaar.length() >= 4) ? 'XXXX-XXXX-' + aadhaar.substring(aadhaar.length() - 4) : 'Invalid Aadhaar';
     }
     
-     public String formatDate(Date inputDate) {
-        // Get the day, month, and year from the date
+    public String formatDate(Date inputDate) {
         String day = String.valueOf(inputDate.day());
-        String month = getMonthName(inputDate.month()); // Convert month number to month name
+        String month = getMonthName(inputDate.month());
         String year = String.valueOf(inputDate.year());
-        
-        // Construct the formatted date string
         return day + ' of ' + month + ', ' + year;
     }
     
-    // Method to convert month number to month name
     public String getMonthName(Integer monthNumber) {
-        // Array of month names
         String[] months = new String[]{
             'January', 'February', 'March', 'April', 'May', 'June', 
-                'July', 'August', 'September', 'October', 'November', 'December'
-                };
-                    
-                    // Return the corresponding month name (subtract 1 because array is 0-based)
-                    if (monthNumber >= 1 && monthNumber <= 12) {
-                        return months[monthNumber - 1];
-                    } else {
-                        return 'Invalid Month'; // Handle invalid month numbers
-                    }
+            'July', 'August', 'September', 'October', 'November', 'December'
+        };
+        if (monthNumber >= 1 && monthNumber <= 12) {
+            return months[monthNumber - 1];
+        } else {
+            return 'Invalid Month';
+        }
+    }
+
+    // Method to extract numeric part of Plot_Size__c and convert to square meters
+    public Double convertPlotSizeToSqM(String plotSize) {
+        if (plotSize != null) {
+            // Extract numeric value (e.g., 190 from "190 sq ft")
+            String numberString = plotSize.replaceAll('[^0-9]', '');
+            system.debug('numberString-->'+numberString);
+            if (String.isNotEmpty(numberString)) {
+                Double sizeInSqFt = Double.valueOf(numberString);
+                return sizeInSqFt * 0.836127; // Convert to square meters
+            }
+        }
+        return 0.0; // Default to 0 if no valid value is found
     }
 
     public class ContactDetails {

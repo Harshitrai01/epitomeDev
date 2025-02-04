@@ -576,6 +576,26 @@
             <field>KYC_Verification__c</field>
             <table>Opportunity</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Loan_Eligible_Amount__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Loan_Status__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Plot_Name__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Phase_Name__c</field>
+            <table>Opportunity</table>
+        </columns>
         <masterLabel>Opportunities</masterLabel>
     </sections>
     <sections>
@@ -776,6 +796,16 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Error_Message__c</field>
+            <table>Opportunity.Payments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Refund_Reason__c</field>
+            <table>Opportunity.Payments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Is_Refund_Success__c</field>
             <table>Opportunity.Payments__r</table>
         </columns>
         <masterLabel>Payments</masterLabel>

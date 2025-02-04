@@ -25,15 +25,36 @@
                     onchange={handleContactSelection}>
                 </lightning-combobox>
             </div>
-            <!-- Aadhaar Upload -->
+            <div class="slds-m-bottom_medium">
+                <lightning-combobox
+                    name="documentType"
+                    label="Document Type"
+                    placeholder="Select Document Type"
+                    options={documentTypeOptions}
+                    onchange={handleDocumentTypeChange}>
+                </lightning-combobox>
+
+                <!-- Sub Type Picklist (Dependent on Document Type) -->
+                <template if:true={subTypeOptions.length}>
+                    <lightning-combobox
+                        name="subType"
+                        label="Sub Type"
+                        placeholder="Select Sub Type"
+                        options={subTypeOptions}
+                        onchange={handleSubTypeChange}>
+                    </lightning-combobox>
+                </template>
+            </div>
+           
+            <!-- Upload -->
             <div class="slds-m-bottom_medium upload-section">
                 <lightning-file-upload
-                    label="Upload Aadhaar"
+                    label="Upload Document (Max 25MB)"
                     name="aadhaarUpload"
                     accept={acceptedFormats}
                     record-id={contactId}
                     onuploadfinished={handleAadhaarUploadFinished}
-                    multiple=false
+                    multiple = true
                     required = true
                     disabled={isContactTagged}>
                 </lightning-file-upload>
@@ -41,16 +62,16 @@
                     <template if:true={aadhaarFileId}>
                         <div>
                             <lightning-icon icon-name="utility:check" size="small" class="slds-icon-text-success"></lightning-icon>
-                            <span class="slds-m-left_x-small">Aadhaar uploaded successfully!</span>
+                            <span class="slds-m-left_x-small">{fileStatus}</span>
                         </div>
                     </template>
                 </div>
             </div>
 
             <!-- PAN Upload -->
-            <div class="slds-m-bottom_medium upload-section">
+            <!-- <div class="slds-m-bottom_medium upload-section">
                 <lightning-file-upload
-                    label="Upload PAN"
+                    label="Upload PAN (Max 4MB)"
                     name="panUpload"
                     accept={acceptedFormats}
                     record-id={contactId}
@@ -67,12 +88,12 @@
                         </div>
                     </template>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Other Document Upload -->
-            <div class="slds-m-bottom_medium upload-section">
+            <!-- <div class="slds-m-bottom_medium upload-section">
                 <lightning-file-upload
-                    label="Upload Other Document"
+                    label="Upload Other Document (Max 4MB)"
                     name="otherDocUpload"
                     accept={acceptedFormats}
                     record-id={contactId}
@@ -88,7 +109,7 @@
                         </div>
                     </template>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <!-- Footer -->

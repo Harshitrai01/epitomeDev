@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Gupshup WhatsApp Lead Assignment</name>
+    <queueMembers>
+        <users>
+            <user>insightsintegration@00do4000009pndlma0.ext</user>
+            <user>sachin.khanna@saasworx.ai</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Lead</sobjectType>
+    </queueSobject>
+</Queue>

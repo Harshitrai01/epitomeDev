@@ -1,6 +1,6 @@
-@RestResource(urlMapping='/EasebuzzWebhook')
+//@RestResource(urlMapping='/EasebuzzWebhook')
 global class EasebuzzWebhookHandler {
-    @HttpPost
+    //@HttpPost
     global static void handleTransactionResponse() {
         
         RestRequest req = RestContext.request;

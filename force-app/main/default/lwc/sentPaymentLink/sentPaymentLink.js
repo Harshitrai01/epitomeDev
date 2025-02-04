@@ -140,7 +140,7 @@ export default class SentPaymentLink extends LightningElement {
         this.isLoading = true;
         insertPaymentRecord({ jsonData })
             .then(result => {
-                this.displayMessage('Success', 'Payment link sent successfully! Link: ', 'success');
+                this.displayMessage('Success', 'Payment link sent successfully!', 'success');
                 this.isLoading = false;
                 this.dispatchEvent(new CloseActionScreenEvent());
             })

@@ -17,6 +17,63 @@ public with sharing class KYCVerificationController {
             throw new AuraHandledException('Error fetching contact details: ' + ex.getMessage());
         }
     }
+
+    @AuraEnabled
+    public static Long checkFileSize(String contentDocumentId, Integer maxSize, String fileType) {
+        System.debug('--->'+fileType);
+        ContentVersion content = [SELECT ContentSize, Id, Title  
+                                    FROM ContentVersion 
+                                    WHERE ContentDocumentId = :contentDocumentId 
+                                    ORDER BY CreatedDate DESC 
+                                    LIMIT 1
+                                ];
+
+        // If file size exceeds maxSize, delete the file
+        if (content.ContentSize > maxSize) {
+            // Delete the ContentDocument
+            ContentDocument docToDelete = [SELECT Id 
+                                            FROM ContentDocument 
+                                            WHERE Id = :contentDocumentId 
+                                            LIMIT 1
+                                        ];
+            delete docToDelete;
+            return 0; // Return 0 to indicate file was deleted
+        }
+
+        // Rename the file with the appropriate prefix
+        String newFileName = fileType + '__' + content.Title;
+
+        // Update the file name in ContentVersion
+        content.Title = newFileName;
+        update content;
+
+        return content.ContentSize; // Return file size in bytes
+    }
+
+    @AuraEnabled
+    public static void uploadFile(String base64Data, String fileName, Id recordId, String documentType) {
+        try {
+            // Convert base64 data to Blob
+            String fileData = base64Data;
+            Blob fileBlob = EncodingUtil.base64Decode(fileData);
+
+            // Create ContentVersion record
+            ContentVersion contentVersion = new ContentVersion(
+                VersionData = fileBlob,
+                Title = fileName,
+                PathOnClient = fileName,
+                FirstPublishLocationId = recordId
+            );
+            insert contentVersion;
+
+            // Optionally, associate the file with a custom object or process it further
+            System.debug('File uploaded successfully: ' + fileName);
+        } catch (Exception e) {
+            throw new AuraHandledException('Error uploading file: ' + e.getMessage());
+        }
+    }
+
+    
     @AuraEnabled
     public static void updateOpportunityKYCStatus(Id opportunityId, Id contactId) {
         try {

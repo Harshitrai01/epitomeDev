@@ -7,12 +7,7 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { NavigationMixin } from 'lightning/navigation';
 import { CloseActionScreenEvent } from 'lightning/actions';
 import { getObjectInfo, getPicklistValues } from 'lightning/uiObjectInfoApi';
-import getRecordData from '@salesforce/apex/bookingFormController.getRecordData';
 import saveFormData1 from '@salesforce/apex/bookingFormController.saveFormData1';
-import submitFormData from '@salesforce/apex/bookingFormController.submitFormData';
-import getPlotDetails from '@salesforce/apex/bookingFormController.getPlotDetails';
-import { refreshApex } from '@salesforce/apex';
-const FIELDS = ['Opportunity.RecordTypeId'];
 
 const FIELDSs = [
     'Unit__c.Name',
@@ -137,7 +132,7 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
         this.istest3 = true;
      
         console.log(' this.isDefaultPlot---->', this.isDefaultPlot);
-        //this.extractRecordTypeIdFromUrl();
+     //   this.extractRecordTypeIdFromUrl();
         this.addContact();
     }
 
@@ -174,35 +169,35 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
         // window.location.reload();
         // this.isModalOpen = false;
     }
- @wire(getObjectInfo, { objectApiName: OPPORTUNITY_OBJECT_NAME })
-    handleObjectInfo({ data, error }) {
-        if (data) {
-            // Extract record type information
-            const recordTypes = data.recordTypeInfos;
+//  @wire(getObjectInfo, { objectApiName: OPPORTUNITY_OBJECT_NAME })
+//     handleObjectInfo({ data, error }) {
+//         if (data) {
+//             // Extract record type information
+//             const recordTypes = data.recordTypeInfos;
 
-            // Get the 'Bulk Sales' record type ID
-            this.recordTypeId = this.getRecordTypeIdByName(recordTypes, 'Bulk Sales');
-    console.log('recordTypeId--------->',this.recordTypeId);
-            // Check if we have the correct record type ID
-            if (this.recordTypeId) {
-                // If the record type matches 'Bulk Sales', show the component
-                this.showComponent = true;
-            } else {
-                 this.showComponent = false;
-                // If it doesn't match, redirect to the default Opportunity creation page
-                window.location.href = this.defaultRedirectUrl;
-            }
-        } else if (error) {
-            console.error('Error fetching record type info:', error);
-        }
-    }
+//             // Get the 'Bulk Sales' record type ID
+//             this.recordTypeId = this.getRecordTypeIdByName(recordTypes, 'Bulk Sales');
+//     console.log('recordTypeId--------->',this.recordTypeId);
+//             // Check if we have the correct record type ID
+//             if (this.recordTypeId) {
+//                 // If the record type matches 'Bulk Sales', show the component
+//                 this.showComponent = true;
+//             } else {
+//                  this.showComponent = false;
+//                 // If it doesn't match, redirect to the default Opportunity creation page
+//                 window.location.href = this.defaultRedirectUrl;
+//             }
+//         } else if (error) {
+//             console.error('Error fetching record type info:', error);
+//         }
+//     }
 
     // Helper function to get the recordTypeId by recordTypeName
-    getRecordTypeIdByName(recordTypes, recordTypeName) {
-        return Object.keys(recordTypes).find(
-            (key) => recordTypes[key].name === recordTypeName
-        );
-    }
+    // getRecordTypeIdByName(recordTypes, recordTypeName) {
+    //     return Object.keys(recordTypes).find(
+    //         (key) => recordTypes[key].name === recordTypeName
+    //     );
+    // }
   @wire(getObjectInfo, { objectApiName: OPPORTUNITY_OBJECT_NAME })
     opportunityObjectInfo;
     
@@ -261,38 +256,7 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     handleValueChange(event) {
         try {
 
-            const contactId = parseInt(event.target.dataset.contactId, 10); // Get contact ID
-            const plotId = event.target.dataset.plotId ? parseInt(event.target.dataset.plotId, 10) : null;
-            console.log('contactId--->', contactId);
-            console.log('plotId--->', plotId);
-            const fieldName = event.target.name; // Identify the field being modified
-            const value = event.detail.recordId; // Get the recordId
-            this.selectedRecordId = event.detail.recordId;
            
-           
-            // Check if it's for the 'plotName' field, otherwise, just use event.target.value
-            const finalValue = fieldName === 'plotName' ? value : event.target.value;
-
-            const contactIndex = this.bookingFormData.listOfCoApplicant.findIndex(
-                contact => contact.id === contactId
-            );
-
-            if (contactIndex !== -1) {
-                // If there is a plotId, update the plot information
-                if (plotId) {
-                    const plotIndex = this.bookingFormData.listOfCoApplicant[contactIndex].plots.findIndex(
-                        plot => plot.id === plotId
-                    );
-                    if (plotIndex !== -1) {
-                        this.bookingFormData.listOfCoApplicant[contactIndex].plots[plotIndex][fieldName] = finalValue;
-
-                    }
-                } else {
-                    // If there is no plotId, just update the contact information
-                    this.bookingFormData.listOfCoApplicant[contactIndex][fieldName] = finalValue;
-                }
-            }
-            console.log('213 ' + event.target.value);
             switch (event.target.name) {
 
                 case 'accountSameAsPermanentAddress':
@@ -311,6 +275,41 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
                     break;
                 default:
                 //   this.bookingFormData[event.target.name] = event.target.value;
+                 const contactId = parseInt(event.target.dataset.contactId, 10); // Get contact ID
+            const plotId = event.target.dataset.plotId ? parseInt(event.target.dataset.plotId, 10) : null;
+            console.log('contactId--->', contactId);
+            console.log('plotId--->', plotId);
+            const fieldName = event.target.name; // Identify the field being modified
+            const value = event.detail.recordId; // Get the recordId
+            this.selectedRecordId = event.detail.recordId;
+           console.log('fieldName--->', fieldName);
+           
+            // Check if it's for the 'plotName' field, otherwise, just use event.target.value
+            const finalValue = fieldName === 'plotName' ? value : event.target.value;
+
+            const contactIndex = this.bookingFormData.listOfCoApplicant.findIndex(
+                contact => contact.id === contactId
+            );
+
+            if (contactIndex !== -1) {
+                // If there is a plotId, update the plot information
+                if (plotId) {
+                    console.log('aaaaaaaaaaaaaaaaaaaa');
+                    const plotIndex = this.bookingFormData.listOfCoApplicant[contactIndex].plots.findIndex(
+                        plot => plot.id === plotId
+                    );
+                    if (plotIndex !== -1) {
+                        console.log('bbbbbbbbbbbbbbbbbbbbbb');
+                        this.bookingFormData.listOfCoApplicant[contactIndex].plots[plotIndex][fieldName] = finalValue;
+
+                    }
+                } else {
+                    console.log('ccccccccccccccccc');
+                    // If there is no plotId, just update the contact information
+                    this.bookingFormData.listOfCoApplicant[contactIndex][fieldName] = finalValue;
+                }
+            }
+            console.log('213 ' + event.target.value);
             }
         } catch (error) {
             console.log('handleValueChange error message------------------>', error.message);
@@ -356,10 +355,7 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
         this.bookingFormData.accountCorrespondenceAddressPostalCode = event.detail.postalCode;
     }
 
-    // @track bookingFormData = {
-    //         listOfCoApplicant: [], // List of listOfCoApplicant, each with an empty plot list initially
-    //     };
-
+   
     nextId = 1; // Unique ID generator for listOfCoApplicant and plots
 
     // Add a new contact
@@ -487,9 +483,7 @@ updateContactButtons() {
         this.isLoading = event.detail.isLoading;
     }
 
-    handleCoApplicantValueChange(event) {
-        this.bookingFormData.listOfCoApplicant[event.target.dataset.rowIndex][event.target.name] = event.target.value;
-    }
+
 
 
     handleCancelClick() {

@@ -120,4 +120,8 @@
         <name>Admin_Management</name>
         <type>CustomApplication</type>
     </appMenuItems>
+    <appMenuItems>
+        <name>gupshup_crm__Gupshup</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
 </AppMenu>

@@ -196,10 +196,16 @@ public class EasyCollectPayment {
         }
     }
     
-    public static void initiateRefund(String txnid, Decimal refundAmount, Decimal amount, String email, String phone) {
+    @future(callout=true)
+    public static void initiateRefund(String txnid, Decimal amount, String email, String phone, String paymentId) {
         
         String url = 'https://testdashboard.easebuzz.in/transaction/v1/refund';
-        
+        String error='';
+        Decimal refundAmount= amount;
+        if (String.valueOf(refundAmount).endsWith('.00')) {
+            refundAmount = refundAmount.setScale(1, System.RoundingMode.DOWN);
+            amount=refundAmount;
+        }
         String hashString = key + '|' + txnid + '|' + amount + '|' + refundAmount + '|' + email + '|' + phone + '|' + salt;
         String hash = generateSHA512Hash(hashString);
         
@@ -219,28 +225,132 @@ public class EasyCollectPayment {
         request.setMethod('POST');
         request.setHeader('Content-Type', 'application/json');
         request.setHeader('Accept', 'application/json');
-        System.debug('Payload-->>'+JSON.serialize(payload));
         request.setBody(JSON.serialize(payload));
         HttpResponse response;
         try {
             response = http.send(request);
             Map<String, Object> responseMap = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
             if (response.getStatusCode() == 200 || response.getStatusCode() == 201) {
-                if (responseMap != null) {
+                Boolean status = (Boolean) responseMap.get('status');
+                if (status) {
                     System.debug('Refund Response: ' + responseMap);
                     System.debug('Refund Status: ' + responseMap.get('status'));
                     System.debug('Refund Amount: ' + responseMap.get('refund_amount'));
                     System.debug('Reason: ' + responseMap.get('reason'));
                     System.debug('Refund ID: ' + responseMap.get('refund_id'));
+                    IntegrationLogUtility.doLog(request.getBody(), response.getBody(), response.getStatusCode());
+                    updatePaymentRefund(paymentId,(String)responseMap.get('reason'),(Boolean)responseMap.get('status'));
                 } else {
                     System.debug('Failed to initiate refund.');
+                    String errorReason = 'Status: '+status +', Reason: '+ (String) responseMap.get('reason');
                     System.debug('Refund Response: ' + responseMap);
+                    IntegrationLogUtility.doLogError(request.getBody(), response.getBody(), response.getStatusCode(), errorReason, 'CustomError', errorReason, null, errorReason);
                 }
             } else {
-                System.debug('Error: HTTP Status ' + response.getStatusCode() + ' - ' + response.getBody());
+                error='Failed to initiate refund.';
+                IntegrationLogUtility.doLogError(request.getBody(), response.getBody(), response.getStatusCode(), null, null, null, null, error);
             }
         } catch (Exception ex) {
             System.debug('Exception: ' + ex.getMessage());
+        }
+    }
+    
+    public static void updatePaymentRefund(String paymentId, String refundReason, Boolean status){
+        try{
+            List<Payment__c> paymentList = [Select Id,Is_Refund_Success__c,Refund_Reason__c
+                                            From Payment__c Where Id=:paymentId Limit 1];
+            paymentList[0].Is_Refund_Success__c=status;
+            paymentList[0].Refund_Reason__c=refundReason;
+            
+            if(paymentList!=null){
+                update paymentList;
+            }
+        }catch(Exception e){
+            throw New AuraHandledException(e.getMessage());
+        }
+    }
+    
+    public static String getTransactionDetails(String txnid, Decimal amount, String email, String phone) {
+        if (amount!=null && String.valueOf(amount).endsWith('.00')) {
+            amount = amount.setScale(1, System.RoundingMode.DOWN);
+        }
+        String inputString = key + '|' + txnid + '|' + amount + '|' + email + '|' + phone + '|' + SALT;
+        String hash = generateSHA512Hash(inputString);
+
+        HttpRequest req = new HttpRequest();
+        req.setEndpoint('https://testdashboard.easebuzz.in/transaction/v1/retrieve');
+        req.setMethod('POST');
+        req.setHeader('Content-Type', 'application/x-www-form-urlencoded');
+        req.setHeader('Accept', 'application/json');
+
+        String requestBody = 'txnid=' + EncodingUtil.urlEncode(txnid, 'UTF-8') +
+                             '&key=' + EncodingUtil.urlEncode(key, 'UTF-8') +
+                             '&amount=' + EncodingUtil.urlEncode(String.valueOf(amount), 'UTF-8') +
+                             '&email=' + EncodingUtil.urlEncode(email, 'UTF-8') +
+                             '&phone=' + EncodingUtil.urlEncode(phone, 'UTF-8') +
+                             '&hash=' + EncodingUtil.urlEncode(hash, 'UTF-8');
+
+        req.setBody(requestBody);
+        Http http = new Http();
+        HttpResponse res;
+        String error='';
+        try {
+            res = http.send(req);
+            Map<String, Object> responseMap = (Map<String, Object>) JSON.deserializeUntyped(res.getBody());
+            if (res.getStatusCode() == 200 || res.getStatusCode() == 201) {
+                Boolean status = (Boolean) responseMap.get('status');
+                if (status) {
+                    Integration_Log__c log = new Integration_Log__c();
+            		log.IsSuccess__c = true;
+            		log.Request_Body__c = (req.getBody() != null) ? req.getBody() : 'No Request Data';
+            		log.Response_Body__c = (res.getBody() != null) ? res.getBody() : 'No Response Data';
+            		log.Status_Code__c = (res.getStatusCode() != null) ? res.getStatusCode() : null;
+                    ResponseWrapper reponseWrap = New ResponseWrapper(true,null,res.getBody());
+                    reponseWrap.integrationLogs=JSON.serialize(log);
+                	return JSON.serialize(reponseWrap);
+                } else {
+                    error = 'Status: '+status +', Reason: '+ (String) responseMap.get('msg');
+                    String msg = (String) responseMap.get('msg');
+                    Integration_Log__c log = new Integration_Log__c();
+                    log.Cause__c = msg!=null?String.valueOf(msg):'';
+                    log.Status_Code__c = res.getStatusCode() !=null ? res.getStatusCode():0;
+                    log.Request_Body__c = req.getBody() !=null ? req.getBody():'';
+                    log.Response_Body__c = res.getBody()!=null ? res.getBody():'';
+                    log.Exception_Type__c ='Callout Error';
+                    log.Error_Message__c = error!=null ? error:'';
+                    log.Stack_Trace__c ='EasyCollectPayment.getTransactionDetails';
+                    log.Error__c=error;
+                    ResponseWrapper reponseWrap = New ResponseWrapper(true,error,res.getBody());
+                    reponseWrap.integrationLogs=JSON.serialize(log);
+                	return JSON.serialize(reponseWrap);
+                }
+            } else {
+            		ResponseWrapper reponseWrap = New ResponseWrapper(false,error,res.getBody());
+                	Integration_Log__c log = new Integration_Log__c();
+                    log.Cause__c = error;
+                    log.Status_Code__c = res.getStatusCode() !=null ? res.getStatusCode():0;
+                    log.Request_Body__c = req.getBody() !=null ? req.getBody():'';
+                    log.Response_Body__c = res.getBody()!=null ? res.getBody():'';
+                    log.Exception_Type__c ='Callout Error';
+                    log.Error_Message__c = error!=null ? error:'';
+                    log.Stack_Trace__c ='EasyCollectPayment.getTransactionDetails';
+                    log.Error__c=error;
+                    reponseWrap.integrationLogs=JSON.serialize(log);
+                	return JSON.serialize(reponseWrap);
+            }
+        } catch (Exception ex) {
+            		ResponseWrapper reponseWrap = New ResponseWrapper(false,error,res.getBody());
+                	Integration_Log__c log = new Integration_Log__c();
+                    log.Cause__c = JSON.serialize(ex.getCause());
+                    log.Status_Code__c = res.getStatusCode() !=null ? res.getStatusCode():0;
+                    log.Request_Body__c = req.getBody() !=null ? req.getBody():'';
+                    log.Response_Body__c = res.getBody()!=null ? res.getBody():'';
+                    log.Exception_Type__c =JSON.serialize(ex.getTypeName());
+                    log.Error_Message__c = JSON.serialize(ex.getMessage())!=null ? JSON.serialize(ex.getMessage()):'';
+                    log.Stack_Trace__c =JSON.serialize(ex.getStackTraceString());
+                    log.Error__c=error;
+                    reponseWrap.integrationLogs=JSON.serialize(log);
+                	return JSON.serialize(reponseWrap);
         }
     }
     
@@ -253,13 +363,11 @@ public class EasyCollectPayment {
     public class ResponseWrapper {
         @AuraEnabled
         public Boolean isSuccess;
-        
         @AuraEnabled
         public String error;
-        
         @AuraEnabled
         public String response;
-        
+        public String integrationLogs;
         public ResponseWrapper(Boolean isSuccess, String error, String response) {
             this.isSuccess = isSuccess;
             this.error = error;
