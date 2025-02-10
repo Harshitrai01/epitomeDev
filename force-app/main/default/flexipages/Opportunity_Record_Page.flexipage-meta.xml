@@ -162,6 +162,30 @@
                 <identifier>RecordLoan_Status__cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Refund_Approval_Status__c</fieldItem>
+                <identifier>RecordRefund_Approval_Status__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.BR_Status__c</fieldItem>
+                <identifier>RecordBR_Status__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Bulk_Booking__c</fieldItem>
+                <identifier>RecordBulk_Booking__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Contact_Name__c</fieldItem>
+                <identifier>RecordContact_Name__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-9b41bd63-8713-49cd-8d56-67009e490196</name>
         <type>Facet</type>
     </flexiPageRegions>

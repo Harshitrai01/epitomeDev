@@ -30,13 +30,6 @@
                         </valueListItems>
                         <valueListItems>
                             <value>Lead.Schedule_Site_Visit_Event</value>
-                            <visibilityRule>
-                                <criteria>
-                                    <leftValue>{!Record.Status}</leftValue>
-                                    <operator>EQUAL</operator>
-                                    <rightValue>Prospect</rightValue>
-                                </criteria>
-                            </visibilityRule>
                         </valueListItems>
                     </valueList>
                 </componentInstanceProperties>

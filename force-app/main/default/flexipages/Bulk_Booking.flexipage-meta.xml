@@ -7,12 +7,6 @@
                 <identifier>c_generateBookingForm</identifier>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentName>generateBookingForm</componentName>
-                <identifier>c_generateBookingForm2</identifier>
-            </componentInstance>
-        </itemInstances>
         <name>main</name>
         <type>Region</type>
     </flexiPageRegions>

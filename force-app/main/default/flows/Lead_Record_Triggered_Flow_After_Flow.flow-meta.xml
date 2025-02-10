@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Send_Custom_Notification_to_Users</name>
         <label>Send Custom Notification to Users</label>
-        <locationX>182</locationX>
-        <locationY>1739</locationY>
+        <locationX>270</locationX>
+        <locationY>2039</locationY>
         <actionName>customNotificationAction</actionName>
         <actionType>customNotificationAction</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -45,8 +45,8 @@
     <assignments>
         <name>assign_Lead_Owner</name>
         <label>assign Lead Owner</label>
-        <locationX>446</locationX>
-        <locationY>1271</locationY>
+        <locationX>732</locationX>
+        <locationY>1379</locationY>
         <assignmentItems>
             <assignToReference>ownerIds</assignToReference>
             <operator>Add</operator>
@@ -62,7 +62,7 @@
         <name>Lead_Owner_Assignment</name>
         <label>Lead Owner Assignment</label>
         <locationX>50</locationX>
-        <locationY>755</locationY>
+        <locationY>647</locationY>
         <assignmentItems>
             <assignToReference>ownerIds</assignToReference>
             <operator>Add</operator>
@@ -71,13 +71,13 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>loop_over_Opportunity</targetReference>
+            <targetReference>get_Related_Opportunity</targetReference>
         </connector>
     </assignments>
     <decisions>
         <name>Check_Duplicate</name>
         <label>Check Duplicate</label>
-        <locationX>336</locationX>
+        <locationX>455</locationX>
         <locationY>431</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -91,16 +91,41 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>get_Related_Opportunity</targetReference>
+                <targetReference>Check_Parent_Lead_Owner_is_queue</targetReference>
             </connector>
             <label>Lead is Duplicate</label>
         </rules>
     </decisions>
     <decisions>
+        <name>Check_if_Opportunity_is_null</name>
+        <label>Check if Opportunity is null</label>
+        <locationX>182</locationX>
+        <locationY>947</locationY>
+        <defaultConnector>
+            <targetReference>loop_over_Opportunity</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Opportunity_is_Null</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>get_Related_Opportunity</leftValueReference>
+                <operator>IsEmpty</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_if_Owner_list_is_Null</targetReference>
+            </connector>
+            <label>Opportunity is Null</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>check_if_Owner_in_List</name>
         <label>check if Owner in List</label>
-        <locationX>424</locationX>
-        <locationY>1055</locationY>
+        <locationX>710</locationX>
+        <locationY>1163</locationY>
         <defaultConnector>
             <targetReference>Check_Opportunity_Owner_is_queue</targetReference>
         </defaultConnector>
@@ -122,10 +147,32 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Check_if_Owner_list_is_Null</name>
+        <label>Check if Owner list is Null</label>
+        <locationX>182</locationX>
+        <locationY>1823</locationY>
+        <defaultConnector>
+            <targetReference>get_Custom_Notification</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Owner_List_is_Null</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ownerIds</leftValueReference>
+                <operator>IsEmpty</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Owner List is Null</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Check_Opportunity_Owner_is_queue</name>
         <label>Check Opportunity Owner is queue</label>
-        <locationX>578</locationX>
-        <locationY>1163</locationY>
+        <locationX>864</locationX>
+        <locationY>1271</locationY>
         <defaultConnector>
             <targetReference>loop_over_Opportunity</targetReference>
         </defaultConnector>
@@ -150,9 +197,9 @@
         <name>Check_Parent_Lead_Owner_is_queue</name>
         <label>Check Parent Lead Owner is queue</label>
         <locationX>182</locationX>
-        <locationY>647</locationY>
+        <locationY>539</locationY>
         <defaultConnector>
-            <targetReference>loop_over_Opportunity</targetReference>
+            <targetReference>get_Related_Opportunity</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -174,7 +221,7 @@
     <decisions>
         <name>Lead_New_or_Updated</name>
         <label>Lead New or Updated</label>
-        <locationX>501</locationX>
+        <locationX>723</locationX>
         <locationY>323</locationY>
         <defaultConnectorLabel>Lead Updated</defaultConnectorLabel>
         <rules>
@@ -204,15 +251,15 @@
     <loops>
         <name>loop_over_Opportunity</name>
         <label>loop over Opportunity</label>
-        <locationX>182</locationX>
-        <locationY>947</locationY>
+        <locationX>468</locationX>
+        <locationY>1055</locationY>
         <collectionReference>get_Related_Opportunity</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
             <targetReference>check_if_Owner_in_List</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
-            <targetReference>get_Custom_Notification</targetReference>
+            <targetReference>Check_if_Owner_list_is_Null</targetReference>
         </noMoreValuesConnector>
     </loops>
     <processMetadataValues>
@@ -237,8 +284,8 @@
     <recordLookups>
         <name>get_Custom_Notification</name>
         <label>get Custom Notification</label>
-        <locationX>182</locationX>
-        <locationY>1631</locationY>
+        <locationX>270</locationX>
+        <locationY>1931</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Send_Custom_Notification_to_Users</targetReference>
@@ -259,10 +306,10 @@
         <name>get_Related_Opportunity</name>
         <label>get Related Opportunity</label>
         <locationX>182</locationX>
-        <locationY>539</locationY>
+        <locationY>839</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Check_Parent_Lead_Owner_is_queue</targetReference>
+            <targetReference>Check_if_Opportunity_is_null</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -277,7 +324,7 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <start>
-        <locationX>375</locationX>
+        <locationX>597</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Lead_New_or_Updated</targetReference>

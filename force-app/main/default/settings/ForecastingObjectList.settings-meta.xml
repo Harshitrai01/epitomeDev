@@ -34,6 +34,10 @@
             <label>Manager Judgment</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AvnuH</field>
+            <label>Refund Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcP7h</field>
             <label>Quote</label>
         </forecastingObjectListLabelMappings>
@@ -74,8 +78,16 @@
             <label>Customer Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AyGP8</field>
+            <label>Bank Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcNp3</field>
             <label>Customer Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000AwRtJ</field>
+            <label>Base Price per Sq. Ft</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -122,6 +134,10 @@
             <label>Last Modified Date</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AwkUX</field>
+            <label>Bulk Booking</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000Atat7</field>
             <label>Loan Status</label>
         </forecastingObjectListLabelMappings>
@@ -160,6 +176,10 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.QUANTITY</field>
             <label>Quantity</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Av3BV</field>
+            <label>Refund Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOtB</field>
@@ -242,6 +262,10 @@
             <label>Expected Revenue</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Ay7SH</field>
+            <label>Contact Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>CORE.USERS.ALIAS</field>
             <label>Opportunity Owner Alias</label>
         </forecastingObjectListLabelMappings>
@@ -288,6 +312,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcODF</field>
             <label>Inquiry Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000AwMTp</field>
+            <label>BR Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>SYNCEDQUOTE.NAME</field>
@@ -497,10 +525,15 @@
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
+            <field>00NO400000AyGP8</field>
+            <field>00NO400000AwRtJ</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AwkUX</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
@@ -540,6 +573,8 @@
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
+            <field>00NO400000AvnuH</field>
+            <field>00NO400000Av3BV</field>
             <field>00NO400000AcPAv</field>
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
@@ -601,6 +636,10 @@
             <label>Fiscal Quarter</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AvnuH</field>
+            <label>Refund Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcP7h</field>
             <label>Quote</label>
         </forecastingObjectListLabelMappings>
@@ -641,8 +680,16 @@
             <label>Customer Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AyGP8</field>
+            <label>Bank Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcNp3</field>
             <label>Customer Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000AwRtJ</field>
+            <label>Base Price per Sq. Ft</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -689,6 +736,10 @@
             <label>Last Modified Date</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AwkUX</field>
+            <label>Bulk Booking</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000Atat7</field>
             <label>Loan Status</label>
         </forecastingObjectListLabelMappings>
@@ -727,6 +778,10 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.QUANTITY</field>
             <label>Quantity</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Av3BV</field>
+            <label>Refund Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOtB</field>
@@ -809,6 +864,10 @@
             <label>Expected Revenue</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Ay7SH</field>
+            <label>Contact Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>CORE.USERS.ALIAS</field>
             <label>Opportunity Owner Alias</label>
         </forecastingObjectListLabelMappings>
@@ -855,6 +914,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcODF</field>
             <label>Inquiry Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000AwMTp</field>
+            <label>BR Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>SYNCEDQUOTE.NAME</field>
@@ -1064,10 +1127,15 @@
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
+            <field>00NO400000AyGP8</field>
+            <field>00NO400000AwRtJ</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AwkUX</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
@@ -1107,6 +1175,8 @@
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
+            <field>00NO400000AvnuH</field>
+            <field>00NO400000Av3BV</field>
             <field>00NO400000AcPAv</field>
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
@@ -1168,6 +1238,10 @@
             <label>Manager Judgment</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AvnuH</field>
+            <label>Refund Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcP7h</field>
             <label>Quote</label>
         </forecastingObjectListLabelMappings>
@@ -1208,8 +1282,16 @@
             <label>Customer Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AyGP8</field>
+            <label>Bank Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcNp3</field>
             <label>Customer Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000AwRtJ</field>
+            <label>Base Price per Sq. Ft</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -1256,6 +1338,10 @@
             <label>Last Modified Date</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AwkUX</field>
+            <label>Bulk Booking</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000Atat7</field>
             <label>Loan Status</label>
         </forecastingObjectListLabelMappings>
@@ -1294,6 +1380,10 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.QUANTITY</field>
             <label>Quantity</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Av3BV</field>
+            <label>Refund Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOtB</field>
@@ -1376,6 +1466,10 @@
             <label>Expected Revenue</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Ay7SH</field>
+            <label>Contact Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>CORE.USERS.ALIAS</field>
             <label>Opportunity Owner Alias</label>
         </forecastingObjectListLabelMappings>
@@ -1422,6 +1516,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcODF</field>
             <label>Inquiry Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000AwMTp</field>
+            <label>BR Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>SYNCEDQUOTE.NAME</field>
@@ -1631,10 +1729,15 @@
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
+            <field>00NO400000AyGP8</field>
+            <field>00NO400000AwRtJ</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AwkUX</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
@@ -1674,6 +1777,8 @@
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
+            <field>00NO400000AvnuH</field>
+            <field>00NO400000Av3BV</field>
             <field>00NO400000AcPAv</field>
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
@@ -1735,6 +1840,10 @@
             <label>Manager Judgment</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AvnuH</field>
+            <label>Refund Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcP7h</field>
             <label>Quote</label>
         </forecastingObjectListLabelMappings>
@@ -1775,8 +1884,16 @@
             <label>Customer Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AyGP8</field>
+            <label>Bank Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcNp3</field>
             <label>Customer Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000AwRtJ</field>
+            <label>Base Price per Sq. Ft</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -1823,6 +1940,10 @@
             <label>Last Modified Date</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AwkUX</field>
+            <label>Bulk Booking</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000Atat7</field>
             <label>Loan Status</label>
         </forecastingObjectListLabelMappings>
@@ -1861,6 +1982,10 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.QUANTITY</field>
             <label>Quantity</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Av3BV</field>
+            <label>Refund Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOtB</field>
@@ -1943,6 +2068,10 @@
             <label>Expected Revenue</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Ay7SH</field>
+            <label>Contact Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>CORE.USERS.ALIAS</field>
             <label>Opportunity Owner Alias</label>
         </forecastingObjectListLabelMappings>
@@ -1993,6 +2122,10 @@
         <forecastingObjectListLabelMappings>
             <field>SPLITAMOUNT</field>
             <label>Forecasted Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000AwMTp</field>
+            <label>BR Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>SYNCEDQUOTE.NAME</field>
@@ -2203,10 +2336,15 @@
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
+            <field>00NO400000AyGP8</field>
+            <field>00NO400000AwRtJ</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AwkUX</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
@@ -2246,6 +2384,8 @@
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
+            <field>00NO400000AvnuH</field>
+            <field>00NO400000Av3BV</field>
             <field>00NO400000AcPAv</field>
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
@@ -2307,6 +2447,10 @@
             <label>Manager Judgment</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AvnuH</field>
+            <label>Refund Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcP7h</field>
             <label>Quote</label>
         </forecastingObjectListLabelMappings>
@@ -2347,8 +2491,16 @@
             <label>Customer Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AyGP8</field>
+            <label>Bank Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcNp3</field>
             <label>Customer Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000AwRtJ</field>
+            <label>Base Price per Sq. Ft</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -2395,6 +2547,10 @@
             <label>Last Modified Date</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AwkUX</field>
+            <label>Bulk Booking</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000Atat7</field>
             <label>Loan Status</label>
         </forecastingObjectListLabelMappings>
@@ -2433,6 +2589,10 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.QUANTITY</field>
             <label>Quantity</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Av3BV</field>
+            <label>Refund Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOtB</field>
@@ -2515,6 +2675,10 @@
             <label>Expected Revenue</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Ay7SH</field>
+            <label>Contact Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>CORE.USERS.ALIAS</field>
             <label>Opportunity Owner Alias</label>
         </forecastingObjectListLabelMappings>
@@ -2561,6 +2725,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcODF</field>
             <label>Inquiry Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000AwMTp</field>
+            <label>BR Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>SYNCEDQUOTE.NAME</field>
@@ -2770,10 +2938,15 @@
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
+            <field>00NO400000AyGP8</field>
+            <field>00NO400000AwRtJ</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AwkUX</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
@@ -2813,6 +2986,8 @@
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
+            <field>00NO400000AvnuH</field>
+            <field>00NO400000Av3BV</field>
             <field>00NO400000AcPAv</field>
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
@@ -2874,6 +3049,10 @@
             <label>Manager Judgment</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AvnuH</field>
+            <label>Refund Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcP7h</field>
             <label>Quote</label>
         </forecastingObjectListLabelMappings>
@@ -2914,8 +3093,16 @@
             <label>Customer Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AyGP8</field>
+            <label>Bank Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcNp3</field>
             <label>Customer Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000AwRtJ</field>
+            <label>Base Price per Sq. Ft</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -2962,6 +3149,10 @@
             <label>Last Modified Date</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AwkUX</field>
+            <label>Bulk Booking</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000Atat7</field>
             <label>Loan Status</label>
         </forecastingObjectListLabelMappings>
@@ -3000,6 +3191,10 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.QUANTITY</field>
             <label>Quantity</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Av3BV</field>
+            <label>Refund Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOtB</field>
@@ -3082,6 +3277,10 @@
             <label>Expected Revenue</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Ay7SH</field>
+            <label>Contact Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>CORE.USERS.ALIAS</field>
             <label>Opportunity Owner Alias</label>
         </forecastingObjectListLabelMappings>
@@ -3132,6 +3331,10 @@
         <forecastingObjectListLabelMappings>
             <field>SPLITAMOUNT</field>
             <label>Forecasted Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000AwMTp</field>
+            <label>BR Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>SYNCEDQUOTE.NAME</field>
@@ -3342,10 +3545,15 @@
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
+            <field>00NO400000AyGP8</field>
+            <field>00NO400000AwRtJ</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AwkUX</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
@@ -3385,6 +3593,8 @@
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
+            <field>00NO400000AvnuH</field>
+            <field>00NO400000Av3BV</field>
             <field>00NO400000AcPAv</field>
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
@@ -3446,6 +3656,10 @@
             <label>Manager Judgment</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AvnuH</field>
+            <label>Refund Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcP7h</field>
             <label>Quote</label>
         </forecastingObjectListLabelMappings>
@@ -3486,8 +3700,16 @@
             <label>Customer Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AyGP8</field>
+            <label>Bank Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcNp3</field>
             <label>Customer Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000AwRtJ</field>
+            <label>Base Price per Sq. Ft</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -3534,6 +3756,10 @@
             <label>Last Modified Date</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AwkUX</field>
+            <label>Bulk Booking</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000Atat7</field>
             <label>Loan Status</label>
         </forecastingObjectListLabelMappings>
@@ -3572,6 +3798,10 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.QUANTITY</field>
             <label>Quantity</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Av3BV</field>
+            <label>Refund Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOtB</field>
@@ -3654,6 +3884,10 @@
             <label>Expected Revenue</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Ay7SH</field>
+            <label>Contact Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>CORE.USERS.ALIAS</field>
             <label>Opportunity Owner Alias</label>
         </forecastingObjectListLabelMappings>
@@ -3700,6 +3934,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcODF</field>
             <label>Inquiry Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000AwMTp</field>
+            <label>BR Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>SYNCEDQUOTE.NAME</field>
@@ -3909,10 +4147,15 @@
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
+            <field>00NO400000AyGP8</field>
+            <field>00NO400000AwRtJ</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AwkUX</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
@@ -3952,6 +4195,8 @@
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
+            <field>00NO400000AvnuH</field>
+            <field>00NO400000Av3BV</field>
             <field>00NO400000AcPAv</field>
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
@@ -4013,6 +4258,10 @@
             <label>Manager Judgment</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AvnuH</field>
+            <label>Refund Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcP7h</field>
             <label>Quote</label>
         </forecastingObjectListLabelMappings>
@@ -4053,8 +4302,16 @@
             <label>Customer Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AyGP8</field>
+            <label>Bank Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcNp3</field>
             <label>Customer Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000AwRtJ</field>
+            <label>Base Price per Sq. Ft</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -4101,6 +4358,10 @@
             <label>Last Modified Date</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AwkUX</field>
+            <label>Bulk Booking</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000Atat7</field>
             <label>Loan Status</label>
         </forecastingObjectListLabelMappings>
@@ -4139,6 +4400,10 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.QUANTITY</field>
             <label>Quantity</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Av3BV</field>
+            <label>Refund Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOtB</field>
@@ -4221,6 +4486,10 @@
             <label>Expected Revenue</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Ay7SH</field>
+            <label>Contact Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>CORE.USERS.ALIAS</field>
             <label>Opportunity Owner Alias</label>
         </forecastingObjectListLabelMappings>
@@ -4271,6 +4540,10 @@
         <forecastingObjectListLabelMappings>
             <field>SPLITAMOUNT</field>
             <label>Forecasted Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000AwMTp</field>
+            <label>BR Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>SYNCEDQUOTE.NAME</field>
@@ -4481,10 +4754,15 @@
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
+            <field>00NO400000AyGP8</field>
+            <field>00NO400000AwRtJ</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AwkUX</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
@@ -4524,6 +4802,8 @@
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
+            <field>00NO400000AvnuH</field>
+            <field>00NO400000Av3BV</field>
             <field>00NO400000AcPAv</field>
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
@@ -4585,6 +4865,10 @@
             <label>Manager Judgment</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AvnuH</field>
+            <label>Refund Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcP7h</field>
             <label>Quote</label>
         </forecastingObjectListLabelMappings>
@@ -4625,8 +4909,16 @@
             <label>Customer Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AyGP8</field>
+            <label>Bank Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcNp3</field>
             <label>Customer Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000AwRtJ</field>
+            <label>Base Price per Sq. Ft</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -4673,6 +4965,10 @@
             <label>Last Modified Date</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AwkUX</field>
+            <label>Bulk Booking</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000Atat7</field>
             <label>Loan Status</label>
         </forecastingObjectListLabelMappings>
@@ -4711,6 +5007,10 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.QUANTITY</field>
             <label>Quantity</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Av3BV</field>
+            <label>Refund Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOtB</field>
@@ -4793,6 +5093,10 @@
             <label>Expected Revenue</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Ay7SH</field>
+            <label>Contact Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>CORE.USERS.ALIAS</field>
             <label>Opportunity Owner Alias</label>
         </forecastingObjectListLabelMappings>
@@ -4839,6 +5143,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcODF</field>
             <label>Inquiry Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000AwMTp</field>
+            <label>BR Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>SYNCEDQUOTE.NAME</field>
@@ -5048,10 +5356,15 @@
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
+            <field>00NO400000AyGP8</field>
+            <field>00NO400000AwRtJ</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AwkUX</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
@@ -5091,6 +5404,8 @@
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
+            <field>00NO400000AvnuH</field>
+            <field>00NO400000Av3BV</field>
             <field>00NO400000AcPAv</field>
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
@@ -5152,6 +5467,10 @@
             <label>Manager Judgment</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AvnuH</field>
+            <label>Refund Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcP7h</field>
             <label>Quote</label>
         </forecastingObjectListLabelMappings>
@@ -5192,8 +5511,16 @@
             <label>Customer Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AyGP8</field>
+            <label>Bank Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcNp3</field>
             <label>Customer Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000AwRtJ</field>
+            <label>Base Price per Sq. Ft</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -5240,6 +5567,10 @@
             <label>Last Modified Date</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AwkUX</field>
+            <label>Bulk Booking</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000Atat7</field>
             <label>Loan Status</label>
         </forecastingObjectListLabelMappings>
@@ -5278,6 +5609,10 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.QUANTITY</field>
             <label>Quantity</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Av3BV</field>
+            <label>Refund Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOtB</field>
@@ -5360,6 +5695,10 @@
             <label>Expected Revenue</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Ay7SH</field>
+            <label>Contact Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>CORE.USERS.ALIAS</field>
             <label>Opportunity Owner Alias</label>
         </forecastingObjectListLabelMappings>
@@ -5410,6 +5749,10 @@
         <forecastingObjectListLabelMappings>
             <field>SPLITAMOUNT</field>
             <label>Forecasted Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000AwMTp</field>
+            <label>BR Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>SYNCEDQUOTE.NAME</field>
@@ -5620,10 +5963,15 @@
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
+            <field>00NO400000AyGP8</field>
+            <field>00NO400000AwRtJ</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AwkUX</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
@@ -5663,6 +6011,8 @@
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
+            <field>00NO400000AvnuH</field>
+            <field>00NO400000Av3BV</field>
             <field>00NO400000AcPAv</field>
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
@@ -5724,6 +6074,10 @@
             <label>Manager Judgment</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AvnuH</field>
+            <label>Refund Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcP7h</field>
             <label>Quote</label>
         </forecastingObjectListLabelMappings>
@@ -5764,8 +6118,16 @@
             <label>Customer Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AyGP8</field>
+            <label>Bank Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcNp3</field>
             <label>Customer Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000AwRtJ</field>
+            <label>Base Price per Sq. Ft</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -5812,6 +6174,10 @@
             <label>Last Modified Date</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AwkUX</field>
+            <label>Bulk Booking</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000Atat7</field>
             <label>Loan Status</label>
         </forecastingObjectListLabelMappings>
@@ -5850,6 +6216,10 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.QUANTITY</field>
             <label>Quantity</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Av3BV</field>
+            <label>Refund Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOtB</field>
@@ -5932,6 +6302,10 @@
             <label>Expected Revenue</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Ay7SH</field>
+            <label>Contact Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>CORE.USERS.ALIAS</field>
             <label>Opportunity Owner Alias</label>
         </forecastingObjectListLabelMappings>
@@ -5978,6 +6352,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcODF</field>
             <label>Inquiry Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000AwMTp</field>
+            <label>BR Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>SYNCEDQUOTE.NAME</field>
@@ -6187,10 +6565,15 @@
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
+            <field>00NO400000AyGP8</field>
+            <field>00NO400000AwRtJ</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AwkUX</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
@@ -6230,6 +6613,8 @@
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
+            <field>00NO400000AvnuH</field>
+            <field>00NO400000Av3BV</field>
             <field>00NO400000AcPAv</field>
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
@@ -6291,6 +6676,10 @@
             <label>Manager Judgment</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AvnuH</field>
+            <label>Refund Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcP7h</field>
             <label>Quote</label>
         </forecastingObjectListLabelMappings>
@@ -6331,8 +6720,16 @@
             <label>Customer Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AyGP8</field>
+            <label>Bank Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcNp3</field>
             <label>Customer Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000AwRtJ</field>
+            <label>Base Price per Sq. Ft</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -6379,6 +6776,10 @@
             <label>Last Modified Date</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AwkUX</field>
+            <label>Bulk Booking</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000Atat7</field>
             <label>Loan Status</label>
         </forecastingObjectListLabelMappings>
@@ -6417,6 +6818,10 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.QUANTITY</field>
             <label>Quantity</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Av3BV</field>
+            <label>Refund Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOtB</field>
@@ -6499,6 +6904,10 @@
             <label>Expected Revenue</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Ay7SH</field>
+            <label>Contact Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>CORE.USERS.ALIAS</field>
             <label>Opportunity Owner Alias</label>
         </forecastingObjectListLabelMappings>
@@ -6549,6 +6958,10 @@
         <forecastingObjectListLabelMappings>
             <field>SPLITAMOUNT</field>
             <label>Forecasted Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000AwMTp</field>
+            <label>BR Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>SYNCEDQUOTE.NAME</field>
@@ -6759,10 +7172,15 @@
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
+            <field>00NO400000AyGP8</field>
+            <field>00NO400000AwRtJ</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AwkUX</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
@@ -6802,6 +7220,8 @@
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
+            <field>00NO400000AvnuH</field>
+            <field>00NO400000Av3BV</field>
             <field>00NO400000AcPAv</field>
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
@@ -6863,6 +7283,10 @@
             <label>Manager Judgment</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AvnuH</field>
+            <label>Refund Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcP7h</field>
             <label>Quote</label>
         </forecastingObjectListLabelMappings>
@@ -6903,8 +7327,16 @@
             <label>Customer Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AyGP8</field>
+            <label>Bank Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcNp3</field>
             <label>Customer Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000AwRtJ</field>
+            <label>Base Price per Sq. Ft</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -6951,6 +7383,10 @@
             <label>Last Modified Date</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000AwkUX</field>
+            <label>Bulk Booking</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000Atat7</field>
             <label>Loan Status</label>
         </forecastingObjectListLabelMappings>
@@ -6989,6 +7425,10 @@
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.QUANTITY</field>
             <label>Quantity</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Av3BV</field>
+            <label>Refund Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOtB</field>
@@ -7071,6 +7511,10 @@
             <label>Expected Revenue</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Ay7SH</field>
+            <label>Contact Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>CORE.USERS.ALIAS</field>
             <label>Opportunity Owner Alias</label>
         </forecastingObjectListLabelMappings>
@@ -7117,6 +7561,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcODF</field>
             <label>Inquiry Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000AwMTp</field>
+            <label>BR Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>SYNCEDQUOTE.NAME</field>
@@ -7326,10 +7774,15 @@
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
+            <field>00NO400000AyGP8</field>
+            <field>00NO400000AwRtJ</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AwkUX</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
@@ -7369,6 +7822,8 @@
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
+            <field>00NO400000AvnuH</field>
+            <field>00NO400000Av3BV</field>
             <field>00NO400000AcPAv</field>
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>

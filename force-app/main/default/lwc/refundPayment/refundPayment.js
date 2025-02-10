@@ -1,7 +1,7 @@
 import { LightningElement, track, wire, api } from 'lwc';
 import { CurrentPageReference } from 'lightning/navigation';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import getPaymentsByOpportunity from '@salesforce/apex/refundPaymentController.getPaymentsByOpportunity';
+import submitForApproval from '@salesforce/apex/refundPaymentController.submitForApproval';
 import { CloseActionScreenEvent } from 'lightning/actions';
 export default class RefundPayment extends LightningElement {
 
@@ -12,15 +12,15 @@ export default class RefundPayment extends LightningElement {
     getStateParameters(currentPageReference) {
         if (currentPageReference) {
             this.wireRecordId = currentPageReference.state.recordId;
-            this.fetchPayments()
+            this.submit()
         }
     }
 
-        fetchPayments() {
+        submit() {
         this.isLoading = true;
-        getPaymentsByOpportunity({ opportunityId: this.wireRecordId })
+        submitForApproval({ recordId: this.wireRecordId })
             .then((data) => {
-                this.displayMessage('Success', 'Refund Process Initiated', 'success');
+                this.displayMessage('Success', 'Submitted For Approval', 'success');
                 this.isLoading = false;
                 this.dispatchEvent(new CloseActionScreenEvent());
             })

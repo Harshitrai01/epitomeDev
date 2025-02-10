@@ -224,6 +224,14 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>PaymentRefundGetStatusBatch</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PaymentSendLinkEasyCollect</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>PaymentTransactionBatch</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -297,6 +305,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>refundPaymentController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>sendAOSDocumentController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -403,6 +415,11 @@
         <editable>true</editable>
         <field>Additional_Charges__c.Values__c</field>
         <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>BatchClassTime__mdt.Time_In_Minutes__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -841,7 +858,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Opportunity.BR_Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Opportunity.Balance_Due_Amount__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Bank_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Base_Price_per_Sq_Ft__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -856,6 +888,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Opportunity.Bulk_Booking__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Opportunity.CRM_Manager__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -867,6 +904,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Opportunity.Collected_Amount__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Contact_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1058,6 +1100,16 @@
         <editable>false</editable>
         <field>Opportunity.ROI_Analysis_Completed__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.Refund_Approval_Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.Refund_Status__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -1351,7 +1403,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Payment__c.Refund_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Payment__c.Refund_Reason__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Payment__c.Refund_Settled_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Payment__c.Refund_Status__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1711,6 +1778,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Quote__c.Is_Final__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Quote__c.Is_Manager_Approval_Required__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1852,6 +1924,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Unit__c.Address__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Unit__c.Bank_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2039,6 +2116,10 @@
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
+        <flow>Opportunit_Contact_Field_Update</flow>
+    </flowAccesses>
+    <flowAccesses>
+        <enabled>false</enabled>
         <flow>Opportunity_After_Operation</flow>
     </flowAccesses>
     <flowAccesses>
@@ -2055,11 +2136,23 @@
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
+        <flow>Opportunity_Update_Before_Flow</flow>
+    </flowAccesses>
+    <flowAccesses>
+        <enabled>false</enabled>
+        <flow>Record_Triggered_Flow_Before_Flow</flow>
+    </flowAccesses>
+    <flowAccesses>
+        <enabled>false</enabled>
         <flow>Schedule_site_visit</flow>
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
         <flow>Task_After</flow>
+    </flowAccesses>
+    <flowAccesses>
+        <enabled>false</enabled>
+        <flow>Task_Update_After_Flow</flow>
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
@@ -2079,6 +2172,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>Additional_Charges__c-Additional Charges Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>BatchClassTime__mdt-BatchClassTime Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Campaign-Facebook</layout>
@@ -2342,11 +2438,6 @@
     <recordTypeVisibilities>
         <default>true</default>
         <recordType>Lead.New_Lead</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Opportunity.Bulk_Sales</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>

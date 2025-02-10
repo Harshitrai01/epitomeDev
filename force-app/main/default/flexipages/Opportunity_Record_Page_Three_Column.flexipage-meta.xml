@@ -16,7 +16,7 @@
                             <value>Clone</value>
                         </valueListItems>
                         <valueListItems>
-                            <value>Opportunity.KYC_Document</value>
+                            <value>Opportunity.Document_Upload</value>
                         </valueListItems>
                         <valueListItems>
                             <value>Opportunity.Send_Payment_Link</value>
@@ -817,14 +817,72 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Loan_Eligible_Amount__c</fieldItem>
                 <identifier>RecordLoan_Eligible_Amount__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Loan_Status__c</fieldItem>
                 <identifier>RecordLoan_Status__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Refund_Status__c</fieldItem>
+                <identifier>RecordRefund_Status__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Refund_Approval_Status__c</fieldItem>
+                <identifier>RecordRefund_Approval_Status__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.BR_Status__c</fieldItem>
+                <identifier>RecordBR_Status__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Bulk_Booking__c</fieldItem>
+                <identifier>RecordBulk_Booking__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Contact_Name__c</fieldItem>
+                <identifier>RecordContact_Name__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-bda0868e-f60d-43d1-bc15-da4b2cf8d682</name>

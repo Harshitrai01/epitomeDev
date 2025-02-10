@@ -1,8 +1,8 @@
 <template>
 	<template if:true={isQuotationSheet}>
-	<!-- <template if:true={isLoading}>
+	<template if:true={isLoading}>
 		<lightning-spinner variant="brand" size="medium"> </lightning-spinner>
-	</template> -->
+	</template>
 	<template if:false={isLoading}>
 		<lightning-card>
 			<lightning-layout horizontal-align="space" class="x-small">
@@ -20,7 +20,7 @@
 						</div>
 					</div>
 				</lightning-layout-item>
-				<lightning-layout-item size="2" padding="around-medium" class="slds-align_absolute-left">
+				<!-- <lightning-layout-item size="2" padding="around-medium" class="slds-align_absolute-left">
 					<div class="slds-grid slds-gutters">
 						<div class="slds-col">
 							<div class="header">Is Sample</div>
@@ -32,7 +32,7 @@
 								checked={isChecked} onchange={handleTextChnage}></lightning-input>
 						</div>
 					</div>
-				</lightning-layout-item>
+				</lightning-layout-item> -->
 				<lightning-layout-item size="2" padding="around-medium" class="slds-align_absolute-left">
 
 					<div class="slds-grid slds-gutters">
@@ -62,15 +62,23 @@
 					</div>
 				</lightning-layout-item>
 				<lightning-layout-item size="2" padding="around-medium" class="slds-align_absolute-left">
+					
+					<template if:false={isLocked}>
+						<div style="margin-bottom:10px">
+						<lightning-button variant="brand" label="Send For Approval" title="Save" disabled={isLocked}
+							onclick={handleSendForApproval}>
+						</lightning-button>
+						</div>
+					</template>
 
-					<template if:false={isFinalizedQuoteDisabled}>
+					<template if:false={isFinal}>
 						<div>
 							<lightning-button variant="brand" label="Finalize Quote" title="Finalize Quote"
 								disabled={isFinalizedQuoteDisabled} onclick={handleFinalizeQuote}></lightning-button>
 						</div>
 					</template>
 
-					<template if:true={isFinalizedQuoteDisabled}>
+					<template if:true={isFinal}>
 
 						<div>
 							<div class="header">Quote Is Finalized </div>

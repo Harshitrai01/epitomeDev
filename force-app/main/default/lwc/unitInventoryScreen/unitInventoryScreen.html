@@ -119,46 +119,53 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <template for:each={grid} for:item="row">
-                            <tr key={row.Rw}>
-                                <td style="width: 64px; height: 20px; text-align: left;">
-                                    <div class="slds-truncate" title={row} >{row.Rw}</div>
-                                </td>
-                                <template for:each={row.Co} for:item="column">
-                                    <td key={column.id}
-                                        data-pid={column.pId}
-                                        data-pn={column.pN}
-                                        data-ps={column.pS}
-                                        style="font-weight: 700;"
-                                        class={column.st}
-                                        onclick={togglePopover}
-                                        data-row={row.Rw}
-                                        data-key={column.id}
-                                        data-label={column.ty}>
-                                        <div class="cell-content" >
-                                            <p key={column.id} 
+                        <template for:each={grid} for:item="sector">
+                            <template for:each={sector.k} for:item="row">
+                                <tr key={row.Rw}>
+                                    <td style="width: 64px; height: 20px; text-align: left;">
+                                        <div class="slds-truncate" title={row} >{row.Rw}</div>
+                                    </td>
+                                    <template for:each={row.Co} for:item="columnKey">
+                                        <template for:each={columnKey.cols} for:item="column">
+                                            <td key={column.id}
+                                                data-sector={sector.sc}
+                                                data-row={row.Rw}
+                                                data-colkey={columnKey.ck}
                                                 data-pid={column.pId}
                                                 data-pn={column.pN}
                                                 data-ps={column.pS}
+                                                style="font-weight: 700;"
+                                                class={column.st}
                                                 onclick={togglePopover}
-                                                data-row={row.Rw}
                                                 data-key={column.id}
-                                                data-label={column.ty}>{column.pN}
-                                            </p>
-                                            <template if:true={column.Pv}>
-                                                <div class="popover" >
-                                                    <ul>
-                                                        <li data-option="None" data-key={column.id} data-row={row.Rw} onclick={handleOptionClick}>None</li>
-                                                        <li data-option="Plot" data-key={column.id} data-pid={column.pId} data-pn={column.pN} data-ps={column.pS} data-row={row.Rw} onclick={handleOptionClick}>Plot</li>
-                                                        <li data-option="Garden" data-key={column.id} data-row={row.Rw} onclick={handleOptionClick}>Garden</li>
-                                                        <li data-option="Road" data-key={column.id} data-row={row.Rw} onclick={handleOptionClick}>Road</li>
-                                                    </ul>
+                                                data-label={column.ty}>
+                                                <div class="cell-content" >
+                                                    <p key={column.id} 
+                                                        data-sector={sector.sc}
+                                                        data-row={row.Rw}
+                                                        data-colkey={columnKey.ck}
+                                                        data-pid={column.pId}
+                                                        data-pn={column.pN}
+                                                        data-ps={column.pS}
+                                                        data-key={column.id}
+                                                        data-label={column.ty}>{column.pN}
+                                                    </p>
+                                                    <template if:true={column.Pv}>
+                                                        <div class="popover" >
+                                                            <ul>
+                                                                <li data-option="None" data-key={column.id} data-row={row.Rw} onclick={handleOptionClick}>None</li>
+                                                                <li data-option="Plot" data-key={column.id} data-pid={column.pId} data-pn={column.pN} data-ps={column.pS} data-row={row.Rw} onclick={handleOptionClick}>Plot</li>
+                                                                <li data-option="Garden" data-key={column.id} data-row={row.Rw} onclick={handleOptionClick}>Garden</li>
+                                                                <li data-option="Road" data-key={column.id} data-row={row.Rw} onclick={handleOptionClick}>Road</li>
+                                                            </ul>
+                                                        </div>
+                                                    </template>
                                                 </div>
-                                            </template>
-                                        </div>
-                                    </td>
-                                </template>
-                            </tr>
+                                            </td>
+                                        </template>
+                                    </template>
+                                </tr>
+                            </template>
                         </template>
                     </tbody>
                 </table>

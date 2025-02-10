@@ -4,7 +4,7 @@ import updateUserStatus from '@salesforce/apex/PreSalesController.updateUserStat
 import updateCustomSetting from '@salesforce/apex/PreSalesController.updateCustomSetting';
 import getUsersData from '@salesforce/apex/PreSalesController.getUsersData';
 import getPicklistValues from '@salesforce/apex/PreSalesController.getPicklistValues';
-import updateUserData from '@salesforce/apex/PreSalesController.updateUserData';
+// import updateUserData from '@salesforce/apex/PreSalesController.updateUserData';
 import MAX_CAPACITY from "@salesforce/label/c.Lead_Assignment_Capacity";
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import scheduleBatch from '@salesforce/apex/PreSalesController.scheduleBatch';
@@ -129,7 +129,7 @@ export default class PreSalesDashboardScreen extends LightningElement {
             // Update state and custom settings
             this.isPreSalesActive = isChecked;
             await this.updateCustomSetting('Pre-Sales Assignment', isChecked);
-            await this.updateUserLeadAssignmentStatus('Pre_Sales_Queue', false);
+            // await this.updateUserLeadAssignmentStatus('Pre_Sales_Queue', false);
             // Fetch data if toggle is enabled
             if (isChecked) {
                 const data = await this.fetchData('Pre_Sales_Queue');
@@ -141,6 +141,10 @@ export default class PreSalesDashboardScreen extends LightningElement {
         } catch (error) {
             console.error('Error in handlePreSalesToggleChange:', error);
             this.showToast('Error', 'An error occurred while processing Pre-Sales toggle.', 'error');
+        } finally {
+            console.log('this.preSalesUserDataShow--> ', JSON.stringify(this.preSalesUserDataShow));
+            console.log('this.preSalesMasterUserData--> ', JSON.stringify(this.preSalesMasterUserData));
+            this.isLoading = false;
         }
     }
 
@@ -158,7 +162,7 @@ export default class PreSalesDashboardScreen extends LightningElement {
             // Update state and custom settings
             this.isSalesActive = isChecked;
             await this.updateCustomSetting('Sales Assignment', isChecked);
-            await this.updateUserLeadAssignmentStatus('Sales_Queue', false);
+            // await this.updateUserLeadAssignmentStatus('Sales_Queue', false);
             // Fetch data if toggle is enabled
             if (isChecked) {
                 const data = await this.fetchData('Sales_Queue');
@@ -170,6 +174,10 @@ export default class PreSalesDashboardScreen extends LightningElement {
         } catch (error) {
             console.error('Error in handleSalesToggleChange:', error);
             this.showToast('Error', 'An error occurred while processing Sales toggle.', 'error');
+        } finally {
+            console.log('this.salesUserDataShow--> ', JSON.stringify(this.salesUserDataShow));
+            console.log('this.salesMasterUserData--> ', JSON.stringify(this.salesMasterUserData));
+            this.isLoading = false;
         }
     }
 
@@ -186,18 +194,18 @@ export default class PreSalesDashboardScreen extends LightningElement {
         }
     }
 
-    async updateUserLeadAssignmentStatus(queueName, value) {
-        this.isLoading = true;
-        try {
-            await updateUserData({ queueName: queueName, value: value });
-            this.showToast('Success', `Queue Users Data updated successfully`, 'success');
-        } catch (error) {
-            this.showToast('Error', `Error updating `, 'error');
-            console.error('Error in updateCustomSetting:', error);
-        } finally {
-            this.isLoading = false;
-        }
-    }
+    // async updateUserLeadAssignmentStatus(queueName, value) {
+    //     this.isLoading = true;
+    //     try {
+    //         await updateUserData({ queueName: queueName, value: value });
+    //         this.showToast('Success', `Queue Users Data updated successfully`, 'success');
+    //     } catch (error) {
+    //         this.showToast('Error', `Error updating `, 'error');
+    //         console.error('Error in updateCustomSetting:', error);
+    //     } finally {
+    //         this.isLoading = false;
+    //     }
+    // }
 
 
     handlePreSalesStatusChange(event) {
@@ -684,6 +692,7 @@ export default class PreSalesDashboardScreen extends LightningElement {
 
 
     handleCancel(event) {
+        this.isLoading = true;
         const userType = event.target.dataset.id;
         console.log('userType:', userType);
         try {
@@ -691,7 +700,7 @@ export default class PreSalesDashboardScreen extends LightningElement {
                 this.preSalesUserDataShow = [...this.preSalesMasterUserData];
                 this.isPreSalesUpdated = false;
             } else if (userType === 'sales') {
-                this.salesUserDataShow = [...this.SalesMasterUserData];
+                this.salesUserDataShow = [...this.salesMasterUserData];
                 this.isSalesUpdated = false;
             } else {
                 console.error('Invalid userType');
@@ -700,6 +709,8 @@ export default class PreSalesDashboardScreen extends LightningElement {
         } catch (error) {
             console.error('Error during refresh:', error);
             this.showToast('Error', 'Failed to Cancel data.', 'error');
+        } finally {
+            this.isLoading = false;
         }
     }
 
@@ -758,7 +769,9 @@ export default class PreSalesDashboardScreen extends LightningElement {
         this.sendNotification = event.target.checked;
         if (this.sendNotification) {
             this.isDisabled = false;
-            scheduleBatch({ minuteInterval: this.notificationMinutes });
+            this.notificationMinutes = 0;
+            this.sendToManager = false;
+            // scheduleBatch({ minuteInterval: this.notificationMinutes });
         } else {
             this.isDisabled = true;
             deleteScheduledJob();
@@ -766,12 +779,12 @@ export default class PreSalesDashboardScreen extends LightningElement {
     }
     async handleSaveCustomSetting() {
         await this.updateCustomSetting('Send Notification', this.sendNotification);
+        await this.updateCustomSetting('Send to Manager', this.sendToManager);
+        await this.updateCustomSetting('Minutes', this.notificationMinutes);
         if (this.sendNotification) {
-            await this.updateCustomSetting('Send to Manager', this.sendToManager);
-            await this.updateCustomSetting('Minutes', this.notificationMinutes);
+            const result = await scheduleBatch({ minuteInterval: this.notificationMinutes });
+            this.showToast('Success', result, 'success');
         }
-        const result = await scheduleBatch({ minuteInterval: this.notificationMinutes });
-        this.showToast('Success', result, 'success');
         this.hideModalBox();
     }
 

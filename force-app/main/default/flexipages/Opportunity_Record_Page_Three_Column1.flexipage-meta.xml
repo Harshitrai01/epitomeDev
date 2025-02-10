@@ -35,28 +35,16 @@
                             <value>Opportunity.Booking_Form</value>
                         </valueListItems>
                         <valueListItems>
-                            <value>Opportunity.KYC_Document</value>
-                            <visibilityRule>
-                                <booleanFilter>1 AND (2 OR 3)</booleanFilter>
-                                <criteria>
-                                    <leftValue>{!Record.StageName}</leftValue>
-                                    <operator>EQUAL</operator>
-                                    <rightValue>KYC Verification</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!Record.KYC_Verification__c}</leftValue>
-                                    <operator>EQUAL</operator>
-                                    <rightValue>Not Started</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!Record.KYC_Verification__c}</leftValue>
-                                    <operator>EQUAL</operator>
-                                    <rightValue>Rejected</rightValue>
-                                </criteria>
-                            </visibilityRule>
+                            <value>Opportunity.Document_Upload</value>
                         </valueListItems>
                         <valueListItems>
                             <value>Opportunity.Demand_Letter</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Opportunity.DD</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Opportunity.Send_AOS_Document</value>
                         </valueListItems>
                     </valueList>
                 </componentInstanceProperties>
@@ -384,8 +372,34 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Loan_Eligible_Amount__c</fieldItem>
                 <identifier>RecordLoan_Eligible_Amount__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Refund_Status__c</fieldItem>
+                <identifier>RecordRefund_Status__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Refund_Approval_Status__c</fieldItem>
+                <identifier>RecordRefund_Approval_Status__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Bulk_Booking__c</fieldItem>
+                <identifier>RecordBulk_Booking__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-bda0868e-f60d-43d1-bc15-da4b2cf8d682</name>

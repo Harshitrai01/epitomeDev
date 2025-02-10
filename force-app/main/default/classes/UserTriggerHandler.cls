@@ -1,99 +1,116 @@
-public class UserTriggerHandler {
-
-    // Main method to handle status change and process lead assignment
+/**
+ * @description Apex Trigger Handler for User status change and lead assignment.
+ * Handles updates when a user's status changes and ensures leads are assigned fairly.
+ * @author Varun Rawal
+ */
+public with sharing class UserTriggerHandler {
+    
+    /**
+     * Handles user status changes and triggers lead assignment when status changes.
+     * @param newUsers List of new user records being inserted/updated.
+     * @param oldUserMap Map of old user records before the update.
+     */
     public static void handleStatusChange(List<User> newUsers, Map<Id, User> oldUserMap) {
         for (User newUser : newUsers) {
             User oldUser = oldUserMap.get(newUser.Id);
-            if (newUser.Status__c != oldUser.Status__c) {
+            if (oldUser != null && newUser.Status__c != oldUser.Status__c) {
                 processLeadAssignment();
+                break; // Avoid redundant calls if multiple users are updated
             }
         }
     }
 
-    // Merged method to process the lead assignment to users
+    /**
+     * Processes lead assignment to available users in the Pre-Sales Queue.
+     */
     public static void processLeadAssignment() {
-        Group preSalesQueue = [SELECT Id FROM Group WHERE Type = 'Queue' AND DeveloperName = 'Pre_Sales_Queue' LIMIT 1];
-        // if (preSalesQueue == null) {
-        //     System.debug('Error: Queue "Pre_Sales_Queue" not found.');
-        //     return;
-        // }
+        try {
+            // Fetch the Pre-Sales Queue
+            Group preSalesQueue = [SELECT Id FROM Group WHERE Type = 'Queue' AND DeveloperName = 'Pre_Sales_Queue' LIMIT 1];
+            
+            Integer maxCapacity = Integer.valueOf(Label.Lead_Assignment_Capacity);
+            
+            // Fetch users who are online, available for lead assignment, and under capacity limit
+            List<User> onlineUsers = [
+                SELECT Id, Capacity__c, Pre_Sales_Lead_Assignment__c
+                FROM User 
+                WHERE Status__c = 'Online'
+                AND Pre_Sales_Lead_Assignment__c = true 
+                AND Capacity__c < :maxCapacity
+            ];
+            
+            if (onlineUsers.isEmpty()) {
+                System.debug('No available users for lead assignment.');
+                return;
+            }
 
-        // List<User> onlineUsers = [SELECT Id, Capacity__c 
-        //                           FROM User 
-        //                           WHERE Id IN (SELECT UserOrGroupId FROM GroupMember WHERE GroupId = :preSalesQueue.Id)
-        //                             AND Status__c = 'Online'];
+            // Fetch unassigned leads in the queue
+            List<Lead> leadsInQueue = [
+                SELECT Id, OwnerId, Status 
+                FROM Lead 
+                WHERE OwnerId = :preSalesQueue.Id 
+                AND Status = 'Unopened' 
+                ORDER BY CreatedDate DESC
+            ];
+            
+            if (leadsInQueue.isEmpty()) {
+                System.debug('No leads found in the Pre_Sales_Queue.');
+                return;
+            }
 
-        Integer maxCapacity = Integer.valueOf(Label.Lead_Assignment_Capacity);
-         List<User> onlineUsers = [SELECT Id, Capacity__c ,Pre_Sales_Lead_Assignment__c
-                                FROM User 
-                                WHERE Status__c = 'Online'
-                                AND Pre_Sales_Lead_Assignment__c = true 
-                                AND Capacity__c < :maxCapacity
-                                ];
+            // Map user capacities
+            Map<Id, Integer> userLeadCounts = new Map<Id, Integer>();
+            for (User user : onlineUsers) {
+                integer cp=Integer.valueOf(user.Capacity__c);
+                userLeadCounts.put(user.Id, cp == null ? 0 : cp);
+            }
+            userLeadCounts = sortMapByValueAscending(userLeadCounts);
 
-        if (onlineUsers.isEmpty()) {
-            System.debug('Error: No users found in the queue with Status__c = "Online".');
-            return;
-        }
+            List<Lead> leadsToUpdate = new List<Lead>();
+            List<User> usersToUpdate = new List<User>();
+            Integer userIndex = 0;
 
-        
+            // Assign leads fairly
+            for (Lead lead : leadsInQueue) {
+                if (onlineUsers.isEmpty()) break;
+                
+                Integer agentSize = onlineUsers.size();
+                User assignedUser = onlineUsers[Math.mod(userIndex, agentSize)];
 
-        List<Lead> leadsInQueue = [SELECT Id, OwnerId, Status FROM Lead WHERE OwnerId = :preSalesQueue.Id AND Status='Unopened' ORDER BY CreatedDate DESC];
-        if (leadsInQueue.isEmpty()) {
-            System.debug('No leads found in the Pre_Sales_Queue.');
-            return;
-        }
+                if (userLeadCounts.get(assignedUser.Id) < maxCapacity) {
+                    lead.OwnerId = assignedUser.Id;
+                    leadsToUpdate.add(lead);
+                    userLeadCounts.put(assignedUser.Id, userLeadCounts.get(assignedUser.Id) + 1);
+                    assignedUser.Capacity__c = userLeadCounts.get(assignedUser.Id);
 
-        Map<Id, Integer> userLeadCounts = new Map<Id, Integer>();
-        for (User user : onlineUsers) {
-            Integer count = user.Capacity__c == null ? 0 : user.Capacity__c.intValue();
-            userLeadCounts.put(user.Id, count);
-        }
-        userLeadCounts = sortMapByValueAscending(userLeadCounts);
-
-        List<Lead> leadsToUpdate = new List<Lead>();
-        List<User> usersToUpdate = new List<User>();
-        Integer userIndex = 0;
-
-        for (Lead lead : leadsInQueue) {
-            Integer agentSize = onlineUsers.size();
-            User assignedUser = onlineUsers[Math.mod(userIndex, agentSize)];
-
-            if (userLeadCounts.get(assignedUser.Id) < maxCapacity) {
-                lead.OwnerId = assignedUser.Id;
-                leadsToUpdate.add(lead);
-                userLeadCounts.put(assignedUser.Id, userLeadCounts.get(assignedUser.Id) + 1);
-                assignedUser.Capacity__c = userLeadCounts.get(assignedUser.Id);
-                if (!usersToUpdate.contains(assignedUser)) {
-                    usersToUpdate.add(assignedUser);
+                    if (!usersToUpdate.contains(assignedUser)) {
+                        usersToUpdate.add(assignedUser);
+                    }
                 }
+                userIndex++;
             }
 
-            userIndex++;
-
-            if (userLeadCounts.get(assignedUser.Id) >= maxCapacity) {
-                break;
+            // Perform bulk updates
+            if (!leadsToUpdate.isEmpty()) {
+                update leadsToUpdate;
             }
-        }
-
-        if (!leadsToUpdate.isEmpty()) {
-            for(lead l:leadsToUpdate){
-                system.debug('l.Id-->'+l.Id);
-                system.debug('l.OwnerId-->'+l.OwnerId);
+            if (!usersToUpdate.isEmpty()) {
+                update usersToUpdate;
             }
-            update leadsToUpdate;
-        }
-
-        if (!usersToUpdate.isEmpty()) {
-            for(user l:usersToUpdate){
-                system.debug('l.Id-->'+l.Id);
-                system.debug('l.Capacity__c-->'+l.Capacity__c);
-            }
-            update usersToUpdate;
+        } catch (DmlException e) {
+            System.debug('DML Exception in processLeadAssignment: ' + e.getMessage());
+            throw new AuraHandledException('Error updating records. Please try again.');
+        } catch (Exception e) {
+            System.debug('Unexpected error in processLeadAssignment: ' + e.getMessage());
+            throw new AuraHandledException('An unexpected error occurred. Contact support.');
         }
     }
 
-    // Method to sort a map by value in ascending order
+    /**
+     * Sorts a map of users by their lead capacity in ascending order.
+     * @param inputMap Map of User IDs and their assigned lead counts.
+     * @return Sorted map of User IDs with least assigned leads first.
+     */
     public static Map<Id, Integer> sortMapByValueAscending(Map<Id, Integer> inputMap) {
         List<UserWrapper> userList = new List<UserWrapper>();
         for (Id key : inputMap.keySet()) {
@@ -108,6 +125,9 @@ public class UserTriggerHandler {
         return sortedMap;
     }
 
+    /**
+     * Wrapper class to facilitate sorting of Users based on Capacity.
+     */
     public class UserWrapper implements Comparable {
         public Id userId;
         public Integer capacity;

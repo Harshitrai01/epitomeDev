@@ -292,12 +292,28 @@
             <label>Balance Due Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AyGP8</field>
+            <label>Bank Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwRtJ</field>
+            <label>Base Price per Sq. Ft</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNkD</field>
             <label>Booking Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwMTp</field>
+            <label>BR Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHv</field>
             <label>Budget Confirmed</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwkUX</field>
+            <label>Bulk Booking</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AqGCb</field>
@@ -306,6 +322,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Ay7SH</field>
+            <label>Contact Name</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNnR</field>
@@ -464,6 +484,14 @@
             <label>Quote</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AvnuH</field>
+            <label>Refund Approval Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Av3BV</field>
+            <label>Refund Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPAv</field>
             <label>Registration CRM Head Approval Status</label>
         </opportunityListFieldsLabelMappings>
@@ -607,10 +635,15 @@
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
+            <field>00NO400000AyGP8</field>
+            <field>00NO400000AwRtJ</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AwkUX</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
@@ -650,6 +683,8 @@
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
+            <field>00NO400000AvnuH</field>
+            <field>00NO400000Av3BV</field>
             <field>00NO400000AcPAv</field>
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
@@ -880,12 +915,28 @@
             <label>Balance Due Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AyGP8</field>
+            <label>Bank Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwRtJ</field>
+            <label>Base Price per Sq. Ft</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNkD</field>
             <label>Booking Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwMTp</field>
+            <label>BR Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHv</field>
             <label>Budget Confirmed</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwkUX</field>
+            <label>Bulk Booking</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AqGCb</field>
@@ -894,6 +945,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Ay7SH</field>
+            <label>Contact Name</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNnR</field>
@@ -1052,6 +1107,14 @@
             <label>Quote</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AvnuH</field>
+            <label>Refund Approval Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Av3BV</field>
+            <label>Refund Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPAv</field>
             <label>Registration CRM Head Approval Status</label>
         </opportunityListFieldsLabelMappings>
@@ -1195,10 +1258,15 @@
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
+            <field>00NO400000AyGP8</field>
+            <field>00NO400000AwRtJ</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AwkUX</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
@@ -1238,6 +1306,8 @@
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
+            <field>00NO400000AvnuH</field>
+            <field>00NO400000Av3BV</field>
             <field>00NO400000AcPAv</field>
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
@@ -1472,12 +1542,28 @@
             <label>Balance Due Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AyGP8</field>
+            <label>Bank Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwRtJ</field>
+            <label>Base Price per Sq. Ft</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNkD</field>
             <label>Booking Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwMTp</field>
+            <label>BR Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHv</field>
             <label>Budget Confirmed</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwkUX</field>
+            <label>Bulk Booking</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AqGCb</field>
@@ -1486,6 +1572,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Ay7SH</field>
+            <label>Contact Name</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNnR</field>
@@ -1644,6 +1734,14 @@
             <label>Quote</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AvnuH</field>
+            <label>Refund Approval Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Av3BV</field>
+            <label>Refund Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPAv</field>
             <label>Registration CRM Head Approval Status</label>
         </opportunityListFieldsLabelMappings>
@@ -1788,10 +1886,15 @@
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
+            <field>00NO400000AyGP8</field>
+            <field>00NO400000AwRtJ</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AwkUX</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
@@ -1831,6 +1934,8 @@
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
+            <field>00NO400000AvnuH</field>
+            <field>00NO400000Av3BV</field>
             <field>00NO400000AcPAv</field>
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
@@ -2061,12 +2166,28 @@
             <label>Balance Due Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AyGP8</field>
+            <label>Bank Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwRtJ</field>
+            <label>Base Price per Sq. Ft</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNkD</field>
             <label>Booking Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwMTp</field>
+            <label>BR Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHv</field>
             <label>Budget Confirmed</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwkUX</field>
+            <label>Bulk Booking</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AqGCb</field>
@@ -2075,6 +2196,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Ay7SH</field>
+            <label>Contact Name</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNnR</field>
@@ -2233,6 +2358,14 @@
             <label>Quote</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AvnuH</field>
+            <label>Refund Approval Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Av3BV</field>
+            <label>Refund Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPAv</field>
             <label>Registration CRM Head Approval Status</label>
         </opportunityListFieldsLabelMappings>
@@ -2376,10 +2509,15 @@
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
+            <field>00NO400000AyGP8</field>
+            <field>00NO400000AwRtJ</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AwkUX</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
@@ -2419,6 +2557,8 @@
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
+            <field>00NO400000AvnuH</field>
+            <field>00NO400000Av3BV</field>
             <field>00NO400000AcPAv</field>
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
@@ -2653,12 +2793,28 @@
             <label>Balance Due Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AyGP8</field>
+            <label>Bank Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwRtJ</field>
+            <label>Base Price per Sq. Ft</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNkD</field>
             <label>Booking Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwMTp</field>
+            <label>BR Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHv</field>
             <label>Budget Confirmed</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwkUX</field>
+            <label>Bulk Booking</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AqGCb</field>
@@ -2667,6 +2823,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Ay7SH</field>
+            <label>Contact Name</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNnR</field>
@@ -2825,6 +2985,14 @@
             <label>Quote</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AvnuH</field>
+            <label>Refund Approval Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Av3BV</field>
+            <label>Refund Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPAv</field>
             <label>Registration CRM Head Approval Status</label>
         </opportunityListFieldsLabelMappings>
@@ -2969,10 +3137,15 @@
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
+            <field>00NO400000AyGP8</field>
+            <field>00NO400000AwRtJ</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AwkUX</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
@@ -3012,6 +3185,8 @@
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
+            <field>00NO400000AvnuH</field>
+            <field>00NO400000Av3BV</field>
             <field>00NO400000AcPAv</field>
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
@@ -3242,12 +3417,28 @@
             <label>Balance Due Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AyGP8</field>
+            <label>Bank Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwRtJ</field>
+            <label>Base Price per Sq. Ft</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNkD</field>
             <label>Booking Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwMTp</field>
+            <label>BR Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHv</field>
             <label>Budget Confirmed</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwkUX</field>
+            <label>Bulk Booking</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AqGCb</field>
@@ -3256,6 +3447,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Ay7SH</field>
+            <label>Contact Name</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNnR</field>
@@ -3414,6 +3609,14 @@
             <label>Quote</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AvnuH</field>
+            <label>Refund Approval Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Av3BV</field>
+            <label>Refund Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPAv</field>
             <label>Registration CRM Head Approval Status</label>
         </opportunityListFieldsLabelMappings>
@@ -3557,10 +3760,15 @@
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
+            <field>00NO400000AyGP8</field>
+            <field>00NO400000AwRtJ</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AwkUX</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
@@ -3600,6 +3808,8 @@
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
+            <field>00NO400000AvnuH</field>
+            <field>00NO400000Av3BV</field>
             <field>00NO400000AcPAv</field>
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
@@ -3834,12 +4044,28 @@
             <label>Balance Due Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AyGP8</field>
+            <label>Bank Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwRtJ</field>
+            <label>Base Price per Sq. Ft</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNkD</field>
             <label>Booking Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwMTp</field>
+            <label>BR Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHv</field>
             <label>Budget Confirmed</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwkUX</field>
+            <label>Bulk Booking</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AqGCb</field>
@@ -3848,6 +4074,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Ay7SH</field>
+            <label>Contact Name</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNnR</field>
@@ -4006,6 +4236,14 @@
             <label>Quote</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AvnuH</field>
+            <label>Refund Approval Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Av3BV</field>
+            <label>Refund Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPAv</field>
             <label>Registration CRM Head Approval Status</label>
         </opportunityListFieldsLabelMappings>
@@ -4150,10 +4388,15 @@
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
+            <field>00NO400000AyGP8</field>
+            <field>00NO400000AwRtJ</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AwkUX</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
@@ -4193,6 +4436,8 @@
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
+            <field>00NO400000AvnuH</field>
+            <field>00NO400000Av3BV</field>
             <field>00NO400000AcPAv</field>
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
@@ -4423,12 +4668,28 @@
             <label>Balance Due Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AyGP8</field>
+            <label>Bank Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwRtJ</field>
+            <label>Base Price per Sq. Ft</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNkD</field>
             <label>Booking Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwMTp</field>
+            <label>BR Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHv</field>
             <label>Budget Confirmed</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwkUX</field>
+            <label>Bulk Booking</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AqGCb</field>
@@ -4437,6 +4698,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Ay7SH</field>
+            <label>Contact Name</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNnR</field>
@@ -4595,6 +4860,14 @@
             <label>Quote</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AvnuH</field>
+            <label>Refund Approval Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Av3BV</field>
+            <label>Refund Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPAv</field>
             <label>Registration CRM Head Approval Status</label>
         </opportunityListFieldsLabelMappings>
@@ -4738,10 +5011,15 @@
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
+            <field>00NO400000AyGP8</field>
+            <field>00NO400000AwRtJ</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AwkUX</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
@@ -4781,6 +5059,8 @@
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
+            <field>00NO400000AvnuH</field>
+            <field>00NO400000Av3BV</field>
             <field>00NO400000AcPAv</field>
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
@@ -5015,12 +5295,28 @@
             <label>Balance Due Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AyGP8</field>
+            <label>Bank Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwRtJ</field>
+            <label>Base Price per Sq. Ft</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNkD</field>
             <label>Booking Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwMTp</field>
+            <label>BR Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHv</field>
             <label>Budget Confirmed</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwkUX</field>
+            <label>Bulk Booking</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AqGCb</field>
@@ -5029,6 +5325,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Ay7SH</field>
+            <label>Contact Name</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNnR</field>
@@ -5187,6 +5487,14 @@
             <label>Quote</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AvnuH</field>
+            <label>Refund Approval Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Av3BV</field>
+            <label>Refund Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPAv</field>
             <label>Registration CRM Head Approval Status</label>
         </opportunityListFieldsLabelMappings>
@@ -5331,10 +5639,15 @@
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
+            <field>00NO400000AyGP8</field>
+            <field>00NO400000AwRtJ</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AwkUX</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
@@ -5374,6 +5687,8 @@
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
+            <field>00NO400000AvnuH</field>
+            <field>00NO400000Av3BV</field>
             <field>00NO400000AcPAv</field>
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
@@ -5604,12 +5919,28 @@
             <label>Balance Due Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AyGP8</field>
+            <label>Bank Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwRtJ</field>
+            <label>Base Price per Sq. Ft</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNkD</field>
             <label>Booking Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwMTp</field>
+            <label>BR Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHv</field>
             <label>Budget Confirmed</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwkUX</field>
+            <label>Bulk Booking</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AqGCb</field>
@@ -5618,6 +5949,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Ay7SH</field>
+            <label>Contact Name</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNnR</field>
@@ -5776,6 +6111,14 @@
             <label>Quote</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AvnuH</field>
+            <label>Refund Approval Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Av3BV</field>
+            <label>Refund Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPAv</field>
             <label>Registration CRM Head Approval Status</label>
         </opportunityListFieldsLabelMappings>
@@ -5919,10 +6262,15 @@
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
+            <field>00NO400000AyGP8</field>
+            <field>00NO400000AwRtJ</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AwkUX</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
@@ -5962,6 +6310,8 @@
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
+            <field>00NO400000AvnuH</field>
+            <field>00NO400000Av3BV</field>
             <field>00NO400000AcPAv</field>
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
@@ -6196,12 +6546,28 @@
             <label>Balance Due Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AyGP8</field>
+            <label>Bank Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwRtJ</field>
+            <label>Base Price per Sq. Ft</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNkD</field>
             <label>Booking Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwMTp</field>
+            <label>BR Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHv</field>
             <label>Budget Confirmed</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwkUX</field>
+            <label>Bulk Booking</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AqGCb</field>
@@ -6210,6 +6576,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Ay7SH</field>
+            <label>Contact Name</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNnR</field>
@@ -6368,6 +6738,14 @@
             <label>Quote</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AvnuH</field>
+            <label>Refund Approval Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Av3BV</field>
+            <label>Refund Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPAv</field>
             <label>Registration CRM Head Approval Status</label>
         </opportunityListFieldsLabelMappings>
@@ -6512,10 +6890,15 @@
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
+            <field>00NO400000AyGP8</field>
+            <field>00NO400000AwRtJ</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AwkUX</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
@@ -6555,6 +6938,8 @@
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
+            <field>00NO400000AvnuH</field>
+            <field>00NO400000Av3BV</field>
             <field>00NO400000AcPAv</field>
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
@@ -6785,12 +7170,28 @@
             <label>Balance Due Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AyGP8</field>
+            <label>Bank Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwRtJ</field>
+            <label>Base Price per Sq. Ft</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNkD</field>
             <label>Booking Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwMTp</field>
+            <label>BR Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHv</field>
             <label>Budget Confirmed</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000AwkUX</field>
+            <label>Bulk Booking</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AqGCb</field>
@@ -6799,6 +7200,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Ay7SH</field>
+            <label>Contact Name</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNnR</field>
@@ -6957,6 +7362,14 @@
             <label>Quote</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000AvnuH</field>
+            <label>Refund Approval Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Av3BV</field>
+            <label>Refund Status</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPAv</field>
             <label>Registration CRM Head Approval Status</label>
         </opportunityListFieldsLabelMappings>
@@ -7100,10 +7513,15 @@
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
+            <field>00NO400000AyGP8</field>
+            <field>00NO400000AwRtJ</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
+            <field>00NO400000AwkUX</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
@@ -7143,6 +7561,8 @@
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
+            <field>00NO400000AvnuH</field>
+            <field>00NO400000Av3BV</field>
             <field>00NO400000AcPAv</field>
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>

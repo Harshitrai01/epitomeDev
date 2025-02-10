@@ -1,6 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Notification_To_Lead</name>
+        <label>Notification To Lead</label>
+        <locationX>638</locationX>
+        <locationY>755</locationY>
+        <actionName>customNotificationAction</actionName>
+        <actionType>customNotificationAction</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>customNotifTypeId</name>
+            <value>
+                <elementReference>GetRecordsCustomNotification.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientIds</name>
+            <value>
+                <elementReference>RecipentIds</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>title</name>
+            <value>
+                <stringValue>Refund Approval Status</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>body</name>
+            <value>
+                <elementReference>NotificationBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>targetId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>customNotificationAction</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_to_Customer</name>
+        <label>Send Email to Customer</label>
+        <locationX>374</locationX>
+        <locationY>1079</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <elementReference>get_Organization_Wide_Address.Address</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>relatedRecordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientId</name>
+            <value>
+                <elementReference>Get_Contact_Records.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailTemplateId</name>
+            <value>
+                <elementReference>get_Email_Template_for_Dropped.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
     <apiVersion>63.0</apiVersion>
+    <assignments>
+        <name>Assignment</name>
+        <label>Assignment</label>
+        <locationX>638</locationX>
+        <locationY>647</locationY>
+        <assignmentItems>
+            <assignToReference>RecipentIds</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Notification_To_Lead</targetReference>
+        </connector>
+    </assignments>
     <decisions>
         <name>Check_isNew</name>
         <label>Check isNew?</label>
@@ -26,7 +124,7 @@
     <decisions>
         <name>Update_Decision</name>
         <label>Update Decision</label>
-        <locationX>330</locationX>
+        <locationX>506</locationX>
         <locationY>431</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -47,9 +145,67 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Update_Stage_to_KYC</targetReference>
+                <targetReference>Update_Stage_to_Booked</targetReference>
             </connector>
             <label>10% Updated</label>
+        </rules>
+        <rules>
+            <name>Status_Updated_to_Dropped</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Lost/Dropped</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>update_unit_status_to_available</targetReference>
+            </connector>
+            <label>Status Updated to Dropped</label>
+        </rules>
+        <rules>
+            <name>Refund_Status_Approved</name>
+            <conditionLogic>(1 OR 2) AND 3 AND 4</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Refund_Approval_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Refund_Approval_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Rejected</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Refund_Approval_Status__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.LastModifiedBy.Profile.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Director</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>GetRecordsCustomNotification</targetReference>
+            </connector>
+            <label>Refund Status Approved Or Rejected</label>
         </rules>
     </decisions>
     <environments>Default</environments>
@@ -57,6 +213,11 @@
         <name>isNew</name>
         <dataType>Boolean</dataType>
         <expression>ISNEW()</expression>
+    </formulas>
+    <formulas>
+        <name>NotificationBody</name>
+        <dataType>String</dataType>
+        <expression>&apos;Request to initiate refund for &apos;+ {!$Record.Name} + &apos;  has been &apos;+TEXT({!$Record.Refund_Approval_Status__c})+&apos;.&apos;</expression>
     </formulas>
     <interviewLabel>Opportunity Create &amp; Update(After Flow) {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Opportunity Create &amp; Update(After Flow)</label>
@@ -79,18 +240,141 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Contact_Records</name>
+        <label>Get Contact Records</label>
+        <locationX>374</locationX>
+        <locationY>971</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Send_Email_to_Customer</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_Email_Template_for_Dropped</name>
+        <label>get Email Template for Dropped</label>
+        <locationX>374</locationX>
+        <locationY>863</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Contact_Records</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Plot_Dropped_Mail</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>EmailTemplate</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_Organization_Wide_Address</name>
+        <label>get Organization Wide Address</label>
+        <locationX>374</locationX>
+        <locationY>755</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>get_Email_Template_for_Dropped</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DisplayName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Epitome Sandbox</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>OrgWideEmailAddress</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>GetRecordsCustomNotification</name>
+        <label>GetRecordsCustomNotification</label>
+        <locationX>638</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assignment</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Opportunity_Notification</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>CustomNotificationType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <recordUpdates>
-        <name>Update_Stage_to_KYC</name>
-        <label>Update Stage to KYC</label>
-        <locationX>198</locationX>
+        <name>Update_Stage_to_Booked</name>
+        <label>Update Stage to Booked</label>
+        <locationX>110</locationX>
         <locationY>539</locationY>
         <inputAssignments>
             <field>StageName</field>
             <value>
-                <stringValue>KYC Verification</stringValue>
+                <stringValue>Booked</stringValue>
             </value>
         </inputAssignments>
         <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>update_Unit_field_to_Null_on_Opportunity_Record</name>
+        <label>update Unit field to Null on Opportunity Record</label>
+        <locationX>374</locationX>
+        <locationY>647</locationY>
+        <connector>
+            <targetReference>get_Organization_Wide_Address</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Unit__c</field>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>update_unit_status_to_available</name>
+        <label>update unit status to available</label>
+        <locationX>374</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>update_Unit_field_to_Null_on_Opportunity_Record</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Unit__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status__c</field>
+            <value>
+                <stringValue>Available</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Unit__c</object>
     </recordUpdates>
     <start>
         <locationX>50</locationX>
@@ -103,4 +387,11 @@
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
+    <variables>
+        <name>RecipentIds</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
 </Flow>

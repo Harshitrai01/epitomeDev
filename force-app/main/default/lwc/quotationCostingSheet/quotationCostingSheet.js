@@ -4,53 +4,32 @@ import getQuote from '@salesforce/apex/QuotationCostingSheetController.getQuote'
 import SaveRecord from '@salesforce/apex/QuotationCostingSheetController.SaveRecord';
 import finalizeQuote from '@salesforce/apex/QuotationCostingSheetController.FinalizeQuote';
 import sendQuoteEmail from '@salesforce/apex/QuotationCostingSheetController.sendQuoteEmail';
+import submitForApproval from '@salesforce/apex/QuotationCostingSheetController.submitForApproval';
 import { CurrentPageReference } from 'lightning/navigation';
 
 export default class QuotationCostingSheet extends LightningElement {
     isBookingForm=false;
     isQuotationSheet=true;
     @api recordId;
-    @track quoteData = {};
+    quoteData = {};
     quoteRecordToSave={};
     isLocked=false;
     isChecked=false;
     isFinalizedQuoteDisabled=false;
-    @track campaignValue;
-    @track isLoading = false;
-    @track totalBasePrice;
-    @track isShowModal = false;
-    @track discountType;
-    @track showTimer = false;
-    @track removeDiscount = false;
-    @track activeCampaignOptions = [];
-    @track showDiscountPercent = false
-    @track showLumpsumDiscount = false;
-    @track showSchemeLookup = false
-    @track leadRecord
-    @track plcRecords = [];
-    @track isSchemeDiscount = false;
-    @track isLumpsumDiscount = false;
-    @track milestonePlane = []
-    @track Charges = []
-    @track ProjectType
-    @track isPlot = false
-    @track calculatedGstValue
-    @track campaignDiscountType
-    @track basePriceOriginalValue
-    @track TotalChargeAmount = 0
-    @track TotalGstforCharge = 0
-    @track AllInclusivePrice = 0
-    @track isSample = false
-    @track isdisabled = false
-    @track noSceme = false
-    @track plcList = []
-    get discountOptions() {
-        return [
-            { label: 'Manual', value: 'Manual' },
-            { label: 'Scheme', value: 'Scheme' }
-
-        ];
-    }
+    isFinal=false;
+    isLoading = false;
+    showTimer = false;
+    leadRecord;
+    Charges = [];
+    ProjectType;
+    isPlot = false;
+    basePriceOriginalValue
+    TotalChargeAmount = 0
+    TotalGstforCharge = 0
+    AllInclusivePrice = 0
+    isSample = false
+    isdisabled = false
+    plcList = []
 
     @api quoteId;
     @wire(CurrentPageReference)
@@ -99,6 +78,8 @@ export default class QuotationCostingSheet extends LightningElement {
                     console.log("Quote Data-->>>", this.quoteData);
                     console.log("Additonal Charges-->>",this.additionalChargeData);
                     this.isLocked=this.quoteData?.IsLocked__c || false;
+                    this.isFinal=this.quoteData?.Is_Final__c || false;
+                    console.log('Is Locked-->>',this.isLocked);
                     if(this.isLocked==true || this.quoteData?.Approval_Status__c!='Accepted'){
                         this.isFinalizedQuoteDisabled=true;
                     }
@@ -183,7 +164,24 @@ export default class QuotationCostingSheet extends LightningElement {
         }
     }
 
+    handleSendForApproval(){
+        this.isLoading = true;
+        submitForApproval({recordId: this.quoteId})
+                .then(() => {
+                    this.isLoading = false;
+                    this.displayMessage('Success','success','Quote Sent For Approval');
+                    window.location.reload();
+                })
+                .catch(error => {
+                    this.isLoading = false;
+                    console.error('Error In Sending For Approval', error);
+                    this.displayMessage('Error','error',error.body.message);
+                });
+
+    }
+
     handleSaveRecord(){
+        this.isLoading = true;
         this.quoteRecordToSave['Id']  = this.quoteId;
         this.quoteRecordToSave['IsSample__c']  = this.isChecked;
         let recordToSave=[this.quoteRecordToSave];
@@ -191,10 +189,12 @@ export default class QuotationCostingSheet extends LightningElement {
         SaveRecord({quoteRecords: recordToSave})
                 .then(() => {
                     console.log('Quote__c records updated successfully.');
+                    this.isLoading = false;
                     this.displayMessage('Success','success','Quote Saved Sucessfully');
                     window.location.reload();
                 })
                 .catch(error => {
+                    this.isLoading = false;
                     console.error('Error updating Quote__c records:', error);
                     this.displayMessage('Error','error',error.body.message);
                 });
@@ -203,32 +203,40 @@ export default class QuotationCostingSheet extends LightningElement {
     handleFinalizeQuote(){
         let recordToSave=[{
             'Id':this.quoteId,
-            'IsLocked__c':true
+            'IsLocked__c':true,
+            'Is_Final__c':true
         }]
+        this.isLoading = true;
         finalizeQuote({quoteRecords: recordToSave})
                 .then(() => {
                     console.log('Quote__c records updated successfully.');
                     this.displayMessage('Success','success','Quote Finalized Sucessfully');
+                    this.isLoading = false;
                     window.location.reload();
                 })
                 .catch(error => {
                     console.error('Error In Finalizing Quote Record:', error);
+                    this.isLoading = false;
                     this.displayMessage('Error','error',error.body.message);
                 });
     }
 
     handleSendQuotePdf(){
+        this.isLoading = true;
         let leadEmail = this.quoteData?.Lead__r?.Email || ''
         if(leadEmail!=''){
             sendQuoteEmail({ quoteId: this.quoteId, recipientEmail:leadEmail, name:this.quoteData?.Name})
             .then(() => {
+                this.isLoading = false;
                 this.displayMessage('Success', 'success', 'Quote sent successfully via email!');
             })
             .catch(error => {
+                this.isLoading = false;
                 console.log('Error In Sending Pdf-->>>',error);
                 this.showToast('Error','error', error.body.message);
             });
         }else{
+            this.isLoading = false;
             this.showToast('Error', 'error', 'Lead has no email.' );
         }
         

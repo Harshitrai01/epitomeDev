@@ -1,0 +1,56 @@
+<template>
+    <lightning-card class="custom-card-width">
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading..." size="medium"></lightning-spinner>
+        </template>
+        <!-- Header -->
+        <div class="slds-p-around_medium slds-border_bottom slds-grid slds-grid_vertical-align-center">
+            <lightning-icon icon-name="standard:portal_roles" size="medium" class="slds-m-right_small"></lightning-icon>
+            <div>
+                <h2 class="slds-text-heading_medium">Send Document</h2>
+                <!-- <p class="slds-text-body_small">
+                    Please upload the required KYC documents to verify your identity. Supported formats: PDF, PNG, JPEG.
+                </p> -->
+            </div>
+        </div>
+        <!-- Body -->
+        <div class="slds-p-around_medium ">
+            <div class="slds-m-bottom_medium">
+                <lightning-combobox
+                    name="contacts"
+                    label="Select Contact"
+                    placeholder="Select Contact From Here..."
+                    options={contacts}
+                    value={selecedContactId}
+                    onchange={handleContactSelection}>
+                </lightning-combobox>
+            </div>
+            <div class="slds-m-bottom_medium">
+                <lightning-combobox
+                    name="documentType"
+                    label="Document Type"
+                    placeholder="Select Document Type"
+                    options={documentOptions}
+                    value={selectedDocumentType}
+                    onchange={handleDocumentTypeChange}>
+                </lightning-combobox>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="slds-p-around_medium slds-border_top slds-text-align_center">
+            <lightning-button
+                label="Cancel"
+                variant="neutral"
+                onclick={handleCancel}
+                class="slds-m-right_small">
+            </lightning-button>
+            <lightning-button
+                label="Send"
+                variant="brand"
+                onclick={handleSend}
+                disabled={sendEnable}>
+            </lightning-button>
+        </div>
+    </lightning-card>
+</template>

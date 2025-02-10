@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <excludeButtons>DataDotComClean</excludeButtons>
-    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>false</customLabel>
@@ -331,6 +329,7 @@
         <fields>FULL_NAME</fields>
         <fields>LEAD.COMPANY</fields>
         <fields>LEAD.PHONE</fields>
+        <fields>LEAD.EMAIL</fields>
         <relatedList>Lead.Parent_Lead__c</relatedList>
     </relatedLists>
     <relatedLists>

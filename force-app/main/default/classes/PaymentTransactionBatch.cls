@@ -1,6 +1,14 @@
-global class PaymentTransactionBatch implements Database.Batchable<sObject>, Schedulable, Database.AllowsCallouts {
-    
+global class PaymentTransactionBatch implements Database.Batchable<sObject>, Schedulable, Database.AllowsCallouts, Database.Stateful {
+    private Decimal timeForRun = 2;
     global Database.QueryLocator start(Database.BatchableContext BC) {
+        List<BatchClassTime__mdt> batchTime = [SELECT DeveloperName, Time_In_Minutes__c
+                                               FROM BatchClassTime__mdt 
+                                               WHERE DeveloperName = 'testBatchClassTime' LIMIT 1];
+        if (!batchTime.isEmpty()) {
+            BatchClassTime__mdt batch = batchTime[0];
+            timeForRun = batch.Time_In_Minutes__c;
+        }
+        
         return Database.getQueryLocator([
             SELECT Id, Merchant_Transaction_Id__c, Email_Address__c, Phone__c, Payment_Amount__c, 
             			Payment_Status__c,Payment_Mode__c, Payment_Easepay_Id__c,Is_Webhook__c,
@@ -48,7 +56,7 @@ global class PaymentTransactionBatch implements Database.Batchable<sObject>, Sch
                         Integration_Log__c log = null;
                         if (String.isNotBlank(integrationLogsStr)) {
                             log = (Integration_Log__c) JSON.deserialize(integrationLogsStr, Integration_Log__c.class);
-                            integrationLogs.add(log);
+                            //integrationLogs.add(log);
                         }
                     }else{
                         String message= (String) responseMap.get('msg');
@@ -78,7 +86,7 @@ global class PaymentTransactionBatch implements Database.Batchable<sObject>, Sch
             }
         }
 		if (!integrationLogs.isEmpty()) {
-            insert integrationLogs;
+            // insert integrationLogs;
         }
         if (!updatedPayments.isEmpty()) {
             update updatedPayments;
@@ -86,11 +94,7 @@ global class PaymentTransactionBatch implements Database.Batchable<sObject>, Sch
     }
 
     global void finish(Database.BatchableContext BC) {
-        /*String hour = String.valueOf(Datetime.now().hour());
-        String min = String.valueOf(Datetime.now().addMinutes(2).minute());
-        String ss = String.valueOf(Datetime.now().second());
-        String nextFireTime = ss + ' ' + min + ' ' + hour + ' * * ?';*/
-        DateTime nextRun = System.now().addMinutes(2);
+        DateTime nextRun = System.now().addMinutes(Integer.ValueOf(timeForRun));
         String cronExp = nextRun.second() + ' ' +
                          nextRun.minute() + ' ' +
                          nextRun.hour() + ' ' +

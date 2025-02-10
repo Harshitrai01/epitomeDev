@@ -21,14 +21,6 @@
         </p>
         <apex:variable var="landownerCount" value="{!landownerCount + 1}" />
     </apex:repeat>
-    
-    
-    <p style="margin-bottom: 10px;">
-        <strong>KUMBHAM SRINIVAS REDDY</strong> S/o. RANGA REDDY, aged about 46 years, Occupation: Farmer,<br/>
-        R/o. H.No.1-34, Kalvakuntla (V), Munugode (M), Nalgonda District, Telangana, Pin Code: 504244.<br/>
-        Aadhaar No. XXXX XXXX 6872.<br/>
-        (Hereinafter referred to as the "Landowner No. 4")
-    </p>
     <p style="margin-bottom: 10px;">
         <strong>S.No.2 to 4 represented by their Development Agreement cum General Power of Attorney Holder:</strong>
     </p>
@@ -58,9 +50,12 @@
     </p>
     
     <p style="margin-bottom: 10px;">
-        <strong>NAVYASRI VEERAVALLI</strong>, D/o. VEERAVALLI THRIMURTHULU, aged about 36 years, Occupation: Home Maker,<br/>
-        R/o. Plot No. 223, Road No. 07, Thulasi Vanam Colony, Beeramguda, Hyderabad, Telangana, 502032,<br/>
-        Aadhaar No. 2714 1196 3392, PAN: ALGPV7518K, Phone No. 7207240996.<br/>
+        <strong>{!opportunityRecord.Contact__r.Salutation}. 
+            {!opportunityRecord.Account.Name}</strong>, aged {!calculatedAge} years, 
+                {!opportunityRecord.Account.BillingStreet}, {!opportunityRecord.Account.BillingCity}, 
+                {!opportunityRecord.Account.BillingState}, {!opportunityRecord.Account.BillingCountry}, 
+                {!opportunityRecord.Account.BillingPostalCode} 
+                (AadharNo. {!maskedAadhaar})
     </p>
     <p style="margin-bottom: 10px;">
         (Hereinafter referred to as the “Purchaser(s)” (which expression shall unless repugnant to the context or meaning thereof be deemed to mean and include his/her/their heirs, executors, administrators, successors-in-interest and permitted assigns) on the Other Part;)
@@ -261,15 +256,15 @@
     </p>
     
     <p style="margin-bottom: 10px; margin-left: 15px;">
-        1. The Vendor hereby offers to sell the Schedule Property to the Purchaser/s, for a total sale consideration of Rs.25,33,175/- (Rupees Twenty Five Lakhs, Thirty Three Thousand, One Hundred and Seventy Five only) (“Total Price”) and the Purchaser/s has / have accepted the offer and agreed to purchase the same for the said consideration subject to the terms and conditions agreed herein.
+        1. The Vendor hereby offers to sell the Schedule Property to the Purchaser/s, for a total sale consideration of Rs{!opportunityRecord.Sale_Value_Amount__c}/- ({!saleAmountInWords}) (“Total Price”) and the Purchaser/s has / have accepted the offer and agreed to purchase the same for the said consideration subject to the terms and conditions agreed herein.
     </p>
     
     <p style="margin-bottom: 10px; margin-left: 15px;">
-        2. The Purchaser/s herein paid an amount of Rs.1,00,000/- (Rupees One Lakh Only) through online transfer vide Transaction /Ref. No. DKW4248781 dated 28-11-2024, credited to the Account of Vendor. These payment/s serves as token of advance towards the sale consideration, constituting part of the total sale consideration.
+        2. The Purchaser/s herein paid an amount of Rs.{!opportunityRecord.Collected_Amount__c}/- ({!paidAmountInWords}) through online transfer vide Transaction /Ref. No. DKW4248781 dated 28-11-2024, credited to the Account of Vendor. These payment/s serves as token of advance towards the sale consideration, constituting part of the total sale consideration.
     </p>
     
     <p style="margin-bottom: 10px; margin-left: 15px;">
-        3. The remaining balance sale consideration of Rs.24,33,175/- (Rupees Twenty Four Lakhs, Thirty Three Thousand, One Hundred and Seventy Five only) shall be paid within Thirty (30) days from the date of this Agreement.
+        3. The remaining balance sale consideration of Rs.{!opportunityRecord.Outstanding_Amount__c}/- ({!balanceAmountInWords}) shall be paid within Thirty (30) days from the date of this Agreement.
     </p>
     
     <p style="margin-bottom: 10px; margin-left: 15px;">
@@ -348,28 +343,28 @@
         INTEGRATED CITY' Project, which comprises Residential Plots covering a total area of Ac.367-14.4 Gts. The Project spans across various Survey Numbers within Thangadpally Village under Choutuppal Municipality (Sy.Nos.646/P, 647, 648, 666, 667/P, 683/P, 684/P, 685/P, 686/P, 687/P, 688, 689, 690, 691, 694, 695, 697, 702/P, 703 and 704), and Devulamma Nagaram Village under Devulamma Nagaram Gram Panchayat (Sy.Nos.61, 62, 63/P, 65, 66, 67/P, 68, 69, 70, 71, 72/P, 97/P, 98/P, 99/P and 100/P), in accordance with the approved layout plan under Layout Permit No. 08/LO/Plg/HMDA/2021, dated 17/04/2021, issued by the Hyderabad Metropolitan Development Authority (HMDA) and the said Plot is bounded as follows: 
     </p>
     
-    <table style="margin: 20px auto; border-collapse: collapse; width: 50%; border: 1px solid black;">
-        <tr>
-            <th style="padding: 10px; text-align: left; background-color: #f2f2f2; border: 1px solid black;">Direction</th>
-            <th style="padding: 10px; text-align: left; background-color: #f2f2f2; border: 1px solid black;">Boundary</th>
-        </tr>
-        <tr>
-            <td style="padding: 10px; border: 1px solid black;">North</td>
-            <td style="padding: 10px; border: 1px solid black;">Proposed 40’ Ft Road</td>
-        </tr>
-        <tr>
-            <td style="padding: 10px; border: 1px solid black;">South</td>
-            <td style="padding: 10px; border: 1px solid black;">Plot No. 1614</td>
-        </tr>
-        <tr>
-            <td style="padding: 10px; border: 1px solid black;">East</td>
-            <td style="padding: 10px; border: 1px solid black;">Proposed 40’ Ft Road</td>
-        </tr>
-        <tr>
-            <td style="padding: 10px; border: 1px solid black;">West</td>
-            <td style="padding: 10px; border: 1px solid black;">Plot No. 1587</td>
-        </tr>
-    </table>
+    <table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif;">
+                <tr>
+                    <th style="padding: 10px; text-align: left; border: 1px solid #ddd; background-color: #f2f2f2;">Direction</th>
+                    <th style="padding: 10px; text-align: left; border: 1px solid #ddd; background-color: #f2f2f2;">Plot Information</th>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; text-align: left; border: 1px solid #ddd;">North</td>
+                    <td style="padding: 10px; text-align: left; border: 1px solid #ddd;">{!opportunityRecord.Unit__r.North__r.Name}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; text-align: left; border: 1px solid #ddd;">South</td>
+                    <td style="padding: 10px; text-align: left; border: 1px solid #ddd;">{!opportunityRecord.Unit__r.South__r.Name}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; text-align: left; border: 1px solid #ddd;">East</td>
+                    <td style="padding: 10px; text-align: left; border: 1px solid #ddd;">{!opportunityRecord.Unit__r.East__r.Name}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; text-align: left; border: 1px solid #ddd;">West</td>
+                    <td style="padding: 10px; text-align: left; border: 1px solid #ddd;">{!opportunityRecord.Unit__r.West__r.Name}</td>
+                </tr>
+            </table>
     
     <h2 style="text-align: center;">ANNEXURE - A (SCOPE OF DEVELOPMENT WORK IN THE PROJECT)</h2>
     

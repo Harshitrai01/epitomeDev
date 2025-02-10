@@ -52,7 +52,7 @@ public class EasebuzzInstaCollectService {
                         if (data.containsKey('virtual_account')) {
                             Map<String, Object> virtualAccount = (Map<String, Object>) data.get('virtual_account');
                             String virtualAccountId = (String) virtualAccount.get('id');
-                            IntegrationLogUtility.doLog(request.getBody(), response.getBody(), response.getStatusCode());
+                            //IntegrationLogUtility.doLog(request.getBody(), response.getBody(), response.getStatusCode());
                             updateVirtualAccountDetailsOnPlot(plotId,JSON.serialize(virtualAccount));
                         }
                     }

@@ -1,49 +1,83 @@
-public class UserStatusController {
+/**
+ * @description Controller for managing user status in a Lightning Component.
+ * @author Varun Rawal
+ * @date 2024-09-26
+ */
 
+public with sharing class UserStatusController {
+    
+    /**
+     * Retrieves the current user's status.
+     * Uses caching for better performance.
+     * @return User's status or 'Offline' if null.
+     */
     @AuraEnabled(cacheable=true)
     public static String getCurrentUserStatus() {
         try {
+            // Query current user's status field
             User currentUser = [SELECT Status__c FROM User WHERE Id = :UserInfo.getUserId() LIMIT 1];
-            
-            return currentUser.Status__c != null ? currentUser.Status__c : 'Offline';
+
+            // Return status if available, otherwise default to 'Offline'
+            return String.isNotBlank(currentUser.Status__c) ? currentUser.Status__c : 'Offline';
         } catch (Exception e) {
             System.debug('Error in getCurrentUserStatus: ' + e.getMessage());
-            throw new AuraHandledException('Error retrieving user status');
+            throw new AuraHandledException('Failed to retrieve user status. Please try again.');
         }
     }
 
+    /**
+     * Fetches available picklist values for the Status__c field on the User object.
+     * Uses caching for better performance.
+     * @return List of active status values.
+     */
     @AuraEnabled(cacheable=true)
     public static List<String> getStatusPicklistValues() {
         List<String> picklistValues = new List<String>();
+
         try {
+            // Describe field and fetch active picklist values
             Schema.DescribeFieldResult fieldResult = User.Status__c.getDescribe();
-            List<Schema.PicklistEntry> picklistEntries = fieldResult.getPicklistValues();
-            
-            for (Schema.PicklistEntry entry : picklistEntries) {
+            for (Schema.PicklistEntry entry : fieldResult.getPicklistValues()) {
                 if (entry.isActive()) {
                     picklistValues.add(entry.getValue());
                 }
             }
         } catch (Exception e) {
             System.debug('Error in getStatusPicklistValues: ' + e.getMessage());
-            throw new AuraHandledException('Error retrieving status picklist values');
+            throw new AuraHandledException('Failed to retrieve status picklist values.');
         }
-        
+
         return picklistValues;
     }
 
+    /**
+     * Updates the current user's status.
+     * @param newStatus - The new status to be set.
+     * @return Success message if updated successfully.
+     */
     @AuraEnabled
     public static String updateUserStatus(String newStatus) {
+        if (String.isBlank(newStatus)) {
+            throw new AuraHandledException('Invalid status. Please provide a valid value.');
+        }
+
         try {
+            // Fetch current user
             User currentUser = [SELECT Id, Status__c FROM User WHERE Id = :UserInfo.getUserId() LIMIT 1];
-            
-            currentUser.Status__c = newStatus;
-            update currentUser;
-            
-            return 'Status updated to ' + newStatus;
+
+            // Update status only if it's different to avoid unnecessary DML operations
+            if (currentUser.Status__c != newStatus) {
+                currentUser.Status__c = newStatus;
+                update currentUser;
+            }
+
+            return 'Status updated successfully to ' + newStatus;
+        } catch (DmlException e) {
+            System.debug('DML Error in updateUserStatus: ' + e.getMessage());
+            throw new AuraHandledException('Failed to update user status. Please try again.');
         } catch (Exception e) {
-            System.debug('Error in updateUserStatus: ' + e.getMessage());
-            throw new AuraHandledException('Error updating user status');
+            System.debug('Unexpected Error in updateUserStatus: ' + e.getMessage());
+            throw new AuraHandledException('An unexpected error occurred. Contact support.');
         }
     }
 }

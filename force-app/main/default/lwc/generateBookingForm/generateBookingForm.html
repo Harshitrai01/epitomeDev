@@ -1,231 +1,359 @@
 <template>
-<template if:true={showComponent}>
- 
-    <template if:true={isModalOpen}>
-<section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
-    <div class="slds-modal__container">
-        <header class="slds-modal__header">
-            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
-                <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
-            </button>
-            <h2 class="slds-text-heading_medium">Booking Form</h2>
-        </header>
- 
-        <!-- Modal/Popup Body -->
-        <div class="slds-modal__content slds-p-around_medium" >
-    <div class="card-container">
-        <article class="slds-card">
-          
-            <div class="slds-card__body slds-card__body_inner">
-                <lightning-accordion allow-multiple-sections-open active-section-name={activeSections} class="applicant-details-sections">
-                      <lightning-accordion-section name="C" label="Project Information">
-                        <lightning-layout multiple-rows>
-                            <lightning-layout-item flexibility="auto" padding="around-small" size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
-                                <lightning-input label="Project Name" type="text" value="Epitome" data-required="true" disabled></lightning-input>
-                            </lightning-layout-item>
-                              <lightning-layout-item flexibility="auto" padding="around-small" size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
-                               <lightning-combobox data-label="primaryApplicantRequiredFields" type="text"
-										variant="standard" name="typeOfBooking" label="Type of Booking" onchange={handleValueChange}
-										value={bookingFormData.typeOfBooking} options={picklistOptions.typeOfBookingOptions} required>
-									</lightning-combobox>
-                            </lightning-layout-item>
-                          
-                        </lightning-layout>
-                    </lightning-accordion-section>
-                   
-                    <lightning-accordion-section name="A" label="Primary Information" class="accordion-section">
-                        <lightning-layout multiple-rows>
-                            <lightning-layout-item flexibility="auto" padding="around-small" size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
-                                <lightning-input class="account-name" data-label="primaryApplicantRequiredFields" label="Account Name" type="text" name="accountName" onchange={handleValueChange} value={bookingFormData.accountName} data-required="true" required></lightning-input>
-                            </lightning-layout-item>
-                            <lightning-layout-item flexibility="auto" padding="around-small" size="12"
-                                    small-device-size="12" medium-device-size="6" large-device-size="6">
-                                    <lightning-input class="account-email" data-label="primaryApplicantRequiredFields" type="email"
-                                        variant="standard" name="accountEmailId" label="Email Id"
-                                        onchange={handleValueChange} value={bookingFormData.accountEmailId} required>
-                                    </lightning-input>
-                                </lightning-layout-item>
-                                <lightning-layout-item flexibility="auto" padding="around-small" size="12"
-                                    small-device-size="12" medium-device-size="6" large-device-size="6">
-                                    <lightning-input class="account-phone" data-label="primaryApplicantRequiredFields" type="tel"
-                                        variant="standard" name="accountContactNo" label="Contact No"
-                                        onchange={handleValueChange} value={bookingFormData.accountContactNo} required>
-                                    </lightning-input>
-                                </lightning-layout-item>
-                             
-                        </lightning-layout>
-                    </lightning-accordion-section>
-                    
-                        <template for:each={bookingFormData.listOfCoApplicant} for:item="contact">
-                                        <div key={contact.id} class="contact-container">    
-                    <lightning-accordion-section name="B" label="Contact Information">
-                        <lightning-layout multiple-rows>
-                            <lightning-layout-item flexibility="auto" padding="around-small" size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
-                                        <lightning-input label="Contact Name" data-label="primaryApplicantRequiredFields" type="text" name="contactName"  data-contact-id={contact.id}  onchange={handleValueChange} value={contact.contactName}   required></lightning-input>
-                            </lightning-layout-item>
-                            <lightning-layout-item flexibility="auto" padding="around-small" size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
-                                        <lightning-input data-label="primaryApplicantRequiredFields"
-                                                                    onchange={handleValueChange}
-                                                                    name="contactAadhaar" type="text"
-                                                                    variant="standard" label="Aadhaar Card"
-                                                                    min-length="12" max-length="12"
-                                                                    message-when-too-short="Enter a valid aadhaar card number"
-                                                                    pattern="[0-9]{12}"
-                                                                    message-when-pattern-mismatch="Enter a valid aadhaar card number format"
-                                                                    data-contact-id={contact.id}  
-                                                                    value={contact.contactAadhaar} required>
-                                        </lightning-input>
-                            </lightning-layout-item>
-                            <lightning-layout-item flexibility="auto" padding="around-small" size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
-                                        <lightning-input data-label="primaryApplicantRequiredFields" type="text"
-                                        variant="standard" name="contactPan" label="Pan Card"
-                                        onchange={handleValueChange} min-length="10" max-length="10"
-                                        message-when-too-short="Enter a valid pan card number"
-                                        pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"
-                                        message-when-pattern-mismatch="Enter a valid pan card number format"
-                                        data-contact-id={contact.id}  
-                                        value={contact.contactPan} required>
-                                        </lightning-input>
-                            </lightning-layout-item>
-                            <lightning-layout-item flexibility="auto" padding="around-small" size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
-                                        <lightning-input label="Date of Birth" data-label="primaryApplicantRequiredFields" type="date" name="contactDOB"
-                                        max={eighteenYearsBackDate}
-										message-when-range-overflow="Date of Birth cannot be a future date or must be 18 years old or above"
-                                         data-contact-id={contact.id}  onchange={handleValueChange} value={contact.contactDOB} required></lightning-input>
-                            </lightning-layout-item>
-                            <lightning-layout-item flexibility="auto" padding="around-small" size="12"
-                                    small-device-size="12" medium-device-size="6" large-device-size="6">
-                                    <lightning-input data-label="primaryApplicantRequiredFields" type="email"
-                                        variant="standard" name="contactEmail" label="Email Id"
-                                        data-contact-id={contact.id}  
-                                        onchange={handleValueChange} value={contact.contactEmail} required>
-                                    </lightning-input>
-                                </lightning-layout-item>
-                                <lightning-layout-item flexibility="auto" padding="around-small" size="12"
-                                    small-device-size="12" medium-device-size="6" large-device-size="6">
-                                    <lightning-input data-label="primaryApplicantRequiredFields" type="tel"
-                                        variant="standard" name="contactPhone" label="Contact No"
-                                        data-contact-id={contact.id}  
-                                        onchange={handleValueChange} value={contact.contactPhone} required>
-                                    </lightning-input>
-                                </lightning-layout-item>
-                           
-                        </lightning-layout>
-                    </lightning-accordion-section>
-                   
-                   
-                      <template for:each={contact.plots} for:item="plot">
-                                                <div key={plot.id} class="plot-container" >
-                                                    <div class="padded-section">
-                    <lightning-accordion-section name="D" label="Plot Information" >
-                         <lightning-layout multiple-rows>
-                            <lightning-layout-item flexibility="auto" padding="around-small" size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
-                                
-                                        <lightning-record-picker
-                                            label="Plot"
-                                            placeholder="Search Plot..."
-                                            object-api-name="Unit__c"
-                                            name="plotName" data-label="primaryApplicantRequiredFields" data-contact-id={contact.id} data-plot-id={plot.id} onchange={handleValueChange} value={plot.plotName}   required
-                                            
-                                        >
-                                        </lightning-record-picker>
+    <template if:true={showComponent}>
+        <template if:true={isModalOpen}>
+            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                            <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
+                        </button>
+                        <h2 class="slds-text-heading_medium">Booking Form</h2>
+                    </header>
 
-                            </lightning-layout-item>
-                             <lightning-layout-item flexibility="auto" padding="around-small" size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
-                                <lightning-input data-label="primaryApplicantRequiredFields" type="number" data-contact-id={contact.id} data-plot-id={plot.id}
-										variant="standard" name="unitOppAmount" label="First Booking Amount"
-										onchange={handleValueChange} value={plot.unitOppAmount}
-										formatter="currency" step="0.01" required>
-									</lightning-input>
-                                   
-                                       
-                            </lightning-layout-item>
-                             <lightning-layout-item flexibility="auto" padding="around-small" size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
-                                        <lightning-input label="Phase" type="text"
-                                         name="unitPlotPhase" data-contact-id={contact.id} data-plot-id={plot.id}
-                                         onchange={handleValueChange} value={plot.unitPlotPhase}  required disabled></lightning-input>
-                                     
-                                       
-                            </lightning-layout-item>
-                             <lightning-layout-item flexibility="auto" padding="around-small" size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
-                                        <lightning-input label="Plot Size" type="text"
-                                         name="unitPlotSize" data-contact-id={contact.id} data-plot-id={plot.id}
-                                         onchange={handleValueChange} value={plot.unitPlotSize}  required disabled></lightning-input>
-                            </lightning-layout-item>
-                             <lightning-layout-item flexibility="auto" padding="around-small" size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
-                                        <lightning-input label="Plot Price" type="text"
-                                         name="unitPlotPrize" data-contact-id={contact.id} data-plot-id={plot.id}
-                                         onchange={handleValueChange} value={plot.unitPlotPrize}  required disabled></lightning-input>
-                                     
-                                       
-                            </lightning-layout-item>
-                             <lightning-layout-item flexibility="auto" padding="around-small" size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
-                                <lightning-input label="Plot Facing" type="text"
-                                 name="unitPlotFacing" data-contact-id={contact.id} data-plot-id={plot.id}
-                                         onchange={handleValueChange} value={plot.unitPlotFacing} required disabled></lightning-input>
-                            </lightning-layout-item>
-                             <lightning-layout-item flexibility="auto" padding="around-small" size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
-                                        <lightning-input label="Unit Code" type="text"
-                                         name="unitPlotUnitCode" data-contact-id={contact.id} data-plot-id={plot.id}
-                                         onchange={handleValueChange} value={plot.unitPlotUnitCode}  required disabled></lightning-input>
-                                     
-                                       
-                            </lightning-layout-item>
-                            
-                         </lightning-layout>
-                          <!-- <lightning-button variant="neutral" label="Add More Plot" onclick={addMorePlot}></lightning-button> -->
-                    </lightning-accordion-section>
-                                                    </div>
-                      <div style="display:flex;justify-content: flex-end;">
-                 <template if:true={plot.showRemoveButton}>
-                
-                        <lightning-button variant="destructive" label="Remove Plot" data-contact-id={contact.id} data-plot-id={plot.id} onclick={removePlot}></lightning-button>
-                  
-                 </template>
-                  <template if:true={plot.showAddMoreButton}>
- <lightning-button variant="neutral" label="Add More Plot" data-contact-id={contact.id} data-plot-id={plot.id} onclick={addPlot}></lightning-button>
-                      </template>
-                   </div>
+                    <!-- Modal/Popup Body -->
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <div class="card-container">
+                            <article class="slds-card">
+                                <div class="slds-card__body slds-card__body_inner">
+                                    <template if:true={isLoading}>
+                                        <lightning-spinner variant="brand" alternative-text="Loading" size="large">
+                                        </lightning-spinner>
+                                    </template>
+                                    <lightning-accordion allow-multiple-sections-open
+                                        active-section-name={activeSections} class="applicant-details-sections">
+                                        <lightning-accordion-section name="C" label="Project Information">
+                                            <lightning-layout multiple-rows>
+                                                <lightning-layout-item flexibility="auto" padding="around-small"
+                                                    size="12" small-device-size="12" medium-device-size="6"
+                                                    large-device-size="6">
+                                                    <lightning-input label="Project Name" type="text" value="Epitome"
+                                                        data-required="true" disabled></lightning-input>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item flexibility="auto" padding="around-small"
+                                                    size="12" small-device-size="12" medium-device-size="6"
+                                                    large-device-size="6">
+                                                    <lightning-combobox data-label="primaryApplicantRequiredFields"
+                                                        type="text" variant="standard" name="typeOfBooking"
+                                                        label="Type of Booking" onchange={handleValueChange}
+                                                        value={bookingFormData.typeOfBooking}
+                                                        options={picklistOptions.typeOfBookingOptions} required>
+                                                    </lightning-combobox>
+                                                </lightning-layout-item>
+                                            </lightning-layout>
+                                        </lightning-accordion-section>
 
-
-                         
-                     
-                         <template if:true={isDefaultPlot}>
- <lightning-button variant="neutral" label="Add Moree Plot" data-contact-id={contact.id} data-plot-id={plot.id} onclick={addPlot}></lightning-button>
-                         </template>
-                 
-                                                </div></template>
-                                                  <template if:true={contact.showRemoveButton}>
-                    <lightning-button variant="destructive" label="Remove Contact" data-contact-id={contact.id} onclick={removeContact}></lightning-button></template>
-                                                    <template if:true={contact.showAddMoreButton}>
-                                                 <lightning-button variant="neutral" label="Add More" data-contact-id={contact.id} onclick={addContact}></lightning-button>
+                                        <lightning-accordion-section name="A" label="Primary Information"
+                                            class="accordion-section">
+                                            <lightning-layout multiple-rows>
+                                                <lightning-layout-item flexibility="auto" padding="around-small"
+                                                    size="12" small-device-size="12" medium-device-size="6"
+                                                    large-device-size="6">
+                                                    <lightning-input data-label="primaryApplicantRequiredFields"
+                                                        label="Account Name" type="text" name="accountName"
+                                                        onchange={handleValueChange} value={bookingFormData.accountName}
+                                                        data-required="true" required></lightning-input>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item flexibility="auto" padding="around-small"
+                                                    size="12" small-device-size="12" medium-device-size="6"
+                                                    large-device-size="6">
+                                                    <lightning-input data-label="primaryApplicantRequiredFields"
+                                                        type="email" variant="standard" name="accountEmailId"
+                                                        label="Email Id" onchange={handleValueChange}
+                                                        value={bookingFormData.accountEmailId} required>
+                                                    </lightning-input>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item flexibility="auto" padding="around-small"
+                                                    size="12" small-device-size="12" medium-device-size="6"
+                                                    large-device-size="6">
+                                                    <lightning-input data-label="primaryApplicantRequiredFields"
+                                                        type="tel" variant="standard" name="accountContactNo"
+                                                        label="Contact No" onchange={handleValueChange}
+                                                        value={bookingFormData.accountContactNo} required>
+                                                    </lightning-input>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item flexibility="auto" padding="around-small"
+                                                    size="12" small-device-size="12" medium-device-size="12"
+                                                    large-device-size="12">
+                                                    <lightning-input data-label="primaryApplicantRequiredFields"
+                                                        type="checkbox" variant="standard"
+                                                        name="accountSameAsPermanentAddress"
+                                                        label="Same as Permanent Address" onchange={handleValueChange}
+                                                        value={bookingFormData.accountSameAsPermanentAddress}
+                                                        checked={bookingFormData.accountSameAsPermanentAddress}>
+                                                    </lightning-input>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item flexibility="auto" padding="around-small"
+                                                    size="12" small-device-size="12" medium-device-size="6"
+                                                    large-device-size="6">
+                                                    <lightning-input-address data-label="primaryApplicantRequiredFields"
+                                                        name="accountPermanentAddress" address-label="Permanent Address"
+                                                        street-label="Street" city-label="City" country-label="Country"
+                                                        province-label="State" postal-code-label="Postal Code"
+                                                        street={bookingFormData.accountPermanentAddressStreet}
+                                                        city={bookingFormData.accountPermanentAddressCity}
+                                                        country={bookingFormData.accountPermanentAddressCountry}
+                                                        province={bookingFormData.accountPermanentAddressState}
+                                                        postal-code={bookingFormData.accountPermanentAddressPostalCode}
+                                                        onchange={handlePermanentAddressChange} required>
+                                                    </lightning-input-address>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item flexibility="auto" padding="around-small"
+                                                    size="12" small-device-size="12" medium-device-size="6"
+                                                    large-device-size="6">
+                                                    <template if:true={bookingFormData.accountSameAsPermanentAddress}>
+                                                        <lightning-input-address
+                                                            data-label="primaryApplicantRequiredFields"
+                                                            data-name="accountCorrespondenceAddress"
+                                                            name="accountCorrespondenceAddress"
+                                                            address-label="Correspondence Address" street-label="Street"
+                                                            street-name="accountCorrespondenceAddressStreet"
+                                                            city-label="City" country-label="Country"
+                                                            province-label="State" postal-code-label="Postal Code"
+                                                            street={bookingFormData.accountCorrespondenceAddressStreet}
+                                                            city={bookingFormData.accountCorrespondenceAddressCity}
+                                                            country={bookingFormData.accountCorrespondenceAddressCountry}
+                                                            province={bookingFormData.accountCorrespondenceAddressState}
+                                                            postal-code={bookingFormData.accountCorrespondenceAddressPostalCode}
+                                                            onchange={handleCorrespondenceAddressChange}
+                                                            disabled={bookingFormData.accountSameAsPermanentAddress}>
+                                                        </lightning-input-address>
                                                     </template>
-                                                </div></template>
-                  
-                   
-                   
-                       
- 
-                </lightning-accordion>
- 
-               
-            </div>
-        </article>
-    </div>
-        </div>
-          <footer class="slds-modal__footer">
-           
-            <lightning-button label="Cancel" onclick={closeModal}></lightning-button>
-           
-                    <lightning-button label="Save" onclick={handleSave}></lightning-button>
- 
-            <template if:true={isRecordTypeScreenVisible}>
-                <lightning-button label="Next" onclick={handleNext}></lightning-button>
-            </template>
-        </footer>
-    </div>
-</section>
-<div class="slds-backdrop slds-backdrop_open"></div>
-</template>
-</template>
+                                                    <template if:false={bookingFormData.accountSameAsPermanentAddress}>
+                                                        <lightning-input-address
+                                                            data-label="primaryApplicantRequiredFields"
+                                                            data-name="accountCorrespondenceAddress"
+                                                            name="accountCorrespondenceAddress"
+                                                            address-label="Correspondence Address" street-label="Street"
+                                                            street-name="accountCorrespondenceAddressStreet"
+                                                            city-label="City" country-label="Country"
+                                                            province-label="State" postal-code-label="Postal Code"
+                                                            street={bookingFormData.accountCorrespondenceAddressStreet}
+                                                            city={bookingFormData.accountCorrespondenceAddressCity}
+                                                            country={bookingFormData.accountCorrespondenceAddressCountry}
+                                                            province={bookingFormData.accountCorrespondenceAddressState}
+                                                            postal-code={bookingFormData.accountCorrespondenceAddressPostalCode}
+                                                            onchange={handleCorrespondenceAddressChange}
+                                                            required={bookingFormData.accountSameAsPermanentAddressNeeded}>
+                                                        </lightning-input-address>
+                                                    </template>
+                                                </lightning-layout-item>
+                                            </lightning-layout>
+                                        </lightning-accordion-section>
+
+                                        <template for:each={bookingFormData.listOfCoApplicant} for:item="contact">
+                                            <div key={contact.id} class="contact-container">
+                                                <lightning-accordion-section name="B" label="Contact Information">
+                                                    <lightning-layout multiple-rows>
+                                                        <lightning-layout-item flexibility="auto" padding="around-small"
+                                                            size="12" small-device-size="12" medium-device-size="6"
+                                                            large-device-size="6">
+                                                            <lightning-input label="Contact Name"
+                                                                data-label="primaryApplicantRequiredFields" type="text"
+                                                                name="contactName" data-contact-id={contact.id}
+                                                                onchange={handleValueChange} value={contact.contactName}
+                                                                required></lightning-input>
+                                                        </lightning-layout-item>
+                                                        <lightning-layout-item flexibility="auto" padding="around-small"
+                                                            size="12" small-device-size="12" medium-device-size="6"
+                                                            large-device-size="6">
+                                                            <lightning-input data-label="primaryApplicantRequiredFields"
+                                                                onchange={handleValueChange} name="contactAadhaar"
+                                                                type="text" variant="standard" label="Aadhaar Card"
+                                                                min-length="12" max-length="12"
+                                                                message-when-too-short="Enter a valid aadhaar card number"
+                                                                pattern="[0-9]{12}"
+                                                                message-when-pattern-mismatch="Enter a valid aadhaar card number format"
+                                                                data-contact-id={contact.id}
+                                                                value={contact.contactAadhaar} required>
+                                                            </lightning-input>
+                                                        </lightning-layout-item>
+                                                        <lightning-layout-item flexibility="auto" padding="around-small"
+                                                            size="12" small-device-size="12" medium-device-size="6"
+                                                            large-device-size="6">
+                                                            <lightning-input data-label="primaryApplicantRequiredFields"
+                                                                type="text" variant="standard" name="contactPan"
+                                                                label="Pan Card" onchange={handleValueChange}
+                                                                min-length="10" max-length="10"
+                                                                message-when-too-short="Enter a valid pan card number"
+                                                                pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"
+                                                                message-when-pattern-mismatch="Enter a valid pan card number format"
+                                                                data-contact-id={contact.id} value={contact.contactPan}
+                                                                required>
+                                                            </lightning-input>
+                                                        </lightning-layout-item>
+                                                        <lightning-layout-item flexibility="auto" padding="around-small"
+                                                            size="12" small-device-size="12" medium-device-size="6"
+                                                            large-device-size="6">
+                                                            <lightning-input label="Date of Birth"
+                                                                data-label="primaryApplicantRequiredFields" type="date"
+                                                                name="contactDOB" max={eighteenYearsBackDate}
+                                                                message-when-range-overflow="Date of Birth cannot be a future date or must be 18 years old or above"
+                                                                data-contact-id={contact.id}
+                                                                onchange={handleValueChange} value={contact.contactDOB}
+                                                                required></lightning-input>
+                                                        </lightning-layout-item>
+                                                        <lightning-layout-item flexibility="auto" padding="around-small"
+                                                            size="12" small-device-size="12" medium-device-size="6"
+                                                            large-device-size="6">
+                                                            <lightning-input data-label="primaryApplicantRequiredFields"
+                                                                type="email" variant="standard" name="contactEmail"
+                                                                label="Email Id" data-contact-id={contact.id}
+                                                                onchange={handleValueChange}
+                                                                value={contact.contactEmail} required>
+                                                            </lightning-input>
+                                                        </lightning-layout-item>
+                                                        <lightning-layout-item flexibility="auto" padding="around-small"
+                                                            size="12" small-device-size="12" medium-device-size="6"
+                                                            large-device-size="6">
+                                                            <lightning-input data-label="primaryApplicantRequiredFields"
+                                                                type="tel" variant="standard" name="contactPhone"
+                                                                label="Contact No" data-contact-id={contact.id}
+                                                                onchange={handleValueChange}
+                                                                value={contact.contactPhone} required>
+                                                            </lightning-input>
+                                                        </lightning-layout-item>
+                                                    </lightning-layout>
+                                                </lightning-accordion-section>
+
+                                                <template for:each={contact.plots} for:item="plot">
+                                                    <div key={plot.id} class="plot-container">
+                                                        <div class="padded-section">
+                                                            <lightning-accordion-section name="D"
+                                                                label="Plot Information">
+                                                                <lightning-layout multiple-rows>
+                                                                    <lightning-layout-item flexibility="auto"
+                                                                        padding="around-small" size="12"
+                                                                        small-device-size="12" medium-device-size="6"
+                                                                        large-device-size="6">
+                                                                        <lightning-record-picker label="Plot"
+                                                                            placeholder="Search Plot..."
+                                                                            object-api-name="Unit__c" name="plotName"
+                                                                            data-label="primaryApplicantRequiredFields"
+                                                                            data-contact-id={contact.id}
+                                                                            data-plot-id={plot.id}
+                                                                            onchange={handleValueChange}
+                                                                            value={plot.plotName} required>
+                                                                        </lightning-record-picker>
+                                                                    </lightning-layout-item>
+                                                                    <lightning-layout-item flexibility="auto"
+                                                                        padding="around-small" size="12"
+                                                                        small-device-size="12" medium-device-size="6"
+                                                                        large-device-size="6">
+                                                                        <lightning-input
+                                                                            data-label="primaryApplicantRequiredFields"
+                                                                            type="number" data-contact-id={contact.id}
+                                                                            data-plot-id={plot.id} variant="standard"
+                                                                            name="unitOppAmount"
+                                                                            label="First Booking Amount"
+                                                                            onchange={handleValueChange}
+                                                                            value={plot.unitOppAmount}
+                                                                            formatter="currency" step="0.01" required>
+                                                                        </lightning-input>
+                                                                    </lightning-layout-item>
+                                                                    <lightning-layout-item flexibility="auto"
+                                                                        padding="around-small" size="12"
+                                                                        small-device-size="12" medium-device-size="6"
+                                                                        large-device-size="6">
+                                                                        <lightning-input label="Phase" type="text"
+                                                                            name="unitPlotPhase"
+                                                                            data-contact-id={contact.id}
+                                                                            data-plot-id={plot.id}
+                                                                            onchange={handleValueChange}
+                                                                            value={plot.unitPlotPhase} required
+                                                                            disabled></lightning-input>
+                                                                    </lightning-layout-item>
+                                                                    <lightning-layout-item flexibility="auto"
+                                                                        padding="around-small" size="12"
+                                                                        small-device-size="12" medium-device-size="6"
+                                                                        large-device-size="6">
+                                                                        <lightning-input label="Plot Size" type="text"
+                                                                            name="unitPlotSize"
+                                                                            data-contact-id={contact.id}
+                                                                            data-plot-id={plot.id}
+                                                                            onchange={handleValueChange}
+                                                                            value={plot.unitPlotSize} required disabled>
+                                                                        </lightning-input>
+                                                                    </lightning-layout-item>
+                                                                    <lightning-layout-item flexibility="auto"
+                                                                        padding="around-small" size="12"
+                                                                        small-device-size="12" medium-device-size="6"
+                                                                        large-device-size="6">
+                                                                        <lightning-input label="Plot Price" type="text"
+                                                                            name="unitPlotPrize"
+                                                                            data-contact-id={contact.id}
+                                                                            data-plot-id={plot.id}
+                                                                            onchange={handleValueChange}
+                                                                            value={plot.unitPlotPrize} required
+                                                                            disabled></lightning-input>
+                                                                    </lightning-layout-item>
+                                                                    <lightning-layout-item flexibility="auto"
+                                                                        padding="around-small" size="12"
+                                                                        small-device-size="12" medium-device-size="6"
+                                                                        large-device-size="6">
+                                                                        <lightning-input label="Plot Facing" type="text"
+                                                                            name="unitPlotFacing"
+                                                                            data-contact-id={contact.id}
+                                                                            data-plot-id={plot.id}
+                                                                            onchange={handleValueChange}
+                                                                            value={plot.unitPlotFacing} required
+                                                                            disabled></lightning-input>
+                                                                    </lightning-layout-item>
+                                                                    <lightning-layout-item flexibility="auto"
+                                                                        padding="around-small" size="12"
+                                                                        small-device-size="12" medium-device-size="6"
+                                                                        large-device-size="6">
+                                                                        <lightning-input label="Unit Code" type="text"
+                                                                            name="unitPlotUnitCode"
+                                                                            data-contact-id={contact.id}
+                                                                            data-plot-id={plot.id}
+                                                                            onchange={handleValueChange}
+                                                                            value={plot.unitPlotUnitCode} required
+                                                                            disabled></lightning-input>
+                                                                    </lightning-layout-item>
+                                                                </lightning-layout>
+                                                            </lightning-accordion-section>
+                                                        </div>
+
+                                                        <div style="display:flex;justify-content: flex-end;">
+                                                            <template if:true={plot.showRemoveButton}>
+                                                                <lightning-button variant="destructive"
+                                                                    label="Remove Plot" data-contact-id={contact.id}
+                                                                    data-plot-id={plot.id} onclick={removePlot}>
+                                                                </lightning-button>
+                                                            </template>
+                                                            <template if:true={plot.showAddMoreButton}>
+                                                                <lightning-button variant="neutral"
+                                                                    label="Add More Plot" data-contact-id={contact.id}
+                                                                    data-plot-id={plot.id} onclick={addPlot}>
+                                                                </lightning-button>
+                                                            </template>
+                                                        </div>
+                                                    </div>
+                                                </template>
+                                                <template if:true={contact.showRemoveButton}>
+                                                    <lightning-button variant="destructive" label="Remove Contact"
+                                                        data-contact-id={contact.id} onclick={removeContact}>
+                                                    </lightning-button>
+                                                </template>
+                                                <template if:true={contact.showAddMoreButton}>
+                                                    <lightning-button variant="neutral" label="Add More"
+                                                        data-contact-id={contact.id} onclick={addContact}>
+                                                    </lightning-button>
+                                                </template>
+                                            </div>
+                                        </template>
+                                    </lightning-accordion>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <lightning-button label="Cancel" onclick={closeModal}></lightning-button>
+                        <lightning-button label="Save" onclick={handleSave}></lightning-button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+    </template>
 </template>

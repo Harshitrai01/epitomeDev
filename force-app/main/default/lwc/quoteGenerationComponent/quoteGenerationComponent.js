@@ -89,7 +89,6 @@ export default class QuoteGenerationComponent extends NavigationMixin(LightningE
             console.error('Error fetching plot phase record:', error);
         }
     }
-
     
     handleRecordSelection(event) {
         this.selectedRecordId = event.detail.recordId;
@@ -127,7 +126,7 @@ export default class QuoteGenerationComponent extends NavigationMixin(LightningE
             this.records = this.records.filter(record => record.id !== row.id);
         }
     }
-
+delay=0;
         handleSaveClick() {
             if (this.records.length === 0) {
                 this.showToast('Error','No plots to associate with the Lead.','error');
@@ -161,7 +160,10 @@ export default class QuoteGenerationComponent extends NavigationMixin(LightningE
                 this.showToast('Success','Quote Generated Successfully.','success');
                 this.records = [];
                 result.forEach(record => {
-                    this.navigateToQuote(record.Id);
+                    setTimeout(() => {
+                        this.navigateToQuote(record.Id);
+                    }, this.delay);
+                    this.delay += 5000; // Increase delay for each iteration (500ms) 
                 });
             })
             .catch(error => {
@@ -185,13 +187,17 @@ export default class QuoteGenerationComponent extends NavigationMixin(LightningE
     // }
 
     navigateToQuote(quoteId) {
-        this[NavigationMixin.Navigate]({
-            type: 'standard__recordPage',
-            attributes: {
-                recordId: quoteId,
-                actionName: 'view'
-            }
-        });
+                // this[NavigationMixin.Navigate]({
+        //     type: 'standard__recordPage',
+        //     attributes: {
+        //         recordId: quoteId,
+        //         actionName: 'view'
+        //     }
+        // });
+        const baseUrl = window.location.origin; // Gets the Salesforce base URL dynamically
+        const fullUrl = `${baseUrl}/lightning/r/Quote__c/${quoteId}/view`; // Constructs the record URL
+        console.log('URL-->>',fullUrl);
+        window.open(fullUrl, '_blank'); // Opens in a new tab
     }
 
     showToast(title, message, variant) {

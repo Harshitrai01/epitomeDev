@@ -182,6 +182,26 @@
                 <behavior>Edit</behavior>
                 <field>Loan_Status__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Refund_Status__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Refund_Approval_Status__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>BR_Status__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Bulk_Booking__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Contact_Name__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -447,12 +467,20 @@
             <sortOrder>10</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Opportunity.KYC_Document</actionName>
+            <actionName>Opportunity.Document_Upload</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>11</sortOrder>
         </platformActionListItems>
+        <platformActionListItems>
+            <actionName>gupshup_crm__NewTask</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>12</sortOrder>
+        </platformActionListItems>
     </platformActionList>
     <quickActionList>
+        <quickActionListItems>
+            <quickActionName>Opportunity.DD</quickActionName>
+        </quickActionListItems>
         <quickActionListItems>
             <quickActionName>Opportunity.Demand_Letter</quickActionName>
         </quickActionListItems>

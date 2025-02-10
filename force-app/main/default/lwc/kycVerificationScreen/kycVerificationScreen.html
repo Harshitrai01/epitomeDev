@@ -7,9 +7,9 @@
         <div class="slds-p-around_medium slds-border_bottom slds-grid slds-grid_vertical-align-center">
             <lightning-icon icon-name="standard:portal_roles" size="medium" class="slds-m-right_small"></lightning-icon>
             <div>
-                <h2 class="slds-text-heading_medium">KYC Document Verification</h2>
+                <h2 class="slds-text-heading_medium">Upload Document Verification</h2>
                 <p class="slds-text-body_small">
-                    Please upload the required KYC documents to verify your identity. Supported formats: PDF, PNG, JPEG.
+                    Please upload the required documents to verify.
                 </p>
             </div>
         </div>
@@ -49,9 +49,8 @@
             <!-- Upload -->
             <div class="slds-m-bottom_medium upload-section">
                 <lightning-file-upload
-                    label="Upload Document (Max 25MB)"
+                    label = {maxSizeLable}
                     name="aadhaarUpload"
-                    accept={acceptedFormats}
                     record-id={contactId}
                     onuploadfinished={handleAadhaarUploadFinished}
                     multiple = true
@@ -67,49 +66,10 @@
                     </template>
                 </div>
             </div>
+        </div>
 
-            <!-- PAN Upload -->
-            <!-- <div class="slds-m-bottom_medium upload-section">
-                <lightning-file-upload
-                    label="Upload PAN (Max 4MB)"
-                    name="panUpload"
-                    accept={acceptedFormats}
-                    record-id={contactId}
-                    onuploadfinished={handlePanUploadFinished}
-                    multiple=false
-                    required = true
-                    disabled={isContactTagged}>
-                </lightning-file-upload>
-                <div class="upload-status-container" style="min-height: 25px;">
-                    <template if:true={panFileId}>
-                        <div>
-                            <lightning-icon icon-name="utility:check" size="small" class="slds-icon-text-success"></lightning-icon>
-                            <span class="slds-m-left_x-small">PAN uploaded successfully!</span>
-                        </div>
-                    </template>
-                </div>
-            </div> -->
-
-            <!-- Other Document Upload -->
-            <!-- <div class="slds-m-bottom_medium upload-section">
-                <lightning-file-upload
-                    label="Upload Other Document (Max 4MB)"
-                    name="otherDocUpload"
-                    accept={acceptedFormats}
-                    record-id={contactId}
-                    onuploadfinished={handleOtherDocUploadFinished}
-                    multiple=false
-                    disabled={isContactTagged}>
-                </lightning-file-upload>
-                <div class="upload-status-container" style="min-height: 25px;">
-                    <template if:true={otherDocFileId}>
-                        <div>
-                            <lightning-icon icon-name="utility:check" size="small" class="slds-icon-text-success"></lightning-icon>
-                            <span class="slds-m-left_x-small">Other document uploaded successfully!</span>
-                        </div>
-                    </template>
-                </div>
-            </div> -->
+        <div class="slds-p-around_medium slds-text-color_error slds-text-align_center">
+            <strong>Note:</strong> Reuploading a document will replace the existing one.
         </div>
 
         <!-- Footer -->
@@ -123,7 +83,8 @@
             <lightning-button
                 label="Save"
                 variant="brand"
-                onclick={handleSave}>
+                onclick={handleSave}
+                disabled={saveEnable}>
             </lightning-button>
         </div>
     </lightning-card>

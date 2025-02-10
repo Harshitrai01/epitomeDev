@@ -3,9 +3,9 @@ import { CurrentPageReference } from 'lightning/navigation';
 import { CloseActionScreenEvent } from 'lightning/actions';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import checkOpportunityContact from '@salesforce/apex/KYCVerificationController.checkOpportunityContact';
-import uploadFile from '@salesforce/apex/KYCVerificationController.uploadFile'; // Apex method to upload file
 import updateOpportunityKYCStatus from '@salesforce/apex/KYCVerificationController.updateOpportunityKYCStatus';
-import checkFileSize from '@salesforce/apex/KYCVerificationController.checkFileSize';
+import checkFilesSize from '@salesforce/apex/KYCVerificationController.checkFilesSize';
+import getConfiguration from '@salesforce/apex/KYCVerificationController.getConfiguration';
 
 export default class KycVerificationScreen extends LightningElement {
     recordId; // Opportunity Id 
@@ -20,34 +20,61 @@ export default class KycVerificationScreen extends LightningElement {
     acceptedFormats = ['.pdf', '.png', '.jpg', '.jpeg'];
     isContactTagged = true;
     isLoading = true;
-    maxFileSize = 25 * 1024 * 1024; // 25 MB in bytes
+    saveEnable = true;
+    maxFileSize = 0; //25 * 1024 * 1024; // 25 MB in bytes
+    maxSizeLable; //this is use to diplay on UI
     fileStatus; //success file status dynamically assigining 
 
     documentTypeOptions = [
-        { label: 'KYC', value: 'KYC' },
+        { label: 'Onboarded', value: 'Onboarded' },
+        { label: 'Booked', value: 'Booked' },
         { label: 'AOS', value: 'AOS' },
-        { label: 'LOAN', value: 'LOAN' },
-        { label: 'Sales Deed', value: 'Sales Deed' },
-        { label: 'BR', value: 'BR' }
+        { label: 'Loan Process', value: 'Loan Process' },
+        { label: 'Progressive', value: 'Progressive' },
+        { label: 'Registration Initiate', value: 'Registration Initiate' },
+        { label: 'Registered', value: 'Registered' },
+        { label: 'Documents Delivered', value: 'Documents Delivered' }
     ];
 
     subTypeMap = {
-        'KYC': [
+        'Onboarded': [
+            { label: 'NOC', value: 'NOC' }
+        ],
+        'Booked': [
             { label: 'Aadhaar Card', value: 'Aadhaar Card' },
             { label: 'Pan Card', value: 'Pan Card' }
         ],
         'AOS': [
-            { label: 'Upload Documents', value: 'Upload Documents' }
+            { label: 'Draft AOS', value: 'Draft AOS' },
+            { label: 'Customer Signed', value: 'Customer Signed' },
+            { label: 'AOS', value: 'AOS' },
+            { label: 'NOC', value: 'NOC' }
         ],
-        'LOAN': [
-            { label: 'Upload Documents', value: 'Upload Documents' }
+        'Loan Process': [
+            { label: 'NOC', value: 'NOC' },
+            { label: 'Document Using the Link', value: 'Document Using the Link' },
+            { label: 'Loan Sanction Letter', value: 'Loan Sanction Letter' }
         ],
-        'Sales Deed': [
-            { label: 'Upload Documents', value: 'Upload Documents' }
+        'Progressive': [
+            { label: 'Disbursement Cheque', value: 'Disbursement Cheque' },
+            { label: 'Affidavit', value: 'Affidavit' },
+            { label: 'NOC', value: 'NOC' }
         ],
-        'BR': [
-            { label: 'Upload Documents', value: 'Upload Documents' }
-        ]
+        'Registration Initiate': [
+            { label: 'Draft Saledeed', value: 'Draft Saledeed' },
+            { label: 'Board of Resolution', value: 'Board of Resolution' },
+            { label: 'Form 32', value: 'Form 32' },
+            { label: 'NOC', value: 'NOC' }
+        ],
+        'Registered': [
+            { label: 'Original Sale Deed', value: 'Original Sale Deed' }
+        ],
+        'Documents Delivered': [
+            { label: 'Documents Delivered', value: 'Documents Delivered' }
+        ],
+        'Documents Delivered': [
+            { label: 'Documents Delivered', value: 'Documents Delivered' }
+        ],
     };
 
     @wire(CurrentPageReference)
@@ -55,6 +82,17 @@ export default class KycVerificationScreen extends LightningElement {
         if (currentPageReference) {
             this.recordId = currentPageReference.state.recordId;
             this.checkContactTagged();
+            getConfiguration()
+            .then( (data) =>{
+                if (data) {
+                    this.maxFileSize = data[0].File_Size_Limit__c * 1024 * 1024; 
+                    this.maxSizeLable = `Upload Document (Max ${data[0].File_Size_Limit__c}MB)`; 
+                }
+            })
+            .catch((error) => {
+                console.error('Error fetching File Size limit', JSON.stringify(error));
+                this.showToast('Error', error?.body?.message, 'error');
+            });
         }
     }
 
@@ -106,6 +144,8 @@ export default class KycVerificationScreen extends LightningElement {
         this.selectedDocumentType = event.detail.value;
         this.subTypeOptions = this.subTypeMap[this.selectedDocumentType] || [];
         this.selectedSubType = ''; // Reset subType selection when changing document type
+        this.isContactTagged = true;
+        this.aadhaarFileId = false
     }
 
     handleSubTypeChange(event) {
@@ -116,23 +156,35 @@ export default class KycVerificationScreen extends LightningElement {
         }
     }
     
-
-    
-    async validateFileSize(fileId, fileType) {
+    async validateFileSizes(fileData) {
         try {
-            console.log('filetype-->',fileType);
+            // Convert the file data array into JSON
+            const jsonInput = JSON.stringify({ files: fileData });
             
-            const fileSize = await checkFileSize({ contentDocumentId: fileId, maxSize: this.maxFileSize, fileType: fileType});
-
-            if (fileSize > this.maxFileSize) {
-                this.showToast('Error', `${fileType} file size exceeds the limit of 25MB.`, 'error');
-                return false; // File is too large
-            }
-
-            this.showToast('Success', `${fileType} uploaded successfully!`, 'success');
-            return true; // File is valid
+            // Call Apex to validate file sizes and rename them
+            const fileSizes = await checkFilesSize({
+                jsonInput: jsonInput,
+                maxSize: this.maxFileSize
+            });
+    
+            let isValid = true;
+    
+            // Process the response from Apex
+            fileSizes.forEach((size, index) => {
+                if (size === 0) {
+                    // File was deleted due to exceeding max size
+                    this.showToast('Error', `${fileData[index].fileType} file size exceeds the limit of ${this.maxFileSize/1024/1024}MB.`, 'error');
+                    isValid = false;
+                } else {
+                    this.saveEnable = false //enable the save button after document uploaded successfully
+                    // File was valid and successfully renamed
+                    this.showToast('Success', `${fileData[index].fileType} uploaded successfully!`, 'success');
+                }
+            });
+    
+            return isValid;
         } catch (error) {
-            this.showToast('Error', `Failed to validate ${fileType} file size.`, 'error');
+            this.showToast('Error', 'Failed to validate file sizes.', 'error');
             return false;
         }
     }
@@ -141,120 +193,40 @@ export default class KycVerificationScreen extends LightningElement {
     async handleAadhaarUploadFinished(event) {
         this.fileStatus = `${this.selectedSubType || this.selectedDocumentType} uploaded successfully!`
         const uploadedFiles = event.detail.files;
+
         if (uploadedFiles.length > 0) {
-            for (let index = 0; index < uploadedFiles.length; index++) {
-                const file = uploadedFiles[index];
-                const fileId = file.documentId;
-                // If it's the first file (index 0), keep the name as is; otherwise, append the index number
+            const fileData = [];
+
+            // Iterate over uploaded files and generate their names
+            uploadedFiles.forEach((file, index) => {
+                // Naming convention: First file has no number, subsequent files have an index
                 const fileType = index === 0 
-                                    ? `${this.selectedSubType || this.selectedDocumentType}` 
-                                    : `${this.selectedSubType || this.selectedDocumentType}${index}`;
-                const isValid = await this.validateFileSize(fileId, fileType);
-                if (isValid) {
-                    this.aadhaarFileId = fileId;
-                }
+                    ? `${this.selectedSubType || this.selectedDocumentType}` 
+                    : `${this.selectedSubType || this.selectedDocumentType}${index}`;
+
+                fileData.push({ fileId: file.documentId, fileType: fileType });
+            });
+
+            // Validate file sizes and rename them
+            const isValid = await this.validateFileSizes(fileData);
+            if (isValid) {
+                this.aadhaarFileId = isValid 
             }
         }
     }
-
-    // Handle PAN Upload
-    handlePanUploadFinished(event) {
-        // if (!this.isContactTagged) return;
-        // const uploadedFiles = event.detail.files;
-        // this.panFileId = uploadedFiles[0].documentId;
-        // this.showToast('Success', 'PAN uploaded successfully!', 'success');
-        const file = event.target.files[0];
-        if (file && file.size <= this.maxFileSize) {
-            this.otherDocFile = file;
-            this.panFileId = true
-        } else {
-            this.showToast('Error', 'Other document file size exceeds the limit of 25MB.', 'error');
-        }
-        
-    }
-
-    // Handle Other Document Upload
-    handleOtherDocUploadFinished(event) {
-        // if (!this.isContactTagged) return;
-        const file = event.target.files[0];
-        // this.otherDocFileId = uploadedFiles[0].documentId;
-        // this.showToast('Success', 'Other document uploaded successfully!', 'success');
-        
-        if (file && file.size <= this.maxFileSize) {
-            this.aadhaarFile = file;
-            this.otherDocFileId = true
-        } else {
-            this.showToast('Error', 'Aadhaar file size exceeds the limit of 4 MB.', 'error');
-        }
-    }
-
-    
 
     // Handle Save Button Click
     async handleSave() {
         this.isLoading = true;
-        if (!this.aadhaarFileId || !this.panFileId) {
-            this.showToast('Error', 'Please upload all required documents.', 'error');
-            this.isLoading = false;
-            return;
-        }
-
-        // try {
-        //     await updateOpportunityKYCStatus({ opportunityId: this.recordId, contactId: this.contactId });
-        //     this.showToast('Success', 'KYC Verification is in Progress.', 'success');
-        //     window.location.reload();
-        //     this.handleCancel();
-        // } catch (error) {
-        //     console.log("106 "+error);
-        //     this.showToast('Error', error?.body?.message, 'error');
-        // }
         try {
-            // Upload Aadhaar File
-            if (this.aadhaarFile) {
-                await this.uploadFile(this.aadhaarFile, 'Aadhaar');
-            }
-    
-            // Upload PAN File
-            if (this.panFile) {
-                await this.uploadFile(this.panFile, 'PAN');
-            }
-    
-            // Upload Other Document File
-            if (this.otherDocFile) {
-                await this.uploadFile(this.otherDocFile, 'Other Document');
-            }
-    
-            // Update Opportunity KYC Status
-            await updateOpportunityKYCStatus({ opportunityId: this.recordId, contactId: this.contactId });
-            this.isLoading = false;
-            this.handleCancel();
+            await updateOpportunityKYCStatus({ opportunityId: this.recordId, contactId: this.contactId, fileType: this.selectedDocumentType });
             this.showToast('Success', 'KYC Verification is in Progress.', 'success');
             // window.location.reload();
-        } catch (error) {
             this.isLoading = false;
+            this.handleCancel();
+        } catch (error) {
             this.showToast('Error', error?.body?.message, 'error');
         }
-    }
-    
-    // Upload File to Salesforce
-    async uploadFile(file, documentType) {
-        const base64 = await this.readFileAsBase64(file);
-        await uploadFile({ base64Data: base64, fileName: file.name, recordId: this.contactId, documentType });
-    }
-
-    // Read File as Base64
-    readFileAsBase64(file) {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onload = () => {
-                const base64 = reader.result.split(',')[1];
-                resolve(base64);
-            };
-            reader.onerror = (error) => {
-                reject(error);
-            };
-            reader.readAsDataURL(file);
-        });
     }
 
     showToast(title, message, variant) {
