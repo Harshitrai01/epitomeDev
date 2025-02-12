@@ -1,0 +1,55 @@
+<template>
+    <template if:true={isLoading}>
+		<lightning-spinner variant="brand" size="medium"> </lightning-spinner>
+	</template>
+	<template if:false={isLoading}>
+        <div class="plotDetails">
+            <div class="search-container">
+                <lightning-record-picker 
+                    label="Search a Plot"
+                    object-api-name="Unit__c" 
+                    value={selectedRecordId}
+                    onchange={handleRecordSelection}
+                    placeholder="Enter Plot Name..."
+                    class="slds-m-bottom_medium">
+                </lightning-record-picker>
+            </div>
+        </div>
+
+        <template if:true={showUnitDetails}>
+            <template if:true={unit.data}>
+                <div class="unit-card"> 
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col">
+                            <p><strong>Plot Name:</strong> {unit.data.fields.Name.value}</p>
+                        </div>
+                        <div class="slds-col">
+                            <p><strong>Plot Code:</strong> {unit.data.fields.Unit_Code__c.value}</p>
+                        </div>
+                        <div class="slds-col">
+                            <p><strong>Facing:</strong> {unit.data.fields.Plot_Facing__c.value}</p>
+                        </div>
+                        <div class="slds-col">
+                            <p><strong>Size:</strong> {unit.data.fields.Plot_Size__c.value}</p>
+                        </div>
+                        <div class="slds-col">
+                            <p><strong>Plot Status:</strong> {unit.data.fields.Status__c.value}</p>
+                        </div>
+                        <div class="slds-col">
+                            <p><strong>Phase :</strong> {phaseName}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-container">
+                    <lightning-button 
+                        label="Swap Plot" 
+                        onclick={handleAddClick} 
+                        variant="brand" 
+                        class="custom-button">
+                    </lightning-button>
+                </div>
+            </template>
+        </template>
+    </template>
+</template>

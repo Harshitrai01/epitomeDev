@@ -126,6 +126,10 @@
                 <behavior>Readonly</behavior>
                 <field>Contact_Name__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Loan_Sanctioned_Amount__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

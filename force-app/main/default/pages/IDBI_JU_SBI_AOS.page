@@ -1,4 +1,4 @@
-<apex:page renderAs="pdf" showHeader="false" applyBodyTag="false" standardStylesheets="false" controller="IdbiJuSbiAosController">
+<apex:page renderAs="pdf" standardController="Opportunity" showHeader="false" sidebar="false" extensions="IdbiJuSbiAosController">
     <h2 style="text-align: center;">AGREEMENT OF SALE</h2>
     
     <p style="margin-bottom: 10px;">This Agreement of Sale (“Agreement”) executed on this {!currentDate}, by and between:</p>

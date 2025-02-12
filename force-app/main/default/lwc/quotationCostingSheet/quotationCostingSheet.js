@@ -36,10 +36,8 @@ export default class QuotationCostingSheet extends LightningElement {
     wiredPageRef(pageRef) {
         if (pageRef?.state?.c__quoteId && !this.quoteId) {
             this.quoteId = pageRef.state.c__quoteId;
-            console.log('QuoteId Present');
         }else if(this.recordId!=undefined && this.recordId!=null){
             this.quoteId=this.recordId;
-            console.log('RecordId Present');
         }
     }
 
@@ -68,18 +66,12 @@ export default class QuotationCostingSheet extends LightningElement {
     connectedCallback() {
         try {
             this.isLoading = true;
-            console.log('RecordId--->>',this.recordId);
-            console.log('QuoteId--->>',this.quoteId);
             getQuote({ recordId: this.quoteId }).then(result => {
-                console.log('Result-->>',result);
                 if (result.isSuccess) {
                     this.quoteData = (result.quoteObj);
                     this.additionalChargeData = (result.additonalCharges);
-                    console.log("Quote Data-->>>", this.quoteData);
-                    console.log("Additonal Charges-->>",this.additionalChargeData);
                     this.isLocked=this.quoteData?.IsLocked__c || false;
                     this.isFinal=this.quoteData?.Is_Final__c || false;
-                    console.log('Is Locked-->>',this.isLocked);
                     if(this.isLocked==true || this.quoteData?.Approval_Status__c!='Accepted'){
                         this.isFinalizedQuoteDisabled=true;
                     }
@@ -118,10 +110,10 @@ export default class QuotationCostingSheet extends LightningElement {
                         }
                     });
 
-                    this.leadRecord = this.quoteData?.Lead__r?.Name || '';
+                    this.leadRecord = this.quoteData?.Lead__r?.Name || this.quoteData?.Opportunity__r?.Contact__r?.Name || '';
                     this.ProjectType = 'Plot';
 
-                    this.phaseName=this.quoteData?.Lead__r?.Phase__r?.Name || '';
+                    this.phaseName=this.quoteData?.Lead__r?.Phase__r?.Name || this.quoteData?.Plot__r?.Phase__r?.Name || '';
                     this.plotName=this.quoteData?.Plot__r?.Name || '';
                     this.plotFace=this.quoteData?.Plot__r?.Plot_Facing__c || '';
                     this.plotSize=this.quoteData?.Plot__r?.Plot_Size__c || '';
@@ -129,7 +121,7 @@ export default class QuotationCostingSheet extends LightningElement {
                     this.plotFloorNumber=this.quoteData?.Plot__r?.Floor_Number__c || '';
                     this.plotUnitCode=this.quoteData?.Plot__r?.Unit_Code__c || '';
                     this.plotBasePrice=this.quoteData?.Plot__r?.Base_Price_per_Sq_Ft__c || '';
-                    this.plotDimension=this.quoteData?.Plot_Dimension__c || '';
+                    this.plotDimension=this.quoteData?.Plot_Dimension__c || this.quoteData?.Plot__r.Plot_Dimension__c || '';
 
                     this.basePriceOriginalValue = this.quoteData.BasePriceperSqFt__c;
                     if (this.quoteData.Status__c == 'Draft' || this.quoteData.Status__c == 'Approved' || this.quoteData.Status__c == 'Rejected') {
@@ -144,7 +136,6 @@ export default class QuotationCostingSheet extends LightningElement {
                     this.isLoading = false;
                 } else {
                     this.isLoading = false;
-                    console.log('Inside False');
                 }
             })
         } catch (error) {
@@ -185,10 +176,8 @@ export default class QuotationCostingSheet extends LightningElement {
         this.quoteRecordToSave['Id']  = this.quoteId;
         this.quoteRecordToSave['IsSample__c']  = this.isChecked;
         let recordToSave=[this.quoteRecordToSave];
-        console.log('Records To Save Databse-->>',recordToSave);
         SaveRecord({quoteRecords: recordToSave})
                 .then(() => {
-                    console.log('Quote__c records updated successfully.');
                     this.isLoading = false;
                     this.displayMessage('Success','success','Quote Saved Sucessfully');
                     window.location.reload();
@@ -223,7 +212,7 @@ export default class QuotationCostingSheet extends LightningElement {
 
     handleSendQuotePdf(){
         this.isLoading = true;
-        let leadEmail = this.quoteData?.Lead__r?.Email || ''
+        let leadEmail = this.quoteData?.Lead__r?.Email || this.quoteData?.Opportunity__r?.Contact__r?.Email || ''
         if(leadEmail!=''){
             sendQuoteEmail({ quoteId: this.quoteId, recipientEmail:leadEmail, name:this.quoteData?.Name})
             .then(() => {
@@ -233,11 +222,11 @@ export default class QuotationCostingSheet extends LightningElement {
             .catch(error => {
                 this.isLoading = false;
                 console.log('Error In Sending Pdf-->>>',error);
-                this.showToast('Error','error', error.body.message);
+                this.displayMessage('Error','error', error.body.message);
             });
         }else{
             this.isLoading = false;
-            this.showToast('Error', 'error', 'Lead has no email.' );
+            this.displayMessage('Error', 'error', 'Customer has no email.' );
         }
         
     }

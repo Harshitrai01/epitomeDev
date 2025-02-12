@@ -153,10 +153,10 @@
                                                     <template if:true={column.Pv}>
                                                         <div class="popover" >
                                                             <ul>
-                                                                <li data-option="None" data-key={column.id} data-row={row.Rw} onclick={handleOptionClick}>None</li>
-                                                                <li data-option="Plot" data-key={column.id} data-pid={column.pId} data-pn={column.pN} data-ps={column.pS} data-row={row.Rw} onclick={handleOptionClick}>Plot</li>
-                                                                <li data-option="Garden" data-key={column.id} data-row={row.Rw} onclick={handleOptionClick}>Garden</li>
-                                                                <li data-option="Road" data-key={column.id} data-row={row.Rw} onclick={handleOptionClick}>Road</li>
+                                                                <li data-option="None" data-colkey={columnKey.ck} data-sector={sector.sc} data-key={column.id} data-row={row.Rw} onclick={handleOptionClick}>None</li>
+                                                                <li data-option="Plot" data-colkey={columnKey.ck} data-sector={sector.sc} data-key={column.id} data-pid={column.pId} data-pn={column.pN} data-ps={column.pS} data-row={row.Rw} onclick={handleOptionClick}>Plot</li>
+                                                                <li data-option="Garden" data-colkey={columnKey.ck} data-sector={sector.sc} data-key={column.id} data-row={row.Rw} onclick={handleOptionClick}>Garden</li>
+                                                                <li data-option="Road" data-colkey={columnKey.ck} data-sector={sector.sc} data-key={column.id} data-row={row.Rw} onclick={handleOptionClick}>Road</li>
                                                             </ul>
                                                         </div>
                                                     </template>

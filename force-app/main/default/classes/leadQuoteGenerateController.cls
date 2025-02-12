@@ -36,4 +36,17 @@ public class leadQuoteGenerateController {
             throw new AuraHandledException('Error creating Quote__c records: ' + ex.getMessage());
         }
     }
+    
+    @AuraEnabled
+    public static List<Opportunity> saveOpportunity(List<Opportunity> oppRecords) {
+        try {
+            if (oppRecords != null && !oppRecords.isEmpty()) {
+                update oppRecords;
+                return oppRecords;
+            }
+            return null;
+        } catch (Exception ex) {
+            throw new AuraHandledException('Error in updating opportunity plot details: ' + ex.getMessage());
+        }
+    }
 }

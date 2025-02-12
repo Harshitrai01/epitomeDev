@@ -144,6 +144,13 @@
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>$Record.Collected_Amount__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>100000.0</numberValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>Update_Stage_to_Booked</targetReference>
             </connector>

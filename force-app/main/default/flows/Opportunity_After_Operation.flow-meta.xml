@@ -23,13 +23,13 @@
         <inputParameters>
             <name>title</name>
             <value>
-                <stringValue>Opportunity Stage Changed!!!!!</stringValue>
+                <stringValue>Opportunity Loan Process Initiated</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
             <name>body</name>
             <value>
-                <stringValue>Opportunity :- {!$Record.Name} Stage has been Moved to Progressive</stringValue>
+                <stringValue>Opportunity :- {!$Record.Name} Loan Process has been Initiated</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -261,10 +261,17 @@
         <name>assignLoan_Manager_UserId_To_Users_List</name>
         <label>assignLoan Manager UserId To Users List</label>
         <locationX>2866</locationX>
-        <locationY>1187</locationY>
+        <locationY>1079</locationY>
         <assignmentItems>
             <assignToReference>UsersIdList</assignToReference>
             <operator>Add</operator>
+            <value>
+                <elementReference>loop_on_Loan_Manager.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TaskOwner</assignToReference>
+            <operator>Assign</operator>
             <value>
                 <elementReference>loop_on_Loan_Manager.Id</elementReference>
             </value>
@@ -323,7 +330,7 @@
     <decisions>
         <name>Check_Field_Update</name>
         <label>Check Field Update</label>
-        <locationX>1942</locationX>
+        <locationX>2206</locationX>
         <locationY>431</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -466,7 +473,7 @@
             <label>Initiate Stage</label>
         </rules>
         <rules>
-            <name>Status_Changed_to_Progressive</name>
+            <name>Status_Changed_to_Loan_Process</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.StageName</leftValueReference>
@@ -479,7 +486,7 @@
                 <leftValueReference>$Record.StageName</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Progressive</stringValue>
+                    <stringValue>Loan Process</stringValue>
                 </rightValue>
             </conditions>
             <conditions>
@@ -490,9 +497,9 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>get_Progressive_Task_s_Record_Type</targetReference>
+                <targetReference>get_Loan_Process_Task_s_Record_Type</targetReference>
             </connector>
-            <label>Status Changed to Progressive</label>
+            <label>Status Changed to Loan Process</label>
         </rules>
         <rules>
             <name>REGISTRATION_INITIATE</name>
@@ -515,6 +522,28 @@
                 <targetReference>BR_Task_Record_Type</targetReference>
             </connector>
             <label>REGISTRATION INITIATE</label>
+        </rules>
+        <rules>
+            <name>Registration_Schedule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Reg Scheduled</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Registration_Schedule_Record_type</targetReference>
+            </connector>
+            <label>Registration Schedule</label>
         </rules>
     </decisions>
     <decisions>
@@ -558,7 +587,7 @@
         <name>Check_Loan_Manager_user</name>
         <label>Check Loan Manager user</label>
         <locationX>2910</locationX>
-        <locationY>971</locationY>
+        <locationY>863</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Loan_Manager_User_is_Null</name>
@@ -626,7 +655,7 @@
     <decisions>
         <name>Inserted_Updated</name>
         <label>Inserted/Updated</label>
-        <locationX>3152</locationX>
+        <locationX>3548</locationX>
         <locationY>323</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -679,6 +708,28 @@
             <label>Not Null</label>
         </rules>
     </decisions>
+    <decisions>
+        <name>Null_Check_RS_Task</name>
+        <label>Null Check RS Task</label>
+        <locationX>3966</locationX>
+        <locationY>863</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Null_Check_RS_Task_is_Not_Null</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Registration_Manager_User</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Initiate_the_Registration_Schedule</targetReference>
+            </connector>
+            <label>Null Check RS Task is Not Null</label>
+        </rules>
+    </decisions>
     <environments>Default</environments>
     <formulas>
         <name>isInserted</name>
@@ -691,14 +742,14 @@
         <name>loop_on_Loan_Manager</name>
         <label>loop on Loan Manager</label>
         <locationX>2778</locationX>
-        <locationY>1079</locationY>
+        <locationY>971</locationY>
         <collectionReference>getUser_of_Loan_Manager</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
             <targetReference>assignLoan_Manager_UserId_To_Users_List</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
-            <targetReference>Copy_1_of_getCustomNotification</targetReference>
+            <targetReference>create_Loan_Process_Task</targetReference>
         </noMoreValuesConnector>
     </loops>
     <processMetadataValues>
@@ -721,32 +772,35 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordCreates>
-        <name>create_Progressive_Task</name>
-        <label>create Progressive Task</label>
-        <locationX>2910</locationX>
-        <locationY>647</locationY>
+        <name>create_Loan_Process_Task</name>
+        <label>create Loan Process Task</label>
+        <locationX>2778</locationX>
+        <locationY>1271</locationY>
         <connector>
-            <targetReference>getProfile_of_Loan_Manager</targetReference>
+            <targetReference>Copy_1_of_getCustomNotification</targetReference>
         </connector>
         <inputAssignments>
             <field>OwnerId</field>
             <value>
-                <elementReference>$Record.OwnerId</elementReference>
+                <elementReference>TaskOwner</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>RecordTypeId</field>
             <value>
-                <elementReference>get_Progressive_Task_s_Record_Type.Id</elementReference>
+                <elementReference>get_Loan_Process_Task_s_Record_Type.Id</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>Status</field>
+            <value>
+                <stringValue>Log in</stringValue>
+            </value>
         </inputAssignments>
         <inputAssignments>
             <field>Subject</field>
             <value>
-                <stringValue>Progressive</stringValue>
+                <stringValue>Loan Process</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -861,6 +915,44 @@
             <field>Subject</field>
             <value>
                 <stringValue>Initiate the Board of Resolution</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhatId</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Task</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Initiate_the_Registration_Schedule</name>
+        <label>Initiate the Registration Schedule</label>
+        <locationX>3834</locationX>
+        <locationY>971</locationY>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>Registration_Manager_User.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Priority</field>
+            <value>
+                <stringValue>High</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>Registration_Schedule_Record_type.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <stringValue>Initiate the Registration Schedule</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1055,6 +1147,41 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
+        <name>get_Loan_Process_Task_s_Record_Type</name>
+        <label>get Loan Process Task&apos;s Record Type</label>
+        <locationX>2910</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>getProfile_of_Loan_Manager</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>IsActive</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Loan</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Task</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Get_Primary_Contacts</name>
         <label>Get Primary Contacts</label>
         <locationX>446</locationX>
@@ -1083,41 +1210,6 @@
             <assignToReference>curPrimaryContact</assignToReference>
             <field>ContactId</field>
         </outputAssignments>
-    </recordLookups>
-    <recordLookups>
-        <name>get_Progressive_Task_s_Record_Type</name>
-        <label>get Progressive Task&apos;s Record Type</label>
-        <locationX>2910</locationX>
-        <locationY>539</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>create_Progressive_Task</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>IsActive</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>DeveloperName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Progressive</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>SobjectType</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Task</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>RecordType</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
         <name>get_Record_Type</name>
@@ -1221,7 +1313,7 @@
         <name>getProfile_of_Loan_Manager</name>
         <label>getProfile of Loan Manager</label>
         <locationX>2910</locationX>
-        <locationY>755</locationY>
+        <locationY>647</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>getUser_of_Loan_Manager</targetReference>
@@ -1270,7 +1362,7 @@
         <name>getUser_of_Loan_Manager</name>
         <label>getUser of Loan Manager</label>
         <locationX>2910</locationX>
-        <locationY>863</locationY>
+        <locationY>755</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_Loan_Manager_user</targetReference>
@@ -1285,6 +1377,83 @@
         </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
         <object>User</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Registration_Manager_Profile</name>
+        <label>Registration Manager Profile</label>
+        <locationX>3966</locationX>
+        <locationY>647</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Registration_Manager_User</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Registration Manager</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Profile</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Registration_Manager_User</name>
+        <label>Registration Manager User</label>
+        <locationX>3966</locationX>
+        <locationY>755</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Null_Check_RS_Task</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ProfileId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Registration_Manager_Profile.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Registration_Schedule_Record_type</name>
+        <label>Registration Schedule Record type</label>
+        <locationX>3966</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Registration_Manager_Profile</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Task</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Registered_Scheduled</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>IsActive</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
@@ -1375,7 +1544,7 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>3026</locationX>
+        <locationX>3422</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Inserted_Updated</targetReference>
@@ -1384,7 +1553,7 @@
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <textTemplates>
         <name>OnboardingTitle</name>
         <isViewedAsPlainText>false</isViewedAsPlainText>
@@ -1420,6 +1589,13 @@
         <name>ownerId</name>
         <dataType>String</dataType>
         <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>TaskOwner</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
     </variables>

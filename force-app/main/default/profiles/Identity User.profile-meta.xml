@@ -517,6 +517,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>Event.Loan_Sanctioned_Amount__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>ForecastingItem__hd.AmountWithoutAdjustments__hpr</field>
         <readable>false</readable>
@@ -1009,6 +1014,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Opportunity.Loan_Eligible_Amount__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Loan_Sanctioned_Amount__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1918,6 +1928,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Task.Loan_Sanctioned_Amount__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Unit__c.Account__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1984,6 +1999,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Unit__c.Phase__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Unit__c.Plot_Dimension__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

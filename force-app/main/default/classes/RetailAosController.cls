@@ -10,7 +10,7 @@ public class RetailAosController {
     public List<PaymentDetails> approvedPayments { get; set; }
     public Double plotSizeInSqM { get; set; } // To store plot size in square meters
 
-    public RetailAosController() {
+    public RetailAosController(ApexPages.StandardController stdController) {
         try {
             Id opportunityId = ApexPages.currentPage().getParameters().get('Id');
             System.debug('OpportunityId --> ' + opportunityId);

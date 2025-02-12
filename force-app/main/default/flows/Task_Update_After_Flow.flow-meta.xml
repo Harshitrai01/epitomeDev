@@ -1,10 +1,171 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
+        <name>Copy_1_of_Send_Notification_for_Disbursement</name>
+        <label>Copy 1 of Send Notification for Disbursement</label>
+        <locationX>1282</locationX>
+        <locationY>971</locationY>
+        <actionName>customNotificationAction</actionName>
+        <actionType>customNotificationAction</actionType>
+        <connector>
+            <targetReference>Copy_2_of_Assign_to_Variable</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>customNotifTypeId</name>
+            <value>
+                <elementReference>Copy_1_of_get_Custom_Notification_Type.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientIds</name>
+            <value>
+                <elementReference>ownerIds</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>title</name>
+            <value>
+                <stringValue>Status Change ALERT</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>body</name>
+            <value>
+                <stringValue>{!$Record.Subject} Status has been changed to Draft Upload</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>targetId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>customNotificationAction</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_for_AOS</name>
+        <label>Send Email for AOS</label>
+        <locationX>1678</locationX>
+        <locationY>2087</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddressesArray</name>
+            <value>
+                <elementReference>emailList</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <elementReference>Get_Org_wide_Address.Address</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>AOS Draft Uploaded</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>EmailBodyforAOS</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>relatedRecordId</name>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_for_Eligible</name>
+        <label>Send Email for Eligible</label>
+        <locationX>1414</locationX>
+        <locationY>2303</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <elementReference>Get_Org_wide_Address.Address</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>relatedRecordId</name>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientId</name>
+            <value>
+                <elementReference>Get_Contact_from_Opportunity.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailTemplateId</name>
+            <value>
+                <elementReference>get_Email_Template_for_Eligible.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_for_Loan_Rejection</name>
+        <label>Send Email for Loan Rejection</label>
+        <locationX>1150</locationX>
+        <locationY>2303</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <elementReference>Get_Org_wide_Address.Address</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>relatedRecordId</name>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientId</name>
+            <value>
+                <elementReference>Get_Contact_from_Opportunity.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailTemplateId</name>
+            <value>
+                <elementReference>get_Email_Template_for_Loan_Rejection.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
         <name>Send_Email_for_Loan_Sanctioned</name>
         <label>Send Email for Loan Sanctioned</label>
-        <locationX>314</locationX>
-        <locationY>1403</locationY>
+        <locationX>886</locationX>
+        <locationY>2195</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -81,6 +242,22 @@
     </actionCalls>
     <apiVersion>63.0</apiVersion>
     <assignments>
+        <name>Add_Contact_Email_to_List</name>
+        <label>Add Contact Email to List</label>
+        <locationX>1370</locationX>
+        <locationY>1295</locationY>
+        <assignmentItems>
+            <assignToReference>emailList</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>loop_over_Contacts.Email</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Assign_to_Variable</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>Assign_OwnerId_to_List</name>
         <label>Assign OwnerId to List</label>
         <locationX>314</locationX>
@@ -96,33 +273,236 @@
             <targetReference>get_Custom_Notification_Type</targetReference>
         </connector>
     </assignments>
+    <assignments>
+        <name>Assign_to_Variable</name>
+        <label>Assign to Variable</label>
+        <locationX>1370</locationX>
+        <locationY>1403</locationY>
+        <assignmentItems>
+            <assignToReference>Allottees</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>loop_over_Contacts.Name</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>loop_over_Contacts</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Copy_2_of_Assign_OwnerId_to_List</name>
+        <label>Copy 2 of Assign OwnerId to List</label>
+        <locationX>1282</locationX>
+        <locationY>755</locationY>
+        <assignmentItems>
+            <assignToReference>ownerIds</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Get_Opportunity.OwnerId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Copy_1_of_get_Custom_Notification_Type</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Copy_2_of_Assign_to_Variable</name>
+        <label>Copy 2 of Assign to Variable</label>
+        <locationX>1282</locationX>
+        <locationY>1079</locationY>
+        <assignmentItems>
+            <assignToReference>Allottees</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>Allotees:</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>loop_over_Contacts</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Check_AOS_Status_Update</name>
+        <label>Check AOS Status Update</label>
+        <locationX>1414</locationX>
+        <locationY>539</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Status_Changed_to_Draft_Uploaded</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Draft Uploaded</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Contact</targetReference>
+            </connector>
+            <label>Status Changed to Draft Uploaded</label>
+        </rules>
+    </decisions>
     <decisions>
         <name>Check_RecordType</name>
         <label>Check RecordType</label>
-        <locationX>578</locationX>
-        <locationY>323</locationY>
+        <locationX>1414</locationX>
+        <locationY>431</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Outcome_1_of_Decision_1</name>
+            <name>RecordType_Loan_Process</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Progressive</stringValue>
+                    <stringValue>Loan</stringValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Progressive_Status_Update</targetReference>
+                <targetReference>Loan_Process_Status_Update</targetReference>
             </connector>
-            <label>RecordType Progressive</label>
+            <label>RecordType Loan Process</label>
+        </rules>
+        <rules>
+            <name>RecordType_AOS</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>AOS</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_AOS_Status_Update</targetReference>
+            </connector>
+            <label>RecordType AOS</label>
+        </rules>
+        <rules>
+            <name>Record_Type_Registration_Schedule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Registered_Scheduled</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>check_Task_Status</targetReference>
+            </connector>
+            <label>Record Type Registration Schedule</label>
         </rules>
     </decisions>
     <decisions>
-        <name>Progressive_Status_Update</name>
-        <label>Progressive Status Update</label>
-        <locationX>314</locationX>
-        <locationY>431</locationY>
+        <name>Check_Status_for_Email</name>
+        <label>Check Status for Email</label>
+        <locationX>1414</locationX>
+        <locationY>1979</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Disbursement</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Disbursement</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Email_Template_for_Loan_Sanctioned</targetReference>
+            </connector>
+            <label>Disbursement</label>
+        </rules>
+        <rules>
+            <name>Not_Eligible</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Not Eligible</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_2_of_Update_Opportunity</targetReference>
+            </connector>
+            <label>Not Eligible</label>
+        </rules>
+        <rules>
+            <name>Eligible</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Eligible</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Opportunity</targetReference>
+            </connector>
+            <label>Eligible</label>
+        </rules>
+        <rules>
+            <name>Draft_Uploaded</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Draft Uploaded</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Email_for_AOS</targetReference>
+            </connector>
+            <label>Draft Uploaded</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>check_Task_Status</name>
+        <label>check Task Status</label>
+        <locationX>1942</locationX>
+        <locationY>539</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>is_Registered</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Registered</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Opportunity_Stage</targetReference>
+            </connector>
+            <label>is Registered</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Loan_Process_Status_Update</name>
+        <label>Loan Process Status Update</label>
+        <locationX>490</locationX>
+        <locationY>539</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Status_Changed_to_Document_Submitted</name>
@@ -168,10 +548,68 @@
             </connector>
             <label>Status Changed to Disbursement</label>
         </rules>
+        <rules>
+            <name>Status_Changed_to_not_Eligible</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Not Eligible</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Contact_from_Opportunity</targetReference>
+            </connector>
+            <label>Status Changed to not Eligible</label>
+        </rules>
+        <rules>
+            <name>Status_Changed_to_Eligible</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Eligible</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Contact_from_Opportunity</targetReference>
+            </connector>
+            <label>Status Changed to Eligible</label>
+        </rules>
     </decisions>
     <environments>Default</environments>
     <interviewLabel>Task Update(After Flow) {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Task Update(After Flow)</label>
+    <loops>
+        <name>loop_over_Contacts</name>
+        <label>loop over Contacts</label>
+        <locationX>1282</locationX>
+        <locationY>1187</locationY>
+        <collectionReference>Get_Contact</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Add_Contact_Email_to_List</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Get_Contact_from_Opportunity</targetReference>
+        </noMoreValuesConnector>
+    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -192,10 +630,52 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordLookups>
+        <name>Copy_1_of_get_Custom_Notification_Type</name>
+        <label>Copy 1 of get Custom Notification Type</label>
+        <locationX>1282</locationX>
+        <locationY>863</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Copy_1_of_Send_Notification_for_Disbursement</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Opportunity_Notification</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>CustomNotificationType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Contact</name>
+        <label>Get Contact</label>
+        <locationX>1282</locationX>
+        <locationY>647</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Copy_2_of_Assign_OwnerId_to_List</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Opportunity.AccountId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Get_Contact_from_Opportunity</name>
         <label>Get Contact from Opportunity</label>
-        <locationX>314</locationX>
-        <locationY>1079</locationY>
+        <locationX>1414</locationX>
+        <locationY>1763</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_Org_wide_Address</targetReference>
@@ -241,10 +721,52 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
+        <name>get_Email_Template_for_Eligible</name>
+        <label>get Email Template for Eligible</label>
+        <locationX>1414</locationX>
+        <locationY>2195</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Send_Email_for_Eligible</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Loan_Eligibility_Mail</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>EmailTemplate</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_Email_Template_for_Loan_Rejection</name>
+        <label>get Email Template for Loan Rejection</label>
+        <locationX>1150</locationX>
+        <locationY>2195</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Send_Email_for_Loan_Rejection</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Loan_Rejected_Mail</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>EmailTemplate</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Get_Email_Template_for_Loan_Sanctioned</name>
         <label>Get Email Template for Loan Sanctioned</label>
-        <locationX>314</locationX>
-        <locationY>1295</locationY>
+        <locationX>886</locationX>
+        <locationY>2087</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Send_Email_for_Loan_Sanctioned</targetReference>
@@ -264,11 +786,11 @@
     <recordLookups>
         <name>Get_Opportunity</name>
         <label>Get Opportunity</label>
-        <locationX>314</locationX>
-        <locationY>647</locationY>
+        <locationX>1414</locationX>
+        <locationY>323</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Assign_OwnerId_to_List</targetReference>
+            <targetReference>Check_RecordType</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -285,11 +807,11 @@
     <recordLookups>
         <name>Get_Org_wide_Address</name>
         <label>Get Org wide Address</label>
-        <locationX>314</locationX>
-        <locationY>1187</locationY>
+        <locationX>1414</locationX>
+        <locationY>1871</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Get_Email_Template_for_Loan_Sanctioned</targetReference>
+            <targetReference>Check_Status_for_Email</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -304,12 +826,12 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
-        <name>Update_Opportunity_Loan_Status_Value_to_Disbursement</name>
-        <label>Update Opportunity Loan Status Value to Disbursement</label>
-        <locationX>314</locationX>
-        <locationY>539</locationY>
+        <name>Copy_2_of_Update_Opportunity</name>
+        <label>Copy 2 of Update Opportunity</label>
+        <locationX>1150</locationX>
+        <locationY>2087</locationY>
         <connector>
-            <targetReference>Get_Opportunity</targetReference>
+            <targetReference>get_Email_Template_for_Loan_Rejection</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -328,6 +850,66 @@
         <inputAssignments>
             <field>Loan_Status__c</field>
             <value>
+                <stringValue>Non Eligible</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Opportunity</name>
+        <label>Update Opportunity</label>
+        <locationX>1414</locationX>
+        <locationY>2087</locationY>
+        <connector>
+            <targetReference>get_Email_Template_for_Eligible</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Loan_Eligible_Amount__c</field>
+            <value>
+                <elementReference>$Record.Loan_Eligible_Amount__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Loan_Status__c</field>
+            <value>
+                <stringValue>Eligible</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Opportunity_Loan_Status_Value_to_Disbursement</name>
+        <label>Update Opportunity Loan Status Value to Disbursement</label>
+        <locationX>314</locationX>
+        <locationY>647</locationY>
+        <connector>
+            <targetReference>Assign_OwnerId_to_List</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Loan_Sanctioned_Amount__c</field>
+            <value>
+                <elementReference>$Record.Loan_Sanctioned_Amount__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Loan_Status__c</field>
+            <value>
                 <stringValue>Disbursement</stringValue>
             </value>
         </inputAssignments>
@@ -337,7 +919,7 @@
         <name>Update_Opportunity_Loan_Status_Value_to_Document_Submitted</name>
         <label>Update Opportunity Loan Status Value to Document Submitted</label>
         <locationX>50</locationX>
-        <locationY>539</locationY>
+        <locationY>647</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -354,17 +936,57 @@
         </inputAssignments>
         <object>Opportunity</object>
     </recordUpdates>
+    <recordUpdates>
+        <name>Update_Opportunity_Stage</name>
+        <label>Update Opportunity Stage</label>
+        <locationX>1810</locationX>
+        <locationY>647</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>StageName</field>
+            <value>
+                <stringValue>Registered</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
     <start>
-        <locationX>452</locationX>
+        <locationX>1288</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Check_RecordType</targetReference>
+            <targetReference>Get_Opportunity</targetReference>
         </connector>
         <object>Task</object>
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
+    <textTemplates>
+        <name>EmailBodyforAOS</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;&lt;span style=&quot;font-size: 12pt; font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif;&quot;&gt;Dear {!Get_Opportunity.Account.Name},&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12pt; font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif;&quot;&gt;Agreement of Sale(AOS) draft has been prepared for your review. Below are the details of your unit:&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;strong style=&quot;font-size: 12pt; font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif;&quot;&gt;Unit Number:&lt;/strong&gt;&lt;span style=&quot;font-size: 12pt; font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif;&quot;&gt; {!Get_Opportunity.Plot_Name__c}&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;strong style=&quot;font-size: 12pt; font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif;&quot;&gt;Plot Price per Square Yard:&lt;/strong&gt;&lt;span style=&quot;font-size: 12pt; font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif;&quot;&gt; {!Get_Opportunity.Plot_Dimension__c}&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;strong style=&quot;font-size: 12pt; font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif;&quot;&gt;Total Sale Value:&lt;/strong&gt;&lt;span style=&quot;font-size: 12pt; font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif;&quot;&gt; {!Get_Opportunity.Sale_Value_Amount__c}&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;strong style=&quot;font-size: 12pt; font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif;&quot;&gt;Amount Paid:&lt;/strong&gt;&lt;span style=&quot;font-size: 12pt; font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif;&quot;&gt; {!Get_Opportunity.Collected_Amount__c}&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;{!Allottees}&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12pt; font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif;&quot;&gt;Review the attached document at your earliest convenience. Upon your confirmation, we will proceed with the next steps Should you have any questions or require further clarification, feel free to contact us.&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12pt; font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif;&quot;&gt;Best regards,&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;{!Get_Opportunity.Owner.Name}&lt;/p&gt;&lt;p&gt;{!Get_Opportunity.Owner.Phone}&lt;/p&gt;</text>
+    </textTemplates>
+    <variables>
+        <name>Allottees</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>emailList</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
     <variables>
         <name>ownerIds</name>
         <dataType>String</dataType>

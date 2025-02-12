@@ -76,6 +76,7 @@ public without sharing class bookingFormController {
                     opp.CloseDate=Date.today();
                     opp.Unit__c=String.isNotBlank(bookingFormDataObj.quotePlot) ? bookingFormDataObj.quotePlot : null;
                     opp.ContactId = newContact.id;
+                    opp.Contact__c = newContact.id;
                     opp.OwnerId = getCRMUserId();
                     opp.Type_of_Booking__c =String.isNotBlank(bookingFormDataObj.typeOfBooking) ? bookingFormDataObj.typeOfBooking : null;
                     insert opp;

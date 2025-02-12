@@ -13,6 +13,22 @@
                             <value>Opportunity.Initiate_Refund</value>
                         </valueListItems>
                         <valueListItems>
+                            <value>Opportunity.Plot_Swapping</value>
+                            <visibilityRule>
+                                <booleanFilter>1 OR 2</booleanFilter>
+                                <criteria>
+                                    <leftValue>{!Record.StageName}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Lost/Dropped</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.StageName}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Booked</rightValue>
+                                </criteria>
+                            </visibilityRule>
+                        </valueListItems>
+                        <valueListItems>
                             <value>Clone</value>
                         </valueListItems>
                         <valueListItems>
@@ -45,6 +61,12 @@
                         </valueListItems>
                         <valueListItems>
                             <value>Opportunity.Send_AOS_Document</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Opportunity.Retail_AOS</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Opportunity.IDBI_AOS</value>
                         </valueListItems>
                     </valueList>
                 </componentInstanceProperties>
@@ -376,8 +398,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Loan_Eligible_Amount__c</fieldItem>
-                <identifier>RecordLoan_Eligible_Amount__cField</identifier>
+                <fieldItem>Record.Refund_Status__c</fieldItem>
+                <identifier>RecordRefund_Status__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -386,18 +408,16 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Refund_Status__c</fieldItem>
-                <identifier>RecordRefund_Status__cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
                 <fieldItem>Record.Refund_Approval_Status__c</fieldItem>
                 <identifier>RecordRefund_Approval_Status__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Bulk_Booking__c</fieldItem>
                 <identifier>RecordBulk_Booking__cField</identifier>
             </fieldInstance>
@@ -796,6 +816,16 @@
                 <identifier>RecordCollected_Amount__cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Loan_Eligible_Amount__c</fieldItem>
+                <identifier>RecordLoan_Eligible_Amount__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-d2248209-31ed-494a-9a02-74728fd1c6b1</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -818,6 +848,16 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Outstanding_Amount__c</fieldItem>
                 <identifier>RecordOutstanding_Amount_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Loan_Sanctioned_Amount__c</fieldItem>
+                <identifier>RecordLoan_Sanctioned_Amount_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-ef366256-0127-40bd-9e04-0dda3532daf4</name>

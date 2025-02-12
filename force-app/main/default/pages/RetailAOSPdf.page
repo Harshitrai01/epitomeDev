@@ -1,4 +1,4 @@
-<apex:page renderAs="pdf" showHeader="false" applyBodyTag="false" standardStylesheets="false" controller="RetailAosController">
+<apex:page renderAs="pdf" standardController="Opportunity" showHeader="false" sidebar="false" extensions="RetailAosController">
     <html>
         <body style="font-family: Arial, sans-serif; line-height: 1.5; font-size: 12px; margin: 20px;">
             <div style="text-align: center; font-size: 16px; font-weight: bold; text-decoration: underline; margin-bottom: 20px;">
