@@ -2,6 +2,7 @@ import { LightningElement, track, wire, api } from 'lwc';
 import { CurrentPageReference } from 'lightning/navigation';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import submitForApproval from '@salesforce/apex/refundPaymentController.submitForApproval';
+import getPaymentsByOpportunity from '@salesforce/apex/refundPaymentController.getPaymentsByOpportunity';
 import { CloseActionScreenEvent } from 'lightning/actions';
 export default class RefundPayment extends LightningElement {
 
@@ -12,15 +13,15 @@ export default class RefundPayment extends LightningElement {
     getStateParameters(currentPageReference) {
         if (currentPageReference) {
             this.wireRecordId = currentPageReference.state.recordId;
-            this.submit()
+            this.submit();
         }
     }
 
-        submit() {
+    submit() {
         this.isLoading = true;
-        submitForApproval({ recordId: this.wireRecordId })
+        getPaymentsByOpportunity({ opportunityId: this.wireRecordId })
             .then((data) => {
-                this.displayMessage('Success', 'Submitted For Approval', 'success');
+                this.displayMessage('Success', 'Refund Process Initiated', 'success');
                 this.isLoading = false;
                 this.dispatchEvent(new CloseActionScreenEvent());
             })
@@ -31,6 +32,22 @@ export default class RefundPayment extends LightningElement {
                 this.dispatchEvent(new CloseActionScreenEvent());
             });
     }
+
+    // submit() {
+    //     this.isLoading = true;
+    //     submitForApproval({ recordId: this.wireRecordId })
+    //         .then((data) => {
+    //             this.displayMessage('Success', 'Submitted For Approval', 'success');
+    //             this.isLoading = false;
+    //             this.dispatchEvent(new CloseActionScreenEvent());
+    //         })
+    //         .catch((error) => {
+    //             this.isLoading = false;
+    //             console.error('Error fetching payments:', error);
+    //             this.displayMessage('Error', error.body.message, 'error');
+    //             this.dispatchEvent(new CloseActionScreenEvent());
+    //         });
+    // }
 
     displayMessage(title, message, type) {
         try {

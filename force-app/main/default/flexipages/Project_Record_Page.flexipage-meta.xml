@@ -238,16 +238,6 @@
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.From_Address__c</fieldItem>
-                <identifier>RecordFrom_Address_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
         <name>Facet-b5ad819f-0cac-44d3-b0d7-e65ab4d21063</name>
         <type>Facet</type>
     </flexiPageRegions>

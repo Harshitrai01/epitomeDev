@@ -27,7 +27,7 @@ export default class KycVerificationScreen extends LightningElement {
 
     documentTypeOptions = [
         { label: 'Onboarded', value: 'Onboarded' },
-        { label: 'Booked', value: 'Booked' },
+        { label: 'Booked(KYC Verification)', value: 'Booked' },
         { label: 'AOS', value: 'AOS' },
         { label: 'Loan Process', value: 'Loan Process' },
         { label: 'Progressive', value: 'Progressive' },
@@ -150,6 +150,7 @@ export default class KycVerificationScreen extends LightningElement {
 
     handleSubTypeChange(event) {
         this.selectedSubType = event.detail.value;
+        console.log('this.selectedSubType----->',this.selectedSubType);
         this.aadhaarFileId = false;
         if (this.contactId) {
             this.isContactTagged = false
@@ -219,7 +220,7 @@ export default class KycVerificationScreen extends LightningElement {
     async handleSave() {
         this.isLoading = true;
         try {
-            await updateOpportunityKYCStatus({ opportunityId: this.recordId, contactId: this.contactId, fileType: this.selectedDocumentType });
+            await updateOpportunityKYCStatus({ opportunityId: this.recordId, contactId: this.contactId, fileType: this.selectedDocumentType});
             this.showToast('Success', 'KYC Verification is in Progress.', 'success');
             // window.location.reload();
             this.isLoading = false;

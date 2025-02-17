@@ -1,49 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <actionCalls>
-        <name>Send_Notification_to_the_Owner</name>
-        <label>Send Notification to the Owner</label>
-        <locationX>754</locationX>
-        <locationY>2138</locationY>
-        <actionName>customNotificationAction</actionName>
-        <actionType>customNotificationAction</actionType>
-        <connector>
-            <targetReference>Copy_1_of_loop_over_Selected_Opportunity</targetReference>
-        </connector>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>customNotifTypeId</name>
-            <value>
-                <elementReference>Get_Custom_Notification_type.Id</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>recipientIds</name>
-            <value>
-                <elementReference>AssignedUser</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>title</name>
-            <value>
-                <stringValue>Opportunity Assignment Alert</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>body</name>
-            <value>
-                <stringValue>Opportunity :- {!Copy_1_of_loop_over_Selected_Opportunity.Name} has been bulk Assigned to you </stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>targetId</name>
-            <value>
-                <elementReference>Copy_1_of_loop_over_Selected_Opportunity.Id</elementReference>
-            </value>
-        </inputParameters>
-        <nameSegment>customNotificationAction</nameSegment>
-        <offset>0</offset>
-    </actionCalls>
     <apiVersion>63.0</apiVersion>
     <assignments>
         <name>Assign_group_member_to_list</name>
@@ -82,22 +38,6 @@
         </assignmentItems>
         <connector>
             <targetReference>Assign_Variable_to_List</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Assign_Selected_Owner_to_List</name>
-        <label>Assign Selected Owner to List</label>
-        <locationX>666</locationX>
-        <locationY>1814</locationY>
-        <assignmentItems>
-            <assignToReference>AssignedUser</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>UserSelectionScreen.firstSelectedRow.Id</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Get_Custom_Notification_type</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -170,17 +110,6 @@
     <interviewLabel>Opportunity Assignment Screen Flow {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Opportunity Owner Assignment Screen Flow</label>
     <loops>
-        <name>Copy_1_of_loop_over_Selected_Opportunity</name>
-        <label>Copy 1 of loop over Selected Opportunity</label>
-        <locationX>666</locationX>
-        <locationY>2030</locationY>
-        <collectionReference>OpportunityDataTable.selectedRows</collectionReference>
-        <iterationOrder>Asc</iterationOrder>
-        <nextValueConnector>
-            <targetReference>Send_Notification_to_the_Owner</targetReference>
-        </nextValueConnector>
-    </loops>
-    <loops>
         <name>loop_over_group_member</name>
         <label>loop over group member</label>
         <locationX>490</locationX>
@@ -246,27 +175,6 @@
         </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
         <object>Opportunity</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>Get_Custom_Notification_type</name>
-        <label>Get Custom Notification type</label>
-        <locationX>666</locationX>
-        <locationY>1922</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Copy_1_of_loop_over_Selected_Opportunity</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>DeveloperName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Lead_Assignment_Notification</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>CustomNotificationType</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
@@ -344,9 +252,6 @@
         <label>Update Opportunity Owner</label>
         <locationX>666</locationX>
         <locationY>1706</locationY>
-        <connector>
-            <targetReference>Assign_Selected_Owner_to_List</targetReference>
-        </connector>
         <inputReference>OpportunityList</inputReference>
     </recordUpdates>
     <screens>

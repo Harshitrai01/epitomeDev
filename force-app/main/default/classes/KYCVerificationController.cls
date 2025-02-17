@@ -201,7 +201,7 @@ public with sharing class KYCVerificationController {
             opp.KYC_Verification__c = 'In Progress';
             update opp;
 
-            if (fileType == 'KYC') {
+            if (fileType == 'Booked(KYC Verification)') {
                 // Fetch the Task recordtype KYC ID 
                 Id kycRecordTypeID = Schema.SObjectType.Task.getRecordTypeInfosByName().get('KYC Document').getRecordTypeId();
                 // Fetch the Queue ID
@@ -238,7 +238,7 @@ public with sharing class KYCVerificationController {
                         System.debug('Error sending notification to user: ' + member.UserOrGroupId + ' - ' + e.getMessage());
                     }
                 }
-            } else if (fileType == 'LOAN') {
+            } else if (fileType == 'Loan Process') {
                 Id loanRecordTypeID = Schema.SObjectType.Task.getRecordTypeInfosByName().get('Loan').getRecordTypeId();
                 // Query the user with the profile name "Documentation Manager"
                 User docManager = [SELECT Id FROM User WHERE Profile.Name = 'Documentation Manager' LIMIT 1];

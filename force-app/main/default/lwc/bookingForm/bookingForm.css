@@ -50,3 +50,20 @@
 .custom-modal .slds-modal__content {
     overflow-y: auto; /* Add scroll for long content */
 }
+
+.form-container {
+    display: flex;
+    justify-content: space-between; /* Pushes label to the left and combobox to the right */
+    align-items: center;
+    width: 100%;
+}
+
+.custom-label {
+    white-space: nowrap;
+}
+
+.combobox-container {
+    flex-grow: 1; /* Allows combobox to take up remaining space */
+    display: flex;
+    justify-content: flex-end; /* Aligns the combobox to the right */
+}

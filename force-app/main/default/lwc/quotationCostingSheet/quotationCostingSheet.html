@@ -51,6 +51,23 @@
 
 					<div class="slds-grid slds-gutters">
 						<div class="slds-col">
+							<div class="header">Days To Pay</div>
+						</div>
+					</div>
+					<div class="slds-grid slds-gutters">
+						<div class="slds-col" style="margin-top: 0px; width: 60%;">
+							<lightning-input value={quoteRecordToSave.Time_To_Pay_In_Days__c}
+												disabled={isLocked} name="Time_To_Pay_In_Days__c"
+												placeholder={quoteData.Time_To_Pay_In_Days__c}
+												onchange={handleTextChnage}>
+							</lightning-input>
+						</div>
+					</div>
+				</lightning-layout-item>
+				<lightning-layout-item size="2" padding="around-medium" class="slds-align_absolute-left">
+
+					<div class="slds-grid slds-gutters">
+						<div class="slds-col">
 							<div class="header">Approval Status</div>
 						</div>
 					</div>
@@ -79,16 +96,17 @@
 					</template>
 
 					<template if:true={isFinal}>
-
-						<div>
-							<div class="header">Quote Is Finalized </div>
-						</div>
-						<div style="margin-top: 10px;">
-							<lightning-button variant="brand" label="Booking Form" title="Booking Form"
-								onclick={handleBookingForm}>
-							</lightning-button>
-						</div>
-
+						
+							<div>
+								<div class="header">Quote Is Finalized </div>
+							</div>
+						<template if:false={isOppIdPresent}>
+							<div style="margin-top: 10px;">
+								<lightning-button variant="brand" label="Booking Form" title="Booking Form"
+									onclick={handleBookingForm}>
+								</lightning-button>
+							</div>
+						</template>
 					</template>
 					
 
@@ -195,51 +213,38 @@
 									<tr>
 										<td>Total Base Rate</td>
 										<td>
-											<lightning-formatted-number value={quoteData.Total_Basic_Cost__c}
+											<lightning-formatted-number value={quoteData.Final_Base_Price__c}
 												format-style="decimal" minimum-integer-digits="2">
 											</lightning-formatted-number>
 										</td>
 										<td>
-											<lightning-formatted-number value={quoteData.Total_Basic_Cost__c}
-												format-style="decimal" minimum-integer-digits="2">
-											</lightning-formatted-number>
-										</td>
-									</tr>
-									<tr class="importantRow">
-										<td class="slds-cell-wrap">Total GST For Charge(₹)</td>
-										<td>
-											<lightning-formatted-number value={quoteData.Total_Gst_For_Charge__c}
-												format-style="decimal" minimum-integer-digits="2">
-											</lightning-formatted-number>
-										</td>
-										<td>
-											<lightning-formatted-number value={quoteData.Total_Gst_For_Charge__c}
+											<lightning-formatted-number value={quoteData.Final_Base_Price__c}
 												format-style="decimal" minimum-integer-digits="2">
 											</lightning-formatted-number>
 										</td>
 									</tr>
 									<tr class="importantRow">
-										<td class="slds-cell-wrap">Total Charge Amount (₹) </td>
+										<td class="slds-cell-wrap">Total Unit Cost</td>
 										<td>
-											<lightning-formatted-number value={quoteData.Total_Charge_Amount__c}
+											<lightning-formatted-number value={quoteData.Total_Unit_Cost__c}
 												format-style="decimal" minimum-integer-digits="2">
 											</lightning-formatted-number>
 										</td>
 										<td>
-											<lightning-formatted-number value={quoteData.Total_Charge_Amount__c}
+											<lightning-formatted-number value={quoteData.Total_Unit_Cost__c}
 												format-style="decimal" minimum-integer-digits="2">
 											</lightning-formatted-number>
 										</td>
 									</tr>
 									<tr class="importantRow">
-										<td class="slds-cell-wrap">Agreement Value with GST(₹)</td>
+										<td class="slds-cell-wrap">Total Sale Value</td>
 										<td>
-											<lightning-formatted-number value={quoteData.AgreementValueWithGst__c}
+											<lightning-formatted-number value={quoteData.Total_Sale_Value__c}
 												format-style="decimal" minimum-integer-digits="2">
 											</lightning-formatted-number>
 										</td>
 										<td>
-											<lightning-formatted-number value={quoteData.AgreementValueWithGst__c}
+											<lightning-formatted-number value={quoteData.Total_Sale_Value__c}
 												format-style="decimal" minimum-integer-digits="2">
 											</lightning-formatted-number>
 										</td>
@@ -366,7 +371,7 @@
 											</lightning-input>
 										</td>
 									</tr>
-									<tr class="importantRow">
+									<!-- <tr class="importantRow">
 										<td data-label="Column 1 ">
 											<div class="slds-truncate slds-cell-wrap"
 												title="All Inclusive Price (₹) (excluding SD & Regn)">Rate Per Sq. Yd
@@ -384,7 +389,7 @@
 												placeholder={quoteData.Rate_Per_Sq_Yd__c} onchange={handleTextChnage}>
 											</lightning-input>
 										</td>
-									</tr>
+									</tr> -->
 									<tr class="importantRow">
 										<td data-label="Column 1 ">
 											<div class="slds-truncate slds-cell-wrap"
@@ -474,9 +479,8 @@
 	</template>
 
 </template>
-<template if:true={isBookingForm}>
-						<c-booking-form record-id={quoteId} >
-					</c-booking-form>
-
-					</template>
+	<template if:true={isBookingForm}>
+							<c-booking-form record-id={quoteId} >
+						</c-booking-form>
+	</template>
 </template>

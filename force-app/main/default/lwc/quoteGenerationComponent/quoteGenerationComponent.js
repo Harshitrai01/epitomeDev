@@ -30,13 +30,26 @@ export default class QuoteGenerationComponent extends NavigationMixin(LightningE
     showUnitDetails=false;
     recordPickerLabel;
     phaseName;
+    workspaceAPI;
+    showQuoteList=false;
+    quoteList=[];
+    records = [];
 
     plotName = '';
     plotCode = '';
     plotFacing = '';
     plotSize = '';
     plotStatus = '';
-    phaseName = '';
+    phaseName = ''; 
+    recordFilter = {
+       criteria: [
+           {
+               fieldPath: 'Status__c',
+               operator: 'eq',
+               value: 'Available'
+           }
+       ]
+   };
 
     records = [];  
     columns = [
@@ -63,6 +76,14 @@ export default class QuoteGenerationComponent extends NavigationMixin(LightningE
     connectedCallback() {
         if (this.leadid) {
             this.fetchLeadDetails();
+            this.initWorkspaceAPI();
+        }
+    }
+
+    // Initialize workspaceAPI
+    initWorkspaceAPI() {
+        if (!this.workspaceAPI && this.template.querySelector('lightning-workspace-api')) {
+            this.workspaceAPI = this.template.querySelector('lightning-workspace-api');
         }
     }
 
@@ -126,7 +147,7 @@ export default class QuoteGenerationComponent extends NavigationMixin(LightningE
             this.records = this.records.filter(record => record.id !== row.id);
         }
     }
-delay=0;
+        delay=0;
         handleSaveClick() {
             if (this.records.length === 0) {
                 this.showToast('Error','No plots to associate with the Lead.','error');
@@ -141,7 +162,8 @@ delay=0;
             const quoteRecords = this.records.map(record => ({
                 Lead__c: this.leadid,
                 Plot__c: record.plotRecordId,
-                Base_Price_Per_Sq_Yard__c:record.basePricePerSqYard
+                Base_Price_Per_Sq_Yard__c:record.basePricePerSqYard,
+                Time_To_Pay_In_Days__c:30
             }));
 
             saveLeadPlotRecords({leadPlotRecords})
@@ -156,49 +178,53 @@ delay=0;
 
             saveLeadQuoteRecords({quoteRecords})
             .then((result) => {
-                console.log('Qouote Records-->>',result);
                 this.showToast('Success','Quote Generated Successfully.','success');
                 this.records = [];
-                result.forEach(record => {
-                    setTimeout(() => {
-                        this.navigateToQuote(record.Id);
-                    }, this.delay);
-                    this.delay += 5000; // Increase delay for each iteration (500ms) 
-                });
+                this.quoteList=result;
+                if(this.quoteList.length==1){
+                    result.forEach(record => {
+                        const quoteId = record.Id;
+                        const baseUrl = window.location.origin; // Gets the Salesforce base URL dynamically
+                        const fullUrl = `${baseUrl}/lightning/r/Quote__c/${quoteId}/view`; // Constructs the record URL
+                        window.open(fullUrl, '_blank', 'noopener,noreferrer');
+                    });
+                }else{
+                    this.showQuoteList=true;
+                }
             })
             .catch(error => {
                 console.error('Error creating qouote records:', error);
                 this.showToast('Error','Failed to create records.','error');
             });
         }
-
-    // navigateToQuote(quoteId) {
-    //     this[NavigationMixin.GenerateUrl]({
-    //         type: 'standard__component',
-    //         attributes: {
-    //             componentName: 'c__quotationCostingSheet',
-    //         },
-    //         state: {
-    //             c__quoteId: quoteId, // Pass the Quote Id as a parameter
-    //         },
-    //     }).then(generatedUrl => {
-    //         window.open(generatedUrl);
-    //     });
-    // }
-
-    navigateToQuote(quoteId) {
-                // this[NavigationMixin.Navigate]({
+    navigateToQuote(event) {
+        //     this[NavigationMixin.Navigate]({
         //     type: 'standard__recordPage',
         //     attributes: {
         //         recordId: quoteId,
         //         actionName: 'view'
         //     }
-        // });
+        // },true);
+        const quoteId = event.currentTarget.dataset.id;
         const baseUrl = window.location.origin; // Gets the Salesforce base URL dynamically
         const fullUrl = `${baseUrl}/lightning/r/Quote__c/${quoteId}/view`; // Constructs the record URL
         console.log('URL-->>',fullUrl);
-        window.open(fullUrl, '_blank'); // Opens in a new tab
+        window.open(fullUrl, '_blank', 'noopener,noreferrer');
     }
+
+        // navigateToQuote(quoteId) {
+        //     this[NavigationMixin.GenerateUrl]({
+        //         type: 'standard__component',
+        //         attributes: {
+        //             componentName: 'c__quotationCostingSheet',
+        //         },
+        //         state: {
+        //             c__quoteId: quoteId, // Pass the Quote Id as a parameter
+        //         },
+        //     }).then(generatedUrl => {
+        //         window.open(generatedUrl);
+        //     });
+        // }
 
     showToast(title, message, variant) {
         this.dispatchEvent(

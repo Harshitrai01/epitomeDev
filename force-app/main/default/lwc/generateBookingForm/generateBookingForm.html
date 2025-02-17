@@ -48,6 +48,23 @@
                                                 <lightning-layout-item flexibility="auto" padding="around-small"
                                                     size="12" small-device-size="12" medium-device-size="6"
                                                     large-device-size="6">
+                                                    <lightning-input type="checkbox" label="Account Already Exist"
+                                                        onchange={handleCheckboxChange}></lightning-input>
+                                                </lightning-layout-item>   
+
+                                                <!-- Second Layout Item with Account Record Picker -->
+                                                    <lightning-layout-item flexibility="auto" padding="around-small"
+                                                        size="12" small-device-size="12" medium-device-size="6"
+                                                        large-device-size="6">
+                                                        <lightning-record-picker label="Select Account"
+                                                            object-api-name="Account"
+                                                            onchange={handleRecordSelection}
+                                                            disabled={isAccountExist}>
+                                                        </lightning-record-picker>
+                                                    </lightning-layout-item>
+                                                <lightning-layout-item flexibility="auto" padding="around-small"
+                                                    size="12" small-device-size="12" medium-device-size="6"
+                                                    large-device-size="6">
                                                     <lightning-input data-label="primaryApplicantRequiredFields"
                                                         label="Account Name" type="text" name="accountName"
                                                         onchange={handleValueChange} value={bookingFormData.accountName}
@@ -67,7 +84,7 @@
                                                     large-device-size="6">
                                                     <lightning-input data-label="primaryApplicantRequiredFields"
                                                         type="tel" variant="standard" name="accountContactNo"
-                                                        label="Contact No" onchange={handleValueChange}
+                                                        label="Contact No" max-length="10" onchange={handleValueChange}
                                                         value={bookingFormData.accountContactNo} required>
                                                     </lightning-input>
                                                 </lightning-layout-item>
@@ -147,6 +164,25 @@
                                                         <lightning-layout-item flexibility="auto" padding="around-small"
                                                             size="12" small-device-size="12" medium-device-size="6"
                                                             large-device-size="6">
+                                                            <lightning-input type="checkbox" label="Contact Already Exist"
+                                                                onchange={handleContactCheckboxChange}
+                                                                data-contact-id={contact.id}></lightning-input>
+                                                        </lightning-layout-item>   
+
+                                                        <!-- Second Layout Item with Account Record Picker -->
+                                                            <lightning-layout-item flexibility="auto" padding="around-small"
+                                                                size="12" small-device-size="12" medium-device-size="6"
+                                                                large-device-size="6">
+                                                                <lightning-record-picker label="Select Contact"
+                                                                    object-api-name="Contact"
+                                                                    onchange={handleContactRecordSelection}
+                                                                    disabled={contact.isContactExist}
+                                                                    data-contact-id={contact.id}>
+                                                                </lightning-record-picker>
+                                                            </lightning-layout-item>
+                                                        <lightning-layout-item flexibility="auto" padding="around-small"
+                                                            size="12" small-device-size="12" medium-device-size="6"
+                                                            large-device-size="6">
                                                             <lightning-input label="Contact Name"
                                                                 data-label="primaryApplicantRequiredFields" type="text"
                                                                 name="contactName" data-contact-id={contact.id}
@@ -208,7 +244,7 @@
                                                             <lightning-input data-label="primaryApplicantRequiredFields"
                                                                 type="tel" variant="standard" name="contactPhone"
                                                                 label="Contact No" data-contact-id={contact.id}
-                                                                onchange={handleValueChange}
+                                                                max-length="10" onchange={handleValueChange}
                                                                 value={contact.contactPhone} required>
                                                             </lightning-input>
                                                         </lightning-layout-item>

@@ -162,7 +162,7 @@
     <label>Lead Quote</label>
     <nameField>
         <displayFormat>Q-{0000}</displayFormat>
-        <label>Quote Name</label>
+        <label>Name</label>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>

@@ -1,14 +1,30 @@
+/**
+* Author: Harshit Kumar Rai
+* Description: For generating quotation costing sheet
+*/
 public with sharing class QuotationCostingSheetController {
 
     @AuraEnabled
-    public static void SaveRecord(List<Quote__c> quoteRecords) {
+    public static List<Quote__c> SaveRecord(List<Quote__c> quoteRecords) {
         try {
             if (quoteRecords != null && !quoteRecords.isEmpty()) {
                 update quoteRecords;
-                /*
-                if(!quoteRecords[0].IsSample__c){
-                    submitForApproval(quoteRecords[0].Id);
-				}*/
+                List<Quote__c> quoteList = [Select Id,Total_Sale_Value__c,Base_Price_Per_Sq_Yard__c From Quote__c Where Id IN: quoteRecords];
+                return quoteList;
+            }else{
+                return null;
+            }
+        }
+        catch(Exception ex) {
+            throw new AuraHandledException('Error updating Quote__c records: ' + ex.getMessage());
+        }
+    }
+    
+    @AuraEnabled
+    public static void SaveOpportunityRecord(List<Opportunity>oppList) {
+        try {
+            if (oppList != null && !oppList.isEmpty() && !String.isBlank(oppList[0].Id) && oppList[0].Sale_Value_Amount__c!=null) {
+                update oppList;
             }
         }
         catch(Exception ex) {
@@ -92,7 +108,8 @@ public with sharing class QuotationCostingSheetController {
                 Rate_Per_Sq_Yd__c,Corpus_Fund_and_Club_House_Payable__c,Legal_And_Documentation_Charges__c,Registration_Charges__c,
                 IsLocked__c,Approval_Status__c,Lead__r.Email,Is_Final__c,
                 Opportunity__r.Contact__r.Name, Opportunity__r.Contact__r.Email, Plot__r.Phase__r.Name, 
-                Plot__r.Phase__r.Project__r.Name, Plot__r.Phase__r.Project_Type__c,Plot__r.Plot_Dimension__c
+                Plot__r.Phase__r.Project__r.Name, Plot__r.Phase__r.Project_Type__c,Plot__r.Plot_Dimension__c,Opportunity__c,Total_Sale_Value__c,
+                Final_Base_Price__c,Total_Unit_Cost__c,Time_To_Pay_In_Days__c,Quote_Name__c
                 FROM Quote__c where Id =: recordId 
             ];
             
@@ -129,6 +146,64 @@ public with sharing class QuotationCostingSheetController {
             quoteWrapObj.isSuccess = false;
             quoteWrapObj.message = Error.getMessage();
             return quoteWrapObj;
+        }
+    }
+    
+    @AuraEnabled
+    public static Opportunity getOppDetails(String oppId){
+        try{
+            List<Opportunity> oppList= [Select Id,Contact__c,Contact__r.Email,Account.Name,Unit__r.Phase__r.Name,
+                                        Plot_Name__c, Plot_Size__c,Sale_Value_Amount__c,Collected_Amount__c,
+                                        Outstanding_Amount__c,Unit__r.Base_Price_per_Sq_Ft__c
+                                        From Opportunity Where Id=:oppId Limit 1];
+            if(oppList!=null){
+                return oppList[0];
+            }else{
+                return null;
+            }
+        }catch(Exception ex){
+            throw new AuraHandledException('Error in fetching opportunity: ' + ex.getMessage());
+        }
+    }
+    
+    	@AuraEnabled
+        public static void sendEmail(String oppId, String oldPlotName, String oldPlotSize, String oldPlotBasePrice, String oldTotalSaleValue, String newPlotPrice) { 
+        try {
+            List<Opportunity> oppList= [Select Id,Contact__c,Contact__r.Email,Account.Name,Unit__r.Phase__r.Name,
+                                        Plot_Name__c, Plot_Size__c,Sale_Value_Amount__c,Collected_Amount__c,
+                                        Outstanding_Amount__c
+                                        From Opportunity Where Id=:oppId Limit 1];
+            
+            if(oppList!=null && oppList[0].Contact__c!=null){
+                EmailTemplate template = [SELECT Id, HtmlValue FROM EmailTemplate WHERE DeveloperName = 'Plot_Swapping' LIMIT 1];
+                String emailBody = template.HtmlValue;
+                
+                if (emailBody != null) {
+                    emailBody = emailBody
+                        		.replace('Opp_Account',oppList[0].Account.Name)
+                                .replace('Opp_PhaseName',oppList[0].Unit__r.Phase__r.Name)
+                                .replace('Opp_PlotName', oppList[0].Plot_Name__c)
+                                .replace('Opp_Old_PlotName', oldPlotName)
+                        		.replace('Opp_Old_PlotSize', oldPlotSize)
+                        		.replace('Opp_Old_PlotPrice', oldPlotBasePrice)
+                        		.replace('Opp_Old_PlotSaleValue', oldTotalSaleValue)
+                        		.replace('Opp_New_PlotName', oppList[0].Plot_Name__c)
+                        		.replace('Opp_New_PlotSize', String.ValueOf(oppList[0].Plot_Size__c))
+                        		.replace('Opp_New_PlotPrice', newPlotPrice)
+                        		.replace('Opp_New_PlotSaleValue', String.ValueOf(oppList[0].Sale_Value_Amount__c))
+                        		.replace('Opp__Collected_Amount__c', String.ValueOf(oppList[0].Collected_Amount__c))
+                        		.replace('Opp__Outstanding_Amount__c', String.ValueOf(oppList[0].Outstanding_Amount__c));
+                }
+                
+                Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
+                email.setToAddresses(new String[] { oppList[0].Contact__r.Email });
+				email.setSubject('Plot Swapping');
+                email.setHtmlBody(emailBody);
+                Messaging.sendEmail(new Messaging.SingleEmailMessage[] { email });
+            }
+            
+        } catch (Exception ex) {
+            throw new AuraHandledException('Error in sending email: ' + ex.getMessage());
         }
     }
     

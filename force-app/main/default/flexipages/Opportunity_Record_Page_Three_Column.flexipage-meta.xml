@@ -885,6 +885,30 @@
                 <identifier>RecordContact_Name__cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Sub_Document_Type__c</fieldItem>
+                <identifier>RecordSub_Document_Type__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Plot_Size__c</fieldItem>
+                <identifier>RecordPlot_Size__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Amount_To_Refund__c</fieldItem>
+                <identifier>RecordAmount_To_Refund__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Cancellation_Charges__c</fieldItem>
+                <identifier>RecordCancellation_Charges__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-bda0868e-f60d-43d1-bc15-da4b2cf8d682</name>
         <type>Facet</type>
     </flexiPageRegions>

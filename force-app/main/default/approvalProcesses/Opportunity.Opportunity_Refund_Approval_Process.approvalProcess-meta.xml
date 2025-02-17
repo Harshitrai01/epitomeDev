@@ -46,9 +46,12 @@
             <type>RejectRequest</type>
         </rejectBehavior>
     </approvalStep>
-    <emailTemplate>Epitome_Email_Templates/Welcome_Greetings_on_New_Lead</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <finalApprovalActions>
+        <action>
+            <name>Refund_Status_Initiate</name>
+            <type>FieldUpdate</type>
+        </action>
         <action>
             <name>Status_Accepted</name>
             <type>FieldUpdate</type>

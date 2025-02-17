@@ -3,6 +3,26 @@
     <label>testDashboard</label>
     <protected>false</protected>
     <values>
+        <field>Easebuzz_Create_Payment_Link_Url__c</field>
+        <value xsi:type="xsd:string">https://testdashboard.easebuzz.in/easycollect/v1/create</value>
+    </values>
+    <values>
+        <field>Easebuzz_Get_Transaction_Details_Url__c</field>
+        <value xsi:type="xsd:string">https://testdashboard.easebuzz.in/transaction/v1/retrieve</value>
+    </values>
+    <values>
+        <field>Easebuzz_Initiate_Refund_Url__c</field>
+        <value xsi:type="xsd:string">https://testdashboard.easebuzz.in/transaction/v1/refund</value>
+    </values>
+    <values>
+        <field>Easebuzz_Instacollect_Create_VA__c</field>
+        <value xsi:type="xsd:string">https://stoplight.io/mocks/easebuzz/neobanking/141702012/api/v1/insta-collect/virtual_accounts/</value>
+    </values>
+    <values>
+        <field>Easebuzz_Refund_Status_Url__c</field>
+        <value xsi:type="xsd:string">https://testdashboard.easebuzz.in/refund/v1/retrieve</value>
+    </values>
+    <values>
         <field>EasyCollectKey__c</field>
         <value xsi:type="xsd:string">0EUZ1OAK0</value>
     </values>

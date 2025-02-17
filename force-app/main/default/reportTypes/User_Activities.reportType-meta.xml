@@ -360,6 +360,16 @@
             <field>Pre_Sales_Lead_Assignment__c</field>
             <table>User</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Working_Sources__c</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Assigned_Sources__c</field>
+            <table>User</table>
+        </columns>
         <masterLabel>Users</masterLabel>
     </sections>
     <sections>
@@ -549,6 +559,16 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Loan_Sanctioned_Amount__c</field>
+            <table>User.Activity$OwnerId</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Original_Sales_Deed_Document_Uploaded__c</field>
+            <table>User.Activity$OwnerId</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Schedule_Date_Time__c</field>
             <table>User.Activity$OwnerId</table>
         </columns>
         <masterLabel>Activities</masterLabel>

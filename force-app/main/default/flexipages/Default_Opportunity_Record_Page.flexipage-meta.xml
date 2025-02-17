@@ -212,6 +212,12 @@
                 <identifier>RecordBulk_Booking__cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Amount_To_Refund__c</fieldItem>
+                <identifier>RecordAmount_To_Refund__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-9b41bd63-8713-49cd-8d56-67009e490196</name>
         <type>Facet</type>
     </flexiPageRegions>

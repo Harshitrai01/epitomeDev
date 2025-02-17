@@ -135,12 +135,12 @@ public class IdbiJuSbiAosController {
     }
 
     // Method to extract numeric part of Plot_Size__c and convert to square meters
-    public Double convertPlotSizeToSqM(String plotSize) {
+    public Double convertPlotSizeToSqM(Decimal plotSize) {
         if (plotSize != null) {
             // Extract numeric value (e.g., 190 from "190 sq ft")
-            String numberString = plotSize.replaceAll('[^0-9]', '');
+            Decimal numberString = plotSize;
             system.debug('numberString-->'+numberString);
-            if (String.isNotEmpty(numberString)) {
+            if (numberString!=null) {
                 Double sizeInSqFt = Double.valueOf(numberString);
                 return sizeInSqFt * 0.836127; // Convert to square meters
             }

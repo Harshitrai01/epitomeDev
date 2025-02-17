@@ -185,9 +185,9 @@ export default class PreSalesDashboardScreen extends LightningElement {
         this.isLoading = true;
         try {
             await updateCustomSetting({ name: settingName, value: value.toString() });
-            this.showToast('Success', `${settingName} updated successfully`, 'success');
+            //this.showToast('Success', `${settingName} updated successfully`, 'success');
         } catch (error) {
-            this.showToast('Error', `Error updating ${settingName}`, 'error');
+            //this.showToast('Error', `Error updating ${settingName}`, 'error');
             console.error('Error in updateCustomSetting:', error);
         } finally {
             //this.isLoading = false;
@@ -778,14 +778,22 @@ export default class PreSalesDashboardScreen extends LightningElement {
         }
     }
     async handleSaveCustomSetting() {
+    try {
         await this.updateCustomSetting('Send Notification', this.sendNotification);
         await this.updateCustomSetting('Send to Manager', this.sendToManager);
         await this.updateCustomSetting('Minutes', this.notificationMinutes);
+
         if (this.sendNotification) {
             const result = await scheduleBatch({ minuteInterval: this.notificationMinutes });
             this.showToast('Success', result, 'success');
         }
+    } catch (error) {
+        this.showToast('Error', error.body?.message || 'An error occurred', 'error');
+    } finally {
+        this.showToast('Success', 'Settings saved successfully', 'success');
         this.hideModalBox();
     }
+}
+
 
 }

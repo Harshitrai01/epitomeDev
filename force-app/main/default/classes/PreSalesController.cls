@@ -1,8 +1,8 @@
 /**
- * Author: Varun Rawal
- * Description: Apex Controller for handling Pre-Sales functionalities, including user updates, queue management,
- * custom settings retrieval and updates, batch scheduling, and picklist value fetching.
- */
+* Author: Varun Rawal
+* Description: Apex Controller for handling Pre-Sales functionalities, including user updates, queue management,
+* custom settings retrieval and updates, batch scheduling, and picklist value fetching.
+*/
 public with sharing class PreSalesController {
     @AuraEnabled(cacheable=true)
     public static String getCustomSetting(String name) {
@@ -155,8 +155,15 @@ public with sharing class PreSalesController {
             if (minuteInterval == null || minuteInterval <= 0 || minuteInterval > 59) {
                 return new ToastResponse(false, 'Invalid minute interval. Please provide a value between 1 and 59.');
             }
+            //String jobName = 'LeadNotificationBatch_' + System.now().getTime();
             String jobName = 'LeadNotificationBatch_' + System.now().getTime();
-            String nextFireTime = '0 ' + minuteInterval + ' * * * ?';
+            String hour = String.valueOf(Datetime.now().hour());
+            String min = String.valueOf(Datetime.now().addMinutes(minuteInterval).minute()); 
+            String ss = String.valueOf(Datetime.now().second());
+            String day = String.valueOf(Datetime.now().day());
+            String month = String.valueOf(Datetime.now().month());
+            String nextFireTime = ss + ' ' + min + ' ' + hour + ' ' + day + ' ' + month + ' ?';
+            // String nextFireTime = '0 ' + minuteInterval + ' * * * ?';
             System.schedule(jobName, nextFireTime, new LeadNotificationBatch());
             return new ToastResponse(true, 'Scheduled job "' + jobName + '" to run every ' + minuteInterval + ' minute(s).');
         } catch (Exception e) {

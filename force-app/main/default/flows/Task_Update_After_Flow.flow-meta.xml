@@ -47,8 +47,8 @@
     <actionCalls>
         <name>Send_Email_for_AOS</name>
         <label>Send Email for AOS</label>
-        <locationX>1678</locationX>
-        <locationY>2087</locationY>
+        <locationX>1986</locationX>
+        <locationY>2195</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -94,7 +94,7 @@
     <actionCalls>
         <name>Send_Email_for_Eligible</name>
         <label>Send Email for Eligible</label>
-        <locationX>1414</locationX>
+        <locationX>1722</locationX>
         <locationY>2303</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
@@ -129,7 +129,7 @@
     <actionCalls>
         <name>Send_Email_for_Loan_Rejection</name>
         <label>Send Email for Loan Rejection</label>
-        <locationX>1150</locationX>
+        <locationX>1458</locationX>
         <locationY>2303</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
@@ -164,7 +164,7 @@
     <actionCalls>
         <name>Send_Email_for_Loan_Sanctioned</name>
         <label>Send Email for Loan Sanctioned</label>
-        <locationX>886</locationX>
+        <locationX>1194</locationX>
         <locationY>2195</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
@@ -255,6 +255,22 @@
         </assignmentItems>
         <connector>
             <targetReference>Assign_to_Variable</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Owner_to_Lead</name>
+        <label>Assign Owner to Lead</label>
+        <locationX>2338</locationX>
+        <locationY>863</locationY>
+        <assignmentItems>
+            <assignToReference>get_Lead_Record.OwnerId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Lead_Owner</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -351,9 +367,31 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Check_Lead_Owner</name>
+        <label>Check Lead Owner</label>
+        <locationX>2470</locationX>
+        <locationY>755</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Task_and_Lead_Owner_are_not_Same</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.OwnerId</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>get_Lead_Record.OwnerId</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Owner_to_Lead</targetReference>
+            </connector>
+            <label>Task and Lead Owner are not Same</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Check_RecordType</name>
         <label>Check RecordType</label>
-        <locationX>1414</locationX>
+        <locationX>1722</locationX>
         <locationY>431</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -401,11 +439,26 @@
             </connector>
             <label>Record Type Registration Schedule</label>
         </rules>
+        <rules>
+            <name>RecordType_Schedule_Site_Visit</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Schedule_Site_Visit</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Site_Visit_Updates</targetReference>
+            </connector>
+            <label>RecordType Schedule Site Visit</label>
+        </rules>
     </decisions>
     <decisions>
         <name>Check_Status_for_Email</name>
         <label>Check Status for Email</label>
-        <locationX>1414</locationX>
+        <locationX>1722</locationX>
         <locationY>1979</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -464,7 +517,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Send_Email_for_AOS</targetReference>
+                <targetReference>Update_Opportunity_AOS_Stage_to_Draft_Upload</targetReference>
             </connector>
             <label>Draft Uploaded</label>
         </rules>
@@ -593,6 +646,35 @@
             <label>Status Changed to Eligible</label>
         </rules>
     </decisions>
+    <decisions>
+        <name>Site_Visit_Updates</name>
+        <label>Site Visit Updates</label>
+        <locationX>2624</locationX>
+        <locationY>539</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Owner_Update</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.OwnerId</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.OwnerId</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>005</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>get_Lead_Record</targetReference>
+            </connector>
+            <label>Owner Update</label>
+        </rules>
+    </decisions>
     <environments>Default</environments>
     <interviewLabel>Task Update(After Flow) {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Task Update(After Flow)</label>
@@ -674,7 +756,7 @@
     <recordLookups>
         <name>Get_Contact_from_Opportunity</name>
         <label>Get Contact from Opportunity</label>
-        <locationX>1414</locationX>
+        <locationX>1722</locationX>
         <locationY>1763</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -723,7 +805,7 @@
     <recordLookups>
         <name>get_Email_Template_for_Eligible</name>
         <label>get Email Template for Eligible</label>
-        <locationX>1414</locationX>
+        <locationX>1722</locationX>
         <locationY>2195</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -744,7 +826,7 @@
     <recordLookups>
         <name>get_Email_Template_for_Loan_Rejection</name>
         <label>get Email Template for Loan Rejection</label>
-        <locationX>1150</locationX>
+        <locationX>1458</locationX>
         <locationY>2195</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -765,7 +847,7 @@
     <recordLookups>
         <name>Get_Email_Template_for_Loan_Sanctioned</name>
         <label>Get Email Template for Loan Sanctioned</label>
-        <locationX>886</locationX>
+        <locationX>1194</locationX>
         <locationY>2087</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -784,9 +866,30 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
+        <name>get_Lead_Record</name>
+        <label>get Lead Record</label>
+        <locationX>2470</locationX>
+        <locationY>647</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_Lead_Owner</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhoId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Lead</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Get_Opportunity</name>
         <label>Get Opportunity</label>
-        <locationX>1414</locationX>
+        <locationX>1722</locationX>
         <locationY>323</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -807,7 +910,7 @@
     <recordLookups>
         <name>Get_Org_wide_Address</name>
         <label>Get Org wide Address</label>
-        <locationX>1414</locationX>
+        <locationX>1722</locationX>
         <locationY>1871</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -828,7 +931,7 @@
     <recordUpdates>
         <name>Copy_2_of_Update_Opportunity</name>
         <label>Copy 2 of Update Opportunity</label>
-        <locationX>1150</locationX>
+        <locationX>1458</locationX>
         <locationY>2087</locationY>
         <connector>
             <targetReference>get_Email_Template_for_Loan_Rejection</targetReference>
@@ -856,9 +959,16 @@
         <object>Opportunity</object>
     </recordUpdates>
     <recordUpdates>
+        <name>Update_Lead_Owner</name>
+        <label>Update Lead Owner</label>
+        <locationX>2338</locationX>
+        <locationY>971</locationY>
+        <inputReference>get_Lead_Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
         <name>Update_Opportunity</name>
         <label>Update Opportunity</label>
-        <locationX>1414</locationX>
+        <locationX>1722</locationX>
         <locationY>2087</locationY>
         <connector>
             <targetReference>get_Email_Template_for_Eligible</targetReference>
@@ -881,6 +991,30 @@
             <field>Loan_Status__c</field>
             <value>
                 <stringValue>Eligible</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Opportunity_AOS_Stage_to_Draft_Upload</name>
+        <label>Update Opportunity AOS Stage to Draft Upload</label>
+        <locationX>1986</locationX>
+        <locationY>2087</locationY>
+        <connector>
+            <targetReference>Send_Email_for_AOS</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>AOS_Stage__c</field>
+            <value>
+                <stringValue>Draft Uploaded</stringValue>
             </value>
         </inputAssignments>
         <object>Opportunity</object>
@@ -958,7 +1092,7 @@
         <object>Opportunity</object>
     </recordUpdates>
     <start>
-        <locationX>1288</locationX>
+        <locationX>1596</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Get_Opportunity</targetReference>

@@ -38,6 +38,10 @@
                 <behavior>Edit</behavior>
                 <field>Loan_Sanctioned_Amount__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Schedule_Date_Time__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

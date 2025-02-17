@@ -1,164 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <actionCalls>
-        <name>Copy_1_of_send_Email_to_contacts</name>
-        <label>Copy 1 of send Email to contacts</label>
-        <locationX>314</locationX>
-        <locationY>1571</locationY>
-        <actionName>emailSimple</actionName>
-        <actionType>emailSimple</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>emailAddressesArray</name>
-            <value>
-                <elementReference>varEmailList</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>emailSubject</name>
-            <value>
-                <stringValue>test</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>emailBody</name>
-            <value>
-                <stringValue>test</stringValue>
-            </value>
-        </inputParameters>
-        <nameSegment>emailSimple</nameSegment>
-        <offset>0</offset>
-    </actionCalls>
-    <actionCalls>
-        <name>send_Email_to_contacts</name>
-        <label>send Email to contacts</label>
-        <locationX>50</locationX>
-        <locationY>1679</locationY>
-        <actionName>emailSimple</actionName>
-        <actionType>emailSimple</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>emailAddressesArray</name>
-            <value>
-                <elementReference>varEmailList</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>emailSubject</name>
-            <value>
-                <stringValue>test</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>emailBody</name>
-            <value>
-                <stringValue>test</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>recipientId</name>
-            <value>
-                <elementReference>$Record.Owner:User.Email</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>emailTemplateId</name>
-            <value>
-                <elementReference>get_Email_template.Id</elementReference>
-            </value>
-        </inputParameters>
-        <nameSegment>emailSimple</nameSegment>
-        <offset>0</offset>
-    </actionCalls>
     <apiVersion>63.0</apiVersion>
     <assignments>
-        <name>store_all_email_addresses</name>
-        <label>store all email addresses</label>
-        <locationX>402</locationX>
-        <locationY>1163</locationY>
+        <name>Task_Status</name>
+        <label>Task Status</label>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
         <assignmentItems>
-            <assignToReference>varEmailList</assignToReference>
-            <operator>Add</operator>
+            <assignToReference>TaskStatus</assignToReference>
+            <operator>Assign</operator>
             <value>
-                <elementReference>loop_on_get_Contacts.Email</elementReference>
+                <elementReference>$Record.Status</elementReference>
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>loop_on_get_Contacts</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Store_Contact_ID</name>
-        <label>Store Contact ID</label>
-        <locationX>402</locationX>
-        <locationY>755</locationY>
-        <assignmentItems>
-            <assignToReference>var_ContactIds</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>loop.ContactId</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>loop</targetReference>
+            <targetReference>Opportunity_KYC_Verification</targetReference>
         </connector>
     </assignments>
     <decisions>
-        <name>check_stage</name>
-        <label>check stage</label>
-        <locationX>314</locationX>
-        <locationY>1355</locationY>
+        <name>Check_Field_Update</name>
+        <label>Check Field Update</label>
+        <locationX>182</locationX>
+        <locationY>539</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>is_Stage_Eligible</name>
-            <conditionLogic>and</conditionLogic>
+            <name>KYC_Task_Status_Change</name>
+            <conditionLogic>1 AND (2 OR 3) AND 4 AND 5 AND 6</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.Status</leftValueReference>
+                <leftValueReference>$Record.RecordTypeId</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Eligible</stringValue>
+                    <elementReference>Recordtype_KYC.Id</elementReference>
                 </rightValue>
             </conditions>
             <conditions>
                 <leftValueReference>$Record.Status</leftValueReference>
-                <operator>IsChanged</operator>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Rejected</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>statusChange</leftValueReference>
+                <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>$Record.Loan_Eligible_Amount__c</leftValueReference>
+                <leftValueReference>$Record.WhatId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Recordtype_KYC</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>update_Opportunity</targetReference>
+                <targetReference>Task_Status</targetReference>
             </connector>
-            <label>is Stage Eligible</label>
-        </rules>
-        <rules>
-            <name>is_Stage_Draft_Uploaded</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Status</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Draft Uploaded</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Status</leftValueReference>
-                <operator>IsChanged</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Copy_1_of_update_Opportunity</targetReference>
-            </connector>
-            <label>is Stage Draft Uploaded</label>
+            <label>KYC Task Status Change</label>
         </rules>
     </decisions>
     <environments>Default</environments>
@@ -174,34 +87,6 @@
     </formulas>
     <interviewLabel>Task (After ) {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Task (After Operation)</label>
-    <loops>
-        <name>loop</name>
-        <label>loop</label>
-        <locationX>314</locationX>
-        <locationY>647</locationY>
-        <collectionReference>Get_Opportunity_Contact_Roles</collectionReference>
-        <iterationOrder>Asc</iterationOrder>
-        <nextValueConnector>
-            <targetReference>Store_Contact_ID</targetReference>
-        </nextValueConnector>
-        <noMoreValuesConnector>
-            <targetReference>get</targetReference>
-        </noMoreValuesConnector>
-    </loops>
-    <loops>
-        <name>loop_on_get_Contacts</name>
-        <label>loop on get Contacts</label>
-        <locationX>314</locationX>
-        <locationY>1055</locationY>
-        <collectionReference>get</collectionReference>
-        <iterationOrder>Asc</iterationOrder>
-        <nextValueConnector>
-            <targetReference>store_all_email_addresses</targetReference>
-        </nextValueConnector>
-        <noMoreValuesConnector>
-            <targetReference>check_stage</targetReference>
-        </noMoreValuesConnector>
-    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -222,87 +107,13 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordLookups>
-        <name>get</name>
-        <label>get All Related Contacts</label>
-        <locationX>314</locationX>
-        <locationY>947</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>loop_on_get_Contacts</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Id</field>
-            <operator>In</operator>
-            <value>
-                <elementReference>var_ContactIds</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>false</getFirstRecordOnly>
-        <object>Contact</object>
-        <queriedFields>Id</queriedFields>
-        <queriedFields>Email</queriedFields>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>get_Email_template</name>
-        <label>get Email template</label>
-        <locationX>50</locationX>
-        <locationY>1571</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>send_Email_to_contacts</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>DeveloperName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Loan_Eligibility_Mail</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>IsActive</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>EmailTemplate</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>Get_Opportunity_Contact_Roles</name>
-        <label>Get Opportunity Contact Roles</label>
-        <locationX>314</locationX>
-        <locationY>539</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>loop</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>OpportunityId</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>get_Related_Opportunity.Id</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>false</getFirstRecordOnly>
-        <object>OpportunityContactRole</object>
-        <queriedFields>Id</queriedFields>
-        <queriedFields>ContactId</queriedFields>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
         <name>get_Related_Opportunity</name>
         <label>get Related Opportunity</label>
-        <locationX>314</locationX>
+        <locationX>182</locationX>
         <locationY>431</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Get_Opportunity_Contact_Roles</targetReference>
+            <targetReference>Check_Field_Update</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -319,7 +130,7 @@
     <recordLookups>
         <name>Recordtype_KYC</name>
         <label>Recordtype KYC</label>
-        <locationX>314</locationX>
+        <locationX>182</locationX>
         <locationY>323</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -345,61 +156,28 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
-        <name>Copy_1_of_update_Opportunity</name>
-        <label>Copy 1 of update Opportunity</label>
-        <locationX>314</locationX>
-        <locationY>1463</locationY>
-        <connector>
-            <targetReference>Copy_1_of_send_Email_to_contacts</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>get_Related_Opportunity.Id</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <field>AOS_Stage__c</field>
-            <value>
-                <stringValue>Yet to prepare</stringValue>
-            </value>
-        </inputAssignments>
-        <object>Opportunity</object>
-    </recordUpdates>
-    <recordUpdates>
-        <name>update_Opportunity</name>
-        <label>update Opportunity</label>
+        <name>Opportunity_KYC_Verification</name>
+        <label>Opportunity KYC Verification</label>
         <locationX>50</locationX>
-        <locationY>1463</locationY>
-        <connector>
-            <targetReference>get_Email_template</targetReference>
-        </connector>
+        <locationY>755</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>get_Related_Opportunity.Id</elementReference>
+                <elementReference>$Record.WhatId</elementReference>
             </value>
         </filters>
         <inputAssignments>
-            <field>Loan_Eligible_Amount__c</field>
+            <field>KYC_Verification__c</field>
             <value>
-                <elementReference>$Record.Loan_Eligible_Amount__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Loan_Status__c</field>
-            <value>
-                <stringValue>Eligible</stringValue>
+                <elementReference>TaskStatus</elementReference>
             </value>
         </inputAssignments>
         <object>Opportunity</object>
     </recordUpdates>
     <start>
-        <locationX>188</locationX>
+        <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Recordtype_KYC</targetReference>
@@ -408,7 +186,7 @@
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <variables>
         <name>contactEmail</name>
         <dataType>String</dataType>

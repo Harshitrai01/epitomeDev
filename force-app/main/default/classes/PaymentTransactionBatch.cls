@@ -1,3 +1,7 @@
+/**
+* Author: Harshit Kumar Rai
+* Description: For Payment Transaction Get Status Batch
+*/
 global class PaymentTransactionBatch implements Database.Batchable<sObject>, Schedulable, Database.AllowsCallouts, Database.Stateful {
     private Decimal timeForRun = 2;
     global Database.QueryLocator start(Database.BatchableContext BC) {

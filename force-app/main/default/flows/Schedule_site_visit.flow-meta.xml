@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Date_Less_than_Today</name>
         <label>Date Less than Today</label>
-        <locationX>314</locationX>
-        <locationY>566</locationY>
+        <locationX>842</locationX>
+        <locationY>674</locationY>
         <actionName>c:ShowToast</actionName>
         <actionType>component</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -43,10 +43,70 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </actionCalls>
     <actionCalls>
+        <name>Email_Should_not_be_empty</name>
+        <label>Email Should not be empty</label>
+        <locationX>1106</locationX>
+        <locationY>674</locationY>
+        <actionName>c:ShowToast</actionName>
+        <actionType>component</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>type</name>
+            <value>
+                <stringValue>error</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>title</name>
+            <value>
+                <stringValue>Email Error</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>message</name>
+            <value>
+                <stringValue>Email can&apos;t be Null</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>mode</name>
+            <value>
+                <stringValue>dismissible</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>duration</name>
+            <value>
+                <stringValue>5</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>c:ShowToast</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <name>navigateToLead</name>
+        <label>navigateToLead</label>
+        <locationX>50</locationX>
+        <locationY>458</locationY>
+        <actionName>c:NavigateToRecord</actionName>
+        <actionType>component</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>getLeadInfo.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>c:NavigateToRecord</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
         <name>Null_Date</name>
         <label>Null Date</label>
-        <locationX>578</locationX>
-        <locationY>566</locationY>
+        <locationX>1634</locationX>
+        <locationY>674</locationY>
         <actionName>c:ShowToast</actionName>
         <actionType>component</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -84,12 +144,134 @@
         <offset>0</offset>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </actionCalls>
+    <actionCalls>
+        <name>Send_Email_To_Client</name>
+        <label>Send Email To Client</label>
+        <locationX>446</locationX>
+        <locationY>1298</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>getLeadInfo.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientId</name>
+            <value>
+                <elementReference>getLeadInfo.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>logEmailOnSend</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailTemplateId</name>
+            <value>
+                <stringValue>00XO4000003vn8j</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>Site_Location_is_Null</name>
+        <label>Site Location is Null</label>
+        <locationX>50</locationX>
+        <locationY>350</locationY>
+        <actionName>c:ShowToast</actionName>
+        <actionType>component</actionType>
+        <connector>
+            <targetReference>navigateToLead</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>type</name>
+            <value>
+                <stringValue>error</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>title</name>
+            <value>
+                <stringValue>Site Location Error</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>message</name>
+            <value>
+                <stringValue>Site Location can&apos;t be Null</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>mode</name>
+            <value>
+                <stringValue>dismissible</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>duration</name>
+            <value>
+                <stringValue>5</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>c:ShowToast</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <name>Site_Visit_Is_Null</name>
+        <label>Site Visit Is Null</label>
+        <locationX>1370</locationX>
+        <locationY>674</locationY>
+        <actionName>c:ShowToast</actionName>
+        <actionType>component</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>type</name>
+            <value>
+                <stringValue>error</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>title</name>
+            <value>
+                <stringValue>Site Location Error</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>message</name>
+            <value>
+                <stringValue>Site Location can&apos;t be Null</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>mode</name>
+            <value>
+                <stringValue>dismissible</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>duration</name>
+            <value>
+                <stringValue>5</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>c:ShowToast</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
     <apiVersion>63.0</apiVersion>
     <assignments>
         <name>VisitDateVariable</name>
         <label>VisitDateVariableAssign</label>
-        <locationX>314</locationX>
-        <locationY>350</locationY>
+        <locationX>1040</locationX>
+        <locationY>458</locationY>
         <assignmentItems>
             <assignToReference>VisitDateVar</assignToReference>
             <operator>Assign</operator>
@@ -102,10 +284,67 @@
         </connector>
     </assignments>
     <decisions>
+        <name>check_Site_Location</name>
+        <label>check Site Location</label>
+        <locationX>545</locationX>
+        <locationY>242</locationY>
+        <defaultConnector>
+            <targetReference>Schedule_Site_Visit_Event</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>is_Null</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>getLeadInfo.Site_Location__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Site_Location_is_Null</targetReference>
+            </connector>
+            <label>is Null</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>check_stage</name>
+        <label>check stage</label>
+        <locationX>446</locationX>
+        <locationY>782</locationY>
+        <defaultConnector>
+            <targetReference>updateLeadOwner</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>is_Blocked</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>getLeadInfo.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Blocked</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>getLeadInfo.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Booked</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>updateStagetoBlocked</targetReference>
+            </connector>
+            <label>is Blocked or Booked</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Check_valid_Input</name>
         <label>Check valid Input</label>
-        <locationX>314</locationX>
-        <locationY>458</locationY>
+        <locationX>1040</locationX>
+        <locationY>566</locationY>
         <defaultConnector>
             <targetReference>Null_Date</targetReference>
         </defaultConnector>
@@ -154,6 +393,36 @@
             </connector>
             <label>IsLessThanToday</label>
         </rules>
+        <rules>
+            <name>Email_is_not_Present</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>getLeadInfo.Email</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Email_Should_not_be_empty</targetReference>
+            </connector>
+            <label>Email is not Present</label>
+        </rules>
+        <rules>
+            <name>site_visit_is_not_null</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>getLeadInfo.Site_Location__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Site_Visit_Is_Null</targetReference>
+            </connector>
+            <label>site visit is not null</label>
+        </rules>
     </decisions>
     <environments>Default</environments>
     <formulas>
@@ -185,12 +454,27 @@
     <recordCreates>
         <name>Create_Task_for_Lead</name>
         <label>Create Task for Lead</label>
-        <locationX>50</locationX>
-        <locationY>782</locationY>
+        <locationX>446</locationX>
+        <locationY>1190</locationY>
+        <connector>
+            <targetReference>Send_Email_To_Client</targetReference>
+        </connector>
         <inputAssignments>
             <field>OwnerId</field>
             <value>
                 <elementReference>getQueue.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>get_Site_Visit_RecordType.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Schedule_Date_Time__c</field>
+            <value>
+                <elementReference>Visit_Date</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -209,13 +493,34 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
     <recordLookups>
+        <name>get_Site_Visit_RecordType</name>
+        <label>get Site Visit RecordType</label>
+        <locationX>446</locationX>
+        <locationY>1082</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Create_Task_for_Lead</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Schedule_Site_Visit</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>getLeadInfo</name>
         <label>getLeadInfo</label>
-        <locationX>314</locationX>
+        <locationX>545</locationX>
         <locationY>134</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Schedule_Site_Visit_Event</targetReference>
+            <targetReference>check_Site_Location</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -232,11 +537,11 @@
     <recordLookups>
         <name>getQueue</name>
         <label>getQueue</label>
-        <locationX>50</locationX>
-        <locationY>566</locationY>
+        <locationX>446</locationX>
+        <locationY>674</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>updateLeadOwner</targetReference>
+            <targetReference>check_stage</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -253,10 +558,10 @@
     <recordUpdates>
         <name>updateLeadOwner</name>
         <label>updateLeadOwner</label>
-        <locationX>50</locationX>
-        <locationY>674</locationY>
+        <locationX>578</locationX>
+        <locationY>890</locationY>
         <connector>
-            <targetReference>Create_Task_for_Lead</targetReference>
+            <targetReference>get_Site_Visit_RecordType</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -272,13 +577,61 @@
                 <elementReference>getQueue.Id</elementReference>
             </value>
         </inputAssignments>
+        <inputAssignments>
+            <field>Schedule_Date_Time__c</field>
+            <value>
+                <elementReference>VisitDateVar</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Site Visit Schedule</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>updateStagetoBlocked</name>
+        <label>updateStagetoBlocked</label>
+        <locationX>314</locationX>
+        <locationY>890</locationY>
+        <connector>
+            <targetReference>get_Site_Visit_RecordType</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>getQueue.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Schedule_Date_Time__c</field>
+            <value>
+                <elementReference>VisitDateVar</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <elementReference>getLeadInfo.Status</elementReference>
+            </value>
+        </inputAssignments>
         <object>Lead</object>
     </recordUpdates>
     <screens>
         <name>Schedule_Site_Visit_Event</name>
         <label>Schedule Site Visit Event</label>
-        <locationX>314</locationX>
-        <locationY>242</locationY>
+        <locationX>1040</locationX>
+        <locationY>350</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -304,7 +657,7 @@
         <showHeader>true</showHeader>
     </screens>
     <start>
-        <locationX>188</locationX>
+        <locationX>419</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>getLeadInfo</targetReference>

@@ -5,10 +5,12 @@ public without sharing class bookingFormController {
         getRecordDataWrapper responseObj= new getRecordDataWrapper();
         LightningResponse response =new LightningResponse();
         List<Quote__c> listOfOpportunity = new List<Quote__c>();
+   
         try{
             response.isSuccess = true; 
             if(String.isNotEmpty(recordId) || String.isNotBlank(recordId)){
-                listOfOpportunity = [SELECT Id,Name,Plot__c,Plot__r.Plot_Facing__c, Plot__r.Name, Plot__r.Plot_Size__c, Plot__r.Plot_Price__c, Plot__r.Phase__r.Name, Plot__r.Unit_Code__c
+                listOfOpportunity = [SELECT Id,Name,Plot__c,Plot__r.Plot_Facing__c, Plot__r.Name, Plot__r.Plot_Size__c, Plot__r.Plot_Price__c, Plot__r.Phase__r.Name, Plot__r.Unit_Code__c,
+                                     Lead__c,Lead__r.Id, Lead__r.Name,Lead__r.Email, Lead__r.Phone,Plot__r.Phase__c,Total_Sale_Value__c
 				
                                      FROM Quote__c WHERE Id =:recordId];
                 if(!(listOfOpportunity.isEmpty())){
@@ -27,6 +29,60 @@ public without sharing class bookingFormController {
         responseObj.response = response;
         return responseObj;
     }
+         @AuraEnabled(cacheable=true)
+    public static getRecordDataWrapper getRecordDataAccount(String recordId){
+        getRecordDataWrapper responseObj= new getRecordDataWrapper();
+        LightningResponse response =new LightningResponse();
+        List<Account> listOfAccount = new List<Account>();
+   
+        try{
+            response.isSuccess = true; 
+            if(String.isNotEmpty(recordId) || String.isNotBlank(recordId)){
+                listOfAccount = [SELECT Id,Name,Email__c,Phone, Same_As_Permanent_Address__c
+				
+                                     FROM Account WHERE Id =:recordId];
+                if(!(listOfAccount.isEmpty())){
+                    responseObj.listOfAccountRecords = listOfAccount;
+                    response.body = 'success';
+                }
+            }else{
+                response.isSuccess = false;
+                response.body = 'Record Id not found.';
+            }
+            System.debug('---->'+listOfAccount);
+        }catch(Exception ex){
+            response.isSuccess = false;
+            response.body = ex.getMessage();
+        }
+        responseObj.response = response;
+        return responseObj;
+    }
+    
+    @AuraEnabled(cacheable=true)
+    public static Map<String, Object> getPlotDetails(Id recordId) {
+        try {
+            Unit__c plot = [
+                SELECT Id, Name, Plot_Facing__c, Plot_Price__c, Plot_Size__c, Unit_Code__c
+                FROM Unit__c
+                WHERE Id = :recordId
+                LIMIT 1
+            ];
+
+            // Prepare a response object
+            Map<String, Object> plotData = new Map<String, Object>();
+            plotData.put('plotFacing', plot.Plot_Facing__c);
+            plotData.put('plotPrice', plot.Plot_Price__c);
+            plotData.put('plotSize', plot.Plot_Size__c);
+            plotData.put('unitCode', plot.Unit_Code__c);
+            plotData.put('plotPhase', plot.Unit_Code__c); // Assuming phase is stored in Unit_Code__c
+            plotData.put('plotName', plot.Name);
+
+            return plotData;
+        } catch (Exception e) {
+            throw new AuraHandledException('Error fetching plot details: ' + e.getMessage());
+        }
+    }
+    
 
     public static Id getCRMUserId() {
         User crmUser = [select id,Name,profile.Name from User where Profile.Name='CRM Manager' limit 1];
@@ -34,14 +90,15 @@ public without sharing class bookingFormController {
     }
 
    @AuraEnabled
-    public static LightningResponse saveFormData(String bookingFormData){
+    public static LightningResponse saveFormData(String bookingFormData,String quoteId){
         LightningResponse response =new LightningResponse();
         SavePoint sp = Database.setSavepoint(); 
         try {
                 response.isSuccess = true;
                 bookingFormData bookingFormDataObj =(bookingFormData) System.JSON.deserialize(bookingFormData, bookingFormData.class);
-                if(String.isNotBlank(bookingFormDataObj.quoteId)){
+                if(String.isNotBlank(quoteId)){
                     Account accObj=new Account();
+                    accObj.Id = String.isNotBlank(bookingFormDataObj.accountId) ? bookingFormDataObj.accountId: null;
                     accObj.Name = String.isNotBlank(bookingFormDataObj.accountName) ? bookingFormDataObj.accountName: null;
                     accObj.Phone =  String.isNotBlank(bookingFormDataObj.accountContactNo) ? bookingFormDataObj.accountContactNo: null;
                     accObj.Email__c =  String.isNotBlank(bookingFormDataObj.accountEmailId) ? bookingFormDataObj.accountEmailId: null;
@@ -56,9 +113,12 @@ public without sharing class bookingFormController {
                     accObj.ShippingState= String.isNotBlank(bookingFormDataObj.accountCorrespondenceAddressState) ? bookingFormDataObj.accountCorrespondenceAddressState: null;
                     accObj.ShippingPostalCode= String.isNotBlank(bookingFormDataObj.accountCorrespondenceAddressPostalCode) ? bookingFormDataObj.accountCorrespondenceAddressPostalCode: null;
                     accObj.Same_As_Permanent_Address__c= Boolean.valueOf(bookingFormDataObj.accountSameAsPermanentAddress);
-                    insert accObj;
-                    
+                    upsert accObj;
+                     system.debug('bookingFormDataObj.quoteI11111111111d'+quoteId);
+                     system.debug('bookingFormDataObj.quoteI11111111111d'+accObj.id);
+
                     Contact newContact = new Contact();
+                    newContact.Id = String.isNotBlank(bookingFormDataObj.contactId) ? bookingFormDataObj.contactId : null;
                     newContact.LastName = String.isNotBlank(bookingFormDataObj.quoteContactName) ? bookingFormDataObj.quoteContactName : null;
                     newContact.PAN_Card__c = String.isNotBlank(bookingFormDataObj.quoteContactPan) ? bookingFormDataObj.quoteContactPan : null;
                     newContact.Aadhaar_Card__c = String.isNotBlank(bookingFormDataObj.quoteContactAadhaar) ? bookingFormDataObj.quoteContactAadhaar : null;
@@ -66,8 +126,11 @@ public without sharing class bookingFormController {
                     newContact.Email = String.isNotBlank(bookingFormDataObj.quoteContactEmailId) ? bookingFormDataObj.quoteContactEmailId : null;
                     newContact.Phone = String.isNotBlank(bookingFormDataObj.quoteContactNo) ? bookingFormDataObj.quoteContactNo : null;
                     newContact.AccountId = accObj.Id;
-                    insert newContact;
+                    upsert newContact;
                     
+                    system.debug('newContact------------>'+newContact.id);
+                    system.debug('bookingFormDataObj.quoteId'+quoteId);
+
                     Opportunity opp = new Opportunity();
                     opp.Name=bookingFormDataObj.quoteunitPlotName + '_' + bookingFormDataObj.quoteContactName;
                     opp.First_Booking_Amount__c=String.isNotBlank(bookingFormDataObj.opportunityBookingAmount) ? Decimal.valueOf(bookingFormDataObj.opportunityBookingAmount) : null;
@@ -79,17 +142,25 @@ public without sharing class bookingFormController {
                     opp.Contact__c = newContact.id;
                     opp.OwnerId = getCRMUserId();
                     opp.Type_of_Booking__c =String.isNotBlank(bookingFormDataObj.typeOfBooking) ? bookingFormDataObj.typeOfBooking : null;
+                    opp.Sale_Value_Amount__c=String.isNotBlank(bookingFormDataObj.saleValueAmount) ? Decimal.valueOf(bookingFormDataObj.saleValueAmount) : null;
+                    opp.Lead_Quote__c=quoteId;
                     insert opp;
         
                     Quote__c quoteObj=new Quote__c();
-                    quoteObj.Id = bookingFormDataObj.quoteId;
+                    quoteObj.Id = quoteId;
                     quoteObj.Opportunity__c = opp.Id;
                     update quoteObj;
 
                     Unit__c plot=new Unit__c();
                     plot.id=bookingFormDataObj.quotePlot;
+                   // plot.Status__c='Booked';
                     plot.Contact__c=newContact.id;
                     update plot;
+
+                //     Lead leadObj=new Lead();
+                //     leadObj.Id=bookingFormDataObj.leadId;
+                //    // leadObj.Status='Booked';
+                //     update leadObj;
                     
                     response.body = 'success';
                     response.accountId = accObj.Id;
@@ -118,6 +189,14 @@ public without sharing class bookingFormController {
         return response;
     }
 
+
+    @AuraEnabled(cacheable=true)
+public static Unit__c getUnitDetails(Id unitId) {
+    
+    return [SELECT Name, Unit_Code__c, Plot_Facing__c, Id, Plot_Size__c, Status__c, Plot_Price__c, Phase__c 
+            FROM Unit__c WHERE Id = :unitId LIMIT 1];
+}
+
     @AuraEnabled
     public static LightningResponse saveBulkFormData(String bookingFormData){
         LightningResponse response =new LightningResponse();
@@ -128,6 +207,7 @@ public without sharing class bookingFormController {
              
             if(String.isNotBlank(bookingFormDataObj.accountName) && bookingFormDataObj.listOfCoApplicant != null && !bookingFormDataObj.listOfCoApplicant.isEmpty()){
                 Account accObj=new Account();
+                accObj.Id = String.isNotBlank(bookingFormDataObj.accountId) ? bookingFormDataObj.accountId: null;
                 accObj.Name = String.isNotBlank(bookingFormDataObj.accountName) ? bookingFormDataObj.accountName: null;
                 accObj.Phone =  String.isNotBlank(bookingFormDataObj.accountContactNo) ? bookingFormDataObj.accountContactNo: null;
                 accObj.Email__c =  String.isNotBlank(bookingFormDataObj.accountEmailId) ? bookingFormDataObj.accountEmailId: null;
@@ -143,7 +223,7 @@ public without sharing class bookingFormController {
                 accObj.ShippingPostalCode= String.isNotBlank(bookingFormDataObj.accountCorrespondenceAddressPostalCode) ? bookingFormDataObj.accountCorrespondenceAddressPostalCode: null;
                 accObj.Same_As_Permanent_Address__c= Boolean.valueOf(bookingFormDataObj.accountSameAsPermanentAddress);
                  
-                insert accObj;
+                upsert accObj;
                   
 
                // Prepare lists
@@ -157,6 +237,7 @@ public without sharing class bookingFormController {
                 // Create Contacts (No Nested Loops)
                 for (ListOfCoApplicant coApplicant : bookingFormDataObj.listOfCoApplicant) {
                     Contact newContact = new Contact(
+                        Id = String.isNotBlank(coApplicant.contactId) ? coApplicant.contactId: null,
                         LastName = coApplicant.contactName,
                         PAN_Card__c = coApplicant.contactPan,
                         Aadhaar_Card__c = coApplicant.contactAadhaar,
@@ -172,7 +253,7 @@ public without sharing class bookingFormController {
 
                 // Bulk insert Contacts
                 if (!contactsToInsert.isEmpty()) {
-                    insert contactsToInsert;
+                    upsert contactsToInsert;
 
                     // Update contactMap with inserted Contact Ids
                     for (Contact c : contactsToInsert) {
@@ -203,6 +284,7 @@ public without sharing class bookingFormController {
                                 Type_of_Booking__c = bookingFormDataObj.typeOfBooking,
                                 ContactId = contactId, // Direct assignment (No Double Loop!)
                                 Bulk_Booking__c=true,
+                                Contact__c = contactId,
                                 OwnerId=getCRMUserId()
                             ));
                         }
@@ -256,6 +338,28 @@ public without sharing class bookingFormController {
             }
         return response;
     }
+    @AuraEnabled(cacheable=true)
+    public static Account getAccountDetails(Id accountId) {
+        return [
+            SELECT Id, Name, Phone, Email__c, BillingStreet, BillingCity, BillingCountry, 
+                   BillingState, BillingPostalCode, ShippingStreet, ShippingCity, 
+                   ShippingCountry, ShippingState, ShippingPostalCode, 
+                   Same_As_Permanent_Address__c
+            FROM Account
+            WHERE Id = :accountId
+            LIMIT 1
+        ];
+    }
+    
+    @AuraEnabled(cacheable=true)
+    public static Contact getContactDetails(Id contactId) {
+        return [
+            SELECT Id, LastName, Aadhaar_Card__c, Email, PAN_Card__c, Date_Of_Birth__c, Phone
+            FROM Contact
+            WHERE Id = :contactId
+            LIMIT 1
+        ];
+    }
 
 
 public class ListOfPlot {
@@ -294,6 +398,7 @@ public class bookingFormData {
     public String opportunityPaymentMode;
     public String paymentMilestoneId;
     public String opportunityPaymentDate;
+    public String accountId;
 	public String accountDOB;
 	public String accountAadhaarCard;
 	public String accountName;
@@ -328,12 +433,17 @@ public class bookingFormData {
     public String quoteunitPlotUnitCode;
     public String quoteunitPlotName;
     public String quoteunitPlotPhase;
+    public String leadId;
+    public String saleValueAmount;
+ public String contactId;
     public List<ListOfCoApplicant> listOfCoApplicant;        
 }
 
 public class getRecordDataWrapper{
     @AuraEnabled
     public List<Quote__c> listOfOpportunityRecords{get; set;}
+    @AuraEnabled
+    public List<Account> listOfAccountRecords{get; set;}
     @AuraEnabled
     public List<Contact> listOfApplicantRecords{get; set;}
     @AuraEnabled

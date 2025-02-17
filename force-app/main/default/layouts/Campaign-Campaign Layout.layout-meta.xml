@@ -46,14 +46,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Facebook_Page__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Source__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Form_Id__c</field>
             </layoutItems>
             <layoutItems>
@@ -77,10 +69,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>EndDate</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Discount_Value__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>

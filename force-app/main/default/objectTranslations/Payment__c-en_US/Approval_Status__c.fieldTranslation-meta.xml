@@ -10,4 +10,8 @@
         <masterLabel>Not Approved</masterLabel>
         <translation><!-- Not Approved --></translation>
     </picklistValues>
+    <picklistValues>
+        <masterLabel>Pending</masterLabel>
+        <translation><!-- Pending --></translation>
+    </picklistValues>
 </CustomFieldTranslation>

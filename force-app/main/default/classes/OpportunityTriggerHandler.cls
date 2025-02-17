@@ -1,3 +1,7 @@
+/**
+* Author: Harshit Kumar Rai
+* Description: Trigger Handler For Opportunity
+*/
 public class OpportunityTriggerHandler {
     
 	public static void handleAfterInsert(List<Opportunity> newOpportunities) {
@@ -19,11 +23,11 @@ public class OpportunityTriggerHandler {
                         }else{
                             System.Debug('Virtual Account Details Already Present');
                         }
-                        Database.executeBatch(new PaymentSendLinkEasyCollect(oppList),10);
                     }else{
                         System.Debug('Plot is not present');
                     }
                 }
+                Database.executeBatch(new PaymentSendLinkEasyCollect(oppList),10);
             }
             
         }catch (Exception ex){

@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Copy_1_of_sendNotificationToDocumentationManager</name>
         <label>Copy 1 of sendNotificationToDocumentationManager</label>
-        <locationX>2778</locationX>
-        <locationY>1487</locationY>
+        <locationX>4362</locationX>
+        <locationY>1595</locationY>
         <actionName>customNotificationAction</actionName>
         <actionType>customNotificationAction</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -30,6 +30,47 @@
             <name>body</name>
             <value>
                 <stringValue>Opportunity :- {!$Record.Name} Loan Process has been Initiated</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>targetId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>customNotificationAction</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>Notification_to_Task_Owner</name>
+        <label>Notification to Task Owner</label>
+        <locationX>2426</locationX>
+        <locationY>971</locationY>
+        <actionName>customNotificationAction</actionName>
+        <actionType>customNotificationAction</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>customNotifTypeId</name>
+            <value>
+                <elementReference>Copy_1_of_Custom_Notification.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientIds</name>
+            <value>
+                <elementReference>ownerId</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>title</name>
+            <value>
+                <stringValue>Stage update ALERT</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>body</name>
+            <value>
+                <stringValue>Stage has been updated to Progressive Stage</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -127,10 +168,51 @@
         <offset>0</offset>
     </actionCalls>
     <actionCalls>
+        <name>send_notification1</name>
+        <label>send notification</label>
+        <locationX>3218</locationX>
+        <locationY>1787</locationY>
+        <actionName>customNotificationAction</actionName>
+        <actionType>customNotificationAction</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>customNotifTypeId</name>
+            <value>
+                <elementReference>Copy_1_of_Copy_1_of_Custom_Notification.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientIds</name>
+            <value>
+                <elementReference>assignloanandfinanceuserids</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>title</name>
+            <value>
+                <stringValue>Stage has been Registered</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>body</name>
+            <value>
+                <stringValue>Stage has been Registered</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>targetId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>customNotificationAction</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
         <name>sendNotificationToDocumentationManager</name>
         <label>sendNotificationToDocumentationManager</label>
-        <locationX>2162</locationX>
-        <locationY>1295</locationY>
+        <locationX>1370</locationX>
+        <locationY>1403</locationY>
         <actionName>customNotificationAction</actionName>
         <actionType>customNotificationAction</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -210,6 +292,22 @@
     </actionCalls>
     <apiVersion>63.0</apiVersion>
     <assignments>
+        <name>Add_Loan_Manager_User</name>
+        <label>Add Loan Manager User</label>
+        <locationX>2426</locationX>
+        <locationY>863</locationY>
+        <assignmentItems>
+            <assignToReference>ownerId</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>get_Related_Task.OwnerId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Notification_to_Task_Owner</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>Add_Owner</name>
         <label>Add Owner</label>
         <locationX>314</locationX>
@@ -242,10 +340,42 @@
         </connector>
     </assignments>
     <assignments>
+        <name>assign_Profiles</name>
+        <label>assign Profiles</label>
+        <locationX>3636</locationX>
+        <locationY>971</locationY>
+        <assignmentItems>
+            <assignToReference>assignFinanceandloanmanagerprofileids</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>loop_on_profiles.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>loop_on_profiles</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>assign_users_Ids</name>
+        <label>assign users Ids</label>
+        <locationX>3438</locationX>
+        <locationY>1487</locationY>
+        <assignmentItems>
+            <assignToReference>assignloanandfinanceuserids</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>loop_on_users.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>loop_on_users</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>assignIdToUsersList</name>
         <label>assignIdToUsersList</label>
-        <locationX>2162</locationX>
-        <locationY>971</locationY>
+        <locationX>1370</locationX>
+        <locationY>1079</locationY>
         <assignmentItems>
             <assignToReference>UsersIdList</assignToReference>
             <operator>Add</operator>
@@ -260,8 +390,8 @@
     <assignments>
         <name>assignLoan_Manager_UserId_To_Users_List</name>
         <label>assignLoan Manager UserId To Users List</label>
-        <locationX>2866</locationX>
-        <locationY>1079</locationY>
+        <locationX>4450</locationX>
+        <locationY>1187</locationY>
         <assignmentItems>
             <assignToReference>UsersIdList</assignToReference>
             <operator>Add</operator>
@@ -330,7 +460,7 @@
     <decisions>
         <name>Check_Field_Update</name>
         <label>Check Field Update</label>
-        <locationX>2206</locationX>
+        <locationX>2734</locationX>
         <locationY>431</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -423,7 +553,7 @@
         </rules>
         <rules>
             <name>AOS_Required</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>1 AND 2 AND 3 AND ((4 AND 6) OR (5 AND 7))</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.AOS_Stage__c</leftValueReference>
                 <operator>EqualTo</operator>
@@ -445,41 +575,11 @@
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
-            <connector>
-                <targetReference>check_Funding_Type</targetReference>
-            </connector>
-            <label>AOS Required</label>
-        </rules>
-        <rules>
-            <name>Initiate_Stage</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.AOS_Stage__c</leftValueReference>
-                <operator>IsChanged</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.AOS_Stage__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Initiate</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>get_Record_Type</targetReference>
-            </connector>
-            <label>Initiate Stage</label>
-        </rules>
-        <rules>
-            <name>Status_Changed_to_Loan_Process</name>
-            <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.StageName</leftValueReference>
-                <operator>IsChanged</operator>
+                <operator>EqualTo</operator>
                 <rightValue>
-                    <booleanValue>true</booleanValue>
+                    <stringValue>Onboarded</stringValue>
                 </rightValue>
             </conditions>
             <conditions>
@@ -493,13 +593,20 @@
                 <leftValueReference>$Record.Funding_Type__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
+                    <stringValue>Own Fund</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Funding_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
                     <stringValue>Bank Fund</stringValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>get_Loan_Process_Task_s_Record_Type</targetReference>
+                <targetReference>Stage_Changes_to_AOS</targetReference>
             </connector>
-            <label>Status Changed to Loan Process</label>
+            <label>AOS Required</label>
         </rules>
         <rules>
             <name>REGISTRATION_INITIATE</name>
@@ -524,13 +631,42 @@
             <label>REGISTRATION INITIATE</label>
         </rules>
         <rules>
-            <name>Registration_Schedule</name>
+            <name>Status_Changed_to_Progressive</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Progressive</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Funding_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Bank Fund</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_Custom_Notification</targetReference>
+            </connector>
+            <label>Status Changed to Progressive</label>
+        </rules>
+        <rules>
+            <name>stage_Booked</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.StageName</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Reg Scheduled</stringValue>
+                    <stringValue>Booked</stringValue>
                 </rightValue>
             </conditions>
             <conditions>
@@ -541,35 +677,56 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Registration_Schedule_Record_type</targetReference>
+                <targetReference>get_Lead_Quote</targetReference>
             </connector>
-            <label>Registration Schedule</label>
+            <label>stage Booked</label>
         </rules>
-    </decisions>
-    <decisions>
-        <name>check_Funding_Type</name>
-        <label>check Funding Type</label>
-        <locationX>1634</locationX>
-        <locationY>539</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Own_Fund</name>
+            <name>Registered_Stage</name>
             <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Registered</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
             <conditions>
                 <leftValueReference>$Record.Funding_Type__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Own Fund</stringValue>
+                    <stringValue>Bank Fund</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Sub_Document_Type__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Original Sale Deed</stringValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Stage_Changes_to_AOS</targetReference>
+                <targetReference>Copy_1_of_Copy_1_of_Custom_Notification</targetReference>
             </connector>
-            <label>Own Fund</label>
+            <label>Registered Stage</label>
         </rules>
         <rules>
-            <name>Bank_Fund</name>
+            <name>Funding_type_Update_to_Bank_Fund</name>
             <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Funding_Type__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
             <conditions>
                 <leftValueReference>$Record.Funding_Type__c</leftValueReference>
                 <operator>EqualTo</operator>
@@ -578,16 +735,82 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Stage_Changes_to_Loan</targetReference>
+                <targetReference>Update_Stage_to_Loan_Process</targetReference>
             </connector>
-            <label>Bank Fund</label>
+            <label>Funding type Update to Bank Fund</label>
+        </rules>
+        <rules>
+            <name>Stage_Changed_to_Reg_Scheduled</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Reg Scheduled</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Registration_Schedule_Record_type</targetReference>
+            </connector>
+            <label>Stage Changed to Reg Scheduled</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>check_Ids</name>
+        <label>check Ids</label>
+        <locationX>3350</locationX>
+        <locationY>1679</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>IdsListNotNull</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>assignloanandfinanceuserids</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>send_notification1</targetReference>
+            </connector>
+            <label>IdsListNotNull</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>check_lead_quote</name>
+        <label>check lead quote</label>
+        <locationX>2822</locationX>
+        <locationY>647</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>isNotNull</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>get_Lead_Quote</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>update_Lead_Stage</targetReference>
+            </connector>
+            <label>isNotNull</label>
         </rules>
     </decisions>
     <decisions>
         <name>Check_Loan_Manager_user</name>
         <label>Check Loan Manager user</label>
-        <locationX>2910</locationX>
-        <locationY>863</locationY>
+        <locationX>4494</locationX>
+        <locationY>971</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Loan_Manager_User_is_Null</name>
@@ -606,10 +829,32 @@
         </rules>
     </decisions>
     <decisions>
+        <name>check_Profiles</name>
+        <label>check Profiles</label>
+        <locationX>3779</locationX>
+        <locationY>755</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>isNotNullProfiles</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>get_Loan_and_Finance_Profile</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>loop_on_profiles</targetReference>
+            </connector>
+            <label>isNotNullProfiles</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Check_user</name>
         <label>Check user</label>
-        <locationX>2294</locationX>
-        <locationY>863</locationY>
+        <locationX>1502</locationX>
+        <locationY>971</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>isDocumentationManager</name>
@@ -628,9 +873,31 @@
         </rules>
     </decisions>
     <decisions>
+        <name>check_Users</name>
+        <label>check Users</label>
+        <locationX>3548</locationX>
+        <locationY>1271</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>isNotNullUsers</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Loan_and_Finance_Manager_User</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>loop_on_users</targetReference>
+            </connector>
+            <label>isNotNullUsers</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Decision_8</name>
         <label>Null Check BR Task</label>
-        <locationX>3438</locationX>
+        <locationX>2030</locationX>
         <locationY>863</locationY>
         <defaultConnector>
             <targetReference>Sales_Deed_Record_Type</targetReference>
@@ -655,7 +922,7 @@
     <decisions>
         <name>Inserted_Updated</name>
         <label>Inserted/Updated</label>
-        <locationX>3548</locationX>
+        <locationX>4340</locationX>
         <locationY>323</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -689,7 +956,7 @@
     <decisions>
         <name>Null_Check_DM_Sales_Deed</name>
         <label>Null Check DM Sales Deed</label>
-        <locationX>3438</locationX>
+        <locationX>2030</locationX>
         <locationY>1487</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -711,7 +978,7 @@
     <decisions>
         <name>Null_Check_RS_Task</name>
         <label>Null Check RS Task</label>
-        <locationX>3966</locationX>
+        <locationX>5022</locationX>
         <locationY>863</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -741,8 +1008,8 @@
     <loops>
         <name>loop_on_Loan_Manager</name>
         <label>loop on Loan Manager</label>
-        <locationX>2778</locationX>
-        <locationY>971</locationY>
+        <locationX>4362</locationX>
+        <locationY>1079</locationY>
         <collectionReference>getUser_of_Loan_Manager</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -750,6 +1017,34 @@
         </nextValueConnector>
         <noMoreValuesConnector>
             <targetReference>create_Loan_Process_Task</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>loop_on_profiles</name>
+        <label>loop on profiles</label>
+        <locationX>3548</locationX>
+        <locationY>863</locationY>
+        <collectionReference>get_Loan_and_Finance_Profile</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>assign_Profiles</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Loan_and_Finance_Manager_User</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>loop_on_users</name>
+        <label>loop on users</label>
+        <locationX>3350</locationX>
+        <locationY>1379</locationY>
+        <collectionReference>Loan_and_Finance_Manager_User</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>assign_users_Ids</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>check_Ids</targetReference>
         </noMoreValuesConnector>
     </loops>
     <processMetadataValues>
@@ -774,8 +1069,8 @@
     <recordCreates>
         <name>create_Loan_Process_Task</name>
         <label>create Loan Process Task</label>
-        <locationX>2778</locationX>
-        <locationY>1271</locationY>
+        <locationX>4362</locationX>
+        <locationY>1379</locationY>
         <connector>
             <targetReference>Copy_1_of_getCustomNotification</targetReference>
         </connector>
@@ -815,8 +1110,8 @@
     <recordCreates>
         <name>create_Task</name>
         <label>create Task</label>
-        <locationX>2162</locationX>
-        <locationY>1079</locationY>
+        <locationX>1370</locationX>
+        <locationY>1187</locationY>
         <connector>
             <targetReference>getCustomNotification</targetReference>
         </connector>
@@ -850,7 +1145,7 @@
     <recordCreates>
         <name>Documentation_Manager_Sales_Deed</name>
         <label>Documentation Manager Sales Deed</label>
-        <locationX>3306</locationX>
+        <locationX>1898</locationX>
         <locationY>1595</locationY>
         <inputAssignments>
             <field>OwnerId</field>
@@ -871,6 +1166,12 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Initiated</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Subject</field>
             <value>
                 <stringValue>Sale Deed</stringValue>
@@ -888,7 +1189,7 @@
     <recordCreates>
         <name>Initiate_the_Board_of_Resolution</name>
         <label>Initiate the Board of Resolution</label>
-        <locationX>3306</locationX>
+        <locationX>1898</locationX>
         <locationY>971</locationY>
         <connector>
             <targetReference>Sales_Deed_Record_Type</targetReference>
@@ -912,6 +1213,12 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Initiated</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Subject</field>
             <value>
                 <stringValue>Initiate the Board of Resolution</stringValue>
@@ -929,7 +1236,7 @@
     <recordCreates>
         <name>Initiate_the_Registration_Schedule</name>
         <label>Initiate the Registration Schedule</label>
-        <locationX>3834</locationX>
+        <locationX>4890</locationX>
         <locationY>971</locationY>
         <inputAssignments>
             <field>OwnerId</field>
@@ -950,6 +1257,12 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Initiated</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Subject</field>
             <value>
                 <stringValue>Initiate the Registration Schedule</stringValue>
@@ -967,7 +1280,7 @@
     <recordLookups>
         <name>Account_Manager_Profile</name>
         <label>Account Manager Profile</label>
-        <locationX>3438</locationX>
+        <locationX>2030</locationX>
         <locationY>647</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -988,7 +1301,7 @@
     <recordLookups>
         <name>Account_Manager_User</name>
         <label>Account Manager User</label>
-        <locationX>3438</locationX>
+        <locationX>2030</locationX>
         <locationY>755</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1009,7 +1322,7 @@
     <recordLookups>
         <name>BR_Task_Record_Type</name>
         <label>BR Task Record Type</label>
-        <locationX>3438</locationX>
+        <locationX>2030</locationX>
         <locationY>539</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1042,10 +1355,52 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
+        <name>Copy_1_of_Copy_1_of_Custom_Notification</name>
+        <label>Copy 1 of Copy 1 of Custom Notification</label>
+        <locationX>3779</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>get_Loan_and_Finance_Profile</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Opportunity_Notification</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>CustomNotificationType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Copy_1_of_Custom_Notification</name>
+        <label>Copy 1 of Custom Notification</label>
+        <locationX>2426</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>get_RecordType_for_Loan_in_Task</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Opportunity_Notification</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>CustomNotificationType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Copy_1_of_getCustomNotification</name>
         <label>Copy 1 of getCustomNotification</label>
-        <locationX>2778</locationX>
-        <locationY>1379</locationY>
+        <locationX>4362</locationX>
+        <locationY>1487</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Copy_1_of_sendNotificationToDocumentationManager</targetReference>
@@ -1107,7 +1462,7 @@
     <recordLookups>
         <name>Documentation_Manager</name>
         <label>Documentation Manager Profile</label>
-        <locationX>3438</locationX>
+        <locationX>2030</locationX>
         <locationY>1271</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1128,7 +1483,7 @@
     <recordLookups>
         <name>Documentation_Manager_User</name>
         <label>Documentation Manager User</label>
-        <locationX>3438</locationX>
+        <locationX>2030</locationX>
         <locationY>1379</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1147,10 +1502,59 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
+        <name>get_Lead_Quote</name>
+        <label>get Lead Quote</label>
+        <locationX>2822</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>check_lead_quote</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Opportunity__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Quote__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_Loan_and_Finance_Profile</name>
+        <label>get Loan and Finance Profile</label>
+        <locationX>3779</locationX>
+        <locationY>647</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>check_Profiles</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Accounts Executive</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Loan Manager</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Profile</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>get_Loan_Process_Task_s_Record_Type</name>
         <label>get Loan Process Task&apos;s Record Type</label>
-        <locationX>2910</locationX>
-        <locationY>539</locationY>
+        <locationX>4494</locationX>
+        <locationY>647</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>getProfile_of_Loan_Manager</targetReference>
@@ -1214,8 +1618,8 @@
     <recordLookups>
         <name>get_Record_Type</name>
         <label>get Record Type</label>
-        <locationX>2294</locationX>
-        <locationY>539</locationY>
+        <locationX>1502</locationX>
+        <locationY>647</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>getProfile</targetReference>
@@ -1247,6 +1651,62 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
+        <name>get_RecordType_for_Loan_in_Task</name>
+        <label>get RecordType for Loan in Task</label>
+        <locationX>2426</locationX>
+        <locationY>647</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>get_Related_Task</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Task</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Loan</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_Related_Task</name>
+        <label>get Related Task</label>
+        <locationX>2426</locationX>
+        <locationY>755</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Add_Loan_Manager_User</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>get_RecordType_for_Loan_in_Task.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>WhatId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Task</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>getContact</name>
         <label>getContact</label>
         <locationX>314</locationX>
@@ -1270,8 +1730,8 @@
     <recordLookups>
         <name>getCustomNotification</name>
         <label>getCustomNotification</label>
-        <locationX>2162</locationX>
-        <locationY>1187</locationY>
+        <locationX>1370</locationX>
+        <locationY>1295</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>sendNotificationToDocumentationManager</targetReference>
@@ -1291,8 +1751,8 @@
     <recordLookups>
         <name>getProfile</name>
         <label>getProfile</label>
-        <locationX>2294</locationX>
-        <locationY>647</locationY>
+        <locationX>1502</locationX>
+        <locationY>755</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>getUser</targetReference>
@@ -1312,8 +1772,8 @@
     <recordLookups>
         <name>getProfile_of_Loan_Manager</name>
         <label>getProfile of Loan Manager</label>
-        <locationX>2910</locationX>
-        <locationY>647</locationY>
+        <locationX>4494</locationX>
+        <locationY>755</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>getUser_of_Loan_Manager</targetReference>
@@ -1333,8 +1793,8 @@
     <recordLookups>
         <name>getUser</name>
         <label>getUser</label>
-        <locationX>2294</locationX>
-        <locationY>755</locationY>
+        <locationX>1502</locationX>
+        <locationY>863</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_user</targetReference>
@@ -1361,8 +1821,8 @@
     <recordLookups>
         <name>getUser_of_Loan_Manager</name>
         <label>getUser of Loan Manager</label>
-        <locationX>2910</locationX>
-        <locationY>755</locationY>
+        <locationX>4494</locationX>
+        <locationY>863</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_Loan_Manager_user</targetReference>
@@ -1380,9 +1840,30 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
+        <name>Loan_and_Finance_Manager_User</name>
+        <label>Loan and Finance Manager User</label>
+        <locationX>3548</locationX>
+        <locationY>1163</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>check_Users</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ProfileId</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>assignFinanceandloanmanagerprofileids</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>User</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Registration_Manager_Profile</name>
         <label>Registration Manager Profile</label>
-        <locationX>3966</locationX>
+        <locationX>5022</locationX>
         <locationY>647</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1403,7 +1884,7 @@
     <recordLookups>
         <name>Registration_Manager_User</name>
         <label>Registration Manager User</label>
-        <locationX>3966</locationX>
+        <locationX>5022</locationX>
         <locationY>755</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1424,7 +1905,7 @@
     <recordLookups>
         <name>Registration_Schedule_Record_type</name>
         <label>Registration Schedule Record type</label>
-        <locationX>3966</locationX>
+        <locationX>5022</locationX>
         <locationY>539</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1459,7 +1940,7 @@
     <recordLookups>
         <name>Sales_Deed_Record_Type</name>
         <label>Sales Deed Record Type</label>
-        <locationX>3438</locationX>
+        <locationX>2030</locationX>
         <locationY>1163</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1507,25 +1988,15 @@
     <recordUpdates>
         <name>Stage_Changes_to_AOS</name>
         <label>Stage Changes to AOS</label>
-        <locationX>1370</locationX>
-        <locationY>647</locationY>
+        <locationX>1502</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>get_Record_Type</targetReference>
+        </connector>
         <inputAssignments>
             <field>StageName</field>
             <value>
                 <stringValue>AOS</stringValue>
-            </value>
-        </inputAssignments>
-        <inputReference>$Record</inputReference>
-    </recordUpdates>
-    <recordUpdates>
-        <name>Stage_Changes_to_Loan</name>
-        <label>Stage Changes to Loan</label>
-        <locationX>1634</locationX>
-        <locationY>647</locationY>
-        <inputAssignments>
-            <field>StageName</field>
-            <value>
-                <stringValue>Loan Process</stringValue>
             </value>
         </inputAssignments>
         <inputReference>$Record</inputReference>
@@ -1543,8 +2014,69 @@
         </inputAssignments>
         <inputReference>$Record</inputReference>
     </recordUpdates>
+    <recordUpdates>
+        <name>update_Lead_Stage</name>
+        <label>update Lead Stage</label>
+        <locationX>2690</locationX>
+        <locationY>755</locationY>
+        <connector>
+            <targetReference>update_plot_status</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>get_Lead_Quote.Lead__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Booked</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>update_plot_status</name>
+        <label>update plot status</label>
+        <locationX>2690</locationX>
+        <locationY>863</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>get_Lead_Quote.Plot__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status__c</field>
+            <value>
+                <stringValue>Booked</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Unit__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Stage_to_Loan_Process</name>
+        <label>Update Stage to Loan Process</label>
+        <locationX>4494</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>get_Loan_Process_Task_s_Record_Type</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>StageName</field>
+            <value>
+                <stringValue>Loan Process</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
     <start>
-        <locationX>3422</locationX>
+        <locationX>4214</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Inserted_Updated</targetReference>
@@ -1553,7 +2085,7 @@
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <textTemplates>
         <name>OnboardingTitle</name>
         <isViewedAsPlainText>false</isViewedAsPlainText>
@@ -1561,9 +2093,23 @@
     </textTemplates>
     <textTemplates>
         <name>OnboardNotificationBody</name>
-        <isViewedAsPlainText>false</isViewedAsPlainText>
-        <text>&lt;p&gt;Opportunity {!$Record.Name} &lt;strong&gt;Onboarded&lt;/strong&gt; &lt;strong&gt;Successfully &lt;/strong&gt;&lt;/p&gt;</text>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Opportunity: {!$Record.Name} Onboarded Successfully</text>
     </textTemplates>
+    <variables>
+        <name>assignFinanceandloanmanagerprofileids</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>assignloanandfinanceuserids</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
     <variables>
         <name>contactEmail</name>
         <dataType>String</dataType>

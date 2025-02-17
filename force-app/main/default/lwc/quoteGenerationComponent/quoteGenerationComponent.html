@@ -1,84 +1,91 @@
 <template>
-    <div class="mainBody" style="margin:20px">
-    <div class="plotDetails">
-        <div style="margin:0.5rem">
-            <lightning-record-picker 
-                label="Search a Plot"
-                object-api-name="Unit__c" 
-                value={selectedRecordId}
-                onchange={handleRecordSelection}
-                placeholder="Enter Plot Name..."
-                class="slds-m-bottom_medium">
-            </lightning-record-picker>
-        </div>
+    <template if:false={showQuoteList}>
+        <div class="mainBody" style="margin:20px">
+            <div class="plotDetails">
+                <div style="margin:0.5rem">
+                    <lightning-record-picker label="Search a Plot" object-api-name="Unit__c" value={selectedRecordId}
+                        onchange={handleRecordSelection} placeholder="Enter Plot Name..." class="slds-m-bottom_medium"
+                        filter={recordFilter}>
+                    </lightning-record-picker>
+                </div>
 
-        <!-- Selected Unit Details Section -->
-        <template if:true={showUnitDetails}>
-            <template if:true={unit.data}>
-                <div style="margin-left:10px; margin-right:10px"> 
-                        <div class="slds-grid slds-gutters">
-                            <div class="slds-col">
-                                <span><p><strong>Plot Name:</strong> {unit.data.fields.Name.value}</p></span>
-                            </div>
-                            <div class="slds-col">
-                                <span><p><strong>Plot Code:</strong> {unit.data.fields.Unit_Code__c.value}</p></span>
-                            </div>
-                            <div class="slds-col">
-                                <span><p><strong>Plot Facing:</strong> {unit.data.fields.Plot_Facing__c.value}</p></span>
-                            </div>
-                            <div class="slds-col">
-                                <span><p><strong>Plot Size:</strong> {unit.data.fields.Plot_Size__c.value}</p></span>
-                            </div>
-                            <div class="slds-col">
-                                <span><p><strong>Plot Status:</strong> {unit.data.fields.Status__c.value}</p></span>
-                            </div>
-                            <div class="slds-col">
-                                <span><p><strong>Phase Name:</strong> {phaseName}</p></span>
+                <!-- Selected Unit Details Section -->
+                <template if:true={showUnitDetails}>
+                    <template if:true={unit.data}>
+                        <div style="margin-left:10px; margin-right:10px">
+                            <div class="slds-grid slds-gutters">
+                                <div class="slds-col">
+                                    <span><p><strong>Plot Name:</strong> {unit.data.fields.Name.value}</p></span>
+                                </div>
+                                <div class="slds-col">
+                                    <span><p><strong>Plot Code:</strong> {unit.data.fields.Unit_Code__c.value}</p></span>
+                                </div>
+                                <div class="slds-col">
+                                    <span><p><strong>Plot Facing:</strong> {unit.data.fields.Plot_Facing__c.value}</p></span>
+                                </div>
+                                <div class="slds-col">
+                                    <span><p><strong>Plot Size:</strong> {unit.data.fields.Plot_Size__c.value}</p></span>
+                                </div>
+                                <div class="slds-col">
+                                    <span><p><strong>Plot Status:</strong> {unit.data.fields.Status__c.value}</p></span>
+                                </div>
+                                <div class="slds-col">
+                                    <span><p><strong>Phase Name:</strong> {phaseName}</p></span>
+                                </div>
                             </div>
                         </div>
-                </div>
 
-                <div class="slds-text-align_center" style="margin-top:10px;margin-bottom: 10px;">
-                    <lightning-button 
-                        label="Add Plot" 
-                        onclick={handleAddClick} 
-                        variant="brand" 
-                        class="slds-m-bottom_medium custom-button">
-                    </lightning-button>
+                        <div class="slds-text-align_center" style="margin-top:10px;margin-bottom: 10px;">
+                            <lightning-button label="Add Plot" onclick={handleAddClick} variant="brand"
+                                class="slds-m-bottom_medium custom-button">
+                            </lightning-button>
+                        </div>
+
+                    </template>
+                </template>
+
+            </div>
+
+
+            <template if:true={records.length}>
+                <div class="tbaleDetails">
+                    <lightning-card title="Selected Plots" icon-name="standard:connected_apps"
+                        class="slds-m-around_medium">
+                        <div class="datatable-container">
+                            <lightning-datatable key-field="id" data={records} columns={columns}
+                                hide-checkbox-column="true" onrowaction={handleRowAction} class="datatable">
+                            </lightning-datatable>
+                        </div>
+                        <div class="slds-text-align_center" style="margin-top:20px">
+                            <lightning-button label="Generate Quote" onclick={handleSaveClick} variant="brand">
+                            </lightning-button>
+                        </div>
+                    </lightning-card>
                 </div>
-                
             </template>
-        </template>
 
-    </div>
-
-    
-    <template if:true={records.length}>
-        <div class="tbaleDetails">
-        <lightning-card 
-        title="Selected Plots" 
-        icon-name="standard:connected_apps" 
-        class="slds-m-around_medium">
-        <div class="datatable-container">
-            <lightning-datatable
-                key-field="id"
-                data={records}
-                columns={columns}
-                hide-checkbox-column="true"
-                onrowaction={handleRowAction}
-                class="datatable">
-            </lightning-datatable>
-        </div>
-        <div class="slds-text-align_center" style="margin-top:20px">
-            <lightning-button 
-                label="Generate Quote" 
-                onclick={handleSaveClick} 
-                variant="brand">
-            </lightning-button>
-        </div>
-        </lightning-card>
         </div>
     </template>
 
+    <template if:true={showQuoteList}>
+
+
+        <template if:true={quoteList.length}>
+    <div class="container">
+        <h2 class="header">Click Here To Open Quote Records</h2>
+        <ul class="quote-list">
+            <template for:each={quoteList} for:item="quote">
+                <li key={quote.Id} class="quote-item">
+                    <a href="javascript:void(0)" data-id={quote.Id} onclick={navigateToQuote} class="quote-link">
+                        {quote.Quote_Name__c}
+                    </a>
+                </li>
+            </template>
+        </ul>
     </div>
+</template>
+
+
+
+    </template>
 </template>

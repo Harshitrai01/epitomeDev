@@ -294,7 +294,11 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
         const gardenCells = this.gardenData ? JSON.parse(this.gardenData) : [];
         const roadCells = this.roadData ? JSON.parse(this.roadData) : [];
     
-        // let currentSection = { sc: 1, k: [] };
+        this.grid = [];
+        this.tempGrid = [];
+        this.columnNames = [''];
+
+        // let currentSection = { sc: 1, rM: [] };
         // let rowCount = 0;
         // let sectionNumber = 1;
     
@@ -341,7 +345,7 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
         //         }
         //     }
     
-        //     currentSection.k.push(row);
+        //     currentSection.rM.push(row);
         //     rowCount++;
     
         //     // If max rows per section reached, create a new section
@@ -349,15 +353,14 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
         //         this.grid.push(currentSection);
         //         if (i !== this.rows) {
         //             sectionNumber++;
-        //             currentSection = { sc: sectionNumber, k: [] };
+        //             currentSection = { sc: sectionNumber, rM: [] };
         //             rowCount = 0;
         //         }
         //     }
         // }
-        let currentSection = { sc: 1, k: [] };
-        let rowCount = 0;
         let sectionNumber = 1;
-        let columnGroupCounter = 1;
+        let currentSection = { sc: sectionNumber, rM: [] };
+        let rowCount = 0;
 
         for (let i = 1; i <= this.rows; i++) {
             const row = { Rw: i, Co: [] };
@@ -399,38 +402,37 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
                 }
 
                 currentColumnGroup.cols.push(cellData);
-                columnCount=+5;
+                columnCount++;
 
-           //     if (columnCount === 5 || j === this.columns) {
-                if (columnCount === 5  ) {
-                   // console.log('409 '+i);
+            //    if (columnCount === 5 || j === this.columns) {
+                if (columnCount == 5 ) {
                     row.Co.push({ ck: `${i}${columnGroupIndex}`, cols: currentColumnGroup.cols });
                     columnGroupIndex++;
                     currentColumnGroup = { ck: `${i}${columnGroupIndex}`, cols: [] };
                     columnCount = 0;
                 }
-               
+                   
                 if (i === 1) {
                     this.columnNames.push(columnName);
                 }
             }
 
-            currentSection.k.push(row);
+            currentSection.rM.push(row);
             rowCount++;
 
-            // if (rowCount === 5 || i === this.rows) {
-            if (rowCount === 5) {
+            if (rowCount === 10 || i === this.rows) {
+            // if (rowCount === 5) {
                 this.grid.push(currentSection); 
                 if (i !== this.rows) {
                     sectionNumber++;
-                    currentSection = { sc: sectionNumber, k: [] };
+                    currentSection = { sc: sectionNumber, rM: [] };
                     rowCount = 0;
                 }
             }
 
            // console.log('426 '+JSON.stringify(this.grid));
         }
-
+    
     
         this.setOptionsAndValues();
         this.tempGrid = structuredClone(this.grid);
@@ -490,7 +492,7 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
             // if (this.previousRowId && this.previousColumnKey && this.previousSectorId && this.previousColumnGroupKey) {
             //     const prevSector = this.grid.find(sec => sec.sc === this.previousSectorId);
             //     if (prevSector) {
-            //         const previousRow = prevSector.k.find(r => r.Rw === this.previousRowId);
+            //         const previousRow = prevSector.rM.find(r => r.Rw === this.previousRowId);
             //         if (previousRow) {
             //             const previousColumnGroup = previousRow.Co.find(cg => cg.ck === this.previousColumnGroupKey);
             //             if (previousColumnGroup) {
@@ -507,7 +509,7 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
             // // Find the sector, row, and cell
             // const sector = this.grid.find(sec => sec.sc === sectorId);
             // if (sector) {
-            //     const row = sector.k.find(r => r.Rw === rowId);
+            //     const row = sector.rM.find(r => r.Rw === rowId);
             //     if (row) {
             //         const columnGroup = row.Co.find(cg => cg.ck === columnGroupKey);
             //         const cell = columnGroup.cols.find(c => c.id === columnKey);
@@ -540,7 +542,7 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
             // console.log('prevSector-->',prevSector);
             
             if (prevSector) {
-                const previousRow = prevSector.k.find(r => r.Rw === this.previousRowId);
+                const previousRow = prevSector.rM.find(r => r.Rw === this.previousRowId);
                 if (previousRow) {
                     const previousColumnGroup = previousRow.Co.find(cg => cg.ck === this.previousColumnGroupKey);
                     if (previousColumnGroup) {
@@ -555,7 +557,7 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
             // Update current selection
             const sector = sectorMap.get(sectorId);
             if (sector) {
-                const row = sector.k.find(r => r.Rw === rowId);
+                const row = sector.rM.find(r => r.Rw === rowId);
                 if (row) {
                     const columnGroup = row.Co.find(cg => cg.ck === columnGroupKey);
             if (columnGroup) {
@@ -633,75 +635,136 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
             // console.log('multi-->');
 
             // const cellKey = `${sectorId}-${rowId}-${columnKey}-${columnGroupKey}`;
-            const cellObj = { sc: sectorId, ck: columnGroupKey, Rw: rowId, Co: columnKey, pId: plotId ? plotId : '' };
-            const isSelect = this.multiSelectedCells.some(cell => cell.Rw === cellObj.Rw && cell.Co === cellObj.Co);
+           
+           
+           
+            // const cellObj = { sc: sectorId, ck: columnGroupKey, Rw: rowId, Co: columnKey, pId: plotId ? plotId : '' };
+            // const isSelect = this.multiSelectedCells.some(cell => cell.Rw === cellObj.Rw && cell.Co === cellObj.Co);
 
-            if (isSelect) {
-                    this.multiSelectedCells = this.multiSelectedCells.filter(cell => !(cell.Rw === cellObj.Rw && cell.Co === cellObj.Co));
-            } else {
-                this.multiSelectedCells.push(cellObj);
-            }
-            const sector = this.grid.find(sec => sec.sc === sectorId);
-            console.log('sec--->'+ JSON.ssector);
+            // if (isSelect) {
+            //         this.multiSelectedCells = this.multiSelectedCells.filter(cell => !(cell.Rw === cellObj.Rw && cell.Co === cellObj.Co));
+            // } else {
+            //     this.multiSelectedCells.push(cellObj);
+            // }
+            // const sector = this.grid.find(sec => sec.sc === sectorId);
+          
             
-            if (sector) {
-                const row = sector.k.find(r => r.Rw === rowId);
-                if (row) {
-                    const cellGroup = row.Co.find(cg => cg.ck === columnGroupKey); // Ensure correct column group
-                    if (cellGroup) {
-                        const cell = cellGroup.cols.find(c => c.id === columnKey);
-                        if (cell) {
-                            cell.st = 'ml'; // Assigning color on multi-selecting the cell
-                        }
-                    }
-                }
-            }
-            console.log('--->',JSON.stringify(cellObj));
+            // if (sector) {
+            //     const row = sector.rM.find(r => r.Rw === rowId);
+            //     if (row) {
+            //         const cellGroup = row.Co.find(cg => cg.ck === columnGroupKey); // Ensure correct column group
+            //         if (cellGroup) {
+            //             const cell = cellGroup.cols.find(c => c.id === columnKey);
+            //             if (cell) {
+            //                 cell.st = 'ml'; // Assigning color on multi-selecting the cell
+            //             }
+            //         }
+            //     }
+            // }
+            // console.log('--->',JSON.stringify(cellObj));
             
-            // Optimize debounce for smooth UI updates
-            if (this.timeoutId) {
-                clearTimeout(this.timeoutId);
-            }
+            // // Optimize debounce for smooth UI updates
+            // if (this.timeoutId) {
+            //     clearTimeout(this.timeoutId);
+            // }
 
+            // this.timeoutId = setTimeout(() => {
+            //     // Ensure previous selection is reset
+
+            //     if (this.previousColumnKey) {
+            //         console.log('-------- > '+this.previousColumnKey + ' --- here');
+            //         const previousSector = this.grid.find(sec => sec.sc === this.previousSectorId);
+            //         if (previousSector) {
+            //             const previousRow = previousSector.rM.find(r => r.Rw === this.previousRowId);
+            //             if (previousRow) {
+            //                 const previousCellGroup = previousRow.Co.find(cg => cg.ck === this.previousColumnGroupKey);
+            //                 const previousCell = previousCellGroup.cols.find(c => c.id === this.previousColumnKey);
+            //                 if (previousCell) {
+            //                     previousCell.Pv = false;
+            //                     // previousCell.iPV = false;
+            //                 }
+            //             }
+            //         }
+            //     }
+
+            //     const sector = this.grid.find(sec => sec.sc === sectorId);
+            
+            //     if (sector) {
+            //         const row = sector.rM.find(r => r.Rw === rowId); // Fetch the row inside the sector
+            //         if (row) {
+            //             const cellGroup = row.Co.find(cg => cg.ck === columnGroupKey); // Ensure correct column group
+            //             if (cellGroup) {
+            //                 const cell = cellGroup.cols.find(c => c.id === columnKey); // Find the specific cell
+            //                 if (cell) {
+            //                     cell.Pv = !cell.Pv; // Toggle cell property
+            //                 }
+            //             }
+            //         }
+            //     }
+
+            //     // Save previous selection
+            //     this.previousSectorId = sectorId;
+            //     this.previousRowId = rowId;
+            //     this.previousColumnGroupKey = columnGroupKey;
+            //     this.previousColumnKey = columnKey;
+
+            //     // Ensure only modified parts of the grid are updated
+            //     this.tempGrid = structuredClone(this.grid);
+            // }, 100); // Reduced debounce for better responsiveness
+            const cellObj = { sc: sectorId, ck: columnGroupKey, Rw: rowId, Co: columnKey, pId: plotId };
+    
+            // Toggle selection state
+            const isSelected = this.multiSelectedCells.some(cell => cell.Rw === rowId && cell.Co === columnKey);
+            this.multiSelectedCells = isSelected
+                ? this.multiSelectedCells.filter(cell => !(cell.Rw === rowId && cell.Co === columnKey))
+                : [...this.multiSelectedCells, cellObj];
+            console.log('sss');
+            
+            // Retrieve sector, row, cellGroup, and cell efficiently using Maps
+            const sector = this.gridMap.get(sectorId);
+            const rowObj = sector?.rM?.get(rowId);
+            const cellGroup = rowObj?.Co?.get(columnGroupKey);
+            const cell = cellGroup?.cols?.get(columnKey);
+    
+            if (cell) {
+                cell.st = 'ml'; // Assign color on multi-select
+            }
+    
+            console.log('--->', JSON.stringify(cellObj));
+            console.log('multiSelectedCells--->', JSON.stringify(this.multiSelectedCells));
+    
+            // Optimize debounce for UI updates
+            if (this.timeoutId) clearTimeout(this.timeoutId);
+    
             this.timeoutId = setTimeout(() => {
-                // Ensure previous selection is reset
+                // Reset previous selection
                 if (this.previousColumnKey) {
-                    const previousSector = this.grid.find(sec => sec.sc === this.previousSectorId);
-                    if (previousSector) {
-                        const previousRow = previousSector.k.find(r => r.Rw === this.previousRowId);
-                        if (previousRow) {
-                            const previousCellGroup = previousRow.Co.find(cg => cg.ck === this.previousColumnGroupKey);
-                            const previousCell = previousCellGroup.cols.find(c => c.id === this.previousColumnKey);
-                            if (previousCell) {
-                                previousCell.Pv = false;
-                                // previousCell.iPV = false;
-                            }
-                        }
-                    }
+                    console.log('Reset previous ->', this.previousColumnKey);
+                    const prevSector = this.gridMap.get(this.previousSectorId);
+                    const prevRow = prevSector?.rM?.get(this.previousRowId);
+                    const prevCellGroup = prevRow?.Co?.get(this.previousColumnGroupKey);
+                    const prevCell = prevCellGroup?.cols?.get(this.previousColumnKey);
+    
+                    if (prevCell) prevCell.Pv = false;
                 }
-                const sector = this.grid.find(sec => sec.sc === sectorId);
-                if (sector) {
-                    const row = sector.k.find(r => r.Rw === rowId); // Fetch the row inside the sector
-                    if (row) {
-                        const cellGroup = row.Co.find(cg => cg.ck === columnGroupKey); // Ensure correct column group
-                        if (cellGroup) {
-                            const cell = cellGroup.cols.find(c => c.id === columnKey); // Find the specific cell
-                            if (cell) {
-                                cell.Pv = !cell.Pv; // Toggle cell property
-                            }
-                        }
-                    }
-                }
-
+    
+                // Update current selection
+                const currentSector = this.gridMap.get(sectorId);
+                const currentRow = currentSector?.rM?.get(rowId);
+                const currentCellGroup = currentRow?.Co?.get(columnGroupKey);
+                const currentCell = currentCellGroup?.cols?.get(columnKey);
+    
+                if (currentCell) currentCell.Pv = !currentCell.Pv;
+    
                 // Save previous selection
                 this.previousSectorId = sectorId;
                 this.previousRowId = rowId;
                 this.previousColumnGroupKey = columnGroupKey;
                 this.previousColumnKey = columnKey;
-
+    
                 // Ensure only modified parts of the grid are updated
                 this.tempGrid = structuredClone(this.grid);
-            }, 1500); // Reduced debounce for better responsiveness
+            }, 1000); // Reduced debounce time for better responsiveness
             console.log('multiSelectedCells-->', JSON.stringify(this.multiSelectedCells));
         } else{
             this.multiSelectedCells = [];
@@ -929,7 +992,7 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
             if (sector.sc === sectorId) {
                 return {
                     ...sector,
-                    k: sector.k.map(row => {
+                    rM: sector.rM.map(row => {
                         if (row.Rw === rowId) {
                             return {
                                 ...row,

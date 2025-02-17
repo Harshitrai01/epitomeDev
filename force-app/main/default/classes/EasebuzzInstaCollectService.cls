@@ -1,5 +1,10 @@
+/**
+* Author: Harshit Kumar Rai
+* Description: For Creation Of Virtual Account Details
+*/
+
 public class EasebuzzInstaCollectService {
-    private static final String API_URL = 'https://stoplight.io/mocks/easebuzz/neobanking/141702012/api/v1/insta-collect/virtual_accounts/';
+    private static String API_URL;
     private static String MERCHANT_KEY;
     private static String MERCHANT_SALT;
     
@@ -8,13 +13,15 @@ public class EasebuzzInstaCollectService {
     }
     
     private static void initializeMetadata() {
-        List<Integration__mdt> integrations = [SELECT DeveloperName, InstaCollectKey__c, InstaCollectSalt__c 
+        List<Integration__mdt> integrations = [SELECT DeveloperName, InstaCollectKey__c, InstaCollectSalt__c,
+                                               Easebuzz_Instacollect_Create_VA__c
                                                FROM Integration__mdt 
                                                WHERE DeveloperName = 'testDashboard' LIMIT 1];
         if (!integrations.isEmpty()) {
             Integration__mdt integration = integrations[0];
             MERCHANT_KEY = integration.InstaCollectKey__c;
             MERCHANT_SALT = integration.InstaCollectSalt__c;
+            API_URL = integration.Easebuzz_Instacollect_Create_VA__c;
         }
     }
     

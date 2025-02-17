@@ -3,7 +3,7 @@
     <actionCalls>
         <name>Send_Custom_Notification_to_Users</name>
         <label>Send Custom Notification to Users</label>
-        <locationX>270</locationX>
+        <locationX>314</locationX>
         <locationY>2039</locationY>
         <actionName>customNotificationAction</actionName>
         <actionType>customNotificationAction</actionType>
@@ -56,6 +56,54 @@
         </assignmentItems>
         <connector>
             <targetReference>loop_over_Opportunity</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_the_Owner</name>
+        <label>Assign the Owner</label>
+        <locationX>1256</locationX>
+        <locationY>755</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Task.OwnerId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Task_Owner_to_User</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Copy_2_of_Lead_capacity_Assignment</name>
+        <label>Copy 2 of Lead capacity Assignment</label>
+        <locationX>992</locationX>
+        <locationY>755</locationY>
+        <assignmentItems>
+            <assignToReference>capacity</assignToReference>
+            <operator>Subtract</operator>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Capacity</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Lead_capacity_Assignment</name>
+        <label>Lead capacity Assignment</label>
+        <locationX>992</locationX>
+        <locationY>647</locationY>
+        <assignmentItems>
+            <assignToReference>capacity</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>get_user.Capacity__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Copy_2_of_Lead_capacity_Assignment</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -169,6 +217,29 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Check_if_Task_is_Null</name>
+        <label>Check if Task is Null</label>
+        <locationX>1388</locationX>
+        <locationY>647</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Task_is_not_Null</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Task</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_the_Owner</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Task is not Null</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Check_Opportunity_Owner_is_queue</name>
         <label>Check Opportunity Owner is queue</label>
         <locationX>864</locationX>
@@ -221,8 +292,11 @@
     <decisions>
         <name>Lead_New_or_Updated</name>
         <label>Lead New or Updated</label>
-        <locationX>723</locationX>
+        <locationX>921</locationX>
         <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Lead_Updated_Conditions</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Lead Updated</defaultConnectorLabel>
         <rules>
             <name>Lead_New</name>
@@ -238,6 +312,71 @@
                 <targetReference>Check_Duplicate</targetReference>
             </connector>
             <label>Lead New</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Lead_Updated_Conditions</name>
+        <label>Lead Updated Conditions</label>
+        <locationX>1388</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Status_Update</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Unopened</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Unopened</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>get_user</targetReference>
+            </connector>
+            <label>Status Update</label>
+        </rules>
+        <rules>
+            <name>Owner_Changed_to_User_in_Site_Visit_Scheduled_Status</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Site Visit Schedule</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.OwnerId</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.OwnerId</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>005</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Task</targetReference>
+            </connector>
+            <label>Owner Changed to User in Site Visit Scheduled Status</label>
         </rules>
     </decisions>
     <environments>Default</environments>
@@ -284,7 +423,7 @@
     <recordLookups>
         <name>get_Custom_Notification</name>
         <label>get Custom Notification</label>
-        <locationX>270</locationX>
+        <locationX>314</locationX>
         <locationY>1931</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -323,8 +462,78 @@
         <object>Opportunity</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordLookups>
+        <name>Get_Task</name>
+        <label>Get Task</label>
+        <locationX>1388</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_Task_is_Null</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>WhoId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Task</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_user</name>
+        <label>get user</label>
+        <locationX>992</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Lead_capacity_Assignment</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Capacity</name>
+        <label>Update Capacity</label>
+        <locationX>992</locationX>
+        <locationY>863</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Capacity__c</field>
+            <value>
+                <elementReference>capacity</elementReference>
+            </value>
+        </inputAssignments>
+        <object>User</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Task_Owner_to_User</name>
+        <label>Update Task Owner to User</label>
+        <locationX>1256</locationX>
+        <locationY>863</locationY>
+        <inputReference>Get_Task</inputReference>
+    </recordUpdates>
     <start>
-        <locationX>597</locationX>
+        <locationX>795</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Lead_New_or_Updated</targetReference>
@@ -341,6 +550,17 @@
                Lead Details:Lead Source: {!$Record.LeadSource}
                Lead Sub-Source: {!$Record.Sub_Source__c}</text>
     </textTemplates>
+    <variables>
+        <name>capacity</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+        <value>
+            <numberValue>0.0</numberValue>
+        </value>
+    </variables>
     <variables>
         <name>ownerIds</name>
         <dataType>String</dataType>

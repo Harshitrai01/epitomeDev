@@ -31,6 +31,16 @@ export default class PlotSwapping extends LightningElement {
     records=[];
     isLoading=false;
 
+    recordFilter = {
+       criteria: [
+           {
+               fieldPath: 'Status__c',
+               operator: 'eq',
+               value: 'Available'
+           }
+       ]
+   };
+
     @wire(CurrentPageReference)
     getStateParameters(currentPageReference) {
         if (currentPageReference) {
@@ -61,30 +71,35 @@ export default class PlotSwapping extends LightningElement {
         const newRecord = {
                 id: this.wireRecordId,
                 plotRecordId: this.selectedRecordId,
-                basePricePerSqYard: this.unit.data.fields.Base_Price_per_Sq_Ft__c.value
+                basePricePerSqYard: this.unit.data.fields.Base_Price_per_Sq_Ft__c.value,
+                plotName:this.unit.data.fields.Name.value
             };
         this.records = [...this.records, newRecord];
-        const oppRecords = this.records.map(record => ({
-                Id: this.wireRecordId,
-                Unit__c: record.plotRecordId
-        }));
-        console.log('Record To Save-->',oppRecords);
-        saveOpportunity({oppRecords})
-            .then((result) => {
-                console.log('Opp Records-->>',result);
-                const quoteRecords = this.records.map(record => ({
+        // const oppRecords = this.records.map(record => ({
+        //         Id: this.wireRecordId,
+        //         Unit__c: record.plotRecordId
+        // }));
+        const quoteRecords = this.records.map(record => ({
                     Opportunity__c: this.wireRecordId,
                     Plot__c: record.plotRecordId,
-                    Base_Price_Per_Sq_Yard__c:record.basePricePerSqYard
+                    Base_Price_Per_Sq_Yard__c:record.basePricePerSqYard,
+                    Time_To_Pay_In_Days__c:30
                 }));
-                this.saveQuote(quoteRecords);
-                this.isLoading=false;
-            })
-            .catch(error => {
-                this.isLoading=false;
-                console.error('Error updating quote records', error);
-                this.showToast('Error',error.body.message,'error');
-            });
+        this.saveQuote(quoteRecords);
+        // console.log('Record To Save-->',oppRecords);
+        // saveOpportunity({oppRecords})
+        //     .then((result) => {
+        //         console.log('Opp Records-->>',result);
+                
+                
+        //         this.isLoading=false;
+        //     })
+        //     .catch(error => {
+        //         this.isLoading=false;
+        //         this.records=[];
+        //         console.error('Error updating quote records', error);
+        //         this.showToast('Error',error.body.message,'error');
+        //     });
     }
 
     saveQuote(quoteRecords){
@@ -93,6 +108,7 @@ export default class PlotSwapping extends LightningElement {
             .then((result) => {
                 console.log('Qouote Records-->>',result);
                 this.isLoading=false;
+                this.dispatchEvent(new CloseActionScreenEvent());
                 this.showToast('Success','Quote Generated Successfully.','success');
                 result.forEach(record => {
                         this.navigateToQuote(record.Id);

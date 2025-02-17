@@ -1,4 +1,8 @@
-public class refundPaymentController {
+/**
+* Author: Harshit Kumar Rai
+* Description: For payment refund controller
+*/
+public with sharing class refundPaymentController {
     @AuraEnabled
     public static void getPaymentsByOpportunity(Id opportunityId) {
         List<Payment__c> payments = new List<Payment__c>();
@@ -10,8 +14,13 @@ public class refundPaymentController {
             }
             payments = [
                 SELECT Id, Name, Payment_Status__c, Approval_Status__c, Payment_Amount__c, Payment_Easepay_Id__c, Email_Address__c,Is_Refund_Success__c, Phone__c FROM Payment__c 
-                WHERE Opportunity__c=:opportunityId AND Payment_Status__c='success' AND Approval_Status__c='Approved' AND Is_Refund_Success__c=false
+                WHERE Opportunity__c=:opportunityId AND Payment_Status__c='success' AND Approval_Status__c='Approved' AND Is_Refund_Success__c=false AND Amount_To_Refund__c!=null
             ];
+            if(payments.isEmpty()){
+                error='No Payment Found, Payment Status Should Be Success And Aprroval Should Be Approved';
+                throw new AuraHandledException(error);
+            }
+            
             for (Payment__c payment : payments) {
                 List<String> missingFields = new List<String>();
                 if (String.isBlank(payment.Payment_Easepay_Id__c)) {

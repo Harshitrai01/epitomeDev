@@ -8,10 +8,12 @@ trigger opportunityTrigger on Opportunity (after insert, after update) {
             Opportunity oldOpp = Trigger.oldMap.get(opp.Id);
             if (oldOpp.Refund_Status__c != opp.Refund_Status__c && opp.Refund_Status__c == 'Initiate') {
                 try {
-                    refundPaymentController.getPaymentsByOpportunity(opp.Id);
+                    //refundPaymentController.getPaymentsByOpportunity(opp.Id);
                 } catch (Exception ex) {
                     throw new AuraHandledException(ex.getMessage());
                 }
+            }else if(oldOpp.StageName != opp.StageName && opp.StageName == 'Cancellation'){
+                refundPaymentController.submitForApproval(opp.Id);
             }
         }
     }

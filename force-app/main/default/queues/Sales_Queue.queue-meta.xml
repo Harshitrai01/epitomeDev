@@ -4,6 +4,7 @@
     <name>Sales Queue</name>
     <queueMembers>
         <users>
+            <user>dolly.bindal@saasworx.ai</user>
             <user>varun.rawal@saasworx.ai.epitome</user>
         </users>
     </queueMembers>

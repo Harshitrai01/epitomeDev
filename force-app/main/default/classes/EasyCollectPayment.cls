@@ -1,13 +1,24 @@
-public class EasyCollectPayment {
+/**
+* Author: Harshit Kumar Rai
+* Description: For Payment Integration
+*/
+public with sharing class EasyCollectPayment {
     
     public static String key;
     public static String salt;
+    public static String refundStatus;
+    public static String initiateRefund;
+    public static String transactinDetails;
+    public static String createPaymentLink;
+    
     static {
         initializeMetadata();
     }
     
     private static void initializeMetadata() {
-        List<Integration__mdt> integrations = [SELECT DeveloperName, EasyCollectKey__c, EasyCollectSalt__c
+        List<Integration__mdt> integrations = [SELECT DeveloperName, EasyCollectKey__c, EasyCollectSalt__c,Easebuzz_Refund_Status_Url__c,
+                                               Easebuzz_Initiate_Refund_Url__c,Easebuzz_Get_Transaction_Details_Url__c,
+                                               Easebuzz_Create_Payment_Link_Url__c
                                                FROM Integration__mdt 
                                                WHERE DeveloperName = 'testDashboard' LIMIT 1];
         
@@ -15,13 +26,18 @@ public class EasyCollectPayment {
             Integration__mdt integration = integrations[0];
             key = integration.EasyCollectKey__c;
             salt = integration.EasyCollectSalt__c;
+            refundStatus = integration.Easebuzz_Refund_Status_Url__c;
+            initiateRefund = integration.Easebuzz_Initiate_Refund_Url__c;
+            transactinDetails = integration.Easebuzz_Get_Transaction_Details_Url__c;
+            createPaymentLink = integration.Easebuzz_Create_Payment_Link_Url__c;
+            
         }
     }
     
     @AuraEnabled
     public static ResponseWrapper createPaymentLink(String name, String amount, String phone, String email, String expiryTime, String oppId, String contactId) {
         
-        String url = 'https://testdashboard.easebuzz.in/easycollect/v1/create';
+        String url = createPaymentLink;
         PaymentRequest paymentRequest = new PaymentRequest();
         paymentRequest.key = key;
         paymentRequest.name = name;
@@ -88,10 +104,12 @@ public class EasyCollectPayment {
                     return responseWrapper;
                 } else {
                     error='Error: Status Code: ' + response.getStatusCode() + ', ' + responseMap.get('error');
+                    LogUtility.doLogError(request.getBody(), response.getBody(), response.getStatusCode(), error, error, error, error, error);
                     throw new AuraHandledException(error);
                 }
             } else {
                 error='HTTP Error: Status Code: ' + response.getStatusCode() + ', ' + responseMap.get('error');
+                LogUtility.doLogError(request.getBody(), response.getBody(), response.getStatusCode(), error, error, error, error, error);
                 throw new AuraHandledException(error);
             }
         } catch (Exception ex) {
@@ -112,8 +130,10 @@ public class EasyCollectPayment {
             	String email = (String) data.get('email');
             	String paymentUrl = (String) data.get('payment_url');
             	String oppId = (String) data.get('oppId');
+                String amount = (String) data.get('amount');
             	Payment__c payment = new Payment__c(
                 Payment_Amount__c = Decimal.valueOf((String) data.get('amount')),
+                Percent_Of_Amount_To_Refund__c=100,
                 Email_Address__c = email,
                 Merchant_Transaction_Id__c = (String) data.get('merchant_txn'),
                 Opportunity__c = (String) data.get('oppId'),
@@ -131,10 +151,10 @@ public class EasyCollectPayment {
             
             List<Opportunity> oppList = [Select Id, Name, Unit__r.Virtual_Account_Name__c, Unit__r.Virtual_Account_Number__c,
                                          Unit__r.Virtual_Account_UPI__c, Unit__r.Virtual_Account_IFSC__c,
-                                         Unit__r.UPI_QR_Image__c
+                                         Unit__r.UPI_QR_Image__c,Unit__r.Name,First_Booking_Amount__c,Unit__r.Phase__r.Name
                                          From Opportunity Where Id=:oppId Limit 1];
             
-            sendPaymentLinkEmail(email,paymentUrl,oppList[0].Unit__r.Virtual_Account_Name__c,oppList[0].Unit__r.Virtual_Account_Number__c,oppList[0].Unit__r.Virtual_Account_IFSC__c,oppList[0].Unit__r.Virtual_Account_UPI__c,oppList[0].Unit__r.UPI_QR_Image__c);
+            sendPaymentLinkEmail(email,paymentUrl,oppList[0].Unit__r.Virtual_Account_Name__c,oppList[0].Unit__r.Virtual_Account_Number__c,oppList[0].Unit__r.Virtual_Account_IFSC__c,oppList[0].Unit__r.Virtual_Account_UPI__c,oppList[0].Unit__r.UPI_QR_Image__c,oppList[0].Unit__r.Name,oppList[0].Unit__r.Phase__r.Name,String.ValueOf(oppList[0].First_Booking_Amount__c));
            }
         } catch (Exception e) {
             System.debug('Error inserting payment record: ' + e.getMessage());
@@ -142,8 +162,23 @@ public class EasyCollectPayment {
         }
     }
     
-    public static void sendPaymentLinkEmail(String recipientEmail, String paymentLink, String accountName, String accountNumber, String ifscCode, String upiId, String qrImageUrl) {
+    public static void sendPaymentLinkEmail(String recipientEmail, String paymentLink, String accountName, String accountNumber, String ifscCode, String upiId, String qrImageUrl, String plotName, String phaseName, String amount) {
         try {
+            EmailTemplate template = [SELECT HtmlValue FROM EmailTemplate WHERE DeveloperName = 'Terms_and_Conditions' LIMIT 1];
+            String termsAndConditions = template.HtmlValue;
+            if(phaseName==null){
+                phaseName='';
+            }
+            if(plotName==null){
+                plotName='';
+            }
+            if (termsAndConditions != null) {
+            	termsAndConditions = termsAndConditions
+                            .replace('{!Opportunity.Phase_Name__c}', phaseName)
+                            .replace('{!Opportunity.Plot_Name__c}', plotName)
+                            .replace('{!Opportunity.First_Booking_Amount__c}', amount);
+            }
+            
             Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
             email.setToAddresses(new String[] { recipientEmail });
             email.setSubject('Payment Link - Epitome Projects LLP');
@@ -176,6 +211,8 @@ public class EasyCollectPayment {
                     + '<p style="margin-top: 20px;"><strong>Warm Regards,</strong><br/>Epitome Projects LLP</p>'
                     
                     + '</div>'
+                    + '<hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">'
+        			+ '<div style="font-size: 14px; color: #777;">' + termsAndConditions + '</div>'
                     + '</body></html>';
             }else{
                 htmlBody = '<html>'
@@ -189,10 +226,10 @@ public class EasyCollectPayment {
                     + '<p style="margin-top: 20px;"><strong>Warm Regards,</strong><br/>Epitome Projects LLP</p>'
                     
                     + '</div>'
+                    + '<hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">'
+        			+ '<div style="font-size: 14px; color: #777;">' + termsAndConditions + '</div>'
                     + '</body></html>';
-                
             }
-            
             email.setHtmlBody(htmlBody);
             Messaging.sendEmail(new Messaging.SingleEmailMessage[] { email });
         } catch (Exception ex) {
@@ -202,7 +239,7 @@ public class EasyCollectPayment {
     
     public static String initiateRefund(String txnid, Decimal amount, String email, String phone, String paymentId) {
         
-        String url = 'https://testdashboard.easebuzz.in/transaction/v1/refund';
+        String url = initiateRefund;
         String error='';
         Decimal refundAmount= amount;
         if (String.valueOf(refundAmount).endsWith('.00')) {
@@ -300,7 +337,7 @@ public class EasyCollectPayment {
         
         Http http = new Http();
         HttpRequest request = new HttpRequest();
-        request.setEndpoint('https://testdashboard.easebuzz.in/refund/v1/retrieve');
+        request.setEndpoint(refundStatus);
         request.setMethod('POST');
         request.setHeader('Content-Type', 'application/json');
         request.setHeader('Accept', 'application/json');
@@ -403,7 +440,7 @@ public class EasyCollectPayment {
         String hash = generateSHA512Hash(inputString);
         
         HttpRequest req = new HttpRequest();
-        req.setEndpoint('https://testdashboard.easebuzz.in/transaction/v1/retrieve');
+        req.setEndpoint(transactinDetails);
         req.setMethod('POST');
         req.setHeader('Content-Type', 'application/x-www-form-urlencoded');
         req.setHeader('Accept', 'application/json');

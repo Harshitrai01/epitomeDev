@@ -3,10 +3,13 @@
     <actionCalls>
         <name>Notification_To_Lead</name>
         <label>Notification To Lead</label>
-        <locationX>638</locationX>
+        <locationX>1326</locationX>
         <locationY>755</locationY>
         <actionName>customNotificationAction</actionName>
         <actionType>customNotificationAction</actionType>
+        <connector>
+            <targetReference>Check_when_Stage_is_changed</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>customNotifTypeId</name>
@@ -44,10 +47,13 @@
     <actionCalls>
         <name>Send_Email_to_Customer</name>
         <label>Send Email to Customer</label>
-        <locationX>374</locationX>
+        <locationX>798</locationX>
         <locationY>1079</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>Update_Lead_Record</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>senderAddress</name>
@@ -86,7 +92,7 @@
     <assignments>
         <name>Assignment</name>
         <label>Assignment</label>
-        <locationX>638</locationX>
+        <locationX>1326</locationX>
         <locationY>647</locationY>
         <assignmentItems>
             <assignToReference>RecipentIds</assignToReference>
@@ -100,9 +106,82 @@
         </connector>
     </assignments>
     <decisions>
+        <name>Check_for_Stage_Value</name>
+        <label>Check for Stage Value</label>
+        <locationX>908</locationX>
+        <locationY>1895</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_for_stage_value_Booked</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Booked</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Null_check_for_plot</targetReference>
+            </connector>
+            <label>Check for stage value Booked</label>
+        </rules>
+        <rules>
+            <name>Check_for_Stage_value_Blocked</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Blocked</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Lost/Dropped</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Null_check_for_plot_blocked_stage</targetReference>
+            </connector>
+            <label>Check for Stage value Blocked</label>
+        </rules>
+        <rules>
+            <name>Check_for_Stage_value_Registration</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Reg Initiate</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Reg Scheduled</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Registered</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Null_check_for_plot_registration_stage</targetReference>
+            </connector>
+            <label>Check for Stage value Registration</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Check_isNew</name>
         <label>Check isNew?</label>
-        <locationX>176</locationX>
+        <locationX>908</locationX>
         <locationY>323</locationY>
         <defaultConnector>
             <targetReference>Update_Decision</targetReference>
@@ -118,47 +197,138 @@
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
+            <connector>
+                <targetReference>Check_for_Stage_Value</targetReference>
+            </connector>
             <label>New Opportuinity</label>
         </rules>
     </decisions>
     <decisions>
-        <name>Update_Decision</name>
-        <label>Update Decision</label>
-        <locationX>506</locationX>
-        <locationY>431</locationY>
+        <name>Check_when_Stage_is_changed</name>
+        <label>Check when Stage is changed</label>
+        <locationX>1194</locationX>
+        <locationY>1511</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>X10_Updated</name>
+            <name>when_stage_is_changed</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.X10_Collected__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.X10_Collected__c</leftValueReference>
+                <leftValueReference>$Record.StageName</leftValueReference>
                 <operator>IsChanged</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
+            <connector>
+                <targetReference>Check_for_Stage_Value</targetReference>
+            </connector>
+            <label>when stage is changed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Null_check_for_Lead</name>
+        <label>Null check for Lead</label>
+        <locationX>182</locationX>
+        <locationY>2303</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_for_lead_not_null</name>
+            <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.Collected_Amount__c</leftValueReference>
-                <operator>GreaterThanOrEqualTo</operator>
+                <leftValueReference>$Record.Lead__c</leftValueReference>
+                <operator>IsNull</operator>
                 <rightValue>
-                    <numberValue>100000.0</numberValue>
+                    <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Update_Stage_to_Booked</targetReference>
+                <targetReference>Update_Lead_record_to_Booked</targetReference>
             </connector>
-            <label>10% Updated</label>
+            <label>Check for lead not null</label>
         </rules>
+    </decisions>
+    <decisions>
+        <name>Null_check_for_plot</name>
+        <label>Null check for plot</label>
+        <locationX>182</locationX>
+        <locationY>2003</locationY>
+        <defaultConnector>
+            <targetReference>Null_check_for_Lead</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_for_Plot_not_null</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Unit__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Plot_record_to_Booked</targetReference>
+            </connector>
+            <label>Check for Plot not null</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Null_check_for_plot_blocked_stage</name>
+        <label>Null check for plot blocked stage</label>
+        <locationX>710</locationX>
+        <locationY>2003</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_for_Plot_not_null_2</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Unit__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_plot_stage_to_available</targetReference>
+            </connector>
+            <label>Check for Plot not null 2</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Null_check_for_plot_registration_stage</name>
+        <label>Null check for plot registration stage</label>
+        <locationX>1238</locationX>
+        <locationY>2003</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_for_Plot_not_null_3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Unit__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Plot_stage_to_sold</targetReference>
+            </connector>
+            <label>Check for Plot not null 3</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Update_Decision</name>
+        <label>Update Decision</label>
+        <locationX>1194</locationX>
+        <locationY>431</locationY>
+        <defaultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Check_for_Stage_Value</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Status_Updated_to_Dropped</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>1 AND (2 OR 3 OR 4)</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.StageName</leftValueReference>
                 <operator>IsChanged</operator>
@@ -171,6 +341,20 @@
                 <operator>EqualTo</operator>
                 <rightValue>
                     <stringValue>Lost/Dropped</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Blocked</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cancellation</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -250,7 +434,7 @@
     <recordLookups>
         <name>Get_Contact_Records</name>
         <label>Get Contact Records</label>
-        <locationX>374</locationX>
+        <locationX>798</locationX>
         <locationY>971</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -273,7 +457,7 @@
     <recordLookups>
         <name>get_Email_Template_for_Dropped</name>
         <label>get Email Template for Dropped</label>
-        <locationX>374</locationX>
+        <locationX>798</locationX>
         <locationY>863</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -294,7 +478,7 @@
     <recordLookups>
         <name>get_Organization_Wide_Address</name>
         <label>get Organization Wide Address</label>
-        <locationX>374</locationX>
+        <locationX>798</locationX>
         <locationY>755</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -315,7 +499,7 @@
     <recordLookups>
         <name>GetRecordsCustomNotification</name>
         <label>GetRecordsCustomNotification</label>
-        <locationX>638</locationX>
+        <locationX>1326</locationX>
         <locationY>539</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -334,22 +518,117 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
-        <name>Update_Stage_to_Booked</name>
-        <label>Update Stage to Booked</label>
-        <locationX>110</locationX>
-        <locationY>539</locationY>
+        <name>Update_Lead_Record</name>
+        <label>Update Lead Record</label>
+        <locationX>798</locationX>
+        <locationY>1187</locationY>
+        <connector>
+            <targetReference>Check_when_Stage_is_changed</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Lead_Quote__r.Lead__c</elementReference>
+            </value>
+        </filters>
         <inputAssignments>
-            <field>StageName</field>
+            <field>Status</field>
+            <value>
+                <stringValue>Post Visit Lost</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Lead_record_to_Booked</name>
+        <label>Update Lead record to Booked</label>
+        <locationX>50</locationX>
+        <locationY>2411</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Lead__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status</field>
             <value>
                 <stringValue>Booked</stringValue>
             </value>
         </inputAssignments>
-        <inputReference>$Record</inputReference>
+        <object>Lead</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Plot_record_to_Booked</name>
+        <label>Update Plot record to Booked</label>
+        <locationX>50</locationX>
+        <locationY>2111</locationY>
+        <connector>
+            <targetReference>Null_check_for_Lead</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Unit__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status__c</field>
+            <value>
+                <stringValue>Booked</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Unit__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_plot_stage_to_available</name>
+        <label>Update plot stage to available</label>
+        <locationX>578</locationX>
+        <locationY>2111</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Unit__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status__c</field>
+            <value>
+                <stringValue>Available</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Unit__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Plot_stage_to_sold</name>
+        <label>Update Plot stage to sold</label>
+        <locationX>1106</locationX>
+        <locationY>2111</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+        </filters>
+        <inputAssignments>
+            <field>Status__c</field>
+            <value>
+                <stringValue>Sold</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Unit__c</object>
     </recordUpdates>
     <recordUpdates>
         <name>update_Unit_field_to_Null_on_Opportunity_Record</name>
         <label>update Unit field to Null on Opportunity Record</label>
-        <locationX>374</locationX>
+        <locationX>798</locationX>
         <locationY>647</locationY>
         <connector>
             <targetReference>get_Organization_Wide_Address</targetReference>
@@ -362,7 +641,7 @@
     <recordUpdates>
         <name>update_unit_status_to_available</name>
         <label>update unit status to available</label>
-        <locationX>374</locationX>
+        <locationX>798</locationX>
         <locationY>539</locationY>
         <connector>
             <targetReference>update_Unit_field_to_Null_on_Opportunity_Record</targetReference>
@@ -384,7 +663,7 @@
         <object>Unit__c</object>
     </recordUpdates>
     <start>
-        <locationX>50</locationX>
+        <locationX>782</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Check_isNew</targetReference>

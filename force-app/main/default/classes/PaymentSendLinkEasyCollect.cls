@@ -1,38 +1,28 @@
+/**
+* Author: Harshit Kumar Rai
+* Description: For Payment Send Link In Batches
+*/
 global class PaymentSendLinkEasyCollect implements Database.Batchable<sObject>, Database.AllowsCallouts{
     
     private List<Opportunity> oppList;
-    Map<String,String> oppContactIdMap = New Map<String,String>();
-    Map<String,Decimal> contactIdAmountMap = New Map<String,Decimal>();
-    List<Id>conId = New List<Id>();
-    
     public PaymentSendLinkEasyCollect(List<Opportunity> opp) {
         this.oppList=opp;
-        List<Opportunity> listOfOpp = [Select Id,ContactId,First_Booking_Amount__c From Opportunity Where Id IN :oppList AND ContactId!=null AND First_Booking_Amount__c!=null];
-        
-        for(Opportunity o:listOfOpp){
-            oppContactIdMap.put(o.ContactId,o.Id);
-            contactIdAmountMap.put(o.ContactId,o.First_Booking_Amount__c);
-            conId.add(o.ContactId);
-        }
     }
     
     global Database.QueryLocator start(Database.BatchableContext BC) {
-        return Database.getQueryLocator([SELECT Id, Name, Email, Phone
-                                         FROM Contact 
-                                         WHERE Id IN :conId AND Name!=null AND Email!=null AND Phone!=null]);
+        return Database.getQueryLocator(
+            [Select Id, Contact__c, Contact__r.Name, Contact__r.Email, Contact__r.Phone,
+             First_Booking_Amount__c From Opportunity 
+             Where Id IN :oppList AND Contact__c!=null AND First_Booking_Amount__c!=null]);
     }
     
-    global void execute(Database.BatchableContext BC, List<Contact> contactRecords) {
+    global void execute(Database.BatchableContext BC, List<Opportunity> oppRecords) {
         List<String>reponses = New List<String>();
-        for(Contact con: contactRecords){
-            if(oppContactIdMap.ContainsKey(con.Id) && contactIdAmountMap.ContainsKey(con.Id)){
-                String amount = String.ValueOf(contactIdAmountMap.get(con.Id));
-                String oppId = oppContactIdMap.get(con.Id);
-                String res = JSON.serialize(EasyCollectPayment.createPaymentLink(con.Name,amount,con.Phone,con.Email,'30', oppId, con.Id));
+        for(Opportunity opp: oppRecords){
+            if(opp.Contact__c!=null && opp.Contact__r.Name!=null && opp.Contact__r.Email!=null && opp.Contact__r.Phone!=null){
+                String res = JSON.serialize(EasyCollectPayment.createPaymentLink(opp.Contact__r.Name,String.ValueOf(opp.First_Booking_Amount__c),opp.Contact__r.Phone,opp.Contact__r.Email,'30', opp.Id, opp.Contact__c));
                 Map<String, Object> responseMap = (Map<String, Object>) JSON.deserializeUntyped(res);
                 Boolean status = (Boolean) responseMap.get('isSuccess');
-                System.Debug('Map'+responseMap);
-                System.Debug('Status'+status);
                 if(status){
                     String responseValue = (String) responseMap.get('response');
                     reponses.add(responseValue);
@@ -59,6 +49,7 @@ global class PaymentSendLinkEasyCollect implements Database.Batchable<sObject>, 
                     oppToEmail.put(oppId,email);
                     Payment__c payment = new Payment__c(
                         Payment_Amount__c = Decimal.valueOf((String) data.get('amount')),
+                        Percent_Of_Amount_To_Refund__c=100,
                         Email_Address__c = email,
                         Merchant_Transaction_Id__c = (String) data.get('merchant_txn'),
                         Opportunity__c = (String) data.get('oppId'),
@@ -73,11 +64,6 @@ global class PaymentSendLinkEasyCollect implements Database.Batchable<sObject>, 
                         Phone__c=(String) data.get('phone')
                     );
                     paymentListToInsert.add(payment);
-                    
-                    
-                    
-                    //EasebuzzInstaCollectService.sendPaymentLinkEmail(email,paymentUrl,oppList[0].Unit__r.Virtual_Account_Name__c,oppList[0].Unit__r.Virtual_Account_Number__c,oppList[0].Unit__r.Virtual_Account_IFSC__c,oppList[0].Unit__r.Virtual_Account_UPI__c,oppList[0].Unit__r.UPI_QR_Image__c);
-                    
                 }
             } catch (Exception e) {
                 System.debug('Error inserting payment record: ' + e.getMessage());
@@ -87,7 +73,7 @@ global class PaymentSendLinkEasyCollect implements Database.Batchable<sObject>, 
         
         List<Opportunity> oppListForSendingMail = [Select Id, Name, Unit__r.Virtual_Account_Name__c, Unit__r.Virtual_Account_Number__c,
                                                    Unit__r.Virtual_Account_UPI__c, Unit__r.Virtual_Account_IFSC__c,
-                                                   Unit__r.UPI_QR_Image__c
+                                                   Unit__r.UPI_QR_Image__c,Unit__r.Name,First_Booking_Amount__c,Unit__r.Phase__r.Name
                                                    From Opportunity Where Id IN :oppListId];
         
         List<PaymentDetails> paymentDetailsList = New List<PaymentDetails>();
@@ -102,6 +88,9 @@ global class PaymentSendLinkEasyCollect implements Database.Batchable<sObject>, 
             pd.ifscCode=opp.Unit__r.Virtual_Account_IFSC__c;
             pd.upiId=opp.Unit__r.Virtual_Account_UPI__c;
             pd.qrImageUrl=opp.Unit__r.UPI_QR_Image__c;
+            pd.plotName=opp.Unit__r.Name;
+            pd.phaseName=opp.Unit__r.Phase__r.Name;
+            pd.firstAmount=opp.First_Booking_Amount__c;
             paymentDetailsList.add(pd);
         }
         
@@ -112,6 +101,21 @@ global class PaymentSendLinkEasyCollect implements Database.Batchable<sObject>, 
             
             for (PaymentDetails details : paymentDetailsList) {
                 try {
+                    EmailTemplate template = [SELECT HtmlValue FROM EmailTemplate WHERE DeveloperName = 'Terms_and_Conditions' LIMIT 1];
+                    String termsAndConditions = template.HtmlValue;
+                    if(details.phaseName==null){
+                        details.phaseName='';
+                    }
+                    if(details.plotName==null){
+                        details.plotName='';
+                    }
+                    if (termsAndConditions != null) {
+                        termsAndConditions = termsAndConditions
+                            .replace('{!Opportunity.Phase_Name__c}', details.phaseName)
+                            .replace('{!Opportunity.Plot_Name__c}', details.plotName)
+                            .replace('{!Opportunity.First_Booking_Amount__c}', String.ValueOf(details.firstAmount));
+                    }
+                    
                     Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
                     email.setToAddresses(new String[]{details.recipientEmail});
                     email.setSubject('Payment Link - Epitome Projects LLP');
@@ -138,6 +142,8 @@ global class PaymentSendLinkEasyCollect implements Database.Batchable<sObject>, 
                             + '</div>'
                             + '<p style="margin-top: 20px;"><strong>Warm Regards,</strong><br/>Epitome Projects LLP</p>'
                             + '</div>'
+                            + '<hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">'
+        					+ '<div style="font-size: 14px; color: #777;">' + termsAndConditions + '</div>'
                             + '</body></html>';
                     } else {
                         htmlBody = '<html>'
@@ -149,9 +155,10 @@ global class PaymentSendLinkEasyCollect implements Database.Batchable<sObject>, 
                             + '</div>'
                             + '<p style="margin-top: 20px;"><strong>Warm Regards,</strong><br/>Epitome Projects LLP</p>'
                             + '</div>'
+                            + '<hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">'
+        					+ '<div style="font-size: 14px; color: #777;">' + termsAndConditions + '</div>'
                             + '</body></html>';
                     }
-                    
                     email.setHtmlBody(htmlBody);
                     emails.add(email);
                 } catch (Exception ex) {
@@ -187,6 +194,9 @@ global class PaymentSendLinkEasyCollect implements Database.Batchable<sObject>, 
         public String ifscCode;
         public String upiId;
         public String qrImageUrl;
+        public String plotName;
+        public String phaseName;
+        public Decimal firstAmount;
     }
     
 }
