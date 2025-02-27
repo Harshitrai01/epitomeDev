@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Own Fund Payment Reminder</name>
+    <style>none</style>
+    <subject>Own Fund Payment Reminder</subject>
+    <textOnly>Payment Reminder
+
+Dear [Customer&apos;s Name],
+
+We hope this message finds you well. This is a friendly reminder regarding your outstanding payments for your unit at [Project Name] [Phase/Block].
+
+Due Amounts:
+
+Amount Due: ₹[Outstanding]
+
+Please ensure that the due amounts are paid at the earliest. If you have any questions or need further assistance, feel free to reach out to us.
+
+Warm regards,
+Epitome Projects LLP</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

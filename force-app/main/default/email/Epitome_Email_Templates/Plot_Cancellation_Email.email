@@ -1,0 +1,23 @@
+<p>Dear <strong>{!Opportunity.Account}</strong>,</p>
+
+    <p>We regret to inform you that your Unit booking at <strong>{!Opportunity.Phase_Name__c}-{!Opportunity.Plot_Name__c}</strong> has been cancelled. Below are the details of your cancelled booking:</p>
+
+    <p><strong>Unit Details:</strong></p>
+    <p><strong>Unit Number:</strong> {!Opportunity.Plot_Name__c}</p>
+    <p><strong>Unit Size:</strong>{!Opportunity.Plot_Size__c}</p>
+    <p><strong>Cancellation Date:</strong>{!Opportunity.Date_of_Cancellation__c}</p>
+
+    <p><strong>Refund Details:</strong></p>
+    <p><strong>Total Paid:</strong> {!Opportunity.Collected_Amount__c}</p>
+    <p><strong>Cancellation Charges:</strong> {!Opportunity.Cancellation_Charges__c}</p>
+    <p><strong>Total Refund Amount:</strong>  {!Opportunity.Amount_To_Refund__c}</p>
+    <p><strong>Refund Processing Duration:</strong> 1 to 90 days</p>
+
+    <p>Please fill out the attached refund document and submit it along with the necessary documents to <strong>{!Opportunity.OwnerEmail}</strong>.</p>
+
+    <p>Our team will process your refund promptly, and you will receive the refund within the specified duration. Should you have any questions or require further assistance, please do not hesitate to contact us.</p>
+
+    <p>We appreciate your understanding and apologize for any inconvenience this may cause.</p>
+
+    <p>Warm regards,</p>
+    <p><strong>Epitome Projects LLP</strong></p>

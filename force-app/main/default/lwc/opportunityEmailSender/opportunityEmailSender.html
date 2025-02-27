@@ -1,0 +1,62 @@
+<template>
+    <lightning-card title="Send Email with Attachment" icon-name="standard:email">
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading..." size="medium"></lightning-spinner>
+        </template>
+
+        <div class="form-container">
+            <!-- First Row: Contact Selection & Email Address -->
+            <div class="row">
+                <lightning-combobox 
+                    label="Select Contact" 
+                    options={contactOptions} 
+                    value={selectedContactId} 
+                    onchange={handleContactChange} 
+                    class="half-width">
+                </lightning-combobox>
+
+                <lightning-input 
+                    label="Email Address" 
+                    value={contactEmail} 
+                    disabled 
+                    class="half-width">
+                </lightning-input>
+            </div>
+
+            <!-- Second Row: Document Selection & Email Template Selection -->
+            <div class="row">
+                <lightning-combobox 
+                    label="Select Document" 
+                    options={documents} 
+                    value={selectedDocumentId} 
+                    onchange={handleDocumentSelect} 
+                    class="half-width">
+                </lightning-combobox>
+
+                <lightning-combobox 
+                    label="Select Email Template" 
+                    options={emailTemplates} 
+                    value={selectedTemplateId} 
+                    onchange={handleTemplateSelect} 
+                    class="half-width">
+                </lightning-combobox>
+            </div>
+
+            <!-- Third Row: Full-Width Email Body -->
+            <lightning-input-rich-text 
+                label="Email Body" 
+                value={emailBody} 
+                onchange={handleEmailChange} 
+                class="full-width">
+            </lightning-input-rich-text>
+            <!-- Send Email Button -->
+            <div class="slds-align_absolute-center slds-var-m-top_medium">
+                <lightning-button 
+                    label="Send Email" 
+                    variant="brand" 
+                    onclick={handleSendEmail}>
+                </lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

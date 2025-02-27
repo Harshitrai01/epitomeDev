@@ -1,0 +1,13 @@
+<p>Dear <strong>{!Opportunity.Account}</strong>,</p>
+
+    <p>Congratulations! We are pleased to inform you that your loan application has been sanctioned for <strong>{!Opportunity.Plot_Name__c}</strong> at <strong>{!Opportunity.Project_Name__c}-{!Opportunity.Phase_Name__c}</strong>.</p>
+
+    <p><strong>Payment Details:</strong></p>
+    <p><strong>Amount Paid:</strong> {!Opportunity.Collected_Amount__c}</p>
+    <p><strong>Loan Sanctioned Amount:</strong>{!Opportunity.Loan_Sanctioned_Amount__c} from <strong>{!Opportunity.Bank_Name__c}</strong></p>
+    <p><strong>Due Amount:</strong> {!Opportunity.Outstanding_Amount__c}</p>
+
+    <p>Our CRM team will contact you shortly to discuss the next steps and assist you with any questions you may have. If you need further assistance, please feel free to reach out to us.</p>
+
+    <p>Warm regards,</p>
+    <p><strong>Epitome Projects LLP</strong></p>

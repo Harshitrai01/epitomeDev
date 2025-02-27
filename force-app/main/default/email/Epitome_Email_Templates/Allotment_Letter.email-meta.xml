@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Allotment Letter</name>
+    <style>none</style>
+    <subject>ALLOTMENT LETTER</subject>
+    <textOnly>Dear Customer,
+
+We are pleased to confirm the allotment of [Plot/Flat] No. [0000] in the project [Project Name] situated at [Property Location] under the terms and conditions set forth by Epitome Projects LLP and in compliance with the Real Estate (Regulation and Development) Act, 2016 (RERA) as applicable in Telangana.
+
+Details of the Allotment:
+
+Project Name  [Epitome Integrated City]
+Plot/Flat No.  [Insert Plot/Flat Number]
+Area of the Plot/Flat  [Insert Area in Sq. Yards/Sq. Ft.]
+Total Rate Per Sq. Yard/Sq. Ft.  Rs. [Insert Rate]
+Total Cost of Plot/Flat  Rs. [Insert Total Amount]
+Amount Paid  Rs. [Insert Amount Paid]
+Balance Amount Payable  Rs. [Insert Remaining Amount]
+
+Allottee/s:
+
+[Insert Allottee Details]
+
+Warm Regards,
+
+Epitome Projects LLP</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

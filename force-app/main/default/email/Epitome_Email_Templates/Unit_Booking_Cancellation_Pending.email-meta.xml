@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Unit Booking Cancellation: - Pending</name>
+    <style>none</style>
+    <subject>Unit Booking Cancellation: - Pending</subject>
+    <textOnly>Unit Booking Cancellation
+
+Dear [Customer&apos;s Name],
+
+We regret to inform you that your unit booking at [Project Name] [Phase/Block] has been cancelled. Below are the details of your cancelled booking:
+
+Unit Details:
+
+Unit Number: [Unit Number]
+Unit Size: [Unit Size]
+Cancellation Date: [Date]
+
+Refund Details:
+
+Total Refund Amount: [Refund Amount]
+Refund Processing Duration: [Duration for Refund Processing]
+
+Please fill out the attached refund document and submit it along with the necessary documents to [Email Address].
+
+Our team will process your refund promptly, and you will receive the refund within the specified duration. Should you have any questions or require further assistance, please do not hesitate to contact us.
+
+We appreciate your understanding and apologize for any inconvenience this may cause.
+
+Warm regards,
+Epitome Projects LLP</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

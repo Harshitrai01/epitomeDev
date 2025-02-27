@@ -32,6 +32,20 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
     regPlot;
     soldPlot;
     tempBlockPlot;
+
+
+    inputValues = '';
+    // Main selection fields
+    startRow;
+    endRow;
+    startColumn;
+    endColumn;
+    // Exclusion fields
+    excludeRowStart;
+    excludeRowEnd;
+    excludeColumnStart;
+    excludeColumnEnd
+    
     multiSelect
     roadColor;
     gardenColor;
@@ -166,114 +180,6 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
         }
     }
 
-    // initializeGrid() {
-    //     this.template.host.style.setProperty('--available-plot-color', this.availablePlot);
-    //     this.template.host.style.setProperty('--hold-plot-color', this.holdPlot);
-    //     this.template.host.style.setProperty('--booked-plot-color', this.bookedPlot);
-    //     this.template.host.style.setProperty('--blockedPlot-plot-color', this.blockedPlot);
-    //     this.template.host.style.setProperty('--managBlockedPlot-plot-color', this.managBlockedPlot);
-    //     this.template.host.style.setProperty('--mortgagePlot-plot-color', this.mortgagePlot);
-    //     this.template.host.style.setProperty('--notForSalePlot-plot-color', this.notForSalePlot);
-    //     this.template.host.style.setProperty('--regPlot-plot-color', this.regPlot);
-    //     this.template.host.style.setProperty('--soldPlot-plot-color', this.soldPlot);
-    //     this.template.host.style.setProperty('--tempBlockPlot-plot-color', this.tempBlockPlot);
-    //     this.template.host.style.setProperty('--multiSelect-color', this.multiSelect);
-    //     this.template.host.style.setProperty('--road-color', this.roadColor);
-    //     this.template.host.style.setProperty('--garden-color', this.gardenColor);
-
-    //     this.grid = [];
-    //     this.tempGrid = [];
-    //     this.columnNames = [''];
-        
-    //     const plotCells = this.plotData ? JSON.parse(this.plotData) : [];
-    //     const gardenCells = this.gardenData ? JSON.parse(this.gardenData) : [];
-    //     const roadCells = this.roadData ? JSON.parse(this.roadData) : [];
-        
-    //     for (let i = 1; i <= this.rows; i++) {
-    //         const row = {
-    //             Rw: i,
-    //             Co: []
-    //         };
-
-    //         for (let j = 1; j <= this.columns; j++) {
-    //             let columnName = '';
-    //             let columnIndex = j;
-
-    //             while (columnIndex > 0) {
-    //                 const remainder = (columnIndex - 1) % 26;
-    //                 columnName = String.fromCharCode(65 + remainder) + columnName;
-    //                 columnIndex = Math.floor((columnIndex - 1) / 26);
-    //             }
-                
-    //             const cellId = `${columnName}${i}`;
-    //             const isPlot = plotCells.find(cell => cell.id === cellId);
-    //             const isGarden = gardenCells.find(cell => cell.id === cellId);
-    //             const isRoad = roadCells.find(cell => cell.id === cellId);
-    //             // let cellType = '';
-    //             // let cellBgColor = '';
-    //             // let pN = '';
-    //             // let pId = '';
-    //             // let pS = '';
-                
-    //             let cellData = {
-    //                 id: cellId,
-    //                 Pv: false,
-    //                 ty: '',
-    //                 st: '',
-    //                 z: ''
-    //             };
-    //             if (isPlot) {
-    //                 // cellType = 'Plot';
-    //                 // cellBgColor = this.getCellColor(isPlot.pS);
-    //                 // pS = isPlot.pS;
-    //                 // pN = isPlot.pN;
-    //                 // pId = isPlot.pId;
-    //                 cellData.ty = 'Plot';
-    //                 // cellData.st = `background-color: ${this.getCellColor(isPlot.pS)};`;
-    //                 cellData.st = isPlot.pS;
-    //                 cellData.pId = isPlot.pId;
-    //                 cellData.pN = isPlot.pN;
-    //                 cellData.pS = isPlot.pS;
-    //                 cellData.pF = isPlot.pF;
-    //                 cellData.z = isPlot.z;
-    //             } else if (isGarden) {
-    //                 // cellType = 'Garden';
-    //                 // cellBgColor = this.gardenColor;
-    //                 cellData.ty = 'Garden';
-    //                 cellData.st = 'gd';
-    //                 cellData.z = isGarden.z;
-    //             } else if (isRoad) {
-    //                 // cellType = 'Road';
-    //                 // cellBgColor = this.roadColor;
-    //                 cellData.ty = 'Road';
-    //                 cellData.st = 'rd';
-    //                 cellData.z = isRoad.z;
-    //             }
-    //             // console.log('113 '+cellBgColor);
-    //             // row.Co.push({
-    //             //     id: `${columnName}${i}`,
-    //             //     Pv: false,
-    //             //     ty: cellType, 
-    //             //     pId: pId,
-    //             //     pN: pN,
-    //             //     pS: pS,
-    //             //     st: `background-color: ${cellBgColor};`
-                    
-    //             // });
-    //             row.Co.push(cellData);
-    //             if (i === 1) {
-    //                 this.columnNames.push(columnName);
-    //             }
-    //         }
-    //         this.grid.push(row);
-
-    //     }
-    //     this.setOptionsAndValues();
-    //     this.tempGrid = structuredClone(this.grid);
-    //     console.log('Initial grid-->',JSON.stringify(this.grid));
-    //     this.generateZonePicklistOptions();
-    // }
-
     initializeGrid() {
         // Set CSS variables for colors
         this.template.host.style.setProperty('--available-plot-color', this.availablePlot);
@@ -298,66 +204,6 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
         this.tempGrid = [];
         this.columnNames = [''];
 
-        // let currentSection = { sc: 1, rM: [] };
-        // let rowCount = 0;
-        // let sectionNumber = 1;
-    
-        // for (let i = 1; i <= this.rows; i++) {
-        //     const row = { Rw: i, Co: [] };
-    
-        //     for (let j = 1; j <= this.columns; j++) {
-        //         let columnName = this.getColumnName(j);
-        //         const cellId = `${columnName}${i}`;
-        //         const isPlot = plotCells.find(cell => cell.id === cellId);
-        //         const isGarden = gardenCells.find(cell => cell.id === cellId);
-        //         const isRoad = roadCells.find(cell => cell.id === cellId);
-    
-        //         let cellData = {
-        //             id: cellId,
-        //             Pv: false,
-        //             ty: '',
-        //             st: '',
-        //             z: ''
-        //         };
-    
-        //         if (isPlot) {
-        //             cellData.ty = 'Plot';
-        //             cellData.st = isPlot.pS;
-        //             cellData.pId = isPlot.pId;
-        //             cellData.pN = isPlot.pN;
-        //             cellData.pS = isPlot.pS;
-        //             cellData.pF = isPlot.pF;
-        //             cellData.z = isPlot.z;
-        //         } else if (isGarden) {
-        //             cellData.ty = 'Garden';
-        //             cellData.st = 'gd';
-        //             cellData.z = isGarden.z;
-        //         } else if (isRoad) {
-        //             cellData.ty = 'Road';
-        //             cellData.st = 'rd';
-        //             cellData.z = isRoad.z;
-        //         }
-    
-        //         row.Co.push(cellData);
-    
-        //         if (i === 1) {
-        //             this.columnNames.push(columnName);
-        //         }
-        //     }
-    
-        //     currentSection.rM.push(row);
-        //     rowCount++;
-    
-        //     // If max rows per section reached, create a new section
-        //     if (rowCount === 5 || i === this.rows) {
-        //         this.grid.push(currentSection);
-        //         if (i !== this.rows) {
-        //             sectionNumber++;
-        //             currentSection = { sc: sectionNumber, rM: [] };
-        //             rowCount = 0;
-        //         }
-        //     }
-        // }
         let sectionNumber = 1;
         let currentSection = { sc: sectionNumber, rM: [] };
         let rowCount = 0;
@@ -436,7 +282,7 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
     
         this.setOptionsAndValues();
         this.tempGrid = structuredClone(this.grid);
-        console.log('Generated Grid Sections:', JSON.stringify(this.grid));
+        // console.log('Generated Grid Sections:', JSON.stringify(this.grid));
         this.generateZonePicklistOptions();
     }
     
@@ -488,52 +334,6 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
         if (this.isEditMode === true && !(event.ctrlKey || event.metaKey)) { //single Select on Edit Mode 
             // console.log('edit mode');
             this.multiSelectedCells = [];
-            // // Reset previous selection
-            // if (this.previousRowId && this.previousColumnKey && this.previousSectorId && this.previousColumnGroupKey) {
-            //     const prevSector = this.grid.find(sec => sec.sc === this.previousSectorId);
-            //     if (prevSector) {
-            //         const previousRow = prevSector.rM.find(r => r.Rw === this.previousRowId);
-            //         if (previousRow) {
-            //             const previousColumnGroup = previousRow.Co.find(cg => cg.ck === this.previousColumnGroupKey);
-            //             if (previousColumnGroup) {
-            //                 const previousCell = previousColumnGroup.cols.find(c => c.id === this.previousColumnKey);
-            //                 if (previousCell) {
-            //                     previousCell.Pv = false;
-            //                 }
-            //             }
-            //         }
-            //     }
-            // }
-
-    
-            // // Find the sector, row, and cell
-            // const sector = this.grid.find(sec => sec.sc === sectorId);
-            // if (sector) {
-            //     const row = sector.rM.find(r => r.Rw === rowId);
-            //     if (row) {
-            //         const columnGroup = row.Co.find(cg => cg.ck === columnGroupKey);
-            //         const cell = columnGroup.cols.find(c => c.id === columnKey);
-            //         if (cell) {
-            //             cell.Pv = !cell.Pv;
-            //         }
-            //     }
-            // }
-            // this.grid = [...this.grid];
-
-            // this.isSelected = true;
-            // this.isZone = true;
-            // this.isZoneHeader = true;
-            // this.isSearchPlot = true;
-            // this.previousSectorId = sectorId;
-            // this.previousRowId = rowId;
-            // this.previousColumnGroupKey = columnGroupKey;
-            // this.previousColumnKey = columnKey;
-            // this.selectedPlotStatus = this.selectOption(plotStatus);
-
-            // // await this.setValues(plotId ? plotId : '', plotName ? plotName : '');
-            // this.tempGrid = structuredClone(this.grid);
-            // // await this.getCellDataFunction(plotId); // Run the function asynchronously
-            // requestAnimationFrame(() => {
             // Use Map for faster lookup
             const sectorMap = new Map(this.grid.map(sec => [sec.sc, sec]));
             // console.log('map '+JSON.stringify(sectorMap.get(sectorId)));
@@ -584,133 +384,6 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
             // });
 
         } else if (this.isEditMode === true && (event.ctrlKey || event.metaKey)){ //when multiSelect 
-            // console.log('multi-->');
-
-            // const cellObj = { Rw: rowId, Co: columnKey, pId: plotId ? plotId : '' };
-            // const isSelect = this.multiSelectedCells.some(cell => cell.Rw === cellObj.Rw && cell.Co === cellObj.Co);
-    
-            // if (isSelect) {
-            //     this.multiSelectedCells = this.multiSelectedCells.filter(cell => !(cell.Rw === cellObj.Rw && cell.Co === cellObj.Co));
-            // } else {
-            //     this.multiSelectedCells.push(cellObj);
-            // }
-            // const row = this.grid.find((r) => r.Rw === rowId);
-            // if (row) {
-            //     const cell = row.Co.find((c) => c.id === columnKey);
-            //     if (cell) {
-            //         cell.st = 'ml'; //collor asigining on multi selecting the cell 
-            //     }
-            // }
-
-            // this.grid = [...this.grid];
-            // if (this.timeoutId) {
-            //     clearTimeout(this.timeoutId);
-            // }
-            // this.timeoutId = setTimeout(() => {
-            //     if (this.previousRowId !== null && this.previousColumnKey) {
-            //         const previousRow = this.grid.find((r) => r.Rw === this.previousRowId);
-            //         if (previousRow) {
-            //             const previousCell = previousRow.Co.find((c) => c.id === this.previousColumnKey);
-            //             if (previousCell) {
-            //                 previousCell.Pv = false;
-            //                 // previousCell.iPV = false;
-            //             }
-            //         }
-            //     }
-        
-            //     const row = this.grid.find((r) => r.Rw === rowId);
-            //     if (row) {
-            //         const cell = row.Co.find((c) => c.id === columnKey);
-            //         if (cell) {
-            //             console.log(cell.Pv);
-            //             cell.Pv = !cell.Pv;
-            //         }
-            //     }
-            //     this.previousColumnKey = columnKey;
-            //     this.previousRowId = rowId;
-            //     this.grid = [...this.grid];
-            //     this.tempGrid = structuredClone(this.grid);
-                
-            // }, 1500);
-            // console.log('multi-->');
-
-            // const cellKey = `${sectorId}-${rowId}-${columnKey}-${columnGroupKey}`;
-           
-           
-           
-            // const cellObj = { sc: sectorId, ck: columnGroupKey, Rw: rowId, Co: columnKey, pId: plotId ? plotId : '' };
-            // const isSelect = this.multiSelectedCells.some(cell => cell.Rw === cellObj.Rw && cell.Co === cellObj.Co);
-
-            // if (isSelect) {
-            //         this.multiSelectedCells = this.multiSelectedCells.filter(cell => !(cell.Rw === cellObj.Rw && cell.Co === cellObj.Co));
-            // } else {
-            //     this.multiSelectedCells.push(cellObj);
-            // }
-            // const sector = this.grid.find(sec => sec.sc === sectorId);
-          
-            
-            // if (sector) {
-            //     const row = sector.rM.find(r => r.Rw === rowId);
-            //     if (row) {
-            //         const cellGroup = row.Co.find(cg => cg.ck === columnGroupKey); // Ensure correct column group
-            //         if (cellGroup) {
-            //             const cell = cellGroup.cols.find(c => c.id === columnKey);
-            //             if (cell) {
-            //                 cell.st = 'ml'; // Assigning color on multi-selecting the cell
-            //             }
-            //         }
-            //     }
-            // }
-            // console.log('--->',JSON.stringify(cellObj));
-            
-            // // Optimize debounce for smooth UI updates
-            // if (this.timeoutId) {
-            //     clearTimeout(this.timeoutId);
-            // }
-
-            // this.timeoutId = setTimeout(() => {
-            //     // Ensure previous selection is reset
-
-            //     if (this.previousColumnKey) {
-            //         console.log('-------- > '+this.previousColumnKey + ' --- here');
-            //         const previousSector = this.grid.find(sec => sec.sc === this.previousSectorId);
-            //         if (previousSector) {
-            //             const previousRow = previousSector.rM.find(r => r.Rw === this.previousRowId);
-            //             if (previousRow) {
-            //                 const previousCellGroup = previousRow.Co.find(cg => cg.ck === this.previousColumnGroupKey);
-            //                 const previousCell = previousCellGroup.cols.find(c => c.id === this.previousColumnKey);
-            //                 if (previousCell) {
-            //                     previousCell.Pv = false;
-            //                     // previousCell.iPV = false;
-            //                 }
-            //             }
-            //         }
-            //     }
-
-            //     const sector = this.grid.find(sec => sec.sc === sectorId);
-            
-            //     if (sector) {
-            //         const row = sector.rM.find(r => r.Rw === rowId); // Fetch the row inside the sector
-            //         if (row) {
-            //             const cellGroup = row.Co.find(cg => cg.ck === columnGroupKey); // Ensure correct column group
-            //             if (cellGroup) {
-            //                 const cell = cellGroup.cols.find(c => c.id === columnKey); // Find the specific cell
-            //                 if (cell) {
-            //                     cell.Pv = !cell.Pv; // Toggle cell property
-            //                 }
-            //             }
-            //         }
-            //     }
-
-            //     // Save previous selection
-            //     this.previousSectorId = sectorId;
-            //     this.previousRowId = rowId;
-            //     this.previousColumnGroupKey = columnGroupKey;
-            //     this.previousColumnKey = columnKey;
-
-            //     // Ensure only modified parts of the grid are updated
-            //     this.tempGrid = structuredClone(this.grid);
-            // }, 100); // Reduced debounce for better responsiveness
             const cellObj = { sc: sectorId, ck: columnGroupKey, Rw: rowId, Co: columnKey, pId: plotId };
     
             // Toggle selection state
@@ -718,7 +391,7 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
             this.multiSelectedCells = isSelected
                 ? this.multiSelectedCells.filter(cell => !(cell.Rw === rowId && cell.Co === columnKey))
                 : [...this.multiSelectedCells, cellObj];
-            console.log('sss');
+            console.log('sssA');
             
             // Retrieve sector, row, cellGroup, and cell efficiently using Maps
             const sector = this.gridMap.get(sectorId);
@@ -781,7 +454,215 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
         // console.log('multiSelectedCells-->',JSON.stringify(this.multiSelectedCells));
         // console.log('grid-->',JSON.stringify(this.grid));
     }
+    handleInputChanged(event) {
+        const {
+            startRow,
+            endRow,
+            startColumn,
+            endColumn,
+            excludeRowStart,
+            excludeRowEnd,
+            excludeColumnStart,
+            excludeColumnEnd
+        } = event.detail;
 
+        // Map the received values to the parent component's variables
+        this.startRow = startRow;
+        this.endRow = endRow;
+        this.startColumn = startColumn;
+        this.endColumn = endColumn;
+        this.excludeRowStart = excludeRowStart;
+        this.excludeRowEnd = excludeRowEnd;
+        this.excludeColumnStart = excludeColumnStart;
+        this.excludeColumnEnd = excludeColumnEnd;
+        
+    }
+    // // Computed property to disable the Select button if any field is missing.
+    get isSelectDisabled() {
+        // Adjust the condition if "0" is a valid value.
+        return !(this.startRow && this.endRow && this.startColumn && this.endColumn);
+    }
+
+    handleFieldChange(event) {
+        const fieldLabel = event.target.label;
+        const value = event.target.value;
+        switch (fieldLabel) {
+            case 'Start Row':
+                this.startRow = value;
+                break;
+            case 'End Row':
+                this.endRow = value;
+                break;
+            case 'Start Column':
+                this.startColumn = value.toUpperCase();
+                break;
+            case 'End Column':
+                this.endColumn = value.toUpperCase();
+                break;
+            case 'Exclude Row Start':
+                this.excludeRowStart = value;
+                break;
+            case 'Exclude Row End':
+                this.excludeRowEnd = value;
+                break;
+            case 'Exclude Column Start':
+                this.excludeColumnStart = value.toUpperCase();
+                break;
+            case 'Exclude Column End':
+                this.excludeColumnEnd = value.toUpperCase();
+                break;
+            default:
+                break;
+        }
+    }   
+
+    // // Helper to extract column letters from a cell id (e.g., "AA1" -> "AA")
+    getColumnLetters(cellId) {
+        const match = cellId.match(/^[A-Z]+/i);
+        return match ? match[0].toUpperCase() : '';
+    }
+
+    // // Helper to convert column letters to a number (e.g., "A" -> 1, "K" -> 11, "AA" -> 27)
+    columnLetterToNumber(letter) {
+        let number = 0;
+        letter = letter.toUpperCase();
+        for (let i = 0; i < letter.length; i++) {
+            number = number * 26 + (letter.charCodeAt(i) - 64);
+        }
+        return number;
+    }
+
+    // /**
+    //  * Validates that the exclusion range is entirely within the selected range.
+    //  * Returns true if valid; otherwise, displays an error toast and returns false.
+    //  */
+    validateExcludeRange() {
+        // Validate rows if exclusion values are provided
+        const startRowNum = parseInt(this.startRow, 10);
+        const endRowNum = parseInt(this.endRow, 10);
+        if (this.excludeRowStart && this.excludeRowEnd) {
+            const excludeRowStartNum = parseInt(this.excludeRowStart, 10);
+            const excludeRowEndNum = parseInt(this.excludeRowEnd, 10);
+            if (excludeRowStartNum < startRowNum || excludeRowEndNum > endRowNum) {
+                this.showToast('Error', 'Exclude row range must be within the selected row range.', 'error');
+                return false;
+            }
+        }
+        // Validate columns if exclusion values are provided
+        if (this.excludeColumnStart && this.excludeColumnEnd) {
+            const startColNum = this.columnLetterToNumber(this.startColumn);
+            const endColNum = this.columnLetterToNumber(this.endColumn);
+            const excludeColStartNum = this.columnLetterToNumber(this.excludeColumnStart);
+            const excludeColEndNum = this.columnLetterToNumber(this.excludeColumnEnd);
+            if (excludeColStartNum < startColNum || excludeColEndNum > endColNum) {
+                this.showToast('Error', 'Exclude column range must be within the selected column range.', 'error');
+                return false;
+            }
+        }
+        return true;
+    }
+    // Handle the custom event from the child component
+    handleSelectDisabledChange(event) {
+        this.isSelectDisabled = event.detail.isSelectDisabled;
+    }
+
+    // Example field change handler (if needed)
+    // handleFieldChange(event) {
+    //     console.log('Field changed in child:', event.detail.field, event.detail.value);
+    //     // Process field changes if needed
+    // }
+
+    handleMultiSelect() {
+        // Validate the exclusion range first.
+        if (!this.validateExcludeRange()) {
+            return; // Stop processing if validation fails.
+        }
+
+        // Convert main selection inputs
+        const startRowNum = parseInt(this.startRow, 10);
+        const endRowNum = parseInt(this.endRow, 10);
+        const startColNum = this.columnLetterToNumber(this.startColumn);
+        const endColNum = this.columnLetterToNumber(this.endColumn);
+
+        // Convert exclusion inputs (if provided)
+        let excludeRowStartNum, excludeRowEndNum, excludeColStartNum, excludeColEndNum;
+        if (this.excludeRowStart) {
+            excludeRowStartNum = parseInt(this.excludeRowStart, 10);
+        }
+        if (this.excludeRowEnd) {
+            excludeRowEndNum = parseInt(this.excludeRowEnd, 10);
+        }
+        if (this.excludeColumnStart) {
+            excludeColStartNum = this.columnLetterToNumber(this.excludeColumnStart);
+        }
+        if (this.excludeColumnEnd) {
+            excludeColEndNum = this.columnLetterToNumber(this.excludeColumnEnd);
+        }
+
+        // Reset selected cells array and restore grid from tempGrid if necessary.
+        this.multiSelectedCells = [];
+        this.grid = structuredClone(this.tempGrid);
+
+        let pv = false;
+        // Iterate through the grid (assumed structure: sectors > rM (rows) > Co (column groups) > cols (cells))
+        this.grid.forEach(sector => {
+            sector.rM.forEach(row => {
+                // Check if the row is within the main selection range.
+                if (row.Rw >= startRowNum && row.Rw <= endRowNum) {
+                    row.Co.forEach(colGroup => {
+                        colGroup.cols.forEach(cell => {
+                            // Get the cell's column number from its id.
+                            const cellColLetters = this.getColumnLetters(cell.id);
+                            const cellColNum = this.columnLetterToNumber(cellColLetters);
+                            // Check if the cell's column is within the main selection range.
+                            if (cellColNum >= startColNum && cellColNum <= endColNum) {
+                                // Check exclusion range if all exclusion values are provided.
+                                let isExcluded = false;
+                                if (
+                                    excludeRowStartNum !== undefined &&
+                                    excludeRowEndNum !== undefined &&
+                                    excludeColStartNum !== undefined &&
+                                    excludeColEndNum !== undefined
+                                ) {
+                                    if (
+                                        row.Rw >= excludeRowStartNum &&
+                                        row.Rw <= excludeRowEndNum &&
+                                        cellColNum >= excludeColStartNum &&
+                                        cellColNum <= excludeColEndNum
+                                    ) {
+                                        isExcluded = true;
+                                    }
+                                }
+                                // If cell is not in the exclusion range, select it.
+                                if (!isExcluded) {
+                                    if (pv === false) {
+                                        cell.Pv = true;
+                                        pv = true;
+                                    }
+                                    cell.st = 'ml'; // Mark cell as selected and colouring it
+                                    // Build the custom cell object.
+                                    const cellObj = {
+                                        sc: sector.sc,                   // Sector ID
+                                        ck: colGroup.ck,                 // Column group key
+                                        Rw: row.Rw,                      // Row ID
+                                        Co: cell.id,              // cell id
+                                        pId: cell.pId ? cell.pId : ''     // Plot ID (if exists)
+                                    };
+                                    // Add the object to the list.
+                                    this.multiSelectedCells.push(cellObj);
+                                }
+                            }
+                        });
+                    });
+                }
+            });
+        });
+    
+        // Trigger reactivity if needed.
+        this.grid = [...this.grid];
+        // console.log('Selected Cells:', JSON.stringify(this.multiSelectedCells));
+    }
+    
     generateZonePicklistOptions() {
         this.zoneOptions = [{ label: 'None', value: 'None' }]
         const dynamicOptions = Array.from({ length: this.noOfZone }, (_, index) => ({
@@ -842,13 +723,15 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
         const selectedOption = event.target.dataset.option;
         const plotId = event.target.dataset.pid;
         const plotName = event.target.dataset.pn;
-        console.log('selected',selectedOption);
+        // console.log('selected',selectedOption);
         
         if (this.multiSelectedCells.length === 0) { // Single Click
             this.isMultiSelect = false;
             this.columnIndex = 0;
             const columnKey = event.target.dataset.key; 
             const rowId = parseInt(event.target.dataset.row, 10); 
+            // console.log('row--->',rowId);
+            
             if (plotId !== '' && selectedOption === 'Plot') {
                 this.isSingleSelect = true;
                 this.isZone = true;
@@ -856,7 +739,7 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
                 this.openModal(columnKey, rowId);
                 await this.setValues(plotId ? plotId : '', plotName ? plotName : '');
                 await this.getCellDataFunction(plotId);
-                this.grid = this.updateCellSelection(this.grid, sectorId, columnGroupKey, rowId, columnKey, selectedOption, false);
+                this.grid = this.updateCellSelection(this.grid, sectorId, rowId, columnGroupKey, columnKey, selectedOption, false);
                 this.tempGrid = structuredClone(this.grid);
             } else if (selectedOption !== 'None') {
                 this.isSingleSelect = false;
@@ -869,7 +752,7 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
                 this.selectedRowId = rowId;
                 this.selectedColumnKey = columnKey;
             } else {
-                this.grid = this.updateCellSelection(this.grid, sectorId, columnGroupKey, rowId, columnKey, selectedOption, false);
+                this.grid = this.updateCellSelection(this.grid, sectorId, rowId, columnGroupKey, columnKey, selectedOption, false);
                 this.tempGrid = structuredClone(this.grid);
             }
             
@@ -883,11 +766,11 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
             this.isModalOpen = true
             this.cellValue = this.multiSelectedCells[this.currentIndex].Co
             // disableing the last cell option
-            this.grid = this.updateCellSelection(this.grid, this.multiSelectedCells[len - 1].sc,  this.multiSelectedCells[len - 1].ck, this.multiSelectedCells[len - 1].Rw, this.multiSelectedCells[len - 1].Co, selectedOption, false);
+            this.grid = this.updateCellSelection(this.grid, this.multiSelectedCells[len - 1].sc,  this.multiSelectedCells[len - 1].rw, this.multiSelectedCells[len - 1].ck, this.multiSelectedCells[len - 1].Co, selectedOption, false);
             await this.getCellDataFunction(this.multiSelectedCells[this.currentIndex].pId);
             this.tempMultiGrid = structuredClone(this.grid);
             this.tempGrid = structuredClone(this.grid);
-        } else if (selectedOption !== 'None') { // Multiple Select apart from Plot
+        } else if (selectedOption !== 'None') { // Multiple Select apart from Plot and None
             this.isSingleSelect = false;
             this.isModalOpen = true;
             this.isZone = true;
@@ -900,14 +783,14 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
             //     this.tempGrid = structuredClone(this.grid);
             // });
             // this.multiSelectedCells = [];
-            this.multiSelectedCells.forEach(({ sc, Rw, ky, Co }) => {
+            this.multiSelectedCells.forEach(({ sc, ck, Rw, Co }) => {
                 this.grid = this.updateCellSelection(
                     this.grid, 
                     sc,  // Sector ID
                     Rw,  // Row ID
-                    ky,  // Column Group Key
+                    ck,  // Column Group Key
                     Co,  // Column Key
-                    this.selectedOption, 
+                    selectedOption, 
                     false
                 );
             });
@@ -919,153 +802,102 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
         // console.log('Updated Grid: after', JSON.stringify(this.grid));
     }
 
-    // updateCellSelection(grid, rowId, columnKey, selectedOption, isOpenModal) {
-    //     // console.log('selectde---->',selectedOption);
-    //     // console.log('columnKey---->',columnKey);
-    //     // console.log('rowId---->',rowId);
-        
-    //     const newGrid = grid.map(row => {
-    //         if (row.Rw === rowId) {
-    //             return {
-    //                 ...row,
-    //                 Co: row.Co.map(cell => {
-    //                     if (cell.id === columnKey) {
-    //                         let updatedCell = { ...cell };
-    //                         switch (selectedOption) {
-    //                             case 'None':
-    //                                 updatedCell.ty = '';
-    //                                 updatedCell.Pv = false;
-    //                                 delete updatedCell.pId;
-    //                                 delete updatedCell.pN;
-    //                                 delete updatedCell.pS;
-    //                                 delete updatedCell.st;
-    //                                 delete updatedCell.pF;
-    //                                 break;
-    //                             case 'Plot':
-    //                                 updatedCell.Pv = false;
-    //                                 if (isOpenModal) {
-    //                                     this.openModal(columnKey, rowId);
-    //                                 }
-    //                                 break;
-    //                             case 'Garden':
-    //                                 // updatedCell.st = `background-color: ${this.gardenColor};`;
-    //                                 updatedCell.st = 'gd';
-    //                                 updatedCell.Pv = false;
-    //                                 updatedCell.z = this.selectedZone;
-    //                                 delete updatedCell.pId;
-    //                                 delete updatedCell.pN;
-    //                                 delete updatedCell.pS;
-    //                                 delete updatedCell.pF;
-    //                                 break;
-    //                             case 'Road':
-    //                                 // updatedCell.st = `background-color: ${this.roadColor};`;
-    //                                 updatedCell.st = 'rd';
-    //                                 updatedCell.Pv = false;
-    //                                 updatedCell.z = this.selectedZone;
-    //                                 delete updatedCell.pId;
-    //                                 delete updatedCell.pN;
-    //                                 delete updatedCell.pS;
-    //                                 delete updatedCell.pF;
-    //                                 break;
-    //                         }
-    //                         if (selectedOption !== 'None') {
-    //                             updatedCell.ty = selectedOption;
-    //                         }
-    //                         return updatedCell;
-    //                     }
-    //                     return cell;
-    //                 })
-    //             };
-    //         }
-    //         return row;
-    //     });
-    //     return newGrid;
-    // }
-    updateCellSelection(grid, sectorId, columnGroupKey, rowId, columnKey, selectedOption, isOpenModal) {
-        // Clone grid for immutability
-        console.log('selectde---->',selectedOption);
-        console.log('columnKey---->',columnKey);
-        console.log('sectorId---->',sectorId);
-        console.log('columnGroupKey---->',columnGroupKey);
-        console.log('rowId---->',rowId);
+    updateCellSelection(grid, sectorId, rowId, columnGroupKey, columnKey, selectedOption, isOpenModal) {
+        // console.log('sectorId---->', sectorId);
+        // console.log('rowId---->', rowId);
+        // console.log('columnGroupKey---->', columnGroupKey);
+        // console.log('columnKey---->', columnKey);
+        // console.log('selectedOption---->', selectedOption);
+    
+        // Create an updated copy of the grid
         const updatedGrid = grid.map(sector => {
-            if (sector.sc === sectorId) {
-                return {
-                    ...sector,
-                    rM: sector.rM.map(row => {
-                        if (row.Rw === rowId) {
+            // Only update if the sector matches
+            if (sector.sc !== sectorId) {
+                return sector;
+            }
+            return {
+                ...sector,
+                rM: sector.rM.map(row => {
+                    // Only update if the row matches
+                    if (row.Rw !== rowId) {
+                        return row;
+                    }
+                    return {
+                        ...row,
+                        Co: row.Co.map(columnGroup => {
+                            // Only update if the column group matches
+                            if (columnGroup.ck !== columnGroupKey) {
+                                return columnGroup;
+                            }
                             return {
-                                ...row,
-                                Co: row.Co.map(columnGroup => {
-                                    if (columnGroup.ck === columnGroupKey) {
-                                        return {
-                                            ...columnGroup,
-                                            cols: columnGroup.cols.map(cell => {
-                                                if (cell.id === columnKey) {
-                                                    let updatedCell = { ...cell };
-    
-                                                    // Apply selection logic
-                                                    switch (selectedOption) {
-                                                        case 'None':
-                                                            updatedCell.ty = '';
-                                                            updatedCell.Pv = false;
-                                                            delete updatedCell.pId;
-                                                            delete updatedCell.pN;
-                                                            delete updatedCell.pS;
-                                                            delete updatedCell.st;
-                                                            delete updatedCell.pF;
-                                                            break;
-                                                        case 'Plot':
-                                                            updatedCell.Pv = false;
-                                                            if (isOpenModal) {
-                                                                this.openModal(columnKey, rowId);
-                                                            }
-                                                            break;
-                                                        case 'Garden':
-                                                            updatedCell.st = 'gd'; // Garden style
-                                                            updatedCell.Pv = false;
-                                                            updatedCell.z = this.selectedZone;
-                                                            delete updatedCell.pId;
-                                                            delete updatedCell.pN;
-                                                            delete updatedCell.pS;
-                                                            delete updatedCell.pF;
-                                                            break;
-                                                        case 'Road':
-                                                            updatedCell.st = 'rd'; // Road style
-                                                            updatedCell.Pv = false;
-                                                            updatedCell.z = this.selectedZone;
-                                                            delete updatedCell.pId;
-                                                            delete updatedCell.pN;
-                                                            delete updatedCell.pS;
-                                                            delete updatedCell.pF;
-                                                            break;
-                                                    }
-    
-                                                    // Set type only if not 'None'
-                                                    if (selectedOption !== 'None') {
-                                                        updatedCell.ty = selectedOption;
-                                                    }
-    
-                                                    return updatedCell;
-                                                }
-                                                return cell;
-                                            })
-                                        };
+                                ...columnGroup,
+                                cols: columnGroup.cols.map(cell => {
+                                    // Only update the cell if the cell id matches
+                                    if (cell.id !== columnKey) {
+                                        return cell;
                                     }
-                                    return columnGroup;
+                                    // Clone cell to update it immutably.
+                                    let updatedCell = { ...cell };
+    
+                                    // Apply selection logic based on the selected option.
+                                    switch (selectedOption) {
+                                        case 'None':
+                                            updatedCell.ty = '';
+                                            updatedCell.Pv = false;
+                                            // Remove any plot-specific properties
+                                            delete updatedCell.pId;
+                                            delete updatedCell.pN;
+                                            delete updatedCell.pS;
+                                            delete updatedCell.st;
+                                            delete updatedCell.pF;
+                                            break;
+                                        case 'Plot':
+                                            updatedCell.Pv = false;
+                                            // Open modal if required
+                                            if (isOpenModal) {
+                                                this.openModal(columnKey, rowId);
+                                            }
+                                            break;
+                                        case 'Garden':
+                                            updatedCell.st = 'gd'; // Set style for Garden
+                                            updatedCell.Pv = false;
+                                            updatedCell.z = this.selectedZone; // Set zone from component state
+                                            // Remove any plot-specific properties
+                                            delete updatedCell.pId;
+                                            delete updatedCell.pN;
+                                            delete updatedCell.pS;
+                                            delete updatedCell.pF;
+                                            break;
+                                        case 'Road':
+                                            updatedCell.st = 'rd'; // Set style for Road
+                                            updatedCell.Pv = false;
+                                            updatedCell.z = this.selectedZone; // Set zone from component state
+                                            // Remove any plot-specific properties
+                                            delete updatedCell.pId;
+                                            delete updatedCell.pN;
+                                            delete updatedCell.pS;
+                                            delete updatedCell.pF;
+                                            break;
+                                        default:
+                                            // Optionally handle other cases or do nothing
+                                            break;
+                                    }
+    
+                                    // If the selected option is not 'None', set the type.
+                                    if (selectedOption !== 'None') {
+                                        updatedCell.ty = selectedOption;
+                                    }
+                                    return updatedCell;
                                 })
                             };
-                        }
-                        return row;
-                    })
-                };
-            }
-            return sector;
+                        })
+                    };
+                })
+            };
         });
-    
         return updatedGrid;
-    }    
-
+    }
+    
     handleButton(event) {
         if (event.target.label === 'Save') {
             
@@ -1073,34 +905,40 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
             const gardenCells = [];
             const roadCells = [];
 
-            this.grid.forEach(row => {
-                row.Co.forEach(cell => {
-                    if (cell.ty === 'Plot') {
-                        plotCells.push({
-                            id: cell.id,
-                            pN: cell.pN,
-                            pId: cell.pId,
-                            pS: cell.pS,
-                            pF: cell.pF,
-                            z: cell.z
+            // Iterate over each sector in the grid.
+            this.grid.forEach(sector => {
+                // For each row (rM) in the sector
+                sector.rM.forEach(row => {
+                    // For each column group (Co) in the row
+                    row.Co.forEach(colGroup => {
+                        // For each cell in the column group's cols array
+                        colGroup.cols.forEach(cell => {
+                            if (cell.ty === 'Plot') {
+                                plotCells.push({
+                                    id: cell.id,
+                                    pN: cell.pN,
+                                    pId: cell.pId,
+                                    pS: cell.pS,
+                                    pF: cell.pF,
+                                    z: cell.z
+                                });
+                            } else if (cell.ty === 'Garden') {
+                                gardenCells.push({
+                                    id: cell.id,
+                                    z: cell.z
+                                });
+                            } else if (cell.ty === 'Road') {
+                                roadCells.push({
+                                    id: cell.id,
+                                    z: cell.z
+                                });
+                            }
                         });
-                    } else if (cell.ty === 'Garden') {
-                        gardenCells.push({
-                            id: cell.id,
-                            z: cell.z
-                        });
-                    } else if (cell.ty === 'Road') {
-                        roadCells.push({
-                            id: cell.id,
-                            z: cell.z
-                        });
-                    }
+                    });
                 });
             });
 
-            // console.log('JSON.stringify(this.grid);-->',JSON.stringify(this.grid));
-            // console.log('JSON.stringify(plotCells);-->',JSON.stringify(plotCells));
-            
+            // Build the fields object to update the record.
             const fields = {};
             fields.Id = this.recordId;
             fields[PLOT_FIELD.fieldApiName] = JSON.stringify(plotCells);
@@ -1268,8 +1106,8 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
 
     handleZoneChange(event) {
         this.selectedZone = event.detail.value;
-        console.log('selected Option--->',this.selectedOption);
-        console.log('multiSelectedCells--->',JSON.stringify(this.multiSelectedCells));
+        // console.log('selected Option--->',this.selectedOption);
+        // console.log('multiSelectedCells--->',JSON.stringify(this.multiSelectedCells));
         
         // if (this.selectedOption !== '') {
         //     if (this.multiSelectedCells.length === 0 ) { 
@@ -1290,19 +1128,19 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
                 this.grid = this.updateCellSelection(
                     this.grid, 
                     this.selectedSectorId, 
-                    this.selectedColumnGroupKey, 
                     this.selectedRowId, 
+                    this.selectedColumnGroupKey, 
                     this.selectedColumnKey, 
                     this.selectedOption, 
                     false
                 );
             } else {
-                this.multiSelectedCells.forEach(({ sc, Rw, ck, Co }) => {
+                this.multiSelectedCells.forEach(({ sc, ck, Rw, Co }) => {
                     this.grid = this.updateCellSelection(
                         this.grid, 
                         sc,  // Sector ID
-                        ck,  // Column Group Key
                         Rw,  // Row ID
+                        ck,  // Column Group Key
                         Co,  // Column Key
                         this.selectedOption, 
                         false
@@ -1315,8 +1153,7 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
 
             // Ensure reactivity by deep cloning
             this.tempGrid = structuredClone(this.grid);
-        console.log('grid--->',JSON.stringify(this.grid));
-
+            // console.log('grid--->',JSON.stringify(this.grid));
             this.closeModal();
         }
     }
@@ -1801,7 +1638,7 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
         this.isMultiSelect = false;
         this.isSelected = false;
         this.isSingleSelect = false;
-        this.multiSelectedCells = [];
+        // this.multiSelectedCells = [];
         this.currentIndex = 0;
         this.previousButton = true;
         this.nextButton = false;

@@ -1,0 +1,19 @@
+<p>Dear {!Contact.Name},</p>
+
+<p>Agreement of Sale (AOS) draft has been prepared for your review. Below are the details of your unit:</p>
+
+<ul>
+  <li><strong>Unit Number:</strong> {!Opportunity.Plot_Name__c}</li>
+  <li><strong>Plot Price per Square Yard:</strong> {!Opportunity.Base_Price_per_Sq_Ft__c}</li>
+  <li><strong>Total Sale Value:</strong> {!Opportunity.Sale_Value_Amount__c}</li>
+  <li><strong>Amount Paid:</strong> {!Opportunity.Collected_Amount__c}</li>
+</ul>
+<p>Allottees:</p>
+<p>Review the attached document at your earliest convenience. Upon your confirmation, we will proceed with the next steps. Should you have any questions or require further clarification, feel free to contact us.</p>
+
+<p>Best regards,</p>
+
+<p>{!User.Name} <br> 
+{!User.CompanyName} <br> 
+{!User.Phone} <br> 
+{!User.Email}</p>

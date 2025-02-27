@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Booking Cancellation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .header {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .content {
+            margin-top: 20px;
+        }
+        .content p {
+            margin: 10px 0;
+        }
+        .content ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .footer {
+            margin-top: 30px;
+            font-style: italic;
+        }
+        .highlight {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p class="header">Dear [Customer's Name],</p>
+        
+        <div class="content">
+            <p>We regret to inform you that your unit booking at <strong>[Project Name]</strong> <strong>[Phase/Block]</strong> has been cancelled. Below are the details of your cancelled booking:</p>
+
+            <h3>Unit Details:</h3>
+            <ul>
+                <li><span class="highlight">Unit Number:</span> [Unit Number]</li>
+                <li><span class="highlight">Unit Size:</span> [Unit Size]</li>
+                <li><span class="highlight">Cancellation Date:</span> [Date]</li>
+            </ul>
+
+            <h3>Refund Details:</h3>
+            <ul>
+                <li><span class="highlight">Total Refund Amount:</span> [Refund Amount]</li>
+                <li><span class="highlight">Refund Processing Duration:</span> [Duration for Refund Processing]</li>
+            </ul>
+
+            <p>Please fill out the attached refund document and submit it along with the necessary documents to <strong>[Email Address]</strong>.</p>
+
+            <p>Our team will process your refund promptly, and you will receive the refund within the specified duration. Should you have any questions or require further assistance, please do not hesitate to contact us.</p>
+
+            <p>We appreciate your understanding and apologize for any inconvenience this may cause.</p>
+        </div>
+
+        <p class="footer">Warm regards, <br> Epitome Projects LLP</p>
+    </div>
+</body>
+</html>

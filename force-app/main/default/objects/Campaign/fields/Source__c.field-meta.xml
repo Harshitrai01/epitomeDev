@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Source__c</fullName>
+    <label>Source</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Import From File</fullName>
+                <default>false</default>
+                <label>Import From File</label>
+            </value>
+            <value>
+                <fullName>Show Case Lite</fullName>
+                <default>false</default>
+                <label>Show Case Lite</label>
+            </value>
+            <value>
+                <fullName>Show Case Pro</fullName>
+                <default>false</default>
+                <label>Show Case Pro</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound</fullName>
+                <default>false</default>
+                <label>Sr Inbound</label>
+            </value>
+            <value>
+                <fullName>Channel Partner</fullName>
+                <default>false</default>
+                <label>Channel Partner</label>
+            </value>
+            <value>
+                <fullName>Facebook (Epitome Projects)</fullName>
+                <default>false</default>
+                <label>Facebook (Epitome Projects)</label>
+            </value>
+            <value>
+                <fullName>Website</fullName>
+                <default>false</default>
+                <label>Website</label>
+            </value>
+            <value>
+                <fullName>Walkin</fullName>
+                <default>false</default>
+                <label>Walkin</label>
+            </value>
+            <value>
+                <fullName>Google</fullName>
+                <default>false</default>
+                <label>Google</label>
+            </value>
+            <value>
+                <fullName>Facebook</fullName>
+                <default>false</default>
+                <label>Facebook</label>
+            </value>
+            <value>
+                <fullName>Taboola</fullName>
+                <default>false</default>
+                <label>Taboola</label>
+            </value>
+            <value>
+                <fullName>Whatsapp</fullName>
+                <default>false</default>
+                <label>Whatsapp</label>
+            </value>
+            <value>
+                <fullName>Adgebra</fullName>
+                <default>false</default>
+                <label>Adgebra</label>
+            </value>
+            <value>
+                <fullName>Bing</fullName>
+                <default>false</default>
+                <label>Bing</label>
+            </value>
+            <value>
+                <fullName>Linkedin</fullName>
+                <default>false</default>
+                <label>Linkedin</label>
+            </value>
+            <value>
+                <fullName>Treda Property Show 2021</fullName>
+                <default>false</default>
+                <label>Treda Property Show 2021</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound (+919538699929)</fullName>
+                <default>false</default>
+                <label>Sr Inbound (+919538699929)</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound (+919538599929)</fullName>
+                <default>false</default>
+                <label>Sr Inbound (+919538599929)</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound (+919538499929)</fullName>
+                <default>false</default>
+                <label>Sr Inbound (+919538499929)</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound (+9108068950085)</fullName>
+                <default>false</default>
+                <label>Sr Inbound (+9108068950085)</label>
+            </value>
+            <value>
+                <fullName>App</fullName>
+                <default>false</default>
+                <label>App</label>
+            </value>
+            <value>
+                <fullName>EXPO</fullName>
+                <default>false</default>
+                <label>EXPO</label>
+            </value>
+            <value>
+                <fullName>LP</fullName>
+                <default>false</default>
+                <label>LP</label>
+            </value>
+            <value>
+                <fullName>Google Video</fullName>
+                <default>false</default>
+                <label>Google Video</label>
+            </value>
+            <value>
+                <fullName>Google Search</fullName>
+                <default>false</default>
+                <label>Google Search</label>
+            </value>
+            <value>
+                <fullName>Railway</fullName>
+                <default>false</default>
+                <label>Railway</label>
+            </value>
+            <value>
+                <fullName>3dm_google</fullName>
+                <default>false</default>
+                <label>3dm_google</label>
+            </value>
+            <value>
+                <fullName>BTL</fullName>
+                <default>false</default>
+                <label>BTL</label>
+            </value>
+            <value>
+                <fullName>Chat_Facebook</fullName>
+                <default>false</default>
+                <label>Chat_Facebook</label>
+            </value>
+            <value>
+                <fullName>Chat_Google</fullName>
+                <default>false</default>
+                <label>Chat_Google</label>
+            </value>
+            <value>
+                <fullName>Chat_Website</fullName>
+                <default>false</default>
+                <label>Chat_Website</label>
+            </value>
+            <value>
+                <fullName>Whatsapp Chatbot</fullName>
+                <default>false</default>
+                <label>Whatsapp Chatbot</label>
+            </value>
+            <value>
+                <fullName>Collect_Chat</fullName>
+                <default>false</default>
+                <label>Collect_Chat</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound (+919154908280)</fullName>
+                <default>false</default>
+                <label>Sr Inbound (+919154908280)</label>
+            </value>
+            <value>
+                <fullName>Hoarding</fullName>
+                <default>false</default>
+                <label>Hoarding</label>
+            </value>
+            <value>
+                <fullName>Social Media</fullName>
+                <default>false</default>
+                <label>Social Media</label>
+            </value>
+            <value>
+                <fullName>Print Ad</fullName>
+                <default>false</default>
+                <label>Print Ad</label>
+            </value>
+            <value>
+                <fullName>Way2News</fullName>
+                <default>false</default>
+                <label>Way2News</label>
+            </value>
+            <value>
+                <fullName>NRI_google</fullName>
+                <default>false</default>
+                <label>NRI_google</label>
+            </value>
+            <value>
+                <fullName>New_LP_Google</fullName>
+                <default>false</default>
+                <label>New_LP_Google</label>
+            </value>
+            <value>
+                <fullName>Reference</fullName>
+                <default>false</default>
+                <label>Reference</label>
+            </value>
+            <value>
+                <fullName>NRI_Facebook</fullName>
+                <default>false</default>
+                <label>NRI_Facebook</label>
+            </value>
+            <value>
+                <fullName>Organic</fullName>
+                <default>false</default>
+                <label>Organic</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound (+919090488499)</fullName>
+                <default>false</default>
+                <label>Sr Inbound (+919090488499)</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound (+919090688999)</fullName>
+                <default>false</default>
+                <label>Sr Inbound (+919090688999)</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound (+919917788899)</fullName>
+                <default>false</default>
+                <label>Sr Inbound (+919917788899)</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound (+919090188199)</fullName>
+                <default>false</default>
+                <label>Sr Inbound (+919090188199)</label>
+            </value>
+            <value>
+                <fullName>Magicbricks</fullName>
+                <default>false</default>
+                <label>Magicbricks</label>
+            </value>
+            <value>
+                <fullName>99acres</fullName>
+                <default>false</default>
+                <label>99acres</label>
+            </value>
+            <value>
+                <fullName>99 Acres</fullName>
+                <default>false</default>
+                <label>99 Acres</label>
+            </value>
+            <value>
+                <fullName>Lokal-Facebook</fullName>
+                <default>false</default>
+                <label>Lokal-Facebook</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound (+919977724999)</fullName>
+                <default>false</default>
+                <label>Sr Inbound (+919977724999)</label>
+            </value>
+            <value>
+                <fullName>GoogleAds</fullName>
+                <default>false</default>
+                <label>GoogleAds</label>
+            </value>
+            <value>
+                <fullName>CHATBOT</fullName>
+                <default>false</default>
+                <label>CHATBOT</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound (+919090588999)</fullName>
+                <default>false</default>
+                <label>Sr Inbound (+919090588999)</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound (+919090488899)</fullName>
+                <default>false</default>
+                <label>Sr Inbound (+919090488899)</label>
+            </value>
+            <value>
+                <fullName>Lokal App</fullName>
+                <default>false</default>
+                <label>Lokal App</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound (+919090277477)</fullName>
+                <default>false</default>
+                <label>Sr Inbound (+919090277477)</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound (+919090477277)</fullName>
+                <default>false</default>
+                <label>Sr Inbound (+919090477277)</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound (+919090411211)</fullName>
+                <default>false</default>
+                <label>Sr Inbound (+919090411211)</label>
+            </value>
+            <value>
+                <fullName>Lokalapp</fullName>
+                <default>false</default>
+                <label>Lokalapp</label>
+            </value>
+            <value>
+                <fullName>Housing</fullName>
+                <default>false</default>
+                <label>Housing</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound (+919090211411)</fullName>
+                <default>false</default>
+                <label>Sr Inbound (+919090211411)</label>
+            </value>
+            <value>
+                <fullName>Sitevisited Data</fullName>
+                <default>false</default>
+                <label>Sitevisited Data</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound (+919090342525)</fullName>
+                <default>false</default>
+                <label>Sr Inbound (+919090342525)</label>
+            </value>
+            <value>
+                <fullName>Loal App</fullName>
+                <default>false</default>
+                <label>Loal App</label>
+            </value>
+            <value>
+                <fullName>Webchat</fullName>
+                <default>false</default>
+                <label>Webchat</label>
+            </value>
+            <value>
+                <fullName>Economic Times</fullName>
+                <default>false</default>
+                <label>Economic Times</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound (+919090879494)</fullName>
+                <default>false</default>
+                <label>Sr Inbound (+919090879494)</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound (+919090859494)</fullName>
+                <default>false</default>
+                <label>Sr Inbound (+919090859494)</label>
+            </value>
+            <value>
+                <fullName>Reeng Leads</fullName>
+                <default>false</default>
+                <label>Reeng Leads</label>
+            </value>
+            <value>
+                <fullName>Large Plots Micro Site</fullName>
+                <default>false</default>
+                <label>Large Plots Micro Site</label>
+            </value>
+            <value>
+                <fullName>Oneindia</fullName>
+                <default>false</default>
+                <label>Oneindia</label>
+            </value>
+            <value>
+                <fullName>Roof &amp; Floor</fullName>
+                <default>false</default>
+                <label>Roof &amp; Floor</label>
+            </value>
+            <value>
+                <fullName>Dailyhunt</fullName>
+                <default>false</default>
+                <label>Dailyhunt</label>
+            </value>
+            <value>
+                <fullName>Other Zone</fullName>
+                <default>false</default>
+                <label>Other Zone</label>
+            </value>
+            <value>
+                <fullName>Corporate</fullName>
+                <default>false</default>
+                <label>Corporate</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound (+919090899494)</fullName>
+                <default>false</default>
+                <label>Sr Inbound (+919090899494)</label>
+            </value>
+            <value>
+                <fullName>googleNRI</fullName>
+                <default>false</default>
+                <label>googleNRI</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound (+919090159494)</fullName>
+                <default>false</default>
+                <label>Sr Inbound (+919090159494)</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound (+919090269494)</fullName>
+                <default>false</default>
+                <label>Sr Inbound (+919090269494)</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound (+919090279494)</fullName>
+                <default>false</default>
+                <label>Sr Inbound (+919090279494)</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound (+919090169494)</fullName>
+                <default>false</default>
+                <label>Sr Inbound (+919090169494)</label>
+            </value>
+            <value>
+                <fullName>googlecommercial</fullName>
+                <default>false</default>
+                <label>googlecommercial</label>
+            </value>
+            <value>
+                <fullName>google_commercial</fullName>
+                <default>false</default>
+                <label>google_commercial</label>
+            </value>
+            <value>
+                <fullName>Google_Regular</fullName>
+                <default>false</default>
+                <label>Google_Regular</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound (+919090189494)</fullName>
+                <default>false</default>
+                <label>Sr Inbound (+919090189494)</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound (+919090289494)</fullName>
+                <default>false</default>
+                <label>Sr Inbound (+919090289494)</label>
+            </value>
+            <value>
+                <fullName>Facebook_Regular</fullName>
+                <default>false</default>
+                <label>Facebook_Regular</label>
+            </value>
+            <value>
+                <fullName>Sr Inbound (+919090179494)</fullName>
+                <default>false</default>
+                <label>Sr Inbound (+919090179494)</label>
+            </value>
+            <value>
+                <fullName>Door to Door Visit</fullName>
+                <default>false</default>
+                <label>Door to Door Visit</label>
+            </value>
+            <value>
+                <fullName>Branding Outdoor Activity</fullName>
+                <default>false</default>
+                <label>Branding Outdoor Activity</label>
+            </value>
+            <value>
+                <fullName>Google_NRI</fullName>
+                <default>false</default>
+                <label>Google_NRI</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,62 @@
+<template>
+    <lightning-card class="custom-card-width">
+        <div class="slds-p-around_medium slds-border_bottom slds-grid slds-grid_vertical-align-center">
+            <lightning-icon icon-name="standard:portal_roles" size="medium" class="slds-m-right_small"></lightning-icon>
+            <div>
+                <h2 class="slds-text-heading_medium">Download Opportunity Document</h2>
+                <p class="slds-text-body_small">
+                    Preview and download the required opportunity documents.
+                </p>
+            </div>
+        </div>
+        <div style="height:10px;">
+        </div>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-m-bottom_medium slds-col slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-size_12-of-12">
+                <lightning-combobox
+                    name="contacts"
+                    label="Select Contact"
+                    placeholder="Select Contact From Here..."
+                    options={contacts}
+                    value={selectedContactId}
+                    onchange={handleContactSelection}>
+                </lightning-combobox>
+            </div>
+            <div class="slds-m-bottom_medium slds-col slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-size_12-of-12">
+            </div>
+        </div>
+        
+        <div style="height:10px;">
+        </div>
+        <template for:each={filesList} for:item="file">
+            <div key={file.value} class="slds-box">
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-size_12-of-12 slds-p-left_medium">
+                        <p><strong>File is:  </strong>{file.label}</p>
+                    </div>
+                    <div class="slds-col slds-large-size_2-of-12 slds-medium-size_2-of-12 slds-size_12-of-12 slds-align_absolute-center">
+                        <a href={file.url} download>Download the File</a>
+                    </div>
+                    <div class="slds-col slds-large-size_2-of-12 slds-medium-size_2-of-12 slds-size_12-of-12 slds-align_absolute-center">
+                        <lightning-button label="Add to contact" 
+                        variant="brand"
+                        data-id={file.value}
+                        onclick={contactAddMethod}
+                        disabled={disableButton}
+                        ></lightning-button>
+                    </div>
+                    <div class="slds-col slds-large-size_2-of-12 slds-medium-size_2-of-12 slds-size_12-of-12 slds-align_absolute-center">
+                       <lightning-button label="Preview the File" 
+                       variant="brand"
+                      data-id={file.value}
+                      onclick={previewFile}
+                       ></lightning-button>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <div class="slds-p-around_medium slds-text-color_error slds-text-align_center">
+            <strong>Note:</strong> Once the document is Uploaded to the selected Contact re-clicking will show an duplicate error !!!
+        </div>
+    </lightning-card> 
+</template>

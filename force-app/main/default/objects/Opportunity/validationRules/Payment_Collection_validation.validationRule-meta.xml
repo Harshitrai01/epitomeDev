@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Payment_Collection_validation</fullName>
+    <active>true</active>
+    <description>Restriction on Status if 10% Payment is not collected</description>
+    <errorConditionFormula>AND(
+    ISPICKVAL(StageName, &quot;KYC Verification&quot;),
+    NOT( X10_Amount_Collected__c ) 
+)</errorConditionFormula>
+    <errorMessage>10% Payment is not Collected</errorMessage>
+</ValidationRule>

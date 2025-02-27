@@ -1,0 +1,19 @@
+<p>Dear <strong>{!Opportunity.Account}</strong>,</p>
+
+    <p>To proceed with the next steps, we kindly request a payment of <strong>10% of the sale value</strong>.</p>
+
+    <p><strong>Payment Details:</strong></p>
+    <p><strong>Sale Value:</strong> ₹{!Opportunity.Sale_Value_Amount__c}</p>
+    <p><strong>Amount Paid:</strong> ₹{!Opportunity.Collected_Amount__c}</p>
+    <p><strong>Balance:</strong> ₹{!Opportunity.Outstanding_Amount__c}</p>
+    <p><strong>Total Outstanding:</strong> ₹{!Opportunity.Outstanding_Amount__c}</p>
+
+    <p>Please ensure that the payment is made at your earliest convenience to facilitate the continuation of the process. Failure to make the payment may result in the cancellation of your booking.</p>
+
+    <p>Please ensure that your KYC details are submitted.</p>
+
+    <p>Best regards,</p>
+    <p><strong>{!Opportunity.OwnerFullName}</strong></p>
+    <p><strong>Phone:</strong> {!Opportunity.OwnerPhone}, <strong>Email:</strong> {!Opportunity.OwnerEmail}</p>
+
+    <p><strong>Epitome Projects LLP</strong></p>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Visit Invitation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .header {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .content {
+            margin-top: 20px;
+        }
+        .content p {
+            margin: 10px 0;
+        }
+        .links a {
+            color: #1E90FF;
+            text-decoration: none;
+        }
+        .footer {
+            margin-top: 30px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p class="header">Dear {!Lead.Salutation} {!Lead.FirstName} {!Lead.LastName},</p>
+        
+        <div class="content">
+            <p>We are delighted to invite you to visit our site at Epitome Integrated City. Your scheduled visit is set for <strong>{!Lead.Schedule_Date_Time__c}</strong>. Our team is excited to show you around and provide a comprehensive overview of our project.</p>
+
+            <p>Please feel free to reach out to us if you have any questions or need further assistance before the visit.</p>
+
+            <p><strong>Location:</strong> <a href="{!Lead.Site_Location__c}" class="links">View on Google Maps</a></p>
+        </div>
+
+        <p class="footer">Warm Regards, <br> Epitome Projects LLP</p>
+    </div>
+</body>
+</html>

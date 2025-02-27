@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Site Visit Scheduled Opportunity</name>
+    <style>none</style>
+    <subject>Site Visit Scheduled</subject>
+    <textOnly>Dear [Recipient&apos;s Name], 
+
+We are delighted to invite you to visit our site at Epitome Integrated City In. Your scheduled visit is set for [Date] at [Time]. Our team is excited to show you around and provide a comprehensive overview of our project. 
+
+Please feel free to reach out to us if you have any questions or need further assistance before the visit. 
+
+Location : https://maps.app.goo.gl/vxMmuvRcRTDpc5Q18 
+
+Warm Regards, 
+
+Epitome Projects LLP</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

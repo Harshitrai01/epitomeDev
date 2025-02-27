@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ensure_Eligible_Amount_for_Disbursement</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    $RecordType.DeveloperName = &quot;Progressive&quot;,
+    ISCHANGED(Status),
+    ISPICKVAL(Status, &quot;Disbursement&quot;),
+    ISBLANK(Loan_Eligible_Amount__c)
+)</errorConditionFormula>
+    <errorMessage>Please fill the Loan Eligible Amount before changing the status to Disbursement.</errorMessage>
+</ValidationRule>

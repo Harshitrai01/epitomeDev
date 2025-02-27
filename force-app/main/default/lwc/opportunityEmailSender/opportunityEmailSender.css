@@ -1,0 +1,24 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.row {
+    display: flex;
+    gap: 1rem;
+}
+
+.half-width {
+    width: 50%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+/* Increase Email Body Height */
+.full-width lightning-input-rich-text {
+    min-height: 200px;
+}

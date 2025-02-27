@@ -218,6 +218,48 @@
                 <identifier>RecordAmount_To_Refund__cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Ownership_Type__c</fieldItem>
+                <identifier>RecordOwnership_Type__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Cancellation_Status__c</fieldItem>
+                <identifier>RecordCancellation_Status__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Sub_Stage__c</fieldItem>
+                <identifier>RecordSub_Stage__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Primary_Contact_Number__c</fieldItem>
+                <identifier>RecordPrimary_Contact_Number__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.AOS_Authority_Person__c</fieldItem>
+                <identifier>RecordAOS_Authority_Person__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Board_Of_Resolution_Authority_Person__c</fieldItem>
+                <identifier>RecordBoard_Of_Resolution_Authority_Person__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Sales_Deed_Authority_Person__c</fieldItem>
+                <identifier>RecordSales_Deed_Authority_Person__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-9b41bd63-8713-49cd-8d56-67009e490196</name>
         <type>Facet</type>
     </flexiPageRegions>

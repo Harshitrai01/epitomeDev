@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Gupshup_WhatsApp_Lead_Assignment_Lead</fullName>
+    <filterScope>Queue</filterScope>
+    <label>Gupshup WhatsApp Lead Assignment</label>
+    <queue>Gupshup_WhatsApp_Lead_Assignment</queue>
+    <sharedTo>
+        <allInternalUsers></allInternalUsers>
+    </sharedTo>
+</ListView>

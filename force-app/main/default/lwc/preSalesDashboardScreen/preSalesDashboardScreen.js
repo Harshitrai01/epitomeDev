@@ -1,4 +1,4 @@
-import { LightningElement, track } from 'lwc';
+import { LightningElement, track, wire } from 'lwc';
 import getCustomSetting from '@salesforce/apex/PreSalesController.getCustomSetting';
 import updateUserStatus from '@salesforce/apex/PreSalesController.updateUserStatus';
 import updateCustomSetting from '@salesforce/apex/PreSalesController.updateCustomSetting';
@@ -8,6 +8,7 @@ import getPicklistValues from '@salesforce/apex/PreSalesController.getPicklistVa
 import MAX_CAPACITY from "@salesforce/label/c.Lead_Assignment_Capacity";
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import scheduleBatch from '@salesforce/apex/PreSalesController.scheduleBatch';
+import getLeadSourceValues from '@salesforce/apex/PreSalesController.getLeadSourceValues';
 import deleteScheduledJob from '@salesforce/apex/PreSalesController.deleteScheduledJob';
 
 
@@ -209,34 +210,43 @@ export default class PreSalesDashboardScreen extends LightningElement {
 
 
     handlePreSalesStatusChange(event) {
-        const userId = event.target.dataset.id;
-        const newStatus = event.target.value;
+        try {
+            const userId = event.target.dataset.id;
+            const newStatus = event.target.value;
+            // Update the show data
+            const userIndex = this.preSalesUserDataShow.findIndex((user) => user.userId === userId);
+            if (userIndex !== -1) {
+                console.log('userId-->', userId);
+                const updatedUser = {
+                    ...this.preSalesUserDataShow[userIndex],
+                    status: newStatus,
+                    userChange: true,
+                    styleColor: 'background-color:lightyellow;'
+                };
 
-        // Update the show data
-        const userIndex = this.preSalesUserDataShow.findIndex((user) => user.userId === userId);
-        if (userIndex !== -1) {
-            console.log('userId-->', userId);
-            const updatedUser = { ...this.preSalesUserDataShow[userIndex], status: newStatus, userChange: true, styleColor: 'background-color:lightyellow;' };
+                this.preSalesUserDataShow = [
+                    ...this.preSalesUserDataShow.slice(0, userIndex),
+                    updatedUser,
+                    ...this.preSalesUserDataShow.slice(userIndex + 1)
+                ];
 
-            this.preSalesUserDataShow = [
-                ...this.preSalesUserDataShow.slice(0, userIndex),
-                updatedUser,
-                ...this.preSalesUserDataShow.slice(userIndex + 1)
-            ];
+                // Add or update the data in the draft array
+                const draftIndex = this.preSalesDraftValues.findIndex((draft) => draft.userId === userId);
+                if (draftIndex !== -1) {
+                    // Update existing draft
+                    this.preSalesDraftValues[draftIndex] = updatedUser;
+                } else {
+                    // Add new draft
+                    this.preSalesDraftValues = [...this.preSalesDraftValues, updatedUser];
+                }
 
-            // Add or update the data in the draft array
-            const draftIndex = this.preSalesDraftValues.findIndex((draft) => draft.userId === userId);
-            if (draftIndex !== -1) {
-                // Update existing draft
-                this.preSalesDraftValues[draftIndex] = updatedUser;
-            } else {
-                // Add new draft
-                this.preSalesDraftValues = [...this.preSalesDraftValues, updatedUser];
+                this.isPreSalesUpdated = true; // Flag set to show save/cancel buttons
             }
-
-            this.isPreSalesUpdated = true; // Flag set to show save/cancel buttons
+        } catch (error) {
+            console.error('Error in handlePreSalesStatusChange:', error);
         }
     }
+
 
     handleSalesStatusChange(event) {
         const userId = event.target.dataset.id;
@@ -642,18 +652,24 @@ export default class PreSalesDashboardScreen extends LightningElement {
         try {
             const updatedData = draftValues.map((draft) => {
                 const userRow = showValues.find(user => user.userId === draft.userId);
-                const isInvalid = draft.capacity < 0 || draft.capacity > this.maxCapacity;
+                console.log('draft.capacity--->',draft.capacity);
+                const isInvalid = isNaN(draft.capacity) || draft.capacity < 0 || draft.capacity > this.maxCapacity;
+                console.log('isInvalid--->',isInvalid);
                 userRow.styleColor = isInvalid ? 'background-color: lightpink;' : 'background-color: lightyellow;';
                 hasInvalidCapacity ||= isInvalid;
+                let userSourcesString = draft.userSources.join(',');
+                console.log('userSourcesString--->', userSourcesString);
                 return {
                     Id: draft.userId,
                     Status__c: draft.status,
                     Capacity__c: draft.capacity,
                     Pre_Sales_Lead_Assignment__c: draft.leadAssignment,
+                    Assigned_Sources__c: userSourcesString,
                 };
             });
             if (hasInvalidCapacity) {
                 this.showToast('Error', 'Please correct the capacity values (0 ≤ Capacity ≤ Max Capacity).', 'error');
+                this.isLoading=false;
                 return;
             }
             await updateUserStatus({ userStatusData: JSON.stringify(updatedData) });
@@ -676,6 +692,7 @@ export default class PreSalesDashboardScreen extends LightningElement {
         } catch (error) {
             console.error('Error saving data:', error);
             this.showToast('Error', 'Failed to save data', 'error');
+            this.isLoading = false;
         } finally {
             if (!hasInvalidCapacity) {
                 if (usertype === 'presales') {
@@ -700,14 +717,16 @@ export default class PreSalesDashboardScreen extends LightningElement {
                 this.preSalesUserDataShow = [...this.preSalesMasterUserData];
                 this.isPreSalesUpdated = false;
             } else if (userType === 'sales') {
-                this.salesUserDataShow = [...this.salesMasterUserData];
+                console.log('this.salesUserDataShow--->', this.salesUserDataShow);
+                console.log('this.SalesMasterUserData--->', this.SalesMasterUserData);
+                this.salesUserDataShow = [...this.SalesMasterUserData];
                 this.isSalesUpdated = false;
             } else {
                 console.error('Invalid userType');
                 this.showToast('Error', 'Invalid action.', 'error');
             }
         } catch (error) {
-            console.error('Error during refresh:', error);
+            console.error('Error during refresh:', JSON.stringify(error));
             this.showToast('Error', 'Failed to Cancel data.', 'error');
         } finally {
             this.isLoading = false;
@@ -719,15 +738,6 @@ export default class PreSalesDashboardScreen extends LightningElement {
         this.isLoading = true;
 
         try {
-            // if (this.isPreSalesActive) {
-            //     this.preSalesUserDataShow = [];
-            //     this.preSalesUserDataShow = await this.fetchData('Pre_Sales_Queue');
-            // }
-
-            // if (this.isSalesActive) {
-            //     this.salesUserDataShow = [];
-            //     this.salesUserDataShow = await this.fetchData('Sales_Queue');
-            // }
             this.loadCustomSettings();
 
             this.showToast('Success', 'Data refreshed successfully!', 'success');
@@ -778,22 +788,118 @@ export default class PreSalesDashboardScreen extends LightningElement {
         }
     }
     async handleSaveCustomSetting() {
-    try {
-        await this.updateCustomSetting('Send Notification', this.sendNotification);
-        await this.updateCustomSetting('Send to Manager', this.sendToManager);
-        await this.updateCustomSetting('Minutes', this.notificationMinutes);
+        try {
+            await this.updateCustomSetting('Send Notification', this.sendNotification);
+            await this.updateCustomSetting('Send to Manager', this.sendToManager);
+            await this.updateCustomSetting('Minutes', this.notificationMinutes);
 
-        if (this.sendNotification) {
-            const result = await scheduleBatch({ minuteInterval: this.notificationMinutes });
-            this.showToast('Success', result, 'success');
+            if (this.sendNotification) {
+                const result = await scheduleBatch({ minuteInterval: this.notificationMinutes });
+                this.showToast('Success', result, 'success');
+            }
+        } catch (error) {
+            this.showToast('Error', error.body?.message || 'An error occurred', 'error');
+        } finally {
+            this.showToast('Success', 'Settings saved successfully', 'success');
+            this.hideModalBox();
         }
-    } catch (error) {
-        this.showToast('Error', error.body?.message || 'An error occurred', 'error');
-    } finally {
-        this.showToast('Success', 'Settings saved successfully', 'success');
-        this.hideModalBox();
     }
-}
 
+    @track leadSourceOptions = [];
+
+    @wire(getLeadSourceValues)
+    wiredLeadSources({ error, data }) {
+        if (data) {
+            this.leadSourceOptions = data.map(value => ({ label: value, value: value }));
+            console.log('leadSourceOptions---->', JSON.stringify(this.leadSourceOptions));
+        } else if (error) {
+            console.error('Error fetching Lead Source values:', error);
+        }
+    }
+
+    // Handle selection change
+    handleSalesLeadSourceChange(event) {
+        const selectedValues = event.detail.value || [];
+        console.log('this.selectedValues---->', JSON.stringify(this.selectedValues));
+        const userId = event.target.dataset.id;
+        try {
+
+            // Find the user index in the preSalesUserDataShow array
+            const userIndex = this.salesUserDataShow.findIndex((user) => user.userId === userId);
+            if (userIndex !== -1) {
+                console.log('userIndex-->', userIndex);
+                const updatedUser = {
+                    ...this.salesUserDataShow[userIndex],
+                    userSources: selectedValues,
+                    userChange: true,
+                    styleColor: 'background-color:lightyellow;',
+                };
+
+                this.salesUserDataShow = [
+                    ...this.salesUserDataShow.slice(0, userIndex),
+                    updatedUser,
+                    ...this.salesUserDataShow.slice(userIndex + 1),
+                ];
+
+                const draftIndex = this.salesDraftValues.findIndex((draft) => draft.userId === userId);
+                if (draftIndex !== -1) {
+                    this.salesDraftValues[draftIndex] = updatedUser;
+                    console.log('updatedUser--->', JSON.stringify(updatedUser));
+                } else {
+                    this.salesDraftValues = [...this.salesDraftValues, updatedUser];
+                }
+
+                this.isSalesUpdated = true;
+            } else {
+                console.log('userId-->', userId);
+            }
+
+        } catch (error) {
+            console.error('Error in handleSalesLeadSourceChange:', JSON.stringify(error));
+            this.showToast('Error', 'An unexpected error occurred. Please try again.', 'error');
+        }
+    }
+
+    handlePreSalesLeadSourceChange(event) {
+        const selectedValues = event.detail.value || [];
+        console.log('this.selectedValues---->', JSON.stringify(this.selectedValues));
+        const userId = event.target.dataset.id;
+        try {
+
+            // Find the user index in the preSalesUserDataShow array
+            const userIndex = this.preSalesUserDataShow.findIndex((user) => user.userId === userId);
+            if (userIndex !== -1) {
+                console.log('userIndex-->', userIndex);
+                const updatedUser = {
+                    ...this.preSalesUserDataShow[userIndex],
+                    userSources: selectedValues,
+                    userChange: true,
+                    styleColor: 'background-color:lightyellow;',
+                };
+
+                this.preSalesUserDataShow = [
+                    ...this.preSalesUserDataShow.slice(0, userIndex),
+                    updatedUser,
+                    ...this.preSalesUserDataShow.slice(userIndex + 1),
+                ];
+
+                const draftIndex = this.preSalesDraftValues.findIndex((draft) => draft.userId === userId);
+                if (draftIndex !== -1) {
+                    this.preSalesDraftValues[draftIndex] = updatedUser;
+                    console.log('updatedUser--->', JSON.stringify(updatedUser));
+                } else {
+                    this.preSalesDraftValues = [...this.salesDraftValues, updatedUser];
+                }
+
+                this.isPreSalesUpdated = true;
+            } else {
+                console.log('userId-->', userId);
+            }
+
+        } catch (error) {
+            console.error('Error in handlePreSalesLeadSourceChange:', JSON.stringify(error));
+            this.showToast('Error', 'An unexpected error occurred. Please try again.', 'error');
+        }
+    }
 
 }

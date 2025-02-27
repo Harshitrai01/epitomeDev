@@ -1,10 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <fieldUpdates>
+        <fullName>Cancellation_Status_Refund_Initiated</fullName>
+        <field>Cancellation_Status__c</field>
+        <literalValue>Refund Initiated</literalValue>
+        <name>Cancellation Status Refund Initiated</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Cancellation_Status_Rejected</fullName>
+        <field>Cancellation_Status__c</field>
+        <literalValue>Request Rejected</literalValue>
+        <name>Cancellation Status Rejected</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
         <fullName>Refund_Status_Initiate</fullName>
         <field>Refund_Status__c</field>
         <literalValue>Initiate</literalValue>
         <name>Refund Status Initiate</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Sent_For_Approval</fullName>
+        <field>Cancellation_Status__c</field>
+        <literalValue>Sent for Approval</literalValue>
+        <name>Sent For Approval</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Stage_Cancelled</fullName>
+        <field>StageName</field>
+        <literalValue>Cancelled</literalValue>
+        <name>Stage Cancelled</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
         <protected>false</protected>

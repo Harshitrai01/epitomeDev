@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cancellation_Status_Request_Recieved</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISPICKVAL(Sub_Stage__c, &quot;Customer Requested&quot;),
+    ISBLANK(TEXT(Cancellation_Status__c))
+)</errorConditionFormula>
+    <errorMessage>When Sub Stage is &apos;Customer Requested&apos;, you must select &apos;Request Received&apos; as the Cancellation Status.</errorMessage>
+</ValidationRule>

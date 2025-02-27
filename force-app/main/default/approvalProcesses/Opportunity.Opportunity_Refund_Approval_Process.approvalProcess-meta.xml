@@ -49,6 +49,10 @@
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <finalApprovalActions>
         <action>
+            <name>Cancellation_Status_Refund_Initiated</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
             <name>Refund_Status_Initiate</name>
             <type>FieldUpdate</type>
         </action>
@@ -60,12 +64,20 @@
     <finalApprovalRecordLock>false</finalApprovalRecordLock>
     <finalRejectionActions>
         <action>
+            <name>Cancellation_Status_Rejected</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
             <name>Status_Rejected</name>
             <type>FieldUpdate</type>
         </action>
     </finalRejectionActions>
     <finalRejectionRecordLock>false</finalRejectionRecordLock>
     <initialSubmissionActions>
+        <action>
+            <name>Sent_For_Approval</name>
+            <type>FieldUpdate</type>
+        </action>
         <action>
             <name>Status_Pending</name>
             <type>FieldUpdate</type>

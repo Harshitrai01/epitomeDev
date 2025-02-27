@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Rescheduling Registration</name>
+    <style>none</style>
+    <subject>Rescheduling Registration</subject>
+    <textOnly>Rescheduled Registration Appointment
+
+Dear [Customer&apos;s Name],
+
+We regret that your registration appointment was cancelled. Below are the new details for your registration appointment:
+
+Unit Details:
+
+Unit Number: [Unit Number]
+Unit Size: [Unit Size]
+
+Rescheduled Details:
+
+Date: [New Registration Date]
+Time: [New Registration Time]
+
+Please ensure you arrive at the venue at the scheduled time. If you have any questions or need further assistance, feel free to reach out to us.
+
+We look forward to completing your registration smoothly.
+
+Warm regards,
+Epitome Projects LLP</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rescheduling Site Visit</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .header {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .content {
+            margin-top: 20px;
+        }
+        .content p {
+            margin: 10px 0;
+        }
+        .footer {
+            margin-top: 30px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p class="header">Dear [Customer's Name],</p>
+        
+        <div class="content">
+            <p>We understand your busy schedule and that the site visit to Epitome Integrated City needs to be postponed from the scheduled date.</p>
+
+            <p>We kindly request your assistance in rescheduling the visit and confirming your availability at your earliest convenience.</p>
+
+            <p>We appreciate your response and confirmation.</p>
+        </div>
+
+        <p class="footer">Warm regards, <br> Epitome Projects LLP</p>
+    </div>
+</body>
+</html>

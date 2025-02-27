@@ -95,6 +95,11 @@
         
                 <template if:true={isEditMode}>
                     <lightning-button label="View" onclick={handleButton}></lightning-button>
+                    <lightning-button
+                        label="Select"
+                        onclick={handleMultiSelect}
+                        disabled={isSelectDisabled}>
+                    </lightning-button>
                 </template>
                 
                 <lightning-button label="Save" onclick={handleButton}></lightning-button>
@@ -104,7 +109,101 @@
             </div>
         
         </div>
+        <!-- <template if:true={isEditMode}>
+            <div class="slds-grid slds-wrap slds-grid_align-spread slds-align-items-center slds-m-around_small"> -->
+                <!-- Start Row -->
+                <!-- <div class="slds-col slds-size_1-of-4 slds-align_absolute-center" style="align-items: flex-start;   flex-direction: column;">
+                    <lightning-input
+                        type="number"
+                        label="Start Row"
+                        value={startRow}
+                        onchange={handleFieldChange}
+                        class="slds-m-bottom_medium">
+                    </lightning-input>
+                </div> -->
         
+                <!-- End Row -->
+                <!-- <div class="slds-col slds-size_1-of-4 slds-align_absolute-center filter-container">
+                    <lightning-input
+                        type="number"
+                        label="End Row"
+                        value={endRow}
+                        onchange={handleFieldChange}
+                        class="slds-m-bottom_medium">
+                    </lightning-input>
+                </div> -->
+        
+                <!-- Start Column -->
+                <!-- <div class="slds-col slds-size_1-of-4 slds-align_absolute-center filter-container">
+                    <lightning-input
+                        type="text"
+                        label="Start Column"
+                        value={startColumn}
+                        onchange={handleFieldChange}
+                        class="slds-m-bottom_medium">
+                    </lightning-input>
+                </div> -->
+        
+                <!-- End Column -->
+                <!-- <div class="slds-col slds-size_1-of-4 slds-grid slds-grid_align-end zoom-controls">
+                    <lightning-input
+                        type="text"
+                        label="End Column"
+                        value={endColumn}
+                        onchange={handleFieldChange}
+                        class="slds-m-bottom_medium">
+                    </lightning-input>
+                </div>
+            </div>
+            <div class="slds-grid slds-wrap slds-grid_align-spread slds-align-items-center slds-m-around_small"> -->
+                <!-- Exclude Row Start -->
+                <!-- <div class="slds-col slds-size_1-of-4  slds-align_absolute-center" style="align-items: flex-start;   flex-direction: column;">
+                    <lightning-input
+                        type="number"
+                        label="Exclude Row Start"
+                        value={excludeRowStart}
+                        onchange={handleFieldChange}
+                        class="slds-m-bottom_medium">
+                    </lightning-input>
+                </div> -->
+        
+                <!-- Exclude Row End -->
+                <!-- <div class="slds-col slds-size_1-of-4 slds-align_absolute-center filter-container">
+                    <lightning-input
+                        type="number"
+                        label="Exclude Row End"
+                        value={excludeRowEnd}
+                        onchange={handleFieldChange}
+                        class="slds-m-bottom_medium">
+                    </lightning-input>
+                </div> -->
+        
+                <!-- Exclude Column Start -->
+                <!-- <div class="slds-col slds-size_1-of-4 slds-align_absolute-center filter-container">
+                    <lightning-input
+                        type="text"
+                        label="Exclude Column Start"
+                        value={excludeColumnStart}
+                        onchange={handleFieldChange}
+                        class="slds-m-bottom_medium">
+                    </lightning-input>
+                </div> -->
+        
+                <!-- Exclude Column End -->
+                <!-- <div class="slds-col slds-size_1-of-4  slds-grid slds-grid_align-end zoom-controls">
+                    <lightning-input
+                        type="text"
+                        label="Exclude Column End"
+                        value={excludeColumnEnd}
+                        onchange={handleFieldChange}
+                        class="slds-m-bottom_medium">
+                    </lightning-input>
+                </div>
+            </div>
+        </template> -->
+        <template if:true={isEditMode}>
+            <c-unit-inventory-multi-select-screen oninputchanged={handleInputChanged}></c-unit-inventory-multi-select-screen>
+        </template>        
         
         <div class="table-container" style="overflow: auto;">
             <div class="zoom-wrapper" style="transform: scale(1);" id="zoomTable">

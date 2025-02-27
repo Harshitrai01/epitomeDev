@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X10_Collected__c</fullName>
+    <formula>( (Sale_Value_Amount__c -  Outstanding_Amount__c ) / Sale_Value_Amount__c)*100 &gt;= 10</formula>
+    <label>10% Collected</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

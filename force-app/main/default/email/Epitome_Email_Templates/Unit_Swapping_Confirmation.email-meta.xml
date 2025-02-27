@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Unit Swapping Confirmation</name>
+    <style>none</style>
+    <subject>Unit Swapping Confirmation</subject>
+    <textOnly>Unit Swapping Confirmation
+
+Dear [Customer&apos;s Name],
+
+We are pleased to confirm the swapping of your unit at [Project Name] [Phase/Block]. Below are the details of the swapped units:
+
+Original Unit Details:
+
+Unit Number: [Original Unit Number]
+Unit Size: [Original Unit Size]
+Unit Price per Sq Yard: [Unit Price]
+Sale Value: [Sale Value]
+
+New Unit Details:
+
+Unit Number: [New Unit Number]
+Unit Size: [New Unit Size]
+Unit Price per Sq Yard: [Unit Price]
+Sale Value: [Sale Value]
+
+Payment Details:
+
+Amount Already Paid: [Amount Paid]
+Total Payment Due: [Total Payment Due]
+
+If you need any further assistance, please do not hesitate to contact us.
+
+Warm regards,
+Epitome Projects LLP</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

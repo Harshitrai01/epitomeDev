@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Plot_should_not_be_null</fullName>
+    <active>false</active>
+    <errorConditionFormula>ISNULL(Unit__c) || ISBLANK(Unit__c)</errorConditionFormula>
+    <errorMessage>Please fill the Plot value</errorMessage>
+</ValidationRule>

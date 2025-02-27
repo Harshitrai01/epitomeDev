@@ -98,6 +98,10 @@
             <label>Lead</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ76j</field>
+            <label>Primary Contact Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NAME</field>
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
@@ -122,8 +126,16 @@
             <label>Total Base Rate</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ2mz</field>
+            <label>Primary Contact Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>CONTRACT.CONTRACT_NUMBER</field>
             <label>Contract Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ3xZ</field>
+            <label>AOS Authority Person</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.TYPE</field>
@@ -152,6 +164,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPAv</field>
             <label>Registration CRM Head Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BIVyI</field>
+            <label>Cancellation Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOA1</field>
@@ -195,7 +211,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOd3</field>
-            <label>Lost Reason</label>
+            <label>Cancellation Reason</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOtC</field>
@@ -308,6 +324,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000Acafp</field>
             <label>Paid %</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bex33</field>
+            <label>Lost Reason</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NEXT_STEP</field>
@@ -450,6 +470,10 @@
             <label>AOS Stage</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ45d</field>
+            <label>Board Of Resolution Authority Person</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PUSH_COUNT</field>
             <label>Push Count</label>
         </forecastingObjectListLabelMappings>
@@ -470,8 +494,16 @@
             <label>Plot</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BFTzR</field>
+            <label>Ownership Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BE0Ek</field>
+            <label>Sale Deed Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNdl</field>
@@ -502,6 +534,10 @@
             <label>Opportunity Record Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BIZ4D</field>
+            <label>Sub Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>ACCOUNT.NAME</field>
             <label>Account Name</label>
         </forecastingObjectListLabelMappings>
@@ -520,6 +556,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BZSSv</field>
+            <label>Sales Deed Authority Person</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListSelectedSettings>
             <field>OPPORTUNITY.NAME</field>
@@ -568,17 +608,21 @@
             <field>00NO400000AcNfN</field>
             <field>00NO400000AcNgz</field>
             <field>00NO400000BCYAr</field>
+            <field>00NO400000BZ3xZ</field>
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
             <field>00NO400000AyGP8</field>
             <field>00NO400000AwRtJ</field>
+            <field>00NO400000BZ45d</field>
             <field>00NO400000AcNkD</field>
             <field>00NO400000B51Er</field>
             <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
             <field>00NO400000AwkUX</field>
             <field>00NO400000BCZzl</field>
+            <field>00NO400000AcOd3</field>
+            <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
             <field>00NO400000Ay7SH</field>
@@ -608,11 +652,12 @@
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
-            <field>00NO400000AcOd3</field>
+            <field>00NO400000Bex33</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
             <field>00NO400000AcOtB</field>
@@ -622,6 +667,8 @@
             <field>00NO400000AcP2r</field>
             <field>00NO400000AuD3F</field>
             <field>00NO400000B70mX</field>
+            <field>00NO400000BZ2mz</field>
+            <field>00NO400000BZ76j</field>
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
@@ -631,11 +678,14 @@
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
             <field>00NfK000003tpHx</field>
+            <field>00NO400000BE0Ek</field>
+            <field>00NO400000BZSSv</field>
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
+            <field>00NO400000BIZ4D</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -755,6 +805,10 @@
             <label>Lead</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ76j</field>
+            <label>Primary Contact Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NAME</field>
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
@@ -779,8 +833,16 @@
             <label>Total Base Rate</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ2mz</field>
+            <label>Primary Contact Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>CONTRACT.CONTRACT_NUMBER</field>
             <label>Contract Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ3xZ</field>
+            <label>AOS Authority Person</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.TYPE</field>
@@ -809,6 +871,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPAv</field>
             <label>Registration CRM Head Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BIVyI</field>
+            <label>Cancellation Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOA1</field>
@@ -852,7 +918,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOd3</field>
-            <label>Lost Reason</label>
+            <label>Cancellation Reason</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOtC</field>
@@ -965,6 +1031,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000Acafp</field>
             <label>Paid %</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bex33</field>
+            <label>Lost Reason</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NEXT_STEP</field>
@@ -1107,6 +1177,10 @@
             <label>AOS Stage</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ45d</field>
+            <label>Board Of Resolution Authority Person</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PUSH_COUNT</field>
             <label>Push Count</label>
         </forecastingObjectListLabelMappings>
@@ -1127,8 +1201,16 @@
             <label>Plot</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BFTzR</field>
+            <label>Ownership Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BE0Ek</field>
+            <label>Sale Deed Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNdl</field>
@@ -1159,6 +1241,10 @@
             <label>Opportunity Record Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BIZ4D</field>
+            <label>Sub Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>ACCOUNT.NAME</field>
             <label>Account Name</label>
         </forecastingObjectListLabelMappings>
@@ -1177,6 +1263,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BZSSv</field>
+            <label>Sales Deed Authority Person</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListSelectedSettings>
             <field>OPPORTUNITY.NAME</field>
@@ -1225,17 +1315,21 @@
             <field>00NO400000AcNfN</field>
             <field>00NO400000AcNgz</field>
             <field>00NO400000BCYAr</field>
+            <field>00NO400000BZ3xZ</field>
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
             <field>00NO400000AyGP8</field>
             <field>00NO400000AwRtJ</field>
+            <field>00NO400000BZ45d</field>
             <field>00NO400000AcNkD</field>
             <field>00NO400000B51Er</field>
             <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
             <field>00NO400000AwkUX</field>
             <field>00NO400000BCZzl</field>
+            <field>00NO400000AcOd3</field>
+            <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
             <field>00NO400000Ay7SH</field>
@@ -1265,11 +1359,12 @@
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
-            <field>00NO400000AcOd3</field>
+            <field>00NO400000Bex33</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
             <field>00NO400000AcOtB</field>
@@ -1279,6 +1374,8 @@
             <field>00NO400000AcP2r</field>
             <field>00NO400000AuD3F</field>
             <field>00NO400000B70mX</field>
+            <field>00NO400000BZ2mz</field>
+            <field>00NO400000BZ76j</field>
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
@@ -1288,11 +1385,14 @@
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
             <field>00NfK000003tpHx</field>
+            <field>00NO400000BE0Ek</field>
+            <field>00NO400000BZSSv</field>
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
+            <field>00NO400000BIZ4D</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -1412,6 +1512,10 @@
             <label>Lead</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ76j</field>
+            <label>Primary Contact Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NAME</field>
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
@@ -1436,8 +1540,16 @@
             <label>Total Base Rate</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ2mz</field>
+            <label>Primary Contact Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>CONTRACT.CONTRACT_NUMBER</field>
             <label>Contract Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ3xZ</field>
+            <label>AOS Authority Person</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.TYPE</field>
@@ -1466,6 +1578,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPAv</field>
             <label>Registration CRM Head Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BIVyI</field>
+            <label>Cancellation Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOA1</field>
@@ -1509,7 +1625,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOd3</field>
-            <label>Lost Reason</label>
+            <label>Cancellation Reason</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOtC</field>
@@ -1622,6 +1738,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000Acafp</field>
             <label>Paid %</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bex33</field>
+            <label>Lost Reason</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NEXT_STEP</field>
@@ -1764,6 +1884,10 @@
             <label>AOS Stage</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ45d</field>
+            <label>Board Of Resolution Authority Person</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PUSH_COUNT</field>
             <label>Push Count</label>
         </forecastingObjectListLabelMappings>
@@ -1784,8 +1908,16 @@
             <label>Plot</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BFTzR</field>
+            <label>Ownership Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BE0Ek</field>
+            <label>Sale Deed Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNdl</field>
@@ -1816,6 +1948,10 @@
             <label>Opportunity Record Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BIZ4D</field>
+            <label>Sub Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>ACCOUNT.NAME</field>
             <label>Account Name</label>
         </forecastingObjectListLabelMappings>
@@ -1834,6 +1970,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BZSSv</field>
+            <label>Sales Deed Authority Person</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListSelectedSettings>
             <field>OPPORTUNITY.NAME</field>
@@ -1882,17 +2022,21 @@
             <field>00NO400000AcNfN</field>
             <field>00NO400000AcNgz</field>
             <field>00NO400000BCYAr</field>
+            <field>00NO400000BZ3xZ</field>
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
             <field>00NO400000AyGP8</field>
             <field>00NO400000AwRtJ</field>
+            <field>00NO400000BZ45d</field>
             <field>00NO400000AcNkD</field>
             <field>00NO400000B51Er</field>
             <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
             <field>00NO400000AwkUX</field>
             <field>00NO400000BCZzl</field>
+            <field>00NO400000AcOd3</field>
+            <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
             <field>00NO400000Ay7SH</field>
@@ -1922,11 +2066,12 @@
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
-            <field>00NO400000AcOd3</field>
+            <field>00NO400000Bex33</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
             <field>00NO400000AcOtB</field>
@@ -1936,6 +2081,8 @@
             <field>00NO400000AcP2r</field>
             <field>00NO400000AuD3F</field>
             <field>00NO400000B70mX</field>
+            <field>00NO400000BZ2mz</field>
+            <field>00NO400000BZ76j</field>
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
@@ -1945,11 +2092,14 @@
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
             <field>00NfK000003tpHx</field>
+            <field>00NO400000BE0Ek</field>
+            <field>00NO400000BZSSv</field>
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
+            <field>00NO400000BIZ4D</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -2069,6 +2219,10 @@
             <label>Lead</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ76j</field>
+            <label>Primary Contact Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NAME</field>
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
@@ -2093,8 +2247,16 @@
             <label>Total Base Rate</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ2mz</field>
+            <label>Primary Contact Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>CONTRACT.CONTRACT_NUMBER</field>
             <label>Contract Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ3xZ</field>
+            <label>AOS Authority Person</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.TYPE</field>
@@ -2123,6 +2285,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPAv</field>
             <label>Registration CRM Head Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BIVyI</field>
+            <label>Cancellation Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOA1</field>
@@ -2166,7 +2332,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOd3</field>
-            <label>Lost Reason</label>
+            <label>Cancellation Reason</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOtC</field>
@@ -2279,6 +2445,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000Acafp</field>
             <label>Paid %</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bex33</field>
+            <label>Lost Reason</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NEXT_STEP</field>
@@ -2425,6 +2595,10 @@
             <label>AOS Stage</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ45d</field>
+            <label>Board Of Resolution Authority Person</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PUSH_COUNT</field>
             <label>Push Count</label>
         </forecastingObjectListLabelMappings>
@@ -2445,8 +2619,16 @@
             <label>Plot</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BFTzR</field>
+            <label>Ownership Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BE0Ek</field>
+            <label>Sale Deed Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNdl</field>
@@ -2477,6 +2659,10 @@
             <label>Opportunity Record Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BIZ4D</field>
+            <label>Sub Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>ACCOUNT.NAME</field>
             <label>Account Name</label>
         </forecastingObjectListLabelMappings>
@@ -2495,6 +2681,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BZSSv</field>
+            <label>Sales Deed Authority Person</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListSelectedSettings>
             <field>OPPORTUNITY.NAME</field>
@@ -2544,17 +2734,21 @@
             <field>00NO400000AcNfN</field>
             <field>00NO400000AcNgz</field>
             <field>00NO400000BCYAr</field>
+            <field>00NO400000BZ3xZ</field>
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
             <field>00NO400000AyGP8</field>
             <field>00NO400000AwRtJ</field>
+            <field>00NO400000BZ45d</field>
             <field>00NO400000AcNkD</field>
             <field>00NO400000B51Er</field>
             <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
             <field>00NO400000AwkUX</field>
             <field>00NO400000BCZzl</field>
+            <field>00NO400000AcOd3</field>
+            <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
             <field>00NO400000Ay7SH</field>
@@ -2584,11 +2778,12 @@
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
-            <field>00NO400000AcOd3</field>
+            <field>00NO400000Bex33</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
             <field>00NO400000AcOtB</field>
@@ -2598,6 +2793,8 @@
             <field>00NO400000AcP2r</field>
             <field>00NO400000AuD3F</field>
             <field>00NO400000B70mX</field>
+            <field>00NO400000BZ2mz</field>
+            <field>00NO400000BZ76j</field>
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
@@ -2607,11 +2804,14 @@
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
             <field>00NfK000003tpHx</field>
+            <field>00NO400000BE0Ek</field>
+            <field>00NO400000BZSSv</field>
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
+            <field>00NO400000BIZ4D</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -2731,6 +2931,10 @@
             <label>Lead</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ76j</field>
+            <label>Primary Contact Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NAME</field>
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
@@ -2755,8 +2959,16 @@
             <label>Total Base Rate</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ2mz</field>
+            <label>Primary Contact Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>CONTRACT.CONTRACT_NUMBER</field>
             <label>Contract Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ3xZ</field>
+            <label>AOS Authority Person</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.TYPE</field>
@@ -2785,6 +2997,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPAv</field>
             <label>Registration CRM Head Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BIVyI</field>
+            <label>Cancellation Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOA1</field>
@@ -2828,7 +3044,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOd3</field>
-            <label>Lost Reason</label>
+            <label>Cancellation Reason</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOtC</field>
@@ -2941,6 +3157,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000Acafp</field>
             <label>Paid %</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bex33</field>
+            <label>Lost Reason</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NEXT_STEP</field>
@@ -3083,6 +3303,10 @@
             <label>AOS Stage</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ45d</field>
+            <label>Board Of Resolution Authority Person</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PUSH_COUNT</field>
             <label>Push Count</label>
         </forecastingObjectListLabelMappings>
@@ -3103,8 +3327,16 @@
             <label>Plot</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BFTzR</field>
+            <label>Ownership Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BE0Ek</field>
+            <label>Sale Deed Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNdl</field>
@@ -3135,6 +3367,10 @@
             <label>Opportunity Record Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BIZ4D</field>
+            <label>Sub Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>ACCOUNT.NAME</field>
             <label>Account Name</label>
         </forecastingObjectListLabelMappings>
@@ -3153,6 +3389,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BZSSv</field>
+            <label>Sales Deed Authority Person</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListSelectedSettings>
             <field>OPPORTUNITY.NAME</field>
@@ -3201,17 +3441,21 @@
             <field>00NO400000AcNfN</field>
             <field>00NO400000AcNgz</field>
             <field>00NO400000BCYAr</field>
+            <field>00NO400000BZ3xZ</field>
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
             <field>00NO400000AyGP8</field>
             <field>00NO400000AwRtJ</field>
+            <field>00NO400000BZ45d</field>
             <field>00NO400000AcNkD</field>
             <field>00NO400000B51Er</field>
             <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
             <field>00NO400000AwkUX</field>
             <field>00NO400000BCZzl</field>
+            <field>00NO400000AcOd3</field>
+            <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
             <field>00NO400000Ay7SH</field>
@@ -3241,11 +3485,12 @@
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
-            <field>00NO400000AcOd3</field>
+            <field>00NO400000Bex33</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
             <field>00NO400000AcOtB</field>
@@ -3255,6 +3500,8 @@
             <field>00NO400000AcP2r</field>
             <field>00NO400000AuD3F</field>
             <field>00NO400000B70mX</field>
+            <field>00NO400000BZ2mz</field>
+            <field>00NO400000BZ76j</field>
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
@@ -3264,11 +3511,14 @@
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
             <field>00NfK000003tpHx</field>
+            <field>00NO400000BE0Ek</field>
+            <field>00NO400000BZSSv</field>
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
+            <field>00NO400000BIZ4D</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -3388,6 +3638,10 @@
             <label>Lead</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ76j</field>
+            <label>Primary Contact Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NAME</field>
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
@@ -3412,8 +3666,16 @@
             <label>Total Base Rate</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ2mz</field>
+            <label>Primary Contact Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>CONTRACT.CONTRACT_NUMBER</field>
             <label>Contract Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ3xZ</field>
+            <label>AOS Authority Person</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.TYPE</field>
@@ -3442,6 +3704,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPAv</field>
             <label>Registration CRM Head Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BIVyI</field>
+            <label>Cancellation Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOA1</field>
@@ -3485,7 +3751,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOd3</field>
-            <label>Lost Reason</label>
+            <label>Cancellation Reason</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOtC</field>
@@ -3598,6 +3864,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000Acafp</field>
             <label>Paid %</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bex33</field>
+            <label>Lost Reason</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NEXT_STEP</field>
@@ -3744,6 +4014,10 @@
             <label>AOS Stage</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ45d</field>
+            <label>Board Of Resolution Authority Person</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PUSH_COUNT</field>
             <label>Push Count</label>
         </forecastingObjectListLabelMappings>
@@ -3764,8 +4038,16 @@
             <label>Plot</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BFTzR</field>
+            <label>Ownership Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BE0Ek</field>
+            <label>Sale Deed Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNdl</field>
@@ -3796,6 +4078,10 @@
             <label>Opportunity Record Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BIZ4D</field>
+            <label>Sub Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>ACCOUNT.NAME</field>
             <label>Account Name</label>
         </forecastingObjectListLabelMappings>
@@ -3814,6 +4100,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BZSSv</field>
+            <label>Sales Deed Authority Person</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListSelectedSettings>
             <field>OPPORTUNITY.NAME</field>
@@ -3863,17 +4153,21 @@
             <field>00NO400000AcNfN</field>
             <field>00NO400000AcNgz</field>
             <field>00NO400000BCYAr</field>
+            <field>00NO400000BZ3xZ</field>
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
             <field>00NO400000AyGP8</field>
             <field>00NO400000AwRtJ</field>
+            <field>00NO400000BZ45d</field>
             <field>00NO400000AcNkD</field>
             <field>00NO400000B51Er</field>
             <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
             <field>00NO400000AwkUX</field>
             <field>00NO400000BCZzl</field>
+            <field>00NO400000AcOd3</field>
+            <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
             <field>00NO400000Ay7SH</field>
@@ -3903,11 +4197,12 @@
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
-            <field>00NO400000AcOd3</field>
+            <field>00NO400000Bex33</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
             <field>00NO400000AcOtB</field>
@@ -3917,6 +4212,8 @@
             <field>00NO400000AcP2r</field>
             <field>00NO400000AuD3F</field>
             <field>00NO400000B70mX</field>
+            <field>00NO400000BZ2mz</field>
+            <field>00NO400000BZ76j</field>
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
@@ -3926,11 +4223,14 @@
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
             <field>00NfK000003tpHx</field>
+            <field>00NO400000BE0Ek</field>
+            <field>00NO400000BZSSv</field>
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
+            <field>00NO400000BIZ4D</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -4050,6 +4350,10 @@
             <label>Lead</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ76j</field>
+            <label>Primary Contact Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NAME</field>
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
@@ -4074,8 +4378,16 @@
             <label>Total Base Rate</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ2mz</field>
+            <label>Primary Contact Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>CONTRACT.CONTRACT_NUMBER</field>
             <label>Contract Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ3xZ</field>
+            <label>AOS Authority Person</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.TYPE</field>
@@ -4104,6 +4416,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPAv</field>
             <label>Registration CRM Head Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BIVyI</field>
+            <label>Cancellation Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOA1</field>
@@ -4147,7 +4463,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOd3</field>
-            <label>Lost Reason</label>
+            <label>Cancellation Reason</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOtC</field>
@@ -4260,6 +4576,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000Acafp</field>
             <label>Paid %</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bex33</field>
+            <label>Lost Reason</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NEXT_STEP</field>
@@ -4402,6 +4722,10 @@
             <label>AOS Stage</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ45d</field>
+            <label>Board Of Resolution Authority Person</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PUSH_COUNT</field>
             <label>Push Count</label>
         </forecastingObjectListLabelMappings>
@@ -4422,8 +4746,16 @@
             <label>Plot</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BFTzR</field>
+            <label>Ownership Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BE0Ek</field>
+            <label>Sale Deed Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNdl</field>
@@ -4454,6 +4786,10 @@
             <label>Opportunity Record Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BIZ4D</field>
+            <label>Sub Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>ACCOUNT.NAME</field>
             <label>Account Name</label>
         </forecastingObjectListLabelMappings>
@@ -4472,6 +4808,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BZSSv</field>
+            <label>Sales Deed Authority Person</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListSelectedSettings>
             <field>OPPORTUNITY.NAME</field>
@@ -4520,17 +4860,21 @@
             <field>00NO400000AcNfN</field>
             <field>00NO400000AcNgz</field>
             <field>00NO400000BCYAr</field>
+            <field>00NO400000BZ3xZ</field>
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
             <field>00NO400000AyGP8</field>
             <field>00NO400000AwRtJ</field>
+            <field>00NO400000BZ45d</field>
             <field>00NO400000AcNkD</field>
             <field>00NO400000B51Er</field>
             <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
             <field>00NO400000AwkUX</field>
             <field>00NO400000BCZzl</field>
+            <field>00NO400000AcOd3</field>
+            <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
             <field>00NO400000Ay7SH</field>
@@ -4560,11 +4904,12 @@
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
-            <field>00NO400000AcOd3</field>
+            <field>00NO400000Bex33</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
             <field>00NO400000AcOtB</field>
@@ -4574,6 +4919,8 @@
             <field>00NO400000AcP2r</field>
             <field>00NO400000AuD3F</field>
             <field>00NO400000B70mX</field>
+            <field>00NO400000BZ2mz</field>
+            <field>00NO400000BZ76j</field>
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
@@ -4583,11 +4930,14 @@
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
             <field>00NfK000003tpHx</field>
+            <field>00NO400000BE0Ek</field>
+            <field>00NO400000BZSSv</field>
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
+            <field>00NO400000BIZ4D</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -4707,6 +5057,10 @@
             <label>Lead</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ76j</field>
+            <label>Primary Contact Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NAME</field>
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
@@ -4731,8 +5085,16 @@
             <label>Total Base Rate</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ2mz</field>
+            <label>Primary Contact Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>CONTRACT.CONTRACT_NUMBER</field>
             <label>Contract Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ3xZ</field>
+            <label>AOS Authority Person</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.TYPE</field>
@@ -4761,6 +5123,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPAv</field>
             <label>Registration CRM Head Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BIVyI</field>
+            <label>Cancellation Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOA1</field>
@@ -4804,7 +5170,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOd3</field>
-            <label>Lost Reason</label>
+            <label>Cancellation Reason</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOtC</field>
@@ -4917,6 +5283,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000Acafp</field>
             <label>Paid %</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bex33</field>
+            <label>Lost Reason</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NEXT_STEP</field>
@@ -5063,6 +5433,10 @@
             <label>AOS Stage</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ45d</field>
+            <label>Board Of Resolution Authority Person</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PUSH_COUNT</field>
             <label>Push Count</label>
         </forecastingObjectListLabelMappings>
@@ -5083,8 +5457,16 @@
             <label>Plot</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BFTzR</field>
+            <label>Ownership Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BE0Ek</field>
+            <label>Sale Deed Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNdl</field>
@@ -5115,6 +5497,10 @@
             <label>Opportunity Record Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BIZ4D</field>
+            <label>Sub Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>ACCOUNT.NAME</field>
             <label>Account Name</label>
         </forecastingObjectListLabelMappings>
@@ -5133,6 +5519,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BZSSv</field>
+            <label>Sales Deed Authority Person</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListSelectedSettings>
             <field>OPPORTUNITY.NAME</field>
@@ -5182,17 +5572,21 @@
             <field>00NO400000AcNfN</field>
             <field>00NO400000AcNgz</field>
             <field>00NO400000BCYAr</field>
+            <field>00NO400000BZ3xZ</field>
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
             <field>00NO400000AyGP8</field>
             <field>00NO400000AwRtJ</field>
+            <field>00NO400000BZ45d</field>
             <field>00NO400000AcNkD</field>
             <field>00NO400000B51Er</field>
             <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
             <field>00NO400000AwkUX</field>
             <field>00NO400000BCZzl</field>
+            <field>00NO400000AcOd3</field>
+            <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
             <field>00NO400000Ay7SH</field>
@@ -5222,11 +5616,12 @@
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
-            <field>00NO400000AcOd3</field>
+            <field>00NO400000Bex33</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
             <field>00NO400000AcOtB</field>
@@ -5236,6 +5631,8 @@
             <field>00NO400000AcP2r</field>
             <field>00NO400000AuD3F</field>
             <field>00NO400000B70mX</field>
+            <field>00NO400000BZ2mz</field>
+            <field>00NO400000BZ76j</field>
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
@@ -5245,11 +5642,14 @@
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
             <field>00NfK000003tpHx</field>
+            <field>00NO400000BE0Ek</field>
+            <field>00NO400000BZSSv</field>
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
+            <field>00NO400000BIZ4D</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -5369,6 +5769,10 @@
             <label>Lead</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ76j</field>
+            <label>Primary Contact Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NAME</field>
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
@@ -5393,8 +5797,16 @@
             <label>Total Base Rate</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ2mz</field>
+            <label>Primary Contact Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>CONTRACT.CONTRACT_NUMBER</field>
             <label>Contract Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ3xZ</field>
+            <label>AOS Authority Person</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.TYPE</field>
@@ -5423,6 +5835,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPAv</field>
             <label>Registration CRM Head Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BIVyI</field>
+            <label>Cancellation Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOA1</field>
@@ -5466,7 +5882,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOd3</field>
-            <label>Lost Reason</label>
+            <label>Cancellation Reason</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOtC</field>
@@ -5579,6 +5995,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000Acafp</field>
             <label>Paid %</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bex33</field>
+            <label>Lost Reason</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NEXT_STEP</field>
@@ -5721,6 +6141,10 @@
             <label>AOS Stage</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ45d</field>
+            <label>Board Of Resolution Authority Person</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PUSH_COUNT</field>
             <label>Push Count</label>
         </forecastingObjectListLabelMappings>
@@ -5741,8 +6165,16 @@
             <label>Plot</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BFTzR</field>
+            <label>Ownership Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BE0Ek</field>
+            <label>Sale Deed Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNdl</field>
@@ -5773,6 +6205,10 @@
             <label>Opportunity Record Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BIZ4D</field>
+            <label>Sub Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>ACCOUNT.NAME</field>
             <label>Account Name</label>
         </forecastingObjectListLabelMappings>
@@ -5791,6 +6227,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BZSSv</field>
+            <label>Sales Deed Authority Person</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListSelectedSettings>
             <field>OPPORTUNITY.NAME</field>
@@ -5839,17 +6279,21 @@
             <field>00NO400000AcNfN</field>
             <field>00NO400000AcNgz</field>
             <field>00NO400000BCYAr</field>
+            <field>00NO400000BZ3xZ</field>
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
             <field>00NO400000AyGP8</field>
             <field>00NO400000AwRtJ</field>
+            <field>00NO400000BZ45d</field>
             <field>00NO400000AcNkD</field>
             <field>00NO400000B51Er</field>
             <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
             <field>00NO400000AwkUX</field>
             <field>00NO400000BCZzl</field>
+            <field>00NO400000AcOd3</field>
+            <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
             <field>00NO400000Ay7SH</field>
@@ -5879,11 +6323,12 @@
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
-            <field>00NO400000AcOd3</field>
+            <field>00NO400000Bex33</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
             <field>00NO400000AcOtB</field>
@@ -5893,6 +6338,8 @@
             <field>00NO400000AcP2r</field>
             <field>00NO400000AuD3F</field>
             <field>00NO400000B70mX</field>
+            <field>00NO400000BZ2mz</field>
+            <field>00NO400000BZ76j</field>
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
@@ -5902,11 +6349,14 @@
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
             <field>00NfK000003tpHx</field>
+            <field>00NO400000BE0Ek</field>
+            <field>00NO400000BZSSv</field>
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
+            <field>00NO400000BIZ4D</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -6026,6 +6476,10 @@
             <label>Lead</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ76j</field>
+            <label>Primary Contact Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NAME</field>
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
@@ -6050,8 +6504,16 @@
             <label>Total Base Rate</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ2mz</field>
+            <label>Primary Contact Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>CONTRACT.CONTRACT_NUMBER</field>
             <label>Contract Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ3xZ</field>
+            <label>AOS Authority Person</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.TYPE</field>
@@ -6080,6 +6542,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPAv</field>
             <label>Registration CRM Head Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BIVyI</field>
+            <label>Cancellation Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOA1</field>
@@ -6123,7 +6589,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOd3</field>
-            <label>Lost Reason</label>
+            <label>Cancellation Reason</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOtC</field>
@@ -6236,6 +6702,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000Acafp</field>
             <label>Paid %</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bex33</field>
+            <label>Lost Reason</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NEXT_STEP</field>
@@ -6382,6 +6852,10 @@
             <label>AOS Stage</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ45d</field>
+            <label>Board Of Resolution Authority Person</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PUSH_COUNT</field>
             <label>Push Count</label>
         </forecastingObjectListLabelMappings>
@@ -6402,8 +6876,16 @@
             <label>Plot</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BFTzR</field>
+            <label>Ownership Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BE0Ek</field>
+            <label>Sale Deed Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNdl</field>
@@ -6434,6 +6916,10 @@
             <label>Opportunity Record Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BIZ4D</field>
+            <label>Sub Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>ACCOUNT.NAME</field>
             <label>Account Name</label>
         </forecastingObjectListLabelMappings>
@@ -6452,6 +6938,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BZSSv</field>
+            <label>Sales Deed Authority Person</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListSelectedSettings>
             <field>OPPORTUNITY.NAME</field>
@@ -6501,17 +6991,21 @@
             <field>00NO400000AcNfN</field>
             <field>00NO400000AcNgz</field>
             <field>00NO400000BCYAr</field>
+            <field>00NO400000BZ3xZ</field>
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
             <field>00NO400000AyGP8</field>
             <field>00NO400000AwRtJ</field>
+            <field>00NO400000BZ45d</field>
             <field>00NO400000AcNkD</field>
             <field>00NO400000B51Er</field>
             <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
             <field>00NO400000AwkUX</field>
             <field>00NO400000BCZzl</field>
+            <field>00NO400000AcOd3</field>
+            <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
             <field>00NO400000Ay7SH</field>
@@ -6541,11 +7035,12 @@
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
-            <field>00NO400000AcOd3</field>
+            <field>00NO400000Bex33</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
             <field>00NO400000AcOtB</field>
@@ -6555,6 +7050,8 @@
             <field>00NO400000AcP2r</field>
             <field>00NO400000AuD3F</field>
             <field>00NO400000B70mX</field>
+            <field>00NO400000BZ2mz</field>
+            <field>00NO400000BZ76j</field>
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
@@ -6564,11 +7061,14 @@
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
             <field>00NfK000003tpHx</field>
+            <field>00NO400000BE0Ek</field>
+            <field>00NO400000BZSSv</field>
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
+            <field>00NO400000BIZ4D</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -6688,6 +7188,10 @@
             <label>Lead</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ76j</field>
+            <label>Primary Contact Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NAME</field>
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
@@ -6712,8 +7216,16 @@
             <label>Total Base Rate</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ2mz</field>
+            <label>Primary Contact Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>CONTRACT.CONTRACT_NUMBER</field>
             <label>Contract Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ3xZ</field>
+            <label>AOS Authority Person</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.TYPE</field>
@@ -6742,6 +7254,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPAv</field>
             <label>Registration CRM Head Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BIVyI</field>
+            <label>Cancellation Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOA1</field>
@@ -6785,7 +7301,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOd3</field>
-            <label>Lost Reason</label>
+            <label>Cancellation Reason</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOtC</field>
@@ -6898,6 +7414,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000Acafp</field>
             <label>Paid %</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bex33</field>
+            <label>Lost Reason</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NEXT_STEP</field>
@@ -7040,6 +7560,10 @@
             <label>AOS Stage</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ45d</field>
+            <label>Board Of Resolution Authority Person</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PUSH_COUNT</field>
             <label>Push Count</label>
         </forecastingObjectListLabelMappings>
@@ -7060,8 +7584,16 @@
             <label>Plot</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BFTzR</field>
+            <label>Ownership Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BE0Ek</field>
+            <label>Sale Deed Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNdl</field>
@@ -7092,6 +7624,10 @@
             <label>Opportunity Record Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BIZ4D</field>
+            <label>Sub Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>ACCOUNT.NAME</field>
             <label>Account Name</label>
         </forecastingObjectListLabelMappings>
@@ -7110,6 +7646,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BZSSv</field>
+            <label>Sales Deed Authority Person</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListSelectedSettings>
             <field>OPPORTUNITY.NAME</field>
@@ -7158,17 +7698,21 @@
             <field>00NO400000AcNfN</field>
             <field>00NO400000AcNgz</field>
             <field>00NO400000BCYAr</field>
+            <field>00NO400000BZ3xZ</field>
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
             <field>00NO400000AyGP8</field>
             <field>00NO400000AwRtJ</field>
+            <field>00NO400000BZ45d</field>
             <field>00NO400000AcNkD</field>
             <field>00NO400000B51Er</field>
             <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
             <field>00NO400000AwkUX</field>
             <field>00NO400000BCZzl</field>
+            <field>00NO400000AcOd3</field>
+            <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
             <field>00NO400000Ay7SH</field>
@@ -7198,11 +7742,12 @@
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
-            <field>00NO400000AcOd3</field>
+            <field>00NO400000Bex33</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
             <field>00NO400000AcOtB</field>
@@ -7212,6 +7757,8 @@
             <field>00NO400000AcP2r</field>
             <field>00NO400000AuD3F</field>
             <field>00NO400000B70mX</field>
+            <field>00NO400000BZ2mz</field>
+            <field>00NO400000BZ76j</field>
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
@@ -7221,11 +7768,14 @@
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
             <field>00NfK000003tpHx</field>
+            <field>00NO400000BE0Ek</field>
+            <field>00NO400000BZSSv</field>
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
+            <field>00NO400000BIZ4D</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -7345,6 +7895,10 @@
             <label>Lead</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ76j</field>
+            <label>Primary Contact Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NAME</field>
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
@@ -7369,8 +7923,16 @@
             <label>Total Base Rate</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ2mz</field>
+            <label>Primary Contact Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>CONTRACT.CONTRACT_NUMBER</field>
             <label>Contract Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ3xZ</field>
+            <label>AOS Authority Person</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.TYPE</field>
@@ -7399,6 +7961,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPAv</field>
             <label>Registration CRM Head Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BIVyI</field>
+            <label>Cancellation Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOA1</field>
@@ -7442,7 +8008,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOd3</field>
-            <label>Lost Reason</label>
+            <label>Cancellation Reason</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOtC</field>
@@ -7555,6 +8121,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000Acafp</field>
             <label>Paid %</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bex33</field>
+            <label>Lost Reason</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NEXT_STEP</field>
@@ -7701,6 +8271,10 @@
             <label>AOS Stage</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ45d</field>
+            <label>Board Of Resolution Authority Person</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PUSH_COUNT</field>
             <label>Push Count</label>
         </forecastingObjectListLabelMappings>
@@ -7721,8 +8295,16 @@
             <label>Plot</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BFTzR</field>
+            <label>Ownership Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BE0Ek</field>
+            <label>Sale Deed Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNdl</field>
@@ -7753,6 +8335,10 @@
             <label>Opportunity Record Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BIZ4D</field>
+            <label>Sub Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>ACCOUNT.NAME</field>
             <label>Account Name</label>
         </forecastingObjectListLabelMappings>
@@ -7771,6 +8357,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BZSSv</field>
+            <label>Sales Deed Authority Person</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListSelectedSettings>
             <field>OPPORTUNITY.NAME</field>
@@ -7820,17 +8410,21 @@
             <field>00NO400000AcNfN</field>
             <field>00NO400000AcNgz</field>
             <field>00NO400000BCYAr</field>
+            <field>00NO400000BZ3xZ</field>
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
             <field>00NO400000AyGP8</field>
             <field>00NO400000AwRtJ</field>
+            <field>00NO400000BZ45d</field>
             <field>00NO400000AcNkD</field>
             <field>00NO400000B51Er</field>
             <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
             <field>00NO400000AwkUX</field>
             <field>00NO400000BCZzl</field>
+            <field>00NO400000AcOd3</field>
+            <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
             <field>00NO400000Ay7SH</field>
@@ -7860,11 +8454,12 @@
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
-            <field>00NO400000AcOd3</field>
+            <field>00NO400000Bex33</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
             <field>00NO400000AcOtB</field>
@@ -7874,6 +8469,8 @@
             <field>00NO400000AcP2r</field>
             <field>00NO400000AuD3F</field>
             <field>00NO400000B70mX</field>
+            <field>00NO400000BZ2mz</field>
+            <field>00NO400000BZ76j</field>
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
@@ -7883,11 +8480,14 @@
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
             <field>00NfK000003tpHx</field>
+            <field>00NO400000BE0Ek</field>
+            <field>00NO400000BZSSv</field>
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
+            <field>00NO400000BIZ4D</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -8007,6 +8607,10 @@
             <label>Lead</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ76j</field>
+            <label>Primary Contact Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NAME</field>
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
@@ -8031,8 +8635,16 @@
             <label>Total Base Rate</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ2mz</field>
+            <label>Primary Contact Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>CONTRACT.CONTRACT_NUMBER</field>
             <label>Contract Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ3xZ</field>
+            <label>AOS Authority Person</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.TYPE</field>
@@ -8061,6 +8673,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPAv</field>
             <label>Registration CRM Head Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BIVyI</field>
+            <label>Cancellation Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOA1</field>
@@ -8104,7 +8720,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOd3</field>
-            <label>Lost Reason</label>
+            <label>Cancellation Reason</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOtC</field>
@@ -8217,6 +8833,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000Acafp</field>
             <label>Paid %</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bex33</field>
+            <label>Lost Reason</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NEXT_STEP</field>
@@ -8359,6 +8979,10 @@
             <label>AOS Stage</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BZ45d</field>
+            <label>Board Of Resolution Authority Person</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.PUSH_COUNT</field>
             <label>Push Count</label>
         </forecastingObjectListLabelMappings>
@@ -8379,8 +9003,16 @@
             <label>Plot</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BFTzR</field>
+            <label>Ownership Type</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BE0Ek</field>
+            <label>Sale Deed Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNdl</field>
@@ -8411,6 +9043,10 @@
             <label>Opportunity Record Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BIZ4D</field>
+            <label>Sub Stage</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>ACCOUNT.NAME</field>
             <label>Account Name</label>
         </forecastingObjectListLabelMappings>
@@ -8429,6 +9065,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BZSSv</field>
+            <label>Sales Deed Authority Person</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListSelectedSettings>
             <field>OPPORTUNITY.NAME</field>
@@ -8477,17 +9117,21 @@
             <field>00NO400000AcNfN</field>
             <field>00NO400000AcNgz</field>
             <field>00NO400000BCYAr</field>
+            <field>00NO400000BZ3xZ</field>
             <field>00NO400000AqMJd</field>
             <field>00NO400000AqMGP</field>
             <field>00NO400000AcNib</field>
             <field>00NO400000AyGP8</field>
             <field>00NO400000AwRtJ</field>
+            <field>00NO400000BZ45d</field>
             <field>00NO400000AcNkD</field>
             <field>00NO400000B51Er</field>
             <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
             <field>00NO400000AwkUX</field>
             <field>00NO400000BCZzl</field>
+            <field>00NO400000AcOd3</field>
+            <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
             <field>00NO400000AcNlp</field>
             <field>00NO400000Ay7SH</field>
@@ -8517,11 +9161,12 @@
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
-            <field>00NO400000AcOd3</field>
+            <field>00NO400000Bex33</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
             <field>00NO400000AcOtB</field>
@@ -8531,6 +9176,8 @@
             <field>00NO400000AcP2r</field>
             <field>00NO400000AuD3F</field>
             <field>00NO400000B70mX</field>
+            <field>00NO400000BZ2mz</field>
+            <field>00NO400000BZ76j</field>
             <field>00NO400000AcObS</field>
             <field>00NO400000AcP65</field>
             <field>00NO400000AcP7h</field>
@@ -8540,11 +9187,14 @@
             <field>00NO400000AcPCX</field>
             <field>00NO400000AcPE9</field>
             <field>00NfK000003tpHx</field>
+            <field>00NO400000BE0Ek</field>
+            <field>00NO400000BZSSv</field>
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
+            <field>00NO400000BIZ4D</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>

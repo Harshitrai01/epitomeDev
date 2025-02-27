@@ -376,6 +376,11 @@
             <field>Site_Location__c</field>
             <table>Lead</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Campaign__c</field>
+            <table>Lead</table>
+        </columns>
         <masterLabel>Leads</masterLabel>
     </sections>
     <sections>

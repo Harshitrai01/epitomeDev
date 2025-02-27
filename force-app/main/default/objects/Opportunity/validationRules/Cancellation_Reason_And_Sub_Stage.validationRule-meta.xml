@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cancellation_Reason_And_Sub_Stage</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISPICKVAL(StageName, &quot;Cancelled&quot;),
+    OR(
+    ISBLANK(Cancellation_Reason__c),
+    ISBLANK(TEXT(Sub_Stage__c))
+    )
+)</errorConditionFormula>
+    <errorMessage>When the stage is set to &apos;Cancelled&apos;, the &apos;Cancellation Reason&apos; and &apos;Sub Stages&apos; fields must be filled in.</errorMessage>
+</ValidationRule>

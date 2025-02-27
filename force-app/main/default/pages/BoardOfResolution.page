@@ -1,0 +1,155 @@
+<apex:page renderAs="pdf" standardController="Opportunity" showHeader="false" sidebar="false" extensions="BoardOfResolutionController">
+    <html lang="en">
+        <body>
+            <div class="main-container">
+                <table style="width: 100%;">
+                    
+                    <tr>
+                        <td style="width: 20%;"></td> 
+                        <td style="text-align: center; font-size: 20px; font-weight: bold;width: 60%;">
+                            <u>Board of Resolution</u>  
+                        </td>
+                        <td style="text-align: right; font-size: 20px;width: 20%;">
+                            <apex:image id="theImage" value="{!$Resource.EpitomeLogo}" width="120" height="120" />
+                        </td>
+                    </tr>
+                </table>
+                
+                <!--<table style="width: 100%;">
+                        <tr>
+                        <td style="text-align: center;font-size: 20px;padding: 0px 0px 40px 0px;"><u><b>BOARD OF RESOLUTION</b></u></td>
+                        </tr>
+                    </table>-->
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="text-align: left;font-size: 15px; padding: 0px 0px 10px 0px;border-bottom:1px solid">
+                            <b> EXTRACT OF THE MINUTES OF THE MEETING OF THE PARTNERS OF EPITOME PROJECTS LLP (“LLP”) HELD ON TUESDAY, SEPTEMBER 24TH, 2024 AT "Plot no.C2, Commercial Sector -III, Huda Techno Enclave, Sy No.64, Madhapur Village, Serilingampally Mandal, Ranga Reddy District -TG 500081.
+                            </b> </td>
+                    </tr>
+                </table>
+                
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="text-align: left;font-size: 15px; padding: 10px 0px 10px 0px;">
+                            <u> <b>SALE OF PROJECT LAND</b> </u>
+                        </td>
+                    </tr>
+                </table>
+                <table style="width: 100%;">
+                    
+                    <tr >
+                        <td style="text-align: left;font-size: 15px; padding: 0px 0px 10px 0px;">
+                            The Partners have decided that the LLP is proposing to enter into and execute agreements, agreement of sale cum general power of attorney and sale deed 
+                            with the purchaser of Plot No. <b>{!opportunityRecord.Unit__r.Name}</b> forming part of the residential development project established by the LLP 
+                            situated in 
+                            {!opportunityRecord.Unit__r.Address__Street__s},
+                            {!opportunityRecord.Unit__r.Address__City__s},
+                            {!opportunityRecord.Unit__r.Address__StateCode__s},
+                            {!opportunityRecord.Unit__r.Address__CountryCode__s},
+                            {!opportunityRecord.Unit__r.Address__PostalCode__s}
+                            ("<b>Proposed Transaction</b>").
+                        </td>
+                    </tr>
+                    
+                    <tr >
+                        <td style="text-align: left;font-size: 15px; padding: 0px 0px 5px 0px; ">
+                            The copies of <br/>
+                            <p style="margin-left:15px;margin-top:1px;margin-bottom:5px;">
+                                (a) Draft agreements of sale and sale deed proposed to be executed on behalf of the LLP in relation to the Proposed Transaction ("<b>Transaction Documents</b>"); and<br/>
+                                (b) Ancillary documents describing the property forming part of the Proposed Transaction, were tabled at the meeting and initialed by the Partners for identification.
+                            </p> 
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr >
+                        <td style="text-align: left;font-size: 15px;  padding: 0px 0px 5px 0px;">
+                            The Partners discussed the matter and passed the following resolutions unanimously:
+                        </td>
+                    </tr>
+                </table>
+                
+                
+                
+                <table style="width:100%;">
+                    
+                    <tr>
+                        <td style="text-align: left;font-size: 15px;padding: 0px 0px 10px 0px; margin-left:10px;">
+                             <p style="margin-left:15px;margin-top:1px;margin-bottom:5px;">
+                            <b>(a) Execution of Transaction Documents</b><br/>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;font-size: 15px;padding: 0px 0px 10px 0px;">
+                            “<b>RESOLVED THAT</b> {!opportunityRecord.Board_Of_Resolution_Authority_Person__r.Name}, S/o Mr. T Narasimha Rao, having 
+                            Aadhaar no. 3139 7451 7805, presently residing at Flat No-614, Sumadhura Acropolis, Nanakramguda, Serilingampally, 
+                            VTC: Gachibowli, PO: Gachibowli District: KV Rangareddy, State: Telangana-500032, be and is hereby authorized to negotiate,
+                            finalize, execute, amend, novate, restate, and also to modify the Transaction Documents for and on behalf of the LLP 
+                            and that all such actions are binding on the LLP.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;font-size: 15px;border-bottom:1px solid;padding: 0px 0px 10px 0px;">
+                            <b>RESOLVED FURTHER THAT</b> {!opportunityRecord.Board_Of_Resolution_Authority_Person__r.Name}, be and is hereby authorized 
+                            to sign and file all statutory forms and documents, as may be required with the relevant statutory authorities as may be necessary, 
+                            pursuant to the Proposed Transaction and to do all acts, matters, deeds and things as may be necessary, expedient or desirable in connection
+                            with or incidental for giving effect to the above resolution.”
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                </table>
+                <table style="width:100%;padding: 0px 0px 10px 0px;">
+                    
+                    
+                    
+                    <tr>
+                        <td style="text-align: left;font-size: 15px;">
+                            <apex:outputText >
+                                Certified to be true<br/>
+                                For Epitome Projects LLP  <br/><br/> <br/> 
+                            </apex:outputText>
+                        </td>
+                    </tr>
+                    
+                </table>
+                <table style="width: 100%;padding: 0px 0px 15px 0px;">
+                    <tr>
+                        <td style="text-align: left; font-size: 15px; width: 50%;">
+                            <apex:outputText >
+                                Jaipal Kantha<br/>
+                                Partner<br/>
+                                DIN: 06375186
+                            </apex:outputText>
+                        </td>
+                        <td style="text-align: right; font-size: 15px; width: 50%;">
+                            <apex:outputText >
+                                Vineeth Reddy Lingala<br/>
+                                Partner<br/>
+                                DIN: 07237624
+                            </apex:outputText>
+                        </td>
+                    </tr>
+                </table>
+                <table style="width: 100%;">
+                    <tr>
+                        
+                        <td style="text-align: right; font-size: 10px; width: 50%;">
+                            <apex:outputText >
+                                Corporate Office:<br/>
+                                EPITOME PROJECTS LLP<br/>
+                                Plot No. C2, Commercial Sector – III,<br/>
+                                HUDA Techno Enclave, Sy. No. 64, Madhapur Village,<br/>
+                                Serilingampalle Mandal, Ranga Reddy District – 500081, Telangana.<br/>
+                                T: +91 40 6827 8899, E: info@epitomeprojects.in<br/>
+                                W: epitomeprojects.in
+                            </apex:outputText>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </body>
+    </html>
+</apex:page>

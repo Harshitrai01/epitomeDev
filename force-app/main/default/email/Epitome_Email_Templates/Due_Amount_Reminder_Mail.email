@@ -1,0 +1,12 @@
+<p>Dear {!Opportunity.Account},</p>
+
+    <p>We hope this message finds you well. This is a friendly reminder regarding your outstanding payments for your {!Opportunity.Plot_Name__c} at <strong>{!Opportunity.Project_Name__c}-{!Opportunity.Phase_Name__c}</strong>.</p>
+    
+    <p><strong>Due Amounts:</strong> ₹{!Opportunity.Outstanding_Amount__c}</p>
+
+    <p>Please ensure that the due amounts are paid at the earliest. If already paid, please ignore.</p>
+
+    <p>For any questions or if you need further assistance, feel free to reach out to us.</p>
+
+    <p>Warm regards,</p>
+    <p><strong>Epitome Projects LLP</strong></p>

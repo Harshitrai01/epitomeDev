@@ -1,0 +1,15 @@
+<p>Dear {!Opportunity.Account},</p>
+
+    <p>We hope this message finds you well. We are pleased to provide you with the details regarding your loan eligibility for your Unit at <strong>{!Opportunity.Project_Name__c}-{!Opportunity.Phase_Name__c}.</strong>.</p>
+
+    <p><strong>Payment Details:</strong></p>
+    <ul>
+        <li><strong>Amount Paid:</strong> {!Opportunity.Sale_Value_Amount__c}</li>
+        <li><strong>Loan Eligible Amount:</strong>{!Opportunity.Loan_Eligible_Amount__c} from {!Opportunity.Bank_Name__c}</li>
+        <li><strong>Due Amount:</strong> {!Opportunity.Outstanding_Amount__c}</li>
+    </ul>
+
+    <p>Our CRM team will reach out to you shortly to discuss the loan options and assist you with the application process. If you have any questions or need further assistance, please feel free to reach out to us.</p>
+
+    <p>Warm regards,</p>
+    <p><strong>Epitome Projects LLP</strong></p>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Payment Notification</name>
+    <style>none</style>
+    <subject>Payment Link - Epitome Projects LLP</subject>
+    <textOnly>Dear Customer,
+
+Please find below your payment details:
+
+📌 Account Name: {!Contact.Account_Name__c}
+
+🏦 Account Number: {!Contact.Account_Number__c}
+
+🏷️ IFSC Code: {!Contact.IFSC_Code__c}
+
+💳 UPI ID: {!Contact.UPI_ID__c}
+
+Scan to Pay:
+
+🔗 Click to Pay
+
+Warm Regards,
+Epitome Projects LLP</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

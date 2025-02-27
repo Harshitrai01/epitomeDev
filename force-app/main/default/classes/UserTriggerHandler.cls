@@ -23,9 +23,10 @@ public with sharing class UserTriggerHandler {
             Integer maxCapacity = Integer.valueOf(Label.Lead_Assignment_Capacity);
             List<User> availableUsers = fetchAvailableUsers(userIds, maxCapacity);
             if (availableUsers.isEmpty()) return;
-            
+            system.debug('availableUsers--->'+availableUsers);
             List<Lead> unassignedLeads = fetchUnassignedLeads(preSalesQueue.Id);
             if (unassignedLeads.isEmpty()) return;
+            system.debug('unassignedLeads--->'+unassignedLeads);
             
             assignLeadsToUsers(unassignedLeads, availableUsers, maxCapacity);
         } catch (Exception e) {
@@ -82,7 +83,7 @@ public with sharing class UserTriggerHandler {
         Map<String, List<User>> sourceToUsersMap = new Map<String, List<User>>();
         for (User u : availableUsers) {
             if (u.Assigned_Sources__c != null) {
-                List<String> userSources = u.Assigned_Sources__c.split(';');
+                    List<String> userSources = u.Assigned_Sources__c.split(',');
                 for (String source : userSources) {
                     source = source.trim();
                     if (!sourceToUsersMap.containsKey(source)) {
@@ -130,6 +131,7 @@ public with sharing class UserTriggerHandler {
         }
         
         if (!leadsToUpdate.isEmpty()) update as user leadsToUpdate;
+        system.debug('leadsToUpdate-->'+leadsToUpdate);
         if (!usersToUpdate.isEmpty()) {
             for (User u : usersToUpdate) {
                 u.Capacity__c = userLeadCounts.get(u.Id);

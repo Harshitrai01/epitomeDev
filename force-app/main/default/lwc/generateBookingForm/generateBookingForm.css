@@ -94,3 +94,25 @@ lightning-accordion-section::part(summary-title) {
 .contact-container{
 	margin-bottom: 10px;
 }
+
+.form-container {
+    display: flex;
+    justify-content: space-between; /* Pushes label to the left and combobox to the right */
+    align-items: center;
+    width: 100%;
+}
+
+.custom-label {
+    white-space: nowrap;
+	    min-width: 40%; /* Ensures combobox does not shrink too much */
+
+}
+.combobox-container {
+    flex-grow: 1; /* Allows combobox to take up remaining space */
+    display: flex;
+    justify-content: flex-end; /* Aligns the combobox to the right */
+}
+.required {
+    color: red;
+    margin-right: 5px;
+}

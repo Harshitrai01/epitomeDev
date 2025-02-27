@@ -3,7 +3,7 @@ global class PollingWrapperScheduler implements Schedulable {
         // Call the managed package functionality
         gupshup_crm.PollingIncomingWhatsAppMessageScheduler schedulerInstance =
             new gupshup_crm.PollingIncomingWhatsAppMessageScheduler();
-        schedulerInstance.execute(null); // or call a static method if available
+        schedulerInstance.execute(null); 
 
         // Calculate next run time (1 minute later)
         DateTime nextRun = System.now().addMinutes(1);

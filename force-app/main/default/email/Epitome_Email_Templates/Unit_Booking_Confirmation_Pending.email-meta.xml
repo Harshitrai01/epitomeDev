@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Unit Booking Confirmation: - Pending</name>
+    <style>none</style>
+    <subject>Unit Booking Confirmation: - Pending</subject>
+    <textOnly>Unit Booking Confirmation
+
+Dear [Customer&apos;s Name],
+
+Congratulations! We are delighted to confirm your unit booking at [Project Name] [Phase/Block]. Here are the details of your booking:
+
+Unit Details:
+
+Unit Number: [Unit Number]
+Unit Size: [Unit Size]
+Unit Facing: [Unit Face]
+Booking Date: [Date]
+
+Pricing Details:
+
+Unit Price per Sq Yards: [Unit Price]
+Sale Value: [Sale Value]
+
+Payment Milestones:
+
+Booking Amount: [Booking Amount]
+First Installment: [Amount] due on [Date]
+Second Installment: [Amount] due on [Date]
+Final Payment: [Amount] due on [Date]
+
+Next Steps:
+
+Please keep your KYC documents ready. Our CRM team will reach out to you shortly to guide you through the process and answer any questions you might have.
+
+Working Timings:
+
+Our office hours are from [Working Hours].
+
+Terms and Conditions:
+
+Cancellation policies and other terms can be found in the attached document.
+
+We look forward to assisting you in this exciting journey. Feel free to reach out to us if you need any further assistance.
+
+Warm regards,
+Epitome Projects LLP</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

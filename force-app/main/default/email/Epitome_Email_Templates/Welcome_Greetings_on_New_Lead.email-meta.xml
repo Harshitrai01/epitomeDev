@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Welcome Greetings on New Lead</name>
+    <style>none</style>
+    <subject>Welcome to Epitome Integrated City</subject>
+    <textOnly>Email to Client
+
+Dear Sir/Madam,
+
+Welcome to Epitome Integrated City! Thank you for reaching out to us. One of our executives will contact you shortly to provide the assistance you need.
+
+As per your enquiry about the premium villa plots, I am pleased to share the details of our project.
+
+Epitome Integrated City is South India&apos;s largest integrated city, spanning 1242 acres:
+
+Phase-1: 368 Acres
+Phase-2: 399 Acres
+Phase-3: 475 Acres
+
+Greetings from Epitome Integrated City 🌟
+
+📍 Location: Hyderabad - Vijayawada, National Highway - 65, Hyderabad.
+
+View Location on Google Maps
+
+🔰 Project 360 View: Click here
+
+🔰 Project Presentation Video: Click here
+
+Project Highlights:
+
+Total Area: 1242 Acres (Proposed)
+Residential Township: 368 Acres with Villa Unit sizes ranging from 267 Sqyds to 533 Sqyds
+Approvals: HMDA &amp; RERA Approved
+Amenities: World-class amenities with 24 Themed Parks
+Club House: Spanning 5.65 Acres with 40+ Amenities, including an Olympic Sized Swimming Pool alongside a Palm Grove
+
+Connectivity:
+
+30 mins drive to Airport
+25 mins drive to TCS Adibatla
+20 mins drive to major Business Centres and shopping destinations
+15 mins drive to Ramoji Film City
+10 mins drive to major hospitals and educational institutions
+7 mins drive to TSIIC &amp; MSME Green Industrial Park
+3 mins drive to Regional Ring Road
+17 mins drive to Outer Ring Road
+
+I have attached the layout copy and all other details. Please review and get back to me if you require any additional information.
+
+Warm Regards,
+Epitome Projects LLP</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

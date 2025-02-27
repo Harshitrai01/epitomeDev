@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Feedback__c</fullName>
+    <label>Feedback</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Status</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Not Answering</fullName>
+                <default>false</default>
+                <label>Not Answering</label>
+            </value>
+            <value>
+                <fullName>Details Shared</fullName>
+                <default>false</default>
+                <label>Details Shared</label>
+            </value>
+            <value>
+                <fullName>Interested</fullName>
+                <default>false</default>
+                <label>Interested</label>
+            </value>
+            <value>
+                <fullName>Ring No Response</fullName>
+                <default>false</default>
+                <label>Ring No Response</label>
+            </value>
+            <value>
+                <fullName>No Number</fullName>
+                <default>false</default>
+                <label>No Number</label>
+            </value>
+            <value>
+                <fullName>Location</fullName>
+                <default>false</default>
+                <label>Location</label>
+            </value>
+            <value>
+                <fullName>Budget</fullName>
+                <default>false</default>
+                <label>Budget</label>
+            </value>
+            <value>
+                <fullName>Junk/Wrong</fullName>
+                <default>false</default>
+                <label>Junk/Wrong</label>
+            </value>
+            <value>
+                <fullName>Casual Enquiry</fullName>
+                <default>false</default>
+                <label>Casual Enquiry</label>
+            </value>
+            <value>
+                <fullName>Distance Issue</fullName>
+                <default>false</default>
+                <label>Distance Issue</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Unqualified</controllingFieldValue>
+            <valueName>No Number</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unqualified</controllingFieldValue>
+            <valueName>Location</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unqualified</controllingFieldValue>
+            <valueName>Budget</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unqualified</controllingFieldValue>
+            <valueName>Junk/Wrong</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unqualified</controllingFieldValue>
+            <valueName>Casual Enquiry</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unqualified</controllingFieldValue>
+            <valueName>Distance Issue</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

@@ -63,7 +63,7 @@
         <lockSessionsToIp>false</lockSessionsToIp>
         <lockerServiceCSP>false</lockerServiceCSP>
         <lockerServiceNext>true</lockerServiceNext>
-        <lockerServiceNextControl>false</lockerServiceNextControl>
+        <lockerServiceNextControl>true</lockerServiceNextControl>
         <redirectBlockModeEnabled>false</redirectBlockModeEnabled>
         <redirectionWarning>true</redirectionWarning>
         <referrerPolicy>true</referrerPolicy>

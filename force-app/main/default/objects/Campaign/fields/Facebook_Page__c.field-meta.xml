@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Facebook_Page__c</fullName>
+    <label>Facebook Page</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Epitome Integrated City</fullName>
+                <default>false</default>
+                <label>Epitome Integrated City</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

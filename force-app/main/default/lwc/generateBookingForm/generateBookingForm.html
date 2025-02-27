@@ -34,7 +34,7 @@
                                                     large-device-size="6">
                                                     <lightning-combobox data-label="primaryApplicantRequiredFields"
                                                         type="text" variant="standard" name="typeOfBooking"
-                                                        label="Type of Booking" onchange={handleValueChange}
+                                                        label="Type of Booking" onchange={handleAccountChange}
                                                         value={bookingFormData.typeOfBooking}
                                                         options={picklistOptions.typeOfBookingOptions} required>
                                                     </lightning-combobox>
@@ -45,37 +45,59 @@
                                         <lightning-accordion-section name="A" label="Primary Information"
                                             class="accordion-section">
                                             <lightning-layout multiple-rows>
-                                                <lightning-layout-item flexibility="auto" padding="around-small"
-                                                    size="12" small-device-size="12" medium-device-size="6"
-                                                    large-device-size="6">
-                                                    <lightning-input type="checkbox" label="Account Already Exist"
+                                                <div class="form-container">
+                                                    <lightning-layout-item flexibility="auto" padding="around-small"
+                                                        size="12" small-device-size="12" medium-device-size="6"
+                                                        large-device-size="6">
+                                                        <!-- <lightning-input type="checkbox" label="Account Already Exist"
                                                         onchange={handleCheckboxChange}></lightning-input>
-                                                </lightning-layout-item>   
+                                                </lightning-layout-item>    -->
+
+                                                        <label class="custom-label" required>  <span class="required">*</span>Is the Account already existing?</label>
+
+                                                    </lightning-layout-item>
+                                                    <lightning-layout-item flexibility="auto" padding="around-small"
+                                                        size="12" small-device-size="12" medium-device-size="6"
+                                                        large-device-size="6">
+
+
+                                                        <lightning-combobox name="progress" placeholder="Select Account"
+                                                            options={options} onchange={handleCheckboxChange} value={value}>
+                                                        </lightning-combobox>
+
+
+                                                    </lightning-layout-item>
+                                                </div>
 
                                                 <!-- Second Layout Item with Account Record Picker -->
+                                                <template if:false={isAccountExist}>
                                                     <lightning-layout-item flexibility="auto" padding="around-small"
                                                         size="12" small-device-size="12" medium-device-size="6"
                                                         large-device-size="6">
                                                         <lightning-record-picker label="Select Account"
-                                                            object-api-name="Account"
-                                                            onchange={handleRecordSelection}
-                                                            disabled={isAccountExist}>
+                                                            object-api-name="Account" onchange={handleRecordSelection}
+                                                            disabled={isAccountExist}
+                                                            data-label="primaryApplicantRequiredFields"
+                                                            required
+                                                            >
                                                         </lightning-record-picker>
                                                     </lightning-layout-item>
+                                                </template>
                                                 <lightning-layout-item flexibility="auto" padding="around-small"
                                                     size="12" small-device-size="12" medium-device-size="6"
                                                     large-device-size="6">
                                                     <lightning-input data-label="primaryApplicantRequiredFields"
                                                         label="Account Name" type="text" name="accountName"
-                                                        onchange={handleValueChange} value={bookingFormData.accountName}
-                                                        data-required="true" required></lightning-input>
+                                                        onchange={handleAccountChange}
+                                                        value={bookingFormData.accountName} data-required="true"
+                                                        required></lightning-input>
                                                 </lightning-layout-item>
                                                 <lightning-layout-item flexibility="auto" padding="around-small"
                                                     size="12" small-device-size="12" medium-device-size="6"
                                                     large-device-size="6">
                                                     <lightning-input data-label="primaryApplicantRequiredFields"
                                                         type="email" variant="standard" name="accountEmailId"
-                                                        label="Email Id" onchange={handleValueChange}
+                                                        label="Email Id" onchange={handleAccountChange}
                                                         value={bookingFormData.accountEmailId} required>
                                                     </lightning-input>
                                                 </lightning-layout-item>
@@ -84,7 +106,8 @@
                                                     large-device-size="6">
                                                     <lightning-input data-label="primaryApplicantRequiredFields"
                                                         type="tel" variant="standard" name="accountContactNo"
-                                                        label="Contact No" max-length="10" onchange={handleValueChange}
+                                                        label="Contact No" max-length="10"
+                                                        onchange={handleAccountChange}
                                                         value={bookingFormData.accountContactNo} required>
                                                     </lightning-input>
                                                 </lightning-layout-item>
@@ -94,7 +117,7 @@
                                                     <lightning-input data-label="primaryApplicantRequiredFields"
                                                         type="checkbox" variant="standard"
                                                         name="accountSameAsPermanentAddress"
-                                                        label="Same as Permanent Address" onchange={handleValueChange}
+                                                        label="Same as Permanent Address" onchange={handleAccountChange}
                                                         value={bookingFormData.accountSameAsPermanentAddress}
                                                         checked={bookingFormData.accountSameAsPermanentAddress}>
                                                     </lightning-input>
@@ -161,25 +184,65 @@
                                             <div key={contact.id} class="contact-container">
                                                 <lightning-accordion-section name="B" label="Contact Information">
                                                     <lightning-layout multiple-rows>
-                                                        <lightning-layout-item flexibility="auto" padding="around-small"
+                                                        <template if:true={isAccountSelected}>
+                                                            <div class="form-container">
+                                                                <lightning-layout-item flexibility="auto"
+                                                                    padding="around-small" size="12"
+                                                                    small-device-size="12" medium-device-size="6"
+                                                                    large-device-size="6">
+
+                                                                    <label class="custom-label" required>  <span class="required">*</span>Is the contact already existing?</label>
+                                                                </lightning-layout-item>
+                                                                <lightning-layout-item flexibility="auto"
+                                                                    padding="around-small" size="12"
+                                                                    small-device-size="12" medium-device-size="6"
+                                                                    large-device-size="6">
+                                                                    <lightning-combobox name="progress"
+                                                                        placeholder="Select Contact"
+                                                                        options={contactOptions}
+                                                                        onchange={handleContactCheckboxChange}
+                                                                        data-contact-id={contact.id}
+                                                                        value={contactValue}>
+                                                                    </lightning-combobox>
+                                                                </lightning-layout-item>
+                                                            </div>
+
+
+                                                            <!-- <lightning-layout-item flexibility="auto" padding="around-small"
                                                             size="12" small-device-size="12" medium-device-size="6"
                                                             large-device-size="6">
-                                                            <lightning-input type="checkbox" label="Contact Already Exist"
+                                                            <lightning-input type="checkbox"
+                                                                label="Contact Already Exist"
                                                                 onchange={handleContactCheckboxChange}
                                                                 data-contact-id={contact.id}></lightning-input>
-                                                        </lightning-layout-item>   
+                                                        </lightning-layout-item> -->
 
-                                                        <!-- Second Layout Item with Account Record Picker -->
-                                                            <lightning-layout-item flexibility="auto" padding="around-small"
-                                                                size="12" small-device-size="12" medium-device-size="6"
-                                                                large-device-size="6">
-                                                                <lightning-record-picker label="Select Contact"
+                                                            <!-- Second Layout Item with Account Record Picker -->
+                                                            <template if:false={contact.isContactExist}>
+                                                                <lightning-layout-item flexibility="auto"
+                                                                    padding="around-small" size="12"
+                                                                    small-device-size="12" medium-device-size="6"
+                                                                    large-device-size="6">
+                                                                    <lightning-combobox name="contacts"
+                                                                        label="Select Contact"
+                                                                        placeholder="Select Contact From Here..."
+                                                                        options={contacts} value={contact.contactId}
+                                                                        onchange={handleContactRecordSelection}
+                                                                        data-contact-id={contact.id}
+                                                                        data-label="primaryApplicantRequiredFields"
+                                                            required
+                                                            >
+                                                                    </lightning-combobox>
+                                                                    <!-- <lightning-record-picker label="Select Contact"
                                                                     object-api-name="Contact"
                                                                     onchange={handleContactRecordSelection}
                                                                     disabled={contact.isContactExist}
-                                                                    data-contact-id={contact.id}>
-                                                                </lightning-record-picker>
-                                                            </lightning-layout-item>
+                                                                    data-contact-id={contact.id} filter={recordFilter}>
+                                                                </lightning-record-picker> -->
+                                                                </lightning-layout-item>
+                                                            </template>
+
+                                                        </template>
                                                         <lightning-layout-item flexibility="auto" padding="around-small"
                                                             size="12" small-device-size="12" medium-device-size="6"
                                                             large-device-size="6">
@@ -261,15 +324,30 @@
                                                                         padding="around-small" size="12"
                                                                         small-device-size="12" medium-device-size="6"
                                                                         large-device-size="6">
-                                                                        <lightning-record-picker label="Plot"
+
+                                                                        <lightning-combobox name="plotName"
+                                                                            label="Select Plot"
+                                                                            placeholder="Select Plot From Here..."
+                                                                            options={plots} value={plot.plotName}
+                                                                            onchange={handleValueChange}
+                                                                            data-contact-id={contact.id}
+                                                                             data-plot-id={plot.id
+                                                                             data-label="primaryApplicantRequiredFields"
+                                                            required
+                                                                             >
+                                                                        </lightning-combobox>
+
+
+                                                                        <!-- <lightning-record-picker label="Plot"
                                                                             placeholder="Search Plot..."
                                                                             object-api-name="Unit__c" name="plotName"
                                                                             data-label="primaryApplicantRequiredFields"
                                                                             data-contact-id={contact.id}
                                                                             data-plot-id={plot.id}
                                                                             onchange={handleValueChange}
-                                                                            value={plot.plotName} required>
-                                                                        </lightning-record-picker>
+                                                                            value={plot.plotName} required
+                                                                            filter={recordPlotFilter}>
+                                                                        </lightning-record-picker> -->
                                                                     </lightning-layout-item>
                                                                     <lightning-layout-item flexibility="auto"
                                                                         padding="around-small" size="12"
@@ -372,7 +450,7 @@
                                                     </lightning-button>
                                                 </template>
                                                 <template if:true={contact.showAddMoreButton}>
-                                                    <lightning-button variant="neutral" label="Add More"
+                                                    <lightning-button variant="neutral" label="Add More Contact"
                                                         data-contact-id={contact.id} onclick={addContact}>
                                                     </lightning-button>
                                                 </template>

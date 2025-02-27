@@ -11,14 +11,41 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Online</fullName>
+                <fullName>EasyCollect</fullName>
                 <default>false</default>
-                <label>Online</label>
+                <label>EasyCollect</label>
+            </value>
+            <value>
+                <fullName>InstaCollect</fullName>
+                <default>false</default>
+                <label>InstaCollect</label>
+            </value>
+            <value>
+                <fullName>Cheque</fullName>
+                <default>false</default>
+                <label>Cheque</label>
+            </value>
+            <value>
+                <fullName>Loan</fullName>
+                <default>false</default>
+                <label>Loan</label>
+            </value>
+            <value>
+                <fullName>Offline</fullName>
+                <default>false</default>
+                <label>Offline</label>
             </value>
             <value>
                 <fullName>Bank (Cheque/Neft)</fullName>
                 <default>false</default>
+                <isActive>false</isActive>
                 <label>Bank (Cheque/Neft)</label>
+            </value>
+            <value>
+                <fullName>Online</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Online</label>
             </value>
         </valueSetDefinition>
     </valueSet>

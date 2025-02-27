@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Plot Dropped Mail</name>
+    <style>none</style>
+    <subject>Plot Dropped</subject>
+    <textOnly>Dear {!Opportunity.Account},
+
+We regret to inform you that Plot {!Opportunity.Plot_Name__c} has been dropped.
+
+If you have any questions or require further assistance, please do not hesitate to contact us.
+
+We appreciate your understanding and apologize for any inconvenience this may cause.
+
+Warm regards,
+
+Epitome Projects LLP</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

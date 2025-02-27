@@ -182,7 +182,7 @@ lead.RecordTypeId=duplicateRecordTypeId;
                                     Rating, Intrested_Projects__c, Plot__c, Enquired_Project__c, 
                                     Budget__c, Last_Interacted_Date_Time__c, From_Location__c, Facing__c, 
                                     Type_Of_Site_Visit__c, Cab_Amount__c, Feedback__c, Street, City, 
-                                    State, PostalCode, Country, IsDuplicate__c, Duplicacy_Unique_Key__c,Latest_Lead_Source__c,Latest_Lead_Date__c
+                                    State, PostalCode, Country, IsDuplicate__c, Duplicacy_Unique_Key__c,Latest_Lead_Date__c
                                     FROM Lead
                                     WHERE (Phone IN :mobileAndEmailSet OR Email IN :mobileAndEmailSet)
                                     AND IsDuplicate__c = false];
@@ -335,7 +335,7 @@ lead.RecordTypeId=duplicateRecordTypeId;
                     parentLead.Country = lead.Country;
                 }
                 
-                parentLead.Latest_Lead_Source__c=lead.LeadSource;
+                //parentLead.Latest_Lead_Source__c=lead.LeadSource;
                 parentLead.Latest_Lead_Date__c=System.now();
                 if(parentLead.Status=='Post Visit Lost' || parentLead.Status=='Unqualified'){
                     parentLead.Status='Re-Enquiry';

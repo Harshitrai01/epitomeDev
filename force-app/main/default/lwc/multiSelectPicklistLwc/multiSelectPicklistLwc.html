@@ -1,0 +1,11 @@
+<template>
+    <lightning-combobox 
+        name="multiSelectPicklist"
+        label="Select Lead Sources"
+        value={selectedValues}
+        placeholder="Choose options..."
+        options={leadSourceOptions}
+        onchange={handleChange}
+        multiple>
+    </lightning-combobox>
+</template>

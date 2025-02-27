@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email to Client</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .header {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .content {
+            margin-top: 20px;
+        }
+        .content p {
+            margin: 10px 0;
+        }
+        .links a {
+            color: #1E90FF;
+            text-decoration: none;
+        }
+        .highlight {
+            font-weight: bold;
+        }
+        .footer {
+            margin-top: 30px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p class="header">Dear Sir/Madam,</p>
+        
+        <div class="content">
+            <p>Welcome to Epitome Integrated City! Thank you for reaching out to us. One of our executives will contact you shortly to provide the assistance you need.</p>
+
+            <p>As per your enquiry about the premium villa plots, I am pleased to share the details of our project.</p>
+
+            <p><span class="highlight">Epitome Integrated City</span> is South India's largest integrated city, spanning <span class="highlight">1242 acres</span>:</p>
+
+            <ul>
+                <li><span class="highlight">Phase-1:</span> 368 Acres</li>
+                <li><span class="highlight">Phase-2:</span> 399 Acres</li>
+                <li><span class="highlight">Phase-3:</span> 475 Acres</li>
+            </ul>
+
+            <p>Greetings from Epitome Integrated City 🌟</p>
+
+            <p><strong>📍 Location:</strong> Hyderabad - Vijayawada, National Highway - 65, Hyderabad.</p>
+            <p class="links"><a href="https://maps.app.goo.gl/vxMmuvRcRTDpc5Q18">View Location on Google Maps</a></p>
+
+            <p><strong>🔰 Project 360 View:</strong> <a href="https://epitomeprojects.in/drone/360/" class="links">Click here</a></p>
+
+            <p><strong>🔰 Project Presentation Video:</strong> <a href="https://youtu.be/jmASyWFxl8c?si=S0KE8s6cwLb3XQR9" class="links">Click here</a></p>
+
+            <h3>Project Highlights:</h3>
+            <ul>
+                <li><span class="highlight">Total Area:</span> 1242 Acres (Proposed)</li>
+                <li><span class="highlight">Residential Township:</span> 368 Acres with Villa Unit sizes ranging from 267 Sqyds to 533 Sqyds</li>
+                <li><span class="highlight">Approvals:</span> HMDA & RERA Approved</li>
+                <li><span class="highlight">Amenities:</span> World-class amenities with 24 Themed Parks</li>
+                <li><span class="highlight">Club House:</span> Spanning 5.65 Acres with 40+ Amenities, including an Olympic Sized Swimming Pool alongside a Palm Grove</li>
+            </ul>
+
+            <h3>Connectivity:</h3>
+            <ul>
+                <li>30 mins drive to Airport</li>
+                <li>25 mins drive to TCS Adibatla</li>
+                <li>20 mins drive to major Business Centres and shopping destinations</li>
+                <li>15 mins drive to Ramoji Film City</li>
+                <li>10 mins drive to major hospitals and educational institutions</li>
+                <li>7 mins drive to TSIIC & MSME Green Industrial Park</li>
+                <li>3 mins drive to Regional Ring Road</li>
+                <li>17 mins drive to Outer Ring Road</li>
+            </ul>
+
+            <p>I have attached the layout copy and all other details. Please review and get back to me if you require any additional information.</p>
+        </div>
+
+        <p class="footer">Warm Regards, <br> Epitome Projects LLP</p>
+    </div>
+</body>
+</html>

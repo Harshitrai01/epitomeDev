@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Latest_Lead_Source__c</fullName>
+    <label>Latest Lead Source</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Activity</fullName>
+                <default>false</default>
+                <label>Activity</label>
+            </value>
+            <value>
+                <fullName>Advertisement</fullName>
+                <default>false</default>
+                <label>Advertisement</label>
+            </value>
+            <value>
+                <fullName>Campaigns</fullName>
+                <default>false</default>
+                <label>Campaigns</label>
+            </value>
+            <value>
+                <fullName>Channel Partner</fullName>
+                <default>false</default>
+                <label>Channel Partner</label>
+            </value>
+            <value>
+                <fullName>CP Walkin</fullName>
+                <default>false</default>
+                <label>CP Walkin</label>
+            </value>
+            <value>
+                <fullName>CTI</fullName>
+                <default>false</default>
+                <label>CTI</label>
+            </value>
+            <value>
+                <fullName>Customer Event</fullName>
+                <default>false</default>
+                <label>Customer Event</label>
+            </value>
+            <value>
+                <fullName>Digital</fullName>
+                <default>false</default>
+                <label>Digital</label>
+            </value>
+            <value>
+                <fullName>Direct Walkin</fullName>
+                <default>false</default>
+                <label>Direct Walkin</label>
+            </value>
+            <value>
+                <fullName>Employee Referral</fullName>
+                <default>false</default>
+                <label>Employee Referral</label>
+            </value>
+            <value>
+                <fullName>Events</fullName>
+                <default>false</default>
+                <label>Events</label>
+            </value>
+            <value>
+                <fullName>Existing Customer</fullName>
+                <default>false</default>
+                <label>Existing Customer</label>
+            </value>
+            <value>
+                <fullName>External Referral</fullName>
+                <default>false</default>
+                <label>External Referral</label>
+            </value>
+            <value>
+                <fullName>Google AdWords</fullName>
+                <default>false</default>
+                <label>Google AdWords</label>
+            </value>
+            <value>
+                <fullName>Mcube - Outdoor</fullName>
+                <default>false</default>
+                <label>Mcube - Outdoor</label>
+            </value>
+            <value>
+                <fullName>Mcube - Print</fullName>
+                <default>false</default>
+                <label>Mcube - Print</label>
+            </value>
+            <value>
+                <fullName>Newspaper</fullName>
+                <default>false</default>
+                <label>Newspaper</label>
+            </value>
+            <value>
+                <fullName>Online Portal</fullName>
+                <default>false</default>
+                <label>Online Portal</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Outdoor</fullName>
+                <default>false</default>
+                <label>Outdoor</label>
+            </value>
+            <value>
+                <fullName>Partner</fullName>
+                <default>false</default>
+                <label>Partner</label>
+            </value>
+            <value>
+                <fullName>Property Portals</fullName>
+                <default>false</default>
+                <label>Property Portals</label>
+            </value>
+            <value>
+                <fullName>Purchased List</fullName>
+                <default>false</default>
+                <label>Purchased List</label>
+            </value>
+            <value>
+                <fullName>Radio Jingles</fullName>
+                <default>false</default>
+                <label>Radio Jingles</label>
+            </value>
+            <value>
+                <fullName>Referral</fullName>
+                <default>false</default>
+                <label>Referral</label>
+            </value>
+            <value>
+                <fullName>Referral Walkin</fullName>
+                <default>false</default>
+                <label>Referral Walkin</label>
+            </value>
+            <value>
+                <fullName>Trade Show</fullName>
+                <default>false</default>
+                <label>Trade Show</label>
+            </value>
+            <value>
+                <fullName>TV Ads</fullName>
+                <default>false</default>
+                <label>TV Ads</label>
+            </value>
+            <value>
+                <fullName>Vendor</fullName>
+                <default>false</default>
+                <label>Vendor</label>
+            </value>
+            <value>
+                <fullName>Webinar</fullName>
+                <default>false</default>
+                <label>Webinar</label>
+            </value>
+            <value>
+                <fullName>Website</fullName>
+                <default>false</default>
+                <label>Website</label>
+            </value>
+            <value>
+                <fullName>WhatsApp</fullName>
+                <default>false</default>
+                <label>WhatsApp</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>10% Payment Reminder Mail</name>
+    <style>none</style>
+    <subject>Due Reminder for 10% payment</subject>
+    <textOnly>To proceed with the next steps, we kindly request a payment of 10% of the sale value.
+
+Payment Details:
+
+Sale Value:- {!Opportunity.Sale_Value_Amount__c}
+Amount Paid:- {!Opportunity.Collected_Amount__c}
+Balance:- {!Opportunity.Outstanding_Amount__c}
+Total Outstanding:-  {!Opportunity.Outstanding_Amount__c}
+
+Please ensure that the payment is made at your earliest convenience to facilitate the continuation of the process. Failure to make the payment may result in the cancellation of your booking.
+
+Please ensure that your KYC details are submitted.
+
+Best regards,
+
+[Agent Name]
+[Contact Information]
+[Company Name]</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

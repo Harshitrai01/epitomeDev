@@ -1,0 +1,697 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Default</fullName>
+    <active>true</active>
+    <businessProcess>Sale Process</businessProcess>
+    <label>Default</label>
+    <picklistValues>
+        <picklist>AOS_Handover_Type__c</picklist>
+        <values>
+            <fullName>By Courier</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>By Hand</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>AOS_Stage__c</picklist>
+        <values>
+            <fullName>Completed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Draft Uploaded</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Initiate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Applicable</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ready to dispatch</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ready to print</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waitng for customer response</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yet to prepare</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yet to sign Epitome</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yet to sign purchaser</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>BR_Status__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Initiated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waiting for Approval</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Cancellation_Status__c</picklist>
+        <values>
+            <fullName>Refund Initiated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Refunded</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Request Received</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Request Rejected</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sent for Approval</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Customer_Type__c</picklist>
+        <values>
+            <fullName>IDBI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Judiciary</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Non-IDBI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Non-Judiciary</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Non-SBI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SBI</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Desired_Status__c</picklist>
+        <values>
+            <fullName>Nearing Completion</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pre Launch</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ready for Possession</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Under Construction</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Final_Unit_Cancellation_Approval_Status__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>ForecastCategoryName</picklist>
+        <values>
+            <fullName>Best Case</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Commit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Omitted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pipeline</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Funding_Type__c</picklist>
+        <values>
+            <fullName>Bank Fund</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Own Fund</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Inquiry_Type__c</picklist>
+        <values>
+            <fullName>Investment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Self</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>KYC_Verification__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Progress</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Started</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LeadSource</picklist>
+        <values>
+            <fullName>Activity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Adgebra</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Advertisement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Branding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CP Walkin</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CTI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Campaigns</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Channel Partner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dailyhunt</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Digital</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Direct Walkin</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Employee Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Events</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Existing Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Expo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>External Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google AdWords</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LinkedIn</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lokal App</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mcube - Outdoor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mcube - Print</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Meta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Newspaper</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Online Portal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Outdoor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paper</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Portals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Property Portals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Purchased List</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Radio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Radio Jingles</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reference</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referral Walkin</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SMS Campaign</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TV Ads</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Taboola</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Theater Ads</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trade Show</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vendor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Webinar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WhatsApp</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Loan_Status__c</picklist>
+        <values>
+            <fullName>Disbursement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Document Submitted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Eligible</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Non Eligible</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Loss_Reason__c</picklist>
+        <values>
+            <fullName>Lost to Competitor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Budget %2F Lost Funding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Decision %2F Non-Responsive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Price</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>NOC__c</picklist>
+        <values>
+            <fullName>Applied</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Corrections Required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Doc Submitted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Received</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ownership_Type__c</picklist>
+        <values>
+            <fullName>Individual Registration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Joint Registration</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Payment_Mode__c</picklist>
+        <values>
+            <fullName>Cheque</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NEFT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Online</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UPI</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Refund_Approval_Status__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Refund_Status__c</picklist>
+        <values>
+            <fullName>Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Failed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Initiate</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Registration_CRM_Head_Approval_Status__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Sale_Deed_Status__c</picklist>
+        <values>
+            <fullName>Draft Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Draft Uploaded</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Drafting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Initiated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Original Uploaded</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sent to Approval</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Sub_Document_Type__c</picklist>
+        <values>
+            <fullName>AOS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aadhaar Card</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Affidavit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Board of Resolution</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Signed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Disbursement Cheque</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Document Using the Link</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Documents Delivered</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Draft AOS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Draft Saledeed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Form 32</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Loan Sanction Letter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NOC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Original Sale Deed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pan Card</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Sub_Stage__c</picklist>
+        <values>
+            <fullName>Customer Requested</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Epitome Initiated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Plot Transfer</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Existing Business</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Business</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type_of_Booking__c</picklist>
+        <values>
+            <fullName>IDBI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Judiciary</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SBI</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Unit_Cancellation_CRM_Approval_Status__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

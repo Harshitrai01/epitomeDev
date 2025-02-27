@@ -367,7 +367,7 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <displayNameOverride>Lost Reason</displayNameOverride>
-            <field>Lost_Reason__c</field>
+            <field>Cancellation_Reason__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -686,6 +686,51 @@
             <field>Cancellation_Charges__c</field>
             <table>Opportunity</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Sale_Deed_Status__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Ownership_Type__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Cancellation_Status__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Sub_Stage__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Primary_Contact_Number__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>AOS_Authority_Person__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Board_Of_Resolution_Authority_Person__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Primary_Contact_Phone__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Sales_Deed_Authority_Person__c</field>
+            <table>Opportunity</table>
+        </columns>
         <masterLabel>Opportunities</masterLabel>
     </sections>
     <sections>
@@ -921,6 +966,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Amount_To_Refund__c</field>
+            <table>Opportunity.Payments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Payment_Gateway__c</field>
             <table>Opportunity.Payments__r</table>
         </columns>
         <masterLabel>Payments</masterLabel>

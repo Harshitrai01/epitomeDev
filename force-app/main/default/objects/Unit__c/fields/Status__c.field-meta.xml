@@ -46,11 +46,6 @@
                 <label>Management Blocked</label>
             </value>
             <value>
-                <fullName>Mortgage</fullName>
-                <default>false</default>
-                <label>Mortgage</label>
-            </value>
-            <value>
                 <fullName>Not For Sale</fullName>
                 <default>false</default>
                 <label>Not For Sale</label>
@@ -59,6 +54,12 @@
                 <fullName>Temp Blocked</fullName>
                 <default>false</default>
                 <label>Temp Blocked</label>
+            </value>
+            <value>
+                <fullName>Mortgage</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Mortgage</label>
             </value>
         </valueSetDefinition>
     </valueSet>

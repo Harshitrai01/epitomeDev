@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Loan Rejected Mail</name>
+    <style>none</style>
+    <subject>Loan Rejected</subject>
+    <textOnly>Dear {!Opportunity.Account},
+
+We regret to inform you that your loan application has been declined.
+
+Our CRM team will contact you shortly to discuss the next steps and assist you with any questions you may have. If you need further assistance, please feel free to reach out to us.
+
+Warm regards,
+
+Epitome Projects LLP</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

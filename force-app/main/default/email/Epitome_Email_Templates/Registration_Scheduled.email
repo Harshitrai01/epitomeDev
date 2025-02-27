@@ -1,0 +1,24 @@
+<body style="font-family: Arial, sans-serif; font-size: 14px; color: #333;">
+    <p>Dear <strong>{!Opportunity.Account}</strong>,</p>
+
+    <p>We are pleased to inform you that your registration with <strong>{!Opportunity.Phase_Name__c}-{!Opportunity.Plot_Name__c}</strong> has been scheduled. Below are the details of your registration appointment:</p>
+
+    <p><strong>Unit Details:</strong></p>
+    <p><strong>Unit Number:</strong> {!Opportunity.Unit_Number__c}</p>
+    <p><strong>Unit Size:</strong> {!Opportunity.Unit_Size__c}</p>
+
+    <p><strong>Schedule Details:</strong></p>
+    <p><strong>Date:</strong>{!Opportunity.Date_of_Registration__c}</p>
+    <p><strong>Time:</strong> time</p>
+
+    <p>Please ensure you arrive at the venue at the scheduled time. If you are unable to physically attend the registration, kindly fill out the attached <strong>Form 32</strong> document and send it to <strong>{!Opportunity.OwnerEmail}</strong>.</p>
+
+    <p><strong>Note:</strong> Find the attached challan and ensure the payment has been made. If you have already paid, please ignore.</p>
+
+    <p>If you have any questions or need further assistance, feel free to reach out to us.</p>
+
+    <p>We look forward to seeing you and completing your registration smoothly.</p>
+
+    <p>Warm regards,</p>
+    <p><strong>Epitome Projects LLP</strong></p>
+</body>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Registration Scheduled</name>
+    <style>none</style>
+    <subject>Registration Scheduled</subject>
+    <textOnly>Registration Appointment Confirmation
+
+Dear [Customer&apos;s Name],
+
+We are pleased to inform you that your registration with [Project Name] [Phase/Block] has been scheduled. Below are the details of your registration appointment:
+
+Unit Details:
+
+Unit Number: [Unit Number]
+Unit Size: [Unit Size]
+
+Registration Details:
+
+Date: [Registration Date]
+Time: [Registration Time]
+
+Please ensure you arrive at the venue at the scheduled time. If you are unable to physically attend the registration, kindly fill out the attached Form 32 document with the required details and format.
+
+Note: Please find the attached challan and ensure the payment has been made. If you have already paid, please disregard this message.
+
+If you have any questions or need further assistance, feel free to reach out to us.
+
+We look forward to seeing you and completing your registration smoothly.
+
+Warm regards,
+Epitome Projects LLP</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

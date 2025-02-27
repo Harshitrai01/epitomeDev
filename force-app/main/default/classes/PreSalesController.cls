@@ -32,6 +32,7 @@ public with sharing class PreSalesController {
             system.debug('userList-->'+userList);
             if (!userList.isEmpty()) {
                 update userList;
+                UserTriggerHandler.processLeadAssignment();
             }
         } catch (Exception e) {
             System.debug('Error updating user status: ' + e.getMessage());
@@ -79,24 +80,36 @@ public with sharing class PreSalesController {
                 userIds.add(gm.UserOrGroupId);
             }
             List<User> users = [
-                SELECT Id, Name, Email, Status__c, Capacity__c, Pre_Sales_Lead_Assignment__c, Username
+                SELECT Id, Name, Email, Status__c, Capacity__c, Pre_Sales_Lead_Assignment__c, Username,Assigned_Sources__c
                 FROM User 
                 WHERE Id IN :userIds 
                 ORDER BY Name
             ];
             List<UserWrapper> wrappedUsers = new List<UserWrapper>();
             for (User user : users) {
+                 List<String> userSources = new List<String>();
+            
+                if (String.isNotBlank(user.Assigned_Sources__c)) {
+                    userSources = user.Assigned_Sources__c.split(',');
+                }
+
+                Decimal cap=0;
+                if(user.Capacity__c!=null){
+                    cap=user.Capacity__c;
+                }
                 wrappedUsers.add(new UserWrapper(
                     user.Id,
                     user.Name,
                     user.Username,
                     user.Email,
                     user.Status__c,
-                    user.Capacity__c,
+                    cap,
                     false,
-                    user.Pre_Sales_Lead_Assignment__c
+                    user.Pre_Sales_Lead_Assignment__c,
+                    userSources
                 ));
             }
+            system.debug('wrappedUsers-->'+wrappedUsers);
             return wrappedUsers;
         } catch (Exception e) {
             System.debug('Error retrieving user data: ' + e.getMessage());
@@ -120,7 +133,7 @@ public with sharing class PreSalesController {
     }
     
     public class UserWrapper {
-        @AuraEnabled public Id userId;
+        @AuraEnabled public String userId;
         @AuraEnabled public String name;
         @AuraEnabled public String userName;
         @AuraEnabled public String email;
@@ -128,7 +141,8 @@ public with sharing class PreSalesController {
         @AuraEnabled public Decimal capacity;
         @AuraEnabled public Boolean userChange;
         @AuraEnabled public Boolean leadAssignment;
-        public UserWrapper(Id userId, String name, String userName, String email, String status, Decimal capacity, boolean userChange, boolean leadAssignment) {
+        @AuraEnabled public List<String> userSources;
+        public UserWrapper(String userId, String name, String userName, String email, String status, Decimal capacity, boolean userChange, boolean leadAssignment, List<String> userSources) {
             this.userId = userId;
             this.name = name;
             this.userName = userName;
@@ -137,6 +151,7 @@ public with sharing class PreSalesController {
             this.capacity = capacity;
             this.userChange = userChange;
             this.leadAssignment = leadAssignment;
+            this.userSources= userSources;
         }
     }
     
@@ -191,5 +206,15 @@ public with sharing class PreSalesController {
         } catch (Exception e) {
             return new ToastResponse(false, 'Failed to delete the scheduled job: ' + e.getMessage());
         }
+    }
+
+    @AuraEnabled(cacheable=true)
+    public static List<String> getLeadSourceValues() {
+        List<String> leadSourceValues = new List<String>();
+        Schema.DescribeFieldResult fieldResult = Lead.LeadSource.getDescribe();
+        for (Schema.PicklistEntry entry : fieldResult.getPicklistValues()) {
+            leadSourceValues.add(entry.getLabel());
+        }
+        return leadSourceValues;
     }
 }

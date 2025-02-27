@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Enforce_Stage_Order</fullName>
+    <active>false</active>
+    <errorConditionFormula>OR(
+    AND(
+        ISCHANGED(StageName),
+        OR(
+            AND(
+                ISPICKVAL(StageName, &quot;Lost/Dropped&quot;),
+                NOT(ISPICKVAL(PRIORVALUE(StageName), &quot;Blocked&quot;))
+            ),
+            AND(
+                ISPICKVAL(StageName, &quot;Booked&quot;),
+                NOT(ISPICKVAL(PRIORVALUE(StageName), &quot;Blocked&quot;))
+            ),
+            AND(
+                ISPICKVAL(StageName, &quot;KYC Verification&quot;),
+                NOT(ISPICKVAL(PRIORVALUE(StageName), &quot;Booked&quot;)),
+                NOT( X10_Amount_Collected__c )
+            ),
+            AND(
+                ISPICKVAL(StageName, &quot;Onboarded&quot;),
+                NOT(ISPICKVAL(PRIORVALUE(StageName), &quot;KYC Verification&quot;))
+            ),
+            AND(
+                ISPICKVAL(StageName, &quot;Loan Process&quot;),
+                NOT(
+                    AND(
+                        ISPICKVAL(PRIORVALUE(StageName), &quot;Onboarded&quot;),
+                        ISPICKVAL(Funding_Type__c, &quot;Bank Fund&quot;)
+                    )
+                )
+            ),
+            AND(
+                ISPICKVAL(StageName, &quot;AOS&quot;),
+                NOT(
+                    OR(
+                        AND(
+                            NOT(ISBLANK(TEXT(AOS_Stage__c))),
+                            ISPICKVAL(PRIORVALUE(StageName), &quot;Loan Process&quot;),
+                            ISPICKVAL(Funding_Type__c, &quot;Bank Fund&quot;)
+                        ),
+                        AND(
+                            NOT(ISBLANK(TEXT(AOS_Stage__c))),
+                            ISPICKVAL(PRIORVALUE(StageName), &quot;Onboarded&quot;),
+                            ISPICKVAL(Funding_Type__c, &quot;Own Fund&quot;)
+                        )
+                    )
+                )
+            ),
+            AND(
+                ISPICKVAL(StageName, &quot;Progressive&quot;),
+                OR(
+                    AND(
+                        NOT(ISPICKVAL(PRIORVALUE(StageName), &quot;AOS&quot;)),
+                        NOT(ISBLANK(TEXT(AOS_Stage__c)))
+                    ),
+                    AND(
+                        NOT(ISPICKVAL(PRIORVALUE(StageName), &quot;Onboarded&quot;)),
+                        ISBLANK(TEXT(AOS_Stage__c))
+                    )
+                )
+            ),
+            AND(
+                ISPICKVAL(StageName, &quot;Reg Initiate&quot;),
+                NOT(ISPICKVAL(PRIORVALUE(StageName), &quot;Progressive&quot;))
+            ),
+            AND(
+                ISPICKVAL(StageName, &quot;Reg Scheduled&quot;),
+                NOT(ISPICKVAL(PRIORVALUE(StageName), &quot;Reg Initiate&quot;))
+            ),
+            AND(
+                ISPICKVAL(StageName, &quot;Registered&quot;),
+                NOT(ISPICKVAL(PRIORVALUE(StageName), &quot;Reg Scheduled&quot;))
+            ),
+            AND(
+                ISPICKVAL(StageName, &quot;Documents Handover&quot;),
+                NOT(ISPICKVAL(PRIORVALUE(StageName), &quot;Registered&quot;))
+            )
+        )
+    )
+)</errorConditionFormula>
+    <errorMessage>You must follow the defined stage order. Skipping stages is not allowed.</errorMessage>
+</ValidationRule>

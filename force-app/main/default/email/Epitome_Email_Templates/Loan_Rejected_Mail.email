@@ -1,0 +1,8 @@
+<p>Dear <strong>{!Opportunity.Account}</strong>,</p>
+
+    <p>We regret to inform you that your loan application has been declined.</p>
+
+    <p>Our CRM team will contact you shortly to discuss the next steps and assist you with any questions you may have. If you need further assistance, please feel free to reach out to us.</p>
+
+    <p>Warm regards,</p>
+    <p><strong>Epitome Projects LLP</strong></p>

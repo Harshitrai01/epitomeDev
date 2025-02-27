@@ -40,66 +40,52 @@
 									</lightning-accordion-section>
 									<lightning-accordion-section name="B" label="Primary Information">
 										<lightning-layout multiple-rows>
-											<!-- <lightning-input type="checkbox" label="Is this an existing account?" 
-												onchange={handleAccountSelectionChange}></lightning-input>
 
-											<template if:true={showAccountPicker}>
-												<lightning-record-picker
-													label="Select Account"
-													object-api-name="Account"
-													onchange={handleAccountChange}
-													required>
-												</lightning-record-picker>
-											</template> -->
 											<div class="form-container">
-											<lightning-layout-item flexibility="auto" padding="around-small" size="12"
-												small-device-size="12" medium-device-size="6" large-device-size="6">
-												<label class="custom-label" required>Is the Account already Existing?</label>
+												<lightning-layout-item flexibility="auto" padding="around-small"
+													size="12" small-device-size="12" medium-device-size="6"
+													large-device-size="6">
+													<label class="custom-label" required>  <span class="required">*</span>Is the Account already Existing?</label>
 
-											</lightning-layout-item>
-											<lightning-layout-item flexibility="auto" padding="around-small" size="12"
-												small-device-size="12" medium-device-size="6" large-device-size="6">
+												</lightning-layout-item>
+												<lightning-layout-item flexibility="auto" padding="around-small"
+													size="12" small-device-size="12" medium-device-size="6"
+													large-device-size="6">
 
-												<lightning-combobox name="progress"
-													 value={value}
-													placeholder="Select Account" options={options}
-													onchange={handleAccountCheckboxChange}>
-												</lightning-combobox>
+													<lightning-combobox name="progress" value={value}
+														placeholder="Select Account" options={options}
+														onchange={handleAccountCheckboxChange}>
+													</lightning-combobox>
 
-												<!-- <lightning-input type="checkbox" label="Account Already Exist"
-													onchange={handleAccountCheckboxChange}></lightning-input> -->
-												<!-- <lightning-radio-group name="radioGroup"
-                          label="Radio Group"
-                          options={options}
-                          value={value}
-						    onchange={handleCheckboxChange}
-                          type="radio"></lightning-radio-group> -->
-												<!-- <lightning-input type="checkbox" label="Account Already Exist"
-                                                        onchange={handleCheckboxChange}></lightning-input> -->
-											</lightning-layout-item>
+												</lightning-layout-item>
 											</div>
-											<template lwc:if={isAccountExist}>
-												<!-- Second Layout Item with Account Record Picker -->
-												<lightning-layout-item flexibility="auto" padding="around-small"
-													size="12" small-device-size="12" medium-device-size="6"
-													large-device-size="6">
+											<template if:false={isAccountExist}>
+												<template lwc:if={isAccountExist}>
+													<!-- Second Layout Item with Account Record Picker -->
+													<lightning-layout-item flexibility="auto" padding="around-small"
+														size="12" small-device-size="12" medium-device-size="6"
+														large-device-size="6">
 
-													<lightning-record-picker label="Select Account"
-														object-api-name="Account" disabled={isAccountExist}
-														onchange={handleRecordSelection}
-														value={bookingFormData.accountId} key={recordPickerKey}>
-													</lightning-record-picker>
-												</lightning-layout-item>
-											</template>
-											<template lwc:else>
-												<lightning-layout-item flexibility="auto" padding="around-small"
-													size="12" small-device-size="12" medium-device-size="6"
-													large-device-size="6">
-													<lightning-record-picker label="Select Account"
-														object-api-name="Account" disabled={isAccountExist}
-														onchange={handleRecordSelection} value="" key={recordPickerKey}>
-													</lightning-record-picker>
-												</lightning-layout-item>
+														<lightning-record-picker label="Select Account"
+															object-api-name="Account" disabled={isAccountExist}
+															onchange={handleRecordSelection}
+															value={bookingFormData.accountId} key={recordPickerKey}
+															data-label="primaryApplicantRequiredFields" required>
+														</lightning-record-picker>
+													</lightning-layout-item>
+												</template>
+												<template lwc:else>
+													<lightning-layout-item flexibility="auto" padding="around-small"
+														size="12" small-device-size="12" medium-device-size="6"
+														large-device-size="6">
+														<lightning-record-picker label="Select Account"
+															object-api-name="Account" disabled={isAccountExist}
+															onchange={handleRecordSelection} value=""
+															key={recordPickerKey}
+															data-label="primaryApplicantRequiredFields" required>
+														</lightning-record-picker>
+													</lightning-layout-item>
+												</template>
 											</template>
 											<lightning-layout-item flexibility="auto" padding="around-small" size="12"
 												small-device-size="12" medium-device-size="6" large-device-size="6">
@@ -193,50 +179,54 @@
 
 									<lightning-accordion-section name="D" label="Contact Detail's">
 										<lightning-layout multiple-rows>
-<div class="form-container">
-											<lightning-layout-item flexibility="auto" padding="around-small" size="12"
-												small-device-size="12" medium-device-size="6" large-device-size="6">
-												<label class="custom-label" required>Is the Contact already Existing?</label>
-											</lightning-layout-item>
-											<lightning-layout-item flexibility="auto" padding="around-small" size="12"
-												small-device-size="12" medium-device-size="6" large-device-size="6">
 
-												<lightning-combobox name="progress"
-													 value={contactValue}
-													placeholder="Select Contaxt" options={contactOptions}
-													onchange={handleContactCheckboxChange} >
-												</lightning-combobox>
-												<!-- <lightning-input type="checkbox" label="Contact Already Exist"
-													onchange={handleContactCheckboxChange}></lightning-input> -->
-												<!-- <lightning-radio-group name="radioGroup"
-                          label="Radio Group contact"
-                          options={options1}
-                          value={value1}
-						    onchange={handleContactCheckboxChange}
-                          type="radio"></lightning-radio-group> -->
-											</lightning-layout-item>
-</div>
-											<template lwc:if={isContactExist}>
-												<!-- Second Layout Item with Account Record Picker -->
-												<lightning-layout-item flexibility="auto" padding="around-small"
-													size="12" small-device-size="12" medium-device-size="6"
-													large-device-size="6">
-													<lightning-record-picker label="Select Contact"
-														object-api-name="Contact" disabled={isContactExist}
-														onchange={handleContactRecordSelection}
-														value={bookingFormData.contactId}>
-													</lightning-record-picker>
-												</lightning-layout-item>
-											</template>
-											<template lwc:else>
-												<lightning-layout-item flexibility="auto" padding="around-small"
-													size="12" small-device-size="12" medium-device-size="6"
-													large-device-size="6">
-													<lightning-record-picker label="Select Contact"
-														object-api-name="Contact" disabled={isContactExist}
-														onchange={handleContactRecordSelection} value="">
-													</lightning-record-picker>
-												</lightning-layout-item>
+											<template if:true={isAccountSelected}>
+												<div class="form-container">
+													<lightning-layout-item flexibility="auto" padding="around-small"
+														size="12" small-device-size="12" medium-device-size="6"
+														large-device-size="6">
+														<label class="custom-label" required> <span class="required">*</span>Is the Contact already Existing?</label>
+													</lightning-layout-item>
+													<lightning-layout-item flexibility="auto" padding="around-small"
+														size="12" small-device-size="12" medium-device-size="6"
+														large-device-size="6">
+
+														<lightning-combobox name="progress" value={contactValue}
+															placeholder="Select Contact" options={contactOptions}
+															onchange={handleContactCheckboxChange}>
+														</lightning-combobox>
+
+													</lightning-layout-item>
+												</div>
+												<template if:false={isContactExist}>
+													<template lwc:if={isContactExist}>
+														<!-- Second Layout Item with Account Record Picker -->
+														<lightning-layout-item flexibility="auto" padding="around-small"
+															size="12" small-device-size="12" medium-device-size="6"
+															large-device-size="6">
+
+
+															<lightning-record-picker label="Select Contact"
+																object-api-name="Contact" disabled={isContactExist}
+																onchange={handleContactRecordSelection}
+																value={bookingFormData.contactId} filter={recordFilter}
+																data-label="primaryApplicantRequiredFields" required>
+															</lightning-record-picker>
+														</lightning-layout-item>
+													</template>
+													<template lwc:else>
+														<lightning-layout-item flexibility="auto" padding="around-small"
+															size="12" small-device-size="12" medium-device-size="6"
+															large-device-size="6">
+															<lightning-record-picker label="Select Contact"
+																object-api-name="Contact" disabled={isContactExist}
+																onchange={handleContactRecordSelection} value=""
+																filter={recordFilter}
+																data-label="primaryApplicantRequiredFields" required>
+															</lightning-record-picker>
+														</lightning-layout-item>
+													</template>
+												</template>
 											</template>
 											<lightning-layout-item flexibility="auto" padding="around-small" size="12"
 												small-device-size="12" medium-device-size="6" large-device-size="6">

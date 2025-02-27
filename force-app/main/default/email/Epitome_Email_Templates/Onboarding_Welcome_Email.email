@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome to Epitome Integrated City</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: #333333;
+      line-height: 1.6;
+    }
+    .container {
+      margin: 20px;
+    }
+    .signature {
+      margin-top: 30px;
+    }
+    .highlight {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <p>Dear {!Opportunity.Contact_Name__c},</p>
+    
+    <p>Welcome to the Epitome Projects family! We are thrilled to have you as a part of our esteemed community at Epitome Integrated City.</p>
+    
+    <p>We sincerely appreciate your trust in choosing us for your new home. Our team is dedicated to ensuring that your experience with us is exceptional and that every step of the journey is as smooth and pleasant as possible.</p>
+    
+    <p>You have made an excellent decision by investing in a property that offers a blend of modern living and serene surroundings. We are confident that Epitome Integrated City will provide you with a harmonious and comfortable living experience.</p>
+    
+    <p>
+      Please find attached your Allotment Letter, Payment Receipt, and Registration Process which includes essential information about your property, payment schedules, and contact details for our support team. Should you have any questions or need assistance, please do not hesitate to reach out to us at <span class="highlight">{!Opportunity.OwnerPhone}</span> or <span class="highlight">{!Opportunity.OwnerEmail}</span>.
+    </p>
+    
+    <p><span class="highlight">Working Timings:</span> 10:00 to 19:00</p>
+    
+    <p>Once again, welcome to Epitome Integrated City. We look forward to being a part of your new journey and ensuring your complete satisfaction.</p>
+    
+    <div class="signature">
+      <p>Warm regards,</p>
+      <p>Epitome Projects LLP</p>
+    </div>
+  </div>
+</body>
+</html>

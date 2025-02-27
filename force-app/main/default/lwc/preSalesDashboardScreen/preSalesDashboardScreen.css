@@ -15,48 +15,35 @@
     flex-direction: column;
     align-items: center;
     background-color: #f4f6f9;
-    /* Subtle background color */
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    /* Light shadow for depth */
 }
 
 .section-container {
     background-color: #ffffff;
-    /* White background for sections */
     border: 1px solid #e0e0e0;
-    /* Light border */
     border-radius: 8px;
     padding: 1.5rem;
     margin-bottom: 2rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    /* Subtle shadow */
     width: 90%;
-    /* Consistent width */
     max-width: 100%;
-    /* Limit max width */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    /* Smooth hover effect */
 }
 
 .section-container:hover {
     transform: translateY(-5px);
-    /* Slight lift on hover */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    /* Enhanced shadow on hover */
 }
 
 .section-header {
     font-size: 1.8rem;
-    /* Slightly larger font */
     color: #2c3e50;
-    /* Darker text for better readability */
     font-weight: bold;
     text-align: center;
     margin-bottom: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    /* Subtle spacing for elegance */
 }
 
 .toggle-input {
@@ -65,60 +52,57 @@
     margin-left: auto;
     margin-right: auto;
     cursor: pointer;
-    /* Pointer to indicate interactivity */
+}
+
+.table-container {
+    max-height: 400px; /* Fixed height for scrollable table */
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin-top: 1.5rem;
+    width: 100%;
 }
 
 .slds-table {
-    margin-top: 1.5rem;
     width: 100%;
-    /* Ensure the table takes full width */
     border-collapse: separate;
     border-spacing: 0;
-    /* Reset default spacing */
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .slds-table_bordered {
     border: 1px solid #e0e0e0;
-    /* Light border around the table */
 }
 
 .slds-table_cell-buffer {
     padding: 14px;
-    /* Balanced padding */
 }
 
 .slds-text-title_caps {
     text-align: center;
-    /* Center column titles */
     font-size: 1rem;
     font-weight: bold;
     color: #34495e;
-    /* Darker text for headers */
     text-transform: uppercase;
 }
 
-td,
-th {
+td, th {
     text-align: center;
-    /* Center-align table data */
     padding: 12px;
     color: #34495e;
-    /* Consistent text color */
     border-bottom: 1px solid #e0e0e0;
-    /* Light bottom border */
+    max-width: 120px; /* Restrict column width */
+    white-space: nowrap; /* Prevent text wrapping */
+    /* overflow: hidden; */
+    text-overflow: ellipsis; /* Add ellipsis for overflow */
 }
 
 tr:hover {
     background-color: #f2f2f2;
-    /* Highlight row on hover */
 }
 
 .button-container {
     display: flex;
     justify-content: center;
     gap: 1rem;
-    /* margin-top: 1.5rem; */
 }
 
 .refresh-button-container {
@@ -134,7 +118,6 @@ button {
     border-radius: 4px;
     border: none;
     background-color: #007bff;
-    /* Primary button color */
     color: #ffffff;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
@@ -142,14 +125,11 @@ button {
 
 button:hover {
     background-color: #0056b3;
-    /* Darker blue on hover */
     transform: scale(1.05);
-    /* Slight zoom on hover */
 }
 
 button:active {
     transform: scale(0.98);
-    /* Slight shrink on click */
 }
 
 .lightning-icon {
@@ -157,48 +137,17 @@ button:active {
     display: block;
 }
 
-@media (max-width: 768px) {
-    .section-container {
-        width: 100%;
-        padding: 1rem;
-    }
-
-    .section-header {
-        font-size: 1.5rem;
-    }
-
-    td,
-    th {
-        font-size: 0.9rem;
-        padding: 8px;
-    }
-}
-
 .capacity-column {
     width: 10%;
-    /* Adjust width as needed, e.g., 10% of the table width */
     min-width: 80px;
-    /* Optional: ensure a reasonable minimum width */
     max-width: 100px;
-    /* Optional: set a maximum width */
 }
 
 .capacity-column-cell input {
     width: 100%;
-    /* Ensure the input fits within the reduced column width */
     text-align: center;
-    /* Center-align the input text */
 }
 
-td {
-    text-align: center;
-    padding: 12px;
-    color: #34495e;
-    /* Consistent text color */
-    border-bottom: 1px solid #e0e0e0;
-    max-width: 120px;
-    /* Ensure the max-width is consistent */
-}
 .slds-modal__header {
     position: relative;
 }
@@ -209,9 +158,10 @@ td {
     right: 0;
     margin: 10px;
 }
+
 .top-bottom-toggle {
     position: relative;
-    top: 15% !important ;
+    top: 15% !important;
     right: 0;
     margin: 10px;
 }
@@ -220,7 +170,7 @@ td {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px; /* Adjust the gap between inputs as needed */
+    gap: 20px;
 }
 
 .input-item {
@@ -233,10 +183,22 @@ td {
     padding-top: 20px;
 }
 
-
-/* Responsive Adjustments */
-/* @media (max-width: 768px) {
-    .capacity-column {
-        width: 15%;
+@media (max-width: 768px) {
+    .section-container {
+        width: 100%;
+        padding: 1rem;
     }
-} */
+
+    .section-header {
+        font-size: 1.5rem;
+    }
+
+    td, th {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .table-container {
+        max-height: 300px; /* Adjust height for mobile */
+    }
+}

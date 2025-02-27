@@ -3,7 +3,7 @@
     <canAccessCamera>false</canAccessCamera>
     <canAccessMicrophone>false</canAccessMicrophone>
     <context>All</context>
-    <endpointUrl>data-agility-5992--epitomedev.sandbox.my.salesforce.com</endpointUrl>
+    <endpointUrl>https://data-agility-5992--epitomedev.sandbox.my.salesforce.com</endpointUrl>
     <isActive>true</isActive>
     <isApplicableToConnectSrc>true</isApplicableToConnectSrc>
     <isApplicableToFontSrc>true</isApplicableToFontSrc>

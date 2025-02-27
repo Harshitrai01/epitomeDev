@@ -260,6 +260,24 @@
                 <identifier>RecordCancellation_Charges__cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.AOS_Authority_Person__c</fieldItem>
+                <identifier>RecordAOS_Authority_Person__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Board_Of_Resolution_Authority_Person__c</fieldItem>
+                <identifier>RecordBoard_Of_Resolution_Authority_Person__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Sales_Deed_Authority_Person__c</fieldItem>
+                <identifier>RecordSales_Deed_Authority_Person__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-9b41bd63-8713-49cd-8d56-67009e490196</name>
         <type>Facet</type>
     </flexiPageRegions>

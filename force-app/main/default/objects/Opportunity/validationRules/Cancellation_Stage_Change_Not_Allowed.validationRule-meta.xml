@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cancellation_Stage_Change_Not_Allowed</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISPICKVAL(PRIORVALUE( StageName ), &quot;Cancelled&quot;), 
+    NOT(ISPICKVAL( Cancellation_Status__c , &quot;Request Rejected&quot;)),
+    NOT(ISPICKVAL(StageName, &quot;Cancelled&quot;))
+)</errorConditionFormula>
+    <errorMessage>You cannot change the Stage if the prior stage was &apos;Cancelled&apos; and the Cancellation Status is not &apos;Rejected&apos;.</errorMessage>
+</ValidationRule>

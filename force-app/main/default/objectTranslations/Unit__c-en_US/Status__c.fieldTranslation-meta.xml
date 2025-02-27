@@ -23,10 +23,6 @@
         <translation><!-- Management Blocked --></translation>
     </picklistValues>
     <picklistValues>
-        <masterLabel>Mortgage</masterLabel>
-        <translation><!-- Mortgage --></translation>
-    </picklistValues>
-    <picklistValues>
         <masterLabel>Not For Sale</masterLabel>
         <translation><!-- Not For Sale --></translation>
     </picklistValues>

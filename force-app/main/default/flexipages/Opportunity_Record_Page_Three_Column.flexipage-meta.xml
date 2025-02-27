@@ -471,7 +471,7 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Lost_Reason__c</fieldItem>
+                <fieldItem>Record.Cancellation_Reason__c</fieldItem>
                 <identifier>RecordLost_Reason__cField</identifier>
             </fieldInstance>
         </itemInstances>
@@ -907,6 +907,48 @@
             <fieldInstance>
                 <fieldItem>Record.Cancellation_Charges__c</fieldItem>
                 <identifier>RecordCancellation_Charges__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Ownership_Type__c</fieldItem>
+                <identifier>RecordOwnership_Type__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Cancellation_Status__c</fieldItem>
+                <identifier>RecordCancellation_Status__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Sub_Stage__c</fieldItem>
+                <identifier>RecordSub_Stage__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Primary_Contact_Number__c</fieldItem>
+                <identifier>RecordPrimary_Contact_Number__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.AOS_Authority_Person__c</fieldItem>
+                <identifier>RecordAOS_Authority_Person__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Board_Of_Resolution_Authority_Person__c</fieldItem>
+                <identifier>RecordBoard_Of_Resolution_Authority_Person__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Sales_Deed_Authority_Person__c</fieldItem>
+                <identifier>RecordSales_Deed_Authority_Person__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-bda0868e-f60d-43d1-bc15-da4b2cf8d682</name>

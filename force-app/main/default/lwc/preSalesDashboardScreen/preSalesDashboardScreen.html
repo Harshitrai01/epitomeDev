@@ -9,8 +9,10 @@
             <div class="main-container">
                 <div class="refresh-button-container">
                     <lightning-button label="Refresh Data" variant="neutral" onclick={handleRefresh}></lightning-button>
-                    <lightning-button label="Send Unopened Notification" variant="neutral" title="Send Unopened Notification"
-                        onclick={showModalBox}></lightning-button>
+                    <lightning-button label="Send Unopened Notification" variant="neutral" title="Send Unopened Notification" onclick={showModalBox}></lightning-button>
+                    <div class="slds-form-element">  
+            </div>
+
                 </div>
                 <!-- Pre-Sales Section -->
                 <section class="section-container">
@@ -23,58 +25,64 @@
                             <lightning-button label="Select All" variant="neutral" onclick={handleSelectAllPreSales}>
                             </lightning-button>
                         </div>
-                        <div class="slds-p-horizontal_medium">
+                        <div class="table-container">
                             <table class="slds-table slds-table_bordered slds-table_cell-buffer">
                                 <thead>
                                     <tr>
-                                        <th class="slds-text-title_caps">Select</th>
-                                        <th class="slds-text-title_caps">Name</th>
-                                        <th class="slds-text-title_caps">Email</th>
-                                        <th class="slds-text-title_caps">User Name</th>
-                                        <th class="slds-text-title_caps">Status</th>
-                                        <th class="slds-text-title_caps capacity-column">Capacity</th>
+                                        <th class="slds-text-title_caps" style="overflow: hidden;">Select</th>
+                                        <th class="slds-text-title_caps" style="overflow: hidden;">Name</th>
+                                        <th class="slds-text-title_caps" style="overflow: hidden;">Email</th>
+                                        <th class="slds-text-title_caps" style="overflow: hidden;">User Name</th>
+                                        <th class="slds-text-title_caps" style="overflow: hidden;">Status</th>
+                                        <th class="slds-text-title_caps capacity-column" style="overflow: hidden;">
+                                            Capacity</th>
+                                        <th class="slds-text-title_caps" style="overflow: hidden;">Source Assigned</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <template for:each={preSalesUserDataShow} for:item="user">
                                         <tr key={user.userId} style={user.styleColor}>
-                                            <td>
-                                                <div style="display: inline-block;">
+                                            <td style="overflow: hidden;">
+                                                <div class="leadAssignmentToggle">
                                                     <lightning-input type="toggle" name="Lead Assignment"
                                                         data-id={user.userId} checked={user.leadAssignment}
                                                         onchange={handlePreSalesLeadAssignmentChange}></lightning-input>
                                                 </div>
                                             </td>
-                                            <td title={user.name}>{user.name}</td>
-                                            <td title={user.email}>{user.email}</td>
-                                            <td title={user.userName}>{user.userName}</td>
+                                            <td title={user.name} style="overflow: hidden;">{user.name}</td>
+                                            <td title={user.email} style="overflow: hidden;">{user.email}</td>
+                                            <td title={user.userName} style="overflow: hidden;">{user.userName}</td>
                                             <td>
-                                                <div style="position: relative; bottom: 7.5px;">
-                                                    <lightning-combobox name="status" value={user.status}
-                                                        options={statusOptions} onchange={handlePreSalesStatusChange}
-                                                        data-id={user.userId}></lightning-combobox>
-                                                </div>
+                                                <lightning-combobox name="status" value={user.status}
+                                                    options={statusOptions} onchange={handlePreSalesStatusChange}
+                                                    data-id={user.userId}></lightning-combobox>
                                             </td>
-                                            <td class="capacity-column-cell">
-                                                <div style="position: relative; bottom: 7.5px;">
-                                                    <lightning-input type="number" name="Capacity" data-id={user.userId}
-                                                        value={user.capacity} max={maxCapacity} min="0" step="0"
-                                                        onchange={handlePreSalesCapacityChange}></lightning-input>
+                                            <td class="capacity-column-cell" style="overflow: hidden;">
+                                                <lightning-input type="number" name="Capacity" data-id={user.userId}
+                                                    value={user.capacity} max={maxCapacity} min="0" step="0"
+                                                    onchange={handlePreSalesCapacityChange}></lightning-input>
+                                            </td>
+                                            <td style="overflow: hidden; text-align: left;">
+                                                <div style="max-height: 7rem; overflow-y: overlay; width: 100%;">
+                                                    <lightning-checkbox-group name="leadSourceCheckboxGroup"
+                                                       options={leadSourceOptions} data-id={user.userId}
+                                                       value={user.userSources} onchange={handlePreSalesLeadSourceChange}>
+                                                    </lightning-checkbox-group>
                                                 </div>
                                             </td>
                                         </tr>
                                     </template>
                                 </tbody>
                             </table>
-                            <template if:true={isPreSalesUpdated}>
-                                <div class="button-container">
-                                    <lightning-button label="Save" data-id="presales" onclick={handleSave}>
-                                    </lightning-button>
-                                    <lightning-button label="Cancel" data-id="presales" onclick={handleCancel}>
-                                    </lightning-button>
-                                </div>
-                            </template>
                         </div>
+                        <template if:true={isPreSalesUpdated}>
+                            <div class="button-container">
+                                <lightning-button label="Save" data-id="presales" onclick={handleSave}>
+                                </lightning-button>
+                                <lightning-button label="Cancel" data-id="presales" onclick={handleCancel}>
+                                </lightning-button>
+                            </div>
+                        </template>
                     </template>
                 </section>
 
@@ -89,106 +97,110 @@
                             <lightning-button label="Select All" variant="neutral" onclick={handleSelectAllSales}>
                             </lightning-button>
                         </div>
-                        <div class="slds-p-horizontal_medium">
+                        <div class="table-container">
                             <table class="slds-table slds-table_bordered slds-table_cell-buffer">
                                 <thead>
                                     <tr>
-                                        <th class="slds-text-title_caps">Select</th>
-                                        <th class="slds-text-title_caps">Name</th>
-                                        <th class="slds-text-title_caps">Email</th>
-                                        <th class="slds-text-title_caps">User Name</th>
-                                        <th class="slds-text-title_caps">Status</th>
-                                        <th class="slds-text-title_caps capacity-column">Capacity</th>
+                                        <th class="slds-text-title_caps" style="overflow: hidden;">Select</th>
+                                        <th class="slds-text-title_caps" style="overflow: hidden;">Name</th>
+                                        <th class="slds-text-title_caps" style="overflow: hidden;">Email</th>
+                                        <th class="slds-text-title_caps" style="overflow: hidden;">User Name</th>
+                                        <th class="slds-text-title_caps" style="overflow: hidden;">Status</th>
+                                        <th class="slds-text-title_caps capacity-column" style="overflow: hidden;">
+                                            Capacity</th>
+                                        <th class="slds-text-title_caps" style="overflow: hidden;">Source Assigned</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <template for:each={salesUserDataShow} for:item="user">
                                         <tr key={user.userId} style={user.styleColor}>
-                                            <td>
-                                                <div style="display: inline-block;">
+                                            <td style="overflow: hidden;">
+                                                <div class="leadAssignmentToggle">
                                                     <lightning-input type="toggle" name="Lead Assignment"
                                                         data-id={user.userId} checked={user.leadAssignment}
                                                         onchange={handleSalesLeadAssignmentChange}></lightning-input>
                                                 </div>
                                             </td>
-                                            <td title={user.name}>{user.name}</td>
-                                            <td title={user.email}>{user.email}</td>
-                                            <td title={user.userName}>{user.userName}</td>
+                                            <td title={user.name} style="overflow: hidden;">{user.name}</td>
+                                            <td title={user.email} style="overflow: hidden;">{user.email}</td>
+                                            <td title={user.userName} style="overflow: hidden;">{user.userName}</td>
                                             <td>
-                                                <div style="position: relative; bottom: 7.5px;">
-                                                    <lightning-combobox name="status" value={user.status}
-                                                        options={statusOptions} onchange={handleSalesStatusChange}
-                                                        data-id={user.userId}></lightning-combobox>
-                                                </div>
+                                                <lightning-combobox name="status" value={user.status}
+                                                    options={statusOptions} onchange={handleSalesStatusChange}
+                                                    data-id={user.userId}></lightning-combobox>
                                             </td>
-                                            <td class="capacity-column-cell">
-                                                <div style="position: relative; bottom: 7.5px;">
-                                                    <lightning-input type="number" name="Capacity" data-id={user.userId}
-                                                        value={user.capacity} max={maxCapacity} min="0" step="0"
-                                                        onchange={handleSalesCapacityChange}></lightning-input>
+                                            <td class="capacity-column-cell" style="overflow: hidden;">
+                                                <lightning-input type="number" name="Capacity" data-id={user.userId}
+                                                    value={user.capacity} max={maxCapacity} min="0" step="0"
+                                                    onchange={handleSalesCapacityChange}></lightning-input>
+                                            </td>
+                                            <td style="overflow: hidden; text-align: left;">
+                                                <div style="max-height: 7rem; overflow-y: overlay; width: 100%;">
+                                                    <lightning-checkbox-group name="leadSourceCheckboxGroup"
+                                                       options={leadSourceOptions} data-id={user.userId}
+                                                       value={user.userSources} onchange={handleSalesLeadSourceChange}>
+                                                    </lightning-checkbox-group>
                                                 </div>
                                             </td>
                                         </tr>
                                     </template>
                                 </tbody>
                             </table>
-                            <template if:true={isSalesUpdated}>
-                                <div class="button-container">
-                                    <lightning-button label="Save" data-id="sales" onclick={handleSave}>
-                                    </lightning-button>
-                                    <lightning-button label="Cancel" data-id="sales" onclick={handleCancel}>
-                                    </lightning-button>
-                                </div>
-                            </template>
                         </div>
+                        <template if:true={isSalesUpdated}>
+                            <div class="button-container">
+                                <lightning-button label="Save" data-id="sales" onclick={handleSave}>
+                                </lightning-button>
+                                <lightning-button label="Cancel" data-id="sales" onclick={handleCancel}>
+                                </lightning-button>
+                            </div>
+                        </template>
                     </template>
                 </section>
             </div>
         </template>
     </lightning-card>
 
-<template if:true={isShowModal}>
-    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
-        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
-        <div class="slds-modal__container">
-            <header class="slds-modal__header">
-                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
-                    onclick={hideModalBox}>
-                    <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small">
-                    </lightning-icon>
-                    <span class="slds-assistive-text">Close</span>
-                </button>
-                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Send Notification</h2>
-                <!-- Top-right toggle -->
-                <div class="top-right-toggle">
-                    <lightning-input type="toggle" label="Turn Off Notification" name="sendNotificationToggle"
-                        checked={sendNotification} onchange={handleSendNotificationToggleChange}>
-                    </lightning-input>
-                </div>
-            </header>
-            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-                <div class="popup-content">
-                    <!-- Side-by-side inputs -->
-                    <div class="input-group">
-                        <div class="input-item">
-                            <lightning-input type="number" label="Minutes" name="minutesInput" value={notificationMinutes} min="0" step="0"
-                                onchange={handleMinutesChange} disabled={isDisabled}>
-                            </lightning-input>
-                        </div>
-                        <div class="top-bottom-toggle">
-                            <lightning-input type="toggle" label="Send to Manager" name="managerToggle"
-                                checked={sendToManager} onchange={handleSendManagerNotificationToggleChange}
-                                disabled={isDisabled}></lightning-input>
+    <template if:true={isShowModal}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+                        onclick={hideModalBox}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small">
+                        </lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Send Notification</h2>
+                    <div class="top-right-toggle">
+                        <lightning-input type="toggle" label="Turn Off Notification" name="sendNotificationToggle"
+                            checked={sendNotification} onchange={handleSendNotificationToggleChange}>
+                        </lightning-input>
+                    </div>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div class="popup-content">
+                        <div class="input-group">
+                            <div class="input-item">
+                                <lightning-input type="number" label="Minutes" name="minutesInput"
+                                    value={notificationMinutes} min="0" step="0" onchange={handleMinutesChange}
+                                    disabled={isDisabled}>
+                                </lightning-input>
+                            </div>
+                            <div class="top-bottom-toggle">
+                                <lightning-input type="toggle" label="Send to Manager" name="managerToggle"
+                                    checked={sendToManager} onchange={handleSendManagerNotificationToggleChange}
+                                    disabled={isDisabled}></lightning-input>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={handleSaveCustomSetting}>Save</button>
+                </footer>
             </div>
-            <footer class="slds-modal__footer">
-                <button class="slds-button slds-button_neutral" onclick={handleSaveCustomSetting}>Save</button>
-            </footer>
-        </div>
-    </section>
-    <div class="slds-backdrop slds-backdrop_open"></div>
-</template>
-
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
 </template>

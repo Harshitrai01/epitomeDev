@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Traditional_Campaign</fullName>
+    <active>true</active>
+    <label>Traditional Campaign</label>
+    <picklistValues>
+        <picklist>Discount_Type__c</picklist>
+        <values>
+            <fullName>Lumsum</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Per sq%2Eft</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Facebook_Page__c</picklist>
+        <values>
+            <fullName>Epitome Integrated City</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Property__c</picklist>
+        <values>
+            <fullName>Epitome</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Source__c</picklist>
+        <values>
+            <fullName>3dm_google</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>99 Acres</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>99acres</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Adgebra</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>App</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BTL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Branding Outdoor Activity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CHATBOT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Channel Partner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chat_Facebook</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chat_Google</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chat_Website</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Collect_Chat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Corporate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dailyhunt</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Door to Door Visit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EXPO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Economic Times</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Facebook</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Facebook %28Epitome Projects%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Facebook_Regular</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google Search</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google Video</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GoogleAds</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google_NRI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google_Regular</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hoarding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Housing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Import From File</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Large Plots Micro Site</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Linkedin</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Loal App</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lokal App</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lokal-Facebook</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lokalapp</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Magicbricks</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NRI_Facebook</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NRI_google</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New_LP_Google</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oneindia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Organic</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Zone</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Print Ad</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Railway</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reeng Leads</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reference</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Roof %26 Floor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Show Case Lite</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Show Case Pro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sitevisited Data</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Media</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound %28%2B9108068950085%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound %28%2B919090159494%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound %28%2B919090169494%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound %28%2B919090179494%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound %28%2B919090188199%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound %28%2B919090189494%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound %28%2B919090211411%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound %28%2B919090269494%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound %28%2B919090277477%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound %28%2B919090279494%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound %28%2B919090289494%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound %28%2B919090342525%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound %28%2B919090411211%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound %28%2B919090477277%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound %28%2B919090488499%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound %28%2B919090488899%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound %28%2B919090588999%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound %28%2B919090688999%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound %28%2B919090859494%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound %28%2B919090879494%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound %28%2B919090899494%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound %28%2B919154908280%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound %28%2B919538499929%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound %28%2B919538599929%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound %28%2B919538699929%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound %28%2B919917788899%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sr Inbound %28%2B919977724999%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Taboola</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Treda Property Show 2021</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Walkin</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Way2News</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Webchat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Whatsapp</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Whatsapp Chatbot</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>googleNRI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>google_commercial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>googlecommercial</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Stage__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Draft</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status</picklist>
+        <values>
+            <fullName>Aborted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Completed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Progress</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Planned</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Demo Signup %2F Trial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Event</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referral Program</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Search</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Media</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Thought Leadership</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website Direct</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

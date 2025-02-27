@@ -7,12 +7,28 @@
         <translation><!-- 99 acre --></translation>
     </picklistValues>
     <picklistValues>
+        <masterLabel>99Acres</masterLabel>
+        <translation><!-- 99Acres --></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>Activity</masterLabel>
         <translation><!-- Activity --></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>BTL</masterLabel>
         <translation><!-- BTL --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>BTL_Date</masterLabel>
+        <translation><!-- BTL_Date --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>BigFM</masterLabel>
+        <translation><!-- BigFM --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Branding Activity</masterLabel>
+        <translation><!-- Branding Activity --></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Channel Partner</masterLabel>
@@ -23,8 +39,16 @@
         <translation><!-- Common floor --></translation>
     </picklistValues>
     <picklistValues>
+        <masterLabel>Corporate Website</masterLabel>
+        <translation><!-- Corporate Website --></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>Customer</masterLabel>
         <translation><!-- Customer --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Customer Ref</masterLabel>
+        <translation><!-- Customer Ref --></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Customer Referral</masterLabel>
@@ -35,8 +59,24 @@
         <translation><!-- Direction signages --></translation>
     </picklistValues>
     <picklistValues>
+        <masterLabel>Door to Door Visit</masterLabel>
+        <translation><!-- Door to Door Visit --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Economic Times</masterLabel>
+        <translation><!-- Economic Times --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Eenadu</masterLabel>
+        <translation><!-- Eenadu --></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>Employee</masterLabel>
         <translation><!-- Employee --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Employee Ref</masterLabel>
+        <translation><!-- Employee Ref --></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Employee Referral</masterLabel>
@@ -51,6 +91,10 @@
         <translation><!-- Facebook --></translation>
     </picklistValues>
     <picklistValues>
+        <masterLabel>Flyers</masterLabel>
+        <translation><!-- Flyers --></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>Google</masterLabel>
         <translation><!-- Google --></translation>
     </picklistValues>
@@ -63,8 +107,60 @@
         <translation><!-- Google Maps --></translation>
     </picklistValues>
     <picklistValues>
+        <masterLabel>Google Search</masterLabel>
+        <translation><!-- Google Search --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Google Search_3DM</masterLabel>
+        <translation><!-- Google Search_3DM --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Google Search_Commercial</masterLabel>
+        <translation><!-- Google Search_Commercial --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Google Search_Landing Page</masterLabel>
+        <translation><!-- Google Search_Landing Page --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Google Search_NRI</masterLabel>
+        <translation><!-- Google Search_NRI --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Google Search_Regular</masterLabel>
+        <translation><!-- Google Search_Regular --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Google_Commericial</masterLabel>
+        <translation><!-- Google_Commericial --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Google_Landing Page</masterLabel>
+        <translation><!-- Google_Landing Page --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Google_NRI</masterLabel>
+        <translation><!-- Google_NRI --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Google_Video</masterLabel>
+        <translation><!-- Google_Video --></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>Hoarding</masterLabel>
         <translation><!-- Hoarding --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Housing</masterLabel>
+        <translation><!-- Housing --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Housing.com</masterLabel>
+        <translation><!-- Housing.com --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>IDBI</masterLabel>
+        <translation><!-- IDBI --></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Instagram</masterLabel>
@@ -73,6 +169,10 @@
     <picklistValues>
         <masterLabel>Internet</masterLabel>
         <translation><!-- Internet --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Judiciary</masterLabel>
+        <translation><!-- Judiciary --></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>LinkedIn</masterLabel>
@@ -87,16 +187,108 @@
         <translation><!-- Management --></translation>
     </picklistValues>
     <picklistValues>
+        <masterLabel>Management Ref</masterLabel>
+        <translation><!-- Management Ref --></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>Media</masterLabel>
         <translation><!-- Media --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Meta_Calls</masterLabel>
+        <translation><!-- Meta_Calls --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Meta_Comments</masterLabel>
+        <translation><!-- Meta_Comments --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Meta_Lead Form Ads</masterLabel>
+        <translation><!-- Meta_Lead Form Ads --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Meta_NRI</masterLabel>
+        <translation><!-- Meta_NRI --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Meta_Other Zone</masterLabel>
+        <translation><!-- Meta_Other Zone --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Meta_Regular</masterLabel>
+        <translation><!-- Meta_Regular --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Metro Pillar</masterLabel>
+        <translation><!-- Metro Pillar --></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Newspaper</masterLabel>
         <translation><!-- Newspaper --></translation>
     </picklistValues>
     <picklistValues>
+        <masterLabel>Oneindia</masterLabel>
+        <translation><!-- Oneindia --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Organic_Website</masterLabel>
+        <translation><!-- Organic_Website --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Portal_Calls</masterLabel>
+        <translation><!-- Portal_Calls --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Radio Mirchi</masterLabel>
+        <translation><!-- Radio Mirchi --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Railway</masterLabel>
+        <translation><!-- Railway --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>RedFM</masterLabel>
+        <translation><!-- RedFM --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Roof &amp; Floor</masterLabel>
+        <translation><!-- Roof &amp; Floor --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>SBI</masterLabel>
+        <translation><!-- SBI --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>SBI-EXPO</masterLabel>
+        <translation><!-- SBI-EXPO --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sakshi</masterLabel>
+        <translation><!-- Sakshi --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Show Case Lite</masterLabel>
+        <translation><!-- Show Case Lite --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Show Case Pro</masterLabel>
+        <translation><!-- Show Case Pro --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>TOI</masterLabel>
+        <translation><!-- TOI --></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>TV Ads</masterLabel>
         <translation><!-- TV Ads --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>TVC_LBAND ADS_Calls</masterLabel>
+        <translation><!-- TVC_LBAND ADS_Calls --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Treda Property</masterLabel>
+        <translation><!-- Treda Property --></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Vendor</masterLabel>
@@ -107,15 +299,31 @@
         <translation><!-- Way Finder --></translation>
     </picklistValues>
     <picklistValues>
+        <masterLabel>Way2News</masterLabel>
+        <translation><!-- Way2News --></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>Website</masterLabel>
         <translation><!-- Website --></translation>
     </picklistValues>
     <picklistValues>
-        <masterLabel>Whatsapp</masterLabel>
-        <translation><!-- Whatsapp --></translation>
+        <masterLabel>Website_Calls</masterLabel>
+        <translation><!-- Website_Calls --></translation>
     </picklistValues>
     <picklistValues>
-        <masterLabel>housing.com</masterLabel>
-        <translation><!-- housing.com --></translation>
+        <masterLabel>Website_Chatbot</masterLabel>
+        <translation><!-- Website_Chatbot --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>WhatsApp_ Calls</masterLabel>
+        <translation><!-- WhatsApp_ Calls --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>WhatsApp_Chatbot</masterLabel>
+        <translation><!-- WhatsApp_Chatbot --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Whatsapp</masterLabel>
+        <translation><!-- Whatsapp --></translation>
     </picklistValues>
 </CustomFieldTranslation>

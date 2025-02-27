@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Terms and Conditions</name>
+    <style>none</style>
+    <subject>Terms &amp; Conditions</subject>
+    <textOnly>TERMS &amp; CONDITIONS 
+
+ 
+
+Payment Terms: 
+
+The total cost of [Plot/Flat]. [1001] is to be paid as per the following schedule: 
+Booking Amount : [10% Sale value] 
+First Installment: Rs. [Insert Amount] (due on [Insert Date]) 
+Second Installment: Rs. [Insert Amount] (due on [Insert Date]) 
+Third Installment: Rs. [Insert Amount] (due on [Insert Date])
+Any delay in payment beyond the due date will attract interest at the rate prescribed under the Telangana RERA rules. 
+All payments should be made via cheque, demand draft, NEFT/RTGS, or any other method specified by Epitome Projects LLP. 
+The payment should be received by a person who is within the buyer&apos;s blood relation. 
+Cancellation Terms: 
+
+In the event of cancellation by the Customer, a written request must be submitted to Epitome Projects LLP. 
+For cancellation of Plot after payment, Epitome Projects LLP shall deduct 20% of the Booking Amount paid by the customer as cancellation charges 
+Refund Terms: 
+
+Refund of the remaining amount (if any) will be processed within 45 to 90 working days from the date of receipt of the cancellation request. 
+Refunds will be made via the same payment mode through which the original payments were made. 
+General Terms: 
+
+This allotment is subject to compliance with the terms of the Agreement of Sale, to be executed within 30 days of this allotment letter. 
+In the event of non-payment of the balance amount or violation of the terms of this allotment, Epitome Projects LLP reserves the right to cancel the allotment and forfeit the booking amount. 
+All disputes, if any, shall be subject to the jurisdiction of the courts in Telangana. 
+We request you to carefully review the terms outlined in this letter. Should you have any questions or require further clarification. 
+
+Thank you for choosing Epitome Projects LLP. We look forward to completing this transaction to your satisfaction.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

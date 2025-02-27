@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Loan Eligibility Mail</name>
+    <style>none</style>
+    <subject>Loan Eligibility</subject>
+    <textOnly>Dear {!Opportunity.Account},
+
+We hope this message finds you well. We are pleased to provide you with the details regarding your loan eligibility for your Unit at [Project Name] [Phase/Block].
+
+Payment Details:
+
+Amount Paid: ₹{!Opportunity.Sale_Value_Amount__c}
+Loan Eligible Amount: ₹[Loan Eligible Amount] from [Bank Name]
+Due Amount: ₹{!Opportunity.Outstanding_Amount__c}
+
+Our CRM team will reach out to you shortly to discuss the loan options and assist you with the application process. If you have any questions or need further assistance, please feel free to reach out to us.
+
+Warm regards,
+
+Epitome Projects LLP</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

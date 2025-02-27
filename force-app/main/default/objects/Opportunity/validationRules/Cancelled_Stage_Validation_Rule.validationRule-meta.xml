@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cancelled_Stage_Validation_Rule</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISPICKVAL( StageName , &quot;Cancelled&quot;),
+    OR(
+        ISPICKVAL(PRIORVALUE(StageName), &quot;Registered&quot;),
+        ISPICKVAL(PRIORVALUE(StageName), &quot;Document Delivery&quot;)
+    )
+)</errorConditionFormula>
+    <errorMessage>You cannot change the Status to &apos;Cancelled&apos; if it was previously &apos;Registered&apos; or &apos;Document Delivery.</errorMessage>
+</ValidationRule>

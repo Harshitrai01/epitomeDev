@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Payment Gateway</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Payment Gateways</value>
+    </caseValues>
+    <layouts>
+        <layout>Payment Gateway Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- EasyCollect Details --></label>
+            <section>EasyCollect Details</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

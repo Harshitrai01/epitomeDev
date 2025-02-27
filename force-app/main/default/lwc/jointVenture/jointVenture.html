@@ -1,0 +1,198 @@
+<template>
+
+    <template if:true={showComponent}>
+
+        <lightning-card class="custom-card-width">
+            <div class="slds-p-around_medium slds-border_bottom slds-grid slds-grid_vertical-align-center">
+                <lightning-icon icon-name="standard:portal_roles" size="medium" class="slds-m-right_small">
+                </lightning-icon>
+                <div>
+                    <h2 class="slds-text-heading_medium">Joint Registration</h2>
+                </div>
+            </div>
+            <div class="card-container">
+                <article class="slds-card">
+                    <div class="slds-card__body slds-card__body_inner">
+                        <template if:true={isLoading}>
+                            <lightning-spinner variant="brand" alternative-text="Loading" size="large">
+                            </lightning-spinner>
+                        </template>
+                        <lightning-accordion allow-multiple-sections-open active-section-name={activeSections}
+                            class="applicant-details-sections">
+                            <template for:each={bookingFormData.listOfCoApplicant} for:item="contact">
+                                <div key={contact.id} class="contact-container">
+                                    <lightning-accordion-section name="A" label="Contact Information">
+                                        <lightning-layout multiple-rows>
+                                            <lightning-layout-item flexibility="auto" padding="around-small" size="12"
+                                                small-device-size="12" medium-device-size="6" large-device-size="6">
+                                                <lightning-combobox name="progress" placeholder="Select Contact"
+                                                    options={options} onchange={handleContactCheckboxChange}
+                                                    value={value} data-contact-id={contact.id}
+                                                    label="Is the contact already existing?"
+                                                    data-label="primaryApplicantRequiredFields" required>
+                                                </lightning-combobox>
+                                            </lightning-layout-item>
+                                            <lightning-layout-item flexibility="auto" padding="around-small" size="12"
+                                                small-device-size="12" medium-device-size="6" large-device-size="6"
+                                                class="slds-text-align_right">
+                                                <lightning-input type="checkbox" label="Primary Contact"
+                                                    data-contact-id={contact.id} checked={contact.isPrimaryPayer}
+                                                    onchange={handlePrimaryPayerChange}>
+                                                </lightning-input>
+                                            </lightning-layout-item>
+                                            <template if:false={contact.isContactExist}>
+                                                <lightning-layout-item flexibility="auto" padding="around-small"
+                                                    size="12" small-device-size="12" medium-device-size="6"
+                                                    large-device-size="6">
+                                                    <lightning-combobox name="contacts" label="Select Contact"
+                                                        placeholder="Select Contact From Here..." options={contacts}
+                                                        value={contact.contactId}
+                                                        onchange={handleContactRecordSelection}
+                                                        data-contact-id={contact.id}
+                                                        data-label="primaryApplicantRequiredFields" required>
+                                                    </lightning-combobox>
+                                                    <!-- <lightning-record-picker label="Select Contact"
+                                                        object-api-name="Contact"
+                                                        onchange={handleContactRecordSelection}
+                                                        disabled={contact.isContactExist} data-contact-id={contact.id}
+                                                        filter={recordFilter}
+                                                        key={recordPickerKey}
+                                                        data-id="contactPicker"
+                                                        >
+                                                        {recordPickerKey} -->
+                                                    <!-- </lightning-record-picker> -->
+                                                </lightning-layout-item>
+
+                                            </template>
+                                            <!-- <template if:false={isDuplicate}> -->
+                                            <!-- <template if:false={contact.isContactExist}>
+                {contact.isContactExist}
+
+        {isDuplicateContact}
+        <lightning-layout-item flexibility="auto" padding="around-small"
+            size="12" small-device-size="12" medium-device-size="6"
+            large-device-size="6">
+            <lightning-record-picker 
+                label="Select Contactiiiiiiiii"
+                object-api-name="Contact"
+                onchange={handleContactRecordSelection}
+                data-contact-id={contact.id}
+                filter={recordFilter} value="">
+            </lightning-record-picker>
+        </lightning-layout-item>
+   
+        <lightning-layout-item flexibility="auto" padding="around-small"
+            size="12" small-device-size="12" medium-device-size="6"
+            large-device-size="6">
+             <lightning-record-picker 
+                label="Select Contact"
+                object-api-name="Contact"
+                onchange={handleContactRecordSelection}
+                data-contact-id={contact.id}
+                filter={recordFilter} value="">
+            </lightning-record-picker>
+           
+        </lightning-layout-item>
+    
+</template> -->
+
+
+
+
+                                            <!-- <template if:true={isDuplicate}>
+                                                 <lightning-layout-item flexibility="auto" padding="around-small"
+                                                    size="12" small-device-size="12" medium-device-size="6"
+                                                    large-device-size="6">
+                                                    <lightning-record-picker label="Select Contact"
+                                                        object-api-name="Contact"
+                                                        onchange={handleContactRecordSelection}
+                                                        disabled={contact.isContactExist} data-contact-id={contact.id}
+                                                        filter={recordFilter} value="">
+                                                    </lightning-record-picker>
+                                                </lightning-layout-item>
+                                            </template> -->
+                                            <lightning-layout-item flexibility="auto" padding="around-small" size="12"
+                                                small-device-size="12" medium-device-size="6" large-device-size="6">
+                                                <lightning-input label="Contact Name"
+                                                    data-label="primaryApplicantRequiredFields" type="text"
+                                                    name="contactName" data-contact-id={contact.id}
+                                                    onchange={handleValueChange} value={contact.contactName} required>
+                                                </lightning-input>
+                                            </lightning-layout-item>
+
+                                            <lightning-layout-item flexibility="auto" padding="around-small" size="12"
+                                                small-device-size="12" medium-device-size="6" large-device-size="6">
+                                                <lightning-input data-label="primaryApplicantRequiredFields"
+                                                    onchange={handleValueChange} name="contactAadhaar" type="text"
+                                                    variant="standard" label="Aadhaar Card" min-length="12"
+                                                    max-length="12"
+                                                    message-when-too-short="Enter a valid aadhaar card number"
+                                                    pattern="[0-9]{12}"
+                                                    message-when-pattern-mismatch="Enter a valid aadhaar card number format"
+                                                    data-contact-id={contact.id} value={contact.contactAadhaar}
+                                                    required>
+                                                </lightning-input>
+                                            </lightning-layout-item>
+                                            <lightning-layout-item flexibility="auto" padding="around-small" size="12"
+                                                small-device-size="12" medium-device-size="6" large-device-size="6">
+                                                <lightning-input data-label="primaryApplicantRequiredFields" type="text"
+                                                    variant="standard" name="contactPan" label="Pan Card"
+                                                    onchange={handleValueChange} min-length="10" max-length="10"
+                                                    message-when-too-short="Enter a valid pan card number"
+                                                    pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"
+                                                    message-when-pattern-mismatch="Enter a valid pan card number format"
+                                                    data-contact-id={contact.id} value={contact.contactPan} required>
+                                                </lightning-input>
+                                            </lightning-layout-item>
+                                            <lightning-layout-item flexibility="auto" padding="around-small" size="12"
+                                                small-device-size="12" medium-device-size="6" large-device-size="6">
+                                                <lightning-input label="Date of Birth"
+                                                    data-label="primaryApplicantRequiredFields" type="date"
+                                                    name="contactDOB" max={eighteenYearsBackDate}
+                                                    message-when-range-overflow="Date of Birth cannot be a future date or must be 18 years old or above"
+                                                    data-contact-id={contact.id} onchange={handleValueChange}
+                                                    value={contact.contactDOB} required></lightning-input>
+                                            </lightning-layout-item>
+                                            <lightning-layout-item flexibility="auto" padding="around-small" size="12"
+                                                small-device-size="12" medium-device-size="6" large-device-size="6">
+                                                <lightning-input data-label="primaryApplicantRequiredFields"
+                                                    type="email" variant="standard" name="contactEmail" label="Email Id"
+                                                    data-contact-id={contact.id} onchange={handleValueChange}
+                                                    value={contact.contactEmail} required>
+                                                </lightning-input>
+                                            </lightning-layout-item>
+                                            <lightning-layout-item flexibility="auto" padding="around-small" size="12"
+                                                small-device-size="12" medium-device-size="6" large-device-size="6">
+                                                <lightning-input data-label="primaryApplicantRequiredFields" type="tel"
+                                                    variant="standard" name="contactPhone" label="Contact No"
+                                                    data-contact-id={contact.id} max-length="10"
+                                                    onchange={handleValueChange} value={contact.contactPhone} required>
+                                                </lightning-input>
+                                            </lightning-layout-item>
+                                        </lightning-layout>
+                                    </lightning-accordion-section>
+                                    <template if:true={contact.showRemoveButton}>
+                                        <lightning-button variant="destructive" label="Remove Contact"
+                                            data-contact-id={contact.id} onclick={removeContact}>
+                                        </lightning-button>
+                                    </template>
+                                    <template if:true={contact.showAddMoreButton}>
+                                        <lightning-button variant="neutral" label="Add More Contact"
+                                            data-contact-id={contact.id} onclick={addContact}>
+                                        </lightning-button>
+                                    </template>
+                                </div>
+                            </template>
+                        </lightning-accordion>
+
+                    </div>
+                </article>
+            </div>
+            <div class="slds-p-around_medium slds-border_top slds-text-align_center">
+                <lightning-button label="Cancel" variant="neutral" onclick={handleCancel} class="slds-m-right_small">
+                </lightning-button>
+                <lightning-button label="Save" onclick={handleSave}></lightning-button>
+            </div>
+        </lightning-card>
+    </template>
+</template>

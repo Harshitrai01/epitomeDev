@@ -1,0 +1,24 @@
+<p>Dear <strong>Opp_Account</strong>,</p>
+
+    <p>We are pleased to confirm the swapping of your Unit at <strong>Opp_PhaseName Opp_PlotName</strong>. Below are the details of the swapped Units:</p>
+
+    <p><strong>Original Unit Details:</strong></p>
+    <p><strong>Unit Number:</strong>Opp_Old_PlotName</p>
+    <p><strong>Unit Size:</strong>Opp_Old_PlotSize</p>
+    <p><strong>Unit price per sq. yard:</strong> ₹Opp_Old_PlotPrice</p>
+    <p><strong>Sale Value:</strong> ₹Opp_Old_PlotSaleValue</p>
+
+    <p><strong>New Unit Details:</strong></p>
+    <p><strong>Unit Number:</strong> Opp_New_PlotName</p>
+    <p><strong>Unit Size:</strong> Opp_New_PlotSize</p>
+    <p><strong>Unit price per sq. yard:</strong> ₹Opp_New_PlotPrice</p>
+    <p><strong>Sale Value:</strong> ₹Opp_New_PlotSaleValue</p>
+
+    <p><strong>Payment Details:</strong></p>
+    <p><strong>Amount already paid:</strong> ₹Opp__Collected_Amount__c</p>
+    <p><strong>Total Payment Due:</strong> ₹Opp__Outstanding_Amount__c</p>
+
+    <p>If you need any further assistance, please do not hesitate to contact us.</p>
+
+    <p>Warm regards,</p>
+    <p><strong>Epitome Projects LLP</strong></p>

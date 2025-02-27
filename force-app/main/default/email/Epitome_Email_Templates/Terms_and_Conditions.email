@@ -1,0 +1,34 @@
+<p><strong>TERMS & CONDITIONS</strong></p>
+
+<p><strong>Payment Terms:</strong></p>
+<ul>
+    <li>The total cost of <strong>{!Opportunity.Phase_Name__c}-{!Opportunity.Plot_Name__c}</strong> is to be paid as per the following schedule:</li>
+    <li><strong>Booking Amount:</strong> {!Opportunity.First_Booking_Amount__c}</li>
+    <li><strong>Balance:</strong> Within 30 days of the booking date</li>
+    <li>Any delay in payment beyond the due date will attract interest at the rate prescribed under the Telangana RERA rules.</li>
+    <li>All payments should be made via cheque, demand draft, NEFT/RTGS, or any other method specified by Epitome Projects LLP.</li>
+    <li>The payment should only be made by those in whose names the plot is being registered.</li>
+</ul>
+
+<p><strong>Cancellation Terms:</strong></p>
+<ul>
+    <li>In the event of cancellation by the Customer, a written request must be submitted to Epitome Projects LLP.</li>
+    <li>For cancellation of Plot after payment, Epitome Projects LLP shall deduct <strong>20% of the Booking Amount</strong> paid by the customer as cancellation charges.</li>
+</ul>
+
+<p><strong>Refund Terms:</strong></p>
+<ul>
+    <li>Refund of the remaining amount (if any) will be processed within <strong>45 to 90 working days</strong> from the date of receipt of the cancellation request.</li>
+    <li>Refunds will be made via the same payment mode through which the original payments were made.</li>
+</ul>
+
+<p><strong>General Terms:</strong></p>
+<ul>
+    <li>This allotment is subject to compliance with the terms of the <strong>Agreement of Sale</strong>, to be executed within 30 days of this allotment letter.</li>
+    <li>In the event of non-payment of the balance amount or violation of the terms of this allotment, Epitome Projects LLP reserves the right to cancel the allotment and forfeit the booking amount.</li>
+    <li>All disputes, if any, shall be subject to the jurisdiction of the courts in Telangana.</li>
+</ul>
+
+<p>We request you to carefully review the terms outlined in this letter. Should you have any questions or require further clarification, please feel free to contact us.</p>
+
+<p>Thank you for choosing <strong>Epitome Projects LLP</strong>. We look forward to completing this transaction to your satisfaction.</p>

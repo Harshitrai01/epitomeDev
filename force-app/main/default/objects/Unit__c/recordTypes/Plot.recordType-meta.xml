@@ -61,10 +61,6 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Mortgage</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Not For Sale</fullName>
             <default>false</default>
         </values>

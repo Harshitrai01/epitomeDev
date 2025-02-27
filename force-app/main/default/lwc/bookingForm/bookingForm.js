@@ -10,7 +10,8 @@ import getAccountDetails from '@salesforce/apex/bookingFormController.getAccount
 import getContactDetails from '@salesforce/apex/bookingFormController.getContactDetails';
 
 export default class BookingForm extends NavigationMixin(LightningElement) {
-
+    @track contacts = []; // Store contact options
+    @track isAccountSelected = false;
     @track isAccountExist = false;
     @track isContactExist = false;
     @track isModalOpen = true;
@@ -71,25 +72,27 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     @track picklistOptions = {
         typeOfBookingOptions: []
     }
-value = 'No';
-get options() {
+
+    value = 'No';
+    get options() {
         return [
             { label: 'Yes', value: 'Yes' },
             { label: 'No', value: 'No' },
-           
+
         ];
     }
 
-    contactValue='No';
+    contactValue = 'No';
     get contactOptions() {
         return [
             { label: 'Yes', value: 'Yes' },
             { label: 'No', value: 'No' },
-           
+
         ];
     }
+
     connectedCallback() {
-     //   this.bookingFormData.quoteId = this.recordId;
+        //   this.bookingFormData.quoteId = this.recordId;
         this.isAccountExist = true;
         this.isContactExist = true;
         this.fetchOpportunityData();
@@ -109,35 +112,37 @@ get options() {
     }
 
     handleAccountCheckboxChange(event) {
-         this.value = event.detail.value;
-        if (this.value==='No') {
-         //   this.bookingFormData.accountId = '';
-
+        this.value = event.detail.value;
+        if (this.value === 'No') {
+            debugger
+            //   this.bookingFormData.accountId = '';
+            this.isAccountSelected = false;
             this.isAccountExist = true;
-
+            this.contactValue = 'No';
+            this.isContactExist = true;
             this.clearBookingFormData('account');
-
             this.fetchOpportunityData();
 
-        } else if (this.value==='Yes') {
+        } else if (this.value === 'Yes') {
             console.log('checkkkkkkkkkkkkked : ');
             this.isAccountExist = false;
             this.clearBookingFormData('account');
             //this.fetchOpportunityData1();
-
         }
         console.log('Booking Form Data Before Selecting Account-->>', this.bookingFormData);
     }
+
     handleContactCheckboxChange(event) {
-        this.value = event.detail.value;
-        if (this.value==='No') {
+        debugger
+        this.contactValue = event.detail.value;
+        if (this.contactValue === 'No') {
             this.isContactExist = true;
 
             this.clearBookingFormData('contact');
             this.fetchOpportunityData();
             // this.fetchOpportunityDatacontact();
 
-        } else if (this.value==='Yes')  {
+        } else if (this.contactValue === 'Yes') {
             console.log('checkkkkkkkkkkkkked : ');
             this.isContactExist = false;
             this.clearBookingFormData('contact');
@@ -209,56 +214,73 @@ get options() {
         this.bookingFormData.accountCorrespondenceAddressCountry = event.detail.country;
         this.bookingFormData.accountCorrespondenceAddressPostalCode = event.detail.postalCode;
     }
+
     fetchOpportunityData(fetchType) {
-        //if (this.isAccountExist) return; // Only fetch when checkbox is unchecked
-        console.log('fetchOpportunityData11111111111111111111111111111111111111111111111111111111 : ');
-        this.isLoading = true;
-        getRecordData({ recordId: this.recordId })
-            .then((data) => {
-                if (data && data.response.isSuccess && data.listOfOpportunityRecords) {
-                    this.populateBookingData(data.listOfOpportunityRecords[0]);
+        try {
+            debugger
+            this.isLoading = true;
+            getRecordData({ recordId: this.recordId })
+                .then((data) => {
+                    if (data && data.response.isSuccess && data.listOfOpportunityRecords) {
+                        this.populateBookingData(data.listOfOpportunityRecords[0]);
 
-                } else {
-                    this.showToast('Error', 'No Opportunity Data Found', 'error');
-                }
-            })
-            .catch((error) => {
-                this.showToast('Error', error.message, 'error');
-            })
-            .finally(() => {
-                this.isLoading = false;
-            });
-    }
-    populateBookingData(opportunity) {
-        this.bookingFormData = {
-            ...this.bookingFormData,
-            dateOfBooking: this.todayDate,
-            quoteId: opportunity.Id || '',
-            saleValueAmount: opportunity.Total_Sale_Value__c || '',
-            quotePlot: opportunity.Plot__c || '',
-            quoteunitPlotFacing: opportunity.Plot__r?.Plot_Facing__c || '',
-            quoteunitPlotSize: opportunity.Plot__r?.Plot_Size__c || '',
-            quoteunitPlotPrize: opportunity.Plot__r?.Plot_Price__c || '',
-            quoteunitPlotUnitCode: opportunity.Plot__r?.Unit_Code__c || '',
-            quoteunitPlotName: opportunity.Plot__r?.Name || '',
-            quoteunitPlotPhase: opportunity.Plot__r?.Phase__r?.Name || '',
-            leadId: opportunity.Lead__r?.Id || ''
-        };
-
-        if (this.isAccountExist) {
-            Object.assign(this.bookingFormData, {
-                accountName: opportunity.Lead__r?.Name || '',
-                accountEmailId: opportunity.Lead__r?.Email || '',
-                accountContactNo: opportunity.Lead__r?.Phone || ''
-            });
+                    } else {
+                        this.showToast('Error', 'No Opportunity Data Found', 'error');
+                    }
+                })
+                .catch((error) => {
+                    this.showToast('Error', error.message, 'error');
+                })
+                .finally(() => {
+                    this.isLoading = false;
+                });
+        } catch (error) {
+            console.error('Unexpected error in fetchOpportunityData:', error);
+            this.showToast('Error', 'An unexpected error occurred.', 'error');
+            this.isLoading = false;
         }
+    }
 
-        if (this.isContactExist) {
-            Object.assign(this.bookingFormData, {
-                quoteContactName: opportunity.Lead__r?.Name || '',
-                quoteContactEmailId: opportunity.Lead__r?.Email || '',
-                quoteContactNo: opportunity.Lead__r?.Phone || ''
-            });
+    populateBookingData(opportunity) {
+        try {
+            if (!opportunity || typeof opportunity !== 'object') {
+                console.error('Error: Invalid opportunity object', opportunity);
+                this.showToast('Error', 'Invalid opportunity data. Please refresh and try again.', 'error');
+                return;
+            }
+            this.bookingFormData = {
+                ...this.bookingFormData,
+                dateOfBooking: this.todayDate,
+                quoteId: opportunity.Id || '',
+                saleValueAmount: opportunity.Total_Sale_Value__c || '',
+                quotePlot: opportunity.Plot__c || '',
+                quoteunitPlotFacing: opportunity.Plot__r?.Plot_Facing__c || '',
+                quoteunitPlotSize: opportunity.Plot__r?.Plot_Size__c || '',
+                quoteunitPlotPrize: opportunity.Plot__r?.Plot_Price__c || '',
+                quoteunitPlotUnitCode: opportunity.Plot__r?.Unit_Code__c || '',
+                quoteunitPlotName: opportunity.Plot__r?.Name || '',
+                quoteunitPlotPhase: opportunity.Plot__r?.Phase__r?.Name || '',
+                leadId: opportunity.Lead__r?.Id || ''
+            };
+
+            if (this.isAccountExist) {
+                Object.assign(this.bookingFormData, {
+                    accountName: opportunity.Lead__r?.Name || '',
+                    accountEmailId: opportunity.Lead__r?.Email || '',
+                    accountContactNo: opportunity.Lead__r?.Phone || ''
+                });
+            }
+
+            if (this.isContactExist) {
+                Object.assign(this.bookingFormData, {
+                    quoteContactName: opportunity.Lead__r?.Name || '',
+                    quoteContactEmailId: opportunity.Lead__r?.Email || '',
+                    quoteContactNo: opportunity.Lead__r?.Phone || ''
+                });
+            }
+        } catch (error) {
+            console.error('Error in populateBookingData:', error);
+            this.showToast('Error', 'An error occurred while processing booking data. Please try again.', 'error');
         }
     }
 
@@ -268,6 +290,7 @@ get options() {
 
         this.bookingFormData.quoteId = this.recordId;
         if (this.bookingFormData.accountId) {
+            this.isAccountSelected = true;
             getAccountDetails({ accountId: this.bookingFormData.accountId })
                 .then(account => {
                     console.log('Fetched Account Data:' + JSON.stringify(account));
@@ -287,26 +310,24 @@ get options() {
                     this.bookingFormData['accountCorrespondenceAddressState'] = account.ShippingState || '';
                     this.bookingFormData['accountCorrespondenceAddressPostalCode'] = account.ShippingPostalCode || '';
                     this.bookingFormData['accountSameAsPermanentAddress'] = account.Same_As_Permanent_Address__c || false;
+
+                    this.recordFilter = {
+                        criteria: [
+                            {
+                                fieldPath: 'AccountId',
+                                operator: 'eq',
+                                value: this.bookingFormData.accountId
+                            }
+                        ]
+                    };
                 })
                 .catch(error => {
                     console.error('Error fetching account details:', error);
                 });
         } else {
-            this.bookingFormData['accountId'] = null;
-            this.bookingFormData['accountName'] = '';
-            this.bookingFormData['accountContactNo'] = '';
-            this.bookingFormData['accountEmailId'] = '';
-            this.bookingFormData['accountPermanentAddressStreet'] = '';
-            this.bookingFormData['accountPermanentAddressCity'] = '';
-            this.bookingFormData['accountPermanentAddressCountry'] = '';
-            this.bookingFormData['accountPermanentAddressState'] = '';
-            this.bookingFormData['accountPermanentAddressPostalCode'] = '';
-            this.bookingFormData['accountCorrespondenceAddressStreet'] = '';
-            this.bookingFormData['accountCorrespondenceAddressCity'] = '';
-            this.bookingFormData['accountCorrespondenceAddressCountry'] = '';
-            this.bookingFormData['accountCorrespondenceAddressState'] = '';
-            this.bookingFormData['accountCorrespondenceAddressPostalCode'] = '';
-            this.bookingFormData['accountSameAsPermanentAddress'] = false;
+            this.isAccountSelected = false;
+            this.handleContactCheckboxChange({ detail: { value: 'No' } });
+            this.clearBookingFormData('account');
         }
     }
 
@@ -332,51 +353,44 @@ get options() {
                     console.error('Error fetching account details:', error);
                 });
         } else {
-            this.bookingFormData['contactId'] = null;
-            this.bookingFormData['quoteContactName'] = '';
-            this.bookingFormData['quoteContactEmailId'] = '';
-            this.bookingFormData['quoteContactNo'] = '';
-            this.bookingFormData['quoteContactAadhaar'] = '';
-            this.bookingFormData['quoteContactPan'] = '';
-            this.bookingFormData['quoteContactDOB'] = '';
+            this.clearBookingFormData('contact')
         }
     }
 
     clearBookingFormData(objectType) {
-         if (objectType === 'account') {
-        this.bookingFormData = {
-            ...this.bookingFormData,
-            accountName: '',
-            accountEmailId: '',
-            accountContactNo: '',
-            accountPermanentAddressStreet: '',
-            accountPermanentAddressCity: '',
-            accountPermanentAddressCountry: '',
-            accountPermanentAddressState: '',
-            accountPermanentAddressPostalCode: '',
-            accountSameAsPermanentAddress: false,
-            accountSameAsPermanentAddressNeeded: false,
-            accountCorrespondenceAddressStreet: '',
-            accountCorrespondenceAddressCity: '',
-            accountCorrespondenceAddressCountry: '',
-            accountCorrespondenceAddressState: '',
-            accountCorrespondenceAddressPostalCode: '',
-            accountId: null
-        };
-    }else if (objectType === 'contact') {
-        this.bookingFormData = {
-            ...this.bookingFormData,
-            quoteContactName: '',
-            quoteContactEmailId: '',
-            quoteContactNo: '',
-            quoteContactPan: '',
-            quoteContactAadhaar: '',
-            quoteContactDOB: '',
-            contactId: null
-        };
+        if (objectType === 'account') {
+            this.bookingFormData = {
+                ...this.bookingFormData,
+                accountName: '',
+                accountEmailId: '',
+                accountContactNo: '',
+                accountPermanentAddressStreet: '',
+                accountPermanentAddressCity: '',
+                accountPermanentAddressCountry: '',
+                accountPermanentAddressState: '',
+                accountPermanentAddressPostalCode: '',
+                accountSameAsPermanentAddress: false,
+                accountSameAsPermanentAddressNeeded: false,
+                accountCorrespondenceAddressStreet: '',
+                accountCorrespondenceAddressCity: '',
+                accountCorrespondenceAddressCountry: '',
+                accountCorrespondenceAddressState: '',
+                accountCorrespondenceAddressPostalCode: '',
+                accountId: null
+            };
+        } else if (objectType === 'contact') {
+            this.bookingFormData = {
+                ...this.bookingFormData,
+                quoteContactName: '',
+                quoteContactEmailId: '',
+                quoteContactNo: '',
+                quoteContactPan: '',
+                quoteContactAadhaar: '',
+                quoteContactDOB: '',
+                contactId: null
+            };
+        }
     }
-    }
-
 
     handleSpinner(event) {
         this.isLoading = event.detail.isLoading;
@@ -396,6 +410,7 @@ get options() {
         date.setFullYear(date.getFullYear() - years);
         return date;
     }
+
     getAgeDifferenceInYears(currentDate, selectedDate) {
         let currentDateYear = currentDate.getFullYear();
         let currentDateMonth = currentDate.getMonth();
@@ -416,72 +431,78 @@ get options() {
         }
         return parseInt(differenceBetweenYears, 10);
     }
+
     handleSave(event) {
-        this.isLoading = true;
-        // let allFieldsValid = true;
-        // const messages = [];
+        try {
+            this.isLoading = true;
+            if (!this.validateFields()) {
+                this.isLoading = false;
+                return;
+            }
+            this.collectFormData(); // Collect data when Save is clicked
+        } catch (error) {
+            console.error('Unexpected error in handleSave:', error);
+            this.showToast('Error', 'An unexpected error occurred.', 'error');
+            this.isLoading = false;
+        }
+    }
 
-        // //  Select all required fields
-        // const primaryApplicantRequiredFields = this.template.querySelectorAll('[data-label="primaryApplicantRequiredFields"]');
-
-        // //  Loop through the fields and check validity
-        // if (primaryApplicantRequiredFields) {
-        //     primaryApplicantRequiredFields.forEach((field) => {
-        //         if (!field.checkValidity()) {
-        //             field.reportValidity(); // Highlight the field with a validation error
-        //             allFieldsValid = false;
-
-        //             // Add a message for each invalid field
-        //             messages.push(`${field.label || field.name || 'Field'} is required`);
-        //         }
-        //     });
-        // }
-
-        // //  Show a consolidated error message if validation fails
-        // if (!allFieldsValid) {
-        //     this.showToast(
-        //         'Error',
-        //         `Please fill all the required fields: ${messages.join(', ')}`,
-        //         'error'
-        //     );
-        //     this.isLoading = false;
-        //     return; // Stop further execution if fields are invalid
-        // }
-
+    collectFormData() {
         console.log('data------>', JSON.stringify(this.bookingFormData));
-       // saveFormData({ bookingFormData: JSON.stringify(this.bookingFormData), quoteId: this.recordId })
-            // .then(result => {
+        saveFormData({ bookingFormData: JSON.stringify(this.bookingFormData), quoteId: this.recordId })
+            .then(result => {
 
-            //     if (result.isSuccess) {
+                if (result.isSuccess) {
 
-            //         console.log('this.isLoading', this.isLoading);
-            //         this.showToast('Success', 'Data created successfully', 'success');
-            //         this[NavigationMixin.Navigate]({
-            //             type: 'standard__recordPage',
-            //             attributes: {
-            //                 recordId: result.accountId, // ✅ Account Id from Apex
-            //                 objectApiName: 'Account',
-            //                 actionName: 'view'
-            //             }
-            //         });
-            //         setTimeout(() => {
-            //             this.isLoading = false;
-            //             //window.location.reload();
-            //         }, 100);
-            //         this.isLoading = false;
-            //         this.isModalOpen = false;
-            //     } else {
-            //         this.showToast('Error', result.body, 'error');
-            //         this.isLoading = false;
-            //     }
-            // })
-            // .catch(error => {
-            //     this.showToast('Error', error.message, 'error');
-            //     this.closeModal();
-            //     this.isLoading = false;
-            // })
+                    console.log('this.isLoading', this.isLoading);
+                    this.showToast('Success', 'Data created successfully', 'success');
+                    this[NavigationMixin.Navigate]({
+                        type: 'standard__recordPage',
+                        attributes: {
+                            recordId: result.accountId, // ✅ Account Id from Apex
+                            objectApiName: 'Account',
+                            actionName: 'view'
+                        }
+                    });
+                    setTimeout(() => {
+                        this.isLoading = false;
+                        //window.location.reload();
+                    }, 100);
+                    this.isLoading = false;
+                    this.isModalOpen = false;
+                } else {
+                    this.showToast('Error', result.body, 'error');
+                    this.isLoading = false;
+                }
+            })
+            .catch(error => {
+                this.showToast('Error', error.message, 'error');
+                this.closeModal();
+                this.isLoading = false;
+            })
 
+    }
 
+    validateFields() {
+        let allFieldsValid = true;
+        const messages = [];
+        const requiredFields = this.template.querySelectorAll('[data-label="primaryApplicantRequiredFields"]');
+
+        if (requiredFields) {
+            requiredFields.forEach(field => {
+                if (!field.checkValidity()) {
+                    field.reportValidity(); // Highlight invalid field
+                    allFieldsValid = false;
+                    messages.push(`${field.label || field.name || 'Field'} is required`);
+                }
+            });
+        }
+
+        if (!allFieldsValid) {
+            this.showToast('Error', `Please fill all the required fields: ${messages.join(', ')}`, 'error');
+        }
+
+        return allFieldsValid;
     }
 
     showToast(title, message, variant) {

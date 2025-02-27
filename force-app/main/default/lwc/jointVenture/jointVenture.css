@@ -1,0 +1,114 @@
+.custom-container{
+	color : black;
+}
+.card-container{
+	/*width: 50%;*/
+	margin: auto;
+}
+.card-header{
+	text-align: center;
+	width: 100%;
+}
+.card-header-1 {
+	width: 20%;
+}
+.card-header-2 {
+	font-weight: bolder;
+    font-size: 150%;
+	width: 60%;
+}
+.card-header-3 {
+	width: 20%;
+}
+.logo {
+	max-height: 6rem;
+	max-width: 8rem;
+}
+.card-body{
+	position: relative;
+}
+.applicant-details-sections{
+	--slds-c-accordion-summary-color-background:   rgba(182, 140, 77, 1);
+	--slds-c-accordion-heading-text-color: rgba(255, 255, 255, 0.866);
+	--slds-c-accordion__summary-content-color: aliceblue;
+}
+.slds-accordion__summary-content{
+	color:  rgba(182, 140, 77, 1);
+}
+.applicant-table{
+    /*overflow-x: auto;
+	min-height: 300px;*/
+}
+.table {
+	width: 100%;
+}
+
+.custom-modal .slds-modal__container {
+    width: 60%; /* Adjust percentage or set a fixed width (e.g., 800px) */
+    max-width: 60%; /* Ensure it doesn't exceed the viewport width */
+    height: 100%; /* Adjust height as needed */
+    max-height: 100%; /* Ensure it doesn't exceed the viewport height */
+}
+
+.custom-modal .slds-modal__content {
+    overflow-y: auto; /* Add scroll for long content */
+}
+
+.form-container {
+    display: flex;
+    justify-content: space-between; /* Pushes label to the left and combobox to the right */
+    align-items: center;
+    width: 100%;
+}
+
+.custom-label {
+    white-space: nowrap;
+	    min-width: 40%; /* Ensures combobox does not shrink too much */
+
+}
+
+.combobox-container {
+    flex-grow: 1; /* Allows combobox to take up remaining space */
+    display: flex;
+    justify-content: flex-end; /* Aligns the combobox to the right */
+}
+.required {
+    color: red;
+    margin-right: 5px;
+}
+.slds-text-heading_medium {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #080707; /* Dark gray color for heading */
+}
+
+.slds-border_bottom {
+    border-bottom: 1px solid #dddbda; /* Light gray border */
+}
+
+.slds-border_top {
+    border-top: 1px solid #dddbda; /* Light gray border */
+}
+
+.slds-text-align_center {
+    text-align: center;
+}
+
+.slds-p-around_medium {
+    padding: 1rem;
+}
+
+.custom-card-width {
+    width: 400px; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the card horizontally */
+}
+.upload-status-container {
+    height: 24px; /* Adjust the height as needed */
+    display: flex;
+    align-items: center;
+}
+.align-right {
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+}

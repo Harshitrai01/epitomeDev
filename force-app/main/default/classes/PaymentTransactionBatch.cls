@@ -14,25 +14,30 @@ global class PaymentTransactionBatch implements Database.Batchable<sObject>, Sch
         }
         
         return Database.getQueryLocator([
+            // Need to add expiry Date Logic For EasyCollect
             SELECT Id, Merchant_Transaction_Id__c, Email_Address__c, Phone__c, Payment_Amount__c, 
-            			Payment_Status__c,Payment_Mode__c, Payment_Easepay_Id__c,Is_Webhook__c,
-                        Error_Message__c FROM Payment__c 
+            			Payment_Status__c, Opportunity__c, Payment_Type__c, Contact_Name__c,
+						Payment_URL__c, Payment_Id__c, Payment_Expiry_Date__c, Payment_Updated_Date__c,
+						Payment_Created_Date__c
+            			FROM Payment_Gateway__c 
             			WHERE Merchant_Transaction_Id__c != null AND Email_Address__c!=null AND 
-            			Phone__c!=null AND Payment_Amount__c!=null
+            			Phone__c!=null AND Payment_Amount__c!=null AND Payment_Status__c!='Success'
+						AND Payment_Status__c!='UserCancelled'
         ]);
     }
 
-    global void execute(Database.BatchableContext BC, List<Payment__c> paymentRecords) {
-        Map<String, Payment__c> paymentMap = new Map<String, Payment__c>();
-        for (Payment__c payment : paymentRecords) {
+    global void execute(Database.BatchableContext BC, List<Payment_Gateway__c> paymentRecords) {
+        Map<String, Payment_Gateway__c> paymentMap = new Map<String, Payment_Gateway__c>();
+        for (Payment_Gateway__c payment : paymentRecords) {
             paymentMap.put(payment.Merchant_Transaction_Id__c, payment);
         }
+        List<String> merchantIdList = New List<String>();
         List<Payment__c> updatedPayments = new List<Payment__c>();
+        List<Payment_Gateway__c> paymentGateWayToUpdate = new List<Payment_Gateway__c>();
         List<Integration_Log__c> integrationLogs = new List<Integration_Log__c>();
         
         for (String txnId : paymentMap.keySet()) {
-            Payment__c paymentRecord = paymentMap.get(txnId);
-
+            Payment_Gateway__c paymentRecord = paymentMap.get(txnId);
             String apiResponse = EasyCollectPayment.getTransactionDetails(paymentRecord.Merchant_Transaction_Id__c, paymentRecord.Payment_Amount__c, paymentRecord.Email_Address__c,paymentRecord.Phone__c);
             Map<String, Object> responseWrapper = (Map<String, Object>) JSON.deserializeUntyped(apiResponse);
             Boolean isSuccess = (Boolean) responseWrapper.get('isSuccess');
@@ -43,6 +48,22 @@ global class PaymentTransactionBatch implements Database.Batchable<sObject>, Sch
                 try {
                     Map<String, Object> responseMap = (Map<String, Object>) JSON.deserializeUntyped(response);
                     Boolean statusOfResponse = (Boolean) responseMap.get('status');
+                    Payment__c payment = new Payment__c();
+                    payment.Payment_Amount__c = paymentRecord.Payment_Amount__c;
+                    payment.Email_Address__c = paymentRecord.Email_Address__c;
+                    payment.Merchant_Transaction_Id__c = paymentRecord.Merchant_Transaction_Id__c;
+                    payment.Opportunity__c = paymentRecord.Opportunity__c;
+                    payment.Payment_Created_Date__c = paymentRecord.Payment_Created_Date__c;
+                    // To Be Checked Updated Date
+                    payment.Payment_Updated_Date__c = System.now();
+                    payment.Payment_Expiry_Date__c = paymentRecord.Payment_Expiry_Date__c;
+                    payment.Payment_Id__c = paymentRecord.Payment_Id__c;
+                    payment.Payment_Status__c = paymentRecord.Payment_Status__c;
+                    payment.Payment_URL__c = paymentRecord.Payment_URL__c;
+                    payment.Contact_Name__c = paymentRecord.Contact_Name__c;
+                    payment.Payment_Type__c = paymentRecord.Payment_Type__c;
+                    payment.Phone__c=paymentRecord.Phone__c;
+                    payment.Payment_Gateway__c = paymentRecord.Id;
                     if (statusOfResponse && responseMap.containsKey('msg')) {
                         Map<String, Object> transactionData = (Map<String, Object>) responseMap.get('msg');
                         String mode = (String) transactionData.get('mode');
@@ -50,13 +71,14 @@ global class PaymentTransactionBatch implements Database.Batchable<sObject>, Sch
                         String error = (String) transactionData.get('error');
                         String easepayId = (String) transactionData.get('easepayid');
                         String errorMessage = (String) transactionData.get('error_Message');
-
-                        paymentRecord.Payment_Status__c = status;
-                        paymentRecord.Payment_Mode__c = mode;
-                        paymentRecord.Payment_Easepay_Id__c = easepayId;
-                        paymentRecord.Is_Webhook__c = true;
-                        paymentRecord.Error_Message__c = errorMessage;
-                        updatedPayments.add(paymentRecord);
+                        payment.Payment_Status__c = status;
+                        payment.Payment_Mode__c = mode;
+                        payment.Payment_Easepay_Id__c = easepayId;
+                        payment.Is_Webhook__c = true;
+                        payment.Error_Message__c = errorMessage;
+                        paymentRecord.Payment_Status__c=status;
+                        updatedPayments.add(payment);
+                        paymentGateWayToUpdate.add(paymentRecord);
                         Integration_Log__c log = null;
                         if (String.isNotBlank(integrationLogsStr)) {
                             log = (Integration_Log__c) JSON.deserialize(integrationLogsStr, Integration_Log__c.class);
@@ -64,14 +86,15 @@ global class PaymentTransactionBatch implements Database.Batchable<sObject>, Sch
                         }
                     }else{
                         String message= (String) responseMap.get('msg');
-                        paymentRecord.Error_Message__c = message;
-                        updatedPayments.add(paymentRecord);
+                        payment.Error_Message__c = message;
+                        updatedPayments.add(payment);
                         Integration_Log__c log = null;
                         if (String.isNotBlank(integrationLogsStr)) {
                             log = (Integration_Log__c) JSON.deserialize(integrationLogsStr, Integration_Log__c.class);
                             integrationLogs.add(log);
                         }
                     }
+                    merchantIdList.add(paymentRecord.Merchant_Transaction_Id__c);
                 } catch (Exception e) {
                     System.debug('Error parsing response: ' + e.getMessage());
                 }
@@ -93,7 +116,25 @@ global class PaymentTransactionBatch implements Database.Batchable<sObject>, Sch
             // insert integrationLogs;
         }
         if (!updatedPayments.isEmpty()) {
-            update updatedPayments;
+            List<Payment__c> updatedPaymentList = New List<Payment__c>();
+            List<Payment__c> paymentList = [Select Id,Merchant_Transaction_Id__c From Payment__c 
+                                            Where Merchant_Transaction_Id__c IN: merchantIdList];
+            Map<String, String> merchantIdMap = new Map<String, String>();
+            for(Payment__c payment:paymentList){
+                merchantIdMap.put(payment.Merchant_Transaction_Id__c,payment.Id);
+            }
+            for(Payment__c payment:updatedPayments){
+                if(merchantIdMap.ContainsKey(payment.Merchant_Transaction_Id__c)){
+                    payment.Id=merchantIdMap.get(payment.Merchant_Transaction_Id__c);
+                }
+                updatedPaymentList.add(payment);
+            }
+            if (!updatedPaymentList.isEmpty()) {
+                upsert updatedPaymentList;
+            }
+        }
+        if (!paymentGateWayToUpdate.isEmpty()) {
+            update paymentGateWayToUpdate;
         }
     }
 
@@ -105,7 +146,7 @@ global class PaymentTransactionBatch implements Database.Batchable<sObject>, Sch
                          nextRun.day() + ' ' +
                          nextRun.month() + ' ? ' +
                          nextRun.year();
-        System.schedule('Payment Details Fetch '+ String.valueOf(Datetime.now()), cronExp, new PaymentTransactionBatch());
+        System.schedule('PaymentTransactionBatch '+ String.valueOf(Datetime.now()), cronExp, new PaymentTransactionBatch());
     }
 
     global void execute(SchedulableContext sc) {

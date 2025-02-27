@@ -1,5 +1,4 @@
 import { LightningElement, wire, track, api } from 'lwc';
-import { getRecord } from 'lightning/uiRecordApi';
 import OPPORTUNITY_OBJECT_NAME from '@salesforce/schema/Opportunity';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { NavigationMixin } from 'lightning/navigation';
@@ -9,28 +8,21 @@ import saveBulkFormData from '@salesforce/apex/bookingFormController.saveBulkFor
 import getAccountDetails from '@salesforce/apex/bookingFormController.getAccountDetails';
 import getContactDetails from '@salesforce/apex/bookingFormController.getContactDetails';
 import getPlotDetails from '@salesforce/apex/bookingFormController.getPlotDetails';
-
-
-const FIELDS = [
-    'Unit__c.Name',
-    'Unit__c.Unit_Code__c',
-    'Unit__c.Plot_Facing__c',
-    'Unit__c.Id',
-    'Unit__c.Plot_Size__c',
-    'Unit__c.Status__c',
-    'Unit__c.Plot_Price__c',
-    'Unit__c.Phase__c'
-];
+import getContactsByAccountId from '@salesforce/apex/bookingFormController.getContactsByAccountId';
+import getPlots from '@salesforce/apex/bookingFormController.getPlots';
 
 export default class BookingForm extends NavigationMixin(LightningElement) {
-    defaultRedirectUrl = '/lightning/o/Opportunity/new'; // Default URL to redirect to
+
+    @track contacts = [];
+    @track plots = [];
     @track isModalOpen = true;
+    @track isAccountSelected = false;
     @api recordId;
+    @track isAccountExist = false;
     selectedRecordId;
     recordTypeId;
     showComponent = false;
     isLoading = false;
-    // companyLogo = BNMLogo;
     unitPlotFacing;
     unitPlotSize;
     unitPlotPrize;
@@ -51,9 +43,27 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     eighteenYearsBackDate = `${this.eighteenYearsBackYear}-${this.eighteenYearsBackMonth}-${this.eighteenYearsBackDay}`;
     activeSections = ['A', 'B', 'C', 'D', 'E'];
 
+    value = 'No';
+    get options() {
+        return [
+            { label: 'Yes', value: 'Yes' },
+            { label: 'No', value: 'No' },
+
+        ];
+    }
+
+    contactValue = 'No';
+    get contactOptions() {
+        return [
+            { label: 'Yes', value: 'Yes' },
+            { label: 'No', value: 'No' },
+
+        ];
+    }
+
     @track bookingFormData = {
         typeOfBooking: '',
-        accountId:null,
+        accountId: null,
         accountName: '',
         accountEmailId: '',
         accountContactNo: '',
@@ -77,6 +87,7 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     }
 
     connectedCallback() {
+        this.fetchPlots();
         this.showComponent = true;
         this.addContact();
         this.isAccountExist = true;
@@ -95,41 +106,99 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
         }
     }
 
-    @wire(getRecord, { recordId: '$selectedRecordId', fields: FIELDS })
-    unit({ error, data }) {
-        if (data) {
-            console.log('unit data:', data);
-            this.unitPlotFacing = data.fields.Plot_Facing__c.value;
-            this.unitPlotPrize = data.fields.Plot_Price__c.value;
-            this.unitPlotSize = data.fields.Plot_Size__c.value;
-            this.unitPlotUnitCode = data.fields.Unit_Code__c.value;
-            this.unitPlotPhase = data.fields.Unit_Code__c.value;
-            this.unitPlotName = data.fields.Name.value;
-            this.updateContactPlots()
-            console.log(data.fields.Plot_Facing__c.value);
-        } else if (error) {
-            this.phaseName = '';
-            console.error('Error fetching plot phase record:', error);
+    handleAccountChange(event) {
+        try {
+            switch (event.target.name) {
+                case 'accountSameAsPermanentAddress':
+                    this.bookingFormData[event.target.name] = event.target.checked;
+                    this.bookingFormData.accountSameAsPermanentAddressNeeded = !(event.target.checked);
+                    this.handleSameAsPermanentChange();
+                    break;
+                case 'opportunityPaymentMode':
+                    this.bookingFormData.opportunityChequeNo = this.bookingFormData[event.target.name] === event.target.value ? this.bookingFormData.opportunityChequeNo : '';
+                    this.bookingFormData[event.target.name] = event.target.value;
+                    this.showHideFields.showFieldForChequePaymentMode = this.bookingFormData[event.target.name] ? true : false;
+                    break;
+                case 'typeOfBooking':
+                    this.bookingFormData[event.target.name] = event.target.value;
+                    break;
+                case 'accountName':
+                    this.bookingFormData[event.target.name] = event.target.value;
+                    break;
+                case 'accountEmailId':
+                    this.bookingFormData[event.target.name] = event.target.value;
+                    break;
+                case 'accountContactNo':
+                    this.bookingFormData[event.target.name] = event.target.value;
+                    break;
+                default:
+                    this.bookingFormData[event.target.name] = event.target.value;
+            }
+        } catch (error) {
+            console.log('handleAccountChange error message------------------>', error.message);
+            console.log('handleAccountChange error line number------------------>', error.lineNumber);
         }
     }
 
-    // fetchPlotDetails() {
-    //     getPlotDetails({ recordId: this.selectedRecordId })
-    //         .then(data => {
-    //             console.log('Fetched Plot Data:', data);
-    //             this.unitPlotFacing = data.plotFacing;
-    //             this.unitPlotPrize = data.plotPrice;
-    //             this.unitPlotSize = data.plotSize;
-    //             this.unitPlotUnitCode = data.unitCode;
-    //             this.unitPlotPhase = data.plotPhase;
-    //             this.unitPlotName = data.plotName;
-    //             this.updateContactPlots();
-    //         })
-    //         .catch(error => {
-    //             this.phaseName = '';
-    //             console.error('Error fetching plot details:', error);
-    //         });
-    // }
+    handleValueChange(event) {
+        try {
+
+            const contactId = parseInt(event.target.dataset.contactId, 10);
+            const plotId = event.target.dataset.plotId ? parseInt(event.target.dataset.plotId, 10) : null;
+            const fieldName = event.target.name;
+            const value = event.detail.value;
+
+            console.log('Contact ID:', contactId);
+            console.log('Plot ID:', plotId);
+            console.log('Field Name:', fieldName);
+
+            this.selectedRecordId = value; // Update selected record ID
+
+            console.log('Selected Record ID:', this.selectedRecordId);
+            if (fieldName === 'plotName') {
+                if (this.isDuplicatePlotSelected(value)) {
+                    event.target.value = null; // Reset combobox
+                    this.showToast('Error', 'Duplicate plot selected. Please choose a different plot.', 'error');
+                    return;
+                }
+
+                this.selectedRecordId = value; // Update selected record ID
+
+                // If no record is selected, clear the plot details
+                if (!this.selectedRecordId) {
+                    this.clearPlotValues(plotId, contactId);
+                } else {
+                    getPlotDetails({ recordId: this.selectedRecordId })
+                        .then(data => {
+                            if (data) {
+                                console.log('Plot Data:', data);
+                                this.unitPlotFacing = data.Plot_Facing__c || '';
+                                this.unitPlotPrize = data.Plot_Price__c || '';
+                                this.unitPlotSize = data.Plot_Size__c || '';
+                                this.unitPlotUnitCode = data.Unit_Code__c || '';
+                                this.unitPlotPhase = data.Unit_Code__c || '';
+                                this.unitPlotName = data.Name || '';
+                                this.updateContactPlots();
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error fetching Plot details:', error);
+                        });
+                }
+            }
+
+            // Determine final value (handling plot name differently)
+            const finalValue = fieldName === 'plotName' ? value : event.target.value;
+
+            // Update contact or plot information
+            this.updateBookingFormData(contactId, plotId, fieldName, finalValue);
+
+            console.log('Updated Value:', event.target.value);
+        } catch (error) {
+            console.log('handleValueChange error message------------------>', error.message);
+            console.log('handleValueChange error line number------------------>', error.lineNumber);
+        }
+    }
 
     updateContactPlots() {
         // Find the contact and update its plot details
@@ -149,41 +218,374 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
         console.log('Updated Booking Form Data:', JSON.stringify(this.bookingFormData, null, 2));
     }
 
+    isDuplicatePlotSelected(plotId) {
+        return this.bookingFormData.listOfCoApplicant.some(coApplicant =>
+            coApplicant.plots.some(plot => plot.plotName === plotId)
+        );
+    }
+
+    clearPlotValues(plotId, contactId) {
+        // Create a deep copy to trigger LWC reactivity
+        let updatedBookingFormData = JSON.parse(JSON.stringify(this.bookingFormData));
+
+        // Find the correct co-applicant
+        const contactIndex = updatedBookingFormData.listOfCoApplicant.findIndex(
+            contact => contact.id === contactId
+        );
+
+        if (contactIndex !== -1) {
+            // Find the correct plot inside that co-applicant
+            const plotIndex = updatedBookingFormData.listOfCoApplicant[contactIndex].plots.findIndex(
+                plot => plot.id === plotId
+            );
+
+            if (plotIndex !== -1) {
+                // Reset only the selected plot's values
+                updatedBookingFormData.listOfCoApplicant[contactIndex].plots[plotIndex] = {
+                    ...updatedBookingFormData.listOfCoApplicant[contactIndex].plots[plotIndex],
+                    plotName: null,
+                    plotunitsname: null,
+                    unitPlotFacing: null,
+                    unitPlotSize: null,
+                    unitPlotPrize: null,
+                    unitPlotUnitCode: null,
+                    unitPlotPhase: null
+                };
+            }
+        }
+
+        // Assign the updated object back to trigger UI refresh
+        this.bookingFormData = updatedBookingFormData;
+
+        // If the deselected plot is the currently selected one, reset class properties
+
+        if (this.selectedRecordId === plotId) {
+            this.unitPlotFacing = null;
+            this.unitPlotPrize = null;
+            this.unitPlotSize = null;
+            this.unitPlotUnitCode = null;
+            this.unitPlotPhase = null;
+            this.unitPlotName = null;
+        }
+
+        console.log('Deselected plot reset:', JSON.stringify(this.bookingFormData, null, 2));
+    }
+
+    updateBookingFormData(contactId, plotId, fieldName, value) {
+        try {
+            let updatedBookingFormData = JSON.parse(JSON.stringify(this.bookingFormData));
+
+            const contactIndex = updatedBookingFormData.listOfCoApplicant.findIndex(contact => contact.id === contactId);
+
+            if (contactIndex !== -1) {
+                if (plotId) {
+                    // Update plot details
+                    const plotIndex = updatedBookingFormData.listOfCoApplicant[contactIndex].plots.findIndex(plot => plot.id === plotId);
+                    if (plotIndex !== -1) {
+                        updatedBookingFormData.listOfCoApplicant[contactIndex].plots[plotIndex][fieldName] = value;
+                    }
+                } else {
+                    // Update contact details
+                    updatedBookingFormData.listOfCoApplicant[contactIndex][fieldName] = value;
+                }
+            }
+
+            // Assign back to trigger reactivity
+            this.bookingFormData = updatedBookingFormData;
+        }
+        catch (error) {
+            console.error('❌ Error in updateBookingFormData:', error);
+        }
+    }
+
+    handleCheckboxChange(event) {
+        this.value = event.detail.value;
+        if (this.value == 'No') {
+            this.isAccountSelected = false;
+
+            this.isAccountExist = true;
+            this.bookingFormData.listOfCoApplicant = this.bookingFormData.listOfCoApplicant.map(contact => {
+                if (contact.contactValue === 'Yes') {
+                    return {
+                        ...contact,
+                        contactId: null,
+                        contactName: '',
+                        contactEmail: '',
+                        contactPhone: '',
+                        contactAadhaar: '',
+                        contactPan: '',
+                        contactDOB: '',
+                        contactValue: 'No',
+                        isContactExist: true
+                    };
+                }
+                return contact;
+            });
+
+        } else if (this.value == 'Yes') {
+            this.isAccountExist = false;
+        }
+        this.clearAccountData();
+        console.log('Booking Form Data Before Selecting Account-->>', this.bookingFormData);
+    }
+
+    clearAccountData() {
+        this.bookingFormData = {
+            ...this.bookingFormData,
+            accountId: null,
+            accountName: '',
+            accountContactNo: '',
+            accountEmailId: '',
+            accountPermanentAddressStreet: '',
+            accountPermanentAddressCity: '',
+            accountPermanentAddressCountry: '',
+            accountPermanentAddressState: '',
+            accountPermanentAddressPostalCode: '',
+            accountCorrespondenceAddressStreet: '',
+            accountCorrespondenceAddressCity: '',
+            accountCorrespondenceAddressCountry: '',
+            accountCorrespondenceAddressState: '',
+            accountCorrespondenceAddressPostalCode: '',
+            accountSameAsPermanentAddress: false
+        };
+    }
+
+    handleRecordSelection(event) {
+        const accountId = event.detail.recordId;
+        if (accountId) {
+            this.isAccountSelected = true;
+            getAccountDetails({ accountId })
+                .then(account => {
+                    console.log('Fetched Account Data:' + JSON.stringify(account));
+                    this.bookingFormData['accountId'] = account.Id || null;
+                    this.bookingFormData['accountName'] = account.Name || '';
+                    this.bookingFormData['accountContactNo'] = account.Phone || '';
+                    this.bookingFormData['accountEmailId'] = account.Email__c || '';
+                    this.bookingFormData['accountPermanentAddressStreet'] = account.BillingStreet || '';
+                    this.bookingFormData['accountPermanentAddressCity'] = account.BillingCity || '';
+                    this.bookingFormData['accountPermanentAddressCountry'] = account.BillingCountry || '';
+                    this.bookingFormData['accountPermanentAddressState'] = account.BillingState || '';
+                    this.bookingFormData['accountPermanentAddressPostalCode'] = account.BillingPostalCode || '';
+                    this.bookingFormData['accountCorrespondenceAddressStreet'] = account.ShippingStreet || '';
+                    this.bookingFormData['accountCorrespondenceAddressCity'] = account.ShippingCity || '';
+                    this.bookingFormData['accountCorrespondenceAddressCountry'] = account.ShippingCountry || '';
+                    this.bookingFormData['accountCorrespondenceAddressState'] = account.ShippingState || '';
+                    this.bookingFormData['accountCorrespondenceAddressPostalCode'] = account.ShippingPostalCode || '';
+                    this.bookingFormData['accountSameAsPermanentAddress'] = account.Same_As_Permanent_Address__c || false;
+
+                    this.fetchContacts();
+                })
+                .catch(error => {
+                    console.error('Error fetching account details:', error);
+                });
+        } else {
+            // this.isAccountSelected=false;
+            // this.clearAllContacts();
+            this.isAccountSelected = false;
+            this.clearAllContacts();
+            this.clearAccountData();
+        }
+    }
+
+    fetchContacts() {
+        console.log('Fetching contacts for Account:', this.bookingFormData.accountId);
+        getContactsByAccountId({ accountId: this.bookingFormData.accountId })
+            .then((data) => {
+                if (data && data.length > 0) {
+                    this.contacts = data.map((contact) => ({
+                        label: contact.LastName, // Show Last Name in combobox
+                        value: contact.Id        // Store Contact Id as value
+                    }));
+                    console.log('Contacts loaded:', this.contacts);
+                } else {
+                    this.contacts = [];
+                    //this.showToast('Error', 'No contacts found for this Account.', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching contacts:', error);
+            });
+    }
+
+    fetchPlots() {
+        console.log('Fetching Plots');
+        getPlots()
+            .then((data) => {
+                if (data && data.length > 0) {
+                    this.plots = data.map((plot) => ({
+                        label: plot.Name,
+                        value: plot.Id
+                    }));
+                    console.log('Plots loaded:', this.plots);
+                } else {
+                    this.plots = [];
+                    this.showToast('Error', 'No plots found for this Account.', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching contacts:', error);
+            });
+    }
+    
+    clearAllContacts() {
+        this.bookingFormData.listOfCoApplicant = this.bookingFormData.listOfCoApplicant.map(contact => {
+            if (contact.contactValue === 'Yes') {
+                return {
+                    ...contact,
+                    contactId: null,
+                    contactName: '',
+                    contactEmail: '',
+                    contactPhone: '',
+                    contactAadhaar: '',
+                    contactPan: '',
+                    contactDOB: '',
+                    contactValue: 'No',
+                    isContactExist: true
+                };
+            }
+            return contact;
+        });
+    }
+
+    handleContactCheckboxChange(event) {
+        const contactId = parseInt(event.target.dataset.contactId);
+        let value = event.detail.value;
+        const selectedValue = event.detail.value; // Yes / No
+        let isChecked = true;
+        if (value == 'No') {
+            isChecked = false;
+        } else if (value == 'Yes') {
+            isChecked = true;
+            this.bookingFormData.listOfCoApplicant = this.bookingFormData.listOfCoApplicant.map(coApplicant =>
+                coApplicant.id === contactId
+                    ? {
+                        ...coApplicant,
+                        contactValue: selectedValue,
+                        isContactExist: !isChecked,
+                        contactId: null,
+                        contactName: '',
+                        contactEmail: '',
+                        contactPhone: '',
+                        contactAadhaar: '',
+                        contactPan: '',
+                        contactDOB: '',
+                    }
+                    : coApplicant
+            );
+
+        }
+        let updatedCoApplicants = this.bookingFormData.listOfCoApplicant.map(coApplicant => {
+            if (coApplicant.id === contactId) {
+                return {
+                    ...coApplicant,
+                    contactValue: selectedValue, // Ensure each contact stores its own value
+                    isContactExist: !isChecked,
+                    contactId: selectedValue === 'Yes' ? coApplicant.contactId : null,
+                    contactName: selectedValue === 'Yes' ? coApplicant.contactName : '',
+                    contactEmail: selectedValue === 'Yes' ? coApplicant.contactEmail : '',
+                    contactPhone: selectedValue === 'Yes' ? coApplicant.contactPhone : '',
+                    contactAadhaar: selectedValue === 'Yes' ? coApplicant.contactAadhaar : '',
+                    contactPan: selectedValue === 'Yes' ? coApplicant.contactPan : '',
+                    contactDOB: selectedValue === 'Yes' ? coApplicant.contactDOB : '',
+                };
+            }
+            return coApplicant;
+        });
+
+
+        this.bookingFormData = {
+            ...this.bookingFormData,
+            listOfCoApplicant: updatedCoApplicants
+        };
+
+    }
+
+    handleContactRecordSelection(event) {
+        const contactId = event.detail.value;
+        const contactIndex = parseInt(event.target.dataset.contactId);
+
+        if (contactId) {
+            if (this.isDuplicateContactSelected(event, contactId)) return;
+            getContactDetails({ contactId })
+                .then(contact => {
+                    let updatedCoApplicants = this.bookingFormData.listOfCoApplicant.map(coApplicant => {
+                        if (coApplicant.id === contactIndex) {
+                            return {
+                                ...coApplicant, // Spread existing co-applicant data
+                                contactId: contact.Id,
+                                contactName: contact.LastName || '',
+                                contactEmail: contact.Email || '',
+                                contactPhone: contact.Phone || '',
+                                contactAadhaar: contact.Aadhaar_Card__c || '',
+                                contactPan: contact.PAN_Card__c || '',
+                                contactDOB: contact.Date_Of_Birth__c || '',
+                            };
+                        }
+                        return coApplicant; // Return unchanged co-applicants
+                    });
+
+                    // Update the bookingFormData object to trigger UI reactivity
+                    this.bookingFormData = {
+                        ...this.bookingFormData,
+                        listOfCoApplicant: updatedCoApplicants
+                    };
+
+                })
+                .catch(error => {
+                    console.error('Error fetching contact details:', error);
+                });
+        }
+        else {
+            let updatedCoApplicants = this.bookingFormData.listOfCoApplicant.map(coApplicant => {
+                if (coApplicant.id === contactIndex) {
+                    return {
+                        ...coApplicant,
+                        contactId: null,
+                        contactName: null,
+                        contactEmail: null,
+                        contactPhone: null,
+                        contactAadhaar: null,
+                        contactPan: null,
+                        contactDOB: null,
+                    };
+                }
+                return coApplicant;
+            });
+
+            this.bookingFormData = {
+                ...this.bookingFormData,
+                listOfCoApplicant: updatedCoApplicants
+            };
+        }
+    }
+
+    isDuplicateContactSelected(event, contactId) {
+        const isDuplicate = this.bookingFormData.listOfCoApplicant.some(
+            coApplicant => coApplicant.contactId === contactId
+        );
+
+        if (isDuplicate) {
+            event.target.value = null; // Reset combobox
+            this.isDuplicateContact = true;
+            this.showToast('Error', 'Duplicate contact selected. Please choose a different contact.', 'error');
+            return true;
+        }
+
+        this.isDuplicateContact = false;
+        return false;
+    }
+
     handleSave(event) {
         this.isLoading = true;
-        //      let allFieldsValid = true;
-        // const messages = [];
-
-        // // Select all required fields
-        // const primaryApplicantRequiredFields = this.template.querySelectorAll('[data-label="primaryApplicantRequiredFields"]');
-
-        // // Loop through the fields and check validity
-        // if (primaryApplicantRequiredFields) {
-        //     primaryApplicantRequiredFields.forEach((field) => {
-        //         if (!field.checkValidity()) {
-        //             field.reportValidity(); // Highlight the field with a validation error
-        //             allFieldsValid = false;
-
-        //             // Add a message for each invalid field
-        //             messages.push(`${field.label || field.name || 'Field'} is required`);
-        //         }
-        //     });
-        // }
-
-        // // Show a consolidated error message if validation fails
-        // if (!allFieldsValid) {
-        //     this.showToast(
-        //         'Error',
-        //         `Please fill all the required fields: ${messages.join(', ')}`,
-        //         'error'
-        //     );
-        //     return; // Stop further execution if fields are invalid
-        // }
+        if (!this.validateFields()) {
+            this.isLoading = false;
+            return;
+        }
         this.collectFormData(); // Collect data when Save is clicked
     }
 
     collectFormData() {
-        console.log('asdfgh', JSON.stringify(this.bookingFormData));
+        console.log('asdfgh', JSON.stringify(this.bookingFormData, null, 2));
         saveBulkFormData({ bookingFormData: JSON.stringify(this.bookingFormData) })
             .then(result => {
                 if (result.isSuccess) {
@@ -212,76 +614,28 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
             })
     }
 
-    handleValueChange(event) {
-        try {
-            switch (event.target.name) {
-                case 'accountSameAsPermanentAddress':
-                    this.bookingFormData[event.target.name] = event.target.checked;
-                    this.bookingFormData.accountSameAsPermanentAddressNeeded = !(event.target.checked);
-                    this.handleSameAsPermanentChange();
-                    break;
-                case 'opportunityPaymentMode':
-                    this.bookingFormData.opportunityChequeNo = this.bookingFormData[event.target.name] === event.target.value ? this.bookingFormData.opportunityChequeNo : '';
-                    this.bookingFormData[event.target.name] = event.target.value;
-                    this.showHideFields.showFieldForChequePaymentMode = this.bookingFormData[event.target.name] ? true : false;
-                    break;
-                case 'typeOfBooking':
-                    this.bookingFormData[event.target.name] = event.target.value;
-                    break;
-                case 'accountName':
-                    this.bookingFormData[event.target.name] = event.target.value;
-                    break;
-                case 'accountEmailId':
-                    this.bookingFormData[event.target.name] = event.target.value;
-                    break;
-                case 'accountContactNo':
-                    this.bookingFormData[event.target.name] = event.target.value;
-                    break;
-                default:
-                    // handle change for contact and plot list
-                    const contactId = parseInt(event.target.dataset.contactId, 10); // Get contact ID
-                    const plotId = event.target.dataset.plotId ? parseInt(event.target.dataset.plotId, 10) : null;
-                    console.log('contactId--->', contactId);
-                    console.log('plotId--->', plotId);
-                    const fieldName = event.target.name; // Identify the field being modified
-                    const value = event.detail.recordId; // Get the recordId
-                    this.selectedRecordId = event.detail.recordId;
-                    console.log('fieldName--->', fieldName);
+    validateFields() {
+        let allFieldsValid = true;
+        const messages = [];
+        const requiredFields = this.template.querySelectorAll('[data-label="primaryApplicantRequiredFields"]');
 
-                    // Check if it's for the 'plotName' field, otherwise, just use event.target.value
-                    const finalValue = fieldName === 'plotName' ? value : event.target.value;
-
-                    const contactIndex = this.bookingFormData.listOfCoApplicant.findIndex(
-                        contact => contact.id === contactId
-                    );
-
-                    if (contactIndex !== -1) {
-                        // If there is a plotId, update the plot information
-                        if (plotId) {
-                            console.log('aaaaaaaaaaaaaaaaaaaa');
-                            const plotIndex = this.bookingFormData.listOfCoApplicant[contactIndex].plots.findIndex(
-                                plot => plot.id === plotId
-                            );
-                            if (plotIndex !== -1) {
-                                console.log('bbbbbbbbbbbbbbbbbbbbbb');
-                                this.bookingFormData.listOfCoApplicant[contactIndex].plots[plotIndex][fieldName] = finalValue;
-
-                            }
-                        } else {
-                            console.log('ccccccccccccccccc');
-                            // If there is no plotId, just update the contact information
-                            this.bookingFormData.listOfCoApplicant[contactIndex][fieldName] = finalValue;
-                        }
-                    }
-                    console.log('213 ' + event.target.value);
-            }
-        } catch (error) {
-            console.log('handleValueChange error message------------------>', error.message);
-            console.log('handleValueChange error line number------------------>', error.lineNumber);
+        if (requiredFields) {
+            requiredFields.forEach(field => {
+                if (!field.checkValidity()) {
+                    field.reportValidity(); // Highlight invalid field
+                    allFieldsValid = false;
+                    messages.push(`${field.label || field.name || 'Field'} is required`);
+                }
+            });
         }
+
+        if (!allFieldsValid) {
+            this.showToast('Error', `Please fill all the required fields: ${messages.join(', ')}`, 'error');
+        }
+
+        return allFieldsValid;
     }
 
-    // Add a new contact
     addContact() {
         const newContact = {
             id: this.nextId++, // Unique ID for the contact
@@ -291,13 +645,20 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
             contactAadhaar: '',
             contactPan: '',
             contactDOB: '',
-            contactId:null,
+            contactId: null,
             isContactExist: true,
+            isPrimaryPayer: false, // Default to false
             plots: [{ id: this.nextId++, plotName: '', unitOppAmount: '', plotunitsname: '', unitPlotFacing: '', unitPlotPhase: '', unitPlotUnitCode: '', unitPlotPrize: '', unitPlotSize: '', showAddMoreButton: true, showRemoveButton: false }],
             showAddMoreButton: false,// Initially empty plots for this contact
         };
         // Add the new contact to the listOfCoApplicant array with the existing list
-        this.bookingFormData.listOfCoApplicant = [...this.bookingFormData.listOfCoApplicant, newContact];
+        this.bookingFormData.listOfCoApplicant = [
+            ...this.bookingFormData.listOfCoApplicant,
+            newContact
+        ].map(contact => ({
+            ...contact,
+            isPrimaryPayer: contact.id === 1 // Set true only for id = 1, false for others
+        }));
         console.log('first Contact :: ' + JSON.stringify(this.bookingFormData));
         this.updateContactButtons();
     }
@@ -506,129 +867,4 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
             window.location.reload();
         }, 100)
     }
-
-    @track isAccountExist = false;
-
-    handleCheckboxChange(event) {
-        if (!(event.target.checked)) {
-            this.isAccountExist = true;
-        } else if(event.target.checked){
-            this.isAccountExist = false;
-        }
-        console.log('Booking Form Data Before Selecting Account-->>',this.bookingFormData);
-    }
-    
-     handleRecordSelection(event) {
-        const accountId = event.detail.recordId;
-
-        if (accountId) {
-            getAccountDetails({ accountId })
-                .then(account => {
-                    console.log('Fetched Account Data:'+JSON.stringify(account));
-                    this.bookingFormData['accountId'] = account.Id || null;
-                    this.bookingFormData['accountName'] = account.Name || '';
-                    this.bookingFormData['accountContactNo'] = account.Phone || '';
-                    this.bookingFormData['accountEmailId'] = account.Email__c || '';
-                    this.bookingFormData['accountPermanentAddressStreet'] = account.BillingStreet || '';
-                    this.bookingFormData['accountPermanentAddressCity'] = account.BillingCity || '';
-                    this.bookingFormData['accountPermanentAddressCountry'] = account.BillingCountry || '';
-                    this.bookingFormData['accountPermanentAddressState'] = account.BillingState || '';
-                    this.bookingFormData['accountPermanentAddressPostalCode'] = account.BillingPostalCode || '';
-                    this.bookingFormData['accountCorrespondenceAddressStreet'] = account.ShippingStreet || '';
-                    this.bookingFormData['accountCorrespondenceAddressCity'] = account.ShippingCity || '';
-                    this.bookingFormData['accountCorrespondenceAddressCountry'] = account.ShippingCountry || '';
-                    this.bookingFormData['accountCorrespondenceAddressState'] = account.ShippingState || '';
-                    this.bookingFormData['accountCorrespondenceAddressPostalCode'] = account.ShippingPostalCode || '';
-                    this.bookingFormData['accountSameAsPermanentAddress'] = account.Same_As_Permanent_Address__c || false;
-                })
-                .catch(error => {
-                    console.error('Error fetching account details:', error);
-                });
-        }else {
-            this.bookingFormData['accountId'] = null;
-            this.bookingFormData['accountName'] = '';
-            this.bookingFormData['accountContactNo'] = '';
-            this.bookingFormData['accountEmailId'] = '';
-            this.bookingFormData['accountPermanentAddressStreet'] = '';
-            this.bookingFormData['accountPermanentAddressCity'] = '';
-            this.bookingFormData['accountPermanentAddressCountry'] = '';
-            this.bookingFormData['accountPermanentAddressState'] = '';
-            this.bookingFormData['accountPermanentAddressPostalCode'] = '';
-            this.bookingFormData['accountCorrespondenceAddressStreet'] = '';
-            this.bookingFormData['accountCorrespondenceAddressCity'] = '';
-            this.bookingFormData['accountCorrespondenceAddressCountry'] = '';
-            this.bookingFormData['accountCorrespondenceAddressState'] = '';
-            this.bookingFormData['accountCorrespondenceAddressPostalCode'] = '';
-            this.bookingFormData['accountSameAsPermanentAddress'] = false;
-        }
-    }
-
-    handleContactCheckboxChange(event) {
-        const contactId = parseInt(event.target.dataset.contactId); // Get the contact ID from the dataset
-        const isChecked = event.target.checked; 
-        this.bookingFormData.listOfCoApplicant = this.bookingFormData.listOfCoApplicant.map(contact => {
-            if (contact.id === contactId) {
-                return { ...contact, isContactExist: !isChecked }; // Toggle isContactExist
-            }
-            return contact;
-        });
-    }
-    
-     handleContactRecordSelection(event) {
-        const contactId = event.detail.recordId;
-        const contactIndex = parseInt(event.target.dataset.contactId);
-
-        if (contactId) {
-            getContactDetails({ contactId })
-                .then(contact => {
-                    let updatedCoApplicants = this.bookingFormData.listOfCoApplicant.map(coApplicant => {
-                    if (coApplicant.id === contactIndex) {
-                        return {
-                            ...coApplicant, // Spread existing co-applicant data
-                            contactId: contact.Id,
-                            contactName: contact.LastName || '',
-                            contactEmail: contact.Email || '',
-                            contactPhone: contact.Phone || '',
-                            contactAadhaar: contact.Aadhaar_Card__c || '',
-                            contactPan: contact.PAN_Card__c || '',
-                            contactDOB: contact.Date_Of_Birth__c || '',
-                        };
-                    }
-                    return coApplicant; // Return unchanged co-applicants
-                });
-
-                // Update the bookingFormData object to trigger UI reactivity
-                this.bookingFormData = {
-                    ...this.bookingFormData,
-                    listOfCoApplicant: updatedCoApplicants
-                };
-                    
-                })
-                .catch(error => {
-                    console.error('Error fetching contact details:', error);
-                });
-        }
-        else{
-
-       let updatedCoApplicants = this.bookingFormData.listOfCoApplicant.map(coApplicant => {
-            if (coApplicant.id === contactIndex) {
-                return {
-                    ...coApplicant,
-                    contactId: null,
-                    contactName: null,
-                    contactEmail: null,
-                    contactPhone: null,
-                    contactAadhaar: null,
-                    contactPan: null,
-                    contactDOB: null,
-                };
-            }
-            return coApplicant;
-        });
-
-        this.bookingFormData = {
-            ...this.bookingFormData,
-            listOfCoApplicant: updatedCoApplicants
-        };
-    } }
-    }
+}

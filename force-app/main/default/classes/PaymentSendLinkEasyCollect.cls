@@ -33,7 +33,7 @@ global class PaymentSendLinkEasyCollect implements Database.Batchable<sObject>, 
         List<Id> oppListId = New List<Id>();
         Map<String,String> oppToEmail = New Map<String,String>();
         Map<String,String> oppToUrl = New Map<String,String>();
-        List<Payment__c> paymentListToInsert = New List<Payment__c>();
+        List<Payment_Gateway__c> paymentListToInsert = New List<Payment_Gateway__c>();
         for(String res:reponses){
             try {
                 Map<String, Object> data = (Map<String, Object>) JSON.deserializeUntyped(res);
@@ -47,20 +47,20 @@ global class PaymentSendLinkEasyCollect implements Database.Batchable<sObject>, 
                     oppListId.add(oppId);
                     oppToUrl.put(oppId,paymentUrl);
                     oppToEmail.put(oppId,email);
-                    Payment__c payment = new Payment__c(
+                    //Percent_Of_Amount_To_Refund__c=100,
+                    Payment_Gateway__c payment = new Payment_Gateway__c(
                         Payment_Amount__c = Decimal.valueOf((String) data.get('amount')),
-                        Percent_Of_Amount_To_Refund__c=100,
                         Email_Address__c = email,
                         Merchant_Transaction_Id__c = (String) data.get('merchant_txn'),
                         Opportunity__c = (String) data.get('oppId'),
-                        Payment_Created_Date__c = Datetime.valueOfGmt(createdDate.substring(0, 19).replace('T', ' ')),
-                        Payment_Updated_Date__c = Datetime.valueOfGmt(updatedDate.substring(0, 19).replace('T', ' ')),
+                        Payment_Created_Date__c = Datetime.valueOf(createdDate.substring(0, 19).replace('T', ' ')),
+                        Payment_Updated_Date__c = Datetime.valueOf(updatedDate.substring(0, 19).replace('T', ' ')),
                         Payment_Expiry_Date__c = (String) data.get('expiry_date'),
                         Payment_Id__c = String.ValueOf(data.get('id')),
                         Payment_Status__c = (String) data.get('state'),
                         Payment_URL__c = paymentUrl,
                         Contact_Name__c = (String) data.get('contactId'),
-                        Payment_Type__c = 'Online',
+                        Payment_Type__c = 'EasyCollect',
                         Phone__c=(String) data.get('phone')
                     );
                     paymentListToInsert.add(payment);

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Site Visit Scheduled Cancelled</name>
+    <style>none</style>
+    <subject>Site Visit Scheduled Cancelled</subject>
+    <textOnly>Rescheduling Site Visit
+
+Dear [Customer&apos;s Name],
+
+We understand your busy schedule and that the site visit to Epitome Integrated City needs to be postponed from the scheduled date.
+
+We kindly request your assistance in rescheduling the visit and confirming your availability at your earliest convenience.
+
+We appreciate your response and confirmation.
+
+Warm regards,
+Epitome Projects LLP</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

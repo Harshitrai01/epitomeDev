@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Scheduled site visit reminder</name>
+    <style>none</style>
+    <subject>Scheduled site visit reminder</subject>
+    <textOnly>Site Visit Reminder
+
+Dear [Recipient&apos;s Name],
+
+This is a gentle reminder about your scheduled site visit to Epitome Integrated City on [Date] at [Time]. We are looking forward to welcoming you and showing you our projects and facilities.
+
+If you have any questions or need further assistance before the visit, please do not hesitate to reach out to us.
+
+Warm regards,
+Epitome Projects LLP</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

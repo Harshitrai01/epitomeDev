@@ -10,24 +10,24 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>active</fullName>
+                <fullName>Active</fullName>
                 <default>false</default>
-                <label>active</label>
+                <label>Active</label>
             </value>
             <value>
-                <fullName>success</fullName>
+                <fullName>Success</fullName>
                 <default>false</default>
-                <label>success</label>
+                <label>Success</label>
             </value>
             <value>
-                <fullName>failure</fullName>
+                <fullName>Failure</fullName>
                 <default>false</default>
-                <label>failure</label>
+                <label>Failure</label>
             </value>
             <value>
-                <fullName>userCancelled</fullName>
+                <fullName>UserCancelled</fullName>
                 <default>false</default>
-                <label>userCancelled</label>
+                <label>UserCancelled</label>
             </value>
         </valueSetDefinition>
     </valueSet>

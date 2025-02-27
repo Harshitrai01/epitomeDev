@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Payment_Type --></label>
+    <name>Payment_Type__c</name>
+    <picklistValues>
+        <masterLabel>Cheque</masterLabel>
+        <translation><!-- Cheque --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>EasyCollect</masterLabel>
+        <translation><!-- EasyCollect --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>InstaCollect</masterLabel>
+        <translation><!-- InstaCollect --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Loan</masterLabel>
+        <translation><!-- Loan --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Offline</masterLabel>
+        <translation><!-- Offline --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

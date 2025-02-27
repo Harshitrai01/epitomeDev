@@ -33,7 +33,8 @@ export default class KycVerificationScreen extends LightningElement {
         { label: 'Progressive', value: 'Progressive' },
         { label: 'Registration Initiate', value: 'Registration Initiate' },
         { label: 'Registered', value: 'Registered' },
-        { label: 'Documents Delivered', value: 'Documents Delivered' }
+        { label: 'Documents Delivered', value: 'Documents Delivered' },
+        { label: 'Cancelled Stage', value: 'Cancelled' }
     ];
 
     subTypeMap = {
@@ -61,7 +62,7 @@ export default class KycVerificationScreen extends LightningElement {
             { label: 'NOC', value: 'NOC' }
         ],
         'Registration Initiate': [
-            { label: 'Draft Saledeed', value: 'Draft Saledeed' },
+            { label: 'Draft Sale deed', value: 'Draft Sale deed' },
             { label: 'Board of Resolution', value: 'Board of Resolution' },
             { label: 'Form 32', value: 'Form 32' },
             { label: 'NOC', value: 'NOC' }
@@ -70,11 +71,14 @@ export default class KycVerificationScreen extends LightningElement {
             { label: 'Original Sale Deed', value: 'Original Sale Deed' }
         ],
         'Documents Delivered': [
-            { label: 'Documents Delivered', value: 'Documents Delivered' }
+            { label: 'Documents Delivered', value: 'Documents Delivered' },
+
         ],
-        'Documents Delivered': [
-            { label: 'Documents Delivered', value: 'Documents Delivered' }
+        'Cancelled': [
+            { label: 'Cancelled Attachement', value: 'Cancelled' },
+
         ],
+
     };
 
     @wire(CurrentPageReference)
@@ -220,11 +224,18 @@ export default class KycVerificationScreen extends LightningElement {
     async handleSave() {
         this.isLoading = true;
         try {
-            await updateOpportunityKYCStatus({ opportunityId: this.recordId, contactId: this.contactId, fileType: this.selectedDocumentType});
-            this.showToast('Success', 'KYC Verification is in Progress.', 'success');
-            // window.location.reload();
-            this.isLoading = false;
-            this.handleCancel();
+            // Modified By Harshit For Handling Only Cancellation this.selectedDocumentType=='Cancelled, esle run similarly.
+            if(this.selectedDocumentType=='Cancelled'){
+                this.showToast('Success', 'Cancellation Document Uploaded Sucessfully.', 'success');
+                this.isLoading = false;
+                this.handleCancel();
+            }else{
+                await updateOpportunityKYCStatus({ opportunityId: this.recordId, contactId: this.contactId, fileType: this.selectedDocumentType});
+                this.showToast('Success', 'KYC Verification is in Progress.', 'success');
+                // window.location.reload();
+                this.isLoading = false;
+                this.handleCancel();
+            }
         } catch (error) {
             this.showToast('Error', error?.body?.message, 'error');
         }

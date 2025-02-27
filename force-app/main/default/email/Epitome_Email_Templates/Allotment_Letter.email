@@ -1,0 +1,23 @@
+<p>Dear Customer,</p>
+
+    <p>We are pleased to confirm the allotment of <strong>[Plot/Flat] No. [0000]</strong> in the project <strong>[Project Name]</strong> situated at <strong>[Property Location]</strong> under the terms and conditions set forth by Epitome Projects LLP and in compliance with the Real Estate (Regulation and Development) Act, 2016 (RERA) as applicable in Telangana.</p>
+
+    <p><strong>Details of the Allotment:</strong></p>
+    <ul>
+        <li><strong>Project Name:</strong> [Epitome Integrated City]</li>
+        <li><strong>Plot/Flat No.:</strong> [Insert Plot/Flat Number]</li>
+        <li><strong>Area of the Plot/Flat:</strong> [Insert Area in Sq. Yards/Sq. Ft.]</li>
+        <li><strong>Total Rate Per Sq. Yard/Sq. Ft.:</strong> Rs. [Insert Rate]</li>
+        <li><strong>Total Cost of Plot/Flat:</strong> Rs. [Insert Total Amount]</li>
+        <li><strong>Amount Paid:</strong> Rs. [Insert Amount Paid]</li>
+        <li><strong>Balance Amount Payable:</strong> Rs. [Insert Remaining Amount]</li>
+    </ul>
+
+    <p><strong>Allottee/s:</strong></p>
+    <ul>
+        <li>[Insert Allottee Name 1]</li>
+        <li>[Insert Allottee Name 2]</li>
+    </ul>
+
+    <p>Warm Regards,</p>
+    <p><strong>Epitome Projects LLP</strong></p>

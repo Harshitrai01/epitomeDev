@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AOS_is_Required</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISPICKVAL( AOS_Stage__c , &quot;Not Applicable&quot;),
+    ISPICKVAL(Funding_Type__c, &quot;Bank Fund&quot;)
+)</errorConditionFormula>
+    <errorMessage>For Bank fund type, AOS is required</errorMessage>
+</ValidationRule>

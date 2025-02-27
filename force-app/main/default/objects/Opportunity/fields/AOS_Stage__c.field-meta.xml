@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AOS_Stage__c</fullName>
+    <label>AOS Stage</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Yet to prepare</fullName>
+                <default>false</default>
+                <label>Yet to prepare</label>
+            </value>
+            <value>
+                <fullName>Waitng for customer response</fullName>
+                <default>false</default>
+                <label>Waitng for customer response</label>
+            </value>
+            <value>
+                <fullName>Ready to print</fullName>
+                <default>false</default>
+                <label>Ready to print</label>
+            </value>
+            <value>
+                <fullName>Yet to sign Epitome</fullName>
+                <default>false</default>
+                <label>Yet to sign Epitome</label>
+            </value>
+            <value>
+                <fullName>Ready to dispatch</fullName>
+                <default>false</default>
+                <label>Ready to dispatch</label>
+            </value>
+            <value>
+                <fullName>Yet to sign purchaser</fullName>
+                <default>false</default>
+                <label>Yet to sign purchaser</label>
+            </value>
+            <value>
+                <fullName>Completed</fullName>
+                <default>false</default>
+                <label>Completed</label>
+            </value>
+            <value>
+                <fullName>Not Applicable</fullName>
+                <default>false</default>
+                <label>Not Applicable</label>
+            </value>
+            <value>
+                <fullName>Initiate</fullName>
+                <default>false</default>
+                <label>Initiate</label>
+            </value>
+            <value>
+                <fullName>Drafting</fullName>
+                <default>false</default>
+                <label>Drafting</label>
+            </value>
+            <value>
+                <fullName>Draft Uploaded</fullName>
+                <default>false</default>
+                <label>Draft Uploaded</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

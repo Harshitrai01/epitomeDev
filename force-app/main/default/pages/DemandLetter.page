@@ -1,158 +1,167 @@
-<apex:page renderAs="pdf" standardController="Opportunity" showHeader="false" sidebar="false" extensions="demandLetterPdfController">
+<apex:page applyBodyTag="false" standardController="Opportunity" extensions="demandLetterPdfController" applyHtmlTag="false" showQuickActionVfHeader="false" standardStylesheets="false" showHeader="false" docType="html-5.0" renderAs="pdf">
     <html lang="en">
-    <body>
-        <div class="main-container">
-             <table style="width: 100%;">
-                <tr>
-                    <td style="text-align: center;font-size: 20px;"><u><b>Epitome Projects LLP</b></u></td>
-                </tr>
-                 <tr>
-                    <td style="text-align: center;font-size: 20px;padding: 0px 0px 40px 0px;"><u>Plot No. C2, Commercial Sector – III, Huda Techno Enclave, SyNo. 64, Madhapur Village, Serilingampally Mandal, RangaReddy District - 500081</u></td>
-                </tr>
-            </table>
-            <table style="width: 100%;">
-                <tr>
-                    <td style="text-align: center;font-size: 20px;padding: 0px 0px 40px 0px;"><u><b>DEMAND LETTER</b></u></td>
-                </tr>
-            </table>
-            <table style="width: 100%;">
-                <tr>
-                    <td style="text-align: left;font-size: 15px; padding: 0px 0px 10px 0px;">
-                       To,
-                        <br/> Tata Capital housing Finance Ltd ,
-                        <br/>Hyderabad
-                    </td>
-                    <td style="text-align: right;font-size: 15px; padding: 0px 0px 10px 0px;">
-                        <apex:outputText value="Date:- {0, date, dd/MM/yyyy}">
-                            <apex:param value="{!NOW()}" />
-                        </apex:outputText>
-                    </td>
-                </tr>
-            </table>
-            <table style="width: 100%;">
-                
-                <tr >
-                    <td style="text-align: left;font-size: 15px; padding: 0px 0px 10px 0px;">
-                      This is to certify that {!opportunityRecord.Account.Name} 
-                        has been allotted a Plot No 1435 in our Project “EPITOME PROJECTS LLP” Situated at: 
-                        {!opportunityRecord.Account.ShippingStreet} {!opportunityRecord.Account.ShippingCity} {!opportunityRecord.Account.ShippingState}
-                        {!opportunityRecord.Account.ShippingCountry} {!opportunityRecord.Account.ShippingPostalCode}
-                    </td>
-                </tr>
-               
-                <tr >
-                    <td style="text-align: left;font-size: 15px; padding: 0px 0px 10px 0px; ">
-                      We now request you to release an amount of Rs. 29,99,000/- (Rs. Twenty-Nine Lakh Ninety-Nine Thousand Only) towards purchase of Plot by him/her.
-                    </td>
-                </tr>
-               
-                <tr >
-                    <td style="text-align: left;font-size: 15px;  padding: 0px 0px 5px 0px;">
-                        <apex:outputText value="Details are as follows :-">
-                        </apex:outputText>
-                    </td>
-                </tr>
-            </table>
-          
-
-            <table style="width:100%;padding: 0px 0px 10px 0px;">
-                <tr>
-                    <td style="font-size: 15px; width:20%;">
-                        <apex:outputText value="Favouring Name"></apex:outputText>
-                    </td>
-                    <td style="font-size: 15px; width:1%;">
-                        <apex:outputText value=":"></apex:outputText>
-                    </td>
-                    <td style="font-size: 15px; width:29%; ">
-                    <apex:outputText >
-EPITOME PROJECTS LLP                        </apex:outputText>
-                    </td>
-                    <td style="font-size: 15px; width:50%;"></td>
-                </tr>
-                <tr>
-                    <td style="font-size: 15px;">
-                        <apex:outputText value="Bank Account Number"></apex:outputText>
-                    </td>
-                    <td style="font-size: 15px;">
-                        <apex:outputText value=":"></apex:outputText>
-                    </td>
-                    <td style="font-size: 15px; ">
-                     <apex:outputText >
-777705619292                        </apex:outputText>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="font-size: 15px;">
-                        <apex:outputText value="Name of Bank"></apex:outputText>
-                    </td>
-                    <td style="font-size: 15px;">
-                        <apex:outputText value=":"></apex:outputText>
-                    </td>
-                    <td style="font-size: 15px; ">
-                        <apex:outputText >
-ICICI BANK                        </apex:outputText>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="font-size: 15px;">
-                        <apex:outputText value="BRANCH"></apex:outputText>
-                    </td>
-                    <td style="font-size: 15px;">
-                        <apex:outputText value=":"></apex:outputText>
-                    </td>
-                    <td style="font-size: 15px; ">
-                        <apex:outputText >
-HI-TECH CITY                        </apex:outputText>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="font-size: 15px;">
-                        <apex:outputText value="IFSC"></apex:outputText>
-                    </td>
-                    <td style="font-size: 15px;">
-                        <apex:outputText value=":"></apex:outputText>
-                    </td>
-                    <td style="font-size: 15px;">
-                        <apex:outputText >
-HI-TECH CITY                        </apex:outputText>
-                    </td>
-                </tr>
-            </table>
-            <table style="width:100%;padding: 0px 0px 10px 0px;">
-                
-                <tr>
-                    <td style="text-align: left;font-size: 15px;">
-Expected Date of Disbursement of Requested Payment – Immediately                    </td>
-                </tr>
-            
-               
-            </table>
-             <table style="width:100%;padding: 0px 0px 10px 0px;">
-                
-
-            
-                <tr>
-                    <td style="text-align: left;font-size: 15px;">
-                        <apex:outputText >
-Regards,                        </apex:outputText>
-                    </td>
-                </tr>
-               
-            </table>
-            
-            <table style="width:100%;">
-                <apex:outputPanel >
-                   
-                    <tr style="text-align: left;">
-                        <td style="font-size: 12px;border-top:1px solid">
-                            <apex:outputText >
-(EPITOME PROJECTS LLP)
+        <body>
+            <div class="main-container">
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="text-align: center;font-size: 20px;"><u><b>Epitome Projects LLP</b></u></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;font-size: 15px;padding: 0px 0px 30px 0px;"><u>Plot No. C2, Commercial Sector – III, Huda Techno Enclave, SyNo. 64, Madhapur Village,<br/> Serilingampally Mandal,<br/> RangaReddy District - 500081</u></td>
+                    </tr>
+                </table>
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="text-align: center;font-size: 15px;padding: 0px 0px 20px 0px;"><u><b>DEMAND LETTER</b></u></td>
+                    </tr>
+                </table>
+                <table style="width: 100%;">
+                    <tr>
+                        
+                        <td style="text-align: right;font-size: 15px; padding: 0px 0px 10px 0px;">
+                            <apex:outputText value="Date:- {0, date, dd/MM/yyyy}">
+                                <apex:param value="{!NOW()}" />
                             </apex:outputText>
                         </td>
                     </tr>
-                </apex:outputPanel>
-            </table>
-        </div>
-    </body>
+                </table>
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="text-align: left;font-size: 15px; padding: 0px 0px 10px 0px;">
+                            To,
+                            <br/> Tata Capital housing Finance Ltd ,
+                            <br/>Hyderabad
+                        </td>
+                        
+                    </tr>
+                </table>
+                <table style="width: 100%;">
+                    
+                    <tr >
+                        <td style="text-align: left;font-size: 15px; padding: 0px 0px 10px 0px;">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This is to certify that {!OpportunityContactRolesRecord.Contact.Name} 
+                            has been allotted a Plot No {!opportunityRecord.Unit__r.Name} in our Project “<b>EPITOME PROJECTS LLP</b>” Situated at: 
+                            {!OpportunityContactRolesRecord.Contact.Permanent_Address__Street__s} {!OpportunityContactRolesRecord.Contact.Permanent_Address__City__s} {!OpportunityContactRolesRecord.Contact.Permanent_Address__StateCode__s}
+                            {!OpportunityContactRolesRecord.Contact.Permanent_Address__CountryCode__s} {!OpportunityContactRolesRecord.Contact.Permanent_Address__PostalCode__s}<br/>
+                        </td>
+                    </tr>
+                    
+                    <tr >
+                        <td style="text-align: left;font-size: 15px; padding: 0px 0px 10px 0px; ">
+                            We now request you to release an amount of <b>Rs. {!opportunityRecord.Outstanding_Amount__c}/- ({!balanceAmountInWords})</b> towards purchase of Plot by him/her.
+                        </td>
+                    </tr>
+                    
+                    <tr >
+                        <td style="text-align: left;font-size: 15px;  padding: 0px 0px 10px 0px;">
+                            <apex:outputText value="Favouring Details :-">
+                            </apex:outputText>
+                        </td>
+                    </tr>
+                </table>
+                
+                
+                <table style="width:130%;padding: 0px 0px 13px 0px;">
+                    <tr>
+                        <td style="font-size: 13px; width:15%;">
+                            <apex:outputText value="Favouring Name"></apex:outputText>
+                        </td>
+                        <td style="font-size: 15px; width:1%;">
+                            <apex:outputText value=":"></apex:outputText>
+                        </td>
+                        <td style="font-size: 13px; width:38%; ">
+                            <apex:outputText >
+                                EPITOME PROJECTS LLP                        </apex:outputText>
+                        </td>
+                        <td style="font-size: 13px; width:45%;"></td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 13px;">
+                            <apex:outputText value="Bank Account Number"></apex:outputText>
+                        </td>
+                        <td style="font-size: 15px;">
+                            <apex:outputText value=":"></apex:outputText>
+                        </td>
+                        <td style="font-size: 13px; ">
+                            <apex:outputText >
+                                {!opportunityRecord.Unit__r.Virtual_Account_Number__c}
+                            </apex:outputText>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 13px;">
+                            <apex:outputText value="Name of Bank"></apex:outputText>
+                        </td>
+                        <td style="font-size: 15px;">
+                            <apex:outputText value=":"></apex:outputText>
+                        </td>
+                        <td style="font-size: 13px; ">
+                            <apex:outputText >
+                                {!opportunityRecord.Unit__r.Bank_Name__c}
+                            </apex:outputText>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 13px;">
+                            <apex:outputText value="BRANCH"></apex:outputText>
+                        </td>
+                        <td style="font-size: 15px;">
+                            <apex:outputText value=":"></apex:outputText>
+                        </td>
+                        <td style="font-size: 13px; ">
+                            <apex:outputText >
+                                HI-TECH CITY                        </apex:outputText>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 13px;">
+                            <apex:outputText value="IFSC"></apex:outputText>
+                        </td>
+                        <td style="font-size: 15px;">
+                            <apex:outputText value=":"></apex:outputText>
+                        </td>
+                        <td style="font-size: 13px;">
+                            <apex:outputText >
+                                {!opportunityRecord.Unit__r.Virtual_Account_IFSC__c}
+                            </apex:outputText>
+                        </td>
+                    </tr>
+                </table>
+                <table style="width:100%;padding: 0px 0px 10px 0px;">
+                    
+                    <tr>
+                        <td style="text-align: left;font-size: 15px;">
+                            Expected Date of Disbursement of Requested Payment – Immediately                    </td>
+                    </tr>
+                    
+                    
+                </table>
+                <table style="width:100%;padding: 0px 0px 55px 0px;">
+                    
+                    
+                    
+                    <tr>
+                        <td style="text-align: left;font-size: 15px;">
+                            <apex:outputText >
+                                Regards,                        </apex:outputText>
+                        </td>
+                    </tr>
+                    
+                </table>
+                
+                <table style="width:100%;">
+                    <apex:outputPanel >
+                        
+                        <tr style="text-align: left;">
+                            <td style="font-size: 12px;border-top:1px solid">
+                                <apex:outputText >
+                                   <b>(EPITOME PROJECTS LLP)</b> 
+                                </apex:outputText>
+                            </td>
+                        </tr>
+                    </apex:outputPanel>
+                </table>
+            </div>
+        </body>
     </html>
 </apex:page>
