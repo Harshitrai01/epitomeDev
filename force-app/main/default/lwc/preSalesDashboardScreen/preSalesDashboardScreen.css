@@ -91,7 +91,7 @@ td, th {
     border-bottom: 1px solid #e0e0e0;
     max-width: 120px; /* Restrict column width */
     white-space: nowrap; /* Prevent text wrapping */
-    /* overflow: hidden; */
+    overflow: hidden;
     text-overflow: ellipsis; /* Add ellipsis for overflow */
 }
 
@@ -138,14 +138,38 @@ button:active {
 }
 
 .capacity-column {
-    width: 10%;
-    min-width: 80px;
-    max-width: 100px;
+    width: 15%; /* Increased width for Max Load */
+    min-width: 100px;
+    max-width: 150px;
 }
 
 .capacity-column-cell input {
     width: 100%;
     text-align: center;
+}
+
+.source-assigned-column {
+    width: 20%; /* Increased width for Source Assigned */
+    min-width: 150px;
+    max-width: 200px;
+}
+
+.source-assigned-column-cell {
+    text-align: left !important;
+    padding-left: 20px !important;
+}
+
+.source-assigned-scroll {
+    max-height: 7rem;
+    overflow-y: auto;
+    width: 100%;
+}
+
+.sticky-header {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1;
 }
 
 .slds-modal__header {

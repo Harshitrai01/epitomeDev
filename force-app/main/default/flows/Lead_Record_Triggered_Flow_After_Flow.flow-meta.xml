@@ -61,7 +61,7 @@
     <assignments>
         <name>Assign_the_Owner</name>
         <label>Assign the Owner</label>
-        <locationX>1256</locationX>
+        <locationX>1520</locationX>
         <locationY>755</locationY>
         <assignmentItems>
             <assignToReference>Get_Task.OwnerId</assignToReference>
@@ -75,10 +75,26 @@
         </connector>
     </assignments>
     <assignments>
+        <name>Copy_1_of_Copy_2_of_Lead_capacity_Assignment</name>
+        <label>Copy 1 of Copy 2 of Lead capacity Assignment</label>
+        <locationX>992</locationX>
+        <locationY>863</locationY>
+        <assignmentItems>
+            <assignToReference>capacity</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Capacity</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>Copy_2_of_Lead_capacity_Assignment</name>
         <label>Copy 2 of Lead capacity Assignment</label>
-        <locationX>992</locationX>
-        <locationY>755</locationY>
+        <locationX>1256</locationX>
+        <locationY>863</locationY>
         <assignmentItems>
             <assignToReference>capacity</assignToReference>
             <operator>Subtract</operator>
@@ -93,7 +109,7 @@
     <assignments>
         <name>Lead_capacity_Assignment</name>
         <label>Lead capacity Assignment</label>
-        <locationX>992</locationX>
+        <locationX>1124</locationX>
         <locationY>647</locationY>
         <assignmentItems>
             <assignToReference>capacity</assignToReference>
@@ -103,7 +119,7 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Copy_2_of_Lead_capacity_Assignment</targetReference>
+            <targetReference>Check_Current_Load</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -122,6 +138,31 @@
             <targetReference>get_Related_Opportunity</targetReference>
         </connector>
     </assignments>
+    <decisions>
+        <name>Check_Current_Load</name>
+        <label>Check Current Load</label>
+        <locationX>1124</locationX>
+        <locationY>755</locationY>
+        <defaultConnector>
+            <targetReference>Copy_2_of_Lead_capacity_Assignment</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Current_load_is_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>get_user.Capacity__c</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_Copy_2_of_Lead_capacity_Assignment</targetReference>
+            </connector>
+            <label>Current load is 0</label>
+        </rules>
+    </decisions>
     <decisions>
         <name>Check_Duplicate</name>
         <label>Check Duplicate</label>
@@ -219,7 +260,7 @@
     <decisions>
         <name>Check_if_Task_is_Null</name>
         <label>Check if Task is Null</label>
-        <locationX>1388</locationX>
+        <locationX>1652</locationX>
         <locationY>647</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -292,7 +333,7 @@
     <decisions>
         <name>Lead_New_or_Updated</name>
         <label>Lead New or Updated</label>
-        <locationX>921</locationX>
+        <locationX>1020</locationX>
         <locationY>323</locationY>
         <defaultConnector>
             <targetReference>Lead_Updated_Conditions</targetReference>
@@ -317,7 +358,7 @@
     <decisions>
         <name>Lead_Updated_Conditions</name>
         <label>Lead Updated Conditions</label>
-        <locationX>1388</locationX>
+        <locationX>1586</locationX>
         <locationY>431</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -465,7 +506,7 @@
     <recordLookups>
         <name>Get_Task</name>
         <label>Get Task</label>
-        <locationX>1388</locationX>
+        <locationX>1652</locationX>
         <locationY>539</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -486,7 +527,7 @@
     <recordLookups>
         <name>get_user</name>
         <label>get user</label>
-        <locationX>992</locationX>
+        <locationX>1124</locationX>
         <locationY>539</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -507,8 +548,8 @@
     <recordUpdates>
         <name>Update_Capacity</name>
         <label>Update Capacity</label>
-        <locationX>992</locationX>
-        <locationY>863</locationY>
+        <locationX>1124</locationX>
+        <locationY>1055</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -528,12 +569,12 @@
     <recordUpdates>
         <name>Update_Task_Owner_to_User</name>
         <label>Update Task Owner to User</label>
-        <locationX>1256</locationX>
+        <locationX>1520</locationX>
         <locationY>863</locationY>
         <inputReference>Get_Task</inputReference>
     </recordUpdates>
     <start>
-        <locationX>795</locationX>
+        <locationX>894</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Lead_New_or_Updated</targetReference>

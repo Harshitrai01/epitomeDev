@@ -147,8 +147,8 @@
     <actionCalls>
         <name>Send_Email_To_Client</name>
         <label>Send Email To Client</label>
-        <locationX>446</locationX>
-        <locationY>1298</locationY>
+        <locationX>314</locationX>
+        <locationY>1514</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -173,7 +173,7 @@
         <inputParameters>
             <name>emailTemplateId</name>
             <value>
-                <stringValue>00XO4000003vn8j</stringValue>
+                <elementReference>get_Email_Template.Id</elementReference>
             </value>
         </inputParameters>
         <nameSegment>emailSimple</nameSegment>
@@ -283,6 +283,28 @@
             <targetReference>Check_valid_Input</targetReference>
         </connector>
     </assignments>
+    <decisions>
+        <name>check_email_template</name>
+        <label>check email template</label>
+        <locationX>446</locationX>
+        <locationY>1406</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_Not_Null</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>get_Email_Template</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Email_To_Client</targetReference>
+            </connector>
+            <label>Is Not Null</label>
+        </rules>
+    </decisions>
     <decisions>
         <name>check_Site_Location</name>
         <label>check Site Location</label>
@@ -457,7 +479,7 @@
         <locationX>446</locationX>
         <locationY>1190</locationY>
         <connector>
-            <targetReference>Send_Email_To_Client</targetReference>
+            <targetReference>get_Email_Template</targetReference>
         </connector>
         <inputAssignments>
             <field>OwnerId</field>
@@ -492,6 +514,34 @@
         <object>Task</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
+    <recordLookups>
+        <name>get_Email_Template</name>
+        <label>get Email Template</label>
+        <locationX>446</locationX>
+        <locationY>1298</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>check_email_template</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Site_Visit_Scheduled</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>IsActive</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>EmailTemplate</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <recordLookups>
         <name>get_Site_Visit_RecordType</name>
         <label>get Site Visit RecordType</label>

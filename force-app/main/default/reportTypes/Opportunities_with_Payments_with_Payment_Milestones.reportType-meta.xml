@@ -973,6 +973,71 @@
             <field>Payment_Gateway__c</field>
             <table>Opportunity.Payments__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>InstaCollect_Transaction_Id__c</field>
+            <table>Opportunity.Payments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>InstaCollect_Status__c</field>
+            <table>Opportunity.Payments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>InstaCollect_Transaction_Date_Time__c</field>
+            <table>Opportunity.Payments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>InstaCollect_Transaction_Reference__c</field>
+            <table>Opportunity.Payments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Remitter_Account_Number__c</field>
+            <table>Opportunity.Payments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Remitter_Account_IFSC__c</field>
+            <table>Opportunity.Payments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Remitter_UPI_Handle__c</field>
+            <table>Opportunity.Payments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Remitter_Full_Name__c</field>
+            <table>Opportunity.Payments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Remitter_Phone_Number__c</field>
+            <table>Opportunity.Payments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>InstaCollect_Settlement_Date__c</field>
+            <table>Opportunity.Payments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>InstaCollect_Settled_By_Bank__c</field>
+            <table>Opportunity.Payments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>InstaCollect_Bank_Settlement_Date__c</field>
+            <table>Opportunity.Payments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>InstaCollect_Narration__c</field>
+            <table>Opportunity.Payments__r</table>
+        </columns>
         <masterLabel>Payments</masterLabel>
     </sections>
 </ReportType>

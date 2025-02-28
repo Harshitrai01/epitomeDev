@@ -15,16 +15,20 @@
             <section>Custom Links</section>
         </sections>
         <sections>
-            <label><!-- Other Information --></label>
-            <section>Other Information</section>
+            <label><!-- EasyCollect Information --></label>
+            <section>EasyCollect Information</section>
         </sections>
         <sections>
-            <label><!-- Payer Information --></label>
-            <section>Payer Information</section>
+            <label><!-- EasyCollect Payer Information --></label>
+            <section>EasyCollect Payer Information</section>
         </sections>
         <sections>
-            <label><!-- Payment Information --></label>
-            <section>Payment Information</section>
+            <label><!-- EasyCollect Response Information --></label>
+            <section>EasyCollect Response Information</section>
+        </sections>
+        <sections>
+            <label><!-- InstaCollect Details --></label>
+            <section>InstaCollect Details</section>
         </sections>
         <sections>
             <label><!-- Refund Details --></label>

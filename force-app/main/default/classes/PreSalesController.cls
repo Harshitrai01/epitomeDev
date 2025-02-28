@@ -80,7 +80,7 @@ public with sharing class PreSalesController {
                 userIds.add(gm.UserOrGroupId);
             }
             List<User> users = [
-                SELECT Id, Name, Email, Status__c, Capacity__c, Pre_Sales_Lead_Assignment__c, Username,Assigned_Sources__c
+                SELECT Id, Name, Email, Status__c, Capacity__c, Pre_Sales_Lead_Assignment__c, Username,Assigned_Sources__c,Max_Load__c
                 FROM User 
                 WHERE Id IN :userIds 
                 ORDER BY Name
@@ -93,9 +93,13 @@ public with sharing class PreSalesController {
                     userSources = user.Assigned_Sources__c.split(',');
                 }
 
-                Decimal cap=0;
+                Decimal capMax=0;
+                Decimal currentCap=0;
+                if(user.Max_Load__c!=null){
+                    capMax=user.Max_Load__c;
+                }
                 if(user.Capacity__c!=null){
-                    cap=user.Capacity__c;
+                    currentCap=user.Capacity__c;
                 }
                 wrappedUsers.add(new UserWrapper(
                     user.Id,
@@ -103,10 +107,11 @@ public with sharing class PreSalesController {
                     user.Username,
                     user.Email,
                     user.Status__c,
-                    cap,
+                    capMax,
                     false,
                     user.Pre_Sales_Lead_Assignment__c,
-                    userSources
+                    userSources,
+                    currentCap
                 ));
             }
             system.debug('wrappedUsers-->'+wrappedUsers);
@@ -142,7 +147,8 @@ public with sharing class PreSalesController {
         @AuraEnabled public Boolean userChange;
         @AuraEnabled public Boolean leadAssignment;
         @AuraEnabled public List<String> userSources;
-        public UserWrapper(String userId, String name, String userName, String email, String status, Decimal capacity, boolean userChange, boolean leadAssignment, List<String> userSources) {
+        @AuraEnabled public Decimal currentCapacity;
+        public UserWrapper(String userId, String name, String userName, String email, String status, Decimal capacity, boolean userChange, boolean leadAssignment, List<String> userSources, Decimal currentCapacity) {
             this.userId = userId;
             this.name = name;
             this.userName = userName;
@@ -152,6 +158,7 @@ public with sharing class PreSalesController {
             this.userChange = userChange;
             this.leadAssignment = leadAssignment;
             this.userSources= userSources;
+            this.currentCapacity = currentCapacity;
         }
     }
     

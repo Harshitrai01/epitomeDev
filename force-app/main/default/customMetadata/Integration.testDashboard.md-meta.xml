@@ -38,4 +38,8 @@
         <field>InstaCollectSalt__c</field>
         <value xsi:type="xsd:string">D91E29CE94</value>
     </values>
+    <values>
+        <field>InstaCollect_Retrieve_Transaction_URL__c</field>
+        <value xsi:type="xsd:string">https://wire.easebuzz.in/api/v2/insta-collect/transactions/</value>
+    </values>
 </CustomMetadata>

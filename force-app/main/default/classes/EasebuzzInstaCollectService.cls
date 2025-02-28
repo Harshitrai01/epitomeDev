@@ -5,6 +5,7 @@
 
 public class EasebuzzInstaCollectService {
     private static String API_URL;
+    private static String RETRIEVE_URL;
     private static String MERCHANT_KEY;
     private static String MERCHANT_SALT;
     
@@ -14,7 +15,7 @@ public class EasebuzzInstaCollectService {
     
     private static void initializeMetadata() {
         List<Integration__mdt> integrations = [SELECT DeveloperName, InstaCollectKey__c, InstaCollectSalt__c,
-                                               Easebuzz_Instacollect_Create_VA__c
+                                               Easebuzz_Instacollect_Create_VA__c,InstaCollect_Retrieve_Transaction_URL__c
                                                FROM Integration__mdt 
                                                WHERE DeveloperName = 'testDashboard' LIMIT 1];
         if (!integrations.isEmpty()) {
@@ -22,6 +23,7 @@ public class EasebuzzInstaCollectService {
             MERCHANT_KEY = integration.InstaCollectKey__c;
             MERCHANT_SALT = integration.InstaCollectSalt__c;
             API_URL = integration.Easebuzz_Instacollect_Create_VA__c;
+            RETRIEVE_URL=integration.InstaCollect_Retrieve_Transaction_URL__c;
         }
     }
     
@@ -106,57 +108,11 @@ public class EasebuzzInstaCollectService {
         }
     }
     
-    @future (callout=true)
-    public static void retrieveTransactionsList() {
-        // String createdAt, String createdAtStart, String createdAtEnd, String currentPage, String pageSize, String status
-        String requestUrl = 'https://wire.easebuzz.in/api/v2/insta-collect/transactions/?key=' + MERCHANT_KEY;
-        /*
-        if (String.isNotEmpty(createdAt)) {
-            requestUrl += '&created_at=' + EncodingUtil.urlEncode(createdAt, 'UTF-8');
-        } else {
-            if (String.isNotEmpty(createdAtStart)) {
-                requestUrl += '&created_at_start=' + EncodingUtil.urlEncode(createdAtStart, 'UTF-8');
-            }
-            if (String.isNotEmpty(createdAtEnd)) {
-                requestUrl += '&created_at_end=' + EncodingUtil.urlEncode(createdAtEnd, 'UTF-8');
-            }
-        }
-        if (String.isNotEmpty(currentPage)) {
-            requestUrl += '&current=' + EncodingUtil.urlEncode(currentPage, 'UTF-8');
-        }
-        if (String.isNotEmpty(pageSize)) {
-            requestUrl += '&pageSize=' + EncodingUtil.urlEncode(pageSize, 'UTF-8');
-        }
-        if (String.isNotEmpty(status)) {
-            requestUrl += '&status=' + EncodingUtil.urlEncode(status, 'UTF-8');
-        }
-        */
-        String createdAt='';
-        // String createdAtStart='2025-02-13 04:01:53 PM';
-        String createdAtStart='2025-01-13';
-        String createdAtEnd=String.valueOf(System.now().dateGmt());
-        if (String.isNotEmpty(createdAt)) {
-            requestUrl += '&created_at=' + EncodingUtil.urlEncode(createdAt, 'UTF-8');
-        } else {
-            if (String.isNotEmpty(createdAtStart)) {
-                requestUrl += '&created_at_start=' + EncodingUtil.urlEncode(createdAtStart, 'UTF-8');
-            }
-            if (String.isNotEmpty(createdAtEnd)) {
-                requestUrl += '&created_at_end=' + EncodingUtil.urlEncode(createdAtEnd, 'UTF-8');
-            }
-        }
-        
-        String virtual_account_id='cvae9575838c4e8a8b8fa985132b9860';
+    public static String retrieveTransactionsList(String virtual_account_id) {
+        String requestUrl = RETRIEVE_URL+'?key=' + MERCHANT_KEY;
         if (String.isNotEmpty(virtual_account_id)) {
             requestUrl += '&virtual_account_id=' + EncodingUtil.urlEncode(virtual_account_id, 'UTF-8');
         }
-        
-        /*
-        String unique_transaction_reference='9839977941';
-        if (String.isNotEmpty(unique_transaction_reference)) {
-            requestUrl += '&unique_transaction_reference=' + EncodingUtil.urlEncode(unique_transaction_reference, 'UTF-8');
-        }*/
-        
         String hashInput = MERCHANT_KEY + '|' + MERCHANT_SALT;
         String hash = generateSHA512Hash(hashInput);
         
@@ -172,116 +128,70 @@ public class EasebuzzInstaCollectService {
         
         try {
             response = http.send(request);
-            if (response.getStatusCode() == 200) {
-                System.debug('Transaction List Response: ' + response.getBody());
-                        Map<String, Object> responseMap = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
-        
-                        if (responseMap.containsKey('success') && (Boolean) responseMap.get('success')) {
-                            Map<String, Object> data = (Map<String, Object>) responseMap.get('data');
-                            
-                            if (data.containsKey('results')) {
-                                List<Object> results = (List<Object>) data.get('results');
-                                
-                                for (Object resultObj : results) {
-                                    Map<String, Object> transactions = (Map<String, Object>) resultObj;
-                                    
-                                    // Extracting values
-                                    String id = (String) transactions.get('id');
-                                    String status = (String) transactions.get('status');
-                                    String uniqueTransactionReference = (String) transactions.get('unique_transaction_reference');
-                                    String transactionDate = (String) transactions.get('transaction_date');
-                                    String remitterAccountNumber = (String) transactions.get('remitter_account_number');
-                                    String remitterAccountIfsc = (String) transactions.get('remitter_account_ifsc');
-                                    String remitterUpiHandle = (String) transactions.get('remitter_upi_handle');
-                                    String remitterFullName = (String) transactions.get('remitter_full_name');
-                                    String remitterPhoneNumber = (String) transactions.get('remitter_phone_number');
-                                    Integer transactionOrder = (Integer) transactions.get('transaction_order');
-                                    String narration = (String) transactions.get('narration');
-                                    
-                                    String virtualAccountNumber = null;
-                                    if (transactions.containsKey('virtual_account')) {
-                                        Map<String, Object> virtualAccount = (Map<String, Object>) transactions.get('virtual_account');
-                                        virtualAccountNumber = (String) virtualAccount.get('virtual_account_number');
-                                    }
-                
-                                    // Logging values
-                                    System.debug('Transaction Details:');
-                                    System.debug('ID: ' + id);
-                                    System.debug('Status: ' + status);
-                                    System.debug('Unique Transaction Reference: ' + uniqueTransactionReference);
-                                    System.debug('Transaction Date: ' + transactionDate);
-                                    System.debug('Remitter Account Number: ' + remitterAccountNumber);
-                                    System.debug('Remitter Account IFSC: ' + remitterAccountIfsc);
-                                    System.debug('Remitter UPI Handle: ' + remitterUpiHandle);
-                                    System.debug('Remitter Full Name: ' + remitterFullName);
-                                    System.debug('Remitter Phone Number: ' + remitterPhoneNumber);
-                                    System.debug('Transaction Order: ' + transactionOrder);
-                                    System.debug('Narration: ' + narration);
-                                    System.debug('Virtual Account Number: ' + virtualAccountNumber);
-                                    System.debug('------------------------------------');
-                                }
-                            }
-                        }
+            Map<String, Object> responseMap = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
+            if (response.getStatusCode() == 200 || response.getStatusCode() == 201) {
+        		Boolean status = false;
+                if(responseMap.containsKey('success')){
+                    status=(Boolean) responseMap.get('success');
+                }
+                        if (status) {
+                            Integration_Log__c log = new Integration_Log__c();
+                    		log.IsSuccess__c = true;
+                    		log.Request_Body__c = (request.getBody() != null) ? request.getBody() : 'No Request Data';
+                    		log.Response_Body__c = (response.getBody() != null) ? response.getBody() : 'No Response Data';
+                    		log.Status_Code__c = (response.getStatusCode() != null) ? response.getStatusCode() : null;
+                    		ResponseWrapper reponseWrap = New ResponseWrapper(true,null,response.getBody());
+                    		reponseWrap.integrationLogs=JSON.serialize(log);
+                    		return JSON.serialize(reponseWrap);
             } else {
-                System.debug('Error: ' + response.getStatusCode() + ' - ' + response.getBody());
+                	String error = '';
+                    if(responseMap.containsKey('message')){
+                        error = (String) responseMap.get('message');
+                    }
+                    Integration_Log__c log = new Integration_Log__c();
+                    log.Cause__c = error!=null?String.valueOf(error):'';
+                    log.Status_Code__c = response.getStatusCode() !=null ? response.getStatusCode():0;
+                    log.Request_Body__c = request.getBody() !=null ? request.getBody():'';
+                    log.Response_Body__c = response.getBody()!=null ? response.getBody():'';
+                    log.Exception_Type__c ='Callout Error';
+                    log.Error_Message__c = error!=null ? error:'';
+                    log.Stack_Trace__c ='EasebuzzInstaCollectService.retrieveTransactions';
+                    log.Error__c=error;
+                    ResponseWrapper reponseWrap = New ResponseWrapper(false,error,response.getBody());
+                    reponseWrap.integrationLogs=JSON.serialize(log);
+                    return JSON.serialize(reponseWrap);
+            	}
+            }else{
+                	String error = '';
+                    if(responseMap.containsKey('message')){
+                        error = (String) responseMap.get('message');
+                    }
+                	Integration_Log__c log = new Integration_Log__c();
+                    log.Cause__c = error!=null?String.valueOf(error):'';
+                    log.Status_Code__c = response.getStatusCode() !=null ? response.getStatusCode():0;
+                    log.Request_Body__c = request.getBody() !=null ? request.getBody():'';
+                    log.Response_Body__c = response.getBody()!=null ? response.getBody():'';
+                    log.Exception_Type__c ='Callout Error';
+                    log.Error_Message__c = error!=null ? error:'';
+                    log.Stack_Trace__c ='EasebuzzInstaCollectService.retrieveTransactions';
+                    log.Error__c=error;
+                    ResponseWrapper reponseWrap = New ResponseWrapper(false,error,response.getBody());
+                    reponseWrap.integrationLogs=JSON.serialize(log);
+                    return JSON.serialize(reponseWrap);
             }
         } catch (Exception ex) {
-            System.debug('Exception in retrieving transactions: ' + ex.getMessage());
-        }
-    }
-    
-        public static void sendCollectRequest() {
-        try {
-            String virtualAccountId='cvae9575838c4e8a8b8fa985132b9860';
-            String key = MERCHANT_KEY;
-            String wireApiKey = key;
-            String email='harshitrai.as@gmail.com';
-            String phone = '7380515333';
-           	Decimal amount = 20;
-            String purpose='Payment Collection';
-            // Define the endpoint
-            String endpoint = 'https://wire.easebuzz.in/api/v1/insta-collect/virtual_accounts/' + virtualAccountId + '/collect_request/';
-
-            // Generate SHA-512 hash for Authorization header
-            String salt = MERCHANT_SALT; // Replace with actual salt
-            String rawString = key + '|' + virtualAccountId + '|' + salt;
-            String authorizationHash = EncodingUtil.convertToHex(Crypto.generateDigest('SHA-512', Blob.valueOf(rawString)));
-            List<String> collectRequestType = new List<String>{'account_details', 'upi_handle'};
-            String upiHandle = 'harshitrai484@ybl'; // Static UPI Handle
-
-            // Prepare request body
-            Map<String, Object> requestBody = new Map<String, Object>();
-            requestBody.put('key', key);
-            requestBody.put('email', email);
-            requestBody.put('phone', phone);
-            requestBody.put('collect_request_type', new List<String>{'account_details', 'upi_handle'});
-            requestBody.put('amount', amount);
-            requestBody.put('purpose', purpose);
-            requestBody.put('collect_request_type', collectRequestType);
-            requestBody.put('upi_handle', upiHandle);
-
-            // Convert request body to JSON
-            String jsonBody = JSON.serialize(requestBody);
-
-            // Set up HTTP request
-            HttpRequest req = new HttpRequest();
-            req.setEndpoint(endpoint);
-            req.setMethod('POST');
-            req.setHeader('Content-Type', 'application/json');
-            req.setHeader('Accept', 'application/json');
-            req.setHeader('Authorization', authorizationHash);
-            req.setHeader('WIRE-API-KEY', wireApiKey);
-            req.setBody(jsonBody);
-
-            // Send request
-            Http http = new Http();
-            HTTPResponse res = http.send(req);
-
-            // Log response
-            System.debug('Response Status: ' + res.getStatusCode());
-            System.debug('Response Body: ' + res.getBody());
-        } catch (Exception e) {
-            System.debug('Error in sending collect request: ' + e.getMessage());
+            ResponseWrapper reponseWrap = New ResponseWrapper(false,ex.getMessage(),response.getBody());
+            Integration_Log__c log = new Integration_Log__c();
+            log.Cause__c = JSON.serialize(ex.getCause());
+            log.Status_Code__c = response.getStatusCode() !=null ? response.getStatusCode():0;
+            log.Request_Body__c = request.getBody() !=null ? request.getBody():'';
+            log.Response_Body__c = response.getBody()!=null ? response.getBody():'';
+            log.Exception_Type__c =JSON.serialize(ex.getTypeName());
+            log.Error_Message__c = JSON.serialize(ex.getMessage())!=null ? JSON.serialize(ex.getMessage()):'';
+            log.Stack_Trace__c =JSON.serialize(ex.getStackTraceString());
+            log.Error__c=ex.getMessage();
+            reponseWrap.integrationLogs=JSON.serialize(log);
+            return JSON.serialize(reponseWrap);
         }
     }
     
@@ -289,6 +199,18 @@ public class EasebuzzInstaCollectService {
         Blob inputBlob = Blob.valueOf(input);
         Blob hashBlob = Crypto.generateDigest('SHA-512', inputBlob);
         return EncodingUtil.convertToHex(hashBlob);
+    }
+    
+        public class ResponseWrapper {
+        public Boolean isSuccess;
+        public String error;
+        public String response;
+        public String integrationLogs;
+        public ResponseWrapper(Boolean isSuccess, String error, String response) {
+            this.isSuccess = isSuccess;
+            this.error = error;
+            this.response = response;
+        }
     }
     
 }

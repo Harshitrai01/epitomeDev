@@ -50,6 +50,10 @@
                 <behavior>Edit</behavior>
                 <field>Easebuzz_Instacollect_Create_VA__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>InstaCollect_Retrieve_Transaction_URL__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

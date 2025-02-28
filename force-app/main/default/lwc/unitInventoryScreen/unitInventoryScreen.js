@@ -33,7 +33,7 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
     soldPlot;
     tempBlockPlot;
 
-
+    isSelectDisabled = true
     inputValues = '';
     // Main selection fields
     startRow;
@@ -475,13 +475,17 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
         this.excludeRowEnd = excludeRowEnd;
         this.excludeColumnStart = excludeColumnStart;
         this.excludeColumnEnd = excludeColumnEnd;
-        
+        if(this.startRow && this.endRow && this.startColumn && this.endColumn){
+            this.isSelectDisabled = false;
+        } else{
+            this.isSelectDisabled = true;
+        }
     }
     // // Computed property to disable the Select button if any field is missing.
-    get isSelectDisabled() {
-        // Adjust the condition if "0" is a valid value.
-        return !(this.startRow && this.endRow && this.startColumn && this.endColumn);
-    }
+    // get isSelectDisabled() {
+    //     // Adjust the condition if "0" is a valid value.
+    //     return !(this.startRow && this.endRow && this.startColumn && this.endColumn);
+    // }
 
     handleFieldChange(event) {
         const fieldLabel = event.target.label;

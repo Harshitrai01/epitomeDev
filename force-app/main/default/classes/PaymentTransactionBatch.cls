@@ -13,8 +13,8 @@ global class PaymentTransactionBatch implements Database.Batchable<sObject>, Sch
             timeForRun = batch.Time_In_Minutes__c;
         }
         
+        DateTime currentDateTime = System.Now();
         return Database.getQueryLocator([
-            // Need to add expiry Date Logic For EasyCollect
             SELECT Id, Merchant_Transaction_Id__c, Email_Address__c, Phone__c, Payment_Amount__c, 
             			Payment_Status__c, Opportunity__c, Payment_Type__c, Contact_Name__c,
 						Payment_URL__c, Payment_Id__c, Payment_Expiry_Date__c, Payment_Updated_Date__c,
@@ -22,7 +22,7 @@ global class PaymentTransactionBatch implements Database.Batchable<sObject>, Sch
             			FROM Payment_Gateway__c 
             			WHERE Merchant_Transaction_Id__c != null AND Email_Address__c!=null AND 
             			Phone__c!=null AND Payment_Amount__c!=null AND Payment_Status__c!='Success'
-						AND Payment_Status__c!='UserCancelled'
+						AND Payment_Status__c!='UserCancelled' AND Payment_Expiry_Date__c>=:currentDateTime
         ]);
     }
 
@@ -64,6 +64,7 @@ global class PaymentTransactionBatch implements Database.Batchable<sObject>, Sch
                     payment.Payment_Type__c = paymentRecord.Payment_Type__c;
                     payment.Phone__c=paymentRecord.Phone__c;
                     payment.Payment_Gateway__c = paymentRecord.Id;
+                    payment.Percent_Of_Amount_To_Refund__c=100;
                     if (statusOfResponse && responseMap.containsKey('msg')) {
                         Map<String, Object> transactionData = (Map<String, Object>) responseMap.get('msg');
                         String mode = (String) transactionData.get('mode');

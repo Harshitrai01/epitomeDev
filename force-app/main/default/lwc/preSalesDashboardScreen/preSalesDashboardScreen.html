@@ -10,10 +10,8 @@
                 <div class="refresh-button-container">
                     <lightning-button label="Refresh Data" variant="neutral" onclick={handleRefresh}></lightning-button>
                     <lightning-button label="Send Unopened Notification" variant="neutral" title="Send Unopened Notification" onclick={showModalBox}></lightning-button>
-                    <div class="slds-form-element">  
-            </div>
-
                 </div>
+
                 <!-- Pre-Sales Section -->
                 <section class="section-container">
                     <h2 class="section-header">Pre-Sales User Data</h2>
@@ -27,16 +25,17 @@
                         </div>
                         <div class="table-container">
                             <table class="slds-table slds-table_bordered slds-table_cell-buffer">
-                                <thead>
+                                <thead class="sticky-header">
                                     <tr>
                                         <th class="slds-text-title_caps" style="overflow: hidden;">Select</th>
                                         <th class="slds-text-title_caps" style="overflow: hidden;">Name</th>
                                         <th class="slds-text-title_caps" style="overflow: hidden;">Email</th>
-                                        <th class="slds-text-title_caps" style="overflow: hidden;">User Name</th>
                                         <th class="slds-text-title_caps" style="overflow: hidden;">Status</th>
+                                        <th class="slds-text-title_caps" style="overflow: hidden;">Current Load</th>
                                         <th class="slds-text-title_caps capacity-column" style="overflow: hidden;">
-                                            Capacity</th>
-                                        <th class="slds-text-title_caps" style="overflow: hidden;">Source Assigned</th>
+                                            Max Load</th>
+                                        <th class="slds-text-title_caps source-assigned-column" style="overflow: hidden;">
+                                            Source Assigned</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -51,19 +50,15 @@
                                             </td>
                                             <td title={user.name} style="overflow: hidden;">{user.name}</td>
                                             <td title={user.email} style="overflow: hidden;">{user.email}</td>
-                                            <td title={user.userName} style="overflow: hidden;">{user.userName}</td>
-                                            <td>
-                                                <lightning-combobox name="status" value={user.status}
-                                                    options={statusOptions} onchange={handlePreSalesStatusChange}
-                                                    data-id={user.userId}></lightning-combobox>
-                                            </td>
+                                            <td title={user.status} style="overflow: hidden;">{user.status}</td>
+                                            <td title={user.currentCapacity} style="overflow: hidden;">{user.currentCapacity}</td>
                                             <td class="capacity-column-cell" style="overflow: hidden;">
                                                 <lightning-input type="number" name="Capacity" data-id={user.userId}
                                                     value={user.capacity} max={maxCapacity} min="0" step="0"
                                                     onchange={handlePreSalesCapacityChange}></lightning-input>
                                             </td>
-                                            <td style="overflow: hidden; text-align: left;">
-                                                <div style="max-height: 7rem; overflow-y: overlay; width: 100%;">
+                                            <td class="source-assigned-column-cell" style="overflow: hidden; text-align: left;">
+                                                <div class="source-assigned-scroll">
                                                     <lightning-checkbox-group name="leadSourceCheckboxGroup"
                                                        options={leadSourceOptions} data-id={user.userId}
                                                        value={user.userSources} onchange={handlePreSalesLeadSourceChange}>
@@ -99,16 +94,17 @@
                         </div>
                         <div class="table-container">
                             <table class="slds-table slds-table_bordered slds-table_cell-buffer">
-                                <thead>
+                                <thead class="sticky-header">
                                     <tr>
                                         <th class="slds-text-title_caps" style="overflow: hidden;">Select</th>
                                         <th class="slds-text-title_caps" style="overflow: hidden;">Name</th>
                                         <th class="slds-text-title_caps" style="overflow: hidden;">Email</th>
-                                        <th class="slds-text-title_caps" style="overflow: hidden;">User Name</th>
                                         <th class="slds-text-title_caps" style="overflow: hidden;">Status</th>
+                                        <th class="slds-text-title_caps" style="overflow: hidden;">Current Load</th>
                                         <th class="slds-text-title_caps capacity-column" style="overflow: hidden;">
-                                            Capacity</th>
-                                        <th class="slds-text-title_caps" style="overflow: hidden;">Source Assigned</th>
+                                            Max Load</th>
+                                        <th class="slds-text-title_caps source-assigned-column" style="overflow: hidden;">
+                                            Source Assigned</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -123,19 +119,15 @@
                                             </td>
                                             <td title={user.name} style="overflow: hidden;">{user.name}</td>
                                             <td title={user.email} style="overflow: hidden;">{user.email}</td>
-                                            <td title={user.userName} style="overflow: hidden;">{user.userName}</td>
-                                            <td>
-                                                <lightning-combobox name="status" value={user.status}
-                                                    options={statusOptions} onchange={handleSalesStatusChange}
-                                                    data-id={user.userId}></lightning-combobox>
-                                            </td>
+                                            <td title={user.status} style="overflow: hidden;">{user.status}</td>
+                                            <td title={user.currentCapacity} style="overflow: hidden;">{user.currentCapacity}</td>
                                             <td class="capacity-column-cell" style="overflow: hidden;">
                                                 <lightning-input type="number" name="Capacity" data-id={user.userId}
                                                     value={user.capacity} max={maxCapacity} min="0" step="0"
                                                     onchange={handleSalesCapacityChange}></lightning-input>
                                             </td>
-                                            <td style="overflow: hidden; text-align: left;">
-                                                <div style="max-height: 7rem; overflow-y: overlay; width: 100%;">
+                                            <td class="source-assigned-column-cell" style="overflow: hidden; text-align: left;">
+                                                <div class="source-assigned-scroll">
                                                     <lightning-checkbox-group name="leadSourceCheckboxGroup"
                                                        options={leadSourceOptions} data-id={user.userId}
                                                        value={user.userSources} onchange={handleSalesLeadSourceChange}>

@@ -704,7 +704,7 @@
     <decisions>
         <name>Check_Field_Update</name>
         <label>Check Field Update</label>
-        <locationX>3042</locationX>
+        <locationX>3174</locationX>
         <locationY>431</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -1049,6 +1049,21 @@
             </connector>
             <label>Cancellation Status Rejected</label>
         </rules>
+        <rules>
+            <name>contactId_isChanged</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ContractId</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>update_primary_contact</targetReference>
+            </connector>
+            <label>contactId isChanged?</label>
+        </rules>
     </decisions>
     <decisions>
         <name>check_lead_quote</name>
@@ -1117,6 +1132,28 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Decision_14</name>
+        <label>check contact Id</label>
+        <locationX>6694</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>is_changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ContactId</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_update_primary_contact</targetReference>
+            </connector>
+            <label>is changed?</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Decision_8</name>
         <label>Null Check BR Task</label>
         <locationX>2030</locationX>
@@ -1173,7 +1210,7 @@
     <decisions>
         <name>Inserted_Updated</name>
         <label>Inserted/Updated</label>
-        <locationX>4802</locationX>
+        <locationX>5132</locationX>
         <locationY>323</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -1201,6 +1238,9 @@
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
+            <connector>
+                <targetReference>Decision_14</targetReference>
+            </connector>
             <label>IsInsert</label>
         </rules>
     </decisions>
@@ -2460,6 +2500,19 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
+        <name>Copy_1_of_update_primary_contact</name>
+        <label>Copy 1 of update primary contact</label>
+        <locationX>6562</locationX>
+        <locationY>539</locationY>
+        <inputAssignments>
+            <field>Contact__c</field>
+            <value>
+                <elementReference>$Record.ContactId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
         <name>Set_Progressive</name>
         <label>Set Progressive</label>
         <locationX>842</locationX>
@@ -2563,6 +2616,19 @@
         <object>Unit__c</object>
     </recordUpdates>
     <recordUpdates>
+        <name>update_primary_contact</name>
+        <label>update primary contact</label>
+        <locationX>6034</locationX>
+        <locationY>539</locationY>
+        <inputAssignments>
+            <field>Contact__c</field>
+            <value>
+                <elementReference>$Record.ContactId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
         <name>update_sale_deed_Status_as_Initiated</name>
         <label>update sale deed Status as Initiated</label>
         <locationX>1898</locationX>
@@ -2605,13 +2671,13 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>4676</locationX>
+        <locationX>5006</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Inserted_Updated</targetReference>
         </connector>
         <object>Opportunity</object>
-        <recordTriggerType>Update</recordTriggerType>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>

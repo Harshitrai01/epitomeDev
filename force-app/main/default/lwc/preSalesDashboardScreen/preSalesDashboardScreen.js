@@ -209,73 +209,73 @@ export default class PreSalesDashboardScreen extends LightningElement {
     // }
 
 
-    handlePreSalesStatusChange(event) {
-        try {
-            const userId = event.target.dataset.id;
-            const newStatus = event.target.value;
-            // Update the show data
-            const userIndex = this.preSalesUserDataShow.findIndex((user) => user.userId === userId);
-            if (userIndex !== -1) {
-                console.log('userId-->', userId);
-                const updatedUser = {
-                    ...this.preSalesUserDataShow[userIndex],
-                    status: newStatus,
-                    userChange: true,
-                    styleColor: 'background-color:lightyellow;'
-                };
+    // handlePreSalesStatusChange(event) {
+    //     try {
+    //         const userId = event.target.dataset.id;
+    //         const newStatus = event.target.value;
+    //         // Update the show data
+    //         const userIndex = this.preSalesUserDataShow.findIndex((user) => user.userId === userId);
+    //         if (userIndex !== -1) {
+    //             console.log('userId-->', userId);
+    //             const updatedUser = {
+    //                 ...this.preSalesUserDataShow[userIndex],
+    //                 status: newStatus,
+    //                 userChange: true,
+    //                 styleColor: 'background-color:lightyellow;'
+    //             };
 
-                this.preSalesUserDataShow = [
-                    ...this.preSalesUserDataShow.slice(0, userIndex),
-                    updatedUser,
-                    ...this.preSalesUserDataShow.slice(userIndex + 1)
-                ];
+    //             this.preSalesUserDataShow = [
+    //                 ...this.preSalesUserDataShow.slice(0, userIndex),
+    //                 updatedUser,
+    //                 ...this.preSalesUserDataShow.slice(userIndex + 1)
+    //             ];
 
-                // Add or update the data in the draft array
-                const draftIndex = this.preSalesDraftValues.findIndex((draft) => draft.userId === userId);
-                if (draftIndex !== -1) {
-                    // Update existing draft
-                    this.preSalesDraftValues[draftIndex] = updatedUser;
-                } else {
-                    // Add new draft
-                    this.preSalesDraftValues = [...this.preSalesDraftValues, updatedUser];
-                }
+    //             // Add or update the data in the draft array
+    //             const draftIndex = this.preSalesDraftValues.findIndex((draft) => draft.userId === userId);
+    //             if (draftIndex !== -1) {
+    //                 // Update existing draft
+    //                 this.preSalesDraftValues[draftIndex] = updatedUser;
+    //             } else {
+    //                 // Add new draft
+    //                 this.preSalesDraftValues = [...this.preSalesDraftValues, updatedUser];
+    //             }
 
-                this.isPreSalesUpdated = true; // Flag set to show save/cancel buttons
-            }
-        } catch (error) {
-            console.error('Error in handlePreSalesStatusChange:', error);
-        }
-    }
+    //             this.isPreSalesUpdated = true; // Flag set to show save/cancel buttons
+    //         }
+    //     } catch (error) {
+    //         console.error('Error in handlePreSalesStatusChange:', error);
+    //     }
+    // }
 
 
-    handleSalesStatusChange(event) {
-        const userId = event.target.dataset.id;
-        const newStatus = event.target.value;
+    // handleSalesStatusChange(event) {
+    //     const userId = event.target.dataset.id;
+    //     const newStatus = event.target.value;
 
-        // Update the show data
-        const userIndex = this.salesUserDataShow.findIndex((user) => user.userId === userId);
-        if (userIndex !== -1) {
-            const updatedUser = { ...this.salesUserDataShow[userIndex], status: newStatus, userChange: true, styleColor: 'background-color:lightyellow;' };
+    //     // Update the show data
+    //     const userIndex = this.salesUserDataShow.findIndex((user) => user.userId === userId);
+    //     if (userIndex !== -1) {
+    //         const updatedUser = { ...this.salesUserDataShow[userIndex], status: newStatus, userChange: true, styleColor: 'background-color:lightyellow;' };
 
-            this.salesUserDataShow = [
-                ...this.salesUserDataShow.slice(0, userIndex),
-                updatedUser,
-                ...this.salesUserDataShow.slice(userIndex + 1)
-            ];
+    //         this.salesUserDataShow = [
+    //             ...this.salesUserDataShow.slice(0, userIndex),
+    //             updatedUser,
+    //             ...this.salesUserDataShow.slice(userIndex + 1)
+    //         ];
 
-            // Add or update the data in the draft array
-            const draftIndex = this.salesDraftValues.findIndex((draft) => draft.userId === userId);
-            if (draftIndex !== -1) {
-                // Update existing draft
-                this.salesDraftValues[draftIndex] = updatedUser;
-            } else {
-                // Add new draft
-                this.salesDraftValues = [...this.salesDraftValues, updatedUser];
-            }
+    //         // Add or update the data in the draft array
+    //         const draftIndex = this.salesDraftValues.findIndex((draft) => draft.userId === userId);
+    //         if (draftIndex !== -1) {
+    //             // Update existing draft
+    //             this.salesDraftValues[draftIndex] = updatedUser;
+    //         } else {
+    //             // Add new draft
+    //             this.salesDraftValues = [...this.salesDraftValues, updatedUser];
+    //         }
 
-            this.isSalesUpdated = true; // Flag set to show save/cancel buttons
-        }
-    }
+    //         this.isSalesUpdated = true; // Flag set to show save/cancel buttons
+    //     }
+    // }
 
     handlePreSalesCapacityChange(event) {
         const userId = event.target.dataset.id;
@@ -662,7 +662,7 @@ export default class PreSalesDashboardScreen extends LightningElement {
                 return {
                     Id: draft.userId,
                     Status__c: draft.status,
-                    Capacity__c: draft.capacity,
+                    Max_Load__c: draft.capacity,
                     Pre_Sales_Lead_Assignment__c: draft.leadAssignment,
                     Assigned_Sources__c: userSourcesString,
                 };

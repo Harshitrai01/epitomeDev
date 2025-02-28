@@ -433,6 +433,7 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     }
 
     handleSave(event) {
+        debugger
         try {
             this.isLoading = true;
             if (!this.validateFields()) {
@@ -448,6 +449,7 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     }
 
     collectFormData() {
+        debugger
         console.log('data------>', JSON.stringify(this.bookingFormData));
         saveFormData({ bookingFormData: JSON.stringify(this.bookingFormData), quoteId: this.recordId })
             .then(result => {
@@ -480,10 +482,15 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
                 this.closeModal();
                 this.isLoading = false;
             })
+           .finally(() => {
+    // Optional, only if you want to make sure the loading state is reset after all actions.
+    this.isLoading = false;
+});
 
     }
 
     validateFields() {
+        debugger
         let allFieldsValid = true;
         const messages = [];
         const requiredFields = this.template.querySelectorAll('[data-label="primaryApplicantRequiredFields"]');

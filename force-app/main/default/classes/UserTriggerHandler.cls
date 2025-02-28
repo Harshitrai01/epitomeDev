@@ -55,14 +55,24 @@ public with sharing class UserTriggerHandler {
     }
     
     private static List<User> fetchAvailableUsers(Set<Id> userIds, Integer maxCapacity) {
-        return [
-            SELECT Id, Capacity__c, Pre_Sales_Lead_Assignment__c, Assigned_Sources__c
+        List<User> users = [
+            SELECT Id, Capacity__c, Pre_Sales_Lead_Assignment__c, Assigned_Sources__c, Max_Load__c
             FROM User 
             WHERE Status__c = 'Online'
             AND Id IN :userIds
-            AND Pre_Sales_Lead_Assignment__c = true 
-            AND Capacity__c < :maxCapacity
+            AND Pre_Sales_Lead_Assignment__c = true
         ];
+        
+        // Step 2: Filter users based on Capacity__c < Max_Load__c using a for loop
+        List<User> filteredUsers = new List<User>();
+        for (User u : users) {
+            if (u.Capacity__c < u.Max_Load__c) {
+                filteredUsers.add(u); // Add user to the filtered list if the condition is met
+            }
+        }
+        
+        // Step 3: Return the filtered list
+        return filteredUsers;
     }
     
     private static List<Lead> fetchUnassignedLeads(Id queueId) {
@@ -83,7 +93,7 @@ public with sharing class UserTriggerHandler {
         Map<String, List<User>> sourceToUsersMap = new Map<String, List<User>>();
         for (User u : availableUsers) {
             if (u.Assigned_Sources__c != null) {
-                    List<String> userSources = u.Assigned_Sources__c.split(',');
+                List<String> userSources = u.Assigned_Sources__c.split(',');
                 for (String source : userSources) {
                     source = source.trim();
                     if (!sourceToUsersMap.containsKey(source)) {
@@ -93,6 +103,14 @@ public with sharing class UserTriggerHandler {
                 }
             }
         }
+        
+        Map<Id, Decimal> userMaxLoadMap = new Map<Id, Decimal>();
+        
+        // Iterate through the availableUsers list and populate the map
+        for (User u : availableUsers) {
+            userMaxLoadMap.put(u.Id, u.Max_Load__c);
+        }
+        
         system.debug('source '+sourceToUsersMap);
         Map<String, Integer> sourceIndexMap = new Map<String, Integer>();
         
@@ -108,14 +126,15 @@ public with sharing class UserTriggerHandler {
             Boolean assigned = false;
             
             for (Integer i = 0; i < numUsers; i++) {
-             
+                
                 Integer sum = currentIndex + i;
-				Integer indexToCheck = sum - ((sum / numUsers) * numUsers);
+                Integer indexToCheck = sum - ((sum / numUsers) * numUsers);
                 User candidateUser = sourceUsers[indexToCheck];
                 Integer currentCount = userLeadCounts.get(candidateUser.Id);
                 system.debug('candidateUser '+candidateUser);
+                Decimal maxLoad = userMaxLoadMap.get(candidateUser.Id);
                 
-                if (currentCount < maxCapacity) {
+                if (currentCount < maxLoad) {
                     lead.OwnerId = candidateUser.Id;
                     leadsToUpdate.add(lead);
                     userLeadCounts.put(candidateUser.Id, currentCount + 1);

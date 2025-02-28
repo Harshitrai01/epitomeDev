@@ -44,6 +44,10 @@ global class PaymentSendLinkEasyCollect implements Database.Batchable<sObject>, 
                     String email = (String) data.get('email');
                     String paymentUrl = (String) data.get('payment_url');
                     String oppId = (String) data.get('oppId');
+                    String expiry_date = (String) data.get('expiry_date');
+                    List<String> parts = expiry_date.split(' ');
+                	List<String> dateParts = parts[0].split('-'); // [day, month, year]
+                	String reformatted = dateParts[2] + '-' + dateParts[1] + '-' + dateParts[0] + ' ' + parts[1];
                     oppListId.add(oppId);
                     oppToUrl.put(oppId,paymentUrl);
                     oppToEmail.put(oppId,email);
@@ -55,7 +59,7 @@ global class PaymentSendLinkEasyCollect implements Database.Batchable<sObject>, 
                         Opportunity__c = (String) data.get('oppId'),
                         Payment_Created_Date__c = Datetime.valueOf(createdDate.substring(0, 19).replace('T', ' ')),
                         Payment_Updated_Date__c = Datetime.valueOf(updatedDate.substring(0, 19).replace('T', ' ')),
-                        Payment_Expiry_Date__c = (String) data.get('expiry_date'),
+                        Payment_Expiry_Date__c = Datetime.valueOf(reformatted),
                         Payment_Id__c = String.ValueOf(data.get('id')),
                         Payment_Status__c = (String) data.get('state'),
                         Payment_URL__c = paymentUrl,
