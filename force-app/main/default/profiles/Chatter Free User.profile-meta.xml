@@ -156,10 +156,6 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>CustomRefundAPI</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>EasebuzzInstaCollectService</apexClass>
         <enabled>false</enabled>
     </classAccesses>

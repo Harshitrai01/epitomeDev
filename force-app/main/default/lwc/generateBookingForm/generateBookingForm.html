@@ -106,7 +106,12 @@
                                                     large-device-size="6">
                                                     <lightning-input data-label="primaryApplicantRequiredFields"
                                                         type="tel" variant="standard" name="accountContactNo"
-                                                        label="Contact No" max-length="10"
+                                                        label="Contact No"
+                                                        min-length="10" 
+													max-length="10" 
+													message-when-too-short="Enter a valid contact number"
+													pattern="[0-9]{10}"
+													message-when-pattern-mismatch="Enter a valid contact number format"
                                                         onchange={handleAccountChange}
                                                         value={bookingFormData.accountContactNo} required>
                                                     </lightning-input>
@@ -274,7 +279,7 @@
                                                                 label="Pan Card" onchange={handleValueChange}
                                                                 min-length="10" max-length="10"
                                                                 message-when-too-short="Enter a valid pan card number"
-                                                                pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"
+                                                                pattern="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}"
                                                                 message-when-pattern-mismatch="Enter a valid pan card number format"
                                                                 data-contact-id={contact.id} value={contact.contactPan}
                                                                 required>
@@ -307,7 +312,12 @@
                                                             <lightning-input data-label="primaryApplicantRequiredFields"
                                                                 type="tel" variant="standard" name="contactPhone"
                                                                 label="Contact No" data-contact-id={contact.id}
-                                                                max-length="10" onchange={handleValueChange}
+                                                                min-length="10" 
+													max-length="10" 
+													message-when-too-short="Enter a valid contact number"
+													pattern="[0-9]{10}"
+													message-when-pattern-mismatch="Enter a valid contact number format"
+                                                                onchange={handleValueChange}
                                                                 value={contact.contactPhone} required>
                                                             </lightning-input>
                                                         </lightning-layout-item>
@@ -331,7 +341,7 @@
                                                                             options={plots} value={plot.plotName}
                                                                             onchange={handleValueChange}
                                                                             data-contact-id={contact.id}
-                                                                             data-plot-id={plot.id
+                                                                             data-plot-id={plot.id}
                                                                              data-label="primaryApplicantRequiredFields"
                                                             required
                                                                              >

@@ -1,14 +1,12 @@
 <template>
     <lightning-card >
-        <div class="slds-grid slds-grid_align-spread slds-align-items-center slds-m-around_small">
+        <!-- <div class="slds-grid slds-grid_align-spread slds-align-items-center slds-m-around_small"> -->
     
             <!-- Left Section (Empty or Placeholder for Future Content) -->
-            <!-- <div class="slds-col slds-size_1-of-5 left-section"></div> -->
-        
-            <!-- Center Section (Filter Picklist) -->
-            <div class="slds-col slds-size_1-of-4 slds-align_absolute-center " style="align-items: flex-start;   flex-direction: column;">
+            
+            <!-- <div class="slds-col slds-size_1-of-4 slds-align_absolute-center " style="align-items: flex-start;   flex-direction: column;"> -->
                 <!-- Picklist -->
-                <lightning-combobox
+                <!-- <lightning-combobox
                     name="unitStatus"
                     label="Select Status to filter"
                     value={selectedStatusFilters}
@@ -16,10 +14,10 @@
                     options={statusOptions}
                     onchange={handleStatusFilter}
                     class="slds-m-bottom_medium"
-                ></lightning-combobox>
+                ></lightning-combobox> -->
             
                 <!-- Display selected filters as pills below the picklist -->
-                <div class="slds-m-top_small selected-filters-container" style="min-height: 60px;">
+                <!-- <div class="slds-m-top_small selected-filters-container" style="min-height: 60px;">
                     <template for:each={selectedStatusFilters} for:item="status">
                         <lightning-pill
                             key={status}
@@ -33,9 +31,9 @@
                 </div>
             </div>
 
-            <div class="slds-col slds-size_1-of-4 slds-align_absolute-center filter-container">
+            <div class="slds-col slds-size_1-of-4 slds-align_absolute-center filter-container"> -->
                 <!-- Picklist -->
-                <lightning-combobox
+                <!-- <lightning-combobox
                     name="unitStatus"
                     label="Select Facing to filter"
                     placeholder="Select Facing to filter"
@@ -43,10 +41,10 @@
                     value={selectedFacingFilters}
                     onchange={handleFacingFilter}
                     class="slds-m-bottom_medium"
-                ></lightning-combobox>
+                ></lightning-combobox> -->
             
                 <!-- Display selected filters as pills below the picklist -->
-                <div class="slds-m-top_small selected-filters-container" style="min-height: 60px;">
+                <!-- <div class="slds-m-top_small selected-filters-container" style="min-height: 60px;">
                     <template for:each={selectedFacingFilters} for:item="facing">
                         <lightning-pill
                             key={facing}
@@ -60,9 +58,9 @@
                 </div>
             </div>
 
-            <div class="slds-col slds-size_1-of-4 slds-align_absolute-center filter-container">
+            <div class="slds-col slds-size_1-of-4 slds-align_absolute-center filter-container"> -->
                 <!-- Picklist -->
-                <lightning-combobox
+                <!-- <lightning-combobox
                     name="unitStatus"
                     label="Select Zone to filter"
                     placeholder="Select Zone to filter"
@@ -70,10 +68,10 @@
                     value={selectedZoneFilters}
                     onchange={handleZoneFilter}
                     class="slds-m-bottom_medium"
-                ></lightning-combobox>
+                ></lightning-combobox> -->
             
                 <!-- Display selected filters as pills below the picklist -->
-                <div class="slds-m-top_small selected-filters-container" style="min-height: 60px;">
+                <!-- <div class="slds-m-top_small selected-filters-container" style="min-height: 60px;">
                     <template for:each={selectedZoneFilters} for:item="zone">
                         <lightning-pill
                             key={zone}
@@ -85,10 +83,10 @@
                         </lightning-pill>
                     </template>
                 </div>
-            </div>
+            </div> -->
         
             <!-- Right Section (Zoom Controls & Buttons) -->
-            <div class="slds-col slds-size_1-of-4 slds-grid slds-grid_align-end zoom-controls">
+            <!-- <div class="slds-col slds-size_1-of-4 slds-grid slds-grid_align-end zoom-controls">
                 <template if:false={isEditMode}>
                     <lightning-button label="Edit" onclick={handleButton}></lightning-button>
                 </template>
@@ -108,7 +106,7 @@
                 <lightning-button-icon icon-name="utility:refresh" alternative-text="Reset Zoom" onclick={resetZoom}></lightning-button-icon>
             </div>
         
-        </div>
+        </div> -->
         <!-- <template if:true={isEditMode}>
             <div class="slds-grid slds-wrap slds-grid_align-spread slds-align-items-center slds-m-around_small"> -->
                 <!-- Start Row -->
@@ -201,9 +199,15 @@
                 </div>
             </div>
         </template> -->
-        <template if:true={isEditMode}>
-            <c-unit-inventory-multi-select-screen oninputchanged={handleInputChanged}></c-unit-inventory-multi-select-screen>
-        </template>        
+        <!-- <template if:true={isEditMode}> -->
+            <c-unit-inventory-multi-select-screen oninputchanged={handleInputChanged} record-id={recordId} 
+                temp-grid={tempGrid} 
+                multi-selected-cells={multiSelectedCells}
+                onzoomin={zoomIn} 
+                onzoomout={zoomOut} 
+                onresetzoom={resetZoom}>
+            </c-unit-inventory-multi-select-screen>
+        <!-- </template>         -->
         
         <div class="table-container" style="overflow: auto;">
             <div class="zoom-wrapper" style="transform: scale(1);" id="zoomTable">

@@ -14,6 +14,27 @@ public with sharing class leadQuoteGenerateController {
         }
     }
     
+    @AuraEnabled(cacheable=true)
+    public static Opportunity getOppDetails(Id oppId) {
+        try {	
+            Opportunity opp = [Select Id, Unit__c, Unit__r.Base_Price_per_Sq_Ft__c,Lead__c From Opportunity Where Id=:oppId Limit 1];
+            return opp;
+        } catch (Exception ex) {
+            throw new AuraHandledException('Error fetching opp details: ' + ex.getMessage());
+        }
+    }
+    
+    @AuraEnabled
+    public static Quote__c getLeadQuote(Id oppId) {
+        try {	
+            Quote__c quote = [Select Id From Quote__c 
+                              Where Opportunity__c=:oppId ORDER BY CreatedDate DESC Limit 1];
+            return quote;
+        } catch (Exception ex) {
+            throw new AuraHandledException('Error fetching opp details: ' + ex.getMessage());
+        }
+    }
+    
     @AuraEnabled
     public static void sendEmail(String oppId) {
         try {

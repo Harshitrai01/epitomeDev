@@ -8,7 +8,7 @@ public with sharing class QuotationCostingSheetController {
     public static List<Quote__c> SaveRecord(List<Quote__c> quoteRecords) {
         try {
             if (quoteRecords != null && !quoteRecords.isEmpty()) {
-                update quoteRecords;
+                upsert quoteRecords;
                 List<Quote__c> quoteList = [Select Id,Total_Sale_Value__c,Base_Price_Per_Sq_Yard__c From Quote__c Where Id IN: quoteRecords];
                 return quoteList;
             }else{
@@ -75,7 +75,11 @@ public with sharing class QuotationCostingSheetController {
             Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
             email.setToAddresses(new String[] { recipientEmail });
             email.setSubject('Quote: ' + name);
-            email.setPlainTextBody('Please find the attached quote PDF for your reference.');
+            String bodyText = 'Dear Customer,\n\n' +
+                          'Please find the attached quote PDF for your reference.\n\n' +
+                          'Warm Regards,\n' +
+                          'Epitome Projects LLP';
+            email.setPlainTextBody(bodyText);
             
             // Attach the PDF
             Messaging.EmailFileAttachment attachment = new Messaging.EmailFileAttachment();
@@ -109,7 +113,7 @@ public with sharing class QuotationCostingSheetController {
                 IsLocked__c,Approval_Status__c,Lead__r.Email,Is_Final__c,
                 Opportunity__r.Contact__r.Name, Opportunity__r.Contact__r.Email, Plot__r.Phase__r.Name, 
                 Plot__r.Phase__r.Project__r.Name, Plot__r.Phase__r.Project_Type__c,Plot__r.Plot_Dimension__c,Opportunity__c,Total_Sale_Value__c,
-                Final_Base_Price__c,Total_Unit_Cost__c,Time_To_Pay_In_Days__c,Quote_Name__c
+                Final_Base_Price__c,Total_Unit_Cost__c,Time_To_Pay_In_Days__c,Quote_Name__c,Lead__c
                 FROM Quote__c where Id =: recordId 
             ];
             
@@ -171,7 +175,7 @@ public with sharing class QuotationCostingSheetController {
         try {
             List<Opportunity> oppList= [Select Id,Contact__c,Contact__r.Email,Account.Name,Unit__r.Phase__r.Name,
                                         Plot_Name__c, Plot_Size__c,Sale_Value_Amount__c,Collected_Amount__c,
-                                        Outstanding_Amount__c
+                                        Outstanding_Amount__c,Old_Plot_Details__c,New_Price__c
                                         From Opportunity Where Id=:oppId Limit 1];
             
             if(oppList!=null && oppList[0].Contact__c!=null){
@@ -195,6 +199,16 @@ public with sharing class QuotationCostingSheetController {
                         		.replace('Opp__Outstanding_Amount__c', String.ValueOf(oppList[0].Outstanding_Amount__c));
                 }
                 
+                // Build the long text using newline characters
+					String textBody = 'Original Unit Details:\n\n' +
+                   'Unit Number: '+oldPlotName+'\n\n' +
+                   'Unit Size: '+oldPlotSize+'\n\n' +
+                   'Unit price per sq. yard: ₹'+oldPlotBasePrice+'\n\n' +
+                   'Sale Value: ₹'+oldTotalSaleValue;
+                
+                oppList[0].Old_Plot_Details__c=textBody;
+                oppList[0].New_Price__c=newPlotPrice;
+                update oppList;
                 Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
                 email.setToAddresses(new String[] { oppList[0].Contact__r.Email });
 				email.setSubject('Plot Swapping');

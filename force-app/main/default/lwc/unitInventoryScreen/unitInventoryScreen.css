@@ -95,7 +95,7 @@
 .cell-style {
     font-weight: 700;
 }
-.filter-container {
+.filter-container { /*filter button container*/
     display: flex;
     justify-content: center;
     align-items: center;

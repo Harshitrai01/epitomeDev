@@ -165,7 +165,12 @@
                                                 small-device-size="12" medium-device-size="6" large-device-size="6">
                                                 <lightning-input data-label="primaryApplicantRequiredFields" type="tel"
                                                     variant="standard" name="contactPhone" label="Contact No"
-                                                    data-contact-id={contact.id} max-length="10"
+                                                    data-contact-id={contact.id}
+                                                    min-length="10" 
+													max-length="10" 
+													message-when-too-short="Enter a valid contact number"
+													pattern="[0-9]{10}"
+													message-when-pattern-mismatch="Enter a valid contact number format"
                                                     onchange={handleValueChange} value={contact.contactPhone} required>
                                                 </lightning-input>
                                             </lightning-layout-item>

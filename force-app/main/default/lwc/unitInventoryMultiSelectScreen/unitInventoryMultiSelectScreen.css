@@ -1,0 +1,47 @@
+.filter-container { /*filter button container*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    margin-bottom: 5px;
+}
+
+.selected-filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 8px; /* Adjust spacing as needed */
+}
+
+.selected-pill {
+    margin-right: 8px; /* Space between pills */
+    margin-bottom: 8px; /* Space between rows of pills */
+}
+
+.filter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.zoom-controls {
+    display: flex;
+    justify-content: right;
+    gap: 10px;
+    /* margin-bottom: 5px; */
+    padding-top: 25px; 
+}
+
+.zoom-wrapper {
+    transition: transform 0.3s ease-in-out;
+    transform-origin: top left;
+}
+
+.slds-m-top_small {
+    margin-top: 10px;
+}
+
+/* Add additional padding for better appearance */
+.slds-m-bottom_medium {
+    margin-bottom: 12px;
+}

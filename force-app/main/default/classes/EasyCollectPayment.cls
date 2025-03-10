@@ -155,10 +155,13 @@ public with sharing class EasyCollectPayment {
             insert payment;
             
             List<Opportunity> oppList = [Select Id, Name, Unit__r.Virtual_Account_Name__c, Unit__r.Virtual_Account_Number__c,
-                                         Unit__r.Virtual_Account_UPI__c, Unit__r.Virtual_Account_IFSC__c,
+                                         Unit__r.Virtual_Account_UPI__c, Unit__r.Virtual_Account_IFSC__c,Easy_Collect_Payment_Link__c,
                                          Unit__r.UPI_QR_Image__c,Unit__r.Name,First_Booking_Amount__c,Unit__r.Phase__r.Name
                                          From Opportunity Where Id=:oppId Limit 1];
-            
+                if(oppList!=null && !oppList.isEmpty()){
+                    oppList[0].Easy_Collect_Payment_Link__c=paymentUrl;
+                    update oppList;
+                }
             sendPaymentLinkEmail(email,paymentUrl,oppList[0].Unit__r.Virtual_Account_Name__c,oppList[0].Unit__r.Virtual_Account_Number__c,oppList[0].Unit__r.Virtual_Account_IFSC__c,oppList[0].Unit__r.Virtual_Account_UPI__c,oppList[0].Unit__r.UPI_QR_Image__c,oppList[0].Unit__r.Name,oppList[0].Unit__r.Phase__r.Name,String.ValueOf(oppList[0].First_Booking_Amount__c));
            }
         } catch (Exception e) {
@@ -216,8 +219,6 @@ public with sharing class EasyCollectPayment {
                     + '<p style="margin-top: 20px;"><strong>Warm Regards,</strong><br/>Epitome Projects LLP</p>'
                     
                     + '</div>'
-                    + '<hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">'
-        			+ '<div style="font-size: 14px; color: #777;">' + termsAndConditions + '</div>'
                     + '</body></html>';
             }else{
                 htmlBody = '<html>'
@@ -231,8 +232,6 @@ public with sharing class EasyCollectPayment {
                     + '<p style="margin-top: 20px;"><strong>Warm Regards,</strong><br/>Epitome Projects LLP</p>'
                     
                     + '</div>'
-                    + '<hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">'
-        			+ '<div style="font-size: 14px; color: #777;">' + termsAndConditions + '</div>'
                     + '</body></html>';
             }
             email.setHtmlBody(htmlBody);

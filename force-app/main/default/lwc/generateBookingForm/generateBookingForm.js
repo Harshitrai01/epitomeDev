@@ -62,6 +62,7 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     }
 
     @track bookingFormData = {
+        sendNotification: false,
         typeOfBooking: '',
         accountId: null,
         accountName: '',
@@ -87,10 +88,12 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     }
 
     connectedCallback() {
+        this.isLoading=true;
         this.fetchPlots();
         this.showComponent = true;
         this.addContact();
         this.isAccountExist = true;
+        
     }
 
     @wire(getObjectInfo, { objectApiName: OPPORTUNITY_OBJECT_NAME })
@@ -176,7 +179,7 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
                                 this.unitPlotPrize = data.Plot_Price__c || '';
                                 this.unitPlotSize = data.Plot_Size__c || '';
                                 this.unitPlotUnitCode = data.Unit_Code__c || '';
-                                this.unitPlotPhase = data.Unit_Code__c || '';
+                                this.unitPlotPhase = data.Phase__r ? data.Phase__r.Name : '';
                                 this.unitPlotName = data.Name || '';
                                 this.updateContactPlots();
                             }
@@ -286,7 +289,7 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
                     }
                 } else {
                     // Update contact details
-                    updatedBookingFormData.listOfCoApplicant[contactIndex][fieldName] = value;
+                    updatedBookingFormData.listOfCoApplicant[contactIndex][fieldName] = this.processFieldValue(fieldName, value);
                 }
             }
 
@@ -295,6 +298,15 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
         }
         catch (error) {
             console.error('❌ Error in updateBookingFormData:', error);
+        }
+    }
+
+    processFieldValue(fieldName, value) {
+        switch (fieldName) {
+            case 'contactPan':
+                return typeof value === 'string' ? value.toUpperCase() : value;
+            default:
+                return value;
         }
     }
 
@@ -408,6 +420,7 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     }
 
     fetchPlots() {
+        this.isLoading=false;
         console.log('Fetching Plots');
         getPlots()
             .then((data) => {
@@ -426,7 +439,7 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
                 console.error('Error fetching contacts:', error);
             });
     }
-    
+
     clearAllContacts() {
         this.bookingFormData.listOfCoApplicant = this.bookingFormData.listOfCoApplicant.map(contact => {
             if (contact.contactValue === 'Yes') {

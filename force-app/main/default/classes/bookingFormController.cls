@@ -119,6 +119,7 @@ public without sharing class bookingFormController {
                     opp.Sale_Value_Amount__c=String.isNotBlank(bookingFormDataObj.saleValueAmount) ? Decimal.valueOf(bookingFormDataObj.saleValueAmount) : null;
                     opp.Lead_Quote__c=quoteId;
                     opp.Ownership_Type__c='Individual Registration';
+                    opp.Lead__c=String.isNotBlank(bookingFormDataObj.leadId) ? bookingFormDataObj.leadId : null;
                     insert opp;
 
                     Quote__c quoteObj=new Quote__c();
@@ -245,13 +246,14 @@ public without sharing class bookingFormController {
                                 Name = plot.plotunitsname + '_' + coApplicant.contactName,
                                 First_Booking_Amount__c = Decimal.valueOf(plot.unitOppAmount),
                                 AccountId = accObj.Id,
-                                StageName = 'Booking',
+                                StageName = 'Blocked',
                                 CloseDate = Date.today(),
                                 Unit__c = plot.plotName,
                                 Type_of_Booking__c = bookingFormDataObj.typeOfBooking,
                                 ContactId = contactId, // Direct assignment (No Double Loop!)
                                 Bulk_Booking__c=true,
-                                Contact__c = contactId
+                                Contact__c = contactId,
+                                Sale_Value_Amount__c=String.isNotBlank(plot.unitPlotPrize) ? Decimal.valueOf(plot.unitPlotPrize): null
                                 //OwnerId=getCRMUserId()
                             ));
                         }
@@ -260,7 +262,9 @@ public without sharing class bookingFormController {
 
                 // Bulk update plots with Contact Ids
                 if (!plotsToUpdate.isEmpty()) {
+                    System.debug('plotsToUpdatebeforee--->'+plotsToUpdate);
                     update plotsToUpdate;
+                    System.debug('plotsToUpdateafterrrrrrr--->'+plotsToUpdate);
                 }
 
                 // Bulk insert Opportunities
@@ -272,7 +276,9 @@ public without sharing class bookingFormController {
                         quotesToInsert.add(new Quote(
                             Name = opp.Name,
                             OpportunityId = opp.Id,
-                            Status = 'Accepted'
+                            Status = 'Accepted',
+                             Status__c='Accepted',
+                             All_Inclusive_Price__c = opp.Sale_Value_Amount__c
                         ));
                     }
                     if (!quotesToInsert.isEmpty()) {
@@ -470,7 +476,7 @@ public without sharing class bookingFormController {
     @AuraEnabled(cacheable=true) 
         public static Unit__c getPlotDetails(String recordId) {
             try {
-                return [SELECT Id, Name, Plot_Facing__c, Plot_Price__c, Plot_Size__c, Unit_Code__c 
+                return [SELECT Id, Name, Plot_Facing__c, Plot_Price__c, Plot_Size__c, Unit_Code__c,Phase__c, Phase__r.Name
                         FROM Unit__c WHERE Id = :recordId LIMIT 1];
             } catch (Exception e) {
                 throw new AuraHandledException('Error fetching Plot details: ' + e.getMessage());
@@ -502,6 +508,7 @@ public without sharing class bookingFormController {
     }
 
     public class bookingFormData {
+        public Boolean sendNotification;
         public String dateOfBooking;
         public String unitName;
         public String unitId;

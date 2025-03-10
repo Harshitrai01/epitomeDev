@@ -76,14 +76,16 @@ global class PaymentSendLinkEasyCollect implements Database.Batchable<sObject>, 
         }
         
         List<Opportunity> oppListForSendingMail = [Select Id, Name, Unit__r.Virtual_Account_Name__c, Unit__r.Virtual_Account_Number__c,
-                                                   Unit__r.Virtual_Account_UPI__c, Unit__r.Virtual_Account_IFSC__c,
+                                                   Unit__r.Virtual_Account_UPI__c, Unit__r.Virtual_Account_IFSC__c,Easy_Collect_Payment_Link__c,
                                                    Unit__r.UPI_QR_Image__c,Unit__r.Name,First_Booking_Amount__c,Unit__r.Phase__r.Name
                                                    From Opportunity Where Id IN :oppListId];
         
+        List<Opportunity> oppListToUpdate = New List<Opportunity>();
         List<PaymentDetails> paymentDetailsList = New List<PaymentDetails>();
         for(Opportunity opp:oppListForSendingMail){
             String email = oppToEmail.get(opp.Id);
             String paymentUrl = oppToUrl.get(opp.Id);
+            opp.Easy_Collect_Payment_Link__c=paymentUrl;
             PaymentDetails pd = New PaymentDetails();
             pd.recipientEmail=email;
             pd.paymentLink=paymentUrl;
@@ -96,6 +98,11 @@ global class PaymentSendLinkEasyCollect implements Database.Batchable<sObject>, 
             pd.phaseName=opp.Unit__r.Phase__r.Name;
             pd.firstAmount=opp.First_Booking_Amount__c;
             paymentDetailsList.add(pd);
+            oppListToUpdate.add(opp);
+        }
+        
+        if(oppListToUpdate!=null && !oppListToUpdate.isEmpty()){
+            update oppListToUpdate;
         }
         
         if(!paymentListToInsert.isEmpty()){

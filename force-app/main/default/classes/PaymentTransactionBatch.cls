@@ -132,8 +132,18 @@ global class PaymentTransactionBatch implements Database.Batchable<sObject>, Sch
             }
             if (!updatedPaymentList.isEmpty()) {
                 upsert updatedPaymentList;
+                List<Id> recordIds = New List<Id>();
+                for(Payment__c p:updatedPaymentList){
+                    if(p.Payment_Status__c=='success'){
+                        recordIds.add(p.Id);
+                    }
+                }
+                if(!recordIds.isEmpty()){
+                    submitForApproval(recordIds);
+                }
             }
         }
+        
         if (!paymentGateWayToUpdate.isEmpty()) {
             update paymentGateWayToUpdate;
         }
@@ -153,5 +163,33 @@ global class PaymentTransactionBatch implements Database.Batchable<sObject>, Sch
     global void execute(SchedulableContext sc) {
         Database.executeBatch(new PaymentTransactionBatch(), 10);
         System.abortJob(sc.getTriggerId());
+    }
+    
+    public static void submitForApproval(List<Id> recordIds) {
+        try {
+            List<Approval.ProcessSubmitRequest> submitRequests = new List<Approval.ProcessSubmitRequest>();
+            
+            for (Id recordId : recordIds) {
+                Approval.ProcessSubmitRequest req = new Approval.ProcessSubmitRequest();
+                req.setObjectId(recordId);
+                req.setComments('Refund Approval Request.');
+                req.setNextApproverIds(null);
+                req.setProcessDefinitionNameOrId('Payment_Approval_Process');
+                submitRequests.add(req);
+            }
+            
+            // Submit all requests in bulk
+            List<Approval.ProcessResult> results = Approval.process(submitRequests);
+            
+            // Validate that each approval submission was successful
+            for (Approval.ProcessResult result : results) {
+                if (!result.isSuccess()) {
+                    // If needed, you can retrieve more details from result.getErrors()
+                    System.debug('Approval process failed for one or more records.');
+                }
+            }
+        } catch (Exception ex) {
+            System.debug('Error triggering approval process: ' + ex.getMessage());
+        }
     }
 }

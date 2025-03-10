@@ -8,7 +8,8 @@ public with sharing class SendCancellationEmail {
     public static void sendEmailForCancellation(String oppId) {
         try {
             
-            Opportunity opp = [SELECT Id, Contact__c, Contact__r.Name, Contact__r.Email, Owner.Name 
+            Opportunity opp = [SELECT Id, Contact__c, Contact__r.Name, Contact__r.Email, Owner.Name, Opportunity_Owner_Name__c,
+							   Contact_Name__c
                                FROM Opportunity 
                                WHERE Id = :oppId LIMIT 1];
 
@@ -126,8 +127,13 @@ public with sharing class SendCancellationEmail {
                 System.debug('Successfully linked attachment to EmailMessage record.');
             }*/
             
+            Map<String, Object> flowInputs = new Map<String, Object>{
+            	'recordId' => opp,
+                'flowName' => 'Send Plot Cancellation'
+        	};
+			Flow.Interview myFlow = Flow.Interview.createInterview('Gupshup_Send_Cancellation_Email', flowInputs);
+        	myFlow.start();
             
-        
         } catch (Exception e) {
             throw New AuraHandledException(e.getMessage());
         }

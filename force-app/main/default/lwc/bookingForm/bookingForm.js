@@ -26,6 +26,7 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     eighteenYearsBackMonth = String(this.eighteenYearsBack.getMonth() + 1).padStart(2, '0');
     eighteenYearsBackDay = String(this.eighteenYearsBack.getDate()).padStart(2, '0');
     eighteenYearsBackDate = `${this.eighteenYearsBackYear}-${this.eighteenYearsBackMonth}-${this.eighteenYearsBackDay}`;
+   
     activeSections = ['A', 'B', 'C', 'D', 'E'];
     isLoading = false;
 

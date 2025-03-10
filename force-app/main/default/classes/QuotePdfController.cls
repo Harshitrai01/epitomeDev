@@ -13,7 +13,6 @@ public with sharing class QuotePdfController {
     
     public QuotePdfController(ApexPages.StandardController stdController) {
         String quoteId= Apexpages.currentPage().getParameters().get('id');
-        quoteId='a0BO4000015uHlxMAE';
         List<Quote__c> quoteObjList = [
                 SELECT Id,Name,IsQuoteGenerated__c,Plot__c,Phase__c,Project__c,IsSample__c,CreatedDate,Lead__r.Name,
                 Lead__r.Phase__r.Name,Plot__r.Name,Plot__r.Plot_Facing__c,Plot__r.Plot_Size__c,Plot__r.Flat_Number__c,

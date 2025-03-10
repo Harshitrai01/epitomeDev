@@ -84,16 +84,6 @@
                 <identifier>RecordCRM_Manager_cField</identifier>
             </fieldInstance>
         </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CP_Manager__c</fieldItem>
-                <identifier>RecordCP_Manager_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
         <name>Facet-02112296-4fed-4c88-921f-f6bf4c329969</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -144,18 +134,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Sales_Head_Discount_Approval__c</fieldItem>
-                <identifier>RecordSales_Head_Discount_Approval_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Management_Discount_Approval__c</fieldItem>
-                <identifier>RecordManagement_Discount_Approval_cField</identifier>
+                <fieldItem>Record.CP_Manager__c</fieldItem>
+                <identifier>RecordCP_Manager_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-aa089116-f21e-486d-88b3-f87e86b9c5a0</name>
@@ -238,48 +218,6 @@
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        <name>Facet-b5ad819f-0cac-44d3-b0d7-e65ab4d21063</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CC_Email_Address__c</fieldItem>
-                <identifier>RecordCC_Email_Address_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-bab83986-0517-4cf0-a4a5-c733d518e9c3</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-b5ad819f-0cac-44d3-b0d7-e65ab4d21063</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column9</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-bab83986-0517-4cf0-a4a5-c733d518e9c3</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column10</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-159708b6-8c93-420f-a2ba-30f760158e12</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
         <itemInstances>
             <fieldInstance>
                 <fieldInstanceProperties>
@@ -294,16 +232,6 @@
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.HQ_Address__c</fieldItem>
-                <identifier>RecordHQ_Address_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
         <name>Facet-48e5f79e-23b1-414e-b58a-769290777809</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -418,24 +346,6 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection3</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>columns</name>
-                    <value>Facet-159708b6-8c93-420f-a2ba-30f760158e12</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>label</name>
-                    <value>Email Information</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:fieldSection</componentName>
-                <identifier>flexipage_fieldSection5</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>

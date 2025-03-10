@@ -117,11 +117,17 @@ public static List<ContactWrapper> getContacts(Id opportunityId) {
         }
         
         Opportunity opp = [
-            SELECT Owner.Email 
+            SELECT Owner.Email ,Custom_Email_Body__c,Custom_Email_Subject__c
             FROM Opportunity 
             WHERE Id = :opportunityId 
             LIMIT 1
         ];
+        if(opp!=null){
+            opp.Custom_Email_Subject__c='Important Document for You';
+            opp.Custom_Email_Body__c=emailBody;
+
+            update opp;
+        }
         
         Contact con = [
             SELECT Email 

@@ -2,8 +2,8 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Plot_Dimension__c</fullName>
     <externalId>false</externalId>
+    <formula>Plot__r.Plot_Dimension__c</formula>
     <label>Plot Dimension</label>
-    <length>255</length>
     <required>false</required>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>

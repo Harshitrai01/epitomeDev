@@ -36,6 +36,8 @@ export default class QuotationCostingSheet extends LightningElement {
     AllInclusivePrice = 0
     isSample = false
     isdisabled = false
+    editable=false
+    showSentForApproval=false;
 
     @api quoteId;
     @wire(CurrentPageReference)
@@ -45,6 +47,8 @@ export default class QuotationCostingSheet extends LightningElement {
         }else if(this.recordId!=undefined && this.recordId!=null){
             this.quoteId=this.recordId;
         }
+        this.editable = pageRef.state?.c__editable === 'true';
+        console.log('Editable-->>',this.editable);
     }
 
     phaseName='';
@@ -80,11 +84,15 @@ export default class QuotationCostingSheet extends LightningElement {
                     this.quoteData = (result.quoteObj);
                     this.additionalChargeData = (result.additonalCharges);
                     this.isLocked=this.quoteData?.IsLocked__c || false;
+                    this.showSentForApproval=this.isLocked;
                     this.isFinal=this.quoteData?.Is_Final__c || false;
                     this.quoteName=this.quoteData?.Quote_Name__c || this.quoteData?.Name || '';
                     this.plotId=this.quoteData?.Plot__c;
                     if(this.isLocked==true || this.quoteData?.Approval_Status__c!='Accepted'){
                         this.isFinalizedQuoteDisabled=true;
+                    }
+                    if(this.editable==true){
+                        this.isLocked=false;
                     }
                     this.isChecked=this.quoteData?.IsSample__c || false;
                     this.totalSaleValue=this.quoteData?.Total_Sale_Value__c || 0 ;
@@ -175,7 +183,7 @@ export default class QuotationCostingSheet extends LightningElement {
                     this.plotUnitCode=this.quoteData?.Plot__r?.Unit_Code__c || '';
                     this.plotBasePrice=this.quoteData?.Plot__r?.Base_Price_per_Sq_Ft__c || '';
                     this.basePricePerSqYard=this.plotBasePrice;
-                    this.plotDimension=this.quoteData?.Plot_Dimension__c || this.quoteData?.Plot__r.Plot_Dimension__c || '';
+                    this.plotDimension=this.quoteData?.Plot_Dimension__c || this.quoteData?.Plot__r?.Plot_Dimension__c || '';
 
                     this.basePriceOriginalValue = this.quoteData.BasePriceperSqFt__c;
                     if (this.quoteData.Status__c == 'Draft' || this.quoteData.Status__c == 'Approved' || this.quoteData.Status__c == 'Rejected') {
@@ -188,6 +196,23 @@ export default class QuotationCostingSheet extends LightningElement {
                     this.TotalGstforCharge = this.quoteData.Total_Gst_For_Charge__c
                     this.AllInclusivePrice = this.quoteData.All_Inclusive_Price__c
                     console.log('This to Update',this.toUpdate);
+                    // For Handeling Change Price Quote Save Record;
+                    if(this.editable){
+                        this.quoteRecordToSave['Opportunity__c']=this.oppId;
+                        this.quoteRecordToSave['Plot__c']=this.plotId;
+                        this.quoteRecordToSave['Lead__c']=this.quoteData?.Lead__c;
+                        this.quoteRecordToSave['X100_Ft_Road_Plots__c']  = parseFloat(this.hundredFtRoadPlots);
+                        this.quoteRecordToSave['Price_For_North_East__c']  = parseFloat(this.priceForNorthEast);
+                        this.quoteRecordToSave['Legal_And_Documentation_Charges__c']  = parseFloat(this.legalAndDocumentationCharges);
+                        this.quoteRecordToSave['Other_Corners__c']  = parseFloat(this.otherCorners);
+                        this.quoteRecordToSave['Corpus_Fund_and_Club_House_Payable__c']  = parseFloat(this.corpusFundAndClubHousePayable);
+                        this.quoteRecordToSave['Registration_Charges__c']  = parseFloat(this.registrationChargesAsApplicable);
+                        this.quoteRecordToSave['East__c']  = parseFloat(this.east);
+                        this.quoteRecordToSave['Premium_Plots__c']  = parseFloat(this.premiumPlots);
+                        this.quoteRecordToSave['Rate_Per_Sq_Yd__c']  = parseFloat(this.ratePerSqYd);
+                        this.quoteRecordToSave['Time_To_Pay_In_Days__c']  = this.quoteData?.Time_To_Pay_In_Days__c;
+                        this.quoteRecordToSave['Base_Price_Per_Sq_Yard__c']  = this.quoteData?.Base_Price_Per_Sq_Yard__c;
+                    }
                     if(this.toUpdate){
                         this.isLoading=true;
                         this.handleSaveRecord();
@@ -257,7 +282,12 @@ export default class QuotationCostingSheet extends LightningElement {
         this.isLoading = true;
         this.quoteRecordToSave['Id']  = this.quoteId;
         this.quoteRecordToSave['IsSample__c']  = this.isChecked;
+
+        if(this.editable==true){
+            this.quoteRecordToSave['Id']  =  null;
+        }
         let recordToSave=[this.quoteRecordToSave];
+        console.log('Records To Save-->>',recordToSave);
 
         SaveRecord({quoteRecords: recordToSave})
                 .then((result) => {
@@ -267,13 +297,23 @@ export default class QuotationCostingSheet extends LightningElement {
                     }
                     this.totalSaleValue = result[0]?.Total_Sale_Value__c;
                     this.basePricePerSqYard = result[0]?.Base_Price_Per_Sq_Yard__c;
-                    window.location.reload();
+                    if(!this.editable){
+                        window.location.reload();
+                    }else{
+                        this.navigateToQuote(result[0]?.Id)
+                    }
                 })
                 .catch(error => {
                     this.isLoading = false;
                     console.error('Error updating records:', error);
                     this.displayMessage('Error','error',error.body.message);
                 });
+    }
+
+    navigateToQuote(quoteId) {
+        const baseUrl = window.location.origin;
+        const fullUrl = `${baseUrl}/lightning/r/Quote__c/${quoteId}/view`;
+        window.open(fullUrl, '_blank');
     }
 
     saveOppRecord(){

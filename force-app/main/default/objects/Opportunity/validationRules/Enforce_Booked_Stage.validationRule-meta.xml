@@ -4,8 +4,7 @@
     <active>true</active>
     <errorConditionFormula>AND(
     ISPICKVAL( StageName , &quot;Booked&quot;),
-    Total_Collected_Amount__c &lt; 100000,
-    NOT(X10_Amount_Collected__c)
+    Total_Collected_Amount__c &lt; 100000
 )</errorConditionFormula>
     <errorMessage>Total Collected Amount must be greater than 100,000 to move the Stage to &apos;Booked&apos;.</errorMessage>
 </ValidationRule>

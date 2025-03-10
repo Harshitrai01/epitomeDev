@@ -107,7 +107,12 @@
 												small-device-size="12" medium-device-size="6" large-device-size="6">
 												<lightning-input data-label="primaryApplicantRequiredFields" type="tel"
 													variant="standard" name="accountContactNo" label="Contact No"
-													max-length="10" onchange={handleValueChange}
+													min-length="10" 
+													max-length="10" 
+													message-when-too-short="Enter a valid contact number"
+													pattern="[0-9]{10}"
+													message-when-pattern-mismatch="Enter a valid contact number format"
+													onchange={handleValueChange}
 													value={bookingFormData.accountContactNo} required>
 												</lightning-input>
 											</lightning-layout-item>
@@ -248,7 +253,12 @@
 												small-device-size="12" medium-device-size="6" large-device-size="6">
 												<lightning-input data-label="primaryApplicantRequiredFields" type="tel"
 													variant="standard" name="quoteContactNo" label="Contact No"
-													max-length="10" onchange={handleValueChange}
+													min-length="10" 
+													max-length="10" 
+													message-when-too-short="Enter a valid contact number"
+													pattern="[0-9]{10}"
+													message-when-pattern-mismatch="Enter a valid contact number format"
+													onchange={handleValueChange}
 													value={bookingFormData.quoteContactNo} required>
 												</lightning-input>
 											</lightning-layout-item>
@@ -281,6 +291,7 @@
 													variant="standard" name="quoteContactDOB" label="Date Of Birth"
 													onchange={handleValueChange} value={bookingFormData.quoteContactDOB}
 													max={eighteenYearsBackDate}
+												
 													message-when-range-overflow="Date of Birth cannot be a future date or must be 18 years old or above"
 													required>
 												</lightning-input>

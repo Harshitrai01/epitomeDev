@@ -14,8 +14,14 @@
         <allowDelegate>false</allowDelegate>
         <assignedApprover>
             <approver>
-                <type>userHierarchyField</type>
+                <name>mdsiraj@epitomeprojects.in.qa</name>
+                <type>user</type>
             </approver>
+            <approver>
+                <name>vasanth@epitomeprojects.in.qa</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
         </assignedApprover>
         <label>Step 1</label>
         <name>Step_1</name>
@@ -24,8 +30,10 @@
         <allowDelegate>false</allowDelegate>
         <assignedApprover>
             <approver>
-                <type>userHierarchyField</type>
+                <name>girishkumar@epitomeprojects.in.qa</name>
+                <type>user</type>
             </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
         </assignedApprover>
         <label>Step 2</label>
         <name>Step_2</name>
@@ -37,8 +45,10 @@
         <allowDelegate>false</allowDelegate>
         <assignedApprover>
             <approver>
-                <type>userHierarchyField</type>
+                <name>jaipal@epitomeprojects.in.qa</name>
+                <type>user</type>
             </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
         </assignedApprover>
         <label>Step 3</label>
         <name>Step_3</name>
