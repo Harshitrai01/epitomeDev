@@ -3,7 +3,7 @@
 <p><strong>Payment Terms:</strong></p>
 <ul>
     <li>The total cost of <strong>{!Opportunity.Phase_Name__c}-{!Opportunity.Plot_Name__c}</strong> is to be paid as per the following schedule:</li>
-    <li><strong>Booking Amount:</strong> {!Opportunity.First_Booking_Amount__c}</li>
+    <li><strong>Booking Amount:</strong> Rs. {!Opportunity.First_Booking_Amount__c}</li>
     <li><strong>Balance:</strong> Within 30 days of the booking date</li>
     <li>Any delay in payment beyond the due date will attract interest at the rate prescribed under the Telangana RERA rules.</li>
     <li>All payments should be made via cheque, demand draft, NEFT/RTGS, or any other method specified by Epitome Projects LLP.</li>

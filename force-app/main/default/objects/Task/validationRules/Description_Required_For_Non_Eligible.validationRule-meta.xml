@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Description_Required_For_Non_Eligible</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISCHANGED(Status),
+    ISPICKVAL(Status, &quot;Not Eligible&quot;),
+    ISBLANK(Description)
+)</errorConditionFormula>
+    <errorMessage>Description is required when the Status is changed to Non Eligible.</errorMessage>
+</ValidationRule>

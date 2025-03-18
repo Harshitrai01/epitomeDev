@@ -10,6 +10,9 @@
 import { LightningElement, api, wire, track } from 'lwc';
 import { getRecord, getFieldValue, updateRecord } from 'lightning/uiRecordApi';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import PLOT_FIELD from '@salesforce/schema/Phase__c.Plot_JSON__c';
+import GARDEN_FIELD from '@salesforce/schema/Phase__c.Garden_JSON__c';
+import ROAD_FIELD from '@salesforce/schema/Phase__c.Road_JSON__c';
 import NO_ZONE_FIELD from '@salesforce/schema/Phase__c.Number_Of_Zone__c';
 
 export default class UnitInventoryMultiSelectScreen extends LightningElement {
@@ -95,67 +98,75 @@ export default class UnitInventoryMultiSelectScreen extends LightningElement {
     }
 
     handleButton(event) {
-        if (event.target.label === 'Save') {
+        try {
+            if (event.target.label === 'Save') {
             
-            const plotCells = [];
-            const gardenCells = [];
-            const roadCells = [];
-
-            // Iterate over each sector in the grid.
-            this.grid.forEach(sector => {
-                // For each row (rM) in the sector
-                sector.rM.forEach(row => {
-                    // For each column group (Co) in the row
-                    row.Co.forEach(colGroup => {
-                        // For each cell in the column group's cols array
-                        colGroup.cols.forEach(cell => {
-                            if (cell.ty === 'Plot') {
-                                plotCells.push({
-                                    id: cell.id,
-                                    pN: cell.pN,
-                                    pId: cell.pId,
-                                    pS: cell.pS,
-                                    pF: cell.pF,
-                                    z: cell.z
-                                });
-                            } else if (cell.ty === 'Garden') {
-                                gardenCells.push({
-                                    id: cell.id,
-                                    z: cell.z
-                                });
-                            } else if (cell.ty === 'Road') {
-                                roadCells.push({
-                                    id: cell.id,
-                                    z: cell.z
-                                });
-                            }
+                const plotCells = [];
+                const gardenCells = [];
+                const roadCells = [];
+    
+                // Iterate over each sector in the grid.
+                this.grid.forEach(sector => {
+                    // For each row (rM) in the sector
+                    sector.rM.forEach(row => {
+                        // For each column group (Co) in the row
+                        row.Co.forEach(colGroup => {
+                            // For each cell in the column group's cols array
+                            colGroup.cols.forEach(cell => {
+                                if (cell.ty === 'Plot') {
+                                    plotCells.push({
+                                        id: cell.id,
+                                        pN: cell.pN,
+                                        pId: cell.pId,
+                                        pS: cell.pS,
+                                        pF: cell.pF,
+                                        z: cell.z
+                                    });
+                                } else if (cell.ty === 'Garden') {
+                                    gardenCells.push({
+                                        id: cell.id,
+                                        z: cell.z
+                                    });
+                                } else if (cell.ty === 'Road') {
+                                    roadCells.push({
+                                        id: cell.id,
+                                        z: cell.z
+                                    });
+                                }
+                            });
                         });
                     });
                 });
-            });
-
-            // Build the fields object to update the record.
-            const fields = {};
-            fields.Id = this.recordId;
-            fields[PLOT_FIELD.fieldApiName] = JSON.stringify(plotCells);
-            fields[GARDEN_FIELD.fieldApiName] = JSON.stringify(gardenCells);
-            fields[ROAD_FIELD.fieldApiName] = JSON.stringify(roadCells);
-
-            const recordInput = { fields };
-            updateRecord(recordInput)
-            .then(() => {
-                this.showToast('Success', 'Record updated successfully!', 'success');
-            })
-            .catch(error => {
-                this.showToast('Error', 'Error updating record', 'error');
-                console.error('Error updating record', error);
-            });
-        } else if (event.target.label === 'Edit') {
-            this.isEditMode = true;
-        } else if (event.target.label === 'View') {
-            this.isEditMode = false;
+    
+                // Build the fields object to update the record.
+                const fields = {};
+                fields.Id = this.recordId;
+                fields[PLOT_FIELD.fieldApiName] = JSON.stringify(plotCells);
+                fields[GARDEN_FIELD.fieldApiName] = JSON.stringify(gardenCells);
+                fields[ROAD_FIELD.fieldApiName] = JSON.stringify(roadCells);
+    
+                const recordInput = { fields };
+                updateRecord(recordInput)
+                .then(() => {
+                    this.showToast('Success', 'Record updated successfully!', 'success');
+                })
+                .catch(error => {
+                    this.showToast('Error', 'Error updating record', 'error');
+                    console.error('Error updating record', error);
+                });
+            } else if (event.target.label === 'Edit') {
+                this.isEditMode = true;
+            } else if (event.target.label === 'View') {
+                this.isEditMode = false;
+            }
+            this.handleSubmit();
+        } catch (error) {
+            this.showToast(
+                'Error',
+                error.message,
+                'error'
+            );
         }
-        this.handleSubmit();
     }
     /**
      * Handler for field changes. Updates the corresponding property based on the field label.
@@ -484,7 +495,10 @@ export default class UnitInventoryMultiSelectScreen extends LightningElement {
         return statusMap[status] || '';
     }
     // --------------------------------------------END FILTER---------------------------------------------------
-
+    // handleButton(){
+    //     // Dispatch an event for Save in
+    //     this.dispatchEvent(new CustomEvent('savemapping'));
+    // }
     handleZoomIn() {
         // Dispatch an event for zooming in
         this.dispatchEvent(new CustomEvent('zoomin'));

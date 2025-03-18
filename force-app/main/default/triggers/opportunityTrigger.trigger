@@ -4,6 +4,8 @@ trigger opportunityTrigger on Opportunity (after insert, after update) {
     }
     
     if (Trigger.isAfter && Trigger.isUpdate) {
+        OpportunityTriggerHandler.handleAfterUpdate(Trigger.new, Trigger.oldMap);
+
         List<Id> opportunityIdsToSendPlotCancellationEmail = new List<Id>();
         for (Opportunity opp : Trigger.new) {
             

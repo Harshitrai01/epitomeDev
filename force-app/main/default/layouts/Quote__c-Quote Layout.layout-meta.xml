@@ -61,10 +61,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Plot_Dimension__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Plot_Saleable_Area_In_Sqft__c</field>
             </layoutItems>
             <layoutItems>
@@ -206,6 +202,10 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Quote_Name__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Plot_Dimension__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

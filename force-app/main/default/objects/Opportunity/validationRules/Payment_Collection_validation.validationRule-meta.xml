@@ -4,6 +4,7 @@
     <active>true</active>
     <description>Restriction on Status if 10% Payment is not collected</description>
     <errorConditionFormula>AND(
+    ISCHANGED(StageName),
     ISPICKVAL(StageName, &quot;KYC Verification&quot;),
     NOT( X10_Amount_Collected__c ) 
 )</errorConditionFormula>

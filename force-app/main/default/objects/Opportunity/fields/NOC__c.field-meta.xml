@@ -30,6 +30,16 @@
                 <default>false</default>
                 <label>Corrections Required</label>
             </value>
+            <value>
+                <fullName>Initiated</fullName>
+                <default>false</default>
+                <label>Initiated</label>
+            </value>
+            <value>
+                <fullName>Not Applicable</fullName>
+                <default>true</default>
+                <label>Not Applicable</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

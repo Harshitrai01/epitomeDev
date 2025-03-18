@@ -9,51 +9,12 @@
     <valueSet>
         <restricted>true</restricted>
         <valueSetDefinition>
-            <sorted>false</sorted>
-            <value>
-                <fullName>Yet to prepare</fullName>
-                <default>false</default>
-                <label>Yet to prepare</label>
-            </value>
-            <value>
-                <fullName>Waitng for customer response</fullName>
-                <default>false</default>
-                <label>Waitng for customer response</label>
-            </value>
-            <value>
-                <fullName>Ready to print</fullName>
-                <default>false</default>
-                <label>Ready to print</label>
-            </value>
-            <value>
-                <fullName>Yet to sign Epitome</fullName>
-                <default>false</default>
-                <label>Yet to sign Epitome</label>
-            </value>
-            <value>
-                <fullName>Ready to dispatch</fullName>
-                <default>false</default>
-                <label>Ready to dispatch</label>
-            </value>
-            <value>
-                <fullName>Yet to sign purchaser</fullName>
-                <default>false</default>
-                <label>Yet to sign purchaser</label>
-            </value>
+            <sorted>true</sorted>
             <value>
                 <fullName>Completed</fullName>
                 <default>false</default>
+                <isActive>false</isActive>
                 <label>Completed</label>
-            </value>
-            <value>
-                <fullName>Not Applicable</fullName>
-                <default>false</default>
-                <label>Not Applicable</label>
-            </value>
-            <value>
-                <fullName>Initiate</fullName>
-                <default>false</default>
-                <label>Initiate</label>
             </value>
             <value>
                 <fullName>Drafting</fullName>
@@ -64,6 +25,66 @@
                 <fullName>Draft Uploaded</fullName>
                 <default>false</default>
                 <label>Draft Uploaded</label>
+            </value>
+            <value>
+                <fullName>Initiate</fullName>
+                <default>false</default>
+                <label>Initiated</label>
+            </value>
+            <value>
+                <fullName>Not Applicable</fullName>
+                <default>false</default>
+                <label>Not Required</label>
+            </value>
+            <value>
+                <fullName>Ready to dispatch</fullName>
+                <default>false</default>
+                <label>Ready to dispatch</label>
+            </value>
+            <value>
+                <fullName>Ready to print</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Ready to print</label>
+            </value>
+            <value>
+                <fullName>Received</fullName>
+                <default>false</default>
+                <label>Received</label>
+            </value>
+            <value>
+                <fullName>Send to the customer</fullName>
+                <default>false</default>
+                <label>Send to the customer</label>
+            </value>
+            <value>
+                <fullName>Sent Approval</fullName>
+                <default>false</default>
+                <label>Sent Approval</label>
+            </value>
+            <value>
+                <fullName>Waitng for customer response</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Waitng for customer response</label>
+            </value>
+            <value>
+                <fullName>Yet to prepare</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Yet to prepare</label>
+            </value>
+            <value>
+                <fullName>Yet to sign Epitome</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Yet to sign Epitome</label>
+            </value>
+            <value>
+                <fullName>Yet to sign purchaser</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Yet to sign purchaser</label>
             </value>
         </valueSetDefinition>
     </valueSet>

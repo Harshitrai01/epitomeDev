@@ -3,8 +3,9 @@
     <fullName>Enforce_Booked_Stage</fullName>
     <active>true</active>
     <errorConditionFormula>AND(
+    ISCHANGED( StageName ),
     ISPICKVAL( StageName , &quot;Booked&quot;),
-    Total_Collected_Amount__c &lt; 100000
+    Collected_Amount_From_Payment__c  &lt; 100000
 )</errorConditionFormula>
     <errorMessage>Total Collected Amount must be greater than 100,000 to move the Stage to &apos;Booked&apos;.</errorMessage>
 </ValidationRule>

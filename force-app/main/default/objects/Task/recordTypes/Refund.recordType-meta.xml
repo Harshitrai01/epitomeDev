@@ -17,12 +17,8 @@
     <picklistValues>
         <picklist>Status</picklist>
         <values>
-            <fullName>Open</fullName>
-            <default>true</default>
-        </values>
-        <values>
             <fullName>Refund Initiated</fullName>
-            <default>false</default>
+            <default>true</default>
         </values>
         <values>
             <fullName>Refunded</fullName>

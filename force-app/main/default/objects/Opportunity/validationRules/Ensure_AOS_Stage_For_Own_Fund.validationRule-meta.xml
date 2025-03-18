@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ensure_AOS_Stage_For_Own_Fund</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISCHANGED(Funding_Type__c),
+    ISPICKVAL(Funding_Type__c, &quot;Own Fund&quot;),
+    ISBLANK(TEXT(AOS_Stage__c))
+)</errorConditionFormula>
+    <errorMessage>AOS Stage must be filled when Funding Type is changed to &apos;Own Fund&apos;.</errorMessage>
+</ValidationRule>

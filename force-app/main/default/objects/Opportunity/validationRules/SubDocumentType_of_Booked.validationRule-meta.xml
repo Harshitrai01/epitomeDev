@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SubDocumentType_of_Booked</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISCHANGED(StageName),
+    ISPICKVAL(StageName, &quot;Booked&quot;),
+    NOT(
+        AND(
+            INCLUDES( Sub_Document_Type__c , &quot;Aadhaar Card&quot;),
+            INCLUDES(Sub_Document_Type__c, &quot;Pan Card&quot;)
+        )
+    )
+)</errorConditionFormula>
+    <errorMessage>You must include both Aadhar and PAN in the SubDocument field before changing the Stage to Booked.</errorMessage>
+</ValidationRule>

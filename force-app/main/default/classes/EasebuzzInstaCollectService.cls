@@ -27,7 +27,6 @@ public class EasebuzzInstaCollectService {
         }
     }
     
-    @future (callout=true)
     public static void createVirtualAccount(String plotId) {
         
             String label = plotId;

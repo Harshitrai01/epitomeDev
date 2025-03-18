@@ -18,7 +18,7 @@
             <value>
                 <fullName>In Progress</fullName>
                 <default>false</default>
-                <label>In Progress</label>
+                <label>Initiated</label>
             </value>
             <value>
                 <fullName>Approved</fullName>

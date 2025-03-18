@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Unit_Code__c</fullName>
     <externalId>false</externalId>
-    <label>Unit Code</label>
+    <label>Plot Number</label>
     <precision>18</precision>
     <required>false</required>
     <scale>0</scale>

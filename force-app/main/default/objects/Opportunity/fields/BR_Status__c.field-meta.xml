@@ -25,6 +25,16 @@
                 <default>false</default>
                 <label>Approved</label>
             </value>
+            <value>
+                <fullName>Request for Digital Signature</fullName>
+                <default>false</default>
+                <label>Request for Digital Signature</label>
+            </value>
+            <value>
+                <fullName>Ready for Digital Signature</fullName>
+                <default>false</default>
+                <label>Ready for Digital Signature</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

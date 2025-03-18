@@ -1,0 +1,19 @@
+<p>Dear {!Opportunity.Account},</p>
+
+    <p>We are pleased to inform you that your plot registration has been successfully completed. Thank you for trusting us with this important step in your journey.</p>
+
+    <p>Below are the details of your registration for your reference:</p>
+    <ul>
+        <li><strong>Plot Number:</strong> {!Opportunity.Plot_Name__c}</li>
+        <li><strong>Registration Date:</strong> {!Opportunity.Date_of_Registration__c}</li>
+    </ul>
+
+    <p>Should you have any questions or require further assistance, please feel free to reach out to us at <a href="mailto:{!Opportunity.OwnerEmail}">{!Opportunity.OwnerEmail}</a> or call us at {!Opportunity.OwnerPhone}. Our team is here to help!</p>
+
+    <p>Thank you for choosing Epitome. We look forward to serving you in the future.</p>
+
+    <p>Warm regards,<br>
+    {!Opportunity.OwnerFullName}<br>
+    CRM Agent<br>
+    Epitome Projects LLP<br>
+    {!Opportunity.OwnerPhone}<br>

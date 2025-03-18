@@ -11,6 +11,26 @@
             <isFieldError>false</isFieldError>
         </customErrorMessages>
     </customErrors>
+    <customErrors>
+        <name>Throw_Error_for_10_Collected_Amount</name>
+        <label>Throw Error for 10% Collected Amount</label>
+        <locationX>1106</locationX>
+        <locationY>503</locationY>
+        <customErrorMessages>
+            <errorMessage>10% Amount should be Collected before moving to KYC Verification.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Throw_Error_for_Null_Document_Link</name>
+        <label>Throw Error for  Null Document Link</label>
+        <locationX>1898</locationX>
+        <locationY>611</locationY>
+        <customErrorMessages>
+            <errorMessage>Document Link can&apos;t be Null when the Funding type is Changed to Bank Funds.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
     <decisions>
         <name>Check_Collected_Amount_Condition</name>
         <label>Check Collected Amount Condition?</label>
@@ -43,7 +63,7 @@
     <decisions>
         <name>Check_Decision</name>
         <label>Check Decision</label>
-        <locationX>611</locationX>
+        <locationX>1601</locationX>
         <locationY>287</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -61,11 +81,63 @@
             </connector>
             <label>Stage Change</label>
         </rules>
+        <rules>
+            <name>Stage_is_Booked</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Booked</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>KYc_Status_is_Changed</targetReference>
+            </connector>
+            <label>Stage is Booked</label>
+        </rules>
+        <rules>
+            <name>Funding_Type_is_Changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Funding_Type__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Funding_type_value</targetReference>
+            </connector>
+            <label>Funding Type is Changed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_if_Document_Link_is_Null</name>
+        <label>Check if Document Link is Null</label>
+        <locationX>2030</locationX>
+        <locationY>503</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Document_Link_is_Null</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Documents_URL__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Throw_Error_for_Null_Document_Link</targetReference>
+            </connector>
+            <label>Document Link is Null</label>
+        </rules>
     </decisions>
     <decisions>
         <name>Check_Stage</name>
         <label>Check Stage</label>
-        <locationX>380</locationX>
+        <locationX>512</locationX>
         <locationY>395</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -82,6 +154,88 @@
                 <targetReference>Check_Collected_Amount_Condition</targetReference>
             </connector>
             <label>Stage is Dropped</label>
+        </rules>
+        <rules>
+            <name>Stage_is_Booked_After_Changing</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Booked</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Stage is Booked After Changing</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Funding_type_value</name>
+        <label>Funding type value</label>
+        <locationX>2030</locationX>
+        <locationY>395</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Own_Fund</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Funding_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Own Fund</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Own Fund</label>
+        </rules>
+        <rules>
+            <name>Bank_Fund</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Funding_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Bank Fund</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_if_Document_Link_is_Null</targetReference>
+            </connector>
+            <label>Bank Fund</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>KYc_Status_is_Changed</name>
+        <label>KYc Status is Changed</label>
+        <locationX>1238</locationX>
+        <locationY>395</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Status_Changed_to_In_progress</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.KYC_Verification__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>In Progress</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.KYC_Verification__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.X10_Amount_Collected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Throw_Error_for_10_Collected_Amount</targetReference>
+            </connector>
+            <label>Status Changed to In progress</label>
         </rules>
     </decisions>
     <environments>Default</environments>
@@ -107,7 +261,7 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <start>
-        <locationX>485</locationX>
+        <locationX>1475</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Check_Decision</targetReference>
@@ -116,5 +270,32 @@
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
+    <variables>
+        <name>adhaarDoc</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <name>cdlList</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>panDoc</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
 </Flow>

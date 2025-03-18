@@ -576,6 +576,16 @@
             <field>Schedule_Date_Time__c</field>
             <table>User.Activity$OwnerId</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Registration_Date__c</field>
+            <table>User.Activity$OwnerId</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>date_of_update__c</field>
+            <table>User.Activity$OwnerId</table>
+        </columns>
         <masterLabel>Activities</masterLabel>
     </sections>
 </ReportType>

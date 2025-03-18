@@ -3,8 +3,8 @@
     <fullName>Total_Collected_Amount__c</fullName>
     <formula>IF(
     ISPICKVAL(Funding_Type__c, &quot;Bank Fund&quot;), 
-    Collected_Amount__c + Loan_Sanctioned_Amount__c, 
-    Collected_Amount__c 
+     Collected_Amount_From_Payment__c + Loan_Sanctioned_Amount__c, 
+    Collected_Amount_From_Payment__c 
 )</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Total Collected Amount</label>

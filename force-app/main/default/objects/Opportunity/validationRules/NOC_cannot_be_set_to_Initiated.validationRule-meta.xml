@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NOC_cannot_be_set_to_Initiated</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISPICKVAL(NOC__c, &quot;Initiated&quot;),
+     NOT( Unit__r.Mortgage__c )
+)</errorConditionFormula>
+    <errorMessage>NOC cannot be set to &apos;Initiated&apos; when Mortgage is false</errorMessage>
+</ValidationRule>

@@ -1,9 +1,12 @@
 <template>
+    <!-- Check if the component should be displayed -->
     <template if:true={showComponent}>
+        <!-- Check if the modal should be open -->
         <template if:true={isModalOpen}>
             <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
                 <div class="slds-modal__container">
                     <header class="slds-modal__header">
+                        <!-- Close button for the modal -->
                         <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
                             <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
                         </button>
@@ -15,19 +18,34 @@
                         <div class="card-container">
                             <article class="slds-card">
                                 <div class="slds-card__body slds-card__body_inner">
+                                    <!-- Show spinner while loading -->
                                     <template if:true={isLoading}>
                                         <lightning-spinner variant="brand" alternative-text="Loading" size="large">
                                         </lightning-spinner>
                                     </template>
                                     <lightning-accordion allow-multiple-sections-open
                                         active-section-name={activeSections} class="applicant-details-sections">
+                                        <!-- Project Information Section -->
                                         <lightning-accordion-section name="C" label="Project Information">
                                             <lightning-layout multiple-rows>
                                                 <lightning-layout-item flexibility="auto" padding="around-small"
                                                     size="12" small-device-size="12" medium-device-size="6"
                                                     large-device-size="6">
-                                                    <lightning-input label="Project Name" type="text" value="Epitome"
-                                                        data-required="true" disabled></lightning-input>
+                                                    <lightning-combobox name="progress" label="Select Project"
+                                                        placeholder="Select Project" options={projects}
+                                                        onchange={handleProjectSelection}
+                                                        value={bookingFormData.projectId}
+                                                        data-label="primaryApplicantRequiredFields" required>
+                                                    </lightning-combobox>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item flexibility="auto" padding="around-small"
+                                                    size="12" small-device-size="12" medium-device-size="6"
+                                                    large-device-size="6">
+                                                    <lightning-combobox name="progress" label="Select Phase"
+                                                        placeholder="Select Phase" options={phases}
+                                                        onchange={handlePhaseSelection} value={bookingFormData.phaseId}
+                                                        data-label="primaryApplicantRequiredFields" required>
+                                                    </lightning-combobox>
                                                 </lightning-layout-item>
                                                 <lightning-layout-item flexibility="auto" padding="around-small"
                                                     size="12" small-device-size="12" medium-device-size="6"
@@ -42,6 +60,7 @@
                                             </lightning-layout>
                                         </lightning-accordion-section>
 
+                                        <!-- Primary Information Section -->
                                         <lightning-accordion-section name="A" label="Primary Information"
                                             class="accordion-section">
                                             <lightning-layout multiple-rows>
@@ -49,23 +68,15 @@
                                                     <lightning-layout-item flexibility="auto" padding="around-small"
                                                         size="12" small-device-size="12" medium-device-size="6"
                                                         large-device-size="6">
-                                                        <!-- <lightning-input type="checkbox" label="Account Already Exist"
-                                                        onchange={handleCheckboxChange}></lightning-input>
-                                                </lightning-layout-item>    -->
-
-                                                        <label class="custom-label" required>  <span class="required">*</span>Is the Account already existing?</label>
-
+                                                        <label class="custom-label" required> <span class="required">*</span>Is the Account already existing?</label>
                                                     </lightning-layout-item>
                                                     <lightning-layout-item flexibility="auto" padding="around-small"
                                                         size="12" small-device-size="12" medium-device-size="6"
                                                         large-device-size="6">
-
-
                                                         <lightning-combobox name="progress" placeholder="Select Account"
-                                                            options={options} onchange={handleCheckboxChange} value={value}>
+                                                            options={options} onchange={handleCheckboxChange}
+                                                            value={value}>
                                                         </lightning-combobox>
-
-
                                                     </lightning-layout-item>
                                                 </div>
 
@@ -77,9 +88,7 @@
                                                         <lightning-record-picker label="Select Account"
                                                             object-api-name="Account" onchange={handleRecordSelection}
                                                             disabled={isAccountExist}
-                                                            data-label="primaryApplicantRequiredFields"
-                                                            required
-                                                            >
+                                                            data-label="primaryApplicantRequiredFields" required>
                                                         </lightning-record-picker>
                                                     </lightning-layout-item>
                                                 </template>
@@ -106,12 +115,10 @@
                                                     large-device-size="6">
                                                     <lightning-input data-label="primaryApplicantRequiredFields"
                                                         type="tel" variant="standard" name="accountContactNo"
-                                                        label="Contact No"
-                                                        min-length="10" 
-													max-length="10" 
-													message-when-too-short="Enter a valid contact number"
-													pattern="[0-9]{10}"
-													message-when-pattern-mismatch="Enter a valid contact number format"
+                                                        label="Contact No" min-length="10" max-length="10"
+                                                        message-when-too-short="Enter a valid contact number"
+                                                        pattern="[0-9]{10}"
+                                                        message-when-pattern-mismatch="Enter a valid contact number format"
                                                         onchange={handleAccountChange}
                                                         value={bookingFormData.accountContactNo} required>
                                                     </lightning-input>
@@ -185,6 +192,7 @@
                                             </lightning-layout>
                                         </lightning-accordion-section>
 
+                                        <!-- Looping through co-applicants' contact details -->
                                         <template for:each={bookingFormData.listOfCoApplicant} for:item="contact">
                                             <div key={contact.id} class="contact-container">
                                                 <lightning-accordion-section name="B" label="Contact Information">
@@ -195,8 +203,8 @@
                                                                     padding="around-small" size="12"
                                                                     small-device-size="12" medium-device-size="6"
                                                                     large-device-size="6">
-
-                                                                    <label class="custom-label" required>  <span class="required">*</span>Is the contact already existing?</label>
+                                                                    <!-- Determines if the contact already exists -->
+                                                                    <label class="custom-label" required> <span class="required">*</span>Is the contact already existing?</label>
                                                                 </lightning-layout-item>
                                                                 <lightning-layout-item flexibility="auto"
                                                                     padding="around-small" size="12"
@@ -212,16 +220,6 @@
                                                                 </lightning-layout-item>
                                                             </div>
 
-
-                                                            <!-- <lightning-layout-item flexibility="auto" padding="around-small"
-                                                            size="12" small-device-size="12" medium-device-size="6"
-                                                            large-device-size="6">
-                                                            <lightning-input type="checkbox"
-                                                                label="Contact Already Exist"
-                                                                onchange={handleContactCheckboxChange}
-                                                                data-contact-id={contact.id}></lightning-input>
-                                                        </lightning-layout-item> -->
-
                                                             <!-- Second Layout Item with Account Record Picker -->
                                                             <template if:false={contact.isContactExist}>
                                                                 <lightning-layout-item flexibility="auto"
@@ -235,18 +233,10 @@
                                                                         onchange={handleContactRecordSelection}
                                                                         data-contact-id={contact.id}
                                                                         data-label="primaryApplicantRequiredFields"
-                                                            required
-                                                            >
+                                                                        required>
                                                                     </lightning-combobox>
-                                                                    <!-- <lightning-record-picker label="Select Contact"
-                                                                    object-api-name="Contact"
-                                                                    onchange={handleContactRecordSelection}
-                                                                    disabled={contact.isContactExist}
-                                                                    data-contact-id={contact.id} filter={recordFilter}>
-                                                                </lightning-record-picker> -->
                                                                 </lightning-layout-item>
                                                             </template>
-
                                                         </template>
                                                         <lightning-layout-item flexibility="auto" padding="around-small"
                                                             size="12" small-device-size="12" medium-device-size="6"
@@ -290,9 +280,7 @@
                                                             large-device-size="6">
                                                             <lightning-input label="Date of Birth"
                                                                 data-label="primaryApplicantRequiredFields" type="date"
-                                                                name="contactDOB" max={eighteenYearsBackDate}
-                                                                message-when-range-overflow="Date of Birth cannot be a future date or must be 18 years old or above"
-                                                                data-contact-id={contact.id}
+                                                                name="contactDOB" data-contact-id={contact.id}
                                                                 onchange={handleValueChange} value={contact.contactDOB}
                                                                 required></lightning-input>
                                                         </lightning-layout-item>
@@ -312,11 +300,10 @@
                                                             <lightning-input data-label="primaryApplicantRequiredFields"
                                                                 type="tel" variant="standard" name="contactPhone"
                                                                 label="Contact No" data-contact-id={contact.id}
-                                                                min-length="10" 
-													max-length="10" 
-													message-when-too-short="Enter a valid contact number"
-													pattern="[0-9]{10}"
-													message-when-pattern-mismatch="Enter a valid contact number format"
+                                                                min-length="10" max-length="10"
+                                                                message-when-too-short="Enter a valid contact number"
+                                                                pattern="[0-9]{10}"
+                                                                message-when-pattern-mismatch="Enter a valid contact number format"
                                                                 onchange={handleValueChange}
                                                                 value={contact.contactPhone} required>
                                                             </lightning-input>
@@ -324,6 +311,7 @@
                                                     </lightning-layout>
                                                 </lightning-accordion-section>
 
+                                                <!-- Looping through plots associated with contact -->
                                                 <template for:each={contact.plots} for:item="plot">
                                                     <div key={plot.id} class="plot-container">
                                                         <div class="padded-section">
@@ -334,30 +322,17 @@
                                                                         padding="around-small" size="12"
                                                                         small-device-size="12" medium-device-size="6"
                                                                         large-device-size="6">
-
-                                                                        <lightning-combobox name="plotName"
-                                                                            label="Select Plot"
-                                                                            placeholder="Select Plot From Here..."
-                                                                            options={plots} value={plot.plotName}
-                                                                            onchange={handleValueChange}
-                                                                            data-contact-id={contact.id}
-                                                                             data-plot-id={plot.id}
-                                                                             data-label="primaryApplicantRequiredFields"
-                                                            required
-                                                                             >
-                                                                        </lightning-combobox>
-
-
-                                                                        <!-- <lightning-record-picker label="Plot"
-                                                                            placeholder="Search Plot..."
-                                                                            object-api-name="Unit__c" name="plotName"
-                                                                            data-label="primaryApplicantRequiredFields"
+                                                                        <!-- Calling custom searchable combobox from child component-->
+                                                                        <c-custom-lookup-cmp label="Select Plot"
+                                                                            placeholder="Search and Select a Plot"
+                                                                            object-name="Unit__c" field-name="Name"
+                                                                            name="plotName" onselect={handleValueChange}
                                                                             data-contact-id={contact.id}
                                                                             data-plot-id={plot.id}
-                                                                            onchange={handleValueChange}
-                                                                            value={plot.plotName} required
-                                                                            filter={recordPlotFilter}>
-                                                                        </lightning-record-picker> -->
+                                                                            contact-id={contact.id} plot-id={plot.id}
+                                                                            onclearplots={handleClearPlot}
+                                                                            phase-id={bookingFormData.phaseId}>
+                                                                        </c-custom-lookup-cmp>
                                                                     </lightning-layout-item>
                                                                     <lightning-layout-item flexibility="auto"
                                                                         padding="around-small" size="12"
@@ -373,18 +348,6 @@
                                                                             value={plot.unitOppAmount}
                                                                             formatter="currency" step="0.01" required>
                                                                         </lightning-input>
-                                                                    </lightning-layout-item>
-                                                                    <lightning-layout-item flexibility="auto"
-                                                                        padding="around-small" size="12"
-                                                                        small-device-size="12" medium-device-size="6"
-                                                                        large-device-size="6">
-                                                                        <lightning-input label="Phase" type="text"
-                                                                            name="unitPlotPhase"
-                                                                            data-contact-id={contact.id}
-                                                                            data-plot-id={plot.id}
-                                                                            onchange={handleValueChange}
-                                                                            value={plot.unitPlotPhase} required
-                                                                            disabled></lightning-input>
                                                                     </lightning-layout-item>
                                                                     <lightning-layout-item flexibility="auto"
                                                                         padding="around-small" size="12"
@@ -426,7 +389,7 @@
                                                                         padding="around-small" size="12"
                                                                         small-device-size="12" medium-device-size="6"
                                                                         large-device-size="6">
-                                                                        <lightning-input label="Unit Code" type="text"
+                                                                        <lightning-input label="Plot Number" type="text"
                                                                             name="unitPlotUnitCode"
                                                                             data-contact-id={contact.id}
                                                                             data-plot-id={plot.id}
@@ -439,12 +402,14 @@
                                                         </div>
 
                                                         <div style="display:flex;justify-content: flex-end;">
+                                                            <!--Button for removing plot-->
                                                             <template if:true={plot.showRemoveButton}>
                                                                 <lightning-button variant="destructive"
                                                                     label="Remove Plot" data-contact-id={contact.id}
                                                                     data-plot-id={plot.id} onclick={removePlot}>
                                                                 </lightning-button>
                                                             </template>
+                                                            <!--Button for adding plot-->
                                                             <template if:true={plot.showAddMoreButton}>
                                                                 <lightning-button variant="neutral"
                                                                     label="Add More Plot" data-contact-id={contact.id}
@@ -454,11 +419,13 @@
                                                         </div>
                                                     </div>
                                                 </template>
+                                                <!--Button for removing contact-->
                                                 <template if:true={contact.showRemoveButton}>
                                                     <lightning-button variant="destructive" label="Remove Contact"
                                                         data-contact-id={contact.id} onclick={removeContact}>
                                                     </lightning-button>
                                                 </template>
+                                                <!--Button for adding contact-->
                                                 <template if:true={contact.showAddMoreButton}>
                                                     <lightning-button variant="neutral" label="Add More Contact"
                                                         data-contact-id={contact.id} onclick={addContact}>
@@ -472,6 +439,7 @@
                         </div>
                     </div>
                     <footer class="slds-modal__footer">
+                        <!--Modal buttons for cancel and save-->
                         <lightning-button label="Cancel" onclick={closeModal}></lightning-button>
                         <lightning-button label="Save" onclick={handleSave}></lightning-button>
                     </footer>

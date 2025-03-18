@@ -1,102 +1,129 @@
 import { LightningElement, api, wire, track } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { NavigationMixin } from 'lightning/navigation';
-//import {CurrentPageReference} from 'lightning/navigation';
-import getRelatedFilesByRecordId from '@salesforce/apex/downloadDocumentCmpController.getRelatedFilesByRecordId';
+import { CurrentPageReference } from 'lightning/navigation';
 import checkOpportunityContact from '@salesforce/apex/downloadDocumentCmpController.checkOpportunityContact';
-import copyDocumentsToContact from '@salesforce/apex/downloadDocumentCmpController.copyDocumentsToContact';
+import getRelatedFilesByContactId from '@salesforce/apex/downloadDocumentCmpController.getRelatedFilesByContactId';
 
 export default class DownloadDocumentCmp extends NavigationMixin(LightningElement) {
-    @api recordId;// Opportunity Id
     @track isLoading = true;
-    contacts = [];
+    @track contacts = [];
     @track selectedContactId;
-    contactId;
-    filesList =[]
+    @track filesList = [];
     @track disableButton = true;
+    @track showNoDataMessage = false;
+    @track recordId; // Opportunity Id
 
-    @wire(getRelatedFilesByRecordId, {recordId: '$recordId'})
-    wiredResult({data, error}){ 
-        if(data){ 
-            console.log(data)
-            this.filesList = Object.keys(data).map(item=>({"label":data[item],
-             "value": item,
-             "url":`/sfc/servlet.shepherd/document/download/${item}`
-            }))
-            this.checkContactTagged();
-        }
-        if(error){ 
-            console.log(error)
+    /**
+     * Fetches the current page reference to extract the recordId.
+     */
+    @wire(CurrentPageReference)
+    getStateParameters(currentPageReference) {
+        if (currentPageReference && currentPageReference.state.recordId) {
+            this.recordId = currentPageReference.state.recordId;
+            this.checkContactTagged(); // Fetch contacts once the recordId is available
         }
     }
+
+    /**
+     * Fetches contacts associated with the Opportunity.
+     */
     async checkContactTagged() {
         try {
             this.isLoading = true;
-            checkOpportunityContact({ opportunityId: this.recordId })
-                .then((data) => {
-                    if (data && data.length > 0) {
-                        this.contacts = data.map((contact) => ({
-                            label: contact.Name,
-                            value: contact.Id,
-                            email: contact.Email,
-                            phone: contact.Phone,
-                        }));
-                    } else {
-                        this.contacts = [];
-                       this.showToast('Error', 'No contacts found for this Opportunity.', 'error');
-                    }
-                    this.isLoading = false;
-                })
-                .catch((error) => {
-                    this.isLoading = false;
-                    this.showToast('Error', error?.body?.message, 'error');
-                });
+            const contacts = await checkOpportunityContact({ opportunityId: this.recordId });
+            if (contacts && contacts.length > 0) {
+                this.contacts = contacts.map(contact => ({
+                    label: contact.Name,
+                    value: contact.Id,
+                    email: contact.Email,
+                    phone: contact.Phone,
+                }));
+            } else {
+                this.contacts = [];
+                this.showToast('Error', 'No contacts found for this Opportunity.', 'error');
+            }
         } catch (error) {
-            this.showToast('Error', 'Contact not found on Opportunity.', 'error');
+            this.showToast('Error', error.body?.message || 'An error occurred while fetching contacts.', 'error');
         } finally {
             this.isLoading = false;
         }
     }
+
+    /**
+     * Handles contact selection and fetches documents for the selected contact.
+     * @param {Event} event - The event triggered when a contact is selected.
+     */
     handleContactSelection(event) {
         this.selectedContactId = event.detail.value;
         this.disableButton = false;
-        const selectedContact = this.contacts.find(
-            (contact) => contact.value === this.selectedContactId
-        );
-        if (selectedContact) {;
-            this.contactId = selectedContact.value;
-        }
-        console.log('this.selectedContactId-----------',this.selectedContactId);
+        this.fetchContactDocuments();
     }
-    previewFile(event){
-        console.log(event.target.dataset.id)
-        this[NavigationMixin.Navigate]({ 
-            type:'standard__namedPage',
-            attributes:{ 
-                pageName:'filePreview'
-            },
-            state:{ 
-                selectedRecordId: event.target.dataset.id
+
+    /**
+     * Fetches documents for the selected contact.
+     */
+    async fetchContactDocuments() {
+        try {
+            this.isLoading = true;
+            const files = await getRelatedFilesByContactId({ contactId: this.selectedContactId });
+            if (files && files.length > 0) {
+                this.filesList = files.map(file => ({
+                    label: file.Title,
+                    value: file.ContentDocumentId,
+                    documentType: file.DocumentType,
+                    url: `/sfc/servlet.shepherd/document/download/${file.ContentDocumentId}`
+                }));
+                this.showNoDataMessage = false;
+            } else {
+                this.filesList = [];
+                this.showNoDataMessage = true;
             }
-        })
+        } catch (error) {
+            console.error('Error fetching contact documents:', error);
+            this.showToast('Error', error.body?.message || 'An error occurred while fetching contact documents.', 'error');
+        } finally {
+            this.isLoading = false;
+        }
     }
-    contactAddMethod(event){
-        var documentId = event.target.dataset.id;
-        copyDocumentsToContact({ contactId: this.selectedContactId, documentId: documentId })
-                .then((data) => {
-                    if (data = 'true'){
-                        this.showToast('Success', 'uploaded to contact', 'success');
-                    }else if(data = 'false') {
-                        this.showToast('Error', 'No contacts found', 'error');
-                    }else{
-                        this.showToast('Error', data, 'error');
-                    }
-                })
-                .catch((error) => {
-                    console.error('Error uploading to contacts:', JSON.stringify(error));
-                    this.showToast('Error', error?.body?.message, 'error');
-                });
+
+    /**
+     * Handles file preview.
+     * @param {Event} event - The event triggered when the preview button is clicked.
+     */
+    previewFile(event) {
+        const documentId = event.target.dataset.id;
+        this[NavigationMixin.Navigate]({
+            type: 'standard__namedPage',
+            attributes: {
+                pageName: 'filePreview'
+            },
+            state: {
+                selectedRecordId: documentId
+            }
+        });
     }
+
+    /**
+     * Handles file download.
+     * @param {Event} event - The event triggered when the download button is clicked.
+     */
+    downloadFile(event) {
+        const documentId = event.target.dataset.id;
+        const file = this.filesList.find(file => file.value === documentId);
+        if (file) {
+            window.open(file.url, '_blank');
+        } else {
+            this.showToast('Error', 'File not found.', 'error');
+        }
+    }
+
+    /**
+     * Displays a toast message.
+     * @param {string} title - The title of the toast.
+     * @param {string} message - The message of the toast.
+     * @param {string} variant - The variant of the toast (e.g., 'success', 'error').
+     */
     showToast(title, message, variant) {
         const event = new ShowToastEvent({
             title,

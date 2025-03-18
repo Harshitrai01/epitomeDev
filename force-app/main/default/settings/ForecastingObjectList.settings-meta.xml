@@ -23,7 +23,11 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000B8kk5</field>
-            <label>Documents URL</label>
+            <label>Loan Document Link</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000COBHx</field>
+            <label>is Draft Aos Uploaded?</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000ApTjl</field>
@@ -56,6 +60,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPZ7</field>
             <label>Unit Cancellation CRM Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BodJB</field>
+            <label>Virtual Account Number</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNvV</field>
@@ -91,7 +99,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AwRtJ</field>
-            <label>Base Price per Sq. Ft</label>
+            <label>Base Price per Sq. yard</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -100,6 +108,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZ76j</field>
             <label>Primary Contact Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs4gD</field>
+            <label>Opportunity Account Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NAME</field>
@@ -112,6 +124,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOYD</field>
             <label>Occupation</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bob4T</field>
+            <label>Virtual Account Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcP1F</field>
@@ -174,6 +190,10 @@
             <label>Funding Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000CPd46</field>
+            <label>is NOC Uploaded</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>DESCRIPTION</field>
             <label>Description</label>
         </forecastingObjectListLabelMappings>
@@ -190,8 +210,16 @@
             <label>Cancellation Charges</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvEJF</field>
+            <label>Easy Collect Payment Link</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcO8P</field>
             <label>Final Unit Cancellation Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BvnYj</field>
+            <label>Custom Email Subject</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcP2r</field>
@@ -262,8 +290,16 @@
             <label>Allotment Letter Submitted</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Bo43h</field>
+            <label>send Notification(Bulk)</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AqGPV</field>
             <label>Outstanding Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CVOyP</field>
+            <label>Collected Amount From Payment</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AqGHR</field>
@@ -322,6 +358,14 @@
             <label>Remark</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BoRd2</field>
+            <label>Virtual Account IFSC</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs7B3</field>
+            <label>Opportunity Owner Email</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000Acafp</field>
             <label>Paid %</label>
         </forecastingObjectListLabelMappings>
@@ -354,12 +398,20 @@
             <label>Inquiry Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvTGf</field>
+            <label>Old Plot Details</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AwMTp</field>
             <label>BR Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>SYNCEDQUOTE.NAME</field>
             <label>Synced Quote</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BnyXm</field>
+            <label>Virtual Account UPI QR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000B1o33</field>
@@ -404,6 +456,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AzD0i</field>
             <label>Loan Sanctioned Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bofb7</field>
+            <label>Opportunity Owner Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NfK000003tpHy</field>
@@ -454,6 +510,10 @@
             <label>10% Collected</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BogLt</field>
+            <label>Contact Email</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
         </forecastingObjectListLabelMappings>
@@ -498,6 +558,10 @@
             <label>Ownership Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvUCj</field>
+            <label>New Price</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
         </forecastingObjectListLabelMappings>
@@ -538,8 +602,20 @@
             <label>Sub Stage</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000CHVRt</field>
+            <label>Digital Signature Approval</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs8nA</field>
+            <label>Owner Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>ACCOUNT.NAME</field>
             <label>Account Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BvnVV</field>
+            <label>Custom Email Body</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>FORECAST_CATEGORY</field>
@@ -556,6 +632,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CHVRv</field>
+            <label>Time Of Registration</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZSSv</field>
@@ -624,9 +704,13 @@
             <field>00NO400000AcOd3</field>
             <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
+            <field>00NO400000CVOyP</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000BogLt</field>
             <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
+            <field>00NO400000BvnVV</field>
+            <field>00NO400000BvnYj</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
@@ -635,8 +719,9 @@
             <field>00NO400000AcNvV</field>
             <field>00NO400000AcO1x</field>
             <field>00NO400000AcO3Z</field>
+            <field>00NO400000CHVRt</field>
             <field>00NfK000003tpHw</field>
-            <field>00NO400000B8kk5</field>
+            <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
@@ -644,19 +729,28 @@
             <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000COBHx</field>
+            <field>00NO400000CPd46</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
+            <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000Bex33</field>
+            <field>00NO400000BvUCj</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000BvTGf</field>
+            <field>00NO400000Bs4gD</field>
+            <field>00NO400000Bs7B3</field>
+            <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -683,9 +777,11 @@
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
+            <field>00NO400000Bo43h</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
             <field>00NO400000BIZ4D</field>
+            <field>00NO400000CHVRv</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -697,6 +793,10 @@
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000B1o1F</field>
+            <field>00NO400000BoRd2</field>
+            <field>00NO400000Bob4T</field>
+            <field>00NO400000BodJB</field>
+            <field>00NO400000BnyXm</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -730,7 +830,11 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000B8kk5</field>
-            <label>Documents URL</label>
+            <label>Loan Document Link</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000COBHx</field>
+            <label>is Draft Aos Uploaded?</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000ApTjl</field>
@@ -763,6 +867,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPZ7</field>
             <label>Unit Cancellation CRM Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BodJB</field>
+            <label>Virtual Account Number</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNvV</field>
@@ -798,7 +906,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AwRtJ</field>
-            <label>Base Price per Sq. Ft</label>
+            <label>Base Price per Sq. yard</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -807,6 +915,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZ76j</field>
             <label>Primary Contact Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs4gD</field>
+            <label>Opportunity Account Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NAME</field>
@@ -819,6 +931,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOYD</field>
             <label>Occupation</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bob4T</field>
+            <label>Virtual Account Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcP1F</field>
@@ -881,6 +997,10 @@
             <label>Funding Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000CPd46</field>
+            <label>is NOC Uploaded</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>DESCRIPTION</field>
             <label>Description</label>
         </forecastingObjectListLabelMappings>
@@ -897,8 +1017,16 @@
             <label>Cancellation Charges</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvEJF</field>
+            <label>Easy Collect Payment Link</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcO8P</field>
             <label>Final Unit Cancellation Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BvnYj</field>
+            <label>Custom Email Subject</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcP2r</field>
@@ -969,8 +1097,16 @@
             <label>Allotment Letter Submitted</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Bo43h</field>
+            <label>send Notification(Bulk)</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AqGPV</field>
             <label>Outstanding Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CVOyP</field>
+            <label>Collected Amount From Payment</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AqGHR</field>
@@ -1029,6 +1165,14 @@
             <label>Remark</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BoRd2</field>
+            <label>Virtual Account IFSC</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs7B3</field>
+            <label>Opportunity Owner Email</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000Acafp</field>
             <label>Paid %</label>
         </forecastingObjectListLabelMappings>
@@ -1061,12 +1205,20 @@
             <label>Inquiry Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvTGf</field>
+            <label>Old Plot Details</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AwMTp</field>
             <label>BR Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>SYNCEDQUOTE.NAME</field>
             <label>Synced Quote</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BnyXm</field>
+            <label>Virtual Account UPI QR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000B1o33</field>
@@ -1111,6 +1263,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AzD0i</field>
             <label>Loan Sanctioned Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bofb7</field>
+            <label>Opportunity Owner Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NfK000003tpHy</field>
@@ -1161,6 +1317,10 @@
             <label>10% Collected</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BogLt</field>
+            <label>Contact Email</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
         </forecastingObjectListLabelMappings>
@@ -1205,6 +1365,10 @@
             <label>Ownership Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvUCj</field>
+            <label>New Price</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
         </forecastingObjectListLabelMappings>
@@ -1245,8 +1409,20 @@
             <label>Sub Stage</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000CHVRt</field>
+            <label>Digital Signature Approval</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs8nA</field>
+            <label>Owner Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>ACCOUNT.NAME</field>
             <label>Account Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BvnVV</field>
+            <label>Custom Email Body</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>FORECAST_CATEGORY</field>
@@ -1263,6 +1439,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CHVRv</field>
+            <label>Time Of Registration</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZSSv</field>
@@ -1331,9 +1511,13 @@
             <field>00NO400000AcOd3</field>
             <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
+            <field>00NO400000CVOyP</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000BogLt</field>
             <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
+            <field>00NO400000BvnVV</field>
+            <field>00NO400000BvnYj</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
@@ -1342,8 +1526,9 @@
             <field>00NO400000AcNvV</field>
             <field>00NO400000AcO1x</field>
             <field>00NO400000AcO3Z</field>
+            <field>00NO400000CHVRt</field>
             <field>00NfK000003tpHw</field>
-            <field>00NO400000B8kk5</field>
+            <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
@@ -1351,19 +1536,28 @@
             <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000COBHx</field>
+            <field>00NO400000CPd46</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
+            <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000Bex33</field>
+            <field>00NO400000BvUCj</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000BvTGf</field>
+            <field>00NO400000Bs4gD</field>
+            <field>00NO400000Bs7B3</field>
+            <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -1390,9 +1584,11 @@
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
+            <field>00NO400000Bo43h</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
             <field>00NO400000BIZ4D</field>
+            <field>00NO400000CHVRv</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -1404,6 +1600,10 @@
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000B1o1F</field>
+            <field>00NO400000BoRd2</field>
+            <field>00NO400000Bob4T</field>
+            <field>00NO400000BodJB</field>
+            <field>00NO400000BnyXm</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -1437,7 +1637,11 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000B8kk5</field>
-            <label>Documents URL</label>
+            <label>Loan Document Link</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000COBHx</field>
+            <label>is Draft Aos Uploaded?</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000ApTjl</field>
@@ -1470,6 +1674,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPZ7</field>
             <label>Unit Cancellation CRM Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BodJB</field>
+            <label>Virtual Account Number</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNvV</field>
@@ -1505,7 +1713,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AwRtJ</field>
-            <label>Base Price per Sq. Ft</label>
+            <label>Base Price per Sq. yard</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -1514,6 +1722,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZ76j</field>
             <label>Primary Contact Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs4gD</field>
+            <label>Opportunity Account Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NAME</field>
@@ -1526,6 +1738,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOYD</field>
             <label>Occupation</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bob4T</field>
+            <label>Virtual Account Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcP1F</field>
@@ -1588,6 +1804,10 @@
             <label>Funding Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000CPd46</field>
+            <label>is NOC Uploaded</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>DESCRIPTION</field>
             <label>Description</label>
         </forecastingObjectListLabelMappings>
@@ -1604,8 +1824,16 @@
             <label>Cancellation Charges</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvEJF</field>
+            <label>Easy Collect Payment Link</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcO8P</field>
             <label>Final Unit Cancellation Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BvnYj</field>
+            <label>Custom Email Subject</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcP2r</field>
@@ -1676,8 +1904,16 @@
             <label>Allotment Letter Submitted</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Bo43h</field>
+            <label>send Notification(Bulk)</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AqGPV</field>
             <label>Outstanding Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CVOyP</field>
+            <label>Collected Amount From Payment</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AqGHR</field>
@@ -1736,6 +1972,14 @@
             <label>Remark</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BoRd2</field>
+            <label>Virtual Account IFSC</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs7B3</field>
+            <label>Opportunity Owner Email</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000Acafp</field>
             <label>Paid %</label>
         </forecastingObjectListLabelMappings>
@@ -1768,12 +2012,20 @@
             <label>Inquiry Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvTGf</field>
+            <label>Old Plot Details</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AwMTp</field>
             <label>BR Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>SYNCEDQUOTE.NAME</field>
             <label>Synced Quote</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BnyXm</field>
+            <label>Virtual Account UPI QR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000B1o33</field>
@@ -1818,6 +2070,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AzD0i</field>
             <label>Loan Sanctioned Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bofb7</field>
+            <label>Opportunity Owner Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NfK000003tpHy</field>
@@ -1868,6 +2124,10 @@
             <label>10% Collected</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BogLt</field>
+            <label>Contact Email</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
         </forecastingObjectListLabelMappings>
@@ -1912,6 +2172,10 @@
             <label>Ownership Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvUCj</field>
+            <label>New Price</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
         </forecastingObjectListLabelMappings>
@@ -1952,8 +2216,20 @@
             <label>Sub Stage</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000CHVRt</field>
+            <label>Digital Signature Approval</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs8nA</field>
+            <label>Owner Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>ACCOUNT.NAME</field>
             <label>Account Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BvnVV</field>
+            <label>Custom Email Body</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>FORECAST_CATEGORY</field>
@@ -1970,6 +2246,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CHVRv</field>
+            <label>Time Of Registration</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZSSv</field>
@@ -2038,9 +2318,13 @@
             <field>00NO400000AcOd3</field>
             <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
+            <field>00NO400000CVOyP</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000BogLt</field>
             <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
+            <field>00NO400000BvnVV</field>
+            <field>00NO400000BvnYj</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
@@ -2049,8 +2333,9 @@
             <field>00NO400000AcNvV</field>
             <field>00NO400000AcO1x</field>
             <field>00NO400000AcO3Z</field>
+            <field>00NO400000CHVRt</field>
             <field>00NfK000003tpHw</field>
-            <field>00NO400000B8kk5</field>
+            <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
@@ -2058,19 +2343,28 @@
             <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000COBHx</field>
+            <field>00NO400000CPd46</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
+            <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000Bex33</field>
+            <field>00NO400000BvUCj</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000BvTGf</field>
+            <field>00NO400000Bs4gD</field>
+            <field>00NO400000Bs7B3</field>
+            <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -2097,9 +2391,11 @@
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
+            <field>00NO400000Bo43h</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
             <field>00NO400000BIZ4D</field>
+            <field>00NO400000CHVRv</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -2111,6 +2407,10 @@
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000B1o1F</field>
+            <field>00NO400000BoRd2</field>
+            <field>00NO400000Bob4T</field>
+            <field>00NO400000BodJB</field>
+            <field>00NO400000BnyXm</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -2144,7 +2444,11 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000B8kk5</field>
-            <label>Documents URL</label>
+            <label>Loan Document Link</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000COBHx</field>
+            <label>is Draft Aos Uploaded?</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000ApTjl</field>
@@ -2177,6 +2481,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPZ7</field>
             <label>Unit Cancellation CRM Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BodJB</field>
+            <label>Virtual Account Number</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNvV</field>
@@ -2212,7 +2520,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AwRtJ</field>
-            <label>Base Price per Sq. Ft</label>
+            <label>Base Price per Sq. yard</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -2221,6 +2529,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZ76j</field>
             <label>Primary Contact Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs4gD</field>
+            <label>Opportunity Account Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NAME</field>
@@ -2233,6 +2545,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOYD</field>
             <label>Occupation</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bob4T</field>
+            <label>Virtual Account Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcP1F</field>
@@ -2295,6 +2611,10 @@
             <label>Funding Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000CPd46</field>
+            <label>is NOC Uploaded</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>DESCRIPTION</field>
             <label>Description</label>
         </forecastingObjectListLabelMappings>
@@ -2311,8 +2631,16 @@
             <label>Cancellation Charges</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvEJF</field>
+            <label>Easy Collect Payment Link</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcO8P</field>
             <label>Final Unit Cancellation Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BvnYj</field>
+            <label>Custom Email Subject</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcP2r</field>
@@ -2383,8 +2711,16 @@
             <label>Allotment Letter Submitted</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Bo43h</field>
+            <label>send Notification(Bulk)</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AqGPV</field>
             <label>Outstanding Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CVOyP</field>
+            <label>Collected Amount From Payment</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AqGHR</field>
@@ -2443,6 +2779,14 @@
             <label>Remark</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BoRd2</field>
+            <label>Virtual Account IFSC</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs7B3</field>
+            <label>Opportunity Owner Email</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000Acafp</field>
             <label>Paid %</label>
         </forecastingObjectListLabelMappings>
@@ -2475,6 +2819,10 @@
             <label>Inquiry Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvTGf</field>
+            <label>Old Plot Details</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>SPLITAMOUNT</field>
             <label>Forecasted Amount</label>
         </forecastingObjectListLabelMappings>
@@ -2485,6 +2833,10 @@
         <forecastingObjectListLabelMappings>
             <field>SYNCEDQUOTE.NAME</field>
             <label>Synced Quote</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BnyXm</field>
+            <label>Virtual Account UPI QR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000B1o33</field>
@@ -2529,6 +2881,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AzD0i</field>
             <label>Loan Sanctioned Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bofb7</field>
+            <label>Opportunity Owner Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NfK000003tpHy</field>
@@ -2579,6 +2935,10 @@
             <label>10% Collected</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BogLt</field>
+            <label>Contact Email</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
         </forecastingObjectListLabelMappings>
@@ -2623,6 +2983,10 @@
             <label>Ownership Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvUCj</field>
+            <label>New Price</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
         </forecastingObjectListLabelMappings>
@@ -2663,8 +3027,20 @@
             <label>Sub Stage</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000CHVRt</field>
+            <label>Digital Signature Approval</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs8nA</field>
+            <label>Owner Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>ACCOUNT.NAME</field>
             <label>Account Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BvnVV</field>
+            <label>Custom Email Body</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>FORECAST_CATEGORY</field>
@@ -2681,6 +3057,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CHVRv</field>
+            <label>Time Of Registration</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZSSv</field>
@@ -2750,9 +3130,13 @@
             <field>00NO400000AcOd3</field>
             <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
+            <field>00NO400000CVOyP</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000BogLt</field>
             <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
+            <field>00NO400000BvnVV</field>
+            <field>00NO400000BvnYj</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
@@ -2761,8 +3145,9 @@
             <field>00NO400000AcNvV</field>
             <field>00NO400000AcO1x</field>
             <field>00NO400000AcO3Z</field>
+            <field>00NO400000CHVRt</field>
             <field>00NfK000003tpHw</field>
-            <field>00NO400000B8kk5</field>
+            <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
@@ -2770,19 +3155,28 @@
             <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000COBHx</field>
+            <field>00NO400000CPd46</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
+            <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000Bex33</field>
+            <field>00NO400000BvUCj</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000BvTGf</field>
+            <field>00NO400000Bs4gD</field>
+            <field>00NO400000Bs7B3</field>
+            <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -2809,9 +3203,11 @@
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
+            <field>00NO400000Bo43h</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
             <field>00NO400000BIZ4D</field>
+            <field>00NO400000CHVRv</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -2823,6 +3219,10 @@
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000B1o1F</field>
+            <field>00NO400000BoRd2</field>
+            <field>00NO400000Bob4T</field>
+            <field>00NO400000BodJB</field>
+            <field>00NO400000BnyXm</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -2856,7 +3256,11 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000B8kk5</field>
-            <label>Documents URL</label>
+            <label>Loan Document Link</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000COBHx</field>
+            <label>is Draft Aos Uploaded?</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000ApTjl</field>
@@ -2889,6 +3293,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPZ7</field>
             <label>Unit Cancellation CRM Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BodJB</field>
+            <label>Virtual Account Number</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNvV</field>
@@ -2924,7 +3332,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AwRtJ</field>
-            <label>Base Price per Sq. Ft</label>
+            <label>Base Price per Sq. yard</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -2933,6 +3341,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZ76j</field>
             <label>Primary Contact Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs4gD</field>
+            <label>Opportunity Account Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NAME</field>
@@ -2945,6 +3357,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOYD</field>
             <label>Occupation</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bob4T</field>
+            <label>Virtual Account Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcP1F</field>
@@ -3007,6 +3423,10 @@
             <label>Funding Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000CPd46</field>
+            <label>is NOC Uploaded</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>DESCRIPTION</field>
             <label>Description</label>
         </forecastingObjectListLabelMappings>
@@ -3023,8 +3443,16 @@
             <label>Cancellation Charges</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvEJF</field>
+            <label>Easy Collect Payment Link</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcO8P</field>
             <label>Final Unit Cancellation Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BvnYj</field>
+            <label>Custom Email Subject</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcP2r</field>
@@ -3095,8 +3523,16 @@
             <label>Allotment Letter Submitted</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Bo43h</field>
+            <label>send Notification(Bulk)</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AqGPV</field>
             <label>Outstanding Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CVOyP</field>
+            <label>Collected Amount From Payment</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AqGHR</field>
@@ -3155,6 +3591,14 @@
             <label>Remark</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BoRd2</field>
+            <label>Virtual Account IFSC</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs7B3</field>
+            <label>Opportunity Owner Email</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000Acafp</field>
             <label>Paid %</label>
         </forecastingObjectListLabelMappings>
@@ -3187,12 +3631,20 @@
             <label>Inquiry Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvTGf</field>
+            <label>Old Plot Details</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AwMTp</field>
             <label>BR Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>SYNCEDQUOTE.NAME</field>
             <label>Synced Quote</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BnyXm</field>
+            <label>Virtual Account UPI QR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000B1o33</field>
@@ -3237,6 +3689,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AzD0i</field>
             <label>Loan Sanctioned Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bofb7</field>
+            <label>Opportunity Owner Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NfK000003tpHy</field>
@@ -3287,6 +3743,10 @@
             <label>10% Collected</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BogLt</field>
+            <label>Contact Email</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
         </forecastingObjectListLabelMappings>
@@ -3331,6 +3791,10 @@
             <label>Ownership Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvUCj</field>
+            <label>New Price</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
         </forecastingObjectListLabelMappings>
@@ -3371,8 +3835,20 @@
             <label>Sub Stage</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000CHVRt</field>
+            <label>Digital Signature Approval</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs8nA</field>
+            <label>Owner Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>ACCOUNT.NAME</field>
             <label>Account Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BvnVV</field>
+            <label>Custom Email Body</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>FORECAST_CATEGORY</field>
@@ -3389,6 +3865,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CHVRv</field>
+            <label>Time Of Registration</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZSSv</field>
@@ -3457,9 +3937,13 @@
             <field>00NO400000AcOd3</field>
             <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
+            <field>00NO400000CVOyP</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000BogLt</field>
             <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
+            <field>00NO400000BvnVV</field>
+            <field>00NO400000BvnYj</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
@@ -3468,8 +3952,9 @@
             <field>00NO400000AcNvV</field>
             <field>00NO400000AcO1x</field>
             <field>00NO400000AcO3Z</field>
+            <field>00NO400000CHVRt</field>
             <field>00NfK000003tpHw</field>
-            <field>00NO400000B8kk5</field>
+            <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
@@ -3477,19 +3962,28 @@
             <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000COBHx</field>
+            <field>00NO400000CPd46</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
+            <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000Bex33</field>
+            <field>00NO400000BvUCj</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000BvTGf</field>
+            <field>00NO400000Bs4gD</field>
+            <field>00NO400000Bs7B3</field>
+            <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -3516,9 +4010,11 @@
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
+            <field>00NO400000Bo43h</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
             <field>00NO400000BIZ4D</field>
+            <field>00NO400000CHVRv</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -3530,6 +4026,10 @@
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000B1o1F</field>
+            <field>00NO400000BoRd2</field>
+            <field>00NO400000Bob4T</field>
+            <field>00NO400000BodJB</field>
+            <field>00NO400000BnyXm</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -3563,7 +4063,11 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000B8kk5</field>
-            <label>Documents URL</label>
+            <label>Loan Document Link</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000COBHx</field>
+            <label>is Draft Aos Uploaded?</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000ApTjl</field>
@@ -3596,6 +4100,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPZ7</field>
             <label>Unit Cancellation CRM Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BodJB</field>
+            <label>Virtual Account Number</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNvV</field>
@@ -3631,7 +4139,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AwRtJ</field>
-            <label>Base Price per Sq. Ft</label>
+            <label>Base Price per Sq. yard</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -3640,6 +4148,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZ76j</field>
             <label>Primary Contact Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs4gD</field>
+            <label>Opportunity Account Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NAME</field>
@@ -3652,6 +4164,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOYD</field>
             <label>Occupation</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bob4T</field>
+            <label>Virtual Account Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcP1F</field>
@@ -3714,6 +4230,10 @@
             <label>Funding Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000CPd46</field>
+            <label>is NOC Uploaded</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>DESCRIPTION</field>
             <label>Description</label>
         </forecastingObjectListLabelMappings>
@@ -3730,8 +4250,16 @@
             <label>Cancellation Charges</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvEJF</field>
+            <label>Easy Collect Payment Link</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcO8P</field>
             <label>Final Unit Cancellation Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BvnYj</field>
+            <label>Custom Email Subject</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcP2r</field>
@@ -3802,8 +4330,16 @@
             <label>Allotment Letter Submitted</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Bo43h</field>
+            <label>send Notification(Bulk)</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AqGPV</field>
             <label>Outstanding Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CVOyP</field>
+            <label>Collected Amount From Payment</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AqGHR</field>
@@ -3862,6 +4398,14 @@
             <label>Remark</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BoRd2</field>
+            <label>Virtual Account IFSC</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs7B3</field>
+            <label>Opportunity Owner Email</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000Acafp</field>
             <label>Paid %</label>
         </forecastingObjectListLabelMappings>
@@ -3894,6 +4438,10 @@
             <label>Inquiry Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvTGf</field>
+            <label>Old Plot Details</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>SPLITAMOUNT</field>
             <label>Forecasted Amount</label>
         </forecastingObjectListLabelMappings>
@@ -3904,6 +4452,10 @@
         <forecastingObjectListLabelMappings>
             <field>SYNCEDQUOTE.NAME</field>
             <label>Synced Quote</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BnyXm</field>
+            <label>Virtual Account UPI QR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000B1o33</field>
@@ -3948,6 +4500,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AzD0i</field>
             <label>Loan Sanctioned Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bofb7</field>
+            <label>Opportunity Owner Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NfK000003tpHy</field>
@@ -3998,6 +4554,10 @@
             <label>10% Collected</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BogLt</field>
+            <label>Contact Email</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
         </forecastingObjectListLabelMappings>
@@ -4042,6 +4602,10 @@
             <label>Ownership Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvUCj</field>
+            <label>New Price</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
         </forecastingObjectListLabelMappings>
@@ -4082,8 +4646,20 @@
             <label>Sub Stage</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000CHVRt</field>
+            <label>Digital Signature Approval</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs8nA</field>
+            <label>Owner Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>ACCOUNT.NAME</field>
             <label>Account Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BvnVV</field>
+            <label>Custom Email Body</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>FORECAST_CATEGORY</field>
@@ -4100,6 +4676,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CHVRv</field>
+            <label>Time Of Registration</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZSSv</field>
@@ -4169,9 +4749,13 @@
             <field>00NO400000AcOd3</field>
             <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
+            <field>00NO400000CVOyP</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000BogLt</field>
             <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
+            <field>00NO400000BvnVV</field>
+            <field>00NO400000BvnYj</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
@@ -4180,8 +4764,9 @@
             <field>00NO400000AcNvV</field>
             <field>00NO400000AcO1x</field>
             <field>00NO400000AcO3Z</field>
+            <field>00NO400000CHVRt</field>
             <field>00NfK000003tpHw</field>
-            <field>00NO400000B8kk5</field>
+            <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
@@ -4189,19 +4774,28 @@
             <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000COBHx</field>
+            <field>00NO400000CPd46</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
+            <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000Bex33</field>
+            <field>00NO400000BvUCj</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000BvTGf</field>
+            <field>00NO400000Bs4gD</field>
+            <field>00NO400000Bs7B3</field>
+            <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -4228,9 +4822,11 @@
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
+            <field>00NO400000Bo43h</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
             <field>00NO400000BIZ4D</field>
+            <field>00NO400000CHVRv</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -4242,6 +4838,10 @@
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000B1o1F</field>
+            <field>00NO400000BoRd2</field>
+            <field>00NO400000Bob4T</field>
+            <field>00NO400000BodJB</field>
+            <field>00NO400000BnyXm</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -4275,7 +4875,11 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000B8kk5</field>
-            <label>Documents URL</label>
+            <label>Loan Document Link</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000COBHx</field>
+            <label>is Draft Aos Uploaded?</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000ApTjl</field>
@@ -4308,6 +4912,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPZ7</field>
             <label>Unit Cancellation CRM Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BodJB</field>
+            <label>Virtual Account Number</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNvV</field>
@@ -4343,7 +4951,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AwRtJ</field>
-            <label>Base Price per Sq. Ft</label>
+            <label>Base Price per Sq. yard</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -4352,6 +4960,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZ76j</field>
             <label>Primary Contact Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs4gD</field>
+            <label>Opportunity Account Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NAME</field>
@@ -4364,6 +4976,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOYD</field>
             <label>Occupation</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bob4T</field>
+            <label>Virtual Account Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcP1F</field>
@@ -4426,6 +5042,10 @@
             <label>Funding Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000CPd46</field>
+            <label>is NOC Uploaded</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>DESCRIPTION</field>
             <label>Description</label>
         </forecastingObjectListLabelMappings>
@@ -4442,8 +5062,16 @@
             <label>Cancellation Charges</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvEJF</field>
+            <label>Easy Collect Payment Link</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcO8P</field>
             <label>Final Unit Cancellation Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BvnYj</field>
+            <label>Custom Email Subject</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcP2r</field>
@@ -4514,8 +5142,16 @@
             <label>Allotment Letter Submitted</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Bo43h</field>
+            <label>send Notification(Bulk)</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AqGPV</field>
             <label>Outstanding Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CVOyP</field>
+            <label>Collected Amount From Payment</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AqGHR</field>
@@ -4574,6 +5210,14 @@
             <label>Remark</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BoRd2</field>
+            <label>Virtual Account IFSC</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs7B3</field>
+            <label>Opportunity Owner Email</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000Acafp</field>
             <label>Paid %</label>
         </forecastingObjectListLabelMappings>
@@ -4606,12 +5250,20 @@
             <label>Inquiry Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvTGf</field>
+            <label>Old Plot Details</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AwMTp</field>
             <label>BR Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>SYNCEDQUOTE.NAME</field>
             <label>Synced Quote</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BnyXm</field>
+            <label>Virtual Account UPI QR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000B1o33</field>
@@ -4656,6 +5308,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AzD0i</field>
             <label>Loan Sanctioned Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bofb7</field>
+            <label>Opportunity Owner Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NfK000003tpHy</field>
@@ -4706,6 +5362,10 @@
             <label>10% Collected</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BogLt</field>
+            <label>Contact Email</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
         </forecastingObjectListLabelMappings>
@@ -4750,6 +5410,10 @@
             <label>Ownership Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvUCj</field>
+            <label>New Price</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
         </forecastingObjectListLabelMappings>
@@ -4790,8 +5454,20 @@
             <label>Sub Stage</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000CHVRt</field>
+            <label>Digital Signature Approval</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs8nA</field>
+            <label>Owner Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>ACCOUNT.NAME</field>
             <label>Account Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BvnVV</field>
+            <label>Custom Email Body</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>FORECAST_CATEGORY</field>
@@ -4808,6 +5484,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CHVRv</field>
+            <label>Time Of Registration</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZSSv</field>
@@ -4876,9 +5556,13 @@
             <field>00NO400000AcOd3</field>
             <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
+            <field>00NO400000CVOyP</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000BogLt</field>
             <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
+            <field>00NO400000BvnVV</field>
+            <field>00NO400000BvnYj</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
@@ -4887,8 +5571,9 @@
             <field>00NO400000AcNvV</field>
             <field>00NO400000AcO1x</field>
             <field>00NO400000AcO3Z</field>
+            <field>00NO400000CHVRt</field>
             <field>00NfK000003tpHw</field>
-            <field>00NO400000B8kk5</field>
+            <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
@@ -4896,19 +5581,28 @@
             <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000COBHx</field>
+            <field>00NO400000CPd46</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
+            <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000Bex33</field>
+            <field>00NO400000BvUCj</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000BvTGf</field>
+            <field>00NO400000Bs4gD</field>
+            <field>00NO400000Bs7B3</field>
+            <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -4935,9 +5629,11 @@
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
+            <field>00NO400000Bo43h</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
             <field>00NO400000BIZ4D</field>
+            <field>00NO400000CHVRv</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -4949,6 +5645,10 @@
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000B1o1F</field>
+            <field>00NO400000BoRd2</field>
+            <field>00NO400000Bob4T</field>
+            <field>00NO400000BodJB</field>
+            <field>00NO400000BnyXm</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -4982,7 +5682,11 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000B8kk5</field>
-            <label>Documents URL</label>
+            <label>Loan Document Link</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000COBHx</field>
+            <label>is Draft Aos Uploaded?</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000ApTjl</field>
@@ -5015,6 +5719,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPZ7</field>
             <label>Unit Cancellation CRM Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BodJB</field>
+            <label>Virtual Account Number</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNvV</field>
@@ -5050,7 +5758,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AwRtJ</field>
-            <label>Base Price per Sq. Ft</label>
+            <label>Base Price per Sq. yard</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -5059,6 +5767,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZ76j</field>
             <label>Primary Contact Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs4gD</field>
+            <label>Opportunity Account Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NAME</field>
@@ -5071,6 +5783,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOYD</field>
             <label>Occupation</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bob4T</field>
+            <label>Virtual Account Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcP1F</field>
@@ -5133,6 +5849,10 @@
             <label>Funding Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000CPd46</field>
+            <label>is NOC Uploaded</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>DESCRIPTION</field>
             <label>Description</label>
         </forecastingObjectListLabelMappings>
@@ -5149,8 +5869,16 @@
             <label>Cancellation Charges</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvEJF</field>
+            <label>Easy Collect Payment Link</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcO8P</field>
             <label>Final Unit Cancellation Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BvnYj</field>
+            <label>Custom Email Subject</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcP2r</field>
@@ -5221,8 +5949,16 @@
             <label>Allotment Letter Submitted</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Bo43h</field>
+            <label>send Notification(Bulk)</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AqGPV</field>
             <label>Outstanding Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CVOyP</field>
+            <label>Collected Amount From Payment</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AqGHR</field>
@@ -5281,6 +6017,14 @@
             <label>Remark</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BoRd2</field>
+            <label>Virtual Account IFSC</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs7B3</field>
+            <label>Opportunity Owner Email</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000Acafp</field>
             <label>Paid %</label>
         </forecastingObjectListLabelMappings>
@@ -5313,6 +6057,10 @@
             <label>Inquiry Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvTGf</field>
+            <label>Old Plot Details</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>SPLITAMOUNT</field>
             <label>Forecasted Amount</label>
         </forecastingObjectListLabelMappings>
@@ -5323,6 +6071,10 @@
         <forecastingObjectListLabelMappings>
             <field>SYNCEDQUOTE.NAME</field>
             <label>Synced Quote</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BnyXm</field>
+            <label>Virtual Account UPI QR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000B1o33</field>
@@ -5367,6 +6119,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AzD0i</field>
             <label>Loan Sanctioned Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bofb7</field>
+            <label>Opportunity Owner Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NfK000003tpHy</field>
@@ -5417,6 +6173,10 @@
             <label>10% Collected</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BogLt</field>
+            <label>Contact Email</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
         </forecastingObjectListLabelMappings>
@@ -5461,6 +6221,10 @@
             <label>Ownership Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvUCj</field>
+            <label>New Price</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
         </forecastingObjectListLabelMappings>
@@ -5501,8 +6265,20 @@
             <label>Sub Stage</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000CHVRt</field>
+            <label>Digital Signature Approval</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs8nA</field>
+            <label>Owner Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>ACCOUNT.NAME</field>
             <label>Account Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BvnVV</field>
+            <label>Custom Email Body</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>FORECAST_CATEGORY</field>
@@ -5519,6 +6295,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CHVRv</field>
+            <label>Time Of Registration</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZSSv</field>
@@ -5588,9 +6368,13 @@
             <field>00NO400000AcOd3</field>
             <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
+            <field>00NO400000CVOyP</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000BogLt</field>
             <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
+            <field>00NO400000BvnVV</field>
+            <field>00NO400000BvnYj</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
@@ -5599,8 +6383,9 @@
             <field>00NO400000AcNvV</field>
             <field>00NO400000AcO1x</field>
             <field>00NO400000AcO3Z</field>
+            <field>00NO400000CHVRt</field>
             <field>00NfK000003tpHw</field>
-            <field>00NO400000B8kk5</field>
+            <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
@@ -5608,19 +6393,28 @@
             <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000COBHx</field>
+            <field>00NO400000CPd46</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
+            <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000Bex33</field>
+            <field>00NO400000BvUCj</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000BvTGf</field>
+            <field>00NO400000Bs4gD</field>
+            <field>00NO400000Bs7B3</field>
+            <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -5647,9 +6441,11 @@
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
+            <field>00NO400000Bo43h</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
             <field>00NO400000BIZ4D</field>
+            <field>00NO400000CHVRv</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -5661,6 +6457,10 @@
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000B1o1F</field>
+            <field>00NO400000BoRd2</field>
+            <field>00NO400000Bob4T</field>
+            <field>00NO400000BodJB</field>
+            <field>00NO400000BnyXm</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -5694,7 +6494,11 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000B8kk5</field>
-            <label>Documents URL</label>
+            <label>Loan Document Link</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000COBHx</field>
+            <label>is Draft Aos Uploaded?</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000ApTjl</field>
@@ -5727,6 +6531,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPZ7</field>
             <label>Unit Cancellation CRM Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BodJB</field>
+            <label>Virtual Account Number</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNvV</field>
@@ -5762,7 +6570,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AwRtJ</field>
-            <label>Base Price per Sq. Ft</label>
+            <label>Base Price per Sq. yard</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -5771,6 +6579,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZ76j</field>
             <label>Primary Contact Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs4gD</field>
+            <label>Opportunity Account Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NAME</field>
@@ -5783,6 +6595,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOYD</field>
             <label>Occupation</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bob4T</field>
+            <label>Virtual Account Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcP1F</field>
@@ -5845,6 +6661,10 @@
             <label>Funding Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000CPd46</field>
+            <label>is NOC Uploaded</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>DESCRIPTION</field>
             <label>Description</label>
         </forecastingObjectListLabelMappings>
@@ -5861,8 +6681,16 @@
             <label>Cancellation Charges</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvEJF</field>
+            <label>Easy Collect Payment Link</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcO8P</field>
             <label>Final Unit Cancellation Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BvnYj</field>
+            <label>Custom Email Subject</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcP2r</field>
@@ -5933,8 +6761,16 @@
             <label>Allotment Letter Submitted</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Bo43h</field>
+            <label>send Notification(Bulk)</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AqGPV</field>
             <label>Outstanding Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CVOyP</field>
+            <label>Collected Amount From Payment</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AqGHR</field>
@@ -5993,6 +6829,14 @@
             <label>Remark</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BoRd2</field>
+            <label>Virtual Account IFSC</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs7B3</field>
+            <label>Opportunity Owner Email</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000Acafp</field>
             <label>Paid %</label>
         </forecastingObjectListLabelMappings>
@@ -6025,12 +6869,20 @@
             <label>Inquiry Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvTGf</field>
+            <label>Old Plot Details</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AwMTp</field>
             <label>BR Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>SYNCEDQUOTE.NAME</field>
             <label>Synced Quote</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BnyXm</field>
+            <label>Virtual Account UPI QR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000B1o33</field>
@@ -6075,6 +6927,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AzD0i</field>
             <label>Loan Sanctioned Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bofb7</field>
+            <label>Opportunity Owner Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NfK000003tpHy</field>
@@ -6125,6 +6981,10 @@
             <label>10% Collected</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BogLt</field>
+            <label>Contact Email</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
         </forecastingObjectListLabelMappings>
@@ -6169,6 +7029,10 @@
             <label>Ownership Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvUCj</field>
+            <label>New Price</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
         </forecastingObjectListLabelMappings>
@@ -6209,8 +7073,20 @@
             <label>Sub Stage</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000CHVRt</field>
+            <label>Digital Signature Approval</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs8nA</field>
+            <label>Owner Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>ACCOUNT.NAME</field>
             <label>Account Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BvnVV</field>
+            <label>Custom Email Body</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>FORECAST_CATEGORY</field>
@@ -6227,6 +7103,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CHVRv</field>
+            <label>Time Of Registration</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZSSv</field>
@@ -6295,9 +7175,13 @@
             <field>00NO400000AcOd3</field>
             <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
+            <field>00NO400000CVOyP</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000BogLt</field>
             <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
+            <field>00NO400000BvnVV</field>
+            <field>00NO400000BvnYj</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
@@ -6306,8 +7190,9 @@
             <field>00NO400000AcNvV</field>
             <field>00NO400000AcO1x</field>
             <field>00NO400000AcO3Z</field>
+            <field>00NO400000CHVRt</field>
             <field>00NfK000003tpHw</field>
-            <field>00NO400000B8kk5</field>
+            <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
@@ -6315,19 +7200,28 @@
             <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000COBHx</field>
+            <field>00NO400000CPd46</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
+            <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000Bex33</field>
+            <field>00NO400000BvUCj</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000BvTGf</field>
+            <field>00NO400000Bs4gD</field>
+            <field>00NO400000Bs7B3</field>
+            <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -6354,9 +7248,11 @@
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
+            <field>00NO400000Bo43h</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
             <field>00NO400000BIZ4D</field>
+            <field>00NO400000CHVRv</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -6368,6 +7264,10 @@
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000B1o1F</field>
+            <field>00NO400000BoRd2</field>
+            <field>00NO400000Bob4T</field>
+            <field>00NO400000BodJB</field>
+            <field>00NO400000BnyXm</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -6401,7 +7301,11 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000B8kk5</field>
-            <label>Documents URL</label>
+            <label>Loan Document Link</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000COBHx</field>
+            <label>is Draft Aos Uploaded?</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000ApTjl</field>
@@ -6434,6 +7338,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPZ7</field>
             <label>Unit Cancellation CRM Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BodJB</field>
+            <label>Virtual Account Number</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNvV</field>
@@ -6469,7 +7377,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AwRtJ</field>
-            <label>Base Price per Sq. Ft</label>
+            <label>Base Price per Sq. yard</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -6478,6 +7386,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZ76j</field>
             <label>Primary Contact Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs4gD</field>
+            <label>Opportunity Account Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NAME</field>
@@ -6490,6 +7402,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOYD</field>
             <label>Occupation</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bob4T</field>
+            <label>Virtual Account Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcP1F</field>
@@ -6552,6 +7468,10 @@
             <label>Funding Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000CPd46</field>
+            <label>is NOC Uploaded</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>DESCRIPTION</field>
             <label>Description</label>
         </forecastingObjectListLabelMappings>
@@ -6568,8 +7488,16 @@
             <label>Cancellation Charges</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvEJF</field>
+            <label>Easy Collect Payment Link</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcO8P</field>
             <label>Final Unit Cancellation Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BvnYj</field>
+            <label>Custom Email Subject</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcP2r</field>
@@ -6640,8 +7568,16 @@
             <label>Allotment Letter Submitted</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Bo43h</field>
+            <label>send Notification(Bulk)</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AqGPV</field>
             <label>Outstanding Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CVOyP</field>
+            <label>Collected Amount From Payment</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AqGHR</field>
@@ -6700,6 +7636,14 @@
             <label>Remark</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BoRd2</field>
+            <label>Virtual Account IFSC</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs7B3</field>
+            <label>Opportunity Owner Email</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000Acafp</field>
             <label>Paid %</label>
         </forecastingObjectListLabelMappings>
@@ -6732,6 +7676,10 @@
             <label>Inquiry Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvTGf</field>
+            <label>Old Plot Details</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>SPLITAMOUNT</field>
             <label>Forecasted Amount</label>
         </forecastingObjectListLabelMappings>
@@ -6742,6 +7690,10 @@
         <forecastingObjectListLabelMappings>
             <field>SYNCEDQUOTE.NAME</field>
             <label>Synced Quote</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BnyXm</field>
+            <label>Virtual Account UPI QR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000B1o33</field>
@@ -6786,6 +7738,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AzD0i</field>
             <label>Loan Sanctioned Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bofb7</field>
+            <label>Opportunity Owner Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NfK000003tpHy</field>
@@ -6836,6 +7792,10 @@
             <label>10% Collected</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BogLt</field>
+            <label>Contact Email</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
         </forecastingObjectListLabelMappings>
@@ -6880,6 +7840,10 @@
             <label>Ownership Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvUCj</field>
+            <label>New Price</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
         </forecastingObjectListLabelMappings>
@@ -6920,8 +7884,20 @@
             <label>Sub Stage</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000CHVRt</field>
+            <label>Digital Signature Approval</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs8nA</field>
+            <label>Owner Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>ACCOUNT.NAME</field>
             <label>Account Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BvnVV</field>
+            <label>Custom Email Body</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>FORECAST_CATEGORY</field>
@@ -6938,6 +7914,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CHVRv</field>
+            <label>Time Of Registration</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZSSv</field>
@@ -7007,9 +7987,13 @@
             <field>00NO400000AcOd3</field>
             <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
+            <field>00NO400000CVOyP</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000BogLt</field>
             <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
+            <field>00NO400000BvnVV</field>
+            <field>00NO400000BvnYj</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
@@ -7018,8 +8002,9 @@
             <field>00NO400000AcNvV</field>
             <field>00NO400000AcO1x</field>
             <field>00NO400000AcO3Z</field>
+            <field>00NO400000CHVRt</field>
             <field>00NfK000003tpHw</field>
-            <field>00NO400000B8kk5</field>
+            <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
@@ -7027,19 +8012,28 @@
             <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000COBHx</field>
+            <field>00NO400000CPd46</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
+            <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000Bex33</field>
+            <field>00NO400000BvUCj</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000BvTGf</field>
+            <field>00NO400000Bs4gD</field>
+            <field>00NO400000Bs7B3</field>
+            <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -7066,9 +8060,11 @@
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
+            <field>00NO400000Bo43h</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
             <field>00NO400000BIZ4D</field>
+            <field>00NO400000CHVRv</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -7080,6 +8076,10 @@
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000B1o1F</field>
+            <field>00NO400000BoRd2</field>
+            <field>00NO400000Bob4T</field>
+            <field>00NO400000BodJB</field>
+            <field>00NO400000BnyXm</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -7113,7 +8113,11 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000B8kk5</field>
-            <label>Documents URL</label>
+            <label>Loan Document Link</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000COBHx</field>
+            <label>is Draft Aos Uploaded?</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000ApTjl</field>
@@ -7146,6 +8150,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPZ7</field>
             <label>Unit Cancellation CRM Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BodJB</field>
+            <label>Virtual Account Number</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNvV</field>
@@ -7181,7 +8189,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AwRtJ</field>
-            <label>Base Price per Sq. Ft</label>
+            <label>Base Price per Sq. yard</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -7190,6 +8198,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZ76j</field>
             <label>Primary Contact Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs4gD</field>
+            <label>Opportunity Account Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NAME</field>
@@ -7202,6 +8214,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOYD</field>
             <label>Occupation</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bob4T</field>
+            <label>Virtual Account Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcP1F</field>
@@ -7264,6 +8280,10 @@
             <label>Funding Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000CPd46</field>
+            <label>is NOC Uploaded</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>DESCRIPTION</field>
             <label>Description</label>
         </forecastingObjectListLabelMappings>
@@ -7280,8 +8300,16 @@
             <label>Cancellation Charges</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvEJF</field>
+            <label>Easy Collect Payment Link</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcO8P</field>
             <label>Final Unit Cancellation Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BvnYj</field>
+            <label>Custom Email Subject</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcP2r</field>
@@ -7352,8 +8380,16 @@
             <label>Allotment Letter Submitted</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Bo43h</field>
+            <label>send Notification(Bulk)</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AqGPV</field>
             <label>Outstanding Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CVOyP</field>
+            <label>Collected Amount From Payment</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AqGHR</field>
@@ -7412,6 +8448,14 @@
             <label>Remark</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BoRd2</field>
+            <label>Virtual Account IFSC</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs7B3</field>
+            <label>Opportunity Owner Email</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000Acafp</field>
             <label>Paid %</label>
         </forecastingObjectListLabelMappings>
@@ -7444,12 +8488,20 @@
             <label>Inquiry Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvTGf</field>
+            <label>Old Plot Details</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AwMTp</field>
             <label>BR Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>SYNCEDQUOTE.NAME</field>
             <label>Synced Quote</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BnyXm</field>
+            <label>Virtual Account UPI QR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000B1o33</field>
@@ -7494,6 +8546,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AzD0i</field>
             <label>Loan Sanctioned Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bofb7</field>
+            <label>Opportunity Owner Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NfK000003tpHy</field>
@@ -7544,6 +8600,10 @@
             <label>10% Collected</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BogLt</field>
+            <label>Contact Email</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
         </forecastingObjectListLabelMappings>
@@ -7588,6 +8648,10 @@
             <label>Ownership Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvUCj</field>
+            <label>New Price</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
         </forecastingObjectListLabelMappings>
@@ -7628,8 +8692,20 @@
             <label>Sub Stage</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000CHVRt</field>
+            <label>Digital Signature Approval</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs8nA</field>
+            <label>Owner Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>ACCOUNT.NAME</field>
             <label>Account Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BvnVV</field>
+            <label>Custom Email Body</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>FORECAST_CATEGORY</field>
@@ -7646,6 +8722,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CHVRv</field>
+            <label>Time Of Registration</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZSSv</field>
@@ -7714,9 +8794,13 @@
             <field>00NO400000AcOd3</field>
             <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
+            <field>00NO400000CVOyP</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000BogLt</field>
             <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
+            <field>00NO400000BvnVV</field>
+            <field>00NO400000BvnYj</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
@@ -7725,8 +8809,9 @@
             <field>00NO400000AcNvV</field>
             <field>00NO400000AcO1x</field>
             <field>00NO400000AcO3Z</field>
+            <field>00NO400000CHVRt</field>
             <field>00NfK000003tpHw</field>
-            <field>00NO400000B8kk5</field>
+            <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
@@ -7734,19 +8819,28 @@
             <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000COBHx</field>
+            <field>00NO400000CPd46</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
+            <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000Bex33</field>
+            <field>00NO400000BvUCj</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000BvTGf</field>
+            <field>00NO400000Bs4gD</field>
+            <field>00NO400000Bs7B3</field>
+            <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -7773,9 +8867,11 @@
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
+            <field>00NO400000Bo43h</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
             <field>00NO400000BIZ4D</field>
+            <field>00NO400000CHVRv</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -7787,6 +8883,10 @@
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000B1o1F</field>
+            <field>00NO400000BoRd2</field>
+            <field>00NO400000Bob4T</field>
+            <field>00NO400000BodJB</field>
+            <field>00NO400000BnyXm</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -7820,7 +8920,11 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000B8kk5</field>
-            <label>Documents URL</label>
+            <label>Loan Document Link</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000COBHx</field>
+            <label>is Draft Aos Uploaded?</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000ApTjl</field>
@@ -7853,6 +8957,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPZ7</field>
             <label>Unit Cancellation CRM Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BodJB</field>
+            <label>Virtual Account Number</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNvV</field>
@@ -7888,7 +8996,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AwRtJ</field>
-            <label>Base Price per Sq. Ft</label>
+            <label>Base Price per Sq. yard</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -7897,6 +9005,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZ76j</field>
             <label>Primary Contact Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs4gD</field>
+            <label>Opportunity Account Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NAME</field>
@@ -7909,6 +9021,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOYD</field>
             <label>Occupation</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bob4T</field>
+            <label>Virtual Account Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcP1F</field>
@@ -7971,6 +9087,10 @@
             <label>Funding Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000CPd46</field>
+            <label>is NOC Uploaded</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>DESCRIPTION</field>
             <label>Description</label>
         </forecastingObjectListLabelMappings>
@@ -7987,8 +9107,16 @@
             <label>Cancellation Charges</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvEJF</field>
+            <label>Easy Collect Payment Link</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcO8P</field>
             <label>Final Unit Cancellation Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BvnYj</field>
+            <label>Custom Email Subject</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcP2r</field>
@@ -8059,8 +9187,16 @@
             <label>Allotment Letter Submitted</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Bo43h</field>
+            <label>send Notification(Bulk)</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AqGPV</field>
             <label>Outstanding Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CVOyP</field>
+            <label>Collected Amount From Payment</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AqGHR</field>
@@ -8119,6 +9255,14 @@
             <label>Remark</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BoRd2</field>
+            <label>Virtual Account IFSC</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs7B3</field>
+            <label>Opportunity Owner Email</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000Acafp</field>
             <label>Paid %</label>
         </forecastingObjectListLabelMappings>
@@ -8151,6 +9295,10 @@
             <label>Inquiry Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvTGf</field>
+            <label>Old Plot Details</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>SPLITAMOUNT</field>
             <label>Forecasted Amount</label>
         </forecastingObjectListLabelMappings>
@@ -8161,6 +9309,10 @@
         <forecastingObjectListLabelMappings>
             <field>SYNCEDQUOTE.NAME</field>
             <label>Synced Quote</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BnyXm</field>
+            <label>Virtual Account UPI QR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000B1o33</field>
@@ -8205,6 +9357,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AzD0i</field>
             <label>Loan Sanctioned Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bofb7</field>
+            <label>Opportunity Owner Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NfK000003tpHy</field>
@@ -8255,6 +9411,10 @@
             <label>10% Collected</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BogLt</field>
+            <label>Contact Email</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
         </forecastingObjectListLabelMappings>
@@ -8299,6 +9459,10 @@
             <label>Ownership Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvUCj</field>
+            <label>New Price</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
         </forecastingObjectListLabelMappings>
@@ -8339,8 +9503,20 @@
             <label>Sub Stage</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000CHVRt</field>
+            <label>Digital Signature Approval</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs8nA</field>
+            <label>Owner Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>ACCOUNT.NAME</field>
             <label>Account Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BvnVV</field>
+            <label>Custom Email Body</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>FORECAST_CATEGORY</field>
@@ -8357,6 +9533,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CHVRv</field>
+            <label>Time Of Registration</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZSSv</field>
@@ -8426,9 +9606,13 @@
             <field>00NO400000AcOd3</field>
             <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
+            <field>00NO400000CVOyP</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000BogLt</field>
             <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
+            <field>00NO400000BvnVV</field>
+            <field>00NO400000BvnYj</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
@@ -8437,8 +9621,9 @@
             <field>00NO400000AcNvV</field>
             <field>00NO400000AcO1x</field>
             <field>00NO400000AcO3Z</field>
+            <field>00NO400000CHVRt</field>
             <field>00NfK000003tpHw</field>
-            <field>00NO400000B8kk5</field>
+            <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
@@ -8446,19 +9631,28 @@
             <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000COBHx</field>
+            <field>00NO400000CPd46</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
+            <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000Bex33</field>
+            <field>00NO400000BvUCj</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000BvTGf</field>
+            <field>00NO400000Bs4gD</field>
+            <field>00NO400000Bs7B3</field>
+            <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -8485,9 +9679,11 @@
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
+            <field>00NO400000Bo43h</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
             <field>00NO400000BIZ4D</field>
+            <field>00NO400000CHVRv</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -8499,6 +9695,10 @@
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000B1o1F</field>
+            <field>00NO400000BoRd2</field>
+            <field>00NO400000Bob4T</field>
+            <field>00NO400000BodJB</field>
+            <field>00NO400000BnyXm</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -8532,7 +9732,11 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000B8kk5</field>
-            <label>Documents URL</label>
+            <label>Loan Document Link</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000COBHx</field>
+            <label>is Draft Aos Uploaded?</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000ApTjl</field>
@@ -8565,6 +9769,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPZ7</field>
             <label>Unit Cancellation CRM Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BodJB</field>
+            <label>Virtual Account Number</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNvV</field>
@@ -8600,7 +9808,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AwRtJ</field>
-            <label>Base Price per Sq. Ft</label>
+            <label>Base Price per Sq. yard</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOI5</field>
@@ -8609,6 +9817,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZ76j</field>
             <label>Primary Contact Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs4gD</field>
+            <label>Opportunity Account Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.NAME</field>
@@ -8621,6 +9833,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcOYD</field>
             <label>Occupation</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bob4T</field>
+            <label>Virtual Account Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcP1F</field>
@@ -8683,6 +9899,10 @@
             <label>Funding Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000CPd46</field>
+            <label>is NOC Uploaded</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>DESCRIPTION</field>
             <label>Description</label>
         </forecastingObjectListLabelMappings>
@@ -8699,8 +9919,16 @@
             <label>Cancellation Charges</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvEJF</field>
+            <label>Easy Collect Payment Link</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcO8P</field>
             <label>Final Unit Cancellation Approval Status</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BvnYj</field>
+            <label>Custom Email Subject</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcP2r</field>
@@ -8771,8 +9999,16 @@
             <label>Allotment Letter Submitted</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Bo43h</field>
+            <label>send Notification(Bulk)</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AqGPV</field>
             <label>Outstanding Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CVOyP</field>
+            <label>Collected Amount From Payment</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000AqGHR</field>
@@ -8831,6 +10067,14 @@
             <label>Remark</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BoRd2</field>
+            <label>Virtual Account IFSC</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs7B3</field>
+            <label>Opportunity Owner Email</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000Acafp</field>
             <label>Paid %</label>
         </forecastingObjectListLabelMappings>
@@ -8863,12 +10107,20 @@
             <label>Inquiry Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvTGf</field>
+            <label>Old Plot Details</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AwMTp</field>
             <label>BR Status</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>SYNCEDQUOTE.NAME</field>
             <label>Synced Quote</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BnyXm</field>
+            <label>Virtual Account UPI QR</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000B1o33</field>
@@ -8913,6 +10165,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AzD0i</field>
             <label>Loan Sanctioned Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bofb7</field>
+            <label>Opportunity Owner Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NfK000003tpHy</field>
@@ -8963,6 +10219,10 @@
             <label>10% Collected</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BogLt</field>
+            <label>Contact Email</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
             <label>Days In Stage</label>
         </forecastingObjectListLabelMappings>
@@ -9007,6 +10267,10 @@
             <label>Ownership Type</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000BvUCj</field>
+            <label>New Price</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcOUz</field>
             <label>Lead Age</label>
         </forecastingObjectListLabelMappings>
@@ -9047,8 +10311,20 @@
             <label>Sub Stage</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000CHVRt</field>
+            <label>Digital Signature Approval</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000Bs8nA</field>
+            <label>Owner Phone</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>ACCOUNT.NAME</field>
             <label>Account Name</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000BvnVV</field>
+            <label>Custom Email Body</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>FORECAST_CATEGORY</field>
@@ -9065,6 +10341,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcPXV</field>
             <label>Transaction Number/Cheque Number</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CHVRv</field>
+            <label>Time Of Registration</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZSSv</field>
@@ -9133,9 +10413,13 @@
             <field>00NO400000AcOd3</field>
             <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
+            <field>00NO400000CVOyP</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000BogLt</field>
             <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
+            <field>00NO400000BvnVV</field>
+            <field>00NO400000BvnYj</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
@@ -9144,8 +10428,9 @@
             <field>00NO400000AcNvV</field>
             <field>00NO400000AcO1x</field>
             <field>00NO400000AcO3Z</field>
+            <field>00NO400000CHVRt</field>
             <field>00NfK000003tpHw</field>
-            <field>00NO400000B8kk5</field>
+            <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
@@ -9153,19 +10438,28 @@
             <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000COBHx</field>
+            <field>00NO400000CPd46</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
+            <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000Bex33</field>
+            <field>00NO400000BvUCj</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000BvTGf</field>
+            <field>00NO400000Bs4gD</field>
+            <field>00NO400000Bs7B3</field>
+            <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -9192,9 +10486,11 @@
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
+            <field>00NO400000Bo43h</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
             <field>00NO400000BIZ4D</field>
+            <field>00NO400000CHVRv</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -9206,6 +10502,10 @@
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000B1o1F</field>
+            <field>00NO400000BoRd2</field>
+            <field>00NO400000Bob4T</field>
+            <field>00NO400000BodJB</field>
+            <field>00NO400000BnyXm</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>

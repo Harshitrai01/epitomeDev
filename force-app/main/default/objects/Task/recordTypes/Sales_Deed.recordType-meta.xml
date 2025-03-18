@@ -17,10 +17,6 @@
     <picklistValues>
         <picklist>Status</picklist>
         <values>
-            <fullName>Draft Approved</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Draft Uploaded</fullName>
             <default>false</default>
         </values>
@@ -31,14 +27,6 @@
         <values>
             <fullName>Initiated</fullName>
             <default>true</default>
-        </values>
-        <values>
-            <fullName>Original Uploaded</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Sent to Approval</fullName>
-            <default>false</default>
         </values>
     </picklistValues>
     <picklistValues>

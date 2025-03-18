@@ -1,4 +1,4 @@
-<aura:component implements="lightning:availableForFlowActions">
+<aura:component implements="force:lightningQuickActionWithoutHeader,lightning:availableForFlowActions">
     <aura:attribute name="type" type="string" default="success" />
     <aura:attribute name="title" type="string" />
     <aura:attribute name="message" type="string" />    

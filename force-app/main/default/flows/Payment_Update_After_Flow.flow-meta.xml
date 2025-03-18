@@ -2,26 +2,135 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>63.0</apiVersion>
     <assignments>
-        <name>Assign_Amount_to_Variable</name>
-        <label>Assign Amount to Variable</label>
-        <locationX>424</locationX>
-        <locationY>755</locationY>
+        <name>Assign_10_as_true</name>
+        <label>Assign 10% as true</label>
+        <locationX>413</locationX>
+        <locationY>1271</locationY>
         <assignmentItems>
-            <assignToReference>Amount</assignToReference>
-            <operator>Add</operator>
+            <assignToReference>opportunityRecord.X10_Amount_Collected__c</assignToReference>
+            <operator>Assign</operator>
             <value>
-                <elementReference>loop_over_Approved_Payment_Records.Payment_Amount__c</elementReference>
+                <booleanValue>true</booleanValue>
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>loop_over_Approved_Payment_Records</targetReference>
+            <targetReference>Check_Opportunity_Stage</targetReference>
         </connector>
     </assignments>
+    <assignments>
+        <name>Assign_Amount_to_payment_Record</name>
+        <label>Assign Amount to payment Record</label>
+        <locationX>737</locationX>
+        <locationY>839</locationY>
+        <assignmentItems>
+            <assignToReference>opportunityRecord.Collected_Amount_From_Payment__c</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>$Record.Payment_Amount__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_Opportunity_10_Amount_Collected_Value</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Opportunity_Record_List</name>
+        <label>Assign Opportunity Record List</label>
+        <locationX>935</locationX>
+        <locationY>323</locationY>
+        <assignmentItems>
+            <assignToReference>opportunityRecord.Id</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Opportunity__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_the_Approval_Status</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Payment_Amount_to_Variable</name>
+        <label>Assign Payment Amount to Variable</label>
+        <locationX>545</locationX>
+        <locationY>1055</locationY>
+        <assignmentItems>
+            <assignToReference>Amount</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>opportunityRecord.Collected_Amount_From_Payment__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_Collected_Amount_Percent_Value</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Previous_payment_Values</name>
+        <label>Assign Previous payment Values</label>
+        <locationX>869</locationX>
+        <locationY>647</locationY>
+        <assignmentItems>
+            <assignToReference>opportunityRecord.Collected_Amount_From_Payment__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Opportunity__r.Collected_Amount_From_Payment__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Assign_Amount_to_payment_Record</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_stage_as_Booked</name>
+        <label>Assign stage as Booked</label>
+        <locationX>50</locationX>
+        <locationY>1787</locationY>
+        <assignmentItems>
+            <assignToReference>opportunityRecord.StageName</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Booked</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>update_Opportunity_Record</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Copy_1_of_Assign_Amount_to_payment_Record</name>
+        <label>Copy 1 of Assign Amount to payment Record</label>
+        <locationX>605</locationX>
+        <locationY>647</locationY>
+        <assignmentItems>
+            <assignToReference>opportunityRecord.Collected_Amount_From_Payment__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Assign_Amount_to_payment_Record</targetReference>
+        </connector>
+    </assignments>
+    <customErrors>
+        <name>Custom_Error_Message_1</name>
+        <label>Custom Error Message 1</label>
+        <locationX>490</locationX>
+        <locationY>1679</locationY>
+        <customErrorMessages>
+            <errorMessage>Please Submit KYC Document First.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
     <decisions>
         <name>Check_Amount</name>
         <label>Check Amount</label>
         <locationX>182</locationX>
-        <locationY>1355</locationY>
+        <locationY>1679</locationY>
+        <defaultConnector>
+            <targetReference>update_Opportunity_Record</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Amount_greater_than_a_Lakh</name>
@@ -34,7 +143,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Update_Opportunity_Stage_to_Booked</targetReference>
+                <targetReference>Assign_stage_as_Booked</targetReference>
             </connector>
             <label>Amount greater than a Lakh</label>
         </rules>
@@ -42,8 +151,8 @@
     <decisions>
         <name>Check_Collected_Amount_Percent_Value</name>
         <label>Check Collected Amount Percent Value</label>
-        <locationX>336</locationX>
-        <locationY>947</locationY>
+        <locationX>545</locationX>
+        <locationY>1163</locationY>
         <defaultConnector>
             <targetReference>Check_Opportunity_Stage</targetReference>
         </defaultConnector>
@@ -59,16 +168,90 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Update_Opportunity_10_Collected_Amount_Checkbox</targetReference>
+                <targetReference>Assign_10_as_true</targetReference>
             </connector>
             <label>Greater than or Equal to 10</label>
         </rules>
     </decisions>
     <decisions>
+        <name>check_if_Collected_amount_is_null_or_not</name>
+        <label>check if Collected amount is null or not?</label>
+        <locationX>737</locationX>
+        <locationY>539</locationY>
+        <defaultConnector>
+            <targetReference>Assign_Previous_payment_Values</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Collected_Amount_is_Null_or_0</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Opportunity__r.Collected_Amount_From_Payment__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Opportunity__r.Collected_Amount_From_Payment__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Opportunity__r.Collected_Amount_From_Payment__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_Assign_Amount_to_payment_Record</targetReference>
+            </connector>
+            <label>Collected Amount is Null or 0</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_kyc_Subdocument_type_is_there</name>
+        <label>Check kyc  Subdocument type is there</label>
+        <locationX>336</locationX>
+        <locationY>1571</locationY>
+        <defaultConnector>
+            <targetReference>Custom_Error_Message_1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>KYC_Document_is_there</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Opportunity__r.Sub_Document_Type__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Pan Card</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Opportunity__r.Sub_Document_Type__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Aadhaar Card</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Amount</targetReference>
+            </connector>
+            <label>KYC Document is there</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Check_Opportunity_10_Amount_Collected_Value</name>
         <label>Check Opportunity 10% Amount Collected Value</label>
-        <locationX>501</locationX>
-        <locationY>431</locationY>
+        <locationX>737</locationX>
+        <locationY>947</locationY>
+        <defaultConnector>
+            <targetReference>update_Opportunity_Record</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>X10_Amount_Collected_is_not_Checked</name>
@@ -81,7 +264,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Get_all_Approved_Payments</targetReference>
+                <targetReference>Assign_Payment_Amount_to_Variable</targetReference>
             </connector>
             <label>10% Amount Collected is not Checked</label>
         </rules>
@@ -89,8 +272,11 @@
     <decisions>
         <name>Check_Opportunity_Stage</name>
         <label>Check Opportunity Stage</label>
-        <locationX>336</locationX>
-        <locationY>1247</locationY>
+        <locationX>545</locationX>
+        <locationY>1463</locationY>
+        <defaultConnector>
+            <targetReference>update_Opportunity_Record</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Stage_is_Blocked</name>
@@ -103,7 +289,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Check_Amount</targetReference>
+                <targetReference>Check_kyc_Subdocument_type_is_there</targetReference>
             </connector>
             <label>Stage is Blocked</label>
         </rules>
@@ -111,8 +297,8 @@
     <decisions>
         <name>Check_the_Approval_Status</name>
         <label>Check the Approval Status</label>
-        <locationX>715</locationX>
-        <locationY>323</locationY>
+        <locationX>935</locationX>
+        <locationY>431</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Status_is_Approved</name>
@@ -132,7 +318,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Check_Opportunity_10_Amount_Collected_Value</targetReference>
+                <targetReference>check_if_Collected_amount_is_null_or_not</targetReference>
             </connector>
             <label>Status is Approved</label>
         </rules>
@@ -146,20 +332,6 @@
     </formulas>
     <interviewLabel>Payment Update(After Flow) {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Payment Update(After Flow)</label>
-    <loops>
-        <name>loop_over_Approved_Payment_Records</name>
-        <label>loop over Approved Payment Records</label>
-        <locationX>336</locationX>
-        <locationY>647</locationY>
-        <collectionReference>Get_all_Approved_Payments</collectionReference>
-        <iterationOrder>Asc</iterationOrder>
-        <nextValueConnector>
-            <targetReference>Assign_Amount_to_Variable</targetReference>
-        </nextValueConnector>
-        <noMoreValuesConnector>
-            <targetReference>Check_Collected_Amount_Percent_Value</targetReference>
-        </noMoreValuesConnector>
-    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -179,68 +351,18 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <recordLookups>
-        <name>Get_all_Approved_Payments</name>
-        <label>Get all Approved Payments</label>
-        <locationX>336</locationX>
-        <locationY>539</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>loop_over_Approved_Payment_Records</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Approval_Status__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Approved</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Opportunity__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record.Opportunity__c</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>false</getFirstRecordOnly>
-        <object>Payment__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
     <recordUpdates>
-        <name>Update_Opportunity_10_Collected_Amount_Checkbox</name>
-        <label>Update Opportunity 10% Collected Amount Checkbox</label>
-        <locationX>204</locationX>
-        <locationY>1055</locationY>
-        <connector>
-            <targetReference>Check_Opportunity_Stage</targetReference>
-        </connector>
-        <inputAssignments>
-            <field>X10_Amount_Collected__c</field>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </inputAssignments>
-        <inputReference>$Record.Opportunity__r</inputReference>
-    </recordUpdates>
-    <recordUpdates>
-        <name>Update_Opportunity_Stage_to_Booked</name>
-        <label>Update Opportunity Stage to Booked</label>
-        <locationX>50</locationX>
-        <locationY>1463</locationY>
-        <inputAssignments>
-            <field>StageName</field>
-            <value>
-                <stringValue>Booked</stringValue>
-            </value>
-        </inputAssignments>
-        <inputReference>$Record.Opportunity__r</inputReference>
+        <name>update_Opportunity_Record</name>
+        <label>update Opportunity Record</label>
+        <locationX>737</locationX>
+        <locationY>2231</locationY>
+        <inputReference>opportunityRecord</inputReference>
     </recordUpdates>
     <start>
-        <locationX>589</locationX>
+        <locationX>809</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Check_the_Approval_Status</targetReference>
+            <targetReference>Assign_Opportunity_Record_List</targetReference>
         </connector>
         <object>Payment__c</object>
         <recordTriggerType>Update</recordTriggerType>
@@ -257,5 +379,21 @@
         <value>
             <numberValue>0.0</numberValue>
         </value>
+    </variables>
+    <variables>
+        <name>opportunityRecord</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Opportunity</objectType>
+    </variables>
+    <variables>
+        <name>paymentAmount</name>
+        <dataType>Currency</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>2</scale>
     </variables>
 </Flow>

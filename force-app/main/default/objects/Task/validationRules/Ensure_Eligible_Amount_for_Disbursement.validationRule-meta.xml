@@ -3,10 +3,10 @@
     <fullName>Ensure_Eligible_Amount_for_Disbursement</fullName>
     <active>true</active>
     <errorConditionFormula>AND(
-    $RecordType.DeveloperName = &quot;Progressive&quot;,
+    $RecordType.DeveloperName = &quot;Loan&quot;,
     ISCHANGED(Status),
     ISPICKVAL(Status, &quot;Disbursement&quot;),
-    ISBLANK(Loan_Eligible_Amount__c)
+    ISBLANK( Loan_Sanctioned_Amount__c )
 )</errorConditionFormula>
-    <errorMessage>Please fill the Loan Eligible Amount before changing the status to Disbursement.</errorMessage>
+    <errorMessage>Please fill the Loan Sanctioned Amount before changing the status to Disbursement.</errorMessage>
 </ValidationRule>

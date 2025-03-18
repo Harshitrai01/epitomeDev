@@ -18,7 +18,7 @@
         <picklist>Status</picklist>
         <values>
             <fullName>Draft Uploaded</fullName>
-            <default>false</default>
+            <default>true</default>
         </values>
         <values>
             <fullName>Drafting</fullName>
@@ -26,26 +26,6 @@
         </values>
         <values>
             <fullName>Initiated</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Not Required</fullName>
-            <default>true</default>
-        </values>
-        <values>
-            <fullName>Ready to Dispatch</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Received</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Sent Approval</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Sent to Customer</fullName>
             <default>false</default>
         </values>
     </picklistValues>

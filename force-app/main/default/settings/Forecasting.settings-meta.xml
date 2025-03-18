@@ -309,7 +309,7 @@
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AwRtJ</field>
-            <label>Base Price per Sq. Ft</label>
+            <label>Base Price per Sq. yard</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BZ45d</field>
@@ -352,8 +352,16 @@
             <label>Collected Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000CVOyP</field>
+            <label>Collected Amount From Payment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BogLt</field>
+            <label>Contact Email</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000Ay7SH</field>
@@ -362,6 +370,14 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNnR</field>
             <label>CRM Manager</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvnVV</field>
+            <label>Custom Email Body</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvnYj</field>
+            <label>Custom Email Subject</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNp3</field>
@@ -396,12 +412,16 @@
             <label>Desired Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000CHVRt</field>
+            <label>Digital Signature Approval</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHw</field>
             <label>Discovery Completed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
-            <field>00NO400000B8kk5</field>
-            <label>Documents URL</label>
+            <field>00NO400000BvEJF</field>
+            <label>Easy Collect Payment Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcO8P</field>
@@ -432,6 +452,14 @@
             <label>Is Demand Letter Sent</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000COBHx</field>
+            <label>is Draft Aos Uploaded?</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000CPd46</field>
+            <label>is NOC Uploaded</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqT49</field>
             <label>KYC Verification</label>
         </opportunityListFieldsLabelMappings>
@@ -446,6 +474,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000B52HN</field>
             <label>Lead Quote</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000B8kk5</field>
+            <label>Loan Document Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AtZQn</field>
@@ -468,6 +500,10 @@
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvUCj</field>
+            <label>New Price</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqMMr</field>
             <label>NOC</label>
         </opportunityListFieldsLabelMappings>
@@ -476,12 +512,32 @@
             <label>Occupation</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvTGf</field>
+            <label>Old Plot Details</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs4gD</field>
+            <label>Opportunity Account Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs7B3</field>
+            <label>Opportunity Owner Email</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bofb7</field>
+            <label>Opportunity Owner Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqGPV</field>
             <label>Outstanding Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOgH</field>
             <label>Overall Balance</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs8nA</field>
+            <label>Owner Phone</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BFTzR</field>
@@ -588,6 +644,10 @@
             <label>Sale Value Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bo43h</field>
+            <label>send Notification(Bulk)</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPFl</field>
             <label>Specify Country</label>
         </opportunityListFieldsLabelMappings>
@@ -598,6 +658,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BIZ4D</field>
             <label>Sub Stage</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000CHVRv</field>
+            <label>Time Of Registration</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000Acaaz</field>
@@ -642,6 +706,22 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000B1o1F</field>
             <label>Update Date-Time</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BoRd2</field>
+            <label>Virtual Account IFSC</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bob4T</field>
+            <label>Virtual Account Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BodJB</field>
+            <label>Virtual Account Number</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BnyXm</field>
+            <label>Virtual Account UPI QR</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPcL</field>
@@ -734,9 +814,13 @@
             <field>00NO400000AcOd3</field>
             <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
+            <field>00NO400000CVOyP</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000BogLt</field>
             <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
+            <field>00NO400000BvnVV</field>
+            <field>00NO400000BvnYj</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
@@ -745,8 +829,9 @@
             <field>00NO400000AcNvV</field>
             <field>00NO400000AcO1x</field>
             <field>00NO400000AcO3Z</field>
+            <field>00NO400000CHVRt</field>
             <field>00NfK000003tpHw</field>
-            <field>00NO400000B8kk5</field>
+            <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
@@ -754,19 +839,28 @@
             <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000COBHx</field>
+            <field>00NO400000CPd46</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
+            <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000Bex33</field>
+            <field>00NO400000BvUCj</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000BvTGf</field>
+            <field>00NO400000Bs4gD</field>
+            <field>00NO400000Bs7B3</field>
+            <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -793,9 +887,11 @@
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
+            <field>00NO400000Bo43h</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
             <field>00NO400000BIZ4D</field>
+            <field>00NO400000CHVRv</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -807,6 +903,10 @@
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000B1o1F</field>
+            <field>00NO400000BoRd2</field>
+            <field>00NO400000Bob4T</field>
+            <field>00NO400000BodJB</field>
+            <field>00NO400000BnyXm</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -1037,7 +1137,7 @@
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AwRtJ</field>
-            <label>Base Price per Sq. Ft</label>
+            <label>Base Price per Sq. yard</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BZ45d</field>
@@ -1080,8 +1180,16 @@
             <label>Collected Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000CVOyP</field>
+            <label>Collected Amount From Payment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BogLt</field>
+            <label>Contact Email</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000Ay7SH</field>
@@ -1090,6 +1198,14 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNnR</field>
             <label>CRM Manager</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvnVV</field>
+            <label>Custom Email Body</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvnYj</field>
+            <label>Custom Email Subject</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNp3</field>
@@ -1124,12 +1240,16 @@
             <label>Desired Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000CHVRt</field>
+            <label>Digital Signature Approval</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHw</field>
             <label>Discovery Completed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
-            <field>00NO400000B8kk5</field>
-            <label>Documents URL</label>
+            <field>00NO400000BvEJF</field>
+            <label>Easy Collect Payment Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcO8P</field>
@@ -1160,6 +1280,14 @@
             <label>Is Demand Letter Sent</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000COBHx</field>
+            <label>is Draft Aos Uploaded?</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000CPd46</field>
+            <label>is NOC Uploaded</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqT49</field>
             <label>KYC Verification</label>
         </opportunityListFieldsLabelMappings>
@@ -1174,6 +1302,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000B52HN</field>
             <label>Lead Quote</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000B8kk5</field>
+            <label>Loan Document Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AtZQn</field>
@@ -1196,6 +1328,10 @@
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvUCj</field>
+            <label>New Price</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqMMr</field>
             <label>NOC</label>
         </opportunityListFieldsLabelMappings>
@@ -1204,12 +1340,32 @@
             <label>Occupation</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvTGf</field>
+            <label>Old Plot Details</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs4gD</field>
+            <label>Opportunity Account Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs7B3</field>
+            <label>Opportunity Owner Email</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bofb7</field>
+            <label>Opportunity Owner Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqGPV</field>
             <label>Outstanding Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOgH</field>
             <label>Overall Balance</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs8nA</field>
+            <label>Owner Phone</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BFTzR</field>
@@ -1316,6 +1472,10 @@
             <label>Sale Value Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bo43h</field>
+            <label>send Notification(Bulk)</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPFl</field>
             <label>Specify Country</label>
         </opportunityListFieldsLabelMappings>
@@ -1326,6 +1486,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BIZ4D</field>
             <label>Sub Stage</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000CHVRv</field>
+            <label>Time Of Registration</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000Acaaz</field>
@@ -1370,6 +1534,22 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000B1o1F</field>
             <label>Update Date-Time</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BoRd2</field>
+            <label>Virtual Account IFSC</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bob4T</field>
+            <label>Virtual Account Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BodJB</field>
+            <label>Virtual Account Number</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BnyXm</field>
+            <label>Virtual Account UPI QR</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPcL</field>
@@ -1462,9 +1642,13 @@
             <field>00NO400000AcOd3</field>
             <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
+            <field>00NO400000CVOyP</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000BogLt</field>
             <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
+            <field>00NO400000BvnVV</field>
+            <field>00NO400000BvnYj</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
@@ -1473,8 +1657,9 @@
             <field>00NO400000AcNvV</field>
             <field>00NO400000AcO1x</field>
             <field>00NO400000AcO3Z</field>
+            <field>00NO400000CHVRt</field>
             <field>00NfK000003tpHw</field>
-            <field>00NO400000B8kk5</field>
+            <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
@@ -1482,19 +1667,28 @@
             <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000COBHx</field>
+            <field>00NO400000CPd46</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
+            <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000Bex33</field>
+            <field>00NO400000BvUCj</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000BvTGf</field>
+            <field>00NO400000Bs4gD</field>
+            <field>00NO400000Bs7B3</field>
+            <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -1521,9 +1715,11 @@
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
+            <field>00NO400000Bo43h</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
             <field>00NO400000BIZ4D</field>
+            <field>00NO400000CHVRv</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -1535,6 +1731,10 @@
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000B1o1F</field>
+            <field>00NO400000BoRd2</field>
+            <field>00NO400000Bob4T</field>
+            <field>00NO400000BodJB</field>
+            <field>00NO400000BnyXm</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -1769,7 +1969,7 @@
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AwRtJ</field>
-            <label>Base Price per Sq. Ft</label>
+            <label>Base Price per Sq. yard</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BZ45d</field>
@@ -1812,8 +2012,16 @@
             <label>Collected Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000CVOyP</field>
+            <label>Collected Amount From Payment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BogLt</field>
+            <label>Contact Email</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000Ay7SH</field>
@@ -1822,6 +2030,14 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNnR</field>
             <label>CRM Manager</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvnVV</field>
+            <label>Custom Email Body</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvnYj</field>
+            <label>Custom Email Subject</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNp3</field>
@@ -1856,12 +2072,16 @@
             <label>Desired Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000CHVRt</field>
+            <label>Digital Signature Approval</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHw</field>
             <label>Discovery Completed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
-            <field>00NO400000B8kk5</field>
-            <label>Documents URL</label>
+            <field>00NO400000BvEJF</field>
+            <label>Easy Collect Payment Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcO8P</field>
@@ -1892,6 +2112,14 @@
             <label>Is Demand Letter Sent</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000COBHx</field>
+            <label>is Draft Aos Uploaded?</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000CPd46</field>
+            <label>is NOC Uploaded</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqT49</field>
             <label>KYC Verification</label>
         </opportunityListFieldsLabelMappings>
@@ -1906,6 +2134,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000B52HN</field>
             <label>Lead Quote</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000B8kk5</field>
+            <label>Loan Document Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AtZQn</field>
@@ -1928,6 +2160,10 @@
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvUCj</field>
+            <label>New Price</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqMMr</field>
             <label>NOC</label>
         </opportunityListFieldsLabelMappings>
@@ -1936,12 +2172,32 @@
             <label>Occupation</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvTGf</field>
+            <label>Old Plot Details</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs4gD</field>
+            <label>Opportunity Account Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs7B3</field>
+            <label>Opportunity Owner Email</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bofb7</field>
+            <label>Opportunity Owner Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqGPV</field>
             <label>Outstanding Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOgH</field>
             <label>Overall Balance</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs8nA</field>
+            <label>Owner Phone</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BFTzR</field>
@@ -2048,6 +2304,10 @@
             <label>Sale Value Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bo43h</field>
+            <label>send Notification(Bulk)</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPFl</field>
             <label>Specify Country</label>
         </opportunityListFieldsLabelMappings>
@@ -2058,6 +2318,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BIZ4D</field>
             <label>Sub Stage</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000CHVRv</field>
+            <label>Time Of Registration</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000Acaaz</field>
@@ -2102,6 +2366,22 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000B1o1F</field>
             <label>Update Date-Time</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BoRd2</field>
+            <label>Virtual Account IFSC</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bob4T</field>
+            <label>Virtual Account Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BodJB</field>
+            <label>Virtual Account Number</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BnyXm</field>
+            <label>Virtual Account UPI QR</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPcL</field>
@@ -2195,9 +2475,13 @@
             <field>00NO400000AcOd3</field>
             <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
+            <field>00NO400000CVOyP</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000BogLt</field>
             <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
+            <field>00NO400000BvnVV</field>
+            <field>00NO400000BvnYj</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
@@ -2206,8 +2490,9 @@
             <field>00NO400000AcNvV</field>
             <field>00NO400000AcO1x</field>
             <field>00NO400000AcO3Z</field>
+            <field>00NO400000CHVRt</field>
             <field>00NfK000003tpHw</field>
-            <field>00NO400000B8kk5</field>
+            <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
@@ -2215,19 +2500,28 @@
             <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000COBHx</field>
+            <field>00NO400000CPd46</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
+            <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000Bex33</field>
+            <field>00NO400000BvUCj</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000BvTGf</field>
+            <field>00NO400000Bs4gD</field>
+            <field>00NO400000Bs7B3</field>
+            <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -2254,9 +2548,11 @@
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
+            <field>00NO400000Bo43h</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
             <field>00NO400000BIZ4D</field>
+            <field>00NO400000CHVRv</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -2268,6 +2564,10 @@
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000B1o1F</field>
+            <field>00NO400000BoRd2</field>
+            <field>00NO400000Bob4T</field>
+            <field>00NO400000BodJB</field>
+            <field>00NO400000BnyXm</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -2498,7 +2798,7 @@
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AwRtJ</field>
-            <label>Base Price per Sq. Ft</label>
+            <label>Base Price per Sq. yard</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BZ45d</field>
@@ -2541,8 +2841,16 @@
             <label>Collected Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000CVOyP</field>
+            <label>Collected Amount From Payment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BogLt</field>
+            <label>Contact Email</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000Ay7SH</field>
@@ -2551,6 +2859,14 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNnR</field>
             <label>CRM Manager</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvnVV</field>
+            <label>Custom Email Body</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvnYj</field>
+            <label>Custom Email Subject</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNp3</field>
@@ -2585,12 +2901,16 @@
             <label>Desired Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000CHVRt</field>
+            <label>Digital Signature Approval</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHw</field>
             <label>Discovery Completed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
-            <field>00NO400000B8kk5</field>
-            <label>Documents URL</label>
+            <field>00NO400000BvEJF</field>
+            <label>Easy Collect Payment Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcO8P</field>
@@ -2621,6 +2941,14 @@
             <label>Is Demand Letter Sent</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000COBHx</field>
+            <label>is Draft Aos Uploaded?</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000CPd46</field>
+            <label>is NOC Uploaded</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqT49</field>
             <label>KYC Verification</label>
         </opportunityListFieldsLabelMappings>
@@ -2635,6 +2963,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000B52HN</field>
             <label>Lead Quote</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000B8kk5</field>
+            <label>Loan Document Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AtZQn</field>
@@ -2657,6 +2989,10 @@
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvUCj</field>
+            <label>New Price</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqMMr</field>
             <label>NOC</label>
         </opportunityListFieldsLabelMappings>
@@ -2665,12 +3001,32 @@
             <label>Occupation</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvTGf</field>
+            <label>Old Plot Details</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs4gD</field>
+            <label>Opportunity Account Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs7B3</field>
+            <label>Opportunity Owner Email</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bofb7</field>
+            <label>Opportunity Owner Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqGPV</field>
             <label>Outstanding Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOgH</field>
             <label>Overall Balance</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs8nA</field>
+            <label>Owner Phone</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BFTzR</field>
@@ -2777,6 +3133,10 @@
             <label>Sale Value Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bo43h</field>
+            <label>send Notification(Bulk)</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPFl</field>
             <label>Specify Country</label>
         </opportunityListFieldsLabelMappings>
@@ -2787,6 +3147,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BIZ4D</field>
             <label>Sub Stage</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000CHVRv</field>
+            <label>Time Of Registration</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000Acaaz</field>
@@ -2831,6 +3195,22 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000B1o1F</field>
             <label>Update Date-Time</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BoRd2</field>
+            <label>Virtual Account IFSC</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bob4T</field>
+            <label>Virtual Account Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BodJB</field>
+            <label>Virtual Account Number</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BnyXm</field>
+            <label>Virtual Account UPI QR</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPcL</field>
@@ -2923,9 +3303,13 @@
             <field>00NO400000AcOd3</field>
             <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
+            <field>00NO400000CVOyP</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000BogLt</field>
             <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
+            <field>00NO400000BvnVV</field>
+            <field>00NO400000BvnYj</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
@@ -2934,8 +3318,9 @@
             <field>00NO400000AcNvV</field>
             <field>00NO400000AcO1x</field>
             <field>00NO400000AcO3Z</field>
+            <field>00NO400000CHVRt</field>
             <field>00NfK000003tpHw</field>
-            <field>00NO400000B8kk5</field>
+            <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
@@ -2943,19 +3328,28 @@
             <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000COBHx</field>
+            <field>00NO400000CPd46</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
+            <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000Bex33</field>
+            <field>00NO400000BvUCj</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000BvTGf</field>
+            <field>00NO400000Bs4gD</field>
+            <field>00NO400000Bs7B3</field>
+            <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -2982,9 +3376,11 @@
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
+            <field>00NO400000Bo43h</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
             <field>00NO400000BIZ4D</field>
+            <field>00NO400000CHVRv</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -2996,6 +3392,10 @@
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000B1o1F</field>
+            <field>00NO400000BoRd2</field>
+            <field>00NO400000Bob4T</field>
+            <field>00NO400000BodJB</field>
+            <field>00NO400000BnyXm</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -3230,7 +3630,7 @@
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AwRtJ</field>
-            <label>Base Price per Sq. Ft</label>
+            <label>Base Price per Sq. yard</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BZ45d</field>
@@ -3273,8 +3673,16 @@
             <label>Collected Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000CVOyP</field>
+            <label>Collected Amount From Payment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BogLt</field>
+            <label>Contact Email</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000Ay7SH</field>
@@ -3283,6 +3691,14 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNnR</field>
             <label>CRM Manager</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvnVV</field>
+            <label>Custom Email Body</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvnYj</field>
+            <label>Custom Email Subject</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNp3</field>
@@ -3317,12 +3733,16 @@
             <label>Desired Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000CHVRt</field>
+            <label>Digital Signature Approval</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHw</field>
             <label>Discovery Completed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
-            <field>00NO400000B8kk5</field>
-            <label>Documents URL</label>
+            <field>00NO400000BvEJF</field>
+            <label>Easy Collect Payment Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcO8P</field>
@@ -3353,6 +3773,14 @@
             <label>Is Demand Letter Sent</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000COBHx</field>
+            <label>is Draft Aos Uploaded?</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000CPd46</field>
+            <label>is NOC Uploaded</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqT49</field>
             <label>KYC Verification</label>
         </opportunityListFieldsLabelMappings>
@@ -3367,6 +3795,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000B52HN</field>
             <label>Lead Quote</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000B8kk5</field>
+            <label>Loan Document Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AtZQn</field>
@@ -3389,6 +3821,10 @@
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvUCj</field>
+            <label>New Price</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqMMr</field>
             <label>NOC</label>
         </opportunityListFieldsLabelMappings>
@@ -3397,12 +3833,32 @@
             <label>Occupation</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvTGf</field>
+            <label>Old Plot Details</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs4gD</field>
+            <label>Opportunity Account Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs7B3</field>
+            <label>Opportunity Owner Email</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bofb7</field>
+            <label>Opportunity Owner Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqGPV</field>
             <label>Outstanding Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOgH</field>
             <label>Overall Balance</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs8nA</field>
+            <label>Owner Phone</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BFTzR</field>
@@ -3509,6 +3965,10 @@
             <label>Sale Value Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bo43h</field>
+            <label>send Notification(Bulk)</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPFl</field>
             <label>Specify Country</label>
         </opportunityListFieldsLabelMappings>
@@ -3519,6 +3979,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BIZ4D</field>
             <label>Sub Stage</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000CHVRv</field>
+            <label>Time Of Registration</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000Acaaz</field>
@@ -3563,6 +4027,22 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000B1o1F</field>
             <label>Update Date-Time</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BoRd2</field>
+            <label>Virtual Account IFSC</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bob4T</field>
+            <label>Virtual Account Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BodJB</field>
+            <label>Virtual Account Number</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BnyXm</field>
+            <label>Virtual Account UPI QR</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPcL</field>
@@ -3656,9 +4136,13 @@
             <field>00NO400000AcOd3</field>
             <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
+            <field>00NO400000CVOyP</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000BogLt</field>
             <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
+            <field>00NO400000BvnVV</field>
+            <field>00NO400000BvnYj</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
@@ -3667,8 +4151,9 @@
             <field>00NO400000AcNvV</field>
             <field>00NO400000AcO1x</field>
             <field>00NO400000AcO3Z</field>
+            <field>00NO400000CHVRt</field>
             <field>00NfK000003tpHw</field>
-            <field>00NO400000B8kk5</field>
+            <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
@@ -3676,19 +4161,28 @@
             <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000COBHx</field>
+            <field>00NO400000CPd46</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
+            <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000Bex33</field>
+            <field>00NO400000BvUCj</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000BvTGf</field>
+            <field>00NO400000Bs4gD</field>
+            <field>00NO400000Bs7B3</field>
+            <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -3715,9 +4209,11 @@
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
+            <field>00NO400000Bo43h</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
             <field>00NO400000BIZ4D</field>
+            <field>00NO400000CHVRv</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -3729,6 +4225,10 @@
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000B1o1F</field>
+            <field>00NO400000BoRd2</field>
+            <field>00NO400000Bob4T</field>
+            <field>00NO400000BodJB</field>
+            <field>00NO400000BnyXm</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -3959,7 +4459,7 @@
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AwRtJ</field>
-            <label>Base Price per Sq. Ft</label>
+            <label>Base Price per Sq. yard</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BZ45d</field>
@@ -4002,8 +4502,16 @@
             <label>Collected Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000CVOyP</field>
+            <label>Collected Amount From Payment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BogLt</field>
+            <label>Contact Email</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000Ay7SH</field>
@@ -4012,6 +4520,14 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNnR</field>
             <label>CRM Manager</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvnVV</field>
+            <label>Custom Email Body</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvnYj</field>
+            <label>Custom Email Subject</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNp3</field>
@@ -4046,12 +4562,16 @@
             <label>Desired Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000CHVRt</field>
+            <label>Digital Signature Approval</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHw</field>
             <label>Discovery Completed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
-            <field>00NO400000B8kk5</field>
-            <label>Documents URL</label>
+            <field>00NO400000BvEJF</field>
+            <label>Easy Collect Payment Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcO8P</field>
@@ -4082,6 +4602,14 @@
             <label>Is Demand Letter Sent</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000COBHx</field>
+            <label>is Draft Aos Uploaded?</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000CPd46</field>
+            <label>is NOC Uploaded</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqT49</field>
             <label>KYC Verification</label>
         </opportunityListFieldsLabelMappings>
@@ -4096,6 +4624,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000B52HN</field>
             <label>Lead Quote</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000B8kk5</field>
+            <label>Loan Document Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AtZQn</field>
@@ -4118,6 +4650,10 @@
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvUCj</field>
+            <label>New Price</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqMMr</field>
             <label>NOC</label>
         </opportunityListFieldsLabelMappings>
@@ -4126,12 +4662,32 @@
             <label>Occupation</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvTGf</field>
+            <label>Old Plot Details</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs4gD</field>
+            <label>Opportunity Account Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs7B3</field>
+            <label>Opportunity Owner Email</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bofb7</field>
+            <label>Opportunity Owner Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqGPV</field>
             <label>Outstanding Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOgH</field>
             <label>Overall Balance</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs8nA</field>
+            <label>Owner Phone</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BFTzR</field>
@@ -4238,6 +4794,10 @@
             <label>Sale Value Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bo43h</field>
+            <label>send Notification(Bulk)</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPFl</field>
             <label>Specify Country</label>
         </opportunityListFieldsLabelMappings>
@@ -4248,6 +4808,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BIZ4D</field>
             <label>Sub Stage</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000CHVRv</field>
+            <label>Time Of Registration</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000Acaaz</field>
@@ -4292,6 +4856,22 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000B1o1F</field>
             <label>Update Date-Time</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BoRd2</field>
+            <label>Virtual Account IFSC</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bob4T</field>
+            <label>Virtual Account Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BodJB</field>
+            <label>Virtual Account Number</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BnyXm</field>
+            <label>Virtual Account UPI QR</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPcL</field>
@@ -4384,9 +4964,13 @@
             <field>00NO400000AcOd3</field>
             <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
+            <field>00NO400000CVOyP</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000BogLt</field>
             <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
+            <field>00NO400000BvnVV</field>
+            <field>00NO400000BvnYj</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
@@ -4395,8 +4979,9 @@
             <field>00NO400000AcNvV</field>
             <field>00NO400000AcO1x</field>
             <field>00NO400000AcO3Z</field>
+            <field>00NO400000CHVRt</field>
             <field>00NfK000003tpHw</field>
-            <field>00NO400000B8kk5</field>
+            <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
@@ -4404,19 +4989,28 @@
             <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000COBHx</field>
+            <field>00NO400000CPd46</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
+            <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000Bex33</field>
+            <field>00NO400000BvUCj</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000BvTGf</field>
+            <field>00NO400000Bs4gD</field>
+            <field>00NO400000Bs7B3</field>
+            <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -4443,9 +5037,11 @@
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
+            <field>00NO400000Bo43h</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
             <field>00NO400000BIZ4D</field>
+            <field>00NO400000CHVRv</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -4457,6 +5053,10 @@
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000B1o1F</field>
+            <field>00NO400000BoRd2</field>
+            <field>00NO400000Bob4T</field>
+            <field>00NO400000BodJB</field>
+            <field>00NO400000BnyXm</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -4691,7 +5291,7 @@
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AwRtJ</field>
-            <label>Base Price per Sq. Ft</label>
+            <label>Base Price per Sq. yard</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BZ45d</field>
@@ -4734,8 +5334,16 @@
             <label>Collected Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000CVOyP</field>
+            <label>Collected Amount From Payment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BogLt</field>
+            <label>Contact Email</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000Ay7SH</field>
@@ -4744,6 +5352,14 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNnR</field>
             <label>CRM Manager</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvnVV</field>
+            <label>Custom Email Body</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvnYj</field>
+            <label>Custom Email Subject</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNp3</field>
@@ -4778,12 +5394,16 @@
             <label>Desired Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000CHVRt</field>
+            <label>Digital Signature Approval</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHw</field>
             <label>Discovery Completed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
-            <field>00NO400000B8kk5</field>
-            <label>Documents URL</label>
+            <field>00NO400000BvEJF</field>
+            <label>Easy Collect Payment Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcO8P</field>
@@ -4814,6 +5434,14 @@
             <label>Is Demand Letter Sent</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000COBHx</field>
+            <label>is Draft Aos Uploaded?</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000CPd46</field>
+            <label>is NOC Uploaded</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqT49</field>
             <label>KYC Verification</label>
         </opportunityListFieldsLabelMappings>
@@ -4828,6 +5456,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000B52HN</field>
             <label>Lead Quote</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000B8kk5</field>
+            <label>Loan Document Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AtZQn</field>
@@ -4850,6 +5482,10 @@
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvUCj</field>
+            <label>New Price</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqMMr</field>
             <label>NOC</label>
         </opportunityListFieldsLabelMappings>
@@ -4858,12 +5494,32 @@
             <label>Occupation</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvTGf</field>
+            <label>Old Plot Details</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs4gD</field>
+            <label>Opportunity Account Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs7B3</field>
+            <label>Opportunity Owner Email</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bofb7</field>
+            <label>Opportunity Owner Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqGPV</field>
             <label>Outstanding Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOgH</field>
             <label>Overall Balance</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs8nA</field>
+            <label>Owner Phone</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BFTzR</field>
@@ -4970,6 +5626,10 @@
             <label>Sale Value Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bo43h</field>
+            <label>send Notification(Bulk)</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPFl</field>
             <label>Specify Country</label>
         </opportunityListFieldsLabelMappings>
@@ -4980,6 +5640,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BIZ4D</field>
             <label>Sub Stage</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000CHVRv</field>
+            <label>Time Of Registration</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000Acaaz</field>
@@ -5024,6 +5688,22 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000B1o1F</field>
             <label>Update Date-Time</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BoRd2</field>
+            <label>Virtual Account IFSC</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bob4T</field>
+            <label>Virtual Account Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BodJB</field>
+            <label>Virtual Account Number</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BnyXm</field>
+            <label>Virtual Account UPI QR</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPcL</field>
@@ -5117,9 +5797,13 @@
             <field>00NO400000AcOd3</field>
             <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
+            <field>00NO400000CVOyP</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000BogLt</field>
             <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
+            <field>00NO400000BvnVV</field>
+            <field>00NO400000BvnYj</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
@@ -5128,8 +5812,9 @@
             <field>00NO400000AcNvV</field>
             <field>00NO400000AcO1x</field>
             <field>00NO400000AcO3Z</field>
+            <field>00NO400000CHVRt</field>
             <field>00NfK000003tpHw</field>
-            <field>00NO400000B8kk5</field>
+            <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
@@ -5137,19 +5822,28 @@
             <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000COBHx</field>
+            <field>00NO400000CPd46</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
+            <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000Bex33</field>
+            <field>00NO400000BvUCj</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000BvTGf</field>
+            <field>00NO400000Bs4gD</field>
+            <field>00NO400000Bs7B3</field>
+            <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -5176,9 +5870,11 @@
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
+            <field>00NO400000Bo43h</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
             <field>00NO400000BIZ4D</field>
+            <field>00NO400000CHVRv</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -5190,6 +5886,10 @@
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000B1o1F</field>
+            <field>00NO400000BoRd2</field>
+            <field>00NO400000Bob4T</field>
+            <field>00NO400000BodJB</field>
+            <field>00NO400000BnyXm</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -5420,7 +6120,7 @@
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AwRtJ</field>
-            <label>Base Price per Sq. Ft</label>
+            <label>Base Price per Sq. yard</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BZ45d</field>
@@ -5463,8 +6163,16 @@
             <label>Collected Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000CVOyP</field>
+            <label>Collected Amount From Payment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BogLt</field>
+            <label>Contact Email</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000Ay7SH</field>
@@ -5473,6 +6181,14 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNnR</field>
             <label>CRM Manager</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvnVV</field>
+            <label>Custom Email Body</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvnYj</field>
+            <label>Custom Email Subject</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNp3</field>
@@ -5507,12 +6223,16 @@
             <label>Desired Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000CHVRt</field>
+            <label>Digital Signature Approval</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHw</field>
             <label>Discovery Completed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
-            <field>00NO400000B8kk5</field>
-            <label>Documents URL</label>
+            <field>00NO400000BvEJF</field>
+            <label>Easy Collect Payment Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcO8P</field>
@@ -5543,6 +6263,14 @@
             <label>Is Demand Letter Sent</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000COBHx</field>
+            <label>is Draft Aos Uploaded?</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000CPd46</field>
+            <label>is NOC Uploaded</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqT49</field>
             <label>KYC Verification</label>
         </opportunityListFieldsLabelMappings>
@@ -5557,6 +6285,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000B52HN</field>
             <label>Lead Quote</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000B8kk5</field>
+            <label>Loan Document Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AtZQn</field>
@@ -5579,6 +6311,10 @@
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvUCj</field>
+            <label>New Price</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqMMr</field>
             <label>NOC</label>
         </opportunityListFieldsLabelMappings>
@@ -5587,12 +6323,32 @@
             <label>Occupation</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvTGf</field>
+            <label>Old Plot Details</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs4gD</field>
+            <label>Opportunity Account Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs7B3</field>
+            <label>Opportunity Owner Email</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bofb7</field>
+            <label>Opportunity Owner Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqGPV</field>
             <label>Outstanding Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOgH</field>
             <label>Overall Balance</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs8nA</field>
+            <label>Owner Phone</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BFTzR</field>
@@ -5699,6 +6455,10 @@
             <label>Sale Value Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bo43h</field>
+            <label>send Notification(Bulk)</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPFl</field>
             <label>Specify Country</label>
         </opportunityListFieldsLabelMappings>
@@ -5709,6 +6469,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BIZ4D</field>
             <label>Sub Stage</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000CHVRv</field>
+            <label>Time Of Registration</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000Acaaz</field>
@@ -5753,6 +6517,22 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000B1o1F</field>
             <label>Update Date-Time</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BoRd2</field>
+            <label>Virtual Account IFSC</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bob4T</field>
+            <label>Virtual Account Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BodJB</field>
+            <label>Virtual Account Number</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BnyXm</field>
+            <label>Virtual Account UPI QR</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPcL</field>
@@ -5845,9 +6625,13 @@
             <field>00NO400000AcOd3</field>
             <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
+            <field>00NO400000CVOyP</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000BogLt</field>
             <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
+            <field>00NO400000BvnVV</field>
+            <field>00NO400000BvnYj</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
@@ -5856,8 +6640,9 @@
             <field>00NO400000AcNvV</field>
             <field>00NO400000AcO1x</field>
             <field>00NO400000AcO3Z</field>
+            <field>00NO400000CHVRt</field>
             <field>00NfK000003tpHw</field>
-            <field>00NO400000B8kk5</field>
+            <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
@@ -5865,19 +6650,28 @@
             <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000COBHx</field>
+            <field>00NO400000CPd46</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
+            <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000Bex33</field>
+            <field>00NO400000BvUCj</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000BvTGf</field>
+            <field>00NO400000Bs4gD</field>
+            <field>00NO400000Bs7B3</field>
+            <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -5904,9 +6698,11 @@
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
+            <field>00NO400000Bo43h</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
             <field>00NO400000BIZ4D</field>
+            <field>00NO400000CHVRv</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -5918,6 +6714,10 @@
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000B1o1F</field>
+            <field>00NO400000BoRd2</field>
+            <field>00NO400000Bob4T</field>
+            <field>00NO400000BodJB</field>
+            <field>00NO400000BnyXm</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -6152,7 +6952,7 @@
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AwRtJ</field>
-            <label>Base Price per Sq. Ft</label>
+            <label>Base Price per Sq. yard</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BZ45d</field>
@@ -6195,8 +6995,16 @@
             <label>Collected Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000CVOyP</field>
+            <label>Collected Amount From Payment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BogLt</field>
+            <label>Contact Email</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000Ay7SH</field>
@@ -6205,6 +7013,14 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNnR</field>
             <label>CRM Manager</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvnVV</field>
+            <label>Custom Email Body</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvnYj</field>
+            <label>Custom Email Subject</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNp3</field>
@@ -6239,12 +7055,16 @@
             <label>Desired Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000CHVRt</field>
+            <label>Digital Signature Approval</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHw</field>
             <label>Discovery Completed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
-            <field>00NO400000B8kk5</field>
-            <label>Documents URL</label>
+            <field>00NO400000BvEJF</field>
+            <label>Easy Collect Payment Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcO8P</field>
@@ -6275,6 +7095,14 @@
             <label>Is Demand Letter Sent</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000COBHx</field>
+            <label>is Draft Aos Uploaded?</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000CPd46</field>
+            <label>is NOC Uploaded</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqT49</field>
             <label>KYC Verification</label>
         </opportunityListFieldsLabelMappings>
@@ -6289,6 +7117,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000B52HN</field>
             <label>Lead Quote</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000B8kk5</field>
+            <label>Loan Document Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AtZQn</field>
@@ -6311,6 +7143,10 @@
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvUCj</field>
+            <label>New Price</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqMMr</field>
             <label>NOC</label>
         </opportunityListFieldsLabelMappings>
@@ -6319,12 +7155,32 @@
             <label>Occupation</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvTGf</field>
+            <label>Old Plot Details</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs4gD</field>
+            <label>Opportunity Account Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs7B3</field>
+            <label>Opportunity Owner Email</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bofb7</field>
+            <label>Opportunity Owner Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqGPV</field>
             <label>Outstanding Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOgH</field>
             <label>Overall Balance</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs8nA</field>
+            <label>Owner Phone</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BFTzR</field>
@@ -6431,6 +7287,10 @@
             <label>Sale Value Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bo43h</field>
+            <label>send Notification(Bulk)</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPFl</field>
             <label>Specify Country</label>
         </opportunityListFieldsLabelMappings>
@@ -6441,6 +7301,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BIZ4D</field>
             <label>Sub Stage</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000CHVRv</field>
+            <label>Time Of Registration</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000Acaaz</field>
@@ -6485,6 +7349,22 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000B1o1F</field>
             <label>Update Date-Time</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BoRd2</field>
+            <label>Virtual Account IFSC</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bob4T</field>
+            <label>Virtual Account Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BodJB</field>
+            <label>Virtual Account Number</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BnyXm</field>
+            <label>Virtual Account UPI QR</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPcL</field>
@@ -6578,9 +7458,13 @@
             <field>00NO400000AcOd3</field>
             <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
+            <field>00NO400000CVOyP</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000BogLt</field>
             <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
+            <field>00NO400000BvnVV</field>
+            <field>00NO400000BvnYj</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
@@ -6589,8 +7473,9 @@
             <field>00NO400000AcNvV</field>
             <field>00NO400000AcO1x</field>
             <field>00NO400000AcO3Z</field>
+            <field>00NO400000CHVRt</field>
             <field>00NfK000003tpHw</field>
-            <field>00NO400000B8kk5</field>
+            <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
@@ -6598,19 +7483,28 @@
             <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000COBHx</field>
+            <field>00NO400000CPd46</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
+            <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000Bex33</field>
+            <field>00NO400000BvUCj</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000BvTGf</field>
+            <field>00NO400000Bs4gD</field>
+            <field>00NO400000Bs7B3</field>
+            <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -6637,9 +7531,11 @@
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
+            <field>00NO400000Bo43h</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
             <field>00NO400000BIZ4D</field>
+            <field>00NO400000CHVRv</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -6651,6 +7547,10 @@
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000B1o1F</field>
+            <field>00NO400000BoRd2</field>
+            <field>00NO400000Bob4T</field>
+            <field>00NO400000BodJB</field>
+            <field>00NO400000BnyXm</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -6881,7 +7781,7 @@
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AwRtJ</field>
-            <label>Base Price per Sq. Ft</label>
+            <label>Base Price per Sq. yard</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BZ45d</field>
@@ -6924,8 +7824,16 @@
             <label>Collected Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000CVOyP</field>
+            <label>Collected Amount From Payment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BogLt</field>
+            <label>Contact Email</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000Ay7SH</field>
@@ -6934,6 +7842,14 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNnR</field>
             <label>CRM Manager</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvnVV</field>
+            <label>Custom Email Body</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvnYj</field>
+            <label>Custom Email Subject</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNp3</field>
@@ -6968,12 +7884,16 @@
             <label>Desired Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000CHVRt</field>
+            <label>Digital Signature Approval</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHw</field>
             <label>Discovery Completed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
-            <field>00NO400000B8kk5</field>
-            <label>Documents URL</label>
+            <field>00NO400000BvEJF</field>
+            <label>Easy Collect Payment Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcO8P</field>
@@ -7004,6 +7924,14 @@
             <label>Is Demand Letter Sent</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000COBHx</field>
+            <label>is Draft Aos Uploaded?</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000CPd46</field>
+            <label>is NOC Uploaded</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqT49</field>
             <label>KYC Verification</label>
         </opportunityListFieldsLabelMappings>
@@ -7018,6 +7946,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000B52HN</field>
             <label>Lead Quote</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000B8kk5</field>
+            <label>Loan Document Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AtZQn</field>
@@ -7040,6 +7972,10 @@
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvUCj</field>
+            <label>New Price</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqMMr</field>
             <label>NOC</label>
         </opportunityListFieldsLabelMappings>
@@ -7048,12 +7984,32 @@
             <label>Occupation</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvTGf</field>
+            <label>Old Plot Details</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs4gD</field>
+            <label>Opportunity Account Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs7B3</field>
+            <label>Opportunity Owner Email</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bofb7</field>
+            <label>Opportunity Owner Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqGPV</field>
             <label>Outstanding Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOgH</field>
             <label>Overall Balance</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs8nA</field>
+            <label>Owner Phone</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BFTzR</field>
@@ -7160,6 +8116,10 @@
             <label>Sale Value Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bo43h</field>
+            <label>send Notification(Bulk)</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPFl</field>
             <label>Specify Country</label>
         </opportunityListFieldsLabelMappings>
@@ -7170,6 +8130,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BIZ4D</field>
             <label>Sub Stage</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000CHVRv</field>
+            <label>Time Of Registration</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000Acaaz</field>
@@ -7214,6 +8178,22 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000B1o1F</field>
             <label>Update Date-Time</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BoRd2</field>
+            <label>Virtual Account IFSC</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bob4T</field>
+            <label>Virtual Account Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BodJB</field>
+            <label>Virtual Account Number</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BnyXm</field>
+            <label>Virtual Account UPI QR</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPcL</field>
@@ -7306,9 +8286,13 @@
             <field>00NO400000AcOd3</field>
             <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
+            <field>00NO400000CVOyP</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000BogLt</field>
             <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
+            <field>00NO400000BvnVV</field>
+            <field>00NO400000BvnYj</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
@@ -7317,8 +8301,9 @@
             <field>00NO400000AcNvV</field>
             <field>00NO400000AcO1x</field>
             <field>00NO400000AcO3Z</field>
+            <field>00NO400000CHVRt</field>
             <field>00NfK000003tpHw</field>
-            <field>00NO400000B8kk5</field>
+            <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
@@ -7326,19 +8311,28 @@
             <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000COBHx</field>
+            <field>00NO400000CPd46</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
+            <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000Bex33</field>
+            <field>00NO400000BvUCj</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000BvTGf</field>
+            <field>00NO400000Bs4gD</field>
+            <field>00NO400000Bs7B3</field>
+            <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -7365,9 +8359,11 @@
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
+            <field>00NO400000Bo43h</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
             <field>00NO400000BIZ4D</field>
+            <field>00NO400000CHVRv</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -7379,6 +8375,10 @@
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000B1o1F</field>
+            <field>00NO400000BoRd2</field>
+            <field>00NO400000Bob4T</field>
+            <field>00NO400000BodJB</field>
+            <field>00NO400000BnyXm</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -7613,7 +8613,7 @@
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AwRtJ</field>
-            <label>Base Price per Sq. Ft</label>
+            <label>Base Price per Sq. yard</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BZ45d</field>
@@ -7656,8 +8656,16 @@
             <label>Collected Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000CVOyP</field>
+            <label>Collected Amount From Payment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BogLt</field>
+            <label>Contact Email</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000Ay7SH</field>
@@ -7666,6 +8674,14 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNnR</field>
             <label>CRM Manager</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvnVV</field>
+            <label>Custom Email Body</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvnYj</field>
+            <label>Custom Email Subject</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNp3</field>
@@ -7700,12 +8716,16 @@
             <label>Desired Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000CHVRt</field>
+            <label>Digital Signature Approval</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHw</field>
             <label>Discovery Completed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
-            <field>00NO400000B8kk5</field>
-            <label>Documents URL</label>
+            <field>00NO400000BvEJF</field>
+            <label>Easy Collect Payment Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcO8P</field>
@@ -7736,6 +8756,14 @@
             <label>Is Demand Letter Sent</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000COBHx</field>
+            <label>is Draft Aos Uploaded?</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000CPd46</field>
+            <label>is NOC Uploaded</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqT49</field>
             <label>KYC Verification</label>
         </opportunityListFieldsLabelMappings>
@@ -7750,6 +8778,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000B52HN</field>
             <label>Lead Quote</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000B8kk5</field>
+            <label>Loan Document Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AtZQn</field>
@@ -7772,6 +8804,10 @@
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvUCj</field>
+            <label>New Price</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqMMr</field>
             <label>NOC</label>
         </opportunityListFieldsLabelMappings>
@@ -7780,12 +8816,32 @@
             <label>Occupation</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvTGf</field>
+            <label>Old Plot Details</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs4gD</field>
+            <label>Opportunity Account Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs7B3</field>
+            <label>Opportunity Owner Email</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bofb7</field>
+            <label>Opportunity Owner Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqGPV</field>
             <label>Outstanding Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOgH</field>
             <label>Overall Balance</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs8nA</field>
+            <label>Owner Phone</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BFTzR</field>
@@ -7892,6 +8948,10 @@
             <label>Sale Value Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bo43h</field>
+            <label>send Notification(Bulk)</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPFl</field>
             <label>Specify Country</label>
         </opportunityListFieldsLabelMappings>
@@ -7902,6 +8962,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BIZ4D</field>
             <label>Sub Stage</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000CHVRv</field>
+            <label>Time Of Registration</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000Acaaz</field>
@@ -7946,6 +9010,22 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000B1o1F</field>
             <label>Update Date-Time</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BoRd2</field>
+            <label>Virtual Account IFSC</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bob4T</field>
+            <label>Virtual Account Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BodJB</field>
+            <label>Virtual Account Number</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BnyXm</field>
+            <label>Virtual Account UPI QR</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPcL</field>
@@ -8039,9 +9119,13 @@
             <field>00NO400000AcOd3</field>
             <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
+            <field>00NO400000CVOyP</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000BogLt</field>
             <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
+            <field>00NO400000BvnVV</field>
+            <field>00NO400000BvnYj</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
@@ -8050,8 +9134,9 @@
             <field>00NO400000AcNvV</field>
             <field>00NO400000AcO1x</field>
             <field>00NO400000AcO3Z</field>
+            <field>00NO400000CHVRt</field>
             <field>00NfK000003tpHw</field>
-            <field>00NO400000B8kk5</field>
+            <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
@@ -8059,19 +9144,28 @@
             <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000COBHx</field>
+            <field>00NO400000CPd46</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
+            <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000Bex33</field>
+            <field>00NO400000BvUCj</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000BvTGf</field>
+            <field>00NO400000Bs4gD</field>
+            <field>00NO400000Bs7B3</field>
+            <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -8098,9 +9192,11 @@
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
+            <field>00NO400000Bo43h</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
             <field>00NO400000BIZ4D</field>
+            <field>00NO400000CHVRv</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -8112,6 +9208,10 @@
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000B1o1F</field>
+            <field>00NO400000BoRd2</field>
+            <field>00NO400000Bob4T</field>
+            <field>00NO400000BodJB</field>
+            <field>00NO400000BnyXm</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -8342,7 +9442,7 @@
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AwRtJ</field>
-            <label>Base Price per Sq. Ft</label>
+            <label>Base Price per Sq. yard</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BZ45d</field>
@@ -8385,8 +9485,16 @@
             <label>Collected Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000CVOyP</field>
+            <label>Collected Amount From Payment</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNlp</field>
             <label>Contact</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BogLt</field>
+            <label>Contact Email</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000Ay7SH</field>
@@ -8395,6 +9503,14 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNnR</field>
             <label>CRM Manager</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvnVV</field>
+            <label>Custom Email Body</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvnYj</field>
+            <label>Custom Email Subject</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcNp3</field>
@@ -8429,12 +9545,16 @@
             <label>Desired Status</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000CHVRt</field>
+            <label>Digital Signature Approval</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NfK000003tpHw</field>
             <label>Discovery Completed</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
-            <field>00NO400000B8kk5</field>
-            <label>Documents URL</label>
+            <field>00NO400000BvEJF</field>
+            <label>Easy Collect Payment Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcO8P</field>
@@ -8465,6 +9585,14 @@
             <label>Is Demand Letter Sent</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000COBHx</field>
+            <label>is Draft Aos Uploaded?</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000CPd46</field>
+            <label>is NOC Uploaded</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqT49</field>
             <label>KYC Verification</label>
         </opportunityListFieldsLabelMappings>
@@ -8479,6 +9607,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000B52HN</field>
             <label>Lead Quote</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000B8kk5</field>
+            <label>Loan Document Link</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AtZQn</field>
@@ -8501,6 +9633,10 @@
             <label>Lost Reason</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvUCj</field>
+            <label>New Price</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqMMr</field>
             <label>NOC</label>
         </opportunityListFieldsLabelMappings>
@@ -8509,12 +9645,32 @@
             <label>Occupation</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000BvTGf</field>
+            <label>Old Plot Details</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs4gD</field>
+            <label>Opportunity Account Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs7B3</field>
+            <label>Opportunity Owner Email</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bofb7</field>
+            <label>Opportunity Owner Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AqGPV</field>
             <label>Outstanding Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcOgH</field>
             <label>Overall Balance</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bs8nA</field>
+            <label>Owner Phone</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BFTzR</field>
@@ -8621,6 +9777,10 @@
             <label>Sale Value Amount</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bo43h</field>
+            <label>send Notification(Bulk)</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPFl</field>
             <label>Specify Country</label>
         </opportunityListFieldsLabelMappings>
@@ -8631,6 +9791,10 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000BIZ4D</field>
             <label>Sub Stage</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000CHVRv</field>
+            <label>Time Of Registration</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000Acaaz</field>
@@ -8675,6 +9839,22 @@
         <opportunityListFieldsLabelMappings>
             <field>00NO400000B1o1F</field>
             <label>Update Date-Time</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BoRd2</field>
+            <label>Virtual Account IFSC</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000Bob4T</field>
+            <label>Virtual Account Name</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BodJB</field>
+            <label>Virtual Account Number</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NO400000BnyXm</field>
+            <label>Virtual Account UPI QR</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NO400000AcPcL</field>
@@ -8767,9 +9947,13 @@
             <field>00NO400000AcOd3</field>
             <field>00NO400000BIVyI</field>
             <field>00NO400000AqGCb</field>
+            <field>00NO400000CVOyP</field>
             <field>00NO400000AcNlp</field>
+            <field>00NO400000BogLt</field>
             <field>00NO400000Ay7SH</field>
             <field>00NO400000AcNnR</field>
+            <field>00NO400000BvnVV</field>
+            <field>00NO400000BvnYj</field>
             <field>00NO400000AcNp3</field>
             <field>00NO400000AqMBZ</field>
             <field>00NO400000AcNqf</field>
@@ -8778,8 +9962,9 @@
             <field>00NO400000AcNvV</field>
             <field>00NO400000AcO1x</field>
             <field>00NO400000AcO3Z</field>
+            <field>00NO400000CHVRt</field>
             <field>00NfK000003tpHw</field>
-            <field>00NO400000B8kk5</field>
+            <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
             <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
@@ -8787,19 +9972,28 @@
             <field>00NO400000AtMUL</field>
             <field>00NO400000AcODF</field>
             <field>00NO400000AcOGT</field>
+            <field>00NO400000COBHx</field>
+            <field>00NO400000CPd46</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
+            <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
             <field>00NO400000Bex33</field>
+            <field>00NO400000BvUCj</field>
             <field>00NO400000AqMMr</field>
             <field>00NO400000AcOYD</field>
+            <field>00NO400000BvTGf</field>
+            <field>00NO400000Bs4gD</field>
+            <field>00NO400000Bs7B3</field>
+            <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
             <field>00NO400000AcOgH</field>
+            <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
             <field>00NO400000Acafp</field>
             <field>00NO400000AcOjV</field>
@@ -8826,9 +10020,11 @@
             <field>00NO400000AcO0M</field>
             <field>00NO400000AcPHN</field>
             <field>00NO400000AqGHR</field>
+            <field>00NO400000Bo43h</field>
             <field>00NO400000AcPFl</field>
             <field>00NO400000B4xcf</field>
             <field>00NO400000BIZ4D</field>
+            <field>00NO400000CHVRv</field>
             <field>00NO400000Acaaz</field>
             <field>00NO400000Acacb</field>
             <field>00NO400000AcPSf</field>
@@ -8840,6 +10036,10 @@
             <field>00NO400000AqM6j</field>
             <field>00NO400000AcPZ7</field>
             <field>00NO400000B1o1F</field>
+            <field>00NO400000BoRd2</field>
+            <field>00NO400000Bob4T</field>
+            <field>00NO400000BodJB</field>
+            <field>00NO400000BnyXm</field>
             <field>00NO400000AcPcL</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>

@@ -5,7 +5,20 @@ Modified:	18-feb-2025
 Purpose:	This class contains the functions for the search of lookup records.
 */
 public with sharing class customLookupCmpController {
-    
+
+    @AuraEnabled(cacheable=true)
+        public static List<Unit__c> searchPlots(String searchTerm,String phaseId) {
+            try{
+            return [
+                SELECT Id, Name, Status__c,Plot_Facing__c,Phase__c FROM Unit__c
+                WHERE Name LIKE :('%' + searchTerm + '%') AND Status__c='Available' and Phase__c = :phaseId
+            ];
+            }catch (Exception e) {
+                System.debug('Error in getContactDetails: ' + e.getMessage());
+                throw new AuraHandledException('Error fetching plot details: ' + e.getMessage());
+            }
+        }
+
     @AuraEnabled
     public static List<LookupSearchResult> searchLookupRecords(String searchTerm, List<String> selectedIds,String sObjectName, String field, String subField,Integer maxResults) {
         List<LookupSearchResult> results = new List<LookupSearchResult>();

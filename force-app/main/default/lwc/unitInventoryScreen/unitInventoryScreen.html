@@ -1,213 +1,13 @@
 <template>
     <lightning-card >
-        <!-- <div class="slds-grid slds-grid_align-spread slds-align-items-center slds-m-around_small"> -->
-    
-            <!-- Left Section (Empty or Placeholder for Future Content) -->
-            
-            <!-- <div class="slds-col slds-size_1-of-4 slds-align_absolute-center " style="align-items: flex-start;   flex-direction: column;"> -->
-                <!-- Picklist -->
-                <!-- <lightning-combobox
-                    name="unitStatus"
-                    label="Select Status to filter"
-                    value={selectedStatusFilters}
-                    placeholder="Select Status to filter"
-                    options={statusOptions}
-                    onchange={handleStatusFilter}
-                    class="slds-m-bottom_medium"
-                ></lightning-combobox> -->
-            
-                <!-- Display selected filters as pills below the picklist -->
-                <!-- <div class="slds-m-top_small selected-filters-container" style="min-height: 60px;">
-                    <template for:each={selectedStatusFilters} for:item="status">
-                        <lightning-pill
-                            key={status}
-                            label={status}
-                            name={status}
-                            onremove={handleRemoveStatus}
-                            class="slds-m-right_small selected-pill">
-                            <lightning-icon slot="media" icon-name="utility:filter" alternative-text="Filter"></lightning-icon>
-                        </lightning-pill>
-                    </template>
-                </div>
-            </div>
-
-            <div class="slds-col slds-size_1-of-4 slds-align_absolute-center filter-container"> -->
-                <!-- Picklist -->
-                <!-- <lightning-combobox
-                    name="unitStatus"
-                    label="Select Facing to filter"
-                    placeholder="Select Facing to filter"
-                    options={filterPlotFacing}
-                    value={selectedFacingFilters}
-                    onchange={handleFacingFilter}
-                    class="slds-m-bottom_medium"
-                ></lightning-combobox> -->
-            
-                <!-- Display selected filters as pills below the picklist -->
-                <!-- <div class="slds-m-top_small selected-filters-container" style="min-height: 60px;">
-                    <template for:each={selectedFacingFilters} for:item="facing">
-                        <lightning-pill
-                            key={facing}
-                            label={facing}
-                            name={facing}
-                            onremove={handleRemoveFacing}
-                            class="slds-m-right_small selected-pill">
-                            <lightning-icon slot="media" icon-name="utility:filter" alternative-text="Filter"></lightning-icon>
-                        </lightning-pill>
-                    </template>
-                </div>
-            </div>
-
-            <div class="slds-col slds-size_1-of-4 slds-align_absolute-center filter-container"> -->
-                <!-- Picklist -->
-                <!-- <lightning-combobox
-                    name="unitStatus"
-                    label="Select Zone to filter"
-                    placeholder="Select Zone to filter"
-                    options={zoneOptions}
-                    value={selectedZoneFilters}
-                    onchange={handleZoneFilter}
-                    class="slds-m-bottom_medium"
-                ></lightning-combobox> -->
-            
-                <!-- Display selected filters as pills below the picklist -->
-                <!-- <div class="slds-m-top_small selected-filters-container" style="min-height: 60px;">
-                    <template for:each={selectedZoneFilters} for:item="zone">
-                        <lightning-pill
-                            key={zone}
-                            label={zone}
-                            name={zone}
-                            onremove={handleRemoveZone}
-                            class="slds-m-right_small selected-pill">
-                            <lightning-icon slot="media" icon-name="utility:filter" alternative-text="Filter"></lightning-icon>
-                        </lightning-pill>
-                    </template>
-                </div>
-            </div> -->
-        
-            <!-- Right Section (Zoom Controls & Buttons) -->
-            <!-- <div class="slds-col slds-size_1-of-4 slds-grid slds-grid_align-end zoom-controls">
-                <template if:false={isEditMode}>
-                    <lightning-button label="Edit" onclick={handleButton}></lightning-button>
-                </template>
-        
-                <template if:true={isEditMode}>
-                    <lightning-button label="View" onclick={handleButton}></lightning-button>
-                    <lightning-button
-                        label="Select"
-                        onclick={handleMultiSelect}
-                        disabled={isSelectDisabled}>
-                    </lightning-button>
-                </template>
-                
-                <lightning-button label="Save" onclick={handleButton}></lightning-button>
-                <lightning-button-icon icon-name="utility:zoomin" alternative-text="Zoom In" onclick={zoomIn}></lightning-button-icon>
-                <lightning-button-icon icon-name="utility:zoomout" alternative-text="Zoom Out" onclick={zoomOut}></lightning-button-icon>
-                <lightning-button-icon icon-name="utility:refresh" alternative-text="Reset Zoom" onclick={resetZoom}></lightning-button-icon>
-            </div>
-        
-        </div> -->
-        <!-- <template if:true={isEditMode}>
-            <div class="slds-grid slds-wrap slds-grid_align-spread slds-align-items-center slds-m-around_small"> -->
-                <!-- Start Row -->
-                <!-- <div class="slds-col slds-size_1-of-4 slds-align_absolute-center" style="align-items: flex-start;   flex-direction: column;">
-                    <lightning-input
-                        type="number"
-                        label="Start Row"
-                        value={startRow}
-                        onchange={handleFieldChange}
-                        class="slds-m-bottom_medium">
-                    </lightning-input>
-                </div> -->
-        
-                <!-- End Row -->
-                <!-- <div class="slds-col slds-size_1-of-4 slds-align_absolute-center filter-container">
-                    <lightning-input
-                        type="number"
-                        label="End Row"
-                        value={endRow}
-                        onchange={handleFieldChange}
-                        class="slds-m-bottom_medium">
-                    </lightning-input>
-                </div> -->
-        
-                <!-- Start Column -->
-                <!-- <div class="slds-col slds-size_1-of-4 slds-align_absolute-center filter-container">
-                    <lightning-input
-                        type="text"
-                        label="Start Column"
-                        value={startColumn}
-                        onchange={handleFieldChange}
-                        class="slds-m-bottom_medium">
-                    </lightning-input>
-                </div> -->
-        
-                <!-- End Column -->
-                <!-- <div class="slds-col slds-size_1-of-4 slds-grid slds-grid_align-end zoom-controls">
-                    <lightning-input
-                        type="text"
-                        label="End Column"
-                        value={endColumn}
-                        onchange={handleFieldChange}
-                        class="slds-m-bottom_medium">
-                    </lightning-input>
-                </div>
-            </div>
-            <div class="slds-grid slds-wrap slds-grid_align-spread slds-align-items-center slds-m-around_small"> -->
-                <!-- Exclude Row Start -->
-                <!-- <div class="slds-col slds-size_1-of-4  slds-align_absolute-center" style="align-items: flex-start;   flex-direction: column;">
-                    <lightning-input
-                        type="number"
-                        label="Exclude Row Start"
-                        value={excludeRowStart}
-                        onchange={handleFieldChange}
-                        class="slds-m-bottom_medium">
-                    </lightning-input>
-                </div> -->
-        
-                <!-- Exclude Row End -->
-                <!-- <div class="slds-col slds-size_1-of-4 slds-align_absolute-center filter-container">
-                    <lightning-input
-                        type="number"
-                        label="Exclude Row End"
-                        value={excludeRowEnd}
-                        onchange={handleFieldChange}
-                        class="slds-m-bottom_medium">
-                    </lightning-input>
-                </div> -->
-        
-                <!-- Exclude Column Start -->
-                <!-- <div class="slds-col slds-size_1-of-4 slds-align_absolute-center filter-container">
-                    <lightning-input
-                        type="text"
-                        label="Exclude Column Start"
-                        value={excludeColumnStart}
-                        onchange={handleFieldChange}
-                        class="slds-m-bottom_medium">
-                    </lightning-input>
-                </div> -->
-        
-                <!-- Exclude Column End -->
-                <!-- <div class="slds-col slds-size_1-of-4  slds-grid slds-grid_align-end zoom-controls">
-                    <lightning-input
-                        type="text"
-                        label="Exclude Column End"
-                        value={excludeColumnEnd}
-                        onchange={handleFieldChange}
-                        class="slds-m-bottom_medium">
-                    </lightning-input>
-                </div>
-            </div>
-        </template> -->
-        <!-- <template if:true={isEditMode}> -->
-            <c-unit-inventory-multi-select-screen oninputchanged={handleInputChanged} record-id={recordId} 
-                temp-grid={tempGrid} 
-                multi-selected-cells={multiSelectedCells}
-                onzoomin={zoomIn} 
-                onzoomout={zoomOut} 
-                onresetzoom={resetZoom}>
-            </c-unit-inventory-multi-select-screen>
-        <!-- </template>         -->
+        <c-unit-inventory-multi-select-screen oninputchanged={handleInputChanged} record-id={recordId} 
+            temp-grid={tempGrid} 
+            grid={grid}
+            multi-selected-cells={multiSelectedCells}
+            onzoomin={zoomIn} 
+            onzoomout={zoomOut} 
+            onresetzoom={resetZoom}>
+        </c-unit-inventory-multi-select-screen>
         
         <div class="table-container" style="overflow: auto;">
             <div class="zoom-wrapper" style="transform: scale(1);" id="zoomTable">
@@ -258,7 +58,7 @@
                                                             <ul>
                                                                 <li data-option="None" data-colkey={columnKey.ck} data-sector={sector.sc} data-key={column.id} data-row={row.Rw} onclick={handleOptionClick}>None</li>
                                                                 <li data-option="Plot" data-colkey={columnKey.ck} data-sector={sector.sc} data-key={column.id} data-pid={column.pId} data-pn={column.pN} data-ps={column.pS} data-row={row.Rw} onclick={handleOptionClick}>Plot</li>
-                                                                <li data-option="Garden" data-colkey={columnKey.ck} data-sector={sector.sc} data-key={column.id} data-row={row.Rw} onclick={handleOptionClick}>Garden</li>
+                                                                <li data-option="Garden" data-colkey={columnKey.ck} data-sector={sector.sc} data-key={column.id} data-row={row.Rw} data-pn={column.pN} onclick={handleOptionClick}>Garden</li>
                                                                 <li data-option="Road" data-colkey={columnKey.ck} data-sector={sector.sc} data-key={column.id} data-row={row.Rw} onclick={handleOptionClick}>Road</li>
                                                             </ul>
                                                         </div>
@@ -412,7 +212,6 @@
                                         name="plotStatus"
                                         label="Status"
                                         value={cell.Status__c}
-                                        placeholder="Select Status"
                                         options={statusOptions}
                                         onchange={handleChangeStatus} >
                                     </lightning-combobox>

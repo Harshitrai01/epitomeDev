@@ -127,12 +127,8 @@ public with sharing class SendCancellationEmail {
                 System.debug('Successfully linked attachment to EmailMessage record.');
             }*/
             
-            Map<String, Object> flowInputs = new Map<String, Object>{
-            	'recordId' => opp,
-                'flowName' => 'Send Plot Cancellation'
-        	};
-			Flow.Interview myFlow = Flow.Interview.createInterview('Gupshup_Send_Cancellation_Email', flowInputs);
-        	myFlow.start();
+            // Pass single object and flow confiuration name.
+            GupshupFlow.callGupshupSubFlow(opp,'Send Plot Cancellation');
             
         } catch (Exception e) {
             throw New AuraHandledException(e.getMessage());

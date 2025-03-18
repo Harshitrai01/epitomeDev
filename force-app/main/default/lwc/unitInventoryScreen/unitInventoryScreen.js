@@ -117,6 +117,19 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
     previousButton = true
     nextButton = false
 
+    statusOptions = [
+        { label: 'Available', value: 'Available' },
+        { label: 'Hold', value: 'Hold' },
+        { label: 'Temp Blocked', value: 'Temp Blocked' },
+        { label: 'Blocked', value: 'Blocked' },
+        { label: 'Booked', value: 'Booked' },
+        { label: 'Sold', value: 'Sold' },
+        { label: 'Registered', value: 'Registered' },
+        { label: 'Management Blocked', value: 'Management Blocked' },
+        { label: 'Mortgage', value: 'Mortgage' },
+        { label: 'Not For Sale', value: 'Not For Sale' }
+    ];
+
 
     fields = [ROWS_FIELD, COLUMNS_FIELD, PLOT_FIELD, GARDEN_FIELD, ROAD_FIELD, NO_ZONE_FIELD];
 
@@ -265,7 +278,7 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
         this.setOptionsAndValues();
         this.tempGrid = structuredClone(this.grid);
         // console.log('Generated Grid Sections:', JSON.stringify(this.grid));
-        // this.generateZonePicklistOptions();
+        this.generateZonePicklistOptions();
     }
     
     // Helper function to generate column names (A, B, ..., Z, AA, AB, etc.)
@@ -285,8 +298,16 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
             'hd': this.holdPlot,
             'bk': this.bookedPlot
         };
-    
         return colorMapping[plotStatus] || '';
+    }
+
+    generateZonePicklistOptions() {
+        this.zoneOptions = [{ label: 'None', value: 'None' }]
+        const dynamicOptions = Array.from({ length: this.noOfZone }, (_, index) => ({
+            label: `${index + 1}`,
+            value: `${index + 1}`
+        }));
+        this.zoneOptions = [...this.zoneOptions, ...dynamicOptions];
     }
 
     handleInputChanged(event) {
@@ -325,10 +346,9 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
     }
 
     togglePopover(event) {
-        this.isEditMode = true
+        try{
         // event.stopPropagation();
         // console.log('grid-->',JSON.stringify(this.grid));
-        console.log('isEditMode-->',this.isEditMode);
        
         const sectorId = parseInt(event.target.dataset.sector, 10);
         //  console.log('sector Id '+sectorId);
@@ -341,25 +361,24 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
         const plotName = event.target.dataset.pn;
         const plotStatus = event.target.dataset.ps;
         this.selectedOption = '';
-        console.log('columnGroupKey--->', columnGroupKey);
+        // console.log('columnGroupKey--->', columnGroupKey);
         // console.log('previousColumnKey--->', this.previousColumnKey);
-        console.log('sectorId--->', sectorId);
-        console.log('rowId--->', rowId);
-        console.log('columnKey--->', columnKey);
-        console.log('plotId--->', plotId);
-        console.log('plotName--->', plotName);
-        console.log('plotStatus--->', plotStatus);
-        
-        if (this.isEditMode === true && !(event.ctrlKey || event.metaKey)) { //single Select on Edit Mode 
-                console.log('edit mode');
-                this.multiSelectedCells = [];
-                // Use Map for faster lookup
-                const sectorMap = new Map(this.grid.map(sec => [sec.sc, sec]));
-                // console.log('map '+JSON.stringify(sectorMap.get(sectorId)));
+        // console.log('sectorId--->', sectorId);
+        // console.log('rowId--->', rowId);
+        // console.log('columnKey--->', columnKey);
+        // console.log('plotId--->', plotId);
+        // console.log('plotName--->', plotName);
+        // console.log('plotStatus--->', plotStatus);
+        //single Select on Edit Modev
+        if (this.isEditMode === true && !(event.ctrlKey || event.metaKey)) { 
+            let mutableGrid = JSON.parse(JSON.stringify(this.grid));
+
+            // Use Map for faster lookup on the cloned grid
+            const sectorMap = new Map(mutableGrid.map(sec => [sec.sc, sec]));
+            
+            // Clear previous selection, update current selection, etc.
+            if (this.previousSectorId) {
                 const prevSector = sectorMap.get(this.previousSectorId);
-                // console.log('secmap-->',sectorMap);
-                // console.log('prevSector-->',prevSector);
-                
                 if (prevSector) {
                     const previousRow = prevSector.rM.find(r => r.Rw === this.previousRowId);
                     if (previousRow) {
@@ -372,41 +391,39 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
                         }
                     }
                 }
-        
-                // Update current selection
-                const sector = sectorMap.get(sectorId);
-                // console.log('sector-->',JSON.stringify(sector));
-                
-                if (sector) {
-                    const row = sector.rM.find(r => r.Rw === rowId);
-                    if (row) {
-                        const columnGroup = row.Co.find(cg => cg.ck === columnGroupKey);
-                        if (columnGroup) {
-                            const cell = columnGroup.cols.find(c => c.id === columnKey);
-                            if (cell) {
-                                console.log('Before update, cell.Pv:', cell.Pv);
-                                cell.Pv = true;
-                                console.log('After update, cell.Pv:', cell.Pv);
-                                console.log('Updated cell:', cell);
-                            }
+            }
+            
+            // Update current selection
+            const sector = sectorMap.get(parseInt(event.target.dataset.sector, 10));
+            if (sector) {
+                const row = sector.rM.find(r => r.Rw === parseInt(event.target.dataset.row, 10));
+                if (row) {
+                    const columnGroup = row.Co.find(cg => cg.ck === event.target.dataset.colkey);
+                    if (columnGroup) {
+                        const cell = columnGroup.cols.find(c => c.id === event.target.dataset.key);
+                        if (cell) {
+                            cell.Pv = !cell.Pv;
                         }
                     }
                 }
-                console.log('grid-->',JSON.stringify(this.grid));
-                
-                // Minimize unnecessary re-renders
-                this.previousSectorId = sectorId;
-                this.previousRowId = rowId;
-                this.previousColumnGroupKey = columnGroupKey;
-                this.previousColumnKey = columnKey;
-                this.selectedPlotStatus = this.selectOption(plotStatus);
-                this.grid = JSON.parse(JSON.stringify(this.grid));
-                this.tempGrid = this.grid;
-                this.isSelected = true;
-                this.isZone = true;
-                this.isZoneHeader = true;
-                this.isSearchPlot = true;
-                // });
+            }
+
+            // Reassign the updated mutableGrid back to grid (or dispatch it to the parent)
+            this.grid = mutableGrid;
+            // console.log('grid-->',JSON.stringify(this.grid));
+            
+            // Minimize unnecessary re-renders
+            this.previousSectorId = sectorId;
+            this.previousRowId = rowId;
+            this.previousColumnGroupKey = columnGroupKey;
+            this.previousColumnKey = columnKey;
+            this.selectedPlotStatus = this.selectOption(plotStatus);
+            this.grid = JSON.parse(JSON.stringify(this.grid));
+            this.tempGrid = this.grid;
+            this.isSelected = true;
+            this.isZone = true;
+            this.isZoneHeader = false;
+            this.isSearchPlot = true;
         } else if (this.isEditMode === true && (event.ctrlKey || event.metaKey)){ //when multiSelect 
             const cellObj = { sc: sectorId, ck: columnGroupKey, Rw: rowId, Co: columnKey, pId: plotId };
     
@@ -477,6 +494,10 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
         }
         // console.log('multiSelectedCells-->',JSON.stringify(this.multiSelectedCells));
         // console.log('grid-->',JSON.stringify(this.grid));
+    
+    }catch(ex){
+            console.log("togglePopover  : "+ex);
+        }
     }
     // // Computed property to disable the Select button if any field is missing.
     // get isSelectDisabled() {
@@ -541,6 +562,7 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
             .then(result => {
                 this.cellData = [result];
                 console.log('status-->',result.Status__c);
+                console.log('status-->',JSON.stringify(this.cellData));
                 
                 this.selectedPlotStatus = result.Status__c
                 this.selectedPlotFacing = result.Plot_Facing__c
@@ -1039,69 +1061,97 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
     }
 
     handlePlotSave(event) {
-        if (event.target.label === 'Save') {
-            let plotStatusMap = {};
-            const row = this.grid.find((r) => r.Rw === this.selectedRowId);
-            if (row) {
-                const cell = row.Co.find((c) => c.id === this.selectedCellId);
-                if (cell && this.isSelected === true) {
-                    cell.pId = this.value;
-                    cell.pN = this.label;
-                    cell.z = this.selectedZone;
-                    
-                    // cellId = cell.pId;
-                    const statusMapping = {
-                        'Available': 'av',
-                        'Hold': 'hd',
-                        'Temp Blocked': 'tb',
-                        'Blocked': 'bl',
-                        'Booked': 'bk',
-                        'Sold': 'sd',
-                        'Registered': 'rg',
-                        'Management Blocked': 'mb',
-                        'Mortgage': 'mg',
-                        'Not For Sale': 'ns'
-                    };
-        
-                    cell.pS = statusMapping[this.selectedPlotStatus] || '';
-                    // cell.st = `background-color: ${this.getCellColor(cell.pS)};`
-                    cell.st = cell.pS;
-                    cell.pF = this.selectedPlotFacing;
-                    plotStatusMap[this.value] = this.selectedPlotStatus;
+        try {
+            if (event.target.label === 'Save') {
+                // Create a mutable copy of the grid so we can update it.
+                let mutableGrid = JSON.parse(JSON.stringify(this.grid));
+                let plotStatusMap = {};
+                let cellFound = false;
+    
+                // Iterate over each sector in the mutable grid
+                for (const sector of mutableGrid) {
+                    // Find the row with the matching selectedRowId
+                    const row = sector.rM.find(r => r.Rw === this.selectedRowId);
+                    if (row) {
+                        // Iterate over each column group in the row
+                        for (const colGroup of row.Co) {
+                            // Find the cell with the matching selectedCellId
+                            const cell = colGroup.cols.find(c => c.id === this.selectedCellId);
+                            if (cell && this.isSelected === true) {
+                                // Update cell properties
+                                cell.pId = this.value;
+                                cell.pN = this.label;
+                                cell.z = this.selectedZone;
+                                
+                                // Map the full status text to its abbreviation
+                                const statusMapping = {
+                                    'Available': 'av',
+                                    'Hold': 'hd',
+                                    'Temp Blocked': 'tb',
+                                    'Blocked': 'bl',
+                                    'Booked': 'bk',
+                                    'Sold': 'sd',
+                                    'Registered': 'rg',
+                                    'Management Blocked': 'mb',
+                                    'Mortgage': 'mg',
+                                    'Not For Sale': 'ns'
+                                };
+                                
+                                cell.pS = statusMapping[this.selectedPlotStatus] || '';
+                                cell.st = cell.pS;
+                                cell.pF = this.selectedPlotFacing;
+                                plotStatusMap[this.value] = this.selectedPlotStatus;
+                                
+                                cellFound = true;
+                                break; // Stop once the cell is updated
+                            }
+                        }
+                    }
+                    if (cellFound) break; // Exit outer loop if cell is updated
                 }
+                
+                if (cellFound) {
+                    // Update reactive properties by assigning the modified grid copy
+                    this.grid = mutableGrid;
+                    this.tempGrid = structuredClone(mutableGrid);
+                    this.label = "";
+                    this.value = "";
+                    
+                    console.log('Updated Grid: after', this.selectedPlotStatus);
+                    
+                    // If cell was updated and we have a valid plotStatusMap, call the API to update
+                    if (this.isSelected === true && Object.keys(plotStatusMap).length > 0) {
+                        updatePlotStatus({ plotStatusMap })
+                            .then(result => {
+                                this.showToast('Success', 'Plot mapped successfully!', 'success');
+                                this.closeModal();
+                            })
+                            .catch(error => {
+                                console.error('Error updating plots:', error);
+                            });
+                    }
+                } else {
+                    console.error('Cell not found for selectedRowId and selectedCellId');
+                }
+            } else if (event.target.label === 'Create Quote') {
+                this.isQuoteModal = true
+                this.isModalOpen = false
+                
+    
+            } else if (event.target.label === 'Back') {
+                this.isQuoteModal = false
+                this.isModalOpen = true
+            } else if (event.target.label === 'Create') {
+                this.isQuoteModal = false
+                this.isModalOpen = false
+                this.handleNavigate();
             }
-
-            this.grid = [...this.grid];
-            this.tempGrid = structuredClone(this.grid);
-            this.label = "";
-            this.value = "";
-            
-            // console.log('Updated Grid: after', JSON.stringify(this.grid));
-            console.log('Updated Grid: after', this.selectedPlotStatus);
-            
-            if (this.isSelected === true && Object.keys(plotStatusMap).length > 0) {
-                updatePlotStatus({ plotStatusMap }) 
-                .then(result => {
-                    // console.log('Bulk update result--->', result);
-                    this.showToast('Success', 'Plot mapped successfully!', 'success');
-                    this.closeModal();
-                })
-                .catch(error => {
-                    console.error('Error updating plots:', error);
-                });
-            }
-        } else if (event.target.label === 'Create Quote') {
-            this.isQuoteModal = true
-            this.isModalOpen = false
-            
-
-        } else if (event.target.label === 'Back') {
-            this.isQuoteModal = false
-            this.isModalOpen = true
-        } else if (event.target.label === 'Create') {
-            this.isQuoteModal = false
-            this.isModalOpen = false
-            this.handleNavigate();
+        } catch (error) {
+            this.showToast(
+                'Error',
+                error.message,
+                'error'
+            );
         }
     }
     
@@ -1251,6 +1301,76 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
             
             console.log('Updated Grid: after', JSON.stringify(this.multiSelectedCells));
         } else if (event.target.label === 'Save') {
+            // console.log('prev 4', this.currentIndex);
+            // console.log('value', this.value);
+            // this.isModalOpen = false;
+            // this.isMultiSelect = false;
+            // this.isSingleSelect = false;
+            // this.previousButton = true;
+            // this.nextButton = false;
+
+            // let selectedPId, selectedpN;
+            // selectedpN = this.label;
+
+            // if (this.value) {
+            //     selectedPId = this.value;
+            //     this.multiSelectedCells[this.currentIndex].pId = selectedPId;
+            // } else if (this.multiSelectedCells[this.currentIndex] && this.multiSelectedCells[this.currentIndex].pId) {
+            //     selectedPId = this.multiSelectedCells[this.currentIndex].pId;
+            // }
+            // console.log('this.value',selectedPId);
+            // console.log('.selectedpN',selectedpN);
+            // await this.getCellDataFunction(selectedPId);
+
+            // if (this.value || this.multiSelectedCells[this.currentIndex].pId !== '') {
+            //     this.multiSelectedCells[this.currentIndex].pId = selectedPId;
+            //     const row = this.grid.find((r) => r.Rw === this.multiSelectedCells[this.currentIndex].Rw);
+            //     if (row) {
+            //         const cell = row.Co.find((c) => c.id === this.multiSelectedCells[this.currentIndex].Co);
+            //         if (cell && this.isSelected === true) {
+            //             cell.pId = selectedPId;
+            //             cell.pN = selectedpN ? selectedpN : cell.pN;
+            //             cell.ty = 'Plot';
+                        
+            //             // cellId = cell.pId;
+            //             const statusMapping = {
+            //                 'Available': 'av',
+            //                 'Hold': 'hd',
+            //                 'Temp Blocked': 'tb',
+            //                 'Blocked': 'bl',
+            //                 'Booked': 'bk',
+            //                 'Sold': 'sd',
+            //                 'Registered': 'rg',
+            //                 'Management Blocked': 'mb',
+            //                 'Mortgage': 'mg',
+            //                 'Not For Sale': 'ns'
+            //             };
+            
+            //             cell.pS = statusMapping[this.selectedPlotStatus] || '';
+            //             // cell.st = `background-color: ${this.getCellColor(cell.pS)};`
+            //             cell.pF = this.selectedPlotFacing;
+            //             cell.st = cell.pS
+            //             cell.z = this.selectedZone
+            //         }
+            //     }
+
+            //     this.grid = [...this.grid];
+            //     this.tempGrid = structuredClone(this.grid);
+            //     this.label = "";
+            //     this.value = "";
+                
+            //     console.log('Updated Grid: after', JSON.stringify(this.multiSelectedCells));
+            //     this.multiSelectedCells = [];
+            //     this.isSelected = false;
+            //     this.tempMultiGrid = [];
+            //     this.currentIndex = 0;
+            //     this.selectedPlotStatus = '';
+            //     this.selectedPlotFacing = '';
+            //     this.selectedZone = '';
+            //     this.zoneValue = '';
+            // }
+            
+            // console.log('Updated Grid: after', JSON.stringify(this.grid));
             console.log('prev 4', this.currentIndex);
             console.log('value', this.value);
             this.isModalOpen = false;
@@ -1262,54 +1382,74 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
             let selectedPId, selectedpN;
             selectedpN = this.label;
 
+            // Determine the selected Plot Id
             if (this.value) {
                 selectedPId = this.value;
                 this.multiSelectedCells[this.currentIndex].pId = selectedPId;
             } else if (this.multiSelectedCells[this.currentIndex] && this.multiSelectedCells[this.currentIndex].pId) {
                 selectedPId = this.multiSelectedCells[this.currentIndex].pId;
             }
-            console.log('this.value',selectedPId);
-            console.log('.selectedpN',selectedpN);
+            console.log('this.value', selectedPId);
+            console.log('selectedpN', selectedpN);
+
             await this.getCellDataFunction(selectedPId);
 
-            if (this.value || this.multiSelectedCells[this.currentIndex].pId !== '') {
+            if (this.value || (this.multiSelectedCells[this.currentIndex] && this.multiSelectedCells[this.currentIndex].pId !== '')) {
                 this.multiSelectedCells[this.currentIndex].pId = selectedPId;
-                const row = this.grid.find((r) => r.Rw === this.multiSelectedCells[this.currentIndex].Rw);
-                if (row) {
-                    const cell = row.Co.find((c) => c.id === this.multiSelectedCells[this.currentIndex].Co);
-                    if (cell && this.isSelected === true) {
-                        cell.pId = selectedPId;
-                        cell.pN = selectedpN ? selectedpN : cell.pN;
-                        cell.ty = 'Plot';
-                        
-                        // cellId = cell.pId;
-                        const statusMapping = {
-                            'Available': 'av',
-                            'Hold': 'hd',
-                            'Temp Blocked': 'tb',
-                            'Blocked': 'bl',
-                            'Booked': 'bk',
-                            'Sold': 'sd',
-                            'Registered': 'rg',
-                            'Management Blocked': 'mb',
-                            'Mortgage': 'mg',
-                            'Not For Sale': 'ns'
-                        };
-            
-                        cell.pS = statusMapping[this.selectedPlotStatus] || '';
-                        // cell.st = `background-color: ${this.getCellColor(cell.pS)};`
-                        cell.pF = this.selectedPlotFacing;
-                        cell.st = cell.pS
-                        cell.z = this.selectedZone
+
+                // Create a mutable copy of the grid
+                let mutableGrid = JSON.parse(JSON.stringify(this.grid));
+                let foundCell = null;
+
+                // The grid structure: grid (array of sectors) → each sector has rM (rows) → each row has Co (column groups) → each column group has cols (cells)
+                for (let sector of mutableGrid) {
+                    const row = sector.rM.find(r => r.Rw === this.multiSelectedCells[this.currentIndex].Rw);
+                    if (row) {
+                        for (let colGroup of row.Co) {
+                            foundCell = colGroup.cols.find(c => c.id === this.multiSelectedCells[this.currentIndex].Co);
+                            if (foundCell) {
+                                break;
+                            }
+                        }
+                    }
+                    if (foundCell) {
+                        break;
                     }
                 }
 
-                this.grid = [...this.grid];
-                this.tempGrid = structuredClone(this.grid);
+                if (foundCell && this.isSelected === true) {
+                    foundCell.pId = selectedPId;
+                    foundCell.pN = selectedpN ? selectedpN : foundCell.pN;
+                    foundCell.ty = 'Plot';
+
+                    // Map full status text to abbreviation
+                    const statusMapping = {
+                        'Available': 'av',
+                        'Hold': 'hd',
+                        'Temp Blocked': 'tb',
+                        'Blocked': 'bl',
+                        'Booked': 'bk',
+                        'Sold': 'sd',
+                        'Registered': 'rg',
+                        'Management Blocked': 'mb',
+                        'Mortgage': 'mg',
+                        'Not For Sale': 'ns'
+                    };
+
+                    foundCell.pS = statusMapping[this.selectedPlotStatus] || '';
+                    foundCell.pF = this.selectedPlotFacing;
+                    foundCell.st = foundCell.pS; // or use a helper for color if needed
+                    foundCell.z = this.selectedZone;
+                }
+
+                // Update reactive properties by assigning the modified mutableGrid back
+                this.grid = mutableGrid;
+                this.tempGrid = structuredClone(mutableGrid);
+
+                // Reset temporary variables
                 this.label = "";
                 this.value = "";
-                
-                console.log('Updated Grid: after', JSON.stringify(this.multiSelectedCells));
+                console.log('Updated MultiSelectedCells:', JSON.stringify(this.multiSelectedCells));
                 this.multiSelectedCells = [];
                 this.isSelected = false;
                 this.tempMultiGrid = [];
@@ -1319,7 +1459,7 @@ export default class unitInventoryScreen extends NavigationMixin(LightningElemen
                 this.selectedZone = '';
                 this.zoneValue = '';
             }
-            
+
             console.log('Updated Grid: after', JSON.stringify(this.grid));
         }
     }

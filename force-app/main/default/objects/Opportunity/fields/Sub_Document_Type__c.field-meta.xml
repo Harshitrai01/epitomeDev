@@ -61,14 +61,14 @@
                 <label>Affidavit</label>
             </value>
             <value>
-                <fullName>Draft Saledeed</fullName>
+                <fullName>Draft Sale deed</fullName>
                 <default>false</default>
-                <label>Draft Saledeed</label>
+                <label>Draft Sale deed</label>
             </value>
             <value>
-                <fullName>Board of Resolution</fullName>
+                <fullName>Signed Board of Resolution</fullName>
                 <default>false</default>
-                <label>Board of Resolution</label>
+                <label>Signed Board of Resolution</label>
             </value>
             <value>
                 <fullName>Form 32</fullName>
@@ -84,6 +84,36 @@
                 <fullName>Documents Delivered</fullName>
                 <default>false</default>
                 <label>Documents Delivered</label>
+            </value>
+            <value>
+                <fullName>Challan</fullName>
+                <default>false</default>
+                <label>Challan</label>
+            </value>
+            <value>
+                <fullName>System Generated AOS</fullName>
+                <default>false</default>
+                <label>System Generated AOS</label>
+            </value>
+            <value>
+                <fullName>System Generated Board of Resolution</fullName>
+                <default>false</default>
+                <label>System Generated Board of Resolution</label>
+            </value>
+            <value>
+                <fullName>System Generated Demand Letter</fullName>
+                <default>false</default>
+                <label>System Generated Demand Letter</label>
+            </value>
+            <value>
+                <fullName>System Generated Sale Deed</fullName>
+                <default>false</default>
+                <label>System Generated Sale Deed</label>
+            </value>
+            <value>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+                <label>Cancelled</label>
             </value>
         </valueSetDefinition>
     </valueSet>

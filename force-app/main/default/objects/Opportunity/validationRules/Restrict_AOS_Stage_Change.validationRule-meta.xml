@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Restrict_AOS_Stage_Change</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISPICKVAL(AOS_Stage__c, &quot;Received&quot;),
+    NOT(INCLUDES(Sub_Document_Type__c, &quot;Customer Signed&quot;))
+)</errorConditionFormula>
+    <errorMessage>AOS Stage cannot be moved to &apos;Received&apos; unless &apos;Customer Signed&apos; Document is not uploaded.</errorMessage>
+</ValidationRule>

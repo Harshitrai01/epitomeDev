@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Copy_1_of_Copy_1_of_Send_Notification_for_Disbursement</name>
         <label>Copy 1 of Copy 1 of Send Notification for Disbursement</label>
-        <locationX>3658</locationX>
-        <locationY>1703</locationY>
+        <locationX>7266</locationX>
+        <locationY>1764</locationY>
         <actionName>customNotificationAction</actionName>
         <actionType>customNotificationAction</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -42,10 +42,54 @@
         <offset>0</offset>
     </actionCalls>
     <actionCalls>
+        <name>Copy_1_of_Send_Notification_for_Cheque_Recieved</name>
+        <label>Copy 1 of Send Notification for Cheque Recieved</label>
+        <locationX>3218</locationX>
+        <locationY>924</locationY>
+        <actionName>customNotificationAction</actionName>
+        <actionType>customNotificationAction</actionType>
+        <connector>
+            <targetReference>get_Contact_Role</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>customNotifTypeId</name>
+            <value>
+                <elementReference>Copy_2_of_get_Custom_Notification_Type1.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientIds</name>
+            <value>
+                <elementReference>ownerIds</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>title</name>
+            <value>
+                <stringValue>Customer Loan Eligibility Rejected</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>body</name>
+            <value>
+                <stringValue>The Customer is not Eligible for the Loan due to {!$Record.Description}</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>targetId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>customNotificationAction</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
         <name>Copy_1_of_Send_Notification_for_Disbursement</name>
         <label>Copy 1 of Send Notification for Disbursement</label>
-        <locationX>1810</locationX>
-        <locationY>971</locationY>
+        <locationX>4626</locationX>
+        <locationY>1440</locationY>
         <actionName>customNotificationAction</actionName>
         <actionType>customNotificationAction</actionType>
         <connector>
@@ -86,10 +130,51 @@
         <offset>0</offset>
     </actionCalls>
     <actionCalls>
+        <name>Copy_1_of_send_Notification_to_CRM_Agent</name>
+        <label>Copy 1 of send Notification to CRM Agent</label>
+        <locationX>12546</locationX>
+        <locationY>816</locationY>
+        <actionName>customNotificationAction</actionName>
+        <actionType>customNotificationAction</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>customNotifTypeId</name>
+            <value>
+                <elementReference>Copy_2_of_get_custom_Notification.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientIds</name>
+            <value>
+                <elementReference>userIdsList</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>title</name>
+            <value>
+                <stringValue>AOS Pending ALERT</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>body</name>
+            <value>
+                <stringValue>Agreement of Sales is still pending for Opportunity Name: {!Copy_2_of_Get_Opportunity.Name}</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>targetId</name>
+            <value>
+                <elementReference>Copy_2_of_Get_Opportunity.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>customNotificationAction</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
         <name>Copy_2_of_Copy_1_of_Copy_1_of_Send_Notification_for_Disbursement</name>
         <label>Copy 2 of Copy 1 of Copy 1 of Send Notification for Disbursement</label>
-        <locationX>4450</locationX>
-        <locationY>1079</locationY>
+        <locationX>8058</locationX>
+        <locationY>1140</locationY>
         <actionName>customNotificationAction</actionName>
         <actionType>customNotificationAction</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -129,12 +214,12 @@
     <actionCalls>
         <name>Copy_2_of_Send_Notification_ChequeRecieved</name>
         <label>Send Notification for Cheque Recieved</label>
-        <locationX>1194</locationX>
-        <locationY>863</locationY>
+        <locationX>4010</locationX>
+        <locationY>924</locationY>
         <actionName>customNotificationAction</actionName>
         <actionType>customNotificationAction</actionType>
         <connector>
-            <targetReference>Get_Contact_from_Opportunity</targetReference>
+            <targetReference>get_Contact_Role</targetReference>
         </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
@@ -171,66 +256,142 @@
         <offset>0</offset>
     </actionCalls>
     <actionCalls>
-        <name>Send_Email_for_AOS</name>
-        <label>Send Email for AOS</label>
-        <locationX>3492</locationX>
-        <locationY>2771</locationY>
-        <actionName>emailSimple</actionName>
-        <actionType>emailSimple</actionType>
+        <name>Copy_2_of_Send_Notification_for_Cheque_Recieved</name>
+        <label>Copy 2 of Send Notification for Cheque Recieved</label>
+        <locationX>3482</locationX>
+        <locationY>924</locationY>
+        <actionName>customNotificationAction</actionName>
+        <actionType>customNotificationAction</actionType>
+        <connector>
+            <targetReference>get_Contact_Role</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
-            <name>emailAddressesArray</name>
+            <name>customNotifTypeId</name>
             <value>
-                <elementReference>emailList</elementReference>
+                <elementReference>Copy_3_of_get_Custom_Notification_Type1.Id</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
-            <name>senderAddress</name>
+            <name>recipientIds</name>
             <value>
-                <elementReference>Get_Org_wide_Address.Address</elementReference>
+                <elementReference>ownerIds</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
-            <name>emailSubject</name>
+            <name>title</name>
             <value>
-                <stringValue>AOS Draft Uploaded</stringValue>
+                <stringValue>Customer Loan Eligibility Accepted</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
-            <name>emailBody</name>
+            <name>body</name>
             <value>
-                <elementReference>EmailBodyforAOS</elementReference>
+                <stringValue>Customer is Eligible for Loan and the Eligible amount is {!$Record.Loan_Eligible_Amount__c}</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
-            <name>sendRichBody</name>
+            <name>targetId</name>
             <value>
-                <booleanValue>true</booleanValue>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>customNotificationAction</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>KYC_Approve</name>
+        <label>KYC Approve</label>
+        <locationX>10170</locationX>
+        <locationY>924</locationY>
+        <actionName>customNotificationAction</actionName>
+        <actionType>customNotificationAction</actionType>
+        <connector>
+            <targetReference>update_Stage_to_onBoarded</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>customNotifTypeId</name>
+            <value>
+                <elementReference>Copy_1_of_Copy_1_of_get_Custom_Notification_Type1.Id</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
-            <name>relatedRecordId</name>
+            <name>recipientIds</name>
             <value>
-                <elementReference>$Record.WhatId</elementReference>
+                <elementReference>userIdsList</elementReference>
             </value>
         </inputParameters>
-        <nameSegment>emailSimple</nameSegment>
+        <inputParameters>
+            <name>title</name>
+            <value>
+                <stringValue>KYC Status Approved</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>body</name>
+            <value>
+                <stringValue>{!Get_Opportunity.Name} KYC has been Approved.</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>targetId</name>
+            <value>
+                <elementReference>Get_Opportunity.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>customNotificationAction</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>KYC_Reject</name>
+        <label>KYC Reject</label>
+        <locationX>9906</locationX>
+        <locationY>924</locationY>
+        <actionName>customNotificationAction</actionName>
+        <actionType>customNotificationAction</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>customNotifTypeId</name>
+            <value>
+                <elementReference>Copy_1_of_Copy_1_of_get_Custom_Notification_Type1.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientIds</name>
+            <value>
+                <elementReference>userIdsList</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>title</name>
+            <value>
+                <stringValue>KYC Status Rejected</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>body</name>
+            <value>
+                <stringValue>{!Get_Opportunity.Name} KYC has been Rejected with a reason that {!$Record.Description}</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>targetId</name>
+            <value>
+                <elementReference>Get_Opportunity.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>customNotificationAction</nameSegment>
         <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <name>Send_Email_for_Eligible</name>
         <label>Send Email for Eligible</label>
-        <locationX>3228</locationX>
-        <locationY>2879</locationY>
+        <locationX>7618</locationX>
+        <locationY>3048</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>senderAddress</name>
-            <value>
-                <elementReference>Get_Org_wide_Address.Address</elementReference>
-            </value>
-        </inputParameters>
         <inputParameters>
             <name>relatedRecordId</name>
             <value>
@@ -255,17 +416,11 @@
     <actionCalls>
         <name>Send_Email_for_Loan_Rejection</name>
         <label>Send Email for Loan Rejection</label>
-        <locationX>2964</locationX>
-        <locationY>2879</locationY>
+        <locationX>7354</locationX>
+        <locationY>3048</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>senderAddress</name>
-            <value>
-                <elementReference>Get_Org_wide_Address.Address</elementReference>
-            </value>
-        </inputParameters>
         <inputParameters>
             <name>relatedRecordId</name>
             <value>
@@ -290,8 +445,8 @@
     <actionCalls>
         <name>Send_Email_for_Loan_Sanctioned</name>
         <label>Send Email for Loan Sanctioned</label>
-        <locationX>2700</locationX>
-        <locationY>2771</locationY>
+        <locationX>6826</locationX>
+        <locationY>3048</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -323,20 +478,61 @@
         <offset>0</offset>
     </actionCalls>
     <actionCalls>
+        <name>Send_Email_with_Attachments_Action_1</name>
+        <label>Send Email with Attachments Action 1</label>
+        <locationX>7882</locationX>
+        <locationY>3048</locationY>
+        <actionName>SendEmailWithAttachment</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>body</name>
+            <value>
+                <elementReference>EmailBodyforAOS</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>contactId</name>
+            <value>
+                <elementReference>Get_Contact_from_Opportunity.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>fileTypeName</name>
+            <value>
+                <stringValue>Draft AOS__</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientEmail</name>
+            <value>
+                <elementReference>Get_Contact_from_Opportunity.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>subject</name>
+            <value>
+                <stringValue>AOS Draft Uploaded</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>SendEmailWithAttachment</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
         <name>Send_Notification_for_Disbursement</name>
         <label>Send Notification for Disbursement</label>
-        <locationX>314</locationX>
-        <locationY>971</locationY>
+        <locationX>2690</locationX>
+        <locationY>1140</locationY>
         <actionName>customNotificationAction</actionName>
         <actionType>customNotificationAction</actionType>
         <connector>
-            <targetReference>Get_Contact_from_Opportunity</targetReference>
+            <targetReference>get_Contact_Role</targetReference>
         </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>customNotifTypeId</name>
             <value>
-                <elementReference>Copy_1_of_Copy_1_of_Send_Notification_for_Disbursement</elementReference>
+                <elementReference>get_Custom_Notification_Type.Id</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
@@ -366,12 +562,53 @@
         <nameSegment>customNotificationAction</nameSegment>
         <offset>0</offset>
     </actionCalls>
+    <actionCalls>
+        <name>send_Notification_to_CRM_Agent</name>
+        <label>send Notification to CRM Agent</label>
+        <locationX>11226</locationX>
+        <locationY>1140</locationY>
+        <actionName>customNotificationAction</actionName>
+        <actionType>customNotificationAction</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>customNotifTypeId</name>
+            <value>
+                <elementReference>get_custom_Notification.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientIds</name>
+            <value>
+                <elementReference>userIdsList</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>title</name>
+            <value>
+                <stringValue>NOC has been uploaded</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>body</name>
+            <value>
+                <elementReference>NotificationBodyForNOC</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>targetId</name>
+            <value>
+                <elementReference>Get_Opportunity.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>customNotificationAction</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
     <apiVersion>63.0</apiVersion>
     <assignments>
         <name>Add_Contact_Email_to_List</name>
         <label>Add Contact Email to List</label>
-        <locationX>1898</locationX>
-        <locationY>1295</locationY>
+        <locationX>4714</locationX>
+        <locationY>1764</locationY>
         <assignmentItems>
             <assignToReference>emailList</assignToReference>
             <operator>Add</operator>
@@ -384,10 +621,26 @@
         </connector>
     </assignments>
     <assignments>
+        <name>Assign_CRM_Agent</name>
+        <label>Assign CRM Agent</label>
+        <locationX>10170</locationX>
+        <locationY>708</locationY>
+        <assignmentItems>
+            <assignToReference>userIdsList</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Get_Opportunity.OwnerId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>KYC_Update</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>assign_opportunity_owner</name>
         <label>assign opportunity owner</label>
-        <locationX>4450</locationX>
-        <locationY>971</locationY>
+        <locationX>8058</locationX>
+        <locationY>1032</locationY>
         <assignmentItems>
             <assignToReference>userIdsList</assignToReference>
             <operator>Add</operator>
@@ -402,8 +655,8 @@
     <assignments>
         <name>Assign_Owner_to_Lead</name>
         <label>Assign Owner to Lead</label>
-        <locationX>2866</locationX>
-        <locationY>863</locationY>
+        <locationX>6474</locationX>
+        <locationY>924</locationY>
         <assignmentItems>
             <assignToReference>get_Lead_Record.OwnerId</assignToReference>
             <operator>Assign</operator>
@@ -418,8 +671,8 @@
     <assignments>
         <name>Assign_OwnerId_to_List</name>
         <label>Assign OwnerId to List</label>
-        <locationX>314</locationX>
-        <locationY>755</locationY>
+        <locationX>2690</locationX>
+        <locationY>924</locationY>
         <assignmentItems>
             <assignToReference>ownerIds</assignToReference>
             <operator>Add</operator>
@@ -434,8 +687,8 @@
     <assignments>
         <name>Assign_to_Variable</name>
         <label>Assign to Variable</label>
-        <locationX>1898</locationX>
-        <locationY>1403</locationY>
+        <locationX>4714</locationX>
+        <locationY>1872</locationY>
         <assignmentItems>
             <assignToReference>Allottees</assignToReference>
             <operator>Add</operator>
@@ -450,8 +703,8 @@
     <assignments>
         <name>assign_users_Ids</name>
         <label>assign users Ids</label>
-        <locationX>3878</locationX>
-        <locationY>1403</locationY>
+        <locationX>7486</locationX>
+        <locationY>1464</locationY>
         <assignmentItems>
             <assignToReference>userIdsList</assignToReference>
             <operator>Add</operator>
@@ -471,10 +724,26 @@
         </connector>
     </assignments>
     <assignments>
+        <name>Assignment_11</name>
+        <label>Assignment 11</label>
+        <locationX>4714</locationX>
+        <locationY>924</locationY>
+        <assignmentItems>
+            <assignToReference>contactId</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>loop_over_contact_role.ContactId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>loop_over_contact_role</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>Copy_1_of_Assign_OwnerId_to_List</name>
         <label>Copy 1 of Assign OwnerId to List</label>
-        <locationX>1194</locationX>
-        <locationY>647</locationY>
+        <locationX>4010</locationX>
+        <locationY>708</locationY>
         <assignmentItems>
             <assignToReference>ownerIds</assignToReference>
             <operator>Add</operator>
@@ -487,10 +756,58 @@
         </connector>
     </assignments>
     <assignments>
+        <name>Copy_1_of_Copy_1_of_Assign_OwnerId_to_List</name>
+        <label>Copy 1 of Copy 1 of Assign OwnerId to List</label>
+        <locationX>3218</locationX>
+        <locationY>708</locationY>
+        <assignmentItems>
+            <assignToReference>ownerIds</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Get_Opportunity.OwnerId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Copy_2_of_get_Custom_Notification_Type1</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Copy_1_of_Copy_2_of_Assign_CRM_Agent</name>
+        <label>Copy 1 of Copy 2 of Assign CRM Agent</label>
+        <locationX>12546</locationX>
+        <locationY>708</locationY>
+        <assignmentItems>
+            <assignToReference>userIdsList</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Copy_2_of_Get_Opportunity.OwnerId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Copy_1_of_send_Notification_to_CRM_Agent</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Copy_2_of_Assign_CRM_Agent</name>
+        <label>Copy 2 of Assign CRM Agent</label>
+        <locationX>11556</locationX>
+        <locationY>708</locationY>
+        <assignmentItems>
+            <assignToReference>userIdsList</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Get_Opportunity.OwnerId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>check_NOC</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>Copy_2_of_Assign_OwnerId_to_List</name>
         <label>Copy 2 of Assign OwnerId to List</label>
-        <locationX>1810</locationX>
-        <locationY>755</locationY>
+        <locationX>4626</locationX>
+        <locationY>1224</locationY>
         <assignmentItems>
             <assignToReference>ownerIds</assignToReference>
             <operator>Add</operator>
@@ -505,8 +822,8 @@
     <assignments>
         <name>Copy_2_of_Assign_to_Variable</name>
         <label>Copy 2 of Assign to Variable</label>
-        <locationX>1810</locationX>
-        <locationY>1079</locationY>
+        <locationX>4626</locationX>
+        <locationY>1548</locationY>
         <assignmentItems>
             <assignToReference>Allottees</assignToReference>
             <operator>Add</operator>
@@ -518,11 +835,109 @@
             <targetReference>loop_over_Contacts</targetReference>
         </connector>
     </assignments>
+    <assignments>
+        <name>Copy_2_of_Copy_1_of_Assign_OwnerId_to_List</name>
+        <label>Copy 2 of Copy 1 of Assign OwnerId to List</label>
+        <locationX>3482</locationX>
+        <locationY>708</locationY>
+        <assignmentItems>
+            <assignToReference>ownerIds</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Get_Opportunity.OwnerId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Copy_3_of_get_Custom_Notification_Type1</targetReference>
+        </connector>
+    </assignments>
+    <customErrors>
+        <name>add_custom_error_for_original_sales_deed</name>
+        <label>add custom error for original sales deed</label>
+        <locationX>5418</locationX>
+        <locationY>816</locationY>
+        <customErrorMessages>
+            <errorMessage>Please Add Original Sales Deed Document.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>add_error</name>
+        <label>add error</label>
+        <locationX>8146</locationX>
+        <locationY>2940</locationY>
+        <customErrorMessages>
+            <errorMessage>Please add Draft AOS.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Copy_1_of_add_custom_error_for_original_sales_deed</name>
+        <label>Copy 1 of add custom error for original sales deed</label>
+        <locationX>5946</locationX>
+        <locationY>816</locationY>
+        <customErrorMessages>
+            <errorMessage>Please Add Original Sales Deed Document.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Copy_1_of_Copy_1_of_add_error</name>
+        <label>Copy 1 of Copy 1 of add error</label>
+        <locationX>2954</locationX>
+        <locationY>816</locationY>
+        <customErrorMessages>
+            <errorMessage>Please add Disbursement Cheque.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>error</name>
+        <label>error</label>
+        <locationX>11490</locationX>
+        <locationY>1032</locationY>
+        <customErrorMessages>
+            <errorMessage>You must upload an NOC document before changing the status to &apos;Uploaded&apos;.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Sales_Deed_Error</name>
+        <label>Sales Deed Error</label>
+        <locationX>8762</locationX>
+        <locationY>924</locationY>
+        <customErrorMessages>
+            <errorMessage>Upload Draft Sale deed.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <name>BR_Decisions</name>
+        <label>BR Decisions</label>
+        <locationX>10830</locationX>
+        <locationY>600</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>BR_status_Change</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>update_the_Status</targetReference>
+            </connector>
+            <label>BR status Change</label>
+        </rules>
+    </decisions>
     <decisions>
         <name>Check_AOS_Status_Update</name>
         <label>Check AOS Status Update</label>
-        <locationX>1942</locationX>
-        <locationY>539</locationY>
+        <locationX>4758</locationX>
+        <locationY>600</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Status_Changed_to_Draft_Uploaded</name>
@@ -542,7 +957,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Get_Contact</targetReference>
+                <targetReference>get_Contact_Role1</targetReference>
             </connector>
             <label>Status Changed to Draft Uploaded</label>
         </rules>
@@ -550,8 +965,8 @@
     <decisions>
         <name>check_Funding_type</name>
         <label>check Funding type</label>
-        <locationX>4351</locationX>
-        <locationY>863</locationY>
+        <locationX>7959</locationX>
+        <locationY>924</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Is_Loan</name>
@@ -585,10 +1000,107 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Check_if_Contact_From_Opportunity_null</name>
+        <label>Check if Contact From Opportunity null</label>
+        <locationX>6958</locationX>
+        <locationY>2940</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Contact_null</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Contact_from_Opportunity</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Email_for_Loan_Sanctioned</targetReference>
+            </connector>
+            <label>Contact null</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>check_if_Document_Draft_AOS_is_there_in_opportunity</name>
+        <label>check if Document Draft AOS is there in opportunity</label>
+        <locationX>8014</locationX>
+        <locationY>2832</locationY>
+        <defaultConnector>
+            <targetReference>add_error</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Draft_AOS_is_there</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity.Sub_Document_Type__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Draft AOS</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_Update_Opportunity</targetReference>
+            </connector>
+            <label>Draft AOS is there</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_if_Sub_Document_type_contains_Original_Sales_Deed</name>
+        <label>Check if Sub Document type contains Original Sales Deed</label>
+        <locationX>5286</locationX>
+        <locationY>708</locationY>
+        <defaultConnector>
+            <targetReference>add_custom_error_for_original_sales_deed</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Contains_Original_Sales_Deed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity.Sub_Document_Type__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Original Sale Deed</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Opportunity_Stage</targetReference>
+            </connector>
+            <label>Contains Original Sales Deed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_isnew</name>
+        <label>Check isnew</label>
+        <locationX>4329</locationX>
+        <locationY>276</locationY>
+        <defaultConnector>
+            <targetReference>Get_Opportunity</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>isnew</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>recordNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_Check_RecordType</targetReference>
+            </connector>
+            <label>isnew?</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Check_Lead_Owner</name>
         <label>Check Lead Owner</label>
-        <locationX>2998</locationX>
-        <locationY>755</locationY>
+        <locationX>6606</locationX>
+        <locationY>816</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Task_and_Lead_Owner_are_not_Same</name>
@@ -607,10 +1119,64 @@
         </rules>
     </decisions>
     <decisions>
+        <name>check_NOC</name>
+        <label>check NOC</label>
+        <locationX>11556</locationX>
+        <locationY>816</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>is_Recieved</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Received</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>check_sub_document_type</targetReference>
+            </connector>
+            <label>is Recieved</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>check_Opportunity_SubDocument</name>
+        <label>check Opportunity SubDocument</label>
+        <locationX>8740</locationX>
+        <locationY>708</locationY>
+        <defaultConnector>
+            <targetReference>check_Status2</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>contains_Draft_Sales_Deed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity.Sub_Document_Type__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Draft Sale deed</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_update_the_Status</targetReference>
+            </connector>
+            <label>contains Draft Sales Deed</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Check_RecordType</name>
         <label>Check RecordType</label>
-        <locationX>3228</locationX>
-        <locationY>431</locationY>
+        <locationX>7684</locationX>
+        <locationY>492</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>RecordType_Loan_Process</name>
@@ -702,12 +1268,57 @@
             </connector>
             <label>RecordTypeRefund</label>
         </rules>
+        <rules>
+            <name>RecordType_KYC</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>KYC_Document</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_Copy_1_of_get_Custom_Notification_Type1</targetReference>
+            </connector>
+            <label>RecordType KYC</label>
+        </rules>
+        <rules>
+            <name>RecordType_BR</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Board_Of_Resolution</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>BR_Decisions</targetReference>
+            </connector>
+            <label>RecordType BR</label>
+        </rules>
+        <rules>
+            <name>Record_Type_NOC</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>NOC</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_2_of_update_the_Status</targetReference>
+            </connector>
+            <label>Record Type NOC</label>
+        </rules>
     </decisions>
     <decisions>
         <name>check_status</name>
         <label>check status</label>
-        <locationX>4664</locationX>
-        <locationY>539</locationY>
+        <locationX>8580</locationX>
+        <locationY>600</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>is_Original_uploaded</name>
@@ -731,12 +1342,74 @@
             </connector>
             <label>is Original uploaded</label>
         </rules>
+        <rules>
+            <name>Status_Changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>check_Opportunity_SubDocument</targetReference>
+            </connector>
+            <label>Status Changed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>check_Status2</name>
+        <label>check Status</label>
+        <locationX>8894</locationX>
+        <locationY>816</locationY>
+        <defaultConnector>
+            <targetReference>Copy_1_of_update_the_Status</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Draft_uploaded_status</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Draft Uploaded</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Sales_Deed_Error</targetReference>
+            </connector>
+            <label>Draft uploaded</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Status3</name>
+        <label>Check Status</label>
+        <locationX>12678</locationX>
+        <locationY>492</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Status_is_not_Draft_Uploaded</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Draft Uploaded</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_2_of_get_custom_Notification</targetReference>
+            </connector>
+            <label>Status is not Draft Uploaded</label>
+        </rules>
     </decisions>
     <decisions>
         <name>Check_Status_for_Email</name>
         <label>Check Status for Email</label>
-        <locationX>3228</locationX>
-        <locationY>2555</locationY>
+        <locationX>7684</locationX>
+        <locationY>2724</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Disbursement</name>
@@ -794,16 +1467,41 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Update_Opportunity_AOS_Stage_to_Draft_Upload</targetReference>
+                <targetReference>check_if_Document_Draft_AOS_is_there_in_opportunity</targetReference>
             </connector>
             <label>Draft Uploaded</label>
         </rules>
     </decisions>
     <decisions>
+        <name>check_sub_document_type</name>
+        <label>check sub document type</label>
+        <locationX>11358</locationX>
+        <locationY>924</locationY>
+        <defaultConnector>
+            <targetReference>error</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>contains_NOC</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity.Sub_Document_Type__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>NOC</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>get_custom_Notification</targetReference>
+            </connector>
+            <label>contains NOC</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>check_Task_Status</name>
         <label>check Task Status</label>
-        <locationX>2470</locationX>
-        <locationY>539</locationY>
+        <locationX>5748</locationX>
+        <locationY>600</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>is_Registered</name>
@@ -823,16 +1521,38 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Update_Opportunity_Stage</targetReference>
+                <targetReference>Check_if_Sub_Document_type_contains_Original_Sales_Deed</targetReference>
             </connector>
             <label>is Registered</label>
+        </rules>
+        <rules>
+            <name>is</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Original Uploaded</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_Check_if_Sub_Document_type_contains_Original_Sales_Deed</targetReference>
+            </connector>
+            <label>isOriginalUploaded</label>
         </rules>
     </decisions>
     <decisions>
         <name>check_userIds_List</name>
         <label>check userIds List</label>
-        <locationX>3790</locationX>
-        <locationY>1595</locationY>
+        <locationX>7398</locationX>
+        <locationY>1656</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>isNotNull</name>
@@ -853,8 +1573,8 @@
     <decisions>
         <name>check_users</name>
         <label>check users</label>
-        <locationX>3988</locationX>
-        <locationY>1187</locationY>
+        <locationX>7596</locationX>
+        <locationY>1248</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>isNotNullUsers</name>
@@ -873,10 +1593,347 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Copy_1_of_Check_if_Sub_Document_type_contains_Original_Sales_Deed</name>
+        <label>Copy 1 of Check if Sub Document type contains Original Sales Deed</label>
+        <locationX>5814</locationX>
+        <locationY>708</locationY>
+        <defaultConnector>
+            <targetReference>Copy_1_of_add_custom_error_for_original_sales_deed</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Copy_1_of_Contains_Original_Sales_Deed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity.Sub_Document_Type__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Original Sale Deed</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_Update_Opportunity_Stage</targetReference>
+            </connector>
+            <label>Copy 1 of Contains Original Sales Deed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Copy_1_of_Check_RecordType</name>
+        <label>Copy 1 of Check RecordType</label>
+        <locationX>974</locationX>
+        <locationY>384</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Copy_1_of_RecordType_Loan_Process</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Loan</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Copy 1 of RecordType Loan Process</label>
+        </rules>
+        <rules>
+            <name>Copy_1_of_RecordType_AOS</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>AOS</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>update</targetReference>
+            </connector>
+            <label>Copy 1 of RecordType AOS</label>
+        </rules>
+        <rules>
+            <name>Copy_1_of_Record_Type_Registration_Schedule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Registered_Scheduled</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Copy 1 of Record Type Registration Schedule</label>
+        </rules>
+        <rules>
+            <name>Copy_1_of_RecordType_Schedule_Site_Visit</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Schedule_Site_Visit</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Copy 1 of RecordType Schedule Site Visit</label>
+        </rules>
+        <rules>
+            <name>Copy_1_of_RecordType_SalesDeed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sales_Deed</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Copy 1 of RecordType SalesDeed</label>
+        </rules>
+        <rules>
+            <name>Copy_1_of_RecordTypeRefund</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Refund</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Copy 1 of RecordTypeRefund</label>
+        </rules>
+        <rules>
+            <name>Copy_1_of_RecordType_KYC</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>KYC_Document</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Copy 1 of RecordType KYC</label>
+        </rules>
+        <rules>
+            <name>Copy_1_of_RecordType_BR</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Board_Of_Resolution</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Copy 1 of RecordType BR</label>
+        </rules>
+        <rules>
+            <name>Copy_1_of_Record_Type_NOC</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>NOC</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Copy 1 of Record Type NOC</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Copy_2_of_Copy_1_of_check_if_Document_Draft_AOS_is_there_in_opportunity</name>
+        <label>Copy 2 of Copy 1 of check if Document Draft AOS is there in opportunity</label>
+        <locationX>2822</locationX>
+        <locationY>708</locationY>
+        <defaultConnector>
+            <targetReference>Copy_1_of_Copy_1_of_add_error</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Copy_2_of_Copy_1_of_Draft_AOS_is_there</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity.Sub_Document_Type__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Disbursement Cheque</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Opportunity_Loan_Status_Value_to_Disbursement</targetReference>
+            </connector>
+            <label>Copy 2 of Copy 1 of Draft AOS is there</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Copy_3_of_Check_RecordType</name>
+        <label>Copy 3 of Check RecordType</label>
+        <locationX>13602</locationX>
+        <locationY>384</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Copy_3_of_RecordType_Loan_Process</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Loan</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Copy 3 of RecordType Loan Process</label>
+        </rules>
+        <rules>
+            <name>Copy_3_of_RecordType_AOS</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>AOS</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Status3</targetReference>
+            </connector>
+            <label>Copy 3 of RecordType AOS</label>
+        </rules>
+        <rules>
+            <name>Copy_3_of_Record_Type_Registration_Schedule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Registered_Scheduled</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Copy 3 of Record Type Registration Schedule</label>
+        </rules>
+        <rules>
+            <name>Copy_3_of_RecordType_Schedule_Site_Visit</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Schedule_Site_Visit</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Copy 3 of RecordType Schedule Site Visit</label>
+        </rules>
+        <rules>
+            <name>Copy_3_of_RecordType_SalesDeed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sales_Deed</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Copy 3 of RecordType SalesDeed</label>
+        </rules>
+        <rules>
+            <name>Copy_3_of_RecordTypeRefund</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Refund</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Copy 3 of RecordTypeRefund</label>
+        </rules>
+        <rules>
+            <name>Copy_3_of_RecordType_KYC</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>KYC_Document</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Copy 3 of RecordType KYC</label>
+        </rules>
+        <rules>
+            <name>Copy_3_of_RecordType_BR</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Board_Of_Resolution</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Copy 3 of RecordType BR</label>
+        </rules>
+        <rules>
+            <name>Copy_3_of_Record_Type_NOC</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>NOC</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Copy 3 of Record Type NOC</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>KYC_Update</name>
+        <label>KYC Update</label>
+        <locationX>10170</locationX>
+        <locationY>816</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Status_Rejected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Rejected</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>KYC_Reject</targetReference>
+            </connector>
+            <label>Status Rejected</label>
+        </rules>
+        <rules>
+            <name>Status_Approved</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>KYC_Approve</targetReference>
+            </connector>
+            <label>Status Approved</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Loan_Process_Status_Update</name>
         <label>Loan Process Status Update</label>
-        <locationX>754</locationX>
-        <locationY>539</locationY>
+        <locationX>3350</locationX>
+        <locationY>600</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Status_Changed_to_Document_Submitted</name>
@@ -918,7 +1975,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Update_Opportunity_Loan_Status_Value_to_Disbursement</targetReference>
+                <targetReference>Copy_2_of_Copy_1_of_check_if_Document_Draft_AOS_is_there_in_opportunity</targetReference>
             </connector>
             <label>Status Changed to Disbursement</label>
         </rules>
@@ -940,7 +1997,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Get_Contact_from_Opportunity</targetReference>
+                <targetReference>Copy_1_of_Copy_1_of_Assign_OwnerId_to_List</targetReference>
             </connector>
             <label>Status Changed to not Eligible</label>
         </rules>
@@ -962,7 +2019,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Get_Contact_from_Opportunity</targetReference>
+                <targetReference>Copy_2_of_Copy_1_of_Assign_OwnerId_to_List</targetReference>
             </connector>
             <label>Status Changed to Eligible</label>
         </rules>
@@ -1014,10 +2071,10 @@
     <decisions>
         <name>Refund_Task_Status_Refunded</name>
         <label>Refund Task Status Refunded</label>
-        <locationX>5374</locationX>
-        <locationY>539</locationY>
+        <locationX>9598</locationX>
+        <locationY>600</locationY>
         <defaultConnector>
-            <targetReference>Get_Contact_from_Opportunity</targetReference>
+            <targetReference>get_Contact_Role</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -1046,8 +2103,8 @@
     <decisions>
         <name>Site_Visit_Updates</name>
         <label>Site Visit Updates</label>
-        <locationX>3196</locationX>
-        <locationY>539</locationY>
+        <locationX>6804</locationX>
+        <locationY>600</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Owner_Update</name>
@@ -1073,13 +2130,18 @@
         </rules>
     </decisions>
     <environments>Default</environments>
+    <formulas>
+        <name>recordNew</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
     <interviewLabel>Task Update(After Flow) {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Task Update(After Flow)</label>
     <loops>
         <name>loop_on_users</name>
         <label>loop on users</label>
-        <locationX>3790</locationX>
-        <locationY>1295</locationY>
+        <locationX>7398</locationX>
+        <locationY>1356</locationY>
         <collectionReference>getUser</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -1090,17 +2152,31 @@
         </noMoreValuesConnector>
     </loops>
     <loops>
+        <name>loop_over_contact_role</name>
+        <label>loop over contact  role</label>
+        <locationX>4626</locationX>
+        <locationY>816</locationY>
+        <collectionReference>get_Contact_Role1</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Assignment_11</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Get_Contact</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
         <name>loop_over_Contacts</name>
         <label>loop over Contacts</label>
-        <locationX>1810</locationX>
-        <locationY>1187</locationY>
+        <locationX>4626</locationX>
+        <locationY>1656</locationY>
         <collectionReference>Get_Contact</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
             <targetReference>Add_Contact_Email_to_List</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
-            <targetReference>Get_Contact_from_Opportunity</targetReference>
+            <targetReference>get_Contact_Role</targetReference>
         </noMoreValuesConnector>
     </loops>
     <processMetadataValues>
@@ -1123,10 +2199,31 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordLookups>
+        <name>Copy_1_of_Copy_1_of_get_Custom_Notification_Type1</name>
+        <label>Copy 1 of Copy 1 of get Custom Notification Type1</label>
+        <locationX>10170</locationX>
+        <locationY>600</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_CRM_Agent</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Opportunity_Notification</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>CustomNotificationType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Copy_1_of_get_Custom_Notification_Type</name>
         <label>Copy 1 of get Custom Notification Type</label>
-        <locationX>1810</locationX>
-        <locationY>863</locationY>
+        <locationX>4626</locationX>
+        <locationY>1332</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Copy_1_of_Send_Notification_for_Disbursement</targetReference>
@@ -1146,8 +2243,8 @@
     <recordLookups>
         <name>Copy_1_of_get_Custom_Notification_Type1</name>
         <label>Copy 1 of get Custom Notification Type1</label>
-        <locationX>4351</locationX>
-        <locationY>755</locationY>
+        <locationX>7959</locationX>
+        <locationY>816</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>check_Funding_type</targetReference>
@@ -1165,20 +2262,104 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
+        <name>Copy_2_of_get_custom_Notification</name>
+        <label>Copy 2 of get custom Notification</label>
+        <locationX>12546</locationX>
+        <locationY>600</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Copy_1_of_Copy_2_of_Assign_CRM_Agent</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Opportunity_Notification</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>CustomNotificationType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Copy_2_of_get_Custom_Notification_Type1</name>
+        <label>Copy 2 of get Custom Notification Type1</label>
+        <locationX>3218</locationX>
+        <locationY>816</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Copy_1_of_Send_Notification_for_Cheque_Recieved</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Opportunity_Notification</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>CustomNotificationType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Copy_2_of_Get_Opportunity</name>
+        <label>Copy 2 of Get Opportunity</label>
+        <locationX>13602</locationX>
+        <locationY>276</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Copy_3_of_Check_RecordType</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Copy_3_of_get_Custom_Notification_Type1</name>
+        <label>Copy 3 of get Custom Notification Type1</label>
+        <locationX>3482</locationX>
+        <locationY>816</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Copy_2_of_Send_Notification_for_Cheque_Recieved</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Opportunity_Notification</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>CustomNotificationType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Get_Contact</name>
         <label>Get Contact</label>
-        <locationX>1810</locationX>
-        <locationY>647</locationY>
+        <locationX>4626</locationX>
+        <locationY>1116</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Copy_2_of_Assign_OwnerId_to_List</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
-            <field>AccountId</field>
-            <operator>EqualTo</operator>
+            <field>Id</field>
+            <operator>In</operator>
             <value>
-                <elementReference>Get_Opportunity.AccountId</elementReference>
+                <elementReference>contactId</elementReference>
             </value>
         </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
@@ -1188,25 +2369,18 @@
     <recordLookups>
         <name>Get_Contact_from_Opportunity</name>
         <label>Get Contact from Opportunity</label>
-        <locationX>3228</locationX>
-        <locationY>2339</locationY>
+        <locationX>7684</locationX>
+        <locationY>2508</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_Org_wide_Address</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
-            <field>AccountId</field>
+            <field>Id</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>Get_Opportunity.AccountId</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>Primary_Payer__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>true</booleanValue>
+                <elementReference>get_Contact_Role.ContactId</elementReference>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
@@ -1214,10 +2388,80 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
+        <name>get_Contact_Role</name>
+        <label>get Contact Role</label>
+        <locationX>7684</locationX>
+        <locationY>2400</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Contact_from_Opportunity</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OpportunityId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Opportunity.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>IsPrimary</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>OpportunityContactRole</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_Contact_Role1</name>
+        <label>get Contact Role</label>
+        <locationX>4626</locationX>
+        <locationY>708</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>loop_over_contact_role</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OpportunityId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Opportunity.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>OpportunityContactRole</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>get_custom_Notification</name>
+        <label>get custom Notification</label>
+        <locationX>11226</locationX>
+        <locationY>1032</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>send_Notification_to_CRM_Agent</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Opportunity_Notification</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>CustomNotificationType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>get_Custom_Notification_Type</name>
         <label>get Custom Notification Type</label>
-        <locationX>314</locationX>
-        <locationY>863</locationY>
+        <locationX>2690</locationX>
+        <locationY>1032</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Send_Notification_for_Disbursement</targetReference>
@@ -1237,8 +2481,8 @@
     <recordLookups>
         <name>get_Custom_Notification_Type1</name>
         <label>get Custom Notification Type1</label>
-        <locationX>1194</locationX>
-        <locationY>755</locationY>
+        <locationX>4010</locationX>
+        <locationY>816</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Copy_2_of_Send_Notification_ChequeRecieved</targetReference>
@@ -1258,8 +2502,8 @@
     <recordLookups>
         <name>get_Email_Template_for_Eligible</name>
         <label>get Email Template for Eligible</label>
-        <locationX>3228</locationX>
-        <locationY>2771</locationY>
+        <locationX>7618</locationX>
+        <locationY>2940</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Send_Email_for_Eligible</targetReference>
@@ -1279,8 +2523,8 @@
     <recordLookups>
         <name>get_Email_Template_for_Loan_Rejection</name>
         <label>get Email Template for Loan Rejection</label>
-        <locationX>2964</locationX>
-        <locationY>2771</locationY>
+        <locationX>7354</locationX>
+        <locationY>2940</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Send_Email_for_Loan_Rejection</targetReference>
@@ -1300,11 +2544,11 @@
     <recordLookups>
         <name>Get_Email_Template_for_Loan_Sanctioned</name>
         <label>Get Email Template for Loan Sanctioned</label>
-        <locationX>2700</locationX>
-        <locationY>2663</locationY>
+        <locationX>6958</locationX>
+        <locationY>2832</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Send_Email_for_Loan_Sanctioned</targetReference>
+            <targetReference>Check_if_Contact_From_Opportunity_null</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -1321,8 +2565,8 @@
     <recordLookups>
         <name>get_Lead_Record</name>
         <label>get Lead Record</label>
-        <locationX>2998</locationX>
-        <locationY>647</locationY>
+        <locationX>6606</locationX>
+        <locationY>708</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_Lead_Owner</targetReference>
@@ -1342,8 +2586,8 @@
     <recordLookups>
         <name>Get_Opportunity</name>
         <label>Get Opportunity</label>
-        <locationX>3228</locationX>
-        <locationY>323</locationY>
+        <locationX>7684</locationX>
+        <locationY>384</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_RecordType</targetReference>
@@ -1363,8 +2607,8 @@
     <recordLookups>
         <name>Get_Org_wide_Address</name>
         <label>Get Org wide Address</label>
-        <locationX>3228</locationX>
-        <locationY>2447</locationY>
+        <locationX>7684</locationX>
+        <locationY>2616</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_Status_for_Email</targetReference>
@@ -1384,8 +2628,8 @@
     <recordLookups>
         <name>getProfile</name>
         <label>getProfile</label>
-        <locationX>3988</locationX>
-        <locationY>971</locationY>
+        <locationX>7596</locationX>
+        <locationY>1032</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>getUser</targetReference>
@@ -1405,8 +2649,8 @@
     <recordLookups>
         <name>getUser</name>
         <label>getUser</label>
-        <locationX>3988</locationX>
-        <locationY>1079</locationY>
+        <locationX>7596</locationX>
+        <locationY>1140</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>check_users</targetReference>
@@ -1433,10 +2677,10 @@
     <recordUpdates>
         <name>Cancellation_Status_To_Refunded</name>
         <label>Cancellation Status To Refunded</label>
-        <locationX>5242</locationX>
-        <locationY>647</locationY>
+        <locationX>9466</locationX>
+        <locationY>708</locationY>
         <connector>
-            <targetReference>Get_Contact_from_Opportunity</targetReference>
+            <targetReference>get_Contact_Role</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -1455,10 +2699,76 @@
         <object>Opportunity</object>
     </recordUpdates>
     <recordUpdates>
+        <name>Copy_1_of_Update_Opportunity</name>
+        <label>Copy 1 of Update Opportunity</label>
+        <locationX>7882</locationX>
+        <locationY>2940</locationY>
+        <connector>
+            <targetReference>Send_Email_with_Attachments_Action_1</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>AOS_Stage__c</field>
+            <value>
+                <elementReference>$Record.Status</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Copy_1_of_Update_Opportunity_Stage</name>
+        <label>Copy 1 of Update Opportunity Stage</label>
+        <locationX>5682</locationX>
+        <locationY>816</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Sale_Deed_Status__c</field>
+            <value>
+                <stringValue>Original Uploaded</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Copy_1_of_update_the_Status</name>
+        <label>Copy 1 of update the Status</label>
+        <locationX>8740</locationX>
+        <locationY>1308</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Opportunity.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Sale_Deed_Status__c</field>
+            <value>
+                <elementReference>$Record.Status</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
         <name>Copy_2_of_Update_Opportunity</name>
         <label>Copy 2 of Update Opportunity</label>
-        <locationX>2964</locationX>
-        <locationY>2663</locationY>
+        <locationX>7354</locationX>
+        <locationY>2832</locationY>
         <connector>
             <targetReference>get_Email_Template_for_Loan_Rejection</targetReference>
         </connector>
@@ -1485,17 +2795,54 @@
         <object>Opportunity</object>
     </recordUpdates>
     <recordUpdates>
+        <name>Copy_2_of_update_the_Status</name>
+        <label>Copy 2 of update the Status</label>
+        <locationX>11556</locationX>
+        <locationY>600</locationY>
+        <connector>
+            <targetReference>Copy_2_of_Assign_CRM_Agent</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Opportunity.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>NOC__c</field>
+            <value>
+                <elementReference>$Record.Status</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>update</name>
+        <label>update</label>
+        <locationX>50</locationX>
+        <locationY>492</locationY>
+        <inputAssignments>
+            <field>date_of_update__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
         <name>Update_Lead_Owner</name>
         <label>Update Lead Owner</label>
-        <locationX>2866</locationX>
-        <locationY>971</locationY>
+        <locationX>6474</locationX>
+        <locationY>1032</locationY>
         <inputReference>get_Lead_Record</inputReference>
     </recordUpdates>
     <recordUpdates>
         <name>Update_Opportunity</name>
         <label>Update Opportunity</label>
-        <locationX>3228</locationX>
-        <locationY>2663</locationY>
+        <locationX>7618</locationX>
+        <locationY>2832</locationY>
         <connector>
             <targetReference>get_Email_Template_for_Eligible</targetReference>
         </connector>
@@ -1522,34 +2869,10 @@
         <object>Opportunity</object>
     </recordUpdates>
     <recordUpdates>
-        <name>Update_Opportunity_AOS_Stage_to_Draft_Upload</name>
-        <label>Update Opportunity AOS Stage to Draft Upload</label>
-        <locationX>3492</locationX>
-        <locationY>2663</locationY>
-        <connector>
-            <targetReference>Send_Email_for_AOS</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record.WhatId</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <field>AOS_Stage__c</field>
-            <value>
-                <stringValue>Draft Uploaded</stringValue>
-            </value>
-        </inputAssignments>
-        <object>Opportunity</object>
-    </recordUpdates>
-    <recordUpdates>
         <name>Update_Opportunity_Loan_Status_Value_to_Disbursement</name>
         <label>Update Opportunity Loan Status Value to Disbursement</label>
-        <locationX>314</locationX>
-        <locationY>647</locationY>
+        <locationX>2690</locationX>
+        <locationY>816</locationY>
         <connector>
             <targetReference>Assign_OwnerId_to_List</targetReference>
         </connector>
@@ -1578,8 +2901,8 @@
     <recordUpdates>
         <name>Update_Opportunity_Loan_Status_Value_to_Document_Submitted</name>
         <label>Update Opportunity Loan Status Value to Document Submitted</label>
-        <locationX>50</locationX>
-        <locationY>647</locationY>
+        <locationX>2426</locationX>
+        <locationY>708</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -1599,8 +2922,8 @@
     <recordUpdates>
         <name>Update_Opportunity_Stage</name>
         <label>Update Opportunity Stage</label>
-        <locationX>2338</locationX>
-        <locationY>647</locationY>
+        <locationX>5154</locationX>
+        <locationY>816</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -1620,10 +2943,10 @@
     <recordUpdates>
         <name>Update_Opportunity_Status_To_Document_Delivered</name>
         <label>Update Opportunity Status To Document Delivered</label>
-        <locationX>930</locationX>
-        <locationY>647</locationY>
+        <locationX>3746</locationX>
+        <locationY>708</locationY>
         <connector>
-            <targetReference>Get_Contact_from_Opportunity</targetReference>
+            <targetReference>get_Contact_Role</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -1642,10 +2965,31 @@
         <object>Opportunity</object>
     </recordUpdates>
     <recordUpdates>
+        <name>update_Stage_to_onBoarded</name>
+        <label>update Stage to onBoarded</label>
+        <locationX>10170</locationX>
+        <locationY>1032</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Opportunity.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>StageName</field>
+            <value>
+                <stringValue>Onboarded</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
         <name>Update_status_to_Original_uploaded</name>
         <label>Update status to Original uploaded</label>
-        <locationX>4351</locationX>
-        <locationY>647</locationY>
+        <locationX>7959</locationX>
+        <locationY>708</locationY>
         <connector>
             <targetReference>Copy_1_of_get_Custom_Notification_Type1</targetReference>
         </connector>
@@ -1665,26 +3009,84 @@
         </inputAssignments>
         <object>Opportunity</object>
     </recordUpdates>
+    <recordUpdates>
+        <name>update_the_Status</name>
+        <label>update the Status</label>
+        <locationX>10698</locationX>
+        <locationY>708</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Opportunity.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>BR_Status__c</field>
+            <value>
+                <elementReference>$Record.Status</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
     <start>
-        <locationX>3102</locationX>
+        <locationX>8839</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Get_Opportunity</targetReference>
+            <targetReference>Check_isnew</targetReference>
         </connector>
         <object>Task</object>
-        <recordTriggerType>Update</recordTriggerType>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>date_of_update</name>
+            <connector>
+                <targetReference>Copy_2_of_Get_Opportunity</targetReference>
+            </connector>
+            <label>date of update</label>
+            <offsetNumber>48</offsetNumber>
+            <offsetUnit>Hours</offsetUnit>
+            <recordField>date_of_update__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
     <textTemplates>
         <name>EmailBodyforAOS</name>
         <isViewedAsPlainText>false</isViewedAsPlainText>
-        <text>&lt;p&gt;&lt;span style=&quot;font-size: 12pt; font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif;&quot;&gt;Dear {!Get_Opportunity.Account.Name},&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12pt; font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif;&quot;&gt;Agreement of Sale(AOS) draft has been prepared for your review. Below are the details of your unit:&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;strong style=&quot;font-size: 12pt; font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif;&quot;&gt;Unit Number:&lt;/strong&gt;&lt;span style=&quot;font-size: 12pt; font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif;&quot;&gt; {!Get_Opportunity.Plot_Name__c}&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;strong style=&quot;font-size: 12pt; font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif;&quot;&gt;Plot Price per Square Yard:&lt;/strong&gt;&lt;span style=&quot;font-size: 12pt; font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif;&quot;&gt; {!Get_Opportunity.Plot_Dimension__c}&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;strong style=&quot;font-size: 12pt; font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif;&quot;&gt;Total Sale Value:&lt;/strong&gt;&lt;span style=&quot;font-size: 12pt; font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif;&quot;&gt; {!Get_Opportunity.Sale_Value_Amount__c}&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;strong style=&quot;font-size: 12pt; font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif;&quot;&gt;Amount Paid:&lt;/strong&gt;&lt;span style=&quot;font-size: 12pt; font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif;&quot;&gt; {!Get_Opportunity.Collected_Amount__c}&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;{!Allottees}&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12pt; font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif;&quot;&gt;Review the attached document at your earliest convenience. Upon your confirmation, we will proceed with the next steps Should you have any questions or require further clarification, feel free to contact us.&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12pt; font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif;&quot;&gt;Best regards,&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;{!Get_Opportunity.Owner.Name}&lt;/p&gt;&lt;p&gt;{!Get_Opportunity.Owner.Phone}&lt;/p&gt;</text>
+        <text>&lt;p&gt;&lt;span style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif; font-size: 12pt;&quot;&gt;Dear {!Get_Opportunity.Account.Name},&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif; font-size: 12pt;&quot;&gt;Agreement of Sale(AOS) draft has been prepared for your review. Below are the details of your unit:&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;strong style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif; font-size: 12pt;&quot;&gt;Unit Number:&lt;/strong&gt;&lt;span style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif; font-size: 12pt;&quot;&gt; {!Get_Opportunity.Plot_Name__c}&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;strong style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif; font-size: 12pt;&quot;&gt;Plot Price per Square Yard:&lt;/strong&gt;&lt;span style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif; font-size: 12pt;&quot;&gt; {!Get_Opportunity.Base_Price_per_Sq_Ft__c}&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;strong style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif; font-size: 12pt;&quot;&gt;Total Sale Value:&lt;/strong&gt;&lt;span style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif; font-size: 12pt;&quot;&gt; {!Get_Opportunity.Sale_Value_Amount__c}&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;strong style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif; font-size: 12pt;&quot;&gt;Amount Paid:&lt;/strong&gt;&lt;span style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif; font-size: 12pt;&quot;&gt; {!Get_Opportunity.Collected_Amount__c}&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;{!Allottees}&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif; font-size: 12pt;&quot;&gt;Review the attached document at your earliest convenience. Upon your confirmation, we will proceed with the next steps Should you have any questions or require further clarification, feel free to contact us.&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;, &amp;quot;Times New Roman_EmbeddedFont&amp;quot;, &amp;quot;Times New Roman_MSFontService&amp;quot;, serif; font-size: 12pt;&quot;&gt;Best regards,&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;{!Get_Opportunity.Owner.Name}&lt;/p&gt;&lt;p&gt;{!Get_Opportunity.Owner.Phone}&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>NotificationBodyForNOC</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>NOC has been uploaded for {!Get_Opportunity.Name}</text>
     </textTemplates>
     <variables>
         <name>Allottees</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>aosContentDocumentID</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>cdlList</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>contactId</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
     </variables>

@@ -53,10 +53,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>CC_Email_Address__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Project_Address__c</field>
             </layoutItems>
             <layoutItems>

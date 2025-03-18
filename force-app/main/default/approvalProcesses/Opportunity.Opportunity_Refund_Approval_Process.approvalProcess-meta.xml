@@ -14,11 +14,19 @@
         <allowDelegate>false</allowDelegate>
         <assignedApprover>
             <approver>
-                <name>mdsiraj@epitomeprojects.in.qa</name>
+                <name>arthi@epitomeprojects.in</name>
                 <type>user</type>
             </approver>
             <approver>
-                <name>vasanth@epitomeprojects.in.qa</name>
+                <name>devjitdas@epitomeprojects.in</name>
+                <type>user</type>
+            </approver>
+            <approver>
+                <name>gnanaprasanna@epitomeprojects.in</name>
+                <type>user</type>
+            </approver>
+            <approver>
+                <name>harishreddy@epitomeprojects.in</name>
                 <type>user</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
@@ -30,7 +38,7 @@
         <allowDelegate>false</allowDelegate>
         <assignedApprover>
             <approver>
-                <name>girishkumar@epitomeprojects.in.qa</name>
+                <name>varun.rawal@saasworx.ai.epitome</name>
                 <type>user</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
@@ -45,7 +53,7 @@
         <allowDelegate>false</allowDelegate>
         <assignedApprover>
             <approver>
-                <name>jaipal@epitomeprojects.in.qa</name>
+                <name>vineethreddy@epitomeprojects.in</name>
                 <type>user</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>

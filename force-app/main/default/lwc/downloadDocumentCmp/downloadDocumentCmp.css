@@ -1,44 +1,111 @@
-.document-table {
-    max-height: 400px;
-    overflow-y: auto;
-}
-
-.slds-is-sortable {
-    cursor: pointer;
-}
-
-.slds-is-sortable:hover {
-    background-color: #f3f3f3;
-}
-
-.slds-is-sortable .slds-icon-text-default {
-    fill: #706e6b;
-}
-
-.slds-is-sortable:hover .slds-icon-text-default {
-    fill: #0070d2;
-}
-
-.slds-illustration.slds-illustration_small {
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-.slds-p-around_medium {
-    padding: 1rem;
-}
-
-.slds-border_bottom {
-    border-bottom: 1px solid #dddbda; /* Light gray border */
-}
-
-.slds-text-heading_medium {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #080707; /* Dark gray color for heading */
-}
-
 .custom-card-width {
-    width: 400px; /* Adjust the width as needed */
-    margin: 0 auto; /* Center the card horizontally */
+    width: 100%;
+    max-width: 500px; /* Compact card width */
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    padding: 1.5rem;
+}
+
+.slds-box {
+    border: 1px solid #dddbda;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    transition: box-shadow 0.2s ease;
+    background-color: #fafaf9;
+}
+
+.slds-box:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.slds-button {
+    font-size: 0.875rem;
+    transition: background-color 0.2s ease;
+    min-width: 100px; /* Ensure buttons have the same width */
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    outline: none; /* Remove default focus outline */
+}
+
+.slds-button_brand {
+    background-color: #0070d2;
+    color: #ffffff;
+}
+
+.slds-button_brand:hover {
+    background-color: #005fb2;
+}
+
+.slds-button_neutral {
+    background-color: #ffffff;
+    color: #0070d2;
+    border: 1px solid #dddbda;
+}
+
+.slds-button_neutral:hover {
+    background-color: #f3f2f2;
+}
+
+.slds-no-hover {
+    outline: none !important; /* Remove blue highlight on hover */
+    box-shadow: none !important; /* Remove any shadow on hover */
+}
+
+.slds-text-color_error {
+    color: #c23934;
+}
+
+.slds-text-align_center {
+    text-align: center;
+}
+
+.slds-text-align_left {
+    text-align: left;
+}
+
+.slds-text-heading_small {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #2c2c2c;
+    margin-bottom: 0.25rem;
+}
+
+.slds-text-body_small {
+    font-size: 0.75rem;
+    color: #706e6b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .custom-card-width {
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    .slds-col {
+        flex: 1 1 100%;
+    }
+
+    .slds-grid.slds-wrap {
+        flex-direction: column;
+    }
+
+    .slds-text-heading_small {
+        font-size: 1rem;
+    }
+
+    .slds-text-body_small {
+        font-size: 0.6875rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .slds-button {
+        padding: 0.5rem;
+        font-size: 0.75rem;
+        min-width: 80px; /* Smaller buttons for mobile */
+    }
 }

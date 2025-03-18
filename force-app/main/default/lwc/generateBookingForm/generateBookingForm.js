@@ -9,12 +9,14 @@ import getAccountDetails from '@salesforce/apex/bookingFormController.getAccount
 import getContactDetails from '@salesforce/apex/bookingFormController.getContactDetails';
 import getPlotDetails from '@salesforce/apex/bookingFormController.getPlotDetails';
 import getContactsByAccountId from '@salesforce/apex/bookingFormController.getContactsByAccountId';
-import getPlots from '@salesforce/apex/bookingFormController.getPlots';
+import getProjects from '@salesforce/apex/bookingFormController.getProjects';
+import getPhases from '@salesforce/apex/bookingFormController.getPhases';
 
 export default class BookingForm extends NavigationMixin(LightningElement) {
 
     @track contacts = [];
-    @track plots = [];
+    @track projects = [];
+    @track phases = [];
     @track isModalOpen = true;
     @track isAccountSelected = false;
     @api recordId;
@@ -62,9 +64,10 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     }
 
     @track bookingFormData = {
-        sendNotification: false,
         typeOfBooking: '',
         accountId: null,
+        projectId: null,
+        phaseId: null,
         accountName: '',
         accountEmailId: '',
         accountContactNo: '',
@@ -88,13 +91,12 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     }
 
     connectedCallback() {
-        this.isLoading=true;
-        this.fetchPlots();
+        this.fetchProject();
         this.showComponent = true;
         this.addContact();
         this.isAccountExist = true;
-        
     }
+
 
     @wire(getObjectInfo, { objectApiName: OPPORTUNITY_OBJECT_NAME })
     opportunityObjectInfo;
@@ -102,11 +104,28 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     @wire(getPicklistValues, { recordTypeId: '$opportunityObjectInfo.data.defaultRecordTypeId', fieldApiName: 'Opportunity.Type_of_Booking__c' })
     wiredtypeOfBookingPicklistValues({ error, data }) {
         if (data) {
-            this.picklistOptions.typeOfBookingOptions = [...data.values];
+            // Filtering out 'Retail' from the picklist options
+            this.picklistOptions.typeOfBookingOptions = data.values.filter(option => option.value !== 'Retail');
         } else if (error) {
             this.showToast('Error', error.message, 'error');
             this.handleCancelClick();
         }
+    }
+
+    handleProjectSelection(event) {
+        this.bookingFormData.projectId = event.detail.value;
+        this.fetchPhase();
+        console.log('this.bookingFormData.projectId--------->', this.bookingFormData.projectId);
+    }
+
+    handlePhaseSelection(event) {
+        if (!this.bookingFormData.projectId) {
+            // Show an error message (you can use toast or set an error variable)
+            this.showToast('Error', 'Please select a project first.', 'error');
+            return;
+        }
+        this.bookingFormData.phaseId = event.detail.value;
+        console.log('this.bookingFormData.phaseId--------->', this.bookingFormData.phaseId);
     }
 
     handleAccountChange(event) {
@@ -144,28 +163,42 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     }
 
     handleValueChange(event) {
+        debugger
         try {
-
-            const contactId = parseInt(event.target.dataset.contactId, 10);
-            const plotId = event.target.dataset.plotId ? parseInt(event.target.dataset.plotId, 10) : null;
+            const contactId = parseInt(event.currentTarget.dataset.contactId, 10);
+            const plotId = event.currentTarget.dataset.plotId ? parseInt(event.currentTarget.dataset.plotId, 10) : null;
             const fieldName = event.target.name;
-            const value = event.detail.value;
-
-            console.log('Contact ID:', contactId);
-            console.log('Plot ID:', plotId);
-            console.log('Field Name:', fieldName);
+            const value = fieldName === 'plotName' ? event.detail.id : event.detail.value;
 
             this.selectedRecordId = value; // Update selected record ID
 
             console.log('Selected Record ID:', this.selectedRecordId);
+
+            if (!this.bookingFormData.phaseId) {
+                this.clearPlotValues(plotId, contactId);
+                this.showToast('Error', 'Please select a phase first.', 'error');
+                return;
+            }
+
+            if (fieldName === 'contactDOB') {
+                let isValidDOB = this.validateDateOfBirth(value, event);
+                if (!isValidDOB) return; // Stop further execution if validation fails
+            }
+
             if (fieldName === 'plotName') {
+                  if (!value) { // When input is cleared
+                this.clearPlotValues(plotId, contactId);
+                return;
+            }
+
                 if (this.isDuplicatePlotSelected(value)) {
-                    event.target.value = null; // Reset combobox
+                    this.clearPlotValues(plotId, contactId);
                     this.showToast('Error', 'Duplicate plot selected. Please choose a different plot.', 'error');
                     return;
                 }
 
                 this.selectedRecordId = value; // Update selected record ID
+                console.log('this.selectedRecordId  : ',this.selectedRecordId );
 
                 // If no record is selected, clear the plot details
                 if (!this.selectedRecordId) {
@@ -192,7 +225,6 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
 
             // Determine final value (handling plot name differently)
             const finalValue = fieldName === 'plotName' ? value : event.target.value;
-
             // Update contact or plot information
             this.updateBookingFormData(contactId, plotId, fieldName, finalValue);
 
@@ -214,7 +246,6 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
                     plot.unitPlotPrize = this.unitPlotPrize;
                     plot.unitPlotUnitCode = this.unitPlotUnitCode;
                     plot.unitPlotPhase = this.unitPlotPhase;
-
                 }
             });
         });
@@ -227,8 +258,39 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
         );
     }
 
+    validateDateOfBirth(value, event) {
+        let selectedDate = new Date(value);
+        let today = new Date();
+        let eighteenYearsBack = new Date();
+        eighteenYearsBack.setFullYear(today.getFullYear() - 18);
+
+        // Check if the selected date is in the future
+        if (selectedDate > today) {
+            this.showToast('Error', 'Date of Birth cannot be a future date.', 'error');
+            event.target.value = null; // Reset field
+            return false;
+        }
+
+        // Check if the applicant is at least 18 years old
+        let age = this.getAgeDifferenceInYears(today, selectedDate);
+        if (age < 18) {
+            this.showToast('Error', 'Applicant must be at least 18 years old.', 'error');
+            event.target.value = null; // Reset field
+            return false;
+        }
+        return true; // If validation passes
+    }
+
     clearPlotValues(plotId, contactId) {
+        debugger
         // Create a deep copy to trigger LWC reactivity
+        const lookupComponents = this.template.querySelectorAll('c-custom-lookup-cmp');
+
+        lookupComponents.forEach(lookup => {
+            if (lookup.contactId === contactId && lookup.plotId === plotId) {
+                lookup.clearSelection();  // Call child method to reset only the correct lookup
+            }
+        });
         let updatedBookingFormData = JSON.parse(JSON.stringify(this.bookingFormData));
 
         // Find the correct co-applicant
@@ -254,6 +316,7 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
                     unitPlotUnitCode: null,
                     unitPlotPhase: null
                 };
+                console.log('updatedBookingFormData', JSON.stringify(updatedBookingFormData));
             }
         }
 
@@ -272,6 +335,12 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
         }
 
         console.log('Deselected plot reset:', JSON.stringify(this.bookingFormData, null, 2));
+    }
+
+    handleClearPlot(event) {
+        const { contactId, plotId } = event.detail;
+        console.log(`Clearing plot for Contact ID: ${contactId}, Plot ID: ${plotId}`);
+        this.clearPlotValues(plotId, contactId);
     }
 
     updateBookingFormData(contactId, plotId, fieldName, value) {
@@ -399,6 +468,47 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
         }
     }
 
+    fetchProject() {
+        debugger
+        console.log('Fetching projects for project:', this.bookingFormData.projectId);
+        getProjects()
+            .then((data) => {
+                if (data && data.length > 0) {
+                    this.projects = data.map((project) => ({
+                        label: project.Name, // Show Last Name in combobox
+                        value: project.Id        // Store Contact Id as value
+                    }));
+                    console.log('project loaded:', this.projects);
+                } else {
+                    this.projects = [];
+                    //this.showToast('Error', 'No contacts found for this Account.', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching contacts:', error);
+            });
+    }
+
+    fetchPhase() {
+        console.log('Fetching phases for Account:', this.bookingFormData.accountId);
+        getPhases({ projectId: this.bookingFormData.projectId })
+            .then((data) => {
+                if (data && data.length > 0) {
+                    this.phases = data.map((phase) => ({
+                        label: phase.Name, // Show Last Name in combobox
+                        value: phase.Id        // Store Contact Id as value
+                    }));
+                    console.log('phase loaded:', this.phases);
+                } else {
+                    this.phases = [];
+                    //this.showToast('Error', 'No contacts found for this Account.', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching contacts:', error);
+            });
+    }
+
     fetchContacts() {
         console.log('Fetching contacts for Account:', this.bookingFormData.accountId);
         getContactsByAccountId({ accountId: this.bookingFormData.accountId })
@@ -412,27 +522,6 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
                 } else {
                     this.contacts = [];
                     //this.showToast('Error', 'No contacts found for this Account.', 'error');
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching contacts:', error);
-            });
-    }
-
-    fetchPlots() {
-        this.isLoading=false;
-        console.log('Fetching Plots');
-        getPlots()
-            .then((data) => {
-                if (data && data.length > 0) {
-                    this.plots = data.map((plot) => ({
-                        label: plot.Name,
-                        value: plot.Id
-                    }));
-                    console.log('Plots loaded:', this.plots);
-                } else {
-                    this.plots = [];
-                    this.showToast('Error', 'No plots found for this Account.', 'error');
                 }
             })
             .catch(error => {
@@ -589,6 +678,7 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     }
 
     handleSave(event) {
+        debugger
         this.isLoading = true;
         if (!this.validateFields()) {
             this.isLoading = false;
@@ -628,6 +718,7 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     }
 
     validateFields() {
+        debugger
         let allFieldsValid = true;
         const messages = [];
         const requiredFields = this.template.querySelectorAll('[data-label="primaryApplicantRequiredFields"]');

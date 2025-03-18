@@ -348,21 +348,21 @@
                     <th style="padding: 10px; text-align: left; border: 1px solid #ddd; background-color: #f2f2f2;">Direction</th>
                     <th style="padding: 10px; text-align: left; border: 1px solid #ddd; background-color: #f2f2f2;">Plot Information</th>
                 </tr>
-                <tr>
+				<tr>
                     <td style="padding: 10px; text-align: left; border: 1px solid #ddd;">North</td>
-                    <td style="padding: 10px; text-align: left; border: 1px solid #ddd;">{!opportunityRecord.Unit__r.North__r.Name}</td>
+                    <td style="padding: 10px; text-align: left; border: 1px solid #ddd;">{!opportunityRecord.Unit__r.North__c}</td>
                 </tr>
                 <tr>
                     <td style="padding: 10px; text-align: left; border: 1px solid #ddd;">South</td>
-                    <td style="padding: 10px; text-align: left; border: 1px solid #ddd;">{!opportunityRecord.Unit__r.South__r.Name}</td>
+                    <td style="padding: 10px; text-align: left; border: 1px solid #ddd;">{!opportunityRecord.Unit__r.South__c}</td>
                 </tr>
                 <tr>
                     <td style="padding: 10px; text-align: left; border: 1px solid #ddd;">East</td>
-                    <td style="padding: 10px; text-align: left; border: 1px solid #ddd;">{!opportunityRecord.Unit__r.East__r.Name}</td>
+                    <td style="padding: 10px; text-align: left; border: 1px solid #ddd;">{!opportunityRecord.Unit__r.East__c}</td>
                 </tr>
                 <tr>
                     <td style="padding: 10px; text-align: left; border: 1px solid #ddd;">West</td>
-                    <td style="padding: 10px; text-align: left; border: 1px solid #ddd;">{!opportunityRecord.Unit__r.West__r.Name}</td>
+                    <td style="padding: 10px; text-align: left; border: 1px solid #ddd;">{!opportunityRecord.Unit__r.West__c}</td>
                 </tr>
             </table>
     

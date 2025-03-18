@@ -1,5 +1,25 @@
+/**
+ *  * @author Varun Rawal
+
+ * This class, `LeadNotificationBatch`, is a batch and schedulable class designed to handle notifications for unopened leads.
+ * It sends notifications to lead owners and optionally their managers based on a custom setting configuration.
+ * The class also reschedules itself to run at a specified interval defined in a custom setting.
+ *
+ * Key Features:
+ * - Fetches unopened leads and sends notifications to their owners.
+ * - Optionally sends notifications to the lead owner's manager based on a custom setting.
+ * - Reschedules itself to run at a specified interval.
+ * - Handles exceptions and null checks to ensure robust execution.
+ */
+
 global class LeadNotificationBatch implements Database.Batchable<SObject>, Schedulable {
     
+    /**
+     * The start method of the batch class, which defines the query to fetch unopened leads.
+     *
+     * @param bc The BatchableContext object provided by the system.
+     * @return A QueryLocator object containing the unopened leads.
+     */
     global Database.QueryLocator start(Database.BatchableContext bc) {
         return Database.getQueryLocator([
             SELECT Id, OwnerId, Status, Name
@@ -8,7 +28,14 @@ global class LeadNotificationBatch implements Database.Batchable<SObject>, Sched
         ]);
     }
     
+    /**
+     * The execute method of the batch class, which processes the fetched leads and sends notifications.
+     *
+     * @param bc The BatchableContext object provided by the system.
+     * @param scope The list of leads to process.
+     */
     global void execute(Database.BatchableContext bc, List<Lead> scope) {
+        // Fetch the custom setting to determine if notifications should be sent to managers
         Pre_Sales_Data__c customSetting = [
             SELECT Value__c 
             FROM Pre_Sales_Data__c 
@@ -16,23 +43,29 @@ global class LeadNotificationBatch implements Database.Batchable<SObject>, Sched
             LIMIT 1
         ];
         
+        // Check if the custom setting is null or empty
         if (customSetting == null || String.isEmpty(customSetting.Value__c)) {
             System.debug('Custom setting "Send to Manager" not found or is empty.');
             return;
         }
         
+        // Determine if notifications should be sent to managers
         Boolean sendToManager = customSetting.Value__c.equalsIgnoreCase('true');
         System.debug('Send to Manager: ' + sendToManager);
         
+        // Fetch the custom notification type
         CustomNotificationType notificationType = [
             SELECT Id, DeveloperName 
             FROM CustomNotificationType 
             WHERE DeveloperName = 'Lead_Assignment_Notification'
         ];
         
+        // Initialize collections to store user IDs and leads
         Set<String> ids = new Set<String>();
         Map<String, String> userToManager = new Map<String, String>();
         List<Lead> userLeads = new List<Lead>();
+        
+        // Iterate through the leads and collect user IDs
         for (Lead l : scope) {
             if (l.OwnerId.getSObjectType() == User.SObjectType) {
                 ids.add(l.OwnerId);
@@ -40,6 +73,7 @@ global class LeadNotificationBatch implements Database.Batchable<SObject>, Sched
             }
         }
         
+        // If notifications should be sent to managers, fetch manager IDs
         if (sendToManager) {
             List<User> users = [SELECT Id, ManagerId FROM User WHERE Id IN :ids];
             for (User usr : users) {
@@ -48,21 +82,27 @@ global class LeadNotificationBatch implements Database.Batchable<SObject>, Sched
         }
         
         System.debug('Map user to Manager: ' + userToManager);
+        
+        // If no user leads are found, exit the method
         if (userLeads.isEmpty()) {
             System.debug('No User Leads Found');
             return;
         }
         
+        // Send notifications to lead owners and optionally their managers
         for (Lead l : scope) {
             if (l.OwnerId.getSObjectType() == User.SObjectType) {
                 Set<String> userIds = new Set<String>();
                 userIds.add(l.OwnerId);
                 System.debug('Owner ID: ' + l.OwnerId);
+                
+                // Add the manager's ID if applicable
                 if (sendToManager && userToManager.containsKey(l.OwnerId) && userToManager.get(l.OwnerId) != null) {
                     userIds.add(userToManager.get(l.OwnerId));
                     System.debug('Owner Manager ID: ' + userToManager.get(l.OwnerId));
                 }
                 
+                // Create and send the custom notification
                 Messaging.CustomNotification notification = new Messaging.CustomNotification();
                 notification.setTitle('Unopenned Lead ALERT');
                 notification.setBody('You have an Unopenned Lead.');
@@ -78,7 +118,13 @@ global class LeadNotificationBatch implements Database.Batchable<SObject>, Sched
         }
     }
     
+    /**
+     * The finish method of the batch class, which reschedules the batch job.
+     *
+     * @param bc The BatchableContext object provided by the system.
+     */
     global void finish(Database.BatchableContext bc) {
+        // Fetch the custom setting to determine the interval for rescheduling
         Pre_Sales_Data__c customSetting = [
             SELECT Value__c 
             FROM Pre_Sales_Data__c 
@@ -86,6 +132,7 @@ global class LeadNotificationBatch implements Database.Batchable<SObject>, Sched
             LIMIT 1
         ];
         
+        // Fetch any existing scheduled jobs with the same name
         List<CronTrigger> scheduledJobs = [
             SELECT Id, State, CronJobDetail.Name  
             FROM CronTrigger  
@@ -93,6 +140,7 @@ global class LeadNotificationBatch implements Database.Batchable<SObject>, Sched
             ORDER BY CreatedDate DESC 
         ];
         
+        // Abort any existing scheduled jobs to avoid duplicates
         if (!scheduledJobs.isEmpty()) {
             for (CronTrigger job : scheduledJobs) {
                 system.debug('job-->'+job);
@@ -103,6 +151,7 @@ global class LeadNotificationBatch implements Database.Batchable<SObject>, Sched
             }
         }
         
+        // Calculate the next fire time based on the custom setting
         Integer minutesToAdd = Integer.valueOf(customSetting.Value__c);
         
         String jobName = 'LeadNotificationBatch_' + System.now().getTime();
@@ -113,6 +162,7 @@ global class LeadNotificationBatch implements Database.Batchable<SObject>, Sched
         String month = String.valueOf(Datetime.now().month());
         String nextFireTime = ss + ' ' + min + ' ' + hour + ' ' + day + ' ' + month + ' ?';
         
+        // Reschedule the batch job
         try {
             System.schedule(jobName, nextFireTime, new LeadNotificationBatch());
         } catch (Exception e) {
@@ -122,7 +172,11 @@ global class LeadNotificationBatch implements Database.Batchable<SObject>, Sched
         System.debug('Batch Process Complete');
     }
     
-    // Implement the Schedulable interface
+    /**
+     * The execute method of the Schedulable interface, which starts the batch job.
+     *
+     * @param sc The SchedulableContext object provided by the system.
+     */
     global void execute(SchedulableContext sc) {
         Database.executeBatch(new LeadNotificationBatch());
     }

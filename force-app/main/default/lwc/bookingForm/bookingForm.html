@@ -25,16 +25,19 @@
 											<lightning-layout-item flexibility="auto" padding="around-small" size="12"
 												small-device-size="12" medium-device-size="6" large-device-size="6">
 												<lightning-input data-label="primaryApplicantRequiredFields"
-													label="Project Name" type="text" value="Epitome" disabled>
+													label="Project" type="text" value={bookingFormData.projectId} disabled>
 												</lightning-input>
 											</lightning-layout-item>
 											<lightning-layout-item flexibility="auto" padding="around-small" size="12"
 												small-device-size="12" medium-device-size="6" large-device-size="6">
-												<lightning-combobox data-label="primaryApplicantRequiredFields"
+												<lightning-input data-label="primaryApplicantRequiredFields"
+													label="Phase" type="text" value={bookingFormData.quoteunitPlotPhase} disabled>
+												</lightning-input>
+												<!-- <lightning-combobox data-label="primaryApplicantRequiredFields"
 													name="typeOfBooking" label="Type Of Booking"
 													onchange={handleValueChange} value={bookingFormData.typeOfBooking}
 													options={picklistOptions.typeOfBookingOptions} required>
-												</lightning-combobox>
+												</lightning-combobox> -->
 											</lightning-layout-item>
 										</lightning-layout>
 									</lightning-accordion-section>
@@ -290,9 +293,6 @@
 												<lightning-input data-label="primaryApplicantRequiredFields" type="date"
 													variant="standard" name="quoteContactDOB" label="Date Of Birth"
 													onchange={handleValueChange} value={bookingFormData.quoteContactDOB}
-													max={eighteenYearsBackDate}
-												
-													message-when-range-overflow="Date of Birth cannot be a future date or must be 18 years old or above"
 													required>
 												</lightning-input>
 											</lightning-layout-item>
@@ -312,7 +312,7 @@
 
 											</lightning-layout-item>
 
-											<lightning-layout-item flexibility="auto" padding="around-small" size="12"
+											<!-- <lightning-layout-item flexibility="auto" padding="around-small" size="12"
 												small-device-size="12" medium-device-size="6" large-device-size="6">
 												<lightning-input label="Phase" type="text" name="unitPlotPhase"
 													onchange={handleValueChange}
@@ -320,7 +320,7 @@
 												</lightning-input>
 
 
-											</lightning-layout-item>
+											</lightning-layout-item> -->
 											<lightning-layout-item flexibility="auto" padding="around-small" size="12"
 												small-device-size="12" medium-device-size="6" large-device-size="6">
 												<lightning-input label="Plot Size" type="text" name="unitPlotSize"
@@ -346,7 +346,7 @@
 											</lightning-layout-item>
 											<lightning-layout-item flexibility="auto" padding="around-small" size="12"
 												small-device-size="12" medium-device-size="6" large-device-size="6">
-												<lightning-input label="Unit Code" type="text" name="unitPlotUnitCode"
+												<lightning-input label="Plot Number" type="text" name="unitPlotUnitCode"
 													onchange={handleValueChange}
 													value={bookingFormData.quoteunitPlotUnitCode} required disabled>
 												</lightning-input>

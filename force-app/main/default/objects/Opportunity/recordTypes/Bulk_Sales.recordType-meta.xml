@@ -18,10 +18,6 @@
     <picklistValues>
         <picklist>AOS_Stage__c</picklist>
         <values>
-            <fullName>Completed</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Initiate</fullName>
             <default>false</default>
         </values>
@@ -31,26 +27,6 @@
         </values>
         <values>
             <fullName>Ready to dispatch</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Ready to print</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Waitng for customer response</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Yet to prepare</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Yet to sign Epitome</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Yet to sign purchaser</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -139,6 +115,21 @@
         </values>
         <values>
             <fullName>Under Construction</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Digital_Signature_Approval__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending</fullName>
             <default>false</default>
         </values>
     </picklistValues>

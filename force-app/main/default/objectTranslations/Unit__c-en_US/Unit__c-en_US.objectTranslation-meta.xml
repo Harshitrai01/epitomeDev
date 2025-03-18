@@ -11,6 +11,10 @@
     <layouts>
         <layout>Unit Layout</layout>
         <sections>
+            <label><!-- Authority Information --></label>
+            <section>Authority Information</section>
+        </sections>
+        <sections>
             <label><!-- Boundaries Of Plot --></label>
             <section>Boundaries Of Plot</section>
         </sections>

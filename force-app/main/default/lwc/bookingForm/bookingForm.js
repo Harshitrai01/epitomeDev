@@ -26,7 +26,6 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     eighteenYearsBackMonth = String(this.eighteenYearsBack.getMonth() + 1).padStart(2, '0');
     eighteenYearsBackDay = String(this.eighteenYearsBack.getDate()).padStart(2, '0');
     eighteenYearsBackDate = `${this.eighteenYearsBackYear}-${this.eighteenYearsBackMonth}-${this.eighteenYearsBackDay}`;
-   
     activeSections = ['A', 'B', 'C', 'D', 'E'];
     isLoading = false;
 
@@ -67,7 +66,8 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
         opportunityBookingAmount: '',
         leadId: '',
         saleValueAmount: '',
-        contactId: ''
+        contactId: '',
+        projectId: ''
     }
 
     @track picklistOptions = {
@@ -164,6 +164,10 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
                 case 'quoteContactPan':
                     this.bookingFormData[event.target.name] = event.target.value.toUpperCase();
                     break;
+                case 'quoteContactDOB':
+                    let isValidDOB = this.validateDateOfBirth(event.detail.value, event);
+                    if (!isValidDOB) return; // Stop further execution if validation fails
+                    break;
                 default:
                     this.bookingFormData[event.target.name] = event.target.value;
             }
@@ -171,6 +175,30 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
             console.log('handleValueChange error message------------------>', error.message);
             console.log('handleValueChange error line number------------------>', error.lineNumber);
         }
+    }
+
+    validateDateOfBirth(value, event) {
+        let selectedDate = new Date(value);
+        let today = new Date();
+        let eighteenYearsBack = new Date();
+        eighteenYearsBack.setFullYear(today.getFullYear() - 18);
+
+        // Check if the selected date is in the future
+        if (selectedDate > today) {
+            this.showToast('Error', 'Date of Birth cannot be a future date.', 'error');
+            event.target.value = null; // Reset field
+            return false;
+        }
+
+        // Check if the applicant is at least 18 years old
+        let age = this.getAgeDifferenceInYears(today, selectedDate);
+        if (age < 18) {
+            this.showToast('Error', 'Applicant must be at least 18 years old.', 'error');
+            event.target.value = null; // Reset field
+            return false;
+        }
+
+        return true; // If validation passes
     }
 
     handleSameAsPermanentChange() {
@@ -261,7 +289,8 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
                 quoteunitPlotUnitCode: opportunity.Plot__r?.Unit_Code__c || '',
                 quoteunitPlotName: opportunity.Plot__r?.Name || '',
                 quoteunitPlotPhase: opportunity.Plot__r?.Phase__r?.Name || '',
-                leadId: opportunity.Lead__r?.Id || ''
+                leadId: opportunity.Lead__r?.Id || '',
+                projectId: opportunity.Plot__r?.Phase__r?.Project__r?.Name || ''
             };
 
             if (this.isAccountExist) {
@@ -359,6 +388,7 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     }
 
     clearBookingFormData(objectType) {
+        debugger
         if (objectType === 'account') {
             this.bookingFormData = {
                 ...this.bookingFormData,
@@ -387,7 +417,7 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
                 quoteContactNo: '',
                 quoteContactPan: '',
                 quoteContactAadhaar: '',
-                quoteContactDOB: '',
+                quoteContactDOB: null,
                 contactId: null
             };
         }
@@ -483,10 +513,10 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
                 this.closeModal();
                 this.isLoading = false;
             })
-           .finally(() => {
-    // Optional, only if you want to make sure the loading state is reset after all actions.
-    this.isLoading = false;
-});
+            .finally(() => {
+                // Optional, only if you want to make sure the loading state is reset after all actions.
+                this.isLoading = false;
+            });
 
     }
 

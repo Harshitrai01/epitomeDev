@@ -260,6 +260,18 @@
                 <identifier>RecordSales_Deed_Authority_Person__cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Time_Of_Registration__c</fieldItem>
+                <identifier>RecordTime_Of_Registration__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.is_NOC_Uploaded__c</fieldItem>
+                <identifier>Recordis_NOC_Uploaded__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-9b41bd63-8713-49cd-8d56-67009e490196</name>
         <type>Facet</type>
     </flexiPageRegions>

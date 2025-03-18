@@ -1,0 +1,31 @@
+<apex:page applyBodyTag="false" applyHtmlTag="false" showQuickActionVfHeader="false" standardStylesheets="false" showHeader="false"  contentType="application/x-unknown" standardstylesheets="false"  renderAs="pdf">
+    
+    <head>
+        <style>
+            @page{
+            margin:0.05in;
+            }
+        </style>
+    </head> 
+    <html>
+        <table width="100%" border="2px solid black" style="border-collapse: collapse; border:1.2px solid black;">
+            <tbody>
+                <tr>
+                    <td colspan="10" width="1110" style="text-align: center; font-size:15px;" height="50"> &nbsp;<b>PHOTOGRAPH AND FINGERPRINTS AS PER SECTION 32 A OF REGISTRATION ACT. 1908 </b></td>
+                </tr>
+                <tr>
+                    <td colspan="1" width="10%" style="font-size:10px;text-align: center;"><b>S.No.</b></td>
+                    <td colspan="2" width="20%" style="font-size:10px;text-align: center;"><b>Finger Print <br/>in Black Ink <br/>(Left Thumb) </b></td>
+                    <td colspan="2" width="20%" style="font-size:10px;text-align: center;"><b>PASSPORT SIZE <br/>PHOTOGRAPH <br/>(Black &amp; White) </b></td>
+                    <td colspan="5" width="50%" style="font-size:10px;text-align: center;"><b>NAME AND PERMANENT <br/>POSTAL ADDRESS OF <br/>Presentant / Sellers/ Buyers </b></td>
+                </tr>
+                <tr>
+                    <td colspan="1" width="10%" style="font-size:10px;text-align: center;" height="100"></td>
+                    <td colspan="2" width="20%" style="font-size:10px;text-align: center;" height="100"></td>
+                    <td colspan="2" width="20%" style="font-size:10px;text-align: center;" height="100">Passport Size Photo</td>
+                    <td colspan="5" width="50%" style="font-size:10px;text-align: center;" height="100"></td>
+                </tr>
+            </tbody>
+        </table>
+    </html>
+</apex:page>

@@ -21,6 +21,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Initiated</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Rejected</fullName>
             <default>true</default>
         </values>

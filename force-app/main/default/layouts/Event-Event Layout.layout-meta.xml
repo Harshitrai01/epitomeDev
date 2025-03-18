@@ -42,6 +42,10 @@
                 <behavior>Edit</behavior>
                 <field>Schedule_Date_Time__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Registration_Date__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

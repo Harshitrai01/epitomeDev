@@ -43,15 +43,15 @@
         <default>false</default>
     </values>
     <values>
-        <fullName>Reg Initiate</fullName>
-        <default>false</default>
-    </values>
-    <values>
-        <fullName>Reg Scheduled</fullName>
-        <default>false</default>
-    </values>
-    <values>
         <fullName>Registered</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Registration Initiate</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Registration Scheduled</fullName>
         <default>false</default>
     </values>
 </BusinessProcess>

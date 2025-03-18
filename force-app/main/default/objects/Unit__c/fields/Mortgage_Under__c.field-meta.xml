@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mortgage_Under__c</fullName>
+    <label>Mortgage Under</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Piramal</fullName>
+                <default>false</default>
+                <label>Piramal</label>
+            </value>
+            <value>
+                <fullName>Hindhuja</fullName>
+                <default>false</default>
+                <label>Hindhuja</label>
+            </value>
+            <value>
+                <fullName>Epitome</fullName>
+                <default>false</default>
+                <label>Epitome</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

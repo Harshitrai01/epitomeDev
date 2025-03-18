@@ -4,6 +4,21 @@
     <active>true</active>
     <label>Villa</label>
     <picklistValues>
+        <picklist>Mortgage_Under__c</picklist>
+        <values>
+            <fullName>Epitome</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hindhuja</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Piramal</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Plot_Facing__c</picklist>
         <values>
             <fullName>East</fullName>

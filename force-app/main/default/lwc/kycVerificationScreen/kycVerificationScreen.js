@@ -3,7 +3,8 @@ import { CurrentPageReference } from 'lightning/navigation';
 import { CloseActionScreenEvent } from 'lightning/actions';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import checkOpportunityContact from '@salesforce/apex/KYCVerificationController.checkOpportunityContact';
-import updateOpportunityKYCStatus from '@salesforce/apex/KYCVerificationController.updateOpportunityKYCStatus';
+import updateSubDocumentType from '@salesforce/apex/KYCVerificationController.updateSubDocumentType';
+//import updateOpportunityKYCStatus from '@salesforce/apex/KYCVerificationController.updateOpportunityKYCStatus';
 import checkFilesSize from '@salesforce/apex/KYCVerificationController.checkFilesSize';
 import getConfiguration from '@salesforce/apex/KYCVerificationController.getConfiguration';
 
@@ -59,11 +60,12 @@ export default class KycVerificationScreen extends LightningElement {
         'Progressive': [
             { label: 'Disbursement Cheque', value: 'Disbursement Cheque' },
             { label: 'Affidavit', value: 'Affidavit' },
-            { label: 'NOC', value: 'NOC' }
+            { label: 'NOC', value: 'NOC' },
+            { label: 'Challan', value: 'Challan' }
         ],
         'Registration Initiate': [
             { label: 'Draft Sale deed', value: 'Draft Sale deed' },
-            { label: 'Board of Resolution', value: 'Board of Resolution' },
+            { label: 'Signed Board of Resolution', value: 'Signed Board of Resolution' },
             { label: 'Form 32', value: 'Form 32' },
             { label: 'NOC', value: 'NOC' }
         ],
@@ -146,6 +148,7 @@ export default class KycVerificationScreen extends LightningElement {
 
     handleDocumentTypeChange(event) {
         this.selectedDocumentType = event.detail.value;
+        console.log('this.selectedDocumentType----->',this.selectedDocumentType );
         this.subTypeOptions = this.subTypeMap[this.selectedDocumentType] || [];
         this.selectedSubType = ''; // Reset subType selection when changing document type
         this.isContactTagged = true;
@@ -165,11 +168,13 @@ export default class KycVerificationScreen extends LightningElement {
         try {
             // Convert the file data array into JSON
             const jsonInput = JSON.stringify({ files: fileData });
-            
+            console.log('jsonInput',JSON.stringify(jsonInput));
             // Call Apex to validate file sizes and rename them
             const fileSizes = await checkFilesSize({
                 jsonInput: jsonInput,
-                maxSize: this.maxFileSize
+                maxSize: this.maxFileSize,
+                recordId:this.recordId,
+                documentType:this.selectedDocumentType,
             });
     
             let isValid = true;
@@ -213,9 +218,15 @@ export default class KycVerificationScreen extends LightningElement {
             });
 
             // Validate file sizes and rename them
+            console.log('fileData---->',JSON.stringify(fileData));
             const isValid = await this.validateFileSizes(fileData);
+
             if (isValid) {
-                this.aadhaarFileId = isValid 
+                this.aadhaarFileId = isValid ;
+                console.log('this.recordId--->',this.recordId);
+                console.log('this.selectedSubType--->',this.selectedSubType);
+                await updateSubDocumentType({ recordId: this.recordId, newValue: this.selectedSubType });
+
             }
         }
     }
@@ -229,9 +240,15 @@ export default class KycVerificationScreen extends LightningElement {
                 this.showToast('Success', 'Cancellation Document Uploaded Sucessfully.', 'success');
                 this.isLoading = false;
                 this.handleCancel();
+            // }else if(this.selectedDocumentType=='Booked(KYC Verification)'){
+            //     //await updateOpportunityKYCStatus({ opportunityId: this.recordId, contactId: this.contactId, fileType: this.selectedDocumentType,fileSubType:this.selectedSubType});
+            //     this.showToast('Success', 'KYC Verification is in Progress.', 'success');
+            //     // window.location.reload();
+            //     this.isLoading = false;
+            //     this.handleCancel();
             }else{
-                await updateOpportunityKYCStatus({ opportunityId: this.recordId, contactId: this.contactId, fileType: this.selectedDocumentType});
-                this.showToast('Success', 'KYC Verification is in Progress.', 'success');
+                //await updateOpportunityKYCStatus({ opportunityId: this.recordId, contactId: this.contactId, fileType: this.selectedDocumentType,fileSubType:this.selectedSubType});
+                this.showToast('Success', 'Document Uploaded Successfully.', 'success');
                 // window.location.reload();
                 this.isLoading = false;
                 this.handleCancel();

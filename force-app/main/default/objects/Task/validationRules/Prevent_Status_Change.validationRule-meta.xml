@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prevent_Status_Change</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    $RecordType.DeveloperName = &quot;KYC_Document&quot;,
+    ISCHANGED(Status),
+    NOT(
+        OR(
+           $Profile.Name = &quot;MIS Executive&quot;,
+           $Profile.Name = &quot;MIS Manager&quot;,
+           $Profile.Name = &quot;System Administrator&quot;
+         )
+    )
+)</errorConditionFormula>
+    <errorMessage>You don&apos;t have the access to update the Task Status</errorMessage>
+</ValidationRule>

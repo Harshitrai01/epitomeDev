@@ -4,7 +4,7 @@
     <externalId>false</externalId>
     <formula>Unit__r.Base_Price_per_Sq_Ft__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <label>Base Price per Sq. Ft</label>
+    <label>Base Price per Sq. yard</label>
     <precision>18</precision>
     <required>false</required>
     <scale>2</scale>

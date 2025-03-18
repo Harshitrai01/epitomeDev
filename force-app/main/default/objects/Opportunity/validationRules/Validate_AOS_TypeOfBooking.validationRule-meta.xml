@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validate_AOS_TypeOfBooking</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISPICKVAL(StageName, &quot;AOS&quot;),
+    ISPICKVAL(Type_of_Booking__c, &quot;&quot;),
+    NOT(ISPICKVAL(PRIORVALUE(StageName), &quot;AOS&quot;))
+)</errorConditionFormula>
+    <errorMessage>Type of Booking is required when Stage is moved to AOS.</errorMessage>
+</ValidationRule>

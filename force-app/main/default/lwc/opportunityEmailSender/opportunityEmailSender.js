@@ -92,6 +92,7 @@ export default class OpportunityEmailSender extends NavigationMixin(LightningEle
             if (selectedDocument) {
                 const prefix = selectedDocument.label.split('_')[0];
                 const matchingTemplate = this.emailTemplates.find(template => template.label.includes(prefix));
+                console.log('matchingTemplate---->', matchingTemplate);
                 this.selectedTemplateId = matchingTemplate?.value || null;
                 this.emailBody = matchingTemplate ? matchingTemplate.body.replace(/\{!([\w.]+)\}/g, '<b><<< $1 >>></b>') : '';
                 if (!matchingTemplate) {
@@ -104,6 +105,12 @@ export default class OpportunityEmailSender extends NavigationMixin(LightningEle
     }
 
     async fetchEmailTemplates() {
+        if (!this.recordId) {
+            this.showToast('Error', 'Record ID is missing', 'error');
+            console.error('Error: Record ID is missing');
+            return;
+        }
+
         try {
             const data = await getEmailTemplates({ recordId: this.recordId });
             this.emailTemplates = data.map(template => ({
@@ -111,11 +118,13 @@ export default class OpportunityEmailSender extends NavigationMixin(LightningEle
                 value: template.id,
                 body: template.mergedHtmlValue
             }));
+            console.log(' this.emailTemplates----->' + this.emailTemplates);
         } catch (error) {
             this.showToast('Error', 'Error fetching email templates', 'error');
             console.error('Error fetching email templates:', error);
         }
     }
+
 
     async handleSendEmail() {
         if (!this.selectedContactId || !this.contactEmail || !this.selectedDocumentId || !this.emailBody) {
@@ -141,6 +150,19 @@ export default class OpportunityEmailSender extends NavigationMixin(LightningEle
             this.isLoading = false;
         }
     }
+
+    handleTemplateSelect(event) {
+        this.selectedTemplateId = event.detail.value;
+        const selectedTemplate = this.emailTemplates.find(t => t.value === this.selectedTemplateId);
+        if (selectedTemplate) {
+            // Ensure field names inside `{! ... }` are preserved
+            this.emailBody = selectedTemplate.body;
+        }
+    }
+    handleEmailChange(event) {
+    // Replace dynamically while editing
+    this.emailBody = event.target.value;
+}
 
     navigateToOpportunity() {
         try {

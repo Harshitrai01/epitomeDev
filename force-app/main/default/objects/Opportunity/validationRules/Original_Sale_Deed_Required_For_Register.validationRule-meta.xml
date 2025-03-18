@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Original_Sale_Deed_Required_For_Register</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISCHANGED(StageName),
+    ISPICKVAL(StageName, &quot;Registered&quot;),
+    NOT(INCLUDES(Sub_Document_Type__c, &quot;Original Sale Deed&quot;))
+)</errorConditionFormula>
+    <errorMessage>Original Sale Deed must be included in Sub Document Type when Stage is changed to Registered.</errorMessage>
+</ValidationRule>

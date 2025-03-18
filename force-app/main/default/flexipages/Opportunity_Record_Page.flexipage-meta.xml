@@ -244,36 +244,60 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Sub_Document_Type__c</fieldItem>
                 <identifier>RecordSub_Document_Type__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Plot_Size__c</fieldItem>
                 <identifier>RecordPlot_Size__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Cancellation_Charges__c</fieldItem>
                 <identifier>RecordCancellation_Charges__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.AOS_Authority_Person__c</fieldItem>
                 <identifier>RecordAOS_Authority_Person__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Board_Of_Resolution_Authority_Person__c</fieldItem>
                 <identifier>RecordBoard_Of_Resolution_Authority_Person__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Sales_Deed_Authority_Person__c</fieldItem>
                 <identifier>RecordSales_Deed_Authority_Person__cField</identifier>
             </fieldInstance>
@@ -356,18 +380,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Unit__c</fieldItem>
-                <identifier>RecordUnit_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Plot_Dimension__c</fieldItem>
-                <identifier>RecordPlot_Dimension_cField</identifier>
+                <fieldItem>Record.Phase_Name__c</fieldItem>
+                <identifier>RecordPhase_Name_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-099beaa8-a2c8-4ac6-ab4c-7abec9ed28db</name>
@@ -380,8 +394,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Phase__c</fieldItem>
-                <identifier>RecordPhase_cField</identifier>
+                <fieldItem>Record.Unit__c</fieldItem>
+                <identifier>RecordUnit_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -390,18 +404,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Sales_User__c</fieldItem>
-                <identifier>RecordSales_User_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Sales_Head__c</fieldItem>
-                <identifier>RecordSales_Head_cField</identifier>
+                <fieldItem>Record.Plot_Dimension__c</fieldItem>
+                <identifier>RecordPlot_Dimension_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-0a12bf47-7131-4525-87aa-4a73ba1fd46f</name>

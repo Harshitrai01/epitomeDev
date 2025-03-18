@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Restrict_Funding_Type_Change_Outside_Onb</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISCHANGED(Funding_Type__c),
+    NOT(ISPICKVAL(StageName, &quot;Onboarded&quot;))
+)</errorConditionFormula>
+    <errorMessage>Funding Type can only be changed when the Stage is &apos;Onboarded&apos;.</errorMessage>
+</ValidationRule>
