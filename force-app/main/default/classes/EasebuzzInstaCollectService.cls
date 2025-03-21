@@ -54,7 +54,7 @@ public class EasebuzzInstaCollectService {
     *********************************************************
     */
     
-    public static void createVirtualAccount(String plotId) {
+    public static VirtualAccountDetailWrapper createVirtualAccount(String plotId) {
         String label = plotId;
         String error = '';
         String hashInput = MERCHANT_KEY + '|' + label + '|' + MERCHANT_SALT;
@@ -87,7 +87,9 @@ public class EasebuzzInstaCollectService {
                     if (data.containsKey('virtual_account')) {
                         Map<String, Object> virtualAccount = (Map<String, Object>) data.get('virtual_account');
                         String virtualAccountId = (String) virtualAccount.get('id');
-                        updateVirtualAccountDetailsOnPlot(plotId, JSON.serialize(virtualAccount));
+                        VirtualAccountDetailWrapper wrapper = New VirtualAccountDetailWrapper(plotId,JSON.serialize(virtualAccount));
+                        return wrapper;
+                        //updateVirtualAccountDetailsOnPlot(plotId, JSON.serialize(virtualAccount));
                     }
                 }
             } else {
@@ -103,6 +105,7 @@ public class EasebuzzInstaCollectService {
         } catch (Exception ex) {
             IntegrationLogUtility.doLogError(request.getBody(), response.getBody(), response.getStatusCode(), 'Bad Response', 'Future Method', error, 'Response Error: EasebuzzInstaCollectService', error);
         }
+        return null;
     }
 
     /*
@@ -273,6 +276,16 @@ public class EasebuzzInstaCollectService {
             this.isSuccess = isSuccess;
             this.error = error;
             this.response = response;
+        }
+    }
+    
+    public class VirtualAccountDetailWrapper {
+        public String plotId;
+        public String jsonData;
+
+        public VirtualAccountDetailWrapper(String plotId, String jsonData) {
+            this.plotId = plotId;
+            this.jsonData = jsonData;
         }
     }
 }

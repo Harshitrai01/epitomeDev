@@ -3,26 +3,41 @@ private class PaymentTransactionBatchTest {
 
     // Helper method to create Payment_Gateway__c records for testing
     private static void createPaymentGatewayRecords(Integer numRecords) {
-        List<Payment_Gateway__c> payments = new List<Payment_Gateway__c>();
-        
-        for (Integer i = 0; i < numRecords; i++) {
-            payments.add(new Payment_Gateway__c(
-                Merchant_Transaction_Id__c = 'txn' + i,
-                Email_Address__c = 'email' + i + '@test.com',
-                Phone__c = '1234567890',
-                Payment_Amount__c = 100.0,
-                Payment_Status__c = 'Pending',
-                Payment_Expiry_Date__c = System.now().addDays(1),
-                Payment_Created_Date__c = System.now(),
-                Payment_Updated_Date__c = System.now(),
-                Payment_Id__c = 'PaymentId' + i,
-                Payment_URL__c = 'http://testurl.com',
-                Contact_Name__c = 'Test User ' + i,
-                Payment_Type__c = 'CreditCard'
-            ));
-        }
-        insert payments;
+    List<Payment_Gateway__c> payments = new List<Payment_Gateway__c>();
+    List<Contact> contacts = new List<Contact>();
+    
+    // Create Contact records first
+    for (Integer i = 0; i < numRecords; i++) {
+        contacts.add(new Contact(
+            FirstName = 'Test',
+            LastName = 'User ' + i,
+            Email = 'email' + i + '@test.com',
+            Phone = '1234567890'
+        ));
     }
+    
+    // Insert Contact records
+    insert contacts;
+
+    // Create Payment_Gateway__c records, linking to Contact records
+    for (Integer i = 0; i < numRecords; i++) {
+        payments.add(new Payment_Gateway__c(
+            Email_Address__c = 'email' + i + '@test.com',
+            Phone__c = '1234567890',
+            Payment_Amount__c = 100.0,
+            Payment_Status__c = 'Active',
+            Payment_Expiry_Date__c = System.now().addDays(1),
+            Payment_Created_Date__c = System.now(),
+            Payment_Updated_Date__c = System.now(),
+            Payment_URL__c = 'http://testurl.com',
+            Contact_Name__c = contacts[i].Id, // Use Contact ID here
+            Payment_Type__c = 'CreditCard'
+        ));
+    }
+    
+    // Insert Payment_Gateway__c records
+    insert payments;
+}
 
     // Helper method to create custom metadata for batch time configuration
     private static void createCustomMetadata() {
