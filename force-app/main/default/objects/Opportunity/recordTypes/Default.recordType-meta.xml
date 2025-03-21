@@ -685,6 +685,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>System Generated Form 32</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>System Generated Sale Deed</fullName>
             <default>false</default>
         </values>

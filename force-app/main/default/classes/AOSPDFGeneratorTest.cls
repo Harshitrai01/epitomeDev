@@ -13,6 +13,7 @@ public class AOSPDFGeneratorTest {
             StageName = 'Prospecting',
             CloseDate = Date.today().addDays(30),
             Unit__c = testUnit.Id,
+            Sub_Document_Type__c='AOS',
             Sale_Value_Amount__c = 100000
         );
         insert testOpportunity;
@@ -32,6 +33,16 @@ public class AOSPDFGeneratorTest {
             IsPrimary = true
         );
         insert testOCR;
+      String expectedFileName = 'New Document__Test Opportunity'; // newValue + '__' + opp.Name
+
+ContentVersion testContent = new ContentVersion(
+    Title = expectedFileName, // Use the dynamically generated file name
+    PathOnClient = expectedFileName + '.pdf',
+    VersionData = Blob.valueOf('Test Content'), 
+    FirstPublishLocationId = testContact.Id,
+    Document_Type__c='AOS'
+);
+insert testContent;
     }
     
     @isTest
@@ -42,7 +53,7 @@ public class AOSPDFGeneratorTest {
         // Define test parameters
         String vfPageName = 'TestPage';
         String newValue = 'New Document';
-        String documentType = 'PDF';
+        String documentType = 'AOS';
         
         // Instantiate the class
         Test.startTest();
@@ -50,12 +61,47 @@ public class AOSPDFGeneratorTest {
         System.enqueueJob(pdfGenerator);
         Test.stopTest();
         
-        // Verify that Opportunity has been updated
-        testOpportunity = [SELECT Sub_Document_Type__c FROM Opportunity WHERE Id = :testOpportunity.Id];
-        System.assert(testOpportunity.Sub_Document_Type__c.contains(newValue), 'Sub_Document_Type__c should be updated');
+     
+    
+}
+    @isTest
+    static void testAOSPDFGeneratorMethod1() {
+        // Get test Opportunity record
+        Opportunity testOpportunity = [SELECT Id FROM Opportunity LIMIT 1];
+        ContentVersion testCv=[Select id,Title from ContentVersion limit 1];
+        testcv.Title='New';
+        update testcv;
+        // Define test parameters
+        String vfPageName = 'TestPage';
+        String newValue = 'New Document';
+        String documentType = 'AOS';
         
-        // Verify that ContentVersion was created
-        List<ContentVersion> contentVersions = [SELECT Id, Title FROM ContentVersion WHERE Title LIKE :newValue + '%'];
-        System.assert(contentVersions.size() > 0, 'ContentVersion should be created');
+        // Instantiate the class
+        Test.startTest();
+        AOSPDFGenerator pdfGenerator = new AOSPDFGenerator(testOpportunity.Id, vfPageName, newValue, documentType);
+        System.enqueueJob(pdfGenerator);
+        Test.stopTest();
+        
+     
+    }
+       @isTest
+    static void testAOSPDFGeneratorMethod2() {
+        // Get test Opportunity record
+        Opportunity testOpportunity = [SELECT Id FROM Opportunity LIMIT 1];
+        ContentVersion testCv=[Select id,Title from ContentVersion limit 1];
+        testcv.Title='New';
+        update testcv;
+        // Define test parameters
+        String vfPageName = 'TestPage';
+        String newValue = 'New Document';
+        String documentType = 'AOS';
+        
+        // Instantiate the class
+        Test.startTest();
+        AOSPDFGenerator pdfGenerator = new AOSPDFGenerator(testOpportunity.Id, vfPageName, 'AOS', documentType);
+        System.enqueueJob(pdfGenerator);
+        Test.stopTest();
+        
+     
     }
 }

@@ -4,7 +4,13 @@ public with sharing class VFPageUploaderController {
         try {
             // Call the VF Page and get PDF content
             PageReference pdfPage = new PageReference(vfPageUrl);
-            Blob pdfBlob = pdfPage.getContent();
+            Blob pdfBlob;
+            if(!Test.isRunningTest()){
+                pdfBlob= pdfPage.getContent();
+            }else{
+                    pdfBlob= Blob.valueOf('test');
+            }
+            
 
             // Create attachment record
             Attachment attach = new Attachment();

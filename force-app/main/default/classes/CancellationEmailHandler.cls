@@ -1,17 +1,16 @@
 /*
 *********************************************************
 Apex Class Name    : CancellationEmailHandler
-Created Date       : [Insert Date]
+Created Date       : 18th March 2025
 @description       : This class is used to capture inbound emails for the cancellation of plots and save attached documents 
                      as email attachments. It implements the Messaging.InboundEmailHandler interface to process inbound emails.
 @author            : Harshit Rai
 Modification Log:
 Ver   Date         Author               Modification
-1.0   [Insert Date] Harshit Rai         Initial Version
+1.0                Harshit Rai         Initial Version
 *********************************************************
 */
 global class CancellationEmailHandler implements Messaging.InboundEmailHandler {
-
     /*
     *********************************************************
     @Method Name    : handleInboundEmail
@@ -42,7 +41,7 @@ global class CancellationEmailHandler implements Messaging.InboundEmailHandler {
                 SELECT Id, RelatedToId 
                 FROM EmailMessage 
                 WHERE MessageIdentifier = :threadIdentifier 
-                LIMIT 1
+                WITH USER_MODE LIMIT 1 
             ];
 
             Id oppId;
@@ -88,7 +87,7 @@ global class CancellationEmailHandler implements Messaging.InboundEmailHandler {
                     content.IsMajorVersion = true;
                     contentVersionList.add(content);
                 }
-                insert contentVersionList;
+                insert as user contentVersionList; 
                 System.debug(contentVersionList.size() + ' Attachments saved.');
 
                 // Step 6: Link attachments to the EmailMessage record
@@ -101,7 +100,7 @@ global class CancellationEmailHandler implements Messaging.InboundEmailHandler {
                     link.ShareType = 'V';
                     contentLinks.add(link);
                 }
-                insert contentLinks;
+                insert as user contentLinks;
                 System.debug('Successfully linked attachments to EmailMessage: ' + emailActivity.Id);
             } else {
                 System.debug('No attachments found in email.');

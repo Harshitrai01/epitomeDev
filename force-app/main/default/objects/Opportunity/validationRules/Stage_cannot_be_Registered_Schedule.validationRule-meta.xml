@@ -5,7 +5,7 @@
     <errorConditionFormula>AND(
     ISCHANGED( StageName ),
     ISPICKVAL( StageName , &quot;Registration Scheduled&quot;), 
-    NOT(INCLUDES( Sub_Document_Type__c, &quot;Form 32&quot;))
+    NOT(INCLUDES( Sub_Document_Type__c, &quot;System Generated Form 32&quot;))
 )</errorConditionFormula>
     <errorMessage>Stage cannot be &apos;Registered Schedule&apos; until Form32 is submitted</errorMessage>
 </ValidationRule>

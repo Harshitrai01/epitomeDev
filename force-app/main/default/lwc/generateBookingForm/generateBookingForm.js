@@ -22,6 +22,7 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     @api recordId;
     @track isAccountExist = false;
     selectedRecordId;
+    selectedPlotIds = [];
     recordTypeId;
     showComponent = false;
     isLoading = false;
@@ -66,8 +67,8 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     @track bookingFormData = {
         typeOfBooking: '',
         accountId: null,
-        projectId: null,
-        phaseId: null,
+        projectId: '',
+        phaseId: '',
         accountName: '',
         accountEmailId: '',
         accountContactNo: '',
@@ -127,7 +128,20 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
         this.bookingFormData.phaseId = event.detail.value;
         console.log('this.bookingFormData.phaseId--------->', this.bookingFormData.phaseId);
     }
+    lookupRecord(event) {
+        if (event.detail && event.detail.selectedRecord) {
+            console.log('Selected Record:', JSON.stringify(event.detail.selectedRecord, null, 2));
 
+            console.log('Selected Record:', event.detail.selectedRecord);
+            this.selectedRecord = '';
+            this.template.querySelector('c-generate-custom-lookup').clearSelection();
+            console.log('Selected Record:', JSON.stringify(this.selectedRecord, null, 2));
+            this.selectedRecord = event.detail.selectedRecord; // Store selected record
+        } else {
+            console.log('No record selected. Clearing value...');
+            this.selectedRecord = null; // Clear value if no record is selected
+        }
+    }
     handleAccountChange(event) {
         try {
             switch (event.target.name) {
@@ -162,23 +176,52 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
         }
     }
 
+
+    lookupRecord(event){
+        debugger
+        console.log('event---'+JSON.stringify(event.detail));
+        if(event.detail.selectedRecord != null){
+            this.selectedPlotIds.push(event.detail.selectedRecord.Id);
+        }
+        console.log('eventAdd---'+JSON.stringify(this.selectedPlotIds));
+    }
+
+    lookupRecordRemove(event){
+        debugger;
+        if(this.selectedPlotIds.includes(event.detail.selectedRecord.Id)){
+            let data = this.selectedPlotIds.filter(item => item != event.detail.selectedRecord.Id);
+            this.selectedPlotIds = data;
+        }
+        console.log('eventRemove---'+JSON.stringify(this.selectedPlotIds));
+    }
+
+
     handleValueChange(event) {
         debugger
         try {
-            const contactId = parseInt(event.currentTarget.dataset.contactId, 10);
-            const plotId = event.currentTarget.dataset.plotId ? parseInt(event.currentTarget.dataset.plotId, 10) : null;
-            const fieldName = event.target.name;
-            const value = fieldName === 'plotName' ? event.detail.id : event.detail.value;
-
-            this.selectedRecordId = value; // Update selected record ID
-
-            console.log('Selected Record ID:', this.selectedRecordId);
-
-            if (!this.bookingFormData.phaseId) {
-                this.clearPlotValues(plotId, contactId);
+             if (!this.bookingFormData.phaseId) {
+               
                 this.showToast('Error', 'Please select a phase first.', 'error');
                 return;
             }
+
+            const contactId = parseInt(event.currentTarget.dataset.contactId, 10);
+            const plotId = event.currentTarget.dataset.plotId ? parseInt(event.currentTarget.dataset.plotId, 10) : null;
+            const fieldName = event.target.name;
+    const value = fieldName === 'plotName' ? event.detail.selectedRecord?.Id || null : event.detail.value;
+
+            this.selectedRecordId = value; // Update selected record ID
+             if(event.detail.selectedRecord != null){
+            this.selectedPlotIds.push(event.detail.selectedRecord.Id);
+        }
+        
+            console.log('Selected Record ID:', this.selectedRecordId);
+
+            // if (!this.bookingFormData.phaseId) {
+            //     this.clearPlotValues(plotId, contactId);
+            //     this.showToast('Error', 'Please select a phase first.', 'error');
+            //     return;
+            // }
 
             if (fieldName === 'contactDOB') {
                 let isValidDOB = this.validateDateOfBirth(value, event);
@@ -186,10 +229,10 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
             }
 
             if (fieldName === 'plotName') {
-                  if (!value) { // When input is cleared
-                this.clearPlotValues(plotId, contactId);
-                return;
-            }
+                if (!value || value===null) { // When input is cleared
+                    this.clearPlotValues(plotId, contactId);
+                    return;
+                }
 
                 if (this.isDuplicatePlotSelected(value)) {
                     this.clearPlotValues(plotId, contactId);
@@ -198,7 +241,7 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
                 }
 
                 this.selectedRecordId = value; // Update selected record ID
-                console.log('this.selectedRecordId  : ',this.selectedRecordId );
+                console.log('this.selectedRecordId  : ', this.selectedRecordId);
 
                 // If no record is selected, clear the plot details
                 if (!this.selectedRecordId) {
@@ -684,8 +727,33 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
             this.isLoading = false;
             return;
         }
-        this.collectFormData(); // Collect data when Save is clicked
+          if (!this.validatePlotNames()) {
+        this.showToast('Error', 'Select a valid plot.', 'error');
+        return;
     }
+         this.collectFormData(); // Collect data when Save is clicked
+    }
+    validatePlotNames() {
+    // if (!this.bookingFormData || !this.bookingFormData.listOfCoApplicant) {
+    //     return false; // Ensure co-applicant data exists
+    // }
+
+    // Loop through each co-applicant
+    for (let coApplicant of this.bookingFormData.listOfCoApplicant) {
+        if (coApplicant.plots) {
+            // Check if any plot has an empty or null plotName
+            for (let plot of coApplicant.plots) {
+                if (!plot.plotName || plot.plotName.trim() === '') {
+                    return false; // If any plotName is missing, return false
+
+                }
+            }
+        }
+    }
+    
+    return true; // All plots have valid names
+}
+
 
     collectFormData() {
         console.log('asdfgh', JSON.stringify(this.bookingFormData, null, 2));
@@ -741,6 +809,7 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     }
 
     addContact() {
+
         const newContact = {
             id: this.nextId++, // Unique ID for the contact
             contactName: '', // Default empty contact name
@@ -797,28 +866,70 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
         }
     }
 
-    removeContact(event) {
-        const contactId = parseInt(event.target.dataset.contactId, 10); // Get the ID of the contact
-        this.bookingFormData.listOfCoApplicant = this.bookingFormData.listOfCoApplicant.filter(
-            contact => contact.id !== contactId
+removeContact(event) {
+    const contactId = parseInt(event.target.dataset.contactId, 10); // Get the ID of the contact
+
+    // Find the contact before removing it
+    const contactToRemove = this.bookingFormData.listOfCoApplicant.find(
+        contact => contact.id === contactId
+    );
+
+    if (contactToRemove) {
+        // Extract all plot names from the contact
+        const plotsToRemove = contactToRemove.plots.map(plot => plot.plotName);
+
+        // Remove these plot names from selectedPlotIds
+        this.selectedPlotIds = this.selectedPlotIds.filter(
+            plotName => !plotsToRemove.includes(plotName)
         );
-        this.updateContactButtons();
+
+        console.log("Updated selectedPlotIds:", this.selectedPlotIds);
     }
 
-    // Remove a plot from a contact by its ID
-    removePlot(event) {
-        const contactId = parseInt(event.target.dataset.contactId, 10); // Get the ID of the contact
-        const plotId = parseInt(event.target.dataset.plotId, 10); // Get the ID of the plot
-        const contactIndex = this.bookingFormData.listOfCoApplicant.findIndex(
-            contact => contact.id === contactId
-        );
-        if (contactIndex !== -1) {
-            this.bookingFormData.listOfCoApplicant[contactIndex].plots = this.bookingFormData.listOfCoApplicant[
-                contactIndex
-            ].plots.filter(plot => plot.id !== plotId);
-            this.updatePlotButtons(contactIndex);
+    // Remove the contact from the list
+    this.bookingFormData.listOfCoApplicant = this.bookingFormData.listOfCoApplicant.filter(
+        contact => contact.id !== contactId
+    );
+
+    this.updateContactButtons();
+}
+
+removePlot(event) {
+    const contactId = parseInt(event.target.dataset.contactId, 10); // Get the ID of the contact
+    const plotId = parseInt(event.target.dataset.plotId, 10); // Get the ID of the plot
+
+    // Find the contact
+    const contactIndex = this.bookingFormData.listOfCoApplicant.findIndex(
+        contact => contact.id === contactId
+    );
+
+    if (contactIndex !== -1) {
+        let contact = this.bookingFormData.listOfCoApplicant[contactIndex];
+
+        // Find the plot by ID to get the plotName
+        const plotToRemove = contact.plots.find(plot => plot.id === plotId);
+        if (!plotToRemove) {
+            console.warn("Plot not found for removal");
+            return;
         }
+        const plotName = plotToRemove.plotName; // Get the plot name
+
+        // Remove the plot from the contact's list
+        contact.plots = contact.plots.filter(plot => plot.id !== plotId);
+
+        // Update the contact in bookingFormData
+        this.bookingFormData.listOfCoApplicant[contactIndex] = contact;
+
+        // Call any required UI update methods
+        this.updatePlotButtons(contactIndex);
+
+        // Remove from selectedPlotIds using plotName
+        this.selectedPlotIds = this.selectedPlotIds.filter(name => name !== plotName);
+
+        console.log('Updated selectedPlotIds:', this.selectedPlotIds);
     }
+}
+
 
     updateContactButtons() {
         // Iterate over all contacts to update the visibility of "Add More" buttons

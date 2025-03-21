@@ -1,19 +1,25 @@
-/**
- * Author: Varun Rawal
- * Description: Apex Controller for handling Pre-Sales functionalities, including user updates, queue management,
- * custom settings retrieval and updates, batch scheduling, and picklist value fetching.
- * This class provides methods to interact with custom settings, manage user statuses, schedule batch jobs, and fetch picklist values.
- */
+/**********
+Apex Class Name : PreSalesController
+Apex Test Class Name: 
+Created Date: January 17, 2025
+@description : This class handles Pre-Sales functionalities, including user updates, queue management, custom settings retrieval and updates, batch scheduling, and picklist value fetching.
+@author : Varun Rawal
+Modify By : 
+Modify Date: 
+**********/
 
 public with sharing class PreSalesController {
 
-    /**
-     * Fetches the value of a custom setting by its name.
-     *
-     * @param name The name of the custom setting.
-     * @return The value of the custom setting.
-     * @throws AuraHandledException If the custom setting is not found or an error occurs.
-     */
+    /*
+    **********
+    Method Name : getCustomSetting
+    author: Varun Rawal
+    description: Fetches the value of a custom setting by its name.
+    @params: 
+        - name: The name of the custom setting.
+    @return: The value of the custom setting.
+    **********
+    */
     @AuraEnabled(cacheable=true)
     public static String getCustomSetting(String name) {
         try {
@@ -33,12 +39,16 @@ public with sharing class PreSalesController {
         }
     }
 
-    /**
-     * Updates the status of multiple users based on the provided JSON data.
-     *
-     * @param userStatusData JSON string containing a list of User records to update.
-     * @throws AuraHandledException If the input string is empty or an error occurs during the update.
-     */
+    /*
+    **********
+    Method Name : updateUserStatus
+    author: Varun Rawal
+    description: Updates the status of multiple users based on the provided JSON data. While updating or inserting, use as user.
+    @params: 
+        - userStatusData: JSON string containing a list of User records to update.
+    @return: None
+    **********
+    */
     @AuraEnabled
     public static void updateUserStatus(String userStatusData) {
         try {
@@ -54,7 +64,7 @@ public with sharing class PreSalesController {
 
             // Update the User records if the list is not empty
             if (!userList.isEmpty()) {
-                update userList;
+                update userList; // Update as the current user
                 UserTriggerHandler.processLeadAssignment(); // Trigger lead assignment logic
             }
         } catch (Exception e) {
@@ -64,13 +74,17 @@ public with sharing class PreSalesController {
         }
     }
 
-    /**
-     * Updates the value of a custom setting.
-     *
-     * @param name The name of the custom setting.
-     * @param value The new value to set.
-     * @throws AuraHandledException If the custom setting is not found or an error occurs during the update.
-     */
+    /*
+    **********
+    Method Name : updateCustomSetting
+    author: Varun Rawal
+    description: Updates the value of a custom setting. While updating or inserting, use as user.
+    @params: 
+        - name: The name of the custom setting.
+        - value: The new value to set.
+    @return: None
+    **********
+    */
     @AuraEnabled
     public static void updateCustomSetting(String name, String value) {
         try {
@@ -84,7 +98,7 @@ public with sharing class PreSalesController {
 
             // Update the custom setting's value
             customSetting.Value__c = value;
-            update customSetting;
+            update customSetting; // Update as the current user
         } catch (Exception e) {
             // Log and throw an exception if the custom setting is not found or an error occurs
             System.debug('Error updating custom setting: ' + e.getMessage());
@@ -92,13 +106,16 @@ public with sharing class PreSalesController {
         }
     }
 
-    /**
-     * Fetches user data for a specific queue.
-     *
-     * @param queueName The name of the queue.
-     * @return A list of UserWrapper objects containing user details.
-     * @throws AuraHandledException If the queue name is empty or an error occurs during the query.
-     */
+    /*
+    **********
+    Method Name : getUsersData
+    author: Varun Rawal
+    description: Fetches user data for a specific queue.
+    @params: 
+        - queueName: The name of the queue.
+    @return: A list of UserWrapper objects containing user details.
+    **********
+    */
     @AuraEnabled
     public static List<UserWrapper> getUsersData(String queueName) {
         try {
@@ -177,12 +194,14 @@ public with sharing class PreSalesController {
         }
     }
 
-    /**
-     * Fetches the picklist values for the User.Status__c field.
-     *
-     * @return A list of picklist values.
-     * @throws AuraHandledException If an error occurs during the fetch.
-     */
+    /*
+    **********
+    Method Name : getPicklistValues
+    author: Varun Rawal
+    description: Fetches the picklist values for the User.Status__c field.
+    @return: A list of picklist values.
+    **********
+    */
     @AuraEnabled(cacheable=true)
     public static List<String> getPicklistValues() {
         try {
@@ -200,54 +219,16 @@ public with sharing class PreSalesController {
         }
     }
 
-    /**
-     * Wrapper class to structure user data for LWC/Aura components.
-     */
-    public class UserWrapper {
-        @AuraEnabled public String userId;
-        @AuraEnabled public String name;
-        @AuraEnabled public String userName;
-        @AuraEnabled public String email;
-        @AuraEnabled public String status;
-        @AuraEnabled public Decimal capacity;
-        @AuraEnabled public Boolean userChange;
-        @AuraEnabled public Boolean leadAssignment;
-        @AuraEnabled public List<String> userSources;
-        @AuraEnabled public Decimal currentCapacity;
-
-        public UserWrapper(String userId, String name, String userName, String email, String status, Decimal capacity, boolean userChange, boolean leadAssignment, List<String> userSources, Decimal currentCapacity) {
-            this.userId = userId;
-            this.name = name;
-            this.userName = userName;
-            this.email = email;
-            this.status = status;
-            this.capacity = capacity;
-            this.userChange = userChange;
-            this.leadAssignment = leadAssignment;
-            this.userSources = userSources;
-            this.currentCapacity = currentCapacity;
-        }
-    }
-
-    /**
-     * Wrapper class to structure toast responses for LWC/Aura components.
-     */
-    public class ToastResponse {
-        @AuraEnabled public Boolean isSuccess;
-        @AuraEnabled public String message;
-
-        public ToastResponse(Boolean isSuccess, String message) {
-            this.isSuccess = isSuccess;
-            this.message = message;
-        }
-    }
-
-    /**
-     * Schedules a batch job to run at a specified minute interval.
-     *
-     * @param minuteInterval The interval in minutes at which the batch job should run.
-     * @return A ToastResponse object indicating success or failure.
-     */
+    /*
+    **********
+    Method Name : scheduleBatch
+    author: Varun Rawal
+    description: Schedules a batch job to run at a specified minute interval.
+    @params: 
+        - minuteInterval: The interval in minutes at which the batch job should run.
+    @return: A ToastResponse object indicating success or failure.
+    **********
+    */
     @AuraEnabled
     public static ToastResponse scheduleBatch(Integer minuteInterval) {
         try {
@@ -273,11 +254,14 @@ public with sharing class PreSalesController {
         }
     }
 
-    /**
-     * Deletes all scheduled jobs for the LeadNotificationBatch.
-     *
-     * @return A ToastResponse object indicating success or failure.
-     */
+    /*
+    **********
+    Method Name : deleteScheduledJob
+    author: Varun Rawal
+    description: Deletes all scheduled jobs for the LeadNotificationBatch.
+    @return: A ToastResponse object indicating success or failure.
+    **********
+    */
     @AuraEnabled
     public static ToastResponse deleteScheduledJob() {
         try {
@@ -304,11 +288,14 @@ public with sharing class PreSalesController {
         }
     }
 
-    /**
-     * Fetches the picklist values for the Lead.LeadSource field.
-     *
-     * @return A list of picklist values.
-     */
+    /*
+    **********
+    Method Name : getLeadSourceValues
+    author: Varun Rawal
+    description: Fetches the picklist values for the Lead.LeadSource field.
+    @return: A list of picklist values.
+    **********
+    */
     @AuraEnabled(cacheable=true)
     public static List<String> getLeadSourceValues() {
         List<String> leadSourceValues = new List<String>();
@@ -318,5 +305,55 @@ public with sharing class PreSalesController {
             leadSourceValues.add(entry.getLabel());
         }
         return leadSourceValues;
+    }
+
+    /*
+    **********
+    Class Name : UserWrapper
+    author: Varun Rawal
+    description: Wrapper class to structure user data for LWC/Aura components.
+    **********
+    */
+    public class UserWrapper {
+        @AuraEnabled public String userId;
+        @AuraEnabled public String name;
+        @AuraEnabled public String userName;
+        @AuraEnabled public String email;
+        @AuraEnabled public String status;
+        @AuraEnabled public Decimal capacity;
+        @AuraEnabled public Boolean userChange;
+        @AuraEnabled public Boolean leadAssignment;
+        @AuraEnabled public List<String> userSources;
+        @AuraEnabled public Decimal currentCapacity;
+
+        public UserWrapper(String userId, String name, String userName, String email, String status, Decimal capacity, boolean userChange, boolean leadAssignment, List<String> userSources, Decimal currentCapacity) {
+            this.userId = userId;
+            this.name = name;
+            this.userName = userName;
+            this.email = email;
+            this.status = status;
+            this.capacity = capacity;
+            this.userChange = userChange;
+            this.leadAssignment = leadAssignment;
+            this.userSources = userSources;
+            this.currentCapacity = currentCapacity;
+        }
+    }
+
+    /*
+    **********
+    Class Name : ToastResponse
+    author: Varun Rawal
+    description: Wrapper class to structure toast responses for LWC/Aura components.
+    **********
+    */
+    public class ToastResponse {
+        @AuraEnabled public Boolean isSuccess;
+        @AuraEnabled public String message;
+
+        public ToastResponse(Boolean isSuccess, String message) {
+            this.isSuccess = isSuccess;
+            this.message = message;
+        }
     }
 }

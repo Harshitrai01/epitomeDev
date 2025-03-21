@@ -1,25 +1,25 @@
-/**
- *  * @author Varun Rawal
+/**********
+Apex Class Name : NumberToCharacter
+Apex Test Class Name: 
+Created Date: March 10, 2025
+@description : This class converts numeric values into their word representations, specifically tailored for Indian numbering systems (e.g., lakhs, crores). It handles both whole numbers and decimal values (e.g., rupees and paisa).
+@author : Varun Rawal
+Modify By : 
+Modify Date: 
+**********/
 
- * This class, `NumberToCharacter`, is a utility class designed to convert numeric values into their word representations.
- * It handles both whole numbers and decimal values (e.g., rupees and paisa) and is specifically tailored for Indian numbering systems
- * (e.g., lakhs, crores). The class is useful for generating textual representations of monetary values.
- *
- * Key Features:
- * - Converts numeric values into words (e.g., 1234.56 -> "One Thousand Two Hundred Thirty-Four Rupees and Fifty-Six Paisa").
- * - Handles both whole numbers and decimal parts.
- * - Supports Indian numbering conventions (e.g., lakhs, crores).
- * - Includes helper methods for reversing lists and converting digits to words.
- */
+public with sharing class NumberToCharacter {
 
-public class NumberToCharacter {
-
-    /**
-     * Converts a numeric value (including decimals) into its word representation.
-     *
-     * @param num The numeric value to convert (e.g., 1234.56).
-     * @return The word representation of the number (e.g., "One Thousand Two Hundred Thirty-Four Rupees and Fifty-Six Paisa").
-     */
+    /*
+    **********
+    Method Name : getNumberTOWordConvertion
+    author: Varun Rawal
+    description: Converts a numeric value (including decimals) into its word representation.
+    @params: 
+        - num: The numeric value to convert (e.g., 1234.56).
+    @return: The word representation of the number (e.g., "One Thousand Two Hundred Thirty-Four Rupees and Fifty-Six Paisa").
+    **********
+    */
     public static String getNumberTOWordConvertion(Decimal num) {
         // Separate the whole number part and the decimal (paisa) part
         Decimal junkVal = num;
@@ -77,12 +77,16 @@ public class NumberToCharacter {
         }
     }
 
-    /**
-     * Reverses a list of strings.
-     *
-     * @param strToRev The list of strings to reverse.
-     * @return The reversed list of strings.
-     */
+    /*
+    **********
+    Method Name : reverse
+    author: Varun Rawal
+    description: Reverses a list of strings.
+    @params: 
+        - strToRev: The list of strings to reverse.
+    @return: The reversed list of strings.
+    **********
+    */
     public static List<String> reverse(List<String> strToRev) {
         List<String> revList = new List<String>();
         for (Integer i = strToRev.size() - 1; i >= 0; i--) {
@@ -92,13 +96,17 @@ public class NumberToCharacter {
         return revList;
     }
 
-    /**
-     * Converts a list of digits into their word representation.
-     *
-     * @param numRev The reversed list of digits (as strings).
-     * @param actnum The actual list of digits (as strings).
-     * @return The word representation of the number.
-     */
+    /*
+    **********
+    Method Name : convertInWords
+    author: Varun Rawal
+    description: Converts a list of digits into their word representation.
+    @params: 
+        - numRev: The reversed list of digits (as strings).
+        - actnum: The actual list of digits (as strings).
+    @return: The word representation of the number.
+    **********
+    */
     public static String convertInWords(String[] numRev, String[] actnum) {
         // Define word mappings for digits, teens, and tens
         List<String> iWords = new List<String> {'Zero', ' One', ' Two', ' Three', ' Four', ' Five', ' Six', ' Seven', ' Eight', ' Nine'};

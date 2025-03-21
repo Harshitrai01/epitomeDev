@@ -1,6 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
+        <name>Copy_10_of_Send_Whatsapp_Messgae</name>
+        <label>Copy 10 of Send Whatsapp Messgae</label>
+        <locationX>3746</locationX>
+        <locationY>350</locationY>
+        <actionName>gupshup_crm__SendWhatsAppMessageFlow</actionName>
+        <actionType>apex</actionType>
+        <dataTypeMappings>
+            <typeName>T__flowConfiguration</typeName>
+            <typeValue>gupshup_crm__Flow_Configuration__c</typeValue>
+        </dataTypeMappings>
+        <dataTypeMappings>
+            <typeName>T__recordData</typeName>
+            <typeValue>Opportunity</typeValue>
+        </dataTypeMappings>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>flowConfiguration</name>
+            <value>
+                <elementReference>Copy_14_of_Get_Flow_Config</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordData</name>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>gupshup_crm__SendWhatsAppMessageFlow</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>Copy_11_of_Send_Whatsapp_Messgae</name>
+        <label>Copy 11 of Send Whatsapp Messgae</label>
+        <locationX>4010</locationX>
+        <locationY>350</locationY>
+        <actionName>gupshup_crm__SendWhatsAppMessageFlow</actionName>
+        <actionType>apex</actionType>
+        <dataTypeMappings>
+            <typeName>T__flowConfiguration</typeName>
+            <typeValue>gupshup_crm__Flow_Configuration__c</typeValue>
+        </dataTypeMappings>
+        <dataTypeMappings>
+            <typeName>T__recordData</typeName>
+            <typeValue>Opportunity</typeValue>
+        </dataTypeMappings>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>flowConfiguration</name>
+            <value>
+                <elementReference>Copy_15_of_Get_Flow_Config</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordData</name>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>gupshup_crm__SendWhatsAppMessageFlow</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>Copy_12_of_Send_Whatsapp_Messgae</name>
+        <label>Copy 12 of Send Whatsapp Messgae</label>
+        <locationX>4274</locationX>
+        <locationY>350</locationY>
+        <actionName>gupshup_crm__SendWhatsAppMessageFlow</actionName>
+        <actionType>apex</actionType>
+        <dataTypeMappings>
+            <typeName>T__flowConfiguration</typeName>
+            <typeValue>gupshup_crm__Flow_Configuration__c</typeValue>
+        </dataTypeMappings>
+        <dataTypeMappings>
+            <typeName>T__recordData</typeName>
+            <typeValue>Opportunity</typeValue>
+        </dataTypeMappings>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>flowConfiguration</name>
+            <value>
+                <elementReference>Copy_16_of_Get_Flow_Config</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordData</name>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>gupshup_crm__SendWhatsAppMessageFlow</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
         <name>Copy_1_of_Send_Whatsapp_Messgae</name>
         <label>Send Whatsapp Messgae</label>
         <locationX>578</locationX>
@@ -218,6 +311,68 @@
         <offset>0</offset>
     </actionCalls>
     <actionCalls>
+        <name>Copy_8_of_Send_Whatsapp_Messgae</name>
+        <label>Copy 8 of Send Whatsapp Messgae</label>
+        <locationX>3218</locationX>
+        <locationY>350</locationY>
+        <actionName>gupshup_crm__SendWhatsAppMessageFlow</actionName>
+        <actionType>apex</actionType>
+        <dataTypeMappings>
+            <typeName>T__flowConfiguration</typeName>
+            <typeValue>gupshup_crm__Flow_Configuration__c</typeValue>
+        </dataTypeMappings>
+        <dataTypeMappings>
+            <typeName>T__recordData</typeName>
+            <typeValue>Opportunity</typeValue>
+        </dataTypeMappings>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>flowConfiguration</name>
+            <value>
+                <elementReference>Copy_12_of_Get_Flow_Config</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordData</name>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>gupshup_crm__SendWhatsAppMessageFlow</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>Copy_9_of_Send_Whatsapp_Messgae</name>
+        <label>Copy 9 of Send Whatsapp Messgae</label>
+        <locationX>3482</locationX>
+        <locationY>350</locationY>
+        <actionName>gupshup_crm__SendWhatsAppMessageFlow</actionName>
+        <actionType>apex</actionType>
+        <dataTypeMappings>
+            <typeName>T__flowConfiguration</typeName>
+            <typeValue>gupshup_crm__Flow_Configuration__c</typeValue>
+        </dataTypeMappings>
+        <dataTypeMappings>
+            <typeName>T__recordData</typeName>
+            <typeValue>Opportunity</typeValue>
+        </dataTypeMappings>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>flowConfiguration</name>
+            <value>
+                <elementReference>Copy_13_of_Get_Flow_Config</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordData</name>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>gupshup_crm__SendWhatsAppMessageFlow</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
         <name>Send_Whatsapp_Message</name>
         <label>Send Whatsapp Message</label>
         <locationX>314</locationX>
@@ -376,7 +531,7 @@
     <decisions>
         <name>Template_Name</name>
         <label>Template Name</label>
-        <locationX>1634</locationX>
+        <locationX>2294</locationX>
         <locationY>134</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -559,6 +714,81 @@
             </connector>
             <label>Registration Scheduled</label>
         </rules>
+        <rules>
+            <name>Payment_Receipt_Email</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>flowName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Payment Receipt Email</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_12_of_Get_Flow_Config</targetReference>
+            </connector>
+            <label>Payment Receipt Email</label>
+        </rules>
+        <rules>
+            <name>Challan_Attachment</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>flowName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Challan Attachment</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_13_of_Get_Flow_Config</targetReference>
+            </connector>
+            <label>Challan Attachment</label>
+        </rules>
+        <rules>
+            <name>Registration</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>flowName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Registration Successful</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_14_of_Get_Flow_Config</targetReference>
+            </connector>
+            <label>Registration Successful</label>
+        </rules>
+        <rules>
+            <name>Sales_Deed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>flowName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sales Deed</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_15_of_Get_Flow_Config</targetReference>
+            </connector>
+            <label>Sales Deed</label>
+        </rules>
+        <rules>
+            <name>AOS</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>flowName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>AOS</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_16_of_Get_Flow_Config</targetReference>
+            </connector>
+            <label>AOS</label>
+        </rules>
     </decisions>
     <environments>Default</environments>
     <interviewLabel>Gupshup Send Cancellation Email {!$Flow.CurrentDateTime}</interviewLabel>
@@ -618,6 +848,111 @@
             <operator>EqualTo</operator>
             <value>
                 <stringValue>Onboarding Welcome Email</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>gupshup_crm__Flow_Configuration__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Copy_12_of_Get_Flow_Config</name>
+        <label>Copy 12 of Get Flow Config</label>
+        <locationX>3218</locationX>
+        <locationY>242</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Copy_8_of_Send_Whatsapp_Messgae</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Payment Receipt Email</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>gupshup_crm__Flow_Configuration__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Copy_13_of_Get_Flow_Config</name>
+        <label>Copy 13 of Get Flow Config</label>
+        <locationX>3482</locationX>
+        <locationY>242</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Copy_9_of_Send_Whatsapp_Messgae</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Challan Attachment</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>gupshup_crm__Flow_Configuration__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Copy_14_of_Get_Flow_Config</name>
+        <label>Copy 14 of Get Flow Config</label>
+        <locationX>3746</locationX>
+        <locationY>242</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Copy_10_of_Send_Whatsapp_Messgae</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Registration Successful</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>gupshup_crm__Flow_Configuration__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Copy_15_of_Get_Flow_Config</name>
+        <label>Copy 15 of Get Flow Config</label>
+        <locationX>4010</locationX>
+        <locationY>242</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Copy_11_of_Send_Whatsapp_Messgae</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Sales Deed</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>gupshup_crm__Flow_Configuration__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Copy_16_of_Get_Flow_Config</name>
+        <label>Copy 16 of Get Flow Config</label>
+        <locationX>4274</locationX>
+        <locationY>242</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Copy_12_of_Send_Whatsapp_Messgae</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>AOS</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
@@ -835,7 +1170,7 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <start>
-        <locationX>1508</locationX>
+        <locationX>2168</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Template_Name</targetReference>

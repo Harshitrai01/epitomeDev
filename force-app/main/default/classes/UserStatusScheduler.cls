@@ -1,24 +1,25 @@
-/**
- *  * @author Varun Rawal
+/**********
+Apex Class Name : UserStatusScheduler
+Apex Test Class Name: 
+Created Date: January 30, 2025
+@description : This class is a schedulable class designed to run every night at 12:00 AM. It updates the `Status__c` field of users to 'Offline' if their current status is 'Online' or null. This ensures that user statuses are reset at the start of a new day, preparing the system for the next day's operations.
+@author : Varun Rawal
+Modify By : 
+Modify Date: 
+**********/
 
- * This class, `UserStatusScheduler`, is a schedulable class designed to run every night at 12:00 AM.
- * It updates the `Status__c` field of users to 'Offline' if their current status is 'Online' or null.
- * This ensures that user statuses are reset at the start of a new day, preparing the system for the next day's operations.
- *
- * Key Features:
- * - Runs as a scheduled job to reset user statuses.
- * - Queries users with a status of 'Online' or null.
- * - Updates their status to 'Offline'.
- * - Includes null checks and ensures robust execution.
- */
+public with sharing class UserStatusScheduler implements Schedulable {
 
-public class UserStatusScheduler implements Schedulable {
-
-    /**
-     * Executes the scheduled job to update user statuses.
-     *
-     * @param sc The SchedulableContext object provided by the system.
-     */
+    /* 
+    **********
+    Method Name : execute
+    author: Varun Rawal
+    description: Executes the scheduled job to update user statuses. While updating or inserting, use as user.
+    @params: 
+        - sc: The SchedulableContext object provided by the system.
+    @return: None
+    **********
+    */
     public void execute(SchedulableContext sc) {
         // Query users with Status__c = 'Online' or null
         List<User> usersToUpdate = [
@@ -36,7 +37,7 @@ public class UserStatusScheduler implements Schedulable {
 
             try {
                 // Perform the update operation
-                update usersToUpdate;
+                update usersToUpdate; // Update as the current user
                 System.debug('Updated ' + usersToUpdate.size() + ' user records successfully.');
             } catch (DmlException e) {
                 // Log the error if the update operation fails

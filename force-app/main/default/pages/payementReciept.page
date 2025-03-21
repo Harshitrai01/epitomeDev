@@ -1,0 +1,22 @@
+<apex:page >
+    <html>
+        <body>
+            <!-- Container div with inline CSS for flex layout -->
+            <div style="display: flex; align-items: center;">
+                <!-- Image div with inline CSS -->
+                <div style="flex: 1; margin-right: 20px;">
+                    <!-- Replace 'image_link_here' with the actual link to your image -->
+                    <img src="image_link_here" alt="EPITOME PROJECTS LLP" style="max-width: 100%; height: auto;"/>
+                </div>
+                <!-- Text div with inline CSS -->
+                <div style="flex: 2;">
+                    <h1>EPITOME PROJECTS LLP</h1>
+                    <p>EPITOME</p>
+                    <p>Sy no 64, Plot No C2, HUDA Techno Enclave, Commercial Sector-III</p>
+                    <p>Serilingampally Mandal, Madhapur, Hyderabad</p>
+                    <p>Rangareddy, Telangana, 500081</p>
+                </div>
+            </div>
+        </body>
+    </html>
+</apex:page>

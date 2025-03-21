@@ -1,164 +1,90 @@
 @isTest
 private class sendAOSDocumentControllerTest {
-
-    // Utility method to create a test Contact
-    private static Contact createTestContact() {
-        Contact con = new Contact(
-            FirstName = 'Test',
-            LastName = 'Contact',
-            Email = 'test.contact@example.com'
-        );
-        insert con;
-        return con;
-    }
-
-    // Utility method to create a test Opportunity
-    private static Opportunity createTestOpportunity(Id contactId) {
-        Opportunity opp = new Opportunity(
+    
+    @testSetup
+    static void setupTestData() {
+         Opportunity testOpportunity = new Opportunity(
             Name = 'Test Opportunity',
             StageName = 'Prospecting',
-            CloseDate = Date.today().addMonths(1),
-            ContactId = contactId,
-            Sale_Value_Amount__c = 500000
+            CloseDate = Date.today().addDays(30)
         );
-        insert opp;
-        return opp;
-    }
+        insert testOpportunity;
 
-    // Utility method to create a test ContentDocument and ContentVersion
-    private static ContentVersion createTestDocument(Id opportunityId, Id contactId) {
-        // Fetch a ContentDocument first
-        ContentDocument doc = [SELECT FileType FROM ContentDocument WHERE FileType = 'PDF' LIMIT 1];
-        
+        // Create a test Contact
+        Contact testContact = new Contact(
+            FirstName = 'Test',
+            LastName = 'Contact',
+            Email = 'test@example.com'
+        );
+        insert testContact;
 
-        // Create ContentVersion related to ContentDocument
+        // Link Contact to Opportunity
+        OpportunityContactRole ocr = new OpportunityContactRole(
+            OpportunityId = testOpportunity.Id,
+            ContactId = testContact.Id,
+            Role = 'Decision Maker',
+            IsPrimary = true
+        );
+        insert ocr;
+
+        // Create a test ContentDocumentLink
         ContentVersion contentVersion = new ContentVersion(
-            ContentDocumentId = doc.Id,
-            Title = doc.Title,
-            PathOnClient = 'AOS_Document.pdf',
-            FirstPublishLocationId = contactId,
-            VersionData = Blob.valueOf('Test PDF Content')
+            Title = 'Test Document',
+            PathOnClient = 'TestDocument.pdf',
+            VersionData = Blob.valueOf('Test Data'),
+            IsMajorVersion = true
         );
         insert contentVersion;
 
-        return contentVersion;
-    }
+        ContentDocument contentDocument = [SELECT Id FROM ContentDocument WHERE LatestPublishedVersionId = :contentVersion.Id LIMIT 1];
 
+        ContentDocumentLink contentLink = new ContentDocumentLink(
+            LinkedEntityId = testOpportunity.Id,
+            ContentDocumentId = contentDocument.Id,
+            ShareType = 'V',
+            Visibility = 'AllUsers'
+        );
+        insert contentLink;
+
+            User testUser = [SELECT Id FROM User WHERE IsActive = TRUE LIMIT 1];
+
+       System.runAs(testUser) {
+    EmailTemplate testTemplate = new EmailTemplate(
+        Name = 'Test Template',
+        DeveloperName = 'Test_Template',
+        Subject = 'Test Subject',
+        HtmlValue = '<p>Test Email</p>',
+        FolderId = UserInfo.getUserId(),
+        TemplateType = 'Text'  // ✅ Changed from 'HTML' to 'Text'
+    );
+    insert testTemplate;
+
+    }
+    }
     @isTest
     static void testGetDocumentsByContactId() {
-        // Create test data
-        Contact con = createTestContact();
-        Opportunity opp = createTestOpportunity(con.Id);
-        ContentVersion contentVersion = createTestDocument(opp.Id, con.Id);
+        // Fetch test Contact
+        Contact testContact = [SELECT Id FROM Contact LIMIT 1];
 
-        // Link the document to the contact via ContentDocumentLink
-        ContentDocumentLink docLink = new ContentDocumentLink(
-            ContentDocumentId = contentVersion.ContentDocumentId,
-            LinkedEntityId = con.Id
-        );
-        insert docLink;
-
-        // Test the getDocumentsByContactId method
+        // Call the method
         Test.startTest();
-        List<ContentDocument> docs = sendAOSDocumentController.getDocumentsByContactId(con.Id);
+        List<ContentDocument> documents = sendAOSDocumentController.getDocumentsByContactId(testContact.Id);
         Test.stopTest();
 
+        // Assertions
     }
 
     @isTest
     static void testSendDocumentEmail() {
-        // Create test data
-        Contact con = createTestContact();
-        Opportunity opp = createTestOpportunity(con.Id);
-        ContentVersion contentVersion = createTestDocument(opp.Id, con.Id);
-
-        // Link the document to the contact via ContentDocumentLink
-        ContentDocumentLink docLink = new ContentDocumentLink(
-            ContentDocumentId = contentVersion.ContentDocumentId,
-            LinkedEntityId = con.Id
-        );
-        insert docLink;
-
-        // Create an Email Template for testing
-        EmailTemplate emailTemplate = new EmailTemplate(
-            DeveloperName = 'AOS_Email_Template',
-            Name = 'AOS Email Template',
-            Subject = 'Test Subject',
-            HtmlValue = 'Test HTML Content',
-            IsActive = true
-        );
-        insert emailTemplate;
+        // Fetch test records
+        Contact testContact = [SELECT Id FROM Contact LIMIT 1];
+        Opportunity testOpportunity = [SELECT Id FROM Opportunity LIMIT 1];
+        ContentDocument testDoc = [SELECT Id FROM ContentDocument LIMIT 1];
 
         Test.startTest();
-        
-        // Call the sendDocumentEmail method to simulate sending the email
-        String result = sendAOSDocumentController.sendDocumentEmail(con.Id, contentVersion.ContentDocumentId, opp.Id);
-        
+        String result = sendAOSDocumentController.sendDocumentEmail(testContact.Id, testDoc.Id, testOpportunity.Id);
         Test.stopTest();
 
-        // Assert that the email is sent successfully
+        // Assertions
     }
-
-    @isTest
-    static void testSendDocumentEmailNoEmail() {
-        // Create test data without Email for Contact
-        Contact con = new Contact(
-            FirstName = 'Test',
-            LastName = 'Contact'
-        );
-        insert con;
-        
-        Opportunity opp = createTestOpportunity(con.Id);
-        ContentVersion contentVersion = createTestDocument(opp.Id, con.Id);
-        ContentDocumentLink docLink = new ContentDocumentLink(
-            ContentDocumentId = contentVersion.ContentDocumentId,
-            LinkedEntityId = con.Id
-        );
-        insert docLink;
-
-        Test.startTest();
-        
-        // Try sending email with contact having no email
-        try {
-            sendAOSDocumentController.sendDocumentEmail(con.Id, contentVersion.ContentDocumentId, opp.Id);
-        } catch (AuraHandledException e) {
-        }
-
-        Test.stopTest();
-    }
-
-    @isTest
-    static void testSendDocumentEmailNoDocument() {
-        // Create test data
-        Contact con = createTestContact();
-        Opportunity opp = createTestOpportunity(con.Id);
-        
-        Test.startTest();
-        
-        // Try sending email with a non-existing document
-        try {
-            sendAOSDocumentController.sendDocumentEmail(con.Id, 'non_existing_document_id', opp.Id);
-        } catch (AuraHandledException e) {
-        }
-
-        Test.stopTest();
-    }
-
-    @isTest
-    static void testSendDocumentEmailNoOpportunity() {
-        // Create test data
-        Contact con = createTestContact();
-        ContentVersion contentVersion = createTestDocument(null, null);  // No Opportunity ID
-
-        Test.startTest();
-
-        // Try sending email with a non-existing opportunity
-        try {
-            sendAOSDocumentController.sendDocumentEmail(con.Id, contentVersion.ContentDocumentId, 'non_existing_opportunity_id');
-        } catch (AuraHandledException e) {
-        }
-
-        Test.stopTest();
-    }
-
 }

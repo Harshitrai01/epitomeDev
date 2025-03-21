@@ -1,6 +1,14 @@
-/**
-* Author: Harshit Kumar Rai
-* Description: For Payment Integration
+/*
+*********************************************************
+Apex Class Name    : EasyCollectPayment
+Created Date       : [Insert Date]
+@description       : This class is used for payment integration with Easebuzz. It handles creating payment links, 
+                     initiating refunds, retrieving transaction details, and managing refund statuses.
+@author            : Harshit Rai
+Modification Log:
+Ver   Date         Author               Modification
+1.0   [Insert Date] Harshit Rai         Initial Version
+*********************************************************
 */
 public with sharing class EasyCollectPayment {
     
@@ -11,10 +19,17 @@ public with sharing class EasyCollectPayment {
     public static String transactinDetails;
     public static String createPaymentLink;
     
+    // Static initializer to fetch and initialize metadata values
     static {
         initializeMetadata();
     }
-    
+    /*
+    *********************************************************
+    @Method Name    : initializeMetadata
+    @author         : Harshit Rai
+    @description    : Fetches and initializes metadata values for API configuration from custom metadata.
+    *********************************************************
+    */
     private static void initializeMetadata() {
         List<Integration__mdt> integrations = [SELECT DeveloperName, EasyCollectKey__c, EasyCollectSalt__c,Easebuzz_Refund_Status_Url__c,
                                                Easebuzz_Initiate_Refund_Url__c,Easebuzz_Get_Transaction_Details_Url__c,
@@ -34,6 +49,21 @@ public with sharing class EasyCollectPayment {
         }
     }
     
+     /*
+    *********************************************************
+    @Method Name    : createPaymentLink
+    @author         : Harshit Rai
+    @description    : Creates a payment link using the Easebuzz API.
+    @param          : name - Name of the payer.
+    @param          : amount - Amount to be paid.
+    @param          : phone - Phone number of the payer.
+    @param          : email - Email of the payer.
+    @param          : expiryTime - Expiry time for the payment link.
+    @param          : oppId - Opportunity ID associated with the payment.
+    @param          : contactId - Contact ID associated with the payment.
+    @return         : ResponseWrapper - Wrapper containing the response and integration logs.
+    *********************************************************
+    */
     @AuraEnabled
     public static ResponseWrapper createPaymentLink(String name, String amount, String phone, String email, String expiryTime, String oppId, String contactId) {
         
@@ -119,6 +149,14 @@ public with sharing class EasyCollectPayment {
         }
     }
     
+    /*
+    *********************************************************
+    @Method Name    : insertPaymentRecord
+    @author         : Harshit Rai
+    @description    : Inserts a payment record based on the provided JSON data.
+    @param          : jsonData - JSON string containing payment details.
+    *********************************************************
+    */
     @AuraEnabled
     public static void insertPaymentRecord(String jsonData) {
         try {
@@ -169,6 +207,24 @@ public with sharing class EasyCollectPayment {
             throw new AuraHandledException('Failed to insert payment record: ' + e.getMessage());
         }
     }
+    
+        /*
+    *********************************************************
+    @Method Name    : sendPaymentLinkEmail
+    @author         : Harshit Rai
+    @description    : Sends an email with the payment link and virtual account details.
+    @param          : recipientEmail - Email address of the recipient.
+    @param          : paymentLink - Payment link to be sent.
+    @param          : accountName - Name of the virtual account.
+    @param          : accountNumber - Number of the virtual account.
+    @param          : ifscCode - IFSC code of the virtual account.
+    @param          : upiId - UPI ID of the virtual account.
+    @param          : qrImageUrl - URL of the UPI QR code image.
+    @param          : plotName - Name of the plot.
+    @param          : phaseName - Name of the phase.
+    @param          : amount - Amount to be paid.
+    *********************************************************
+    */
     
     public static void sendPaymentLinkEmail(String recipientEmail, String paymentLink, String accountName, String accountNumber, String ifscCode, String upiId, String qrImageUrl, String plotName, String phaseName, String amount) {
         try {
@@ -241,6 +297,19 @@ public with sharing class EasyCollectPayment {
         }
     }
     
+     /*
+    *********************************************************
+    @Method Name    : initiateRefund
+    @author         : Harshit Rai
+    @description    : Initiates a refund for a given transaction.
+    @param          : txnid - Transaction ID.
+    @param          : amount - Amount to be refunded.
+    @param          : email - Email of the payer.
+    @param          : phone - Phone number of the payer.
+    @param          : paymentId - Payment ID.
+    @return         : String - JSON string containing the response and integration logs.
+    *********************************************************
+    */
     public static String initiateRefund(String txnid, Decimal amount, String email, String phone, String paymentId) {
         
         String url = initiateRefund;
@@ -337,6 +406,17 @@ public with sharing class EasyCollectPayment {
         }
     }
     
+    /*
+    *********************************************************
+    @Method Name    : getRefundStatus
+    @author         : Harshit Rai
+    @description    : Retrieves the refund status for a given Easebuzz transaction ID. It makes an API call to the Easebuzz 
+                       refund status endpoint and processes the response. If successful, it returns the refund details; 
+                       otherwise, it logs the error and returns an error response.
+    @param          : easebuzzId - The Easebuzz transaction ID for which the refund status is to be retrieved.
+    @return         : String - JSON string containing the response and integration logs.
+    *********************************************************
+    */
     public static String getRefundStatus(String easebuzzId) {
         
         Http http = new Http();
@@ -506,6 +586,7 @@ public with sharing class EasyCollectPayment {
             }
         } catch (Exception ex) {
             ResponseWrapper reponseWrap = New ResponseWrapper(false,error,res.getBody());
+            System.debug('--------++++');
             Integration_Log__c log = new Integration_Log__c();
             log.Cause__c = JSON.serialize(ex.getCause());
             log.Status_Code__c = res.getStatusCode() !=null ? res.getStatusCode():0;

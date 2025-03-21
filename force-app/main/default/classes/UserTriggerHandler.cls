@@ -1,27 +1,26 @@
-/**
- *  * @author Varun Rawal
-
- * This class, `UserTriggerHandler`, is designed to handle lead assignment logic when a user's status changes.
- * It ensures that leads are assigned to users based on their capacity, availability, and assigned lead sources.
- * The class also manages user capacity and updates lead ownership dynamically.
- *
- * Key Features:
- * - Handles lead assignment when a user's status changes.
- * - Fetches and processes pre-sales and sales settings.
- * - Assigns leads to users based on their capacity and assigned lead sources.
- * - Updates user capacity after lead assignment.
- * - Includes null checks and ensures robust execution.
- */
+/**********
+Apex Class Name : UserTriggerHandler
+Apex Test Class Name: 
+Created Date: January 20, 2025
+@description : This class handles lead assignment logic when a user's status changes. It ensures that leads are assigned to users based on their capacity, availability, and assigned lead sources. The class also manages user capacity and updates lead ownership dynamically.
+@author : Varun Rawal
+Modify By : 
+Modify Date: 
+**********/
 
 public with sharing class UserTriggerHandler {
 
-    /**
-     * Handles the logic when a user's status changes.
-     * Triggers lead assignment if the user's status has changed.
-     *
-     * @param newUsers The list of updated User records.
-     * @param oldUserMap A map of old User records by their IDs.
-     */
+    /*
+    **********
+    Method Name : handleStatusChange
+    author: Varun Rawal
+    description: Handles the logic when a user's status changes. Triggers lead assignment if the user's status has changed.
+    @params: 
+        - newUsers: The list of updated User records.
+        - oldUserMap: A map of old User records by their IDs.
+    @return: None
+    **********
+    */
     public static void handleStatusChange(List<User> newUsers, Map<Id, User> oldUserMap) {
         for (User newUser : newUsers) {
             User oldUser = oldUserMap.get(newUser.Id);
@@ -33,10 +32,14 @@ public with sharing class UserTriggerHandler {
         }
     }
 
-    /**
-     * Processes lead assignment based on pre-sales and sales settings.
-     * Fetches eligible users and unassigned leads, then assigns leads to users.
-     */
+    /*
+    **********
+    Method Name : processLeadAssignment
+    author: Varun Rawal
+    description: Processes lead assignment based on pre-sales and sales settings. Fetches eligible users and unassigned leads, then assigns leads to users. While updating or inserting, use as user.
+    @return: None
+    **********
+    */
     public static void processLeadAssignment() {
         try {
             // Fetch pre-sales and sales settings
@@ -71,26 +74,33 @@ public with sharing class UserTriggerHandler {
         }
     }
 
-    /**
-     * Fetches pre-sales and sales settings from custom settings.
-     *
-     * @return A map of pre-sales and sales settings by their names.
-     */
+    /*
+    **********
+    Method Name : fetchPreSalesSettings
+    author: Varun Rawal
+    description: Fetches pre-sales and sales settings from custom settings.
+    @return: A map of pre-sales and sales settings by their names.
+    **********
+    */
     private static Map<String, Pre_Sales_Data__c> fetchPreSalesSettings() {
         Map<String, Pre_Sales_Data__c> settings = new Map<String, Pre_Sales_Data__c>();
-        for (Pre_Sales_Data__c setting : [SELECT Name, Value__c FROM Pre_Sales_Data__c WHERE Name IN ('Pre-Sales Assignment', 'Sales Assignment')]) {
+        for (Pre_Sales_Data__c setting : [SELECT Name, Value__c FROM Pre_Sales_Data__c WHERE Name IN ('Pre-Sales Assignment', 'Sales Assignment') WITH USER_MODE]) {
             settings.put(setting.Name, setting);
         }
         return settings;
     }
 
-    /**
-     * Fetches eligible user IDs based on pre-sales and sales settings.
-     *
-     * @param preSalesEnabled Whether pre-sales assignment is enabled.
-     * @param salesEnabled Whether sales assignment is enabled.
-     * @return A set of eligible user IDs.
-     */
+    /*
+    **********
+    Method Name : fetchEligibleUserIds
+    author: Varun Rawal
+    description: Fetches eligible user IDs based on pre-sales and sales settings.
+    @params: 
+        - preSalesEnabled: Whether pre-sales assignment is enabled.
+        - salesEnabled: Whether sales assignment is enabled.
+    @return: A set of eligible user IDs.
+    **********
+    */
     private static Set<Id> fetchEligibleUserIds(Boolean preSalesEnabled, Boolean salesEnabled) {
         Set<Id> userIds = new Set<Id>();
         if (preSalesEnabled) userIds.addAll(getQueueMemberIds('Pre_Sales_Queue'));
@@ -98,23 +108,31 @@ public with sharing class UserTriggerHandler {
         return userIds;
     }
 
-    /**
-     * Fetches a queue by its developer name.
-     *
-     * @param queueName The developer name of the queue.
-     * @return The Group record representing the queue.
-     */
+    /*
+    **********
+    Method Name : fetchQueueByName
+    author: Varun Rawal
+    description: Fetches a queue by its developer name.
+    @params: 
+        - queueName: The developer name of the queue.
+    @return: The Group record representing the queue.
+    **********
+    */
     private static Group fetchQueueByName(String queueName) {
-        return [SELECT Id FROM Group WHERE Type = 'Queue' AND DeveloperName = :queueName LIMIT 1];
+        return [SELECT Id FROM Group WHERE Type = 'Queue' AND DeveloperName = :queueName WITH USER_MODE LIMIT 1];
     }
 
-    /**
-     * Fetches available users with capacity less than their max load.
-     *
-     * @param userIds The set of eligible user IDs.
-     * @param maxCapacity The maximum capacity for lead assignment.
-     * @return A list of available users.
-     */
+    /*
+    **********
+    Method Name : fetchAvailableUsers
+    author: Varun Rawal
+    description: Fetches available users with capacity less than their max load.
+    @params: 
+        - userIds: The set of eligible user IDs.
+        - maxCapacity: The maximum capacity for lead assignment.
+    @return: A list of available users.
+    **********
+    */
     private static List<User> fetchAvailableUsers(Set<Id> userIds, Integer maxCapacity) {
         List<User> users = [
             SELECT Id, Capacity__c, Pre_Sales_Lead_Assignment__c, Assigned_Sources__c, Max_Load__c
@@ -123,7 +141,7 @@ public with sharing class UserTriggerHandler {
             AND Id IN :userIds
             AND Pre_Sales_Lead_Assignment__c = true
         ];
-
+		system.debug('User data'+users);
         // Filter users based on Capacity__c < Max_Load__c
         List<User> filteredUsers = new List<User>();
         for (User u : users) {
@@ -135,12 +153,16 @@ public with sharing class UserTriggerHandler {
         return filteredUsers;
     }
 
-    /**
-     * Fetches unassigned leads from a specific queue.
-     *
-     * @param queueId The ID of the queue.
-     * @return A list of unassigned leads.
-     */
+    /*
+    **********
+    Method Name : fetchUnassignedLeads
+    author: Varun Rawal
+    description: Fetches unassigned leads from a specific queue.
+    @params: 
+        - queueId: The ID of the queue.
+    @return: A list of unassigned leads.
+    **********
+    */
     private static List<Lead> fetchUnassignedLeads(Id queueId) {
         return [
             SELECT Id, OwnerId, Status, LeadSource 
@@ -151,13 +173,18 @@ public with sharing class UserTriggerHandler {
         ];
     }
 
-    /**
-     * Assigns leads to users based on their capacity and assigned lead sources.
-     *
-     * @param leads The list of unassigned leads.
-     * @param availableUsers The list of available users.
-     * @param maxCapacity The maximum capacity for lead assignment.
-     */
+    /*
+    **********
+    Method Name : assignLeadsToUsers
+    author: Varun Rawal
+    description: Assigns leads to users based on their capacity and assigned lead sources. While updating or inserting, use as user.
+    @params: 
+        - leads: The list of unassigned leads.
+        - availableUsers: The list of available users.
+        - maxCapacity: The maximum capacity for lead assignment.
+    @return: None
+    **********
+    */
     private static void assignLeadsToUsers(List<Lead> leads, List<User> availableUsers, Integer maxCapacity) {
         Map<Id, Integer> userLeadCounts = initializeUserLeadCounts(availableUsers);
         List<Lead> leadsToUpdate = new List<Lead>();
@@ -223,7 +250,7 @@ public with sharing class UserTriggerHandler {
         }
 
         // Update leads and users
-        if (!leadsToUpdate.isEmpty()) update as user leadsToUpdate;
+        if (!leadsToUpdate.isEmpty()) update leadsToUpdate;
         system.debug('leadsToUpdate-->' + leadsToUpdate);
         if (!usersToUpdate.isEmpty()) {
             for (User u : usersToUpdate) {
@@ -233,12 +260,16 @@ public with sharing class UserTriggerHandler {
         }
     }
 
-    /**
-     * Initializes a map of user IDs to their current lead counts.
-     *
-     * @param users The list of available users.
-     * @return A map of user IDs to their current lead counts.
-     */
+    /*
+    **********
+    Method Name : initializeUserLeadCounts
+    author: Varun Rawal
+    description: Initializes a map of user IDs to their current lead counts.
+    @params: 
+        - users: The list of available users.
+    @return: A map of user IDs to their current lead counts.
+    **********
+    */
     private static Map<Id, Integer> initializeUserLeadCounts(List<User> users) {
         Map<Id, Integer> userLeadCounts = new Map<Id, Integer>();
         for (User user : users) {
@@ -247,16 +278,20 @@ public with sharing class UserTriggerHandler {
         return userLeadCounts;
     }
 
-    /**
-     * Fetches the member IDs of a queue by its developer name.
-     *
-     * @param queueDeveloperName The developer name of the queue.
-     * @return A set of user IDs in the queue.
-     */
+    /*
+    **********
+    Method Name : getQueueMemberIds
+    author: Varun Rawal
+    description: Fetches the member IDs of a queue by its developer name.
+    @params: 
+        - queueDeveloperName: The developer name of the queue.
+    @return: A set of user IDs in the queue.
+    **********
+    */
     private static Set<Id> getQueueMemberIds(String queueDeveloperName) {
         Group grp = [SELECT Id FROM Group WHERE DeveloperName = :queueDeveloperName AND Type = 'Queue' LIMIT 1];
         Set<Id> userIds = new Set<Id>();
-        for (GroupMember gm : [SELECT UserOrGroupId FROM GroupMember WHERE GroupId = :grp.Id]) {
+        for (GroupMember gm : [SELECT UserOrGroupId FROM GroupMember WHERE GroupId = :grp.Id WITH USER_MODE]) {
             userIds.add(gm.UserOrGroupId);
         }
         return userIds;

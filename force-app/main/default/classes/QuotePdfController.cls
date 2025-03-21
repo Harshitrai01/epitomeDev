@@ -1,6 +1,10 @@
-/**
-* Author: Harshit Kumar Rai
-* Description: For Quote Pdf Generation
+/*
+*********************************************************
+Apex Class Name    : QuotePdfController
+Created Date       : 18th March 2024
+@description       : For Quote Pdf Generation
+@author            : Harshit Kumar Rai
+*********************************************************
 */
 public with sharing class QuotePdfController {
 	
@@ -10,6 +14,15 @@ public with sharing class QuotePdfController {
     public Decimal finalCorpus { get; set; }
     public Decimal finalLegalAndRegistrationCharges { get; set; }
     public String timeDays { get; set; }
+    
+     /*
+    *********************************************************
+    @Constructor Name : QuotePdfController
+    @author            : Harshit Kumar Rai
+    @description       : Initializes class and retrieves Quote details
+    @param             : ApexPages.StandardController stdController - Standard controller for Quote
+    ****
+	*/
     
     public QuotePdfController(ApexPages.StandardController stdController) {
         String quoteId= Apexpages.currentPage().getParameters().get('id');

@@ -1,9 +1,28 @@
 /**
-* Author: Harshit Kumar Rai
-* Description: Trigger Handler For Opportunity
+*********************************************************
+Apex Class Name    : OpportunityTriggerHandler
+Created Date       : 
+@description       : Trigger Handler class for Opportunity record operations.
+Handles logic for Opportunity insert, update, and email notifications.
+@author            : Harshit Kumar Rai
+Modification Log   :
+Ver   Date         Author                         Modification
+1.0   18-03-2025   Harshit Kumar Rai             Initial Version
+*********************************************************
 */
 public class OpportunityTriggerHandler {
     
+    /**
+*********************************************************
+@Method Name    : handleAfterInsert
+@description    : Handles logic after Opportunity records are inserted.
+- Collects Opportunity Ids.
+- Queries related Unit records with Virtual Account details.
+- Calls InstaCollectBatch to create Virtual Accounts (outside test context).
+@param          : newOpportunities - List of newly inserted Opportunity records.
+@return         : None
+*********************************************************
+*/
     public static void handleAfterInsert(List<Opportunity> newOpportunities) {
         try{
             if(!newOpportunities.isEmpty()){
@@ -21,12 +40,12 @@ public class OpportunityTriggerHandler {
                     for (Opportunity opp : oppList) {
                         if(opp.Unit__c!=null){
                             if(opp?.Unit__r?.Virtual_Account_Id__c == null){
-                                 if (!Test.isRunningTest()) {
-                                     listOfPlotIds.add(opp.Unit__c);
-                                	//EasebuzzInstaCollectService.createVirtualAccount(opp.Unit__c);
-                            	}else {
-                                	System.debug('Skipping API call in test context');
-                            	}
+                                if (!Test.isRunningTest()) {
+                                    listOfPlotIds.add(opp.Unit__c);
+                                    //EasebuzzInstaCollectService.createVirtualAccount(opp.Unit__c);
+                                }else {
+                                    System.debug('Skipping API call in test context');
+                                }
                             }else{
                                 System.Debug('Virtual Account Details Already Present');
                             }
@@ -34,11 +53,15 @@ public class OpportunityTriggerHandler {
                             System.Debug('Plot is not present');
                         }
                     }
-                       if (!Test.isRunningTest()) {
+                    if (!Test.isRunningTest()) {
+                        if(listOfPlotIds!=null && !listOfPlotIds.isEmpty()){
                             Database.executeBatch(new InstaCollectBatch(oppList,listOfPlotIds), 50);
-                       } else {
-                            System.debug('Skipping batch execution in test context');
-                       }
+                        }else{
+                            Database.executeBatch(new PaymentSendLinkEasyCollect(oppList), 50);
+                        }
+                    } else {
+                        System.debug('Skipping batch execution in test context');
+                    }
                 }
                 
             }
@@ -51,6 +74,55 @@ public class OpportunityTriggerHandler {
         
     }
     
+    /**
+*********************************************************
+@Method Name    : sendPlotCancellationEmail
+@description    : Sends cancellation emails to Opportunity contacts.o
+oppIds
+69
+}
+70
+}catch (Exception ex){
+71
+throw New AuraHandledException(ex.getMessage());
+72
+}
+73
+}
+74
+
+75
+public static void handleAfterUpdate(List<Opportunity> newOpportunities){
+76
+
+77
+}
+78
+
+79
+/**
+80
+*********************************************************
+81
+@Method Name    : sendPlotCancellationEmail
+82
+@description    : Sends cancellation emails to Opportunity contacts.
+83
+- Updates the Date_of_Cancellation__c field.
+84
+- Sends an email notification using the 'Plot_Cancellation_Email' template.
+85
+@param          : oppIds - List of Opportunity record Ids.
+86
+@return         : None
+87
+*********************************************************
+- Updates the Date_of_Cancellation__c field.
+- Sends an email notification using the 'Plot_Cancellation_Email' template.
+@param          : oppIds - List of Opportunity record Ids.
+@return         : None
+*********************************************************
+*/
     public static void sendPlotCancellationEmail(List<Id> oppIds){
         List<Opportunity> oppList = [Select Id,Contact__c,Contact__r.Email,Date_of_Cancellation__c From Opportunity Where ID IN:oppIds];
         for(Opportunity opp : oppList){
@@ -76,16 +148,16 @@ public class OpportunityTriggerHandler {
         }
     }
     /**
-	* This method, `handleAfterUpdate`, is part of a trigger handler class and is designed to handle specific logic
-	* when an Opportunity's stage is updated. It checks for transitions to specific stages (AOS, Registration Initiate, Progressive)
-	* and triggers corresponding actions, such as generating PDFs using Visualforce pages and updating the Opportunity's `Sub_Document_Type__c` field.
-	*
-	* Key Features:
-	* - Handles stage transitions for Opportunities.
-	* - Triggers PDF generation for specific stages using Visualforce pages.
-	* - Enqueues asynchronous jobs for PDF generation.
-	* - Includes null checks and ensures robust execution.
-	*/
+* This method, `handleAfterUpdate`, is part of a trigger handler class and is designed to handle specific logic
+* when an Opportunity's stage is updated. It checks for transitions to specific stages (AOS, Registration Initiate, Progressive)
+* and triggers corresponding actions, such as generating PDFs using Visualforce pages and updating the Opportunity's `Sub_Document_Type__c` field.
+*
+* Key Features:
+* - Handles stage transitions for Opportunities.
+* - Triggers PDF generation for specific stages using Visualforce pages.
+* - Enqueues asynchronous jobs for PDF generation.
+* - Includes null checks and ensures robust execution.
+*/
     
     public static void handleAfterUpdate(List<Opportunity> newOpportunities, Map<Id, Opportunity> oldOpportunitiesMap) {
         // Iterate through the updated Opportunities
@@ -117,12 +189,12 @@ public class OpportunityTriggerHandler {
     }
     
     /**
-	* Helper method to handle AOS Stage logic.
-	* Determines the appropriate Visualforce page based on the Opportunity's `Type_of_Booking__c` field
-	* and enqueues a job to generate a PDF.
-	*
-	* @param opp The Opportunity record.
-	*/
+* Helper method to handle AOS Stage logic.
+* Determines the appropriate Visualforce page based on the Opportunity's `Type_of_Booking__c` field
+* and enqueues a job to generate a PDF.
+*
+* @param opp The Opportunity record.
+*/
     private static void handleAOSStage(Opportunity opp) {
         String vfPageName;
         // Determine the Visualforce page based on the Opportunity's type
@@ -142,12 +214,13 @@ public class OpportunityTriggerHandler {
     }
     
     /**
-	* Helper method to handle Registration Initiate Stage logic.
-	* Determines the appropriate Visualforce page based on the Opportunity's `Type_of_Booking__c` field
-	* and enqueues jobs to generate PDFs for the Sale Deed and Board of Resolution.
-	*
-	* @param opp The Opportunity record.
-	*/
+* Helper method to handle Registration Initiate Stage logic.
+* Determines the appropriate Visualforce page based on the Opportunity's `Type_of_Booking__c` field
+* and enqueues jobs to generate PDFs for the Sale Deed and Board of Resolution.
+*
+* @param opp The Opportunity record.
+*/
+    @TestVisible
     private static void handleRegInitiateStage(Opportunity opp) {
         String vfPageName;
         // Determine the Visualforce page based on the Opportunity's type
@@ -161,18 +234,20 @@ public class OpportunityTriggerHandler {
         
         // Null check: Ensure a valid Visualforce page name is determined
         if (vfPageName != null) {
-            // Enqueue jobs to generate PDFs for the Sale Deed and Board of Resolution
+            // Enqueue jobs to generate PDFs for the Sale Deed and Board of Resolution and Form 32
             System.enqueueJob(new AOSPDFGenerator(opp.Id, vfPageName, 'System Generated Sale Deed','Registration Initiate'));
             System.enqueueJob(new AOSPDFGenerator(opp.Id, 'BoardOfResolution', 'System Generated Board of Resolution','Registration Initiate'));
+            System.enqueueJob(new AOSPDFGenerator(opp.Id, 'Form32_VfPage', 'System Generated Form 32','Registration Initiate'));
         }
     }
     
     /**
-	* Helper method to handle Progressive Stage logic.
-	* Enqueues a job to generate a PDF for the Demand Letter.
-	*
-	* @param opp The Opportunity record.
-	*/
+* Helper method to handle Progressive Stage logic.
+* Enqueues a job to generate a PDF for the Demand Letter.
+*
+* @param opp The Opportunity record.
+*/
+    @TestVisible
     private static void handleProgressiveStage(Opportunity opp) {
         String vfPageName = 'DemandLetter';
         // Enqueue a job to generate the PDF for the Demand Letter

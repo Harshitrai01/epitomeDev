@@ -138,6 +138,18 @@ public class bookingFormControllerTest {
         Unit__c result = bookingFormController.getPlotDetails(testUnit.Id);
         Test.stopTest();
     }
+     @isTest
+static void testNullGetPlotDetails() {
+    Test.startTest();
+    
+    try {
+  Unit__c result = bookingFormController.getPlotDetails(null);
+    } catch (Exception ex) {
+        System.debug('Exception occurred: ' + ex.getMessage());
+    }
+
+    Test.stopTest();
+}
 
     @isTest
     static void testGetProjects() {
@@ -153,5 +165,6 @@ public class bookingFormControllerTest {
         List<Phase__c> phases = bookingFormController.getPhases(testProject.Id);
         Test.stopTest();
     }
+
 
 }

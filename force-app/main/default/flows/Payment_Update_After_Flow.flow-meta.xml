@@ -4,7 +4,7 @@
     <assignments>
         <name>Assign_10_as_true</name>
         <label>Assign 10% as true</label>
-        <locationX>413</locationX>
+        <locationX>369</locationX>
         <locationY>1271</locationY>
         <assignmentItems>
             <assignToReference>opportunityRecord.X10_Amount_Collected__c</assignToReference>
@@ -20,7 +20,7 @@
     <assignments>
         <name>Assign_Amount_to_payment_Record</name>
         <label>Assign Amount to payment Record</label>
-        <locationX>737</locationX>
+        <locationX>671</locationX>
         <locationY>839</locationY>
         <assignmentItems>
             <assignToReference>opportunityRecord.Collected_Amount_From_Payment__c</assignToReference>
@@ -36,7 +36,7 @@
     <assignments>
         <name>Assign_Opportunity_Record_List</name>
         <label>Assign Opportunity Record List</label>
-        <locationX>935</locationX>
+        <locationX>869</locationX>
         <locationY>323</locationY>
         <assignmentItems>
             <assignToReference>opportunityRecord.Id</assignToReference>
@@ -52,7 +52,7 @@
     <assignments>
         <name>Assign_Payment_Amount_to_Variable</name>
         <label>Assign Payment Amount to Variable</label>
-        <locationX>545</locationX>
+        <locationX>501</locationX>
         <locationY>1055</locationY>
         <assignmentItems>
             <assignToReference>Amount</assignToReference>
@@ -68,7 +68,7 @@
     <assignments>
         <name>Assign_Previous_payment_Values</name>
         <label>Assign Previous payment Values</label>
-        <locationX>869</locationX>
+        <locationX>803</locationX>
         <locationY>647</locationY>
         <assignmentItems>
             <assignToReference>opportunityRecord.Collected_Amount_From_Payment__c</assignToReference>
@@ -100,7 +100,7 @@
     <assignments>
         <name>Copy_1_of_Assign_Amount_to_payment_Record</name>
         <label>Copy 1 of Assign Amount to payment Record</label>
-        <locationX>605</locationX>
+        <locationX>539</locationX>
         <locationY>647</locationY>
         <assignmentItems>
             <assignToReference>opportunityRecord.Collected_Amount_From_Payment__c</assignToReference>
@@ -113,21 +113,11 @@
             <targetReference>Assign_Amount_to_payment_Record</targetReference>
         </connector>
     </assignments>
-    <customErrors>
-        <name>Custom_Error_Message_1</name>
-        <label>Custom Error Message 1</label>
-        <locationX>490</locationX>
-        <locationY>1679</locationY>
-        <customErrorMessages>
-            <errorMessage>Please Submit KYC Document First.</errorMessage>
-            <isFieldError>false</isFieldError>
-        </customErrorMessages>
-    </customErrors>
     <decisions>
         <name>Check_Amount</name>
         <label>Check Amount</label>
-        <locationX>182</locationX>
-        <locationY>1679</locationY>
+        <locationX>336</locationX>
+        <locationY>1571</locationY>
         <defaultConnector>
             <targetReference>update_Opportunity_Record</targetReference>
         </defaultConnector>
@@ -143,7 +133,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Assign_stage_as_Booked</targetReference>
+                <targetReference>Check_kyc_Subdocument_type_is_there</targetReference>
             </connector>
             <label>Amount greater than a Lakh</label>
         </rules>
@@ -151,7 +141,7 @@
     <decisions>
         <name>Check_Collected_Amount_Percent_Value</name>
         <label>Check Collected Amount Percent Value</label>
-        <locationX>545</locationX>
+        <locationX>501</locationX>
         <locationY>1163</locationY>
         <defaultConnector>
             <targetReference>Check_Opportunity_Stage</targetReference>
@@ -176,7 +166,7 @@
     <decisions>
         <name>check_if_Collected_amount_is_null_or_not</name>
         <label>check if Collected amount is null or not?</label>
-        <locationX>737</locationX>
+        <locationX>671</locationX>
         <locationY>539</locationY>
         <defaultConnector>
             <targetReference>Assign_Previous_payment_Values</targetReference>
@@ -215,10 +205,10 @@
     <decisions>
         <name>Check_kyc_Subdocument_type_is_there</name>
         <label>Check kyc  Subdocument type is there</label>
-        <locationX>336</locationX>
-        <locationY>1571</locationY>
+        <locationX>182</locationX>
+        <locationY>1679</locationY>
         <defaultConnector>
-            <targetReference>Custom_Error_Message_1</targetReference>
+            <targetReference>update_Opportunity_Record</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -239,7 +229,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Check_Amount</targetReference>
+                <targetReference>Assign_stage_as_Booked</targetReference>
             </connector>
             <label>KYC Document is there</label>
         </rules>
@@ -247,7 +237,7 @@
     <decisions>
         <name>Check_Opportunity_10_Amount_Collected_Value</name>
         <label>Check Opportunity 10% Amount Collected Value</label>
-        <locationX>737</locationX>
+        <locationX>671</locationX>
         <locationY>947</locationY>
         <defaultConnector>
             <targetReference>update_Opportunity_Record</targetReference>
@@ -272,7 +262,7 @@
     <decisions>
         <name>Check_Opportunity_Stage</name>
         <label>Check Opportunity Stage</label>
-        <locationX>545</locationX>
+        <locationX>501</locationX>
         <locationY>1463</locationY>
         <defaultConnector>
             <targetReference>update_Opportunity_Record</targetReference>
@@ -289,7 +279,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Check_kyc_Subdocument_type_is_there</targetReference>
+                <targetReference>Check_Amount</targetReference>
             </connector>
             <label>Stage is Blocked</label>
         </rules>
@@ -297,7 +287,7 @@
     <decisions>
         <name>Check_the_Approval_Status</name>
         <label>Check the Approval Status</label>
-        <locationX>935</locationX>
+        <locationX>869</locationX>
         <locationY>431</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -354,12 +344,12 @@
     <recordUpdates>
         <name>update_Opportunity_Record</name>
         <label>update Opportunity Record</label>
-        <locationX>737</locationX>
+        <locationX>671</locationX>
         <locationY>2231</locationY>
         <inputReference>opportunityRecord</inputReference>
     </recordUpdates>
     <start>
-        <locationX>809</locationX>
+        <locationX>743</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Assign_Opportunity_Record_List</targetReference>

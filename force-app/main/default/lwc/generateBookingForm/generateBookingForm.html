@@ -322,8 +322,36 @@
                                                                         padding="around-small" size="12"
                                                                         small-device-size="12" medium-device-size="6"
                                                                         large-device-size="6">
+                                                                        
+                                                                        <!-- <lightning-record-picker label="Select Plot"
+                                                                            object-api-name="Unit__c"
+                                                                            onchange={handleValueChange} name="plotName"
+                                                                            data-contact-id={contact.id}
+                                                                            data-plot-id={plot.id}
+                                                                            filter={plot.filterCriteria}
+                                                                            data-label="primaryApplicantRequiredFields"
+                                                                            required></lightning-record-picker> -->
+                                                                     <span class="required">*</span>
+    <c-generate-custom-lookup
+     
+        icon-name="standard:account"
+        name="plotName"
+        s-object-api-name="Unit__c"
+        label="Select Plot"
+        data-contact-id={contact.id}
+        data-plot-id={plot.id}
+        onlookupupdate={handleValueChange}
+        selectedplotid={selectedPlotIds}
+        onlookupremove={lookupRecordRemove}
+        placeholder="search.."
+        phase-id={bookingFormData.phaseId}
+        project-id={bookingFormData.projectId}
+        >
+    </c-generate-custom-lookup>
+
+
                                                                         <!-- Calling custom searchable combobox from child component-->
-                                                                        <c-custom-lookup-cmp label="Select Plot"
+                                                                        <!-- <c-custom-lookup-cmp label="Select Plot"
                                                                             placeholder="Search and Select a Plot"
                                                                             object-name="Unit__c" field-name="Name"
                                                                             name="plotName" onselect={handleValueChange}
@@ -331,8 +359,8 @@
                                                                             data-plot-id={plot.id}
                                                                             contact-id={contact.id} plot-id={plot.id}
                                                                             onclearplots={handleClearPlot}
-                                                                            phase-id={bookingFormData.phaseId}>
-                                                                        </c-custom-lookup-cmp>
+                                                                            phase-id={bookingFormData.phaseId}> -->
+                                                                        <!-- </c-custom-lookup-cmp> -->
                                                                     </lightning-layout-item>
                                                                     <lightning-layout-item flexibility="auto"
                                                                         padding="around-small" size="12"

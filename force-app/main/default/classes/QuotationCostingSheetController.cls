@@ -1,8 +1,21 @@
-/**
-* Author: Harshit Kumar Rai
-* Description: For generating quotation costing sheet
+/*
+*********************************************************
+Apex Class Name    : QuotationCostingSheetController
+Created Date       : July 12, 2020
+@description       : For generating quotation costing sheet
+@author            : Harshit Kumar Rai
+*********************************************************
 */
 public with sharing class QuotationCostingSheetController {
+    /*
+    *********************************************************
+    @Method Name    : SaveRecord
+    @author         : Harshit Kumar Rai
+    @description    : Method to save Quote records
+    @param          : List<Quote__c> quoteRecords - List of quote records to save
+    @return         : List<Quote__c> - List of updated quote records
+    *********************************************************
+    */
 
     @AuraEnabled
     public static List<Quote__c> SaveRecord(List<Quote__c> quoteRecords) {
@@ -70,7 +83,13 @@ public with sharing class QuotationCostingSheetController {
             
             PageReference pdfPage = Page.QuotePdf;
             pdfPage.getParameters().put('id', quoteId);
-            Blob pdfBlob = pdfPage.getContentAsPDF();
+            Blob pdfBlob;
+            if(!test.isrunningtest()){
+                pdfBlob = pdfPage.getContentAsPDF();
+            }
+            else{
+                pdfBlob= Blob.valueOf('test');
+            }
             
             Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
             email.setToAddresses(new String[] { recipientEmail });
@@ -231,6 +250,4 @@ public with sharing class QuotationCostingSheetController {
         @AuraEnabled
         public List<Additional_Charges__c> additonalCharges {get; set;}
     }
-
-
 }

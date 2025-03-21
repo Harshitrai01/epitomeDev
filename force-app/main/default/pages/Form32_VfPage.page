@@ -1,29 +1,117 @@
-<apex:page applyBodyTag="false" applyHtmlTag="false" showQuickActionVfHeader="false" standardStylesheets="false" showHeader="false"  contentType="application/x-unknown" standardstylesheets="false"  renderAs="pdf">
-    
+<apex:page renderAs="pdf" applyBodyTag="false" applyHtmlTag="false" showQuickActionVfHeader="false" standardStylesheets="false" showHeader="false">
     <head>
         <style>
-            @page{
-            margin:0.05in;
+            @page {
+                margin: 0.05in;
+            }
+            table, td, tr {
+                border: 1.2px solid black !important; /* Ensure all borders are black */
+                border-collapse: collapse;
             }
         </style>
-    </head> 
+    </head>
     <html>
-        <table width="100%" border="2px solid black" style="border-collapse: collapse; border:1.2px solid black;">
+        <table width="100%" style="border-collapse: collapse;">
             <tbody>
                 <tr>
-                    <td colspan="10" width="1110" style="text-align: center; font-size:15px;" height="50"> &nbsp;<b>PHOTOGRAPH AND FINGERPRINTS AS PER SECTION 32 A OF REGISTRATION ACT. 1908 </b></td>
+                    <td colspan="10" width="1110" style="text-align: center; font-size:15px; border: 1.2px solid black;" height="50">
+                        <b>PHOTOGRAPH AND FINGERPRINTS AS PER SECTION 32 A OF REGISTRATION ACT. 1908</b>
+                    </td>
                 </tr>
                 <tr>
-                    <td colspan="1" width="10%" style="font-size:10px;text-align: center;"><b>S.No.</b></td>
-                    <td colspan="2" width="20%" style="font-size:10px;text-align: center;"><b>Finger Print <br/>in Black Ink <br/>(Left Thumb) </b></td>
-                    <td colspan="2" width="20%" style="font-size:10px;text-align: center;"><b>PASSPORT SIZE <br/>PHOTOGRAPH <br/>(Black &amp; White) </b></td>
-                    <td colspan="5" width="50%" style="font-size:10px;text-align: center;"><b>NAME AND PERMANENT <br/>POSTAL ADDRESS OF <br/>Presentant / Sellers/ Buyers </b></td>
+                    <td colspan="1" width="10%" style="font-size:10px; text-align: center; border: 1.2px solid black;"><b>S.No.</b></td>
+                    <td colspan="2" width="20%" style="font-size:10px; text-align: center; border: 1.2px solid black;"><b>Finger Print <br/>in Black Ink <br/>(Left Thumb)</b></td>
+                    <td colspan="2" width="20%" style="font-size:10px; text-align: center; border: 1.2px solid black;"><b>PASSPORT SIZE <br/>PHOTOGRAPH <br/>(Black &amp; White)</b></td>
+                    <td colspan="5" width="50%" style="font-size:10px; text-align: center; border: 1.2px solid black;"><b>NAME AND PERMANENT <br/>POSTAL ADDRESS OF <br/>Presentant / Sellers/ Buyers</b></td>
                 </tr>
                 <tr>
-                    <td colspan="1" width="10%" style="font-size:10px;text-align: center;" height="100"></td>
-                    <td colspan="2" width="20%" style="font-size:10px;text-align: center;" height="100"></td>
-                    <td colspan="2" width="20%" style="font-size:10px;text-align: center;" height="100">Passport Size Photo</td>
-                    <td colspan="5" width="50%" style="font-size:10px;text-align: center;" height="100"></td>
+                    <td colspan="1" width="10%" style="font-size:13px; text-align: center; border: 1.2px solid black;" height="120">1.</td>
+                    <td colspan="2" width="20%" style="font-size:10px; text-align: center; border: 1.2px solid black;" height="100"></td>
+                    <td colspan="2" width="20%" style="font-size:13px; text-align: center; border: 1.2px solid black;" height="100">Passport Size <br/>Photo</td>
+                    <td colspan="5" width="50%" style="font-size:10px; text-align: center; border: 1.2px solid black;" height="100"></td>
+                </tr>
+                <tr>
+                    <td colspan="1" width="10%" style="font-size:13px; text-align: center; border: 1.2px solid black;" height="120">2.</td>
+                    <td colspan="2" width="20%" style="font-size:10px; text-align: center; border: 1.2px solid black;" height="100"></td>
+                    <td colspan="2" width="20%" style="font-size:13px; text-align: center; border: 1.2px solid black;" height="100">Passport Size <br/>Photo</td>
+                    <td colspan="5" width="50%" style="font-size:10px; text-align: center; border: 1.2px solid black;" height="100"></td>
+                </tr>
+                <tr>
+                    <td colspan="1" width="10%" style="font-size:13px; text-align: center; border: 1.2px solid black;" height="120">3.</td>
+                    <td colspan="2" width="20%" style="font-size:10px; text-align: center; border: 1.2px solid black;" height="100"></td>
+                    <td colspan="2" width="20%" style="font-size:13px; text-align: center; border: 1.2px solid black;" height="100">Passport Size <br/>Photo</td>
+                    <td colspan="5" width="50%" style="font-size:10px; text-align: center; border: 1.2px solid black;" height="100"></td>
+                </tr>
+                <tr>
+                    <td colspan="1" width="10%" style="font-size:13px; text-align: center; border: 1.2px solid black;" height="120">4.</td>
+                    <td colspan="2" width="20%" style="font-size:10px; text-align: center; border: 1.2px solid black;" height="100"></td>
+                    <td colspan="2" width="20%" style="font-size:13px; text-align: center; border: 1.2px solid black;" height="100">Passport Size <br/>Photo</td>
+                    <td colspan="5" width="50%" style="font-size:10px; text-align: center; border: 1.2px solid black;" height="100"></td>
+                </tr>
+                <tr>
+                    <td colspan="10" width="1110" style="text-align: left; font-size:13px; border: 1.2px solid black;" height="20">
+                        <b>SIG. OF WITNESSES:</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" width="10%" style="font-size:13px; text-align: center; padding: 0; margin: 0; border: 1.2px solid black; height: 125px;">
+                        <table width="100%" style="border-collapse: collapse; border: 1.2px solid black;">
+                            <tbody>
+                                <tr>
+                                    <td colspan="5" width="33%" style="font-size:10px; text-align: center; border: 1.2px solid black; height: 67.5px; padding: 0; margin: 0;">1.</td>
+                                    <td colspan="5" width="67%" style="font-size:10px; text-align: center; border: 1.2px solid black; height: 67.5px; padding: 0; margin: 0;"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" width="33%" style="font-size:10px; text-align: center; border: 1.2px solid black; height: 67.5px; padding: 0; margin: 0;">2.</td>
+                                    <td colspan="5" width="67%" style="font-size:10px; text-align: center; border: 1.2px solid black; height: 67.5px; padding: 0; margin: 0;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td colspan="7" width="20%" style="font-size:13px; text-align: right; border: 1.2px solid black; height: 100px; padding: 0; margin: 0;">
+                        <div style="position: relative; bottom: -40px; right: 20px; font-size: 11px; font-weight: bold;">
+                            SIG. OF THE VENDOR(S) / EXECUTANT(S)
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="10" width="1110" style="text-align: left; font-size: 14.5px; line-height: 1.5; padding: 5px; border: 1.2px solid black;" height="50">
+                        <b>NOTE:</b> If the Purchaser(s) / Claimant(s) is / are not present before the Sub-Registrar, the following request should be signed. I / We <br/>
+                        send herewith my/our photograph(s) and fingerprints in the form prescribed, through my / our representative, <br/> 
+                        Sri. ____________________________________________________________ as I / We cannot appear personally before the <br/> 
+                        Registering Officer in the Office of Sub-Registrar of Assurances ___________________________________.
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="10" width="1110" style="text-align: left; font-size:13px; border: 1.2px solid black;" height="50">
+                        <b>SIG. OF REPRESENTATIVE:</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="10" width="1110" style="text-align: left; font-size:13px; border: 1.2px solid black;" height="20">
+                        <b>SIG. OF WITNESSES:</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" width="10%" style="font-size:13px; text-align: center; padding: 0; margin: 0; border: 1.2px solid black; height: 125px;">
+                        <table width="100%" style="border-collapse: collapse; border: 1.2px solid black;">
+                            <tbody>
+                                <tr>
+                                    <td colspan="5" width="33%" style="font-size:10px; text-align: center; border: 1.2px solid black; height: 67.5px; padding: 0; margin: 0;">1.</td>
+                                    <td colspan="5" width="67%" style="font-size:10px; text-align: center; border: 1.2px solid black; height: 67.5px; padding: 0; margin: 0;"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" width="33%" style="font-size:10px; text-align: center; border: 1.2px solid black; height: 67.5px; padding: 0; margin: 0;">2.</td>
+                                    <td colspan="5" width="67%" style="font-size:10px; text-align: center; border: 1.2px solid black; height: 67.5px; padding: 0; margin: 0;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td colspan="7" width="20%" style="font-size:13px; text-align: right; border: 1.2px solid black; height: 100px; padding: 0; margin: 0;">
+                        <div style="position: relative; bottom: -40px; right: 20px; font-size: 11px; font-weight: bold;">
+                            SIG. OF THE PURCHASER(S) / CLAIMANT(S)
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>

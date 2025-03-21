@@ -1,4 +1,24 @@
+/**********
+Apex Class Name : bookingFormController
+Apex Test Class Name: bookingFormControllerTest
+Created Date: March 18, 2025
+@description : This class is used for managing bulk bookings, individual registrations, and joint registrations against Opportunity.
+@author : Dolly Bindal
+Modify By : Dolly Bindal
+Modify Date: March 18, 2025
+**********/
+
 public with sharing class bookingFormController {
+     /*
+    **********
+    Method Name : getOpportunityAccountId
+    author: Dolly Bindal
+    Description: This method retrieves the Account Id associated with a given Opportunity Id for the joint registration process. 
+                 The retrieved Account Id can be used to fetch all related Contacts.
+    @params: Id opportunityId - The unique identifier of the Opportunity record.
+    @return: getRecordDataWrapper - A wrapper object containing the Account Id, which is used to fetch all associated Contacts.
+    **********
+    */
     @AuraEnabled(cacheable=true)
     public static getRecordDataWrapper getOpportunityAccountId(Id opportunityId) {
         // Wrapper object to store the response
@@ -33,6 +53,17 @@ public with sharing class bookingFormController {
         return responseObj;
     }
 
+    /*
+    **********
+    Method Name : getRecordData
+    Author: Dolly Bindal
+    Description: This method is used to fetch all relevant data using a Lead and Quote record to prepopulate 
+                 fields in the Individual Booking Form. It retrieves Quote details along with related Plot and Lead 
+                 information, ensuring seamless data population for the booking process.
+    @params: Id recordId - The unique identifier of the Quote__c record.
+    @return: getRecordDataWrapper - A wrapper object containing the retrieved Quote, Lead, and Plot details.
+    **********
+*/
     @AuraEnabled(cacheable=true)
     public static getRecordDataWrapper getRecordData(String recordId){
         // Wrapper object to store the response
@@ -65,6 +96,30 @@ public with sharing class bookingFormController {
         return responseObj;
     }
 
+    /*
+    **********
+    Method Name : saveFormData
+    Author: Dolly Bindal
+    Description: This method is used to insert data for an individual booking. It processes and saves Account, 
+                 Contact, Opportunity, Quote, and Unit records based on the provided booking form data. 
+                 The method ensures data integrity and linkage between records, facilitating seamless individual 
+                 registration and booking.
+    Process Flow:
+    1. Creates or updates an Account record
+    2. Creates or updates a Contact record and associates it with the created Account.
+    3. Creates an Opportunity record linked to the Account and Contact.
+    4. The Contact gets tagged to the Opportunity as the primary contact.
+    5. Updates the Quote__c record to associate it with the newly created Opportunity.
+    6. Updates the Unit__c (Plot) record, marking it as "Blocked" and associating it with the Contact.
+
+    @params: 
+        - String bookingFormData: JSON string containing form details such as Account, Contact, and Opportunity information.
+        - String quoteId: The unique identifier of the Quote__c record.
+
+    @return: 
+        - LightningResponse: A response object indicating success or failure along with the Account ID if the process is successful.
+    **********
+*/
     @AuraEnabled
     public static LightningResponse saveFormData(String bookingFormData,String quoteId){
         LightningResponse response =new LightningResponse();
@@ -168,6 +223,26 @@ public with sharing class bookingFormController {
         return response;
     }
 
+    /*
+    **********
+    Method Name : saveBulkFormData
+    Author:  Dolly Bindal
+    Description: This method is used to handle bulk bookings efficiently. It is used to create multiple 
+                 Opportunities for different plots associated with contacts.
+    Process Flow:      
+    1. Creates or updates an Account.
+    2. Creates multiple Contact records and associates them with the Account.
+    3. Creates multiple Opportunities against each Contact.
+    4. Associates a Quote record with each Opportunity.
+
+    @params: 
+        - String bookingFormData: JSON string containing bulk booking details, including Account, 
+                                  Co-Applicants, and their associated plots.
+
+    @return: 
+        - LightningResponse: A response object indicating success or failure along with the Account ID if the process is successful.
+    **********
+*/
     @AuraEnabled
     public static LightningResponse saveBulkFormData(String bookingFormData){
         LightningResponse response =new LightningResponse();
@@ -316,6 +391,26 @@ public with sharing class bookingFormController {
         return response;
     }
 
+    /***********
+    Method Name: saveJointVenture
+    Author:  Dolly Bindal
+    Description: This method is used for joint registration against opportunity. It adds multiple Contacts 
+                  under a given Opportunity and marks one of them as the primary contact.
+
+    Process Flow:
+    1. Creates or updates Contact records and associates them with the provided Account.
+    2. Retrieves existing OpportunityContactRole (OCR) records for the Opportunity.
+    3. Updates existing OCRs or creates new ones for each Contact.
+    4. Marks the primary payer among the co-applicants.
+
+    @params: 
+        - String bookingFormData: JSON string containing co-applicant details.
+        - String opportunityId: ID of the Opportunity to associate contacts with.
+        - String accountId: ID of the Account the contacts belong to.
+
+    @return: 
+        - LightningResponse: A response object indicating success or failure.
+    ***********/
     @AuraEnabled
     public static LightningResponse saveJointVenture(String bookingFormData, String opportunityId, String accountId) {
         LightningResponse response = new LightningResponse();
@@ -416,6 +511,15 @@ public with sharing class bookingFormController {
         return response;
     }
 
+    /***********
+    Method Name: getAccountDetails
+    Author:  Dolly Bindal
+    Description: This method retrieves account details for a given Account ID. 
+    @params: 
+        - Id accountId: The ID of the Account to retrieve.
+    @return: 
+        - Account: The Account record matching the given ID.
+    ***********/
     @AuraEnabled(cacheable=true)
         public static Account getAccountDetails(Id accountId) {
             try {
@@ -434,6 +538,15 @@ public with sharing class bookingFormController {
         }
     }
 
+     /***********
+    Method Name: getContactDetails
+    Author:  Dolly Bindal
+    Description: This method retrieves contact details for prepopulating in the individual booking form. 
+    @params: 
+        - contactId: The ID of the Contact to fetch details for individual booking form.
+    @return: 
+        - contact: The contact record matching the given ID.
+    ***********/
     @AuraEnabled(cacheable=true)
     public static Contact getContactDetails(Id contactId) {
         try {
@@ -449,6 +562,13 @@ public with sharing class bookingFormController {
         }
     }
 
+  /***********
+    Method Name: getContactsByAccountId
+    Author:  Dolly Bindal
+    Description: Retrieves a list of Contacts associated with a given Account ID
+    @params: accountId The ID of the Account to fetch associated Contacts.
+    @return: List of Contact records linked to the provided Account ID.
+    ***********/
     @AuraEnabled(cacheable=true)
     public static List<Contact> getContactsByAccountId(Id accountId) {
         try{
@@ -463,6 +583,12 @@ public with sharing class bookingFormController {
         }
     }
 
+    /***********
+    Method Name: getPlots
+    Author:  Dolly Bindal
+    Description: Retrieves a list of available plots (Units) against contact.
+    @return: List of Unit__c records that have the status 'Available'.
+    ***********/
     @AuraEnabled(cacheable=true)
         public static List<Unit__c> getPlots() {
         try{
@@ -477,6 +603,13 @@ public with sharing class bookingFormController {
         }
     }
 
+    /***********
+    Method Name: getPlotDetails
+    Author:  Dolly Bindal
+    Description: Retrieves details of a specific plot based on its record ID.
+    @param recordId The ID of the Unit__c record (plot) to fetch details for.
+    @return: A Unit__c record with the requested details.
+    ***********/
     @AuraEnabled(cacheable=true) 
         public static Unit__c getPlotDetails(String recordId) {
             try {
@@ -487,6 +620,12 @@ public with sharing class bookingFormController {
             }
     }
 
+    /***********
+    Method Name: getProjects
+    Author:  Dolly Bindal
+    Description: Retrieves a list of active projects
+    @return: List of active Project__c records.
+    ***********/
     @AuraEnabled(cacheable=true) 
         public static List<Project__c> getProjects() {
             try {
@@ -496,6 +635,13 @@ public with sharing class bookingFormController {
             }
     }
     
+    /***********
+    Method Name: getPhases
+    Author:  Dolly Bindal
+    Description: Retrieves a list of phases associated with a given project.
+    @param projectId The ID of the Project__c record to fetch related Phases.
+    @return: A Unit__c record with the requested details.
+    ***********/
     @AuraEnabled(cacheable=true) 
         public static List<Phase__c> getPhases(string projectId) {
             try {
@@ -505,6 +651,10 @@ public with sharing class bookingFormController {
             }
     }
 
+    /**
+ * @description Wrapper class representing a Plot in the booking form.
+ *              This stores information related to individual plots selected during the booking process.
+ */
     public class ListOfPlot {
         public String plotId { get; set; }
         public String plotName { get; set; }
@@ -517,6 +667,10 @@ public with sharing class bookingFormController {
         public String unitPlotSize { get; set; }
     }
 
+    /**
+ * @description Wrapper class representing a contact in the booking form.
+ *              This stores details of additional applicants for a booking.
+ */
     public class ListOfCoApplicant {
         public String contactId;
         public String contactName;
@@ -529,6 +683,10 @@ public with sharing class bookingFormController {
         public List<ListOfPlot> plots;
     }
 
+    /**
+ * @description Wrapper class representing booking form data.
+ *              This stores all necessary details required to process a booking.
+ */
     public class bookingFormData {
         public String dateOfBooking;
         public String unitName;
@@ -584,6 +742,10 @@ public with sharing class bookingFormController {
         public List<ListOfCoApplicant> listOfCoApplicant;        
     }
 
+    /**
+ * @description Wrapper class to store retrieved records from the system.
+ *              This class is used to send multiple record types in a single response.
+ */
     public class getRecordDataWrapper{
         @AuraEnabled
         public List<Quote__c> listOfOpportunityRecords{get; set;}
@@ -599,6 +761,10 @@ public with sharing class bookingFormController {
         public LightningResponse response{get; set;}
     }
 
+    /**
+ * @description Standard response wrapper for handling API responses.
+ *              This class is used to send success status and additional response details.
+ */
     public class LightningResponse {
         @AuraEnabled
         public Boolean isSuccess { get; set; }

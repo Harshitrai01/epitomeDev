@@ -1,10 +1,28 @@
 /**
-* Author: Harshit Kumar Rai
-* Description: For Payment Send Link In Batches
+*********************************************************
+Apex Class Name    : PaymentSendLinkEasyCollect
+Created Date       : March 18, 2025
+@description       : Batch class to send payment links using EasyCollect API.
+                     - Generates payment links for Opportunity records.
+                     - Inserts corresponding Payment Gateway records.
+                     - Sends customized email notifications to users.
+@author            : Harshit Kumar Rai
+Modification Log:
+Ver   Date         Author                         Modification
+1.0   18-03-2025   Harshit Kumar Rai             Initial Version
+*********************************************************
 */
 global class PaymentSendLinkEasyCollect implements Database.Batchable<sObject>, Database.AllowsCallouts{
     
     private List<Opportunity> oppList;
+    
+    /**
+    *********************************************************
+    @Method Name    : Constructor
+    @description    : Initializes the batch class with a list of Opportunity records.
+    @param          : opp - List of Opportunity records to process.
+    *********************************************************
+    */
     public PaymentSendLinkEasyCollect(List<Opportunity> opp) {
         this.oppList=opp;
     }
@@ -16,6 +34,18 @@ global class PaymentSendLinkEasyCollect implements Database.Batchable<sObject>, 
              Where Id IN :oppList AND Contact__c!=null AND First_Booking_Amount__c!=null]);
     }
     
+    /**
+    *********************************************************
+    @Method Name    : execute
+    @description    : Processes each batch of Opportunity records.
+                      - Calls EasyCollect API to generate payment links.
+                      - Inserts Payment Gateway records.
+                      - Sends email notifications with payment details.
+    @param          : Database.BatchableContext BC
+                      oppRecords - List of Opportunity records.
+    @return         : None
+    *********************************************************
+    */
     global void execute(Database.BatchableContext BC, List<Opportunity> oppRecords) {
         List<String>reponses = New List<String>();
         for(Opportunity opp: oppRecords){
@@ -183,6 +213,15 @@ global class PaymentSendLinkEasyCollect implements Database.Batchable<sObject>, 
         }
     }
     
+        /**
+    *********************************************************
+    @Method Name    : finish
+    @description    : Final method in the batch lifecycle.
+                      Used for cleanup, post-processing, or logging.
+    @param          : Database.BatchableContext BC
+    @return         : None
+    *********************************************************
+    */
     global void finish(Database.BatchableContext BC) {
         
     }

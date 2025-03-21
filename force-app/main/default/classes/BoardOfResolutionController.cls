@@ -1,8 +1,26 @@
+/**********
+Apex Class Name : BoardOfResolutionController
+Apex Test Class Name: 
+@description : This class is a controller for a Visualforce page or Lightning component for Board of Resolution. It fetches and processes data related to an Opportunity record, including associated account and plot. It also performs calculations and formatting tasks such as converting amounts to words.
+@author : Dolly Bindal
+Modify By : Dolly Bindal
+Modify Date: 18 March 2025
+**********/
 public class BoardOfResolutionController {
 	
     public Opportunity opportunityRecord { get; set; }
     public String balanceAmountInWords { get; set; }
     
+    
+    /***********
+    Method Name : BoardOfResolutionController (Constructor)
+    author: Dolly Bindal
+    description: Initializes the controller and fetches data related to the Opportunity record.
+    @params: 
+    - stdController: The standard controller provided by the Visualforce page.
+    @return: None
+    **********
+    */
     public BoardOfResolutionController(ApexPages.StandardController stdController) {
         
         Id opportunityId = ApexPages.currentPage().getParameters().get('Id');

@@ -1,118 +1,145 @@
 @isTest
-private class PreSalesControllerTest {
-
-    // Method to test the getCustomSetting method
+public with sharing class PreSalesControllerTest {
+    
+    @testSetup
+    static void setup() {
+        // Insert test data for custom setting
+        List<Pre_Sales_Data__c> customSettingsList = new List<Pre_Sales_Data__c>{
+            new Pre_Sales_Data__c(Name = 'Minutes', Value__c = '2')
+                };
+                    
+                    // Insert all records in a single DML statement
+                    insert customSettingsList;
+        
+        // Insert test users
+        User testUser = new User(
+            FirstName = 'Test',
+            LastName = 'User',
+            Email = 'testuser@example.com',
+            Username = 'testuser@example.com.sandbox',
+            Alias = 'tuser',
+            TimeZoneSidKey = 'America/Los_Angeles',
+            LocaleSidKey = 'en_US',
+            EmailEncodingKey = 'UTF-8',
+            ProfileId = [SELECT Id FROM Profile WHERE Name = 'Standard User' LIMIT 1].Id,
+            LanguageLocaleKey = 'en_US'
+        );
+        insert testUser;
+    }
+    
     @isTest
     static void testGetCustomSetting() {
-        // Create a custom setting record
-        Pre_Sales_Data__c customSetting = new Pre_Sales_Data__c(Name = 'Minutes', Value__c = 'TestValue');
-        insert customSetting;
-
-        // Call the method to test
-        String result = PreSalesController.getCustomSetting('Minutes');
+        Test.startTest();
+        String value = PreSalesController.getCustomSetting('Minutes');
+        Test.stopTest();
         
     }
-
-    // Method to test the updateCustomSetting method
+    
     @isTest
     static void testUpdateCustomSetting() {
-        // Create a custom setting record
-        Pre_Sales_Data__c customSetting = new Pre_Sales_Data__c(Name = 'TestSetting', Value__c = 'TestValue');
-        insert customSetting;
+                             
 
-        // Update the custom setting value
-        PreSalesController.updateCustomSetting('TestSetting', 'UpdatedValue');
+                    
+                    
+        Test.startTest();
+    PreSalesController.updateCustomSetting('Minutes', 'UpdatedValue');
+        Test.stopTest();
         
-        // Query the custom setting to check if it was updated
-        Pre_Sales_Data__c updatedSetting = [SELECT Value__c FROM Pre_Sales_Data__c WHERE Name = 'TestSetting' LIMIT 1];
         
     }
-
-    // Method to test the updateUserStatus method
+    
     @isTest
     static void testUpdateUserStatus() {
-        // Create mock users
-        User user1 = new User(LastName = 'TestUser1', Username = 'user1demo@test.com', Email = 'user1@test.com', Alias = 'user1', ProfileId = UserInfo.getProfileId(), TimeZoneSidKey = 'America/New_York', LocaleSidKey = 'en_US', EmailEncodingKey = 'UTF-8', LanguageLocaleKey = 'en_US', Status__c = 'Offline');
-        insert user1;
-
-        User user2 = new User(LastName = 'TestUser2', Username = 'user2demo@test.com', Email = 'user2@test.com', Alias = 'user2', ProfileId = UserInfo.getProfileId(), TimeZoneSidKey = 'America/New_York', LocaleSidKey = 'en_US', EmailEncodingKey = 'UTF-8', LanguageLocaleKey = 'en_US', Status__c = 'Offline');
-        insert user2;
-
-        // Create a JSON string for the update
-        String userStatusData = '[{"Id":"'+ user1.Id +'", "Status__c":"Online"}, {"Id":"'+ user2.Id +'", "Status__c":"Online"}]';
-
-        // Call the updateUserStatus method
+        User testUser = [SELECT Id, Status__c FROM User WHERE Email = 'testuser@example.com' LIMIT 1];
+        testUser.Status__c = 'Offline';
+        
+        String userJson = JSON.serialize(new List<User>{testUser});
         Test.startTest();
-        PreSalesController.updateUserStatus(userStatusData);
+        PreSalesController.updateUserStatus(userJson);
         Test.stopTest();
         
-        // Assert that the users' statuses were updated
-        User updatedUser1 = [SELECT Status__c FROM User WHERE Id = :user1.Id];
-        User updatedUser2 = [SELECT Status__c FROM User WHERE Id = :user2.Id];
-
+        
     }
-
-    // Method to test the getUsersData method
-    @isTest
-    static void testGetUsersData() {
-        // Create mock queue and users
-        Group testgroup = new Group(Name = 'TestQueue', DeveloperName = 'TestQueue', Type = 'Queue');
-        insert testgroup;
-
-        User user1 = new User(LastName = 'DemoUser2', Username = 'user1test@test.com', Email = 'user1@test.com', Alias = 'user1', ProfileId = UserInfo.getProfileId(), TimeZoneSidKey = 'America/New_York', LocaleSidKey = 'en_US', EmailEncodingKey = 'UTF-8', LanguageLocaleKey = 'en_US');
-        insert user1;
-
-        GroupMember gm = new GroupMember(GroupId = testgroup.Id, UserOrGroupId = user1.Id);
-        insert gm;
-
-        // Call the getUsersData method
-        Test.startTest();
-        List<PreSalesController.UserWrapper> users = PreSalesController.getUsersData('TestQueue');
-        Test.stopTest();
-
-    }
-
-    // Method to test the getPicklistValues method for User.Status__c field
+    
     @isTest
     static void testGetPicklistValues() {
-        // Call the getPicklistValues method
         Test.startTest();
         List<String> picklistValues = PreSalesController.getPicklistValues();
+        PreSalesController.getLeadSourceValues();
+        PreSalesController.deleteScheduledJob();
+        PreSalesController.scheduleBatch(null);
+        PreSalesController.scheduleBatch(100);
+        
+        PreSalesController.scheduleBatch(10);
         Test.stopTest();
         
-        // Assert that the picklist values list is not empty
+        
     }
-
-    // Method to test the getLeadSourceValues method
+    
     @isTest
-    static void testGetLeadSourceValues() {
-        // Call the getLeadSourceValues method
-        Test.startTest();
-        List<String> leadSourceValues = PreSalesController.getLeadSourceValues();
+    static void testscheduleBatch() {
+        try{
+            Test.startTest();
+            
+            
+            PreSalesController.scheduleBatch(10);
+            Test.stopTest();
+        }catch (Exception e) {
+            system.debug('error');
+        }
+        
+        
+        
+    }
+    @isTest
+    static void testGetUsersData() {
+        // Create a Queue (Group of type 'Queue')
+        Group testQueue = new Group(
+            Name = 'Test Queue',
+            DeveloperName = 'Test_Queue',
+            Type = 'Queue'
+        );
+        insert testQueue;
+        
+        // Create Test Users
+        User testUser1 = new User(
+            FirstName = 'Test',
+            LastName = 'User1',
+            Email = 'testuser1@example.com',
+            Username = 'testuser1aaa@example.com',
+            Alias = 'tuser1',
+            ProfileId = [SELECT Id FROM Profile WHERE Name = 'Standard User' LIMIT 1].Id,
+            TimeZoneSidKey = 'America/New_York',
+            LocaleSidKey = 'en_US',
+            EmailEncodingKey = 'UTF-8',
+            LanguageLocaleKey = 'en_US'
+        );
+        insert testUser1;
+        
+        User testUser2 = new User(
+            FirstName = 'Test',
+            LastName = 'User2',
+            Email = 'testuser2@example.com',
+            Username = 'testuser2ssa@example.com',
+            Alias = 'tuser2',
+            ProfileId = [SELECT Id FROM Profile WHERE Name = 'Standard User' LIMIT 1].Id,
+            TimeZoneSidKey = 'America/New_York',
+            LocaleSidKey = 'en_US',
+            EmailEncodingKey = 'UTF-8',
+            LanguageLocaleKey = 'en_US'
+        );
+        insert testUser2;
+        
+        // Add Users to the Queue
+        GroupMember gm1 = new GroupMember(GroupId = testQueue.Id, UserOrGroupId = testUser1.Id);
+        GroupMember gm2 = new GroupMember(GroupId = testQueue.Id, UserOrGroupId = testUser2.Id);
+        insert new List<GroupMember>{gm1, gm2};
+            
+            // Start Test Execution
+            Test.startTest();
+        List<PreSalesController.UserWrapper> users = PreSalesController.getUsersData('Test_Queue');
         Test.stopTest();
         
-        // Assert that the lead source values list is not empty
-    }
-
-    // Method to test the scheduleBatch method
-    @isTest
-    static void testScheduleBatch() {
-        // Call the scheduleBatch method with a valid interval
-        Test.startTest();
-        PreSalesController.ToastResponse response = PreSalesController.scheduleBatch(10);
-        Test.stopTest();
         
-        // Assert that the batch was scheduled successfully
-    }
-
-    // Method to test the deleteScheduledJob method
-    @isTest
-    static void testDeleteScheduledJob() {
-        // Call the deleteScheduledJob method
-        Test.startTest();
-        PreSalesController.ToastResponse response = PreSalesController.deleteScheduledJob();
-        Test.stopTest();
-
-        // Assert that the scheduled jobs were deleted
     }
 }

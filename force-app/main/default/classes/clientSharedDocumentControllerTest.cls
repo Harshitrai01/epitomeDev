@@ -64,4 +64,17 @@ public class clientSharedDocumentControllerTest {
         Test.stopTest();
 
     }
+   @isTest
+static void testNullCheckOpportunityContact() {
+    Test.startTest();
+    
+    try {
+        List<Contact> contacts = clientSharedDocumentController.checkOpportunityContact(null);
+    } catch (Exception ex) {
+        System.debug('Exception occurred: ' + ex.getMessage());
+    }
+
+    Test.stopTest();
+}
+
 }

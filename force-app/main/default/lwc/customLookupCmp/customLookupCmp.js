@@ -62,6 +62,7 @@ export default class CustomLookupCmp extends LightningElement {
                 this.showOptions = result.length > 0;
 
                  if (result.length === 0) {
+                    this.searchTerm = '';
                 this.showToast('Error', 'No plots found for phase.', 'error');
             }
             })

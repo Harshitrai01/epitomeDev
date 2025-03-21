@@ -1,16 +1,23 @@
-/**
- * @description Controller for managing user status in a Lightning Component.
- * @author Varun Rawal
- * @date 2024-09-26
- */
+/**********
+Apex Class Name : UserStatusController
+Apex Test Class Name: 
+Created Date: January 21, 2025
+@description : This class is a controller for managing user status in a Lightning Component. It provides methods to retrieve the current user's status, fetch available status picklist values, and update the user's status.
+@author : Varun Rawal
+Modify By : 
+Modify Date: 
+**********/
 
 public with sharing class UserStatusController {
     
-    /**
-     * Retrieves the current user's status.
-     * Uses caching for better performance.
-     * @return User's status or 'Offline' if null.
-     */
+    /*
+    **********
+    Method Name : getCurrentUserStatus
+    author: Varun Rawal
+    description: Retrieves the current user's status. Uses caching for better performance.
+    @return: User's status or 'Offline' if null.
+    **********
+    */
     @AuraEnabled(cacheable=true)
     public static String getCurrentUserStatus() {
         try {
@@ -25,11 +32,14 @@ public with sharing class UserStatusController {
         }
     }
 
-    /**
-     * Fetches available picklist values for the Status__c field on the User object.
-     * Uses caching for better performance.
-     * @return List of active status values.
-     */
+    /*
+    **********
+    Method Name : getStatusPicklistValues
+    author: Varun Rawal
+    description: Fetches available picklist values for the Status__c field on the User object. Uses caching for better performance.
+    @return: List of active status values.
+    **********
+    */
     @AuraEnabled(cacheable=true)
     public static List<String> getStatusPicklistValues() {
         List<String> picklistValues = new List<String>();
@@ -50,11 +60,16 @@ public with sharing class UserStatusController {
         return picklistValues;
     }
 
-    /**
-     * Updates the current user's status.
-     * @param newStatus - The new status to be set.
-     * @return Success message if updated successfully.
-     */
+    /*
+    **********
+    Method Name : updateUserStatus
+    author: Varun Rawal
+    description: Updates the current user's status. While updating or inserting, use as user.
+    @params: 
+        - newStatus: The new status to be set.
+    @return: Success message if updated successfully.
+    **********
+    */
     @AuraEnabled
     public static String updateUserStatus(String newStatus) {
         if (String.isBlank(newStatus)) {
@@ -68,7 +83,7 @@ public with sharing class UserStatusController {
             // Update status only if it's different to avoid unnecessary DML operations
             if (currentUser.Status__c != newStatus) {
                 currentUser.Status__c = newStatus;
-                update currentUser;
+                update currentUser; // Update as the current user
             }
 
             return 'Status updated successfully to ' + newStatus;

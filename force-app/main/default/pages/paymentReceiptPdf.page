@@ -1,0 +1,121 @@
+<apex:page extensions="PaymentReceiptController" renderAs="pdf" applyBodyTag="false" showHeader="false" sidebar="false" standardController="Payment__c">
+    <html>
+        <body style="font-family: Arial, sans-serif; margin: 0; padding: 0;">
+            <div style="border: 1px solid #999; padding: 10px;">
+                <div>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr>
+                            <td style="width: 220px; vertical-align: top;">
+                                <div style="margin-left: 60px;">
+                                    <img src="{!URLFOR($Resource.EpitomeLogo)}" alt="Epitome Logo" 
+                                         style="width: 120px; height: 100px;" />
+                                </div>
+                            </td>
+                            <!-- Text Section -->
+                            <td style="vertical-align: top; padding-left: 5px;">
+                                <h1 style="font-size: 24px; font-weight: bold; margin: 0 0 10px 0;">EPITOME PROJECTS LLP</h1>
+                                <p style="font-size: 14px; margin: 0 0 5px 0; color: #333;">
+                                    Sy no 64, Plot No C2, HUDA Techno Enclave, Commercial Sector-III
+                                </p>
+                                <p style="font-size: 14px; margin: 0 0 5px 0; color: #333;">
+                                    Serilingampally Mandal, Madhapur, Hyderabad
+                                </p>
+                                <p style="font-size: 14px; margin: 0 0 5px 0; color: #333;">
+                                    Rangareddy, Telangana, 500081
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div>
+                    <div style="text-align: center; padding-top:40px">
+                            <div style="background-color: #1a1a1a; color: white; border: none; border-radius: 80px; padding: 10px 40px; 
+                                        display: inline-block; font-weight: bold;">
+                                RECEIPT
+                            </div>
+                     </div>
+                </div>
+                
+                <div style="margin-top: 60px;">
+                    <div>
+                        <div style="display: inline-block; font-weight: bold;">Record Id No. :</div>
+                        <div style="display: inline-block; margin-left: 5px;">{!paymentRecord.Id}</div>
+                        
+                        <div style="margin-left:150px; display: inline-block; font-weight: bold;">Receipt Date :</div>
+                        <div style="display: inline-block; margin-left: 5px;">{!todayDate}</div>
+                        <div style="display: inline-block; font-weight: bold;">Opportunity Name :</div>
+                        <div style="display: inline-block; margin-left: 5px;">{!paymentRecord.Opportunity__r.Name}</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 30px;">
+                    <div>
+                        <div style="display: inline-block; font-weight: bold;">Received with thanks from Smt/Sri :</div>
+                        <div style="display: inline-block; margin-left: 5px;">{!customerName}</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 30px;">
+                    <div>
+                        <div style="display: inline-block; font-weight: bold;">Project Name :</div>
+                        <div style="display: inline-block; margin-left: 5px;">{!paymentRecord.Opportunity__r.Unit__r.Project__r.Name}</div>
+                    </div>
+                    <div>
+                        <div style="display: inline-block; font-weight: bold;">Phase Name:</div>
+                        <div style=" display: inline-block; margin-left: 5px;">{!paymentRecord.Opportunity__r.Unit__r.Phase__r.Name}</div>
+                    </div>
+                    <div>
+                        <div style="display: inline-block; font-weight: bold;">Plot Name :</div>
+                        <div style="display: inline-block; margin-left: 5px;">{!paymentRecord.Opportunity__r.Plot_Name__c}</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 30px;">
+                    <div>
+                        <div style="display: inline-block; font-weight: bold;">The sum of rupees in words :</div>
+                        <div>{!rupeesInWord}</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 30px;">
+                    <div>
+                        <div>
+                            <div style="display: inline-block; font-weight: bold;">Reference Id :</div>
+                            <div style="display: inline-block; margin-left: 5px;">{!referenceId}</div>
+                            
+                            <div style="margin-left:100px; display: inline-block; font-weight: bold;">Date :</div>
+                            <div style="display: inline-block; margin-left: 5px;">{!paymentDate}</div>
+                        </div>
+                        <div>
+                            <div style="display: inline-block; font-weight: bold;">Payment Mode :</div>
+                        	<div style="display: inline-block; margin-left: 5px;">{!paymentRecord.Payment_Mode__c}</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 30px;">
+                    <div>
+                        <div style="display: inline-block; font-weight: bold;">Amount : Rs</div>
+                        <div style="display: inline-block; margin-left: 5px;">{!paymentRecord.Payment_Amount__c}</div>
+                        <div style="display: inline-block; margin-left: 5px;">
+                            <p style="font-size: 10px; margin: 0;">
+                            	Towards: Booking Advance / Part Payment / Final Payment / Registration and Others
+                        	</p>
+                        </div>
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <p style="font-size: 10px; font-style: italic; margin: 0;">
+                            * This is a digitally generated receipt, no signature is required.
+                    </p>
+                </div>
+                
+            </div>
+        </body>
+    </html>
+</apex:page>

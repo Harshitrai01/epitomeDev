@@ -1,7 +1,14 @@
 /*
- Owner: Harshit Rai
- Purpose: To Send Plot Cancellation Mail To Customer
- */
+*********************************************************
+Apex Class Name    : SendCancellationEmail
+Created Date       : 18th March 2025
+@description       : To Send Plot Cancellation Mail To Customer
+@author            : Harshit Kumar Rai
+Modification Log:
+Ver   Date             Author                               Modification
+1.0   18th March 2025  Harshit Kumar Rai                   Initial Version
+*********************************************************
+*/
 public with sharing class SendCancellationEmail {
     
     @AuraEnabled

@@ -1,9 +1,27 @@
+/**********
+Apex Class Name : demandLetterPdfController
+Apex Test Class Name: 
+@description : This class is a controller for a Visualforce page or Lightning component for Demand Letter. It fetches and processes data related to an Opportunity record and Opportunity Contact Role Record, including associated plot. It also performs calculations and formatting tasks such as converting amounts to words.
+@author : Dolly Bindal
+Modify By : Dolly Bindal
+Modify Date: 18 March 2025
+**********/
 public class demandLetterPdfController {
 	
     public Opportunity opportunityRecord { get; set; }
     public OpportunityContactRole OpportunityContactRolesRecord { get; set; }
     public String balanceAmountInWords { get; set; }
     
+    
+    /***********
+    Method Name : demandLetterPdfController (Constructor)
+    author: Dolly Bindal
+    description: Initializes the controller and fetches data related to the Opportunity and opportunity contact role record.
+    @params: 
+    - stdController: The standard controller provided by the Visualforce page.
+    @return: None
+    **********
+    */
     public demandLetterPdfController(ApexPages.StandardController stdController) {
         
         Id opportunityId = ApexPages.currentPage().getParameters().get('Id');
