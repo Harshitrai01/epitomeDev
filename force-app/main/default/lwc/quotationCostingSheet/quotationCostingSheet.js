@@ -206,17 +206,17 @@ export default class QuotationCostingSheet extends LightningElement {
                         this.quoteRecordToSave['Opportunity__c']=this.oppId;
                         this.quoteRecordToSave['Plot__c']=this.plotId;
                         this.quoteRecordToSave['Lead__c']=this.quoteData?.Lead__c;
-                        this.quoteRecordToSave['X100_Ft_Road_Plots__c']  = parseFloat(this.quoteData.X100_Ft_Road_Plots__c);
-                        this.quoteRecordToSave['Price_For_North_East__c']  = parseFloat(this.quoteData.Price_For_North_East__c);
-                        this.quoteRecordToSave['Legal_And_Documentation_Charges__c']  = parseFloat(this.quoteData.Legal_And_Documentation_Charges__c);
-                        this.quoteRecordToSave['Other_Corners__c']  = parseFloat(this.quoteData.Other_Corners__c);
-                        this.quoteRecordToSave['Corpus_Fund_and_Club_House_Payable__c']  = parseFloat(this.quoteData.Corpus_Fund_and_Club_House_Payable__c);
-                        this.quoteRecordToSave['Registration_Charges__c']  = parseFloat(this.quoteData.Registration_Charges__c);
-                        this.quoteRecordToSave['East__c']  = parseFloat(this.quoteData.East__c);
-                        this.quoteRecordToSave['Premium_Plots__c']  = parseFloat(this.quoteData.Premium_Plots__c);
-                        this.quoteRecordToSave['Rate_Per_Sq_Yd__c']  = parseFloat(this.quoteData.Rate_Per_Sq_Yd__c);
-                        this.quoteRecordToSave['Time_To_Pay_In_Days__c']  = this.quoteData?.Time_To_Pay_In_Days__c;
-                        this.quoteRecordToSave['Base_Price_Per_Sq_Yard__c']  = this.finalPlotPrice;
+                        this.quoteRecordToSave['X100_Ft_Road_Plots__c']  = parseFloat(this.quoteData.X100_Ft_Road_Plots__c) || 0 ;
+                        this.quoteRecordToSave['Price_For_North_East__c']  = parseFloat(this.quoteData.Price_For_North_East__c) || 0 ;
+                        this.quoteRecordToSave['Legal_And_Documentation_Charges__c']  = parseFloat(this.quoteData.Legal_And_Documentation_Charges__c) || 0 ;
+                        this.quoteRecordToSave['Other_Corners__c']  = parseFloat(this.quoteData.Other_Corners__c) || 0 ;
+                        this.quoteRecordToSave['Corpus_Fund_and_Club_House_Payable__c']  = parseFloat(this.quoteData.Corpus_Fund_and_Club_House_Payable__c) || 0 ;
+                        this.quoteRecordToSave['Registration_Charges__c']  = parseFloat(this.quoteData.Registration_Charges__c) || 0 ;
+                        this.quoteRecordToSave['East__c']  = parseFloat(this.quoteData.East__c) || 0 ;
+                        this.quoteRecordToSave['Premium_Plots__c']  = parseFloat(this.quoteData.Premium_Plots__c) || 0 ;
+                        this.quoteRecordToSave['Rate_Per_Sq_Yd__c']  = parseFloat(this.quoteData.Rate_Per_Sq_Yd__c) || 0 ;
+                        this.quoteRecordToSave['Time_To_Pay_In_Days__c']  = this.quoteData?.Time_To_Pay_In_Days__c || 30;
+                        this.quoteRecordToSave['Base_Price_Per_Sq_Yard__c']  = this.finalPlotPrice || 0 ;
                     }
                     if(this.toUpdate){
                         this.isLoading=true;

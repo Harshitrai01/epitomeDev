@@ -91,7 +91,10 @@ public with sharing class QuotationCostingSheetController {
             req.setNextApproverIds(null);
             req.setProcessDefinitionNameOrId('Quote_Approval_Process');
             if(userId!=''){
-            	req.setSubmitterId(userId);
+                List<User> userList = [Select Id From User Where ID=:userId Limit 1];
+                if(userList!=null && !userList.isEmpty()){
+                    req.setSubmitterId(userId);
+                }
             }
 
             Approval.ProcessResult result = Approval.process(req);
