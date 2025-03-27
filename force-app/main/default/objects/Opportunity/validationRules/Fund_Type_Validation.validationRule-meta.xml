@@ -3,6 +3,11 @@
     <fullName>Fund_Type_Validation</fullName>
     <active>true</active>
     <errorConditionFormula>AND(
+   OR(
+       ISPICKVAL(StageName, &quot;Loan Process&quot;),
+       ISPICKVAL(StageName, &quot;AOS&quot;),
+       ISPICKVAL(StageName, &quot;Progressive&quot;)
+    ),
     ISCHANGED(StageName),  
     ISPICKVAL(PRIORVALUE(StageName), &quot;Onboarded&quot;),
     ISBLANK(TEXT(Funding_Type__c))

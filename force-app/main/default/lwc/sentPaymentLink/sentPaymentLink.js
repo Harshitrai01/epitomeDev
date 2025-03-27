@@ -108,6 +108,11 @@ export default class SentPaymentLink extends LightningElement {
             return;
         }
 
+        if (parseInt(this.time.trim(), 10) < 5) {
+            this.displayMessage('Error', 'Time should not be less than 5 minutes.', 'error');
+            return;
+        }
+
         this.sendPaymentLink();
     }
 

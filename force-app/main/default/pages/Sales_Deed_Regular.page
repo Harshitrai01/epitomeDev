@@ -1,7 +1,7 @@
-<apex:page renderAs="pdf">
+<apex:page renderAs="pdf" standardController="Opportunity" showHeader="false" sidebar="false" extensions="SalesDeedBulkController">
     <h2 style="text-align: center;">SALE DEED</h2>
     
-    <p style="margin-bottom: 10px;">This Sale Deed is made and executed on this the ____ day of ___________, 2025 at SRO, Choutuppal, Yadadri-Bhuvanagiri District, Telangana – Pin 508252.</p>
+    <p style="margin-bottom: 10px;">This Sale Deed is made and executed on this the {!currentDate} at SRO, Choutuppal, Yadadri-Bhuvanagiri District, Telangana – Pin 508252.</p>
 
     <p style="margin-bottom: 10px;">
         <strong>EPITOME PROJECTS LLP</strong> (Identification No. AAR-2975 PAN NO. AASFV6192L),<br/>
@@ -15,16 +15,17 @@
     IN FAVOUR OF:
     </p>
     
-    <p style="margin-bottom: 10px;">
-    <strong>1. ADEPU VISHWANATHAM PAWAN</strong>, S/o. ADEPU VISHWANATHAM, aged about 39 years, Occupation: Private Employee,<br/>
-    R/o. Plot No. 193, H.No. 1-23-279, Road No. 11, Telecom Colony, Tirumalgiri, Hyderabad, Telangana, 500015, <br/>
-    Aadhar No. 9489 9991 2008, PAN No. ….……………., Contact No. 9346034500.<br/>
-    </p>
-    <p style="margin-bottom: 10px;">
-    <strong>2. D.MANOGNA</strong>, D/o. DEECONDA SAINATH (W/o. ADEPU VISHWANATHAM PAWAN), aged about 36 years, Occupation: Private Employee,<br/>
-     R/o. Plot No. 193, H.No. 1-23-279, Road No. 11, Telecom Colony, Tirumalgiri, Hyderabad, Telangana, 500015,  <br/>
-    Aadhar No. 3603 7960 9281, PAN No. ….…………….. <br/>
-    </p>
+       <apex:repeat value="{!contactDetailsList}" var="contactDetail">
+                <p style="margin-bottom: 10px;">
+                    <strong>{!contactDetail.Salutation} {!contactDetail.name}</strong>, aged {!contactDetail.age} years, 
+                    <strong>Occupation</strong>: {!contactDetail.occupation}, 
+                    <strong>Address</strong>: {!contactDetail.address}, 
+                    <strong>Aadhar No.</strong>: {!contactDetail.maskedAadhaar},
+                    <strong>Pan No.</strong>: {!contactDetail.maskedAadhaar},
+                    <strong>Phone</strong>: {!contactDetail.maskedAadhaar}
+                </p>
+            </apex:repeat>
+    
         <p style="margin-bottom: 10px;">
         (Hereinafter referred to as the "Vendee/s") of the OTHER PART.
     </p>
@@ -172,54 +173,37 @@ The expressions of the "VENDOR" and the "VENDEE/s" herein used shall wherever th
  <strong>WHEREAS:</strong>,he Vendor had prepared a layout for the residential plots in the extent of Ac.367.14.4 Gts., situated in Sy. Nos. 646/P, 647, 648, 666, 667/P, 683/P, 684/P, 685/P, 686/P, 687/P, 688, 689, 690, 691, 694, 695, 697, 702/P, 703 and 704 of Thangadpally Village, Choutuppal Municipality and in Sy. Nos. 61, 62, 63/P, 65, 66, 67/P, 68, 69, 70, 71, 72/P, 97/P, 98/P, 99/P and 100/P of Devulamma Nagaram Village, Choutuppal Mandal, as per the approved layout plan vide Layout Permit No. 08/LO/Plg/HMDA/2021, Dated: 17-04-2021 of Hyderabad Metropolitan Development Authority (HMDA) under the name as “EPITOME INTEGRATED CITY” (“Project”) and registration is granted under Section 5 to the Project by Telangana Real Estate Regulatory Authority vide Registration Certificate No. P02000003057, Dated: 17-06-2021.
     </p>
       <p style="margin-bottom: 10px; margin-left: 15px;">
- <strong>WHEREAS:</strong>,the Vendor has offered to sell the open land bearing Plot No. 1551 admeasuring 266.65 Sq. Yds or its equivalent 222.96 Sq. Mtrs, in Sy. Nos. 646/P, 647, 648, 666, 667/P, 683/P, 684/P, 685/P, 686/P, 687/P, 688, 689, 690, 691, 694, 695, 697, 702/P, 703 and 704 of Thangadpally Village, Choutuppal Mandal, Yadadri-Bhuvanagiri District, Telangana State,  (Hereinafter referred to as the “SCHEDULE PROPERTY”, which is more clearly described in the Schedule hereunder), to the Vendee/s for a total sale consideration Rs.32,00,000/- (Rupees Thirty Two Lakhs only) (i.e., @Rs.12,000.75/- per Sq. Yd.) and the Vendee/s has agreed to purchase the same for the said consideration from the Vendor. 
+ <strong>WHEREAS:</strong>,the Vendor has offered to sell the open land bearing Plot No. {!opportunityRecord.Unit__r.Name} admeasuring <apex:outputText value="{!opportunityRecord.Unit__r.Plot_Size__c}" /> Sq. Yds or its equivalent  &nbsp;<apex:outputText value="{0,number,###.##} Sq. Mtrs.">
+                    <apex:param value="{!plotSizeInSqM}" />
+                </apex:outputText>, in Sy. Nos. {!opportunityRecord.Unit__r.Survey_Number__c} of {!opportunityRecord.Unit__r.Address__Street__s},{!opportunityRecord.Unit__r.Address__City__s},{!opportunityRecord.Unit__r.Address__StateCode__s},{!opportunityRecord.Unit__r.Address__CountryCode__s},{!opportunityRecord.Unit__r.Address__PostalCode__s},  (Hereinafter referred to as the “SCHEDULE PROPERTY”, which is more clearly described in the Schedule hereunder), to the Vendee/s for a total sale consideration Rs. {!opportunityRecord.Sale_Value_Amount__c}/- ({!saleAmountInWords} (i.e., @Rs  {!opportunityRecord.Unit__r.Plot_Price__c}/- per Sq. Yd.) and the Vendee/s has agreed to purchase the same for the said consideration from the Vendor. 
           
      </p>
     
       <p style="margin-bottom: 10px; margin-left: 15px;">
- <strong>WHEREAS:</strong>, the Vendor has already received from the said Vendee/s the sale consideration of Rs.32,00,000/- (Rupees Thirty Two Lakhs only) as mentioned in the manner below and the receipt of which sum the Vendor hereby admits and acknowledges in favor of the Vendee/s: 
+ <strong>WHEREAS:</strong>, the Vendor has already received from the said Vendee/s the sale consideration of Rs. {!opportunityRecord.Collected_Amount__c}/- ({!paidAmountInWords}) as mentioned in the manner below and the receipt of which sum the Vendor hereby admits and acknowledges in favor of the Vendee/s: 
 
     </p>
     
-      <p style="margin-bottom: 10px; margin-left: 15px;">
- <strong>WHEREAS:</strong>,the Vendor has already received from the said Vendee/s the sale consideration of Rs. 23,46,520/- (Rupees Twenty Three Lakhs, Forty Six Thousand, Five Hundred and Twenty only) as mentioned in the manner below and the receipt of which sum the Vendor hereby admits and acknowledges in favor of the Vendee/s:
-    </p>
-    
         <table style="margin: 5px auto; border-collapse: collapse; width: 90%; border: 1px solid black; font-size: 12px;">
+                <thead>
         <tr>
             <th style="padding: 8px; text-align: left; background-color: #f2f2f2; border: 1px solid black;">S NO.</th>
             <th style="padding: 8px; text-align: left; background-color: #f2f2f2; border: 1px solid black;">Amount</th>
             <th style="padding: 8px; text-align: left; background-color: #f2f2f2; border: 1px solid black;">Date[Credited to Vendor]</th>
             <th style="padding: 8px; text-align: left; background-color: #f2f2f2; border: 1px solid black;">Transaction / Cheque/ Ref. No. </th>
         </tr>
-        <tr>
-            <td style="padding: 8px; border: 1px solid black;">1</td>
-            <td style="padding: 8px; border: 1px solid black;">50,000</td>
-             <td style="padding: 8px; border: 1px solid black;">14-11-2024 </td>
-             <td style="padding: 8px; border: 1px solid black;">389899518682  </td>
-          
-        </tr>
+            </thead>
+    <tbody>
+        <apex:repeat value="{!approvedPayments}" var="payment">
             <tr>
-            <td style="padding: 8px; border: 1px solid black;">1</td>
-            <td style="padding: 8px; border: 1px solid black;">50,000</td>
-             <td style="padding: 8px; border: 1px solid black;">14-11-2024 </td>
-             <td style="padding: 8px; border: 1px solid black;">389899518682  </td>
-          
-        </tr>
-            <tr>
-            <td style="padding: 8px; border: 1px solid black;">1</td>
-            <td style="padding: 8px; border: 1px solid black;">50,000</td>
-             <td style="padding: 8px; border: 1px solid black;">14-11-2024 </td>
-             <td style="padding: 8px; border: 1px solid black;">389899518682  </td>
-          
-        </tr>
-         <tr>
-            <td style="padding: 8px; border: 1px solid black;">Total</td>
-            <td style="padding: 8px; border: 1px solid black;">32,00,00</td>
-             <td style="padding: 8px; border: 1px solid black;">Rupees Thirty Two Lakhs only </td>
-            
-           <td style="padding: 8px; border: 1px solid black;"> </td>
-        </tr>
+                <td>{!payment.paymentAmount}</td>
+                <td>{!payment.paymentDate}</td>
+                <td>{!payment.paymentMode}</td>
+                <td>{!payment.transactionId}</td>
+            </tr>
+        </apex:repeat>
+    </tbody>
+
         
           
     </table>

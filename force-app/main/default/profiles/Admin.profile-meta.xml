@@ -180,6 +180,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>EasebuzzInstaCollectServiceTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>EasebuzzWebhookHandler</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -209,6 +213,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>GupshupFlow</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>GupshupFlowTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -308,7 +316,15 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>PaymentReceiptControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>PaymentReceiptQueueable</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PaymentReceiptQueueableTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -337,6 +353,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>PaymentTransactionInstaCollectBatch</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PaymentTransactionInstaCollectBatchTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -373,6 +393,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>RetailAosControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SalesDeedBulkController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -544,6 +568,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.Correspondence_Address__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Account.Description</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -600,6 +629,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.ParentId</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.Permanent_Address__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -725,6 +759,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Additional_Charges__c.Charges__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Additional_Charges__c.Final_Charges__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2543,6 +2582,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Loan_Outstanding_Amount__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.Loan_Sanctioned_Amount__c</field>
         <readable>true</readable>
@@ -2635,6 +2679,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.Payment_Mode__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Payment_Outstanding_Amount__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2885,6 +2934,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.is_NOC_Uploaded__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.is_Original_Cheque_Uploaded__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -4839,6 +4893,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>User.Aadhaar_Card__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>User.Assigned_Sources__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5142,6 +5201,10 @@
         <field>WorkOrderLineItem.UnitPrice</field>
         <readable>true</readable>
     </fieldPermissions>
+    <flowAccesses>
+        <enabled>false</enabled>
+        <flow>Additional_Charges_After_Create_Update</flow>
+    </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
         <flow>Gupshup_Flow_Configuration</flow>

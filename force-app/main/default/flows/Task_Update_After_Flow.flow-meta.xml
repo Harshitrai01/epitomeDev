@@ -3,7 +3,7 @@
     <actionCalls>
         <name>Copy_1_of_Copy_1_of_Send_Notification_for_Disbursement</name>
         <label>Copy 1 of Copy 1 of Send Notification for Disbursement</label>
-        <locationX>7266</locationX>
+        <locationX>7794</locationX>
         <locationY>1764</locationY>
         <actionName>customNotificationAction</actionName>
         <actionType>customNotificationAction</actionType>
@@ -88,7 +88,7 @@
     <actionCalls>
         <name>Copy_1_of_Send_Notification_for_Disbursement</name>
         <label>Copy 1 of Send Notification for Disbursement</label>
-        <locationX>4626</locationX>
+        <locationX>4890</locationX>
         <locationY>1440</locationY>
         <actionName>customNotificationAction</actionName>
         <actionType>customNotificationAction</actionType>
@@ -132,7 +132,7 @@
     <actionCalls>
         <name>Copy_1_of_send_Notification_to_CRM_Agent</name>
         <label>Copy 1 of send Notification to CRM Agent</label>
-        <locationX>12546</locationX>
+        <locationX>13074</locationX>
         <locationY>816</locationY>
         <actionName>customNotificationAction</actionName>
         <actionType>customNotificationAction</actionType>
@@ -173,7 +173,7 @@
     <actionCalls>
         <name>Copy_2_of_Copy_1_of_Copy_1_of_Send_Notification_for_Disbursement</name>
         <label>Copy 2 of Copy 1 of Copy 1 of Send Notification for Disbursement</label>
-        <locationX>8058</locationX>
+        <locationX>8586</locationX>
         <locationY>1140</locationY>
         <actionName>customNotificationAction</actionName>
         <actionType>customNotificationAction</actionType>
@@ -215,7 +215,7 @@
         <name>Copy_2_of_Send_Notification_ChequeRecieved</name>
         <label>Send Notification for Cheque Recieved</label>
         <locationX>4010</locationX>
-        <locationY>924</locationY>
+        <locationY>1032</locationY>
         <actionName>customNotificationAction</actionName>
         <actionType>customNotificationAction</actionType>
         <connector>
@@ -302,7 +302,7 @@
     <actionCalls>
         <name>KYC_Approve</name>
         <label>KYC Approve</label>
-        <locationX>10170</locationX>
+        <locationX>10698</locationX>
         <locationY>924</locationY>
         <actionName>customNotificationAction</actionName>
         <actionType>customNotificationAction</actionType>
@@ -346,7 +346,7 @@
     <actionCalls>
         <name>KYC_Reject</name>
         <label>KYC Reject</label>
-        <locationX>9906</locationX>
+        <locationX>10434</locationX>
         <locationY>924</locationY>
         <actionName>customNotificationAction</actionName>
         <actionType>customNotificationAction</actionType>
@@ -387,7 +387,7 @@
     <actionCalls>
         <name>Send_Email_for_Eligible</name>
         <label>Send Email for Eligible</label>
-        <locationX>7618</locationX>
+        <locationX>7948</locationX>
         <locationY>3048</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
@@ -416,7 +416,7 @@
     <actionCalls>
         <name>Send_Email_for_Loan_Rejection</name>
         <label>Send Email for Loan Rejection</label>
-        <locationX>7354</locationX>
+        <locationX>7684</locationX>
         <locationY>3048</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
@@ -445,7 +445,7 @@
     <actionCalls>
         <name>Send_Email_for_Loan_Sanctioned</name>
         <label>Send Email for Loan Sanctioned</label>
-        <locationX>6826</locationX>
+        <locationX>7156</locationX>
         <locationY>3048</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
@@ -480,7 +480,7 @@
     <actionCalls>
         <name>Send_Email_with_Attachments_Action_1</name>
         <label>Send Email with Attachments Action 1</label>
-        <locationX>7882</locationX>
+        <locationX>8212</locationX>
         <locationY>3048</locationY>
         <actionName>SendEmailWithAttachment</actionName>
         <actionType>apex</actionType>
@@ -565,7 +565,7 @@
     <actionCalls>
         <name>send_Notification_to_CRM_Agent</name>
         <label>send Notification to CRM Agent</label>
-        <locationX>11226</locationX>
+        <locationX>11754</locationX>
         <locationY>1140</locationY>
         <actionName>customNotificationAction</actionName>
         <actionType>customNotificationAction</actionType>
@@ -607,7 +607,7 @@
     <assignments>
         <name>Add_Contact_Email_to_List</name>
         <label>Add Contact Email to List</label>
-        <locationX>4714</locationX>
+        <locationX>4978</locationX>
         <locationY>1764</locationY>
         <assignmentItems>
             <assignToReference>emailList</assignToReference>
@@ -623,7 +623,7 @@
     <assignments>
         <name>Assign_CRM_Agent</name>
         <label>Assign CRM Agent</label>
-        <locationX>10170</locationX>
+        <locationX>10698</locationX>
         <locationY>708</locationY>
         <assignmentItems>
             <assignToReference>userIdsList</assignToReference>
@@ -639,7 +639,7 @@
     <assignments>
         <name>assign_opportunity_owner</name>
         <label>assign opportunity owner</label>
-        <locationX>8058</locationX>
+        <locationX>8586</locationX>
         <locationY>1032</locationY>
         <assignmentItems>
             <assignToReference>userIdsList</assignToReference>
@@ -655,7 +655,7 @@
     <assignments>
         <name>Assign_Owner_to_Lead</name>
         <label>Assign Owner to Lead</label>
-        <locationX>6474</locationX>
+        <locationX>7002</locationX>
         <locationY>924</locationY>
         <assignmentItems>
             <assignToReference>get_Lead_Record.OwnerId</assignToReference>
@@ -687,7 +687,7 @@
     <assignments>
         <name>Assign_to_Variable</name>
         <label>Assign to Variable</label>
-        <locationX>4714</locationX>
+        <locationX>4978</locationX>
         <locationY>1872</locationY>
         <assignmentItems>
             <assignToReference>Allottees</assignToReference>
@@ -703,7 +703,7 @@
     <assignments>
         <name>assign_users_Ids</name>
         <label>assign users Ids</label>
-        <locationX>7486</locationX>
+        <locationX>8014</locationX>
         <locationY>1464</locationY>
         <assignmentItems>
             <assignToReference>userIdsList</assignToReference>
@@ -726,7 +726,7 @@
     <assignments>
         <name>Assignment_11</name>
         <label>Assignment 11</label>
-        <locationX>4714</locationX>
+        <locationX>4978</locationX>
         <locationY>924</locationY>
         <assignmentItems>
             <assignToReference>contactId</assignToReference>
@@ -743,7 +743,7 @@
         <name>Copy_1_of_Assign_OwnerId_to_List</name>
         <label>Copy 1 of Assign OwnerId to List</label>
         <locationX>4010</locationX>
-        <locationY>708</locationY>
+        <locationY>816</locationY>
         <assignmentItems>
             <assignToReference>ownerIds</assignToReference>
             <operator>Add</operator>
@@ -774,7 +774,7 @@
     <assignments>
         <name>Copy_1_of_Copy_2_of_Assign_CRM_Agent</name>
         <label>Copy 1 of Copy 2 of Assign CRM Agent</label>
-        <locationX>12546</locationX>
+        <locationX>13074</locationX>
         <locationY>708</locationY>
         <assignmentItems>
             <assignToReference>userIdsList</assignToReference>
@@ -790,7 +790,7 @@
     <assignments>
         <name>Copy_2_of_Assign_CRM_Agent</name>
         <label>Copy 2 of Assign CRM Agent</label>
-        <locationX>11556</locationX>
+        <locationX>12084</locationX>
         <locationY>708</locationY>
         <assignmentItems>
             <assignToReference>userIdsList</assignToReference>
@@ -806,7 +806,7 @@
     <assignments>
         <name>Copy_2_of_Assign_OwnerId_to_List</name>
         <label>Copy 2 of Assign OwnerId to List</label>
-        <locationX>4626</locationX>
+        <locationX>4890</locationX>
         <locationY>1224</locationY>
         <assignmentItems>
             <assignToReference>ownerIds</assignToReference>
@@ -822,7 +822,7 @@
     <assignments>
         <name>Copy_2_of_Assign_to_Variable</name>
         <label>Copy 2 of Assign to Variable</label>
-        <locationX>4626</locationX>
+        <locationX>4890</locationX>
         <locationY>1548</locationY>
         <assignmentItems>
             <assignToReference>Allottees</assignToReference>
@@ -852,19 +852,9 @@
         </connector>
     </assignments>
     <customErrors>
-        <name>add_custom_error_for_original_sales_deed</name>
-        <label>add custom error for original sales deed</label>
-        <locationX>5418</locationX>
-        <locationY>816</locationY>
-        <customErrorMessages>
-            <errorMessage>Please Add Original Sales Deed Document.</errorMessage>
-            <isFieldError>false</isFieldError>
-        </customErrorMessages>
-    </customErrors>
-    <customErrors>
         <name>add_error</name>
         <label>add error</label>
-        <locationX>8146</locationX>
+        <locationX>8476</locationX>
         <locationY>2940</locationY>
         <customErrorMessages>
             <errorMessage>Please add Draft AOS.</errorMessage>
@@ -874,10 +864,20 @@
     <customErrors>
         <name>Copy_1_of_add_custom_error_for_original_sales_deed</name>
         <label>Copy 1 of add custom error for original sales deed</label>
-        <locationX>5946</locationX>
-        <locationY>816</locationY>
+        <locationX>6210</locationX>
+        <locationY>924</locationY>
         <customErrorMessages>
             <errorMessage>Please Add Original Sales Deed Document.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Copy_1_of_Copy_1_of_add_custom_error_for_original_sales_deed</name>
+        <label>Copy 1 of Copy 1 of add custom error for original sales deed</label>
+        <locationX>6474</locationX>
+        <locationY>816</locationY>
+        <customErrorMessages>
+            <errorMessage>Status can be changed to Original uploaded only when the opportunity Stage is Registered</errorMessage>
             <isFieldError>false</isFieldError>
         </customErrorMessages>
     </customErrors>
@@ -892,9 +892,19 @@
         </customErrorMessages>
     </customErrors>
     <customErrors>
+        <name>Copy_2_of_Copy_1_of_Copy_1_of_add_error</name>
+        <label>Copy 2 of Copy 1 of Copy 1 of add error</label>
+        <locationX>4274</locationX>
+        <locationY>816</locationY>
+        <customErrorMessages>
+            <errorMessage>Please add Original Cheque.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
         <name>error</name>
         <label>error</label>
-        <locationX>11490</locationX>
+        <locationX>12018</locationX>
         <locationY>1032</locationY>
         <customErrorMessages>
             <errorMessage>You must upload an NOC document before changing the status to &apos;Uploaded&apos;.</errorMessage>
@@ -904,7 +914,7 @@
     <customErrors>
         <name>Sales_Deed_Error</name>
         <label>Sales Deed Error</label>
-        <locationX>8762</locationX>
+        <locationX>9290</locationX>
         <locationY>924</locationY>
         <customErrorMessages>
             <errorMessage>Upload Draft Sale deed.</errorMessage>
@@ -914,7 +924,7 @@
     <decisions>
         <name>BR_Decisions</name>
         <label>BR Decisions</label>
-        <locationX>10830</locationX>
+        <locationX>11358</locationX>
         <locationY>600</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -936,7 +946,7 @@
     <decisions>
         <name>Check_AOS_Status_Update</name>
         <label>Check AOS Status Update</label>
-        <locationX>4758</locationX>
+        <locationX>5154</locationX>
         <locationY>600</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -961,11 +971,33 @@
             </connector>
             <label>Status Changed to Draft Uploaded</label>
         </rules>
+        <rules>
+            <name>Status_Changed_to_Drafting</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Drafting</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_Update_Opportunity_Status_To_Document_Delivered</targetReference>
+            </connector>
+            <label>Status Changed to Drafting</label>
+        </rules>
     </decisions>
     <decisions>
         <name>check_Funding_type</name>
         <label>check Funding type</label>
-        <locationX>7959</locationX>
+        <locationX>8487</locationX>
         <locationY>924</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -1002,7 +1034,7 @@
     <decisions>
         <name>Check_if_Contact_From_Opportunity_null</name>
         <label>Check if Contact From Opportunity null</label>
-        <locationX>6958</locationX>
+        <locationX>7288</locationX>
         <locationY>2940</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -1024,7 +1056,7 @@
     <decisions>
         <name>check_if_Document_Draft_AOS_is_there_in_opportunity</name>
         <label>check if Document Draft AOS is there in opportunity</label>
-        <locationX>8014</locationX>
+        <locationX>8344</locationX>
         <locationY>2832</locationY>
         <defaultConnector>
             <targetReference>add_error</targetReference>
@@ -1047,34 +1079,34 @@
         </rules>
     </decisions>
     <decisions>
-        <name>Check_if_Sub_Document_type_contains_Original_Sales_Deed</name>
-        <label>Check if Sub Document type contains Original Sales Deed</label>
-        <locationX>5286</locationX>
+        <name>Check_if_original_cheque_is_Submitted_or_not</name>
+        <label>Check if original cheque is Submitted or not</label>
+        <locationX>4142</locationX>
         <locationY>708</locationY>
         <defaultConnector>
-            <targetReference>add_custom_error_for_original_sales_deed</targetReference>
+            <targetReference>Copy_2_of_Copy_1_of_Copy_1_of_add_error</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Contains_Original_Sales_Deed</name>
+            <name>original_cheque_is_not_submitted</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>Get_Opportunity.Sub_Document_Type__c</leftValueReference>
                 <operator>Contains</operator>
                 <rightValue>
-                    <stringValue>Original Sale Deed</stringValue>
+                    <stringValue>Original Cheque</stringValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Update_Opportunity_Stage</targetReference>
+                <targetReference>Copy_1_of_Assign_OwnerId_to_List</targetReference>
             </connector>
-            <label>Contains Original Sales Deed</label>
+            <label>original cheque is not submitted</label>
         </rules>
     </decisions>
     <decisions>
         <name>Check_isnew</name>
         <label>Check isnew</label>
-        <locationX>4329</locationX>
+        <locationX>4494</locationX>
         <locationY>276</locationY>
         <defaultConnector>
             <targetReference>Get_Opportunity</targetReference>
@@ -1099,7 +1131,7 @@
     <decisions>
         <name>Check_Lead_Owner</name>
         <label>Check Lead Owner</label>
-        <locationX>6606</locationX>
+        <locationX>7134</locationX>
         <locationY>816</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -1121,7 +1153,7 @@
     <decisions>
         <name>check_NOC</name>
         <label>check NOC</label>
-        <locationX>11556</locationX>
+        <locationX>12084</locationX>
         <locationY>816</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -1148,9 +1180,34 @@
         </rules>
     </decisions>
     <decisions>
+        <name>check_Opportunity_Stage</name>
+        <label>check Opportunity Stage</label>
+        <locationX>6276</locationX>
+        <locationY>708</locationY>
+        <defaultConnector>
+            <targetReference>Copy_1_of_Copy_1_of_add_custom_error_for_original_sales_deed</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Registered</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Registered</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_Check_if_Sub_Document_type_contains_Original_Sales_Deed</targetReference>
+            </connector>
+            <label>Registered</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>check_Opportunity_SubDocument</name>
         <label>check Opportunity SubDocument</label>
-        <locationX>8740</locationX>
+        <locationX>9268</locationX>
         <locationY>708</locationY>
         <defaultConnector>
             <targetReference>check_Status2</targetReference>
@@ -1175,7 +1232,7 @@
     <decisions>
         <name>Check_RecordType</name>
         <label>Check RecordType</label>
-        <locationX>7684</locationX>
+        <locationX>8014</locationX>
         <locationY>492</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -1317,7 +1374,7 @@
     <decisions>
         <name>check_status</name>
         <label>check status</label>
-        <locationX>8580</locationX>
+        <locationX>9108</locationX>
         <locationY>600</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -1361,7 +1418,7 @@
     <decisions>
         <name>check_Status2</name>
         <label>check Status</label>
-        <locationX>8894</locationX>
+        <locationX>9422</locationX>
         <locationY>816</locationY>
         <defaultConnector>
             <targetReference>Copy_1_of_update_the_Status</targetReference>
@@ -1386,7 +1443,7 @@
     <decisions>
         <name>Check_Status3</name>
         <label>Check Status</label>
-        <locationX>12678</locationX>
+        <locationX>13206</locationX>
         <locationY>492</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -1408,7 +1465,7 @@
     <decisions>
         <name>Check_Status_for_Email</name>
         <label>Check Status for Email</label>
-        <locationX>7684</locationX>
+        <locationX>8014</locationX>
         <locationY>2724</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -1475,7 +1532,7 @@
     <decisions>
         <name>check_sub_document_type</name>
         <label>check sub document type</label>
-        <locationX>11358</locationX>
+        <locationX>11886</locationX>
         <locationY>924</locationY>
         <defaultConnector>
             <targetReference>error</targetReference>
@@ -1500,7 +1557,7 @@
     <decisions>
         <name>check_Task_Status</name>
         <label>check Task Status</label>
-        <locationX>5748</locationX>
+        <locationX>6210</locationX>
         <locationY>600</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -1521,7 +1578,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Check_if_Sub_Document_type_contains_Original_Sales_Deed</targetReference>
+                <targetReference>Update_Opportunity_Stage</targetReference>
             </connector>
             <label>is Registered</label>
         </rules>
@@ -1543,7 +1600,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Copy_1_of_Check_if_Sub_Document_type_contains_Original_Sales_Deed</targetReference>
+                <targetReference>check_Opportunity_Stage</targetReference>
             </connector>
             <label>isOriginalUploaded</label>
         </rules>
@@ -1551,7 +1608,7 @@
     <decisions>
         <name>check_userIds_List</name>
         <label>check userIds List</label>
-        <locationX>7398</locationX>
+        <locationX>7926</locationX>
         <locationY>1656</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -1573,7 +1630,7 @@
     <decisions>
         <name>check_users</name>
         <label>check users</label>
-        <locationX>7596</locationX>
+        <locationX>8124</locationX>
         <locationY>1248</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -1595,8 +1652,8 @@
     <decisions>
         <name>Copy_1_of_Check_if_Sub_Document_type_contains_Original_Sales_Deed</name>
         <label>Copy 1 of Check if Sub Document type contains Original Sales Deed</label>
-        <locationX>5814</locationX>
-        <locationY>708</locationY>
+        <locationX>6078</locationX>
+        <locationY>816</locationY>
         <defaultConnector>
             <targetReference>Copy_1_of_add_custom_error_for_original_sales_deed</targetReference>
         </defaultConnector>
@@ -1763,7 +1820,7 @@
     <decisions>
         <name>Copy_3_of_Check_RecordType</name>
         <label>Copy 3 of Check RecordType</label>
-        <locationX>13602</locationX>
+        <locationX>14130</locationX>
         <locationY>384</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -1881,7 +1938,7 @@
     <decisions>
         <name>KYC_Update</name>
         <label>KYC Update</label>
-        <locationX>10170</locationX>
+        <locationX>10698</locationX>
         <locationY>816</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -1932,7 +1989,7 @@
     <decisions>
         <name>Loan_Process_Status_Update</name>
         <label>Loan Process Status Update</label>
-        <locationX>3350</locationX>
+        <locationX>3482</locationX>
         <locationY>600</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -2063,7 +2120,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Copy_1_of_Assign_OwnerId_to_List</targetReference>
+                <targetReference>Check_if_original_cheque_is_Submitted_or_not</targetReference>
             </connector>
             <label>Status Changed To Cheque Recieved</label>
         </rules>
@@ -2071,7 +2128,7 @@
     <decisions>
         <name>Refund_Task_Status_Refunded</name>
         <label>Refund Task Status Refunded</label>
-        <locationX>9598</locationX>
+        <locationX>10126</locationX>
         <locationY>600</locationY>
         <defaultConnector>
             <targetReference>get_Contact_Role</targetReference>
@@ -2103,7 +2160,7 @@
     <decisions>
         <name>Site_Visit_Updates</name>
         <label>Site Visit Updates</label>
-        <locationX>6804</locationX>
+        <locationX>7332</locationX>
         <locationY>600</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -2140,7 +2197,7 @@
     <loops>
         <name>loop_on_users</name>
         <label>loop on users</label>
-        <locationX>7398</locationX>
+        <locationX>7926</locationX>
         <locationY>1356</locationY>
         <collectionReference>getUser</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -2154,7 +2211,7 @@
     <loops>
         <name>loop_over_contact_role</name>
         <label>loop over contact  role</label>
-        <locationX>4626</locationX>
+        <locationX>4890</locationX>
         <locationY>816</locationY>
         <collectionReference>get_Contact_Role1</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -2168,7 +2225,7 @@
     <loops>
         <name>loop_over_Contacts</name>
         <label>loop over Contacts</label>
-        <locationX>4626</locationX>
+        <locationX>4890</locationX>
         <locationY>1656</locationY>
         <collectionReference>Get_Contact</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -2201,7 +2258,7 @@
     <recordLookups>
         <name>Copy_1_of_Copy_1_of_get_Custom_Notification_Type1</name>
         <label>Copy 1 of Copy 1 of get Custom Notification Type1</label>
-        <locationX>10170</locationX>
+        <locationX>10698</locationX>
         <locationY>600</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -2222,7 +2279,7 @@
     <recordLookups>
         <name>Copy_1_of_get_Custom_Notification_Type</name>
         <label>Copy 1 of get Custom Notification Type</label>
-        <locationX>4626</locationX>
+        <locationX>4890</locationX>
         <locationY>1332</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -2243,7 +2300,7 @@
     <recordLookups>
         <name>Copy_1_of_get_Custom_Notification_Type1</name>
         <label>Copy 1 of get Custom Notification Type1</label>
-        <locationX>7959</locationX>
+        <locationX>8487</locationX>
         <locationY>816</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -2264,7 +2321,7 @@
     <recordLookups>
         <name>Copy_2_of_get_custom_Notification</name>
         <label>Copy 2 of get custom Notification</label>
-        <locationX>12546</locationX>
+        <locationX>13074</locationX>
         <locationY>600</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -2306,7 +2363,7 @@
     <recordLookups>
         <name>Copy_2_of_Get_Opportunity</name>
         <label>Copy 2 of Get Opportunity</label>
-        <locationX>13602</locationX>
+        <locationX>14130</locationX>
         <locationY>276</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -2348,7 +2405,7 @@
     <recordLookups>
         <name>Get_Contact</name>
         <label>Get Contact</label>
-        <locationX>4626</locationX>
+        <locationX>4890</locationX>
         <locationY>1116</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -2369,7 +2426,7 @@
     <recordLookups>
         <name>Get_Contact_from_Opportunity</name>
         <label>Get Contact from Opportunity</label>
-        <locationX>7684</locationX>
+        <locationX>8014</locationX>
         <locationY>2508</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -2390,7 +2447,7 @@
     <recordLookups>
         <name>get_Contact_Role</name>
         <label>get Contact Role</label>
-        <locationX>7684</locationX>
+        <locationX>8014</locationX>
         <locationY>2400</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -2418,7 +2475,7 @@
     <recordLookups>
         <name>get_Contact_Role1</name>
         <label>get Contact Role</label>
-        <locationX>4626</locationX>
+        <locationX>4890</locationX>
         <locationY>708</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -2439,7 +2496,7 @@
     <recordLookups>
         <name>get_custom_Notification</name>
         <label>get custom Notification</label>
-        <locationX>11226</locationX>
+        <locationX>11754</locationX>
         <locationY>1032</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -2482,7 +2539,7 @@
         <name>get_Custom_Notification_Type1</name>
         <label>get Custom Notification Type1</label>
         <locationX>4010</locationX>
-        <locationY>816</locationY>
+        <locationY>924</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Copy_2_of_Send_Notification_ChequeRecieved</targetReference>
@@ -2502,7 +2559,7 @@
     <recordLookups>
         <name>get_Email_Template_for_Eligible</name>
         <label>get Email Template for Eligible</label>
-        <locationX>7618</locationX>
+        <locationX>7948</locationX>
         <locationY>2940</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -2523,7 +2580,7 @@
     <recordLookups>
         <name>get_Email_Template_for_Loan_Rejection</name>
         <label>get Email Template for Loan Rejection</label>
-        <locationX>7354</locationX>
+        <locationX>7684</locationX>
         <locationY>2940</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -2544,7 +2601,7 @@
     <recordLookups>
         <name>Get_Email_Template_for_Loan_Sanctioned</name>
         <label>Get Email Template for Loan Sanctioned</label>
-        <locationX>6958</locationX>
+        <locationX>7288</locationX>
         <locationY>2832</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -2565,7 +2622,7 @@
     <recordLookups>
         <name>get_Lead_Record</name>
         <label>get Lead Record</label>
-        <locationX>6606</locationX>
+        <locationX>7134</locationX>
         <locationY>708</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -2586,7 +2643,7 @@
     <recordLookups>
         <name>Get_Opportunity</name>
         <label>Get Opportunity</label>
-        <locationX>7684</locationX>
+        <locationX>8014</locationX>
         <locationY>384</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -2607,7 +2664,7 @@
     <recordLookups>
         <name>Get_Org_wide_Address</name>
         <label>Get Org wide Address</label>
-        <locationX>7684</locationX>
+        <locationX>8014</locationX>
         <locationY>2616</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -2628,7 +2685,7 @@
     <recordLookups>
         <name>getProfile</name>
         <label>getProfile</label>
-        <locationX>7596</locationX>
+        <locationX>8124</locationX>
         <locationY>1032</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -2649,7 +2706,7 @@
     <recordLookups>
         <name>getUser</name>
         <label>getUser</label>
-        <locationX>7596</locationX>
+        <locationX>8124</locationX>
         <locationY>1140</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -2677,7 +2734,7 @@
     <recordUpdates>
         <name>Cancellation_Status_To_Refunded</name>
         <label>Cancellation Status To Refunded</label>
-        <locationX>9466</locationX>
+        <locationX>9994</locationX>
         <locationY>708</locationY>
         <connector>
             <targetReference>get_Contact_Role</targetReference>
@@ -2701,7 +2758,7 @@
     <recordUpdates>
         <name>Copy_1_of_Update_Opportunity</name>
         <label>Copy 1 of Update Opportunity</label>
-        <locationX>7882</locationX>
+        <locationX>8212</locationX>
         <locationY>2940</locationY>
         <connector>
             <targetReference>Send_Email_with_Attachments_Action_1</targetReference>
@@ -2725,8 +2782,8 @@
     <recordUpdates>
         <name>Copy_1_of_Update_Opportunity_Stage</name>
         <label>Copy 1 of Update Opportunity Stage</label>
-        <locationX>5682</locationX>
-        <locationY>816</locationY>
+        <locationX>5946</locationX>
+        <locationY>924</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -2744,9 +2801,30 @@
         <object>Opportunity</object>
     </recordUpdates>
     <recordUpdates>
+        <name>Copy_1_of_Update_Opportunity_Status_To_Document_Delivered</name>
+        <label>Copy 1 of Update Opportunity Status To Document Delivered</label>
+        <locationX>5154</locationX>
+        <locationY>708</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>AOS_Stage__c</field>
+            <value>
+                <elementReference>$Record.Status</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
         <name>Copy_1_of_update_the_Status</name>
         <label>Copy 1 of update the Status</label>
-        <locationX>8740</locationX>
+        <locationX>9268</locationX>
         <locationY>1308</locationY>
         <filterLogic>and</filterLogic>
         <filters>
@@ -2767,7 +2845,7 @@
     <recordUpdates>
         <name>Copy_2_of_Update_Opportunity</name>
         <label>Copy 2 of Update Opportunity</label>
-        <locationX>7354</locationX>
+        <locationX>7684</locationX>
         <locationY>2832</locationY>
         <connector>
             <targetReference>get_Email_Template_for_Loan_Rejection</targetReference>
@@ -2797,7 +2875,7 @@
     <recordUpdates>
         <name>Copy_2_of_update_the_Status</name>
         <label>Copy 2 of update the Status</label>
-        <locationX>11556</locationX>
+        <locationX>12084</locationX>
         <locationY>600</locationY>
         <connector>
             <targetReference>Copy_2_of_Assign_CRM_Agent</targetReference>
@@ -2834,14 +2912,14 @@
     <recordUpdates>
         <name>Update_Lead_Owner</name>
         <label>Update Lead Owner</label>
-        <locationX>6474</locationX>
+        <locationX>7002</locationX>
         <locationY>1032</locationY>
         <inputReference>get_Lead_Record</inputReference>
     </recordUpdates>
     <recordUpdates>
         <name>Update_Opportunity</name>
         <label>Update Opportunity</label>
-        <locationX>7618</locationX>
+        <locationX>7948</locationX>
         <locationY>2832</locationY>
         <connector>
             <targetReference>get_Email_Template_for_Eligible</targetReference>
@@ -2922,8 +3000,8 @@
     <recordUpdates>
         <name>Update_Opportunity_Stage</name>
         <label>Update Opportunity Stage</label>
-        <locationX>5154</locationX>
-        <locationY>816</locationY>
+        <locationX>5682</locationX>
+        <locationY>708</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -2967,7 +3045,7 @@
     <recordUpdates>
         <name>update_Stage_to_onBoarded</name>
         <label>update Stage to onBoarded</label>
-        <locationX>10170</locationX>
+        <locationX>10698</locationX>
         <locationY>1032</locationY>
         <filterLogic>and</filterLogic>
         <filters>
@@ -2988,7 +3066,7 @@
     <recordUpdates>
         <name>Update_status_to_Original_uploaded</name>
         <label>Update status to Original uploaded</label>
-        <locationX>7959</locationX>
+        <locationX>8487</locationX>
         <locationY>708</locationY>
         <connector>
             <targetReference>Copy_1_of_get_Custom_Notification_Type1</targetReference>
@@ -3012,7 +3090,7 @@
     <recordUpdates>
         <name>update_the_Status</name>
         <label>update the Status</label>
-        <locationX>10698</locationX>
+        <locationX>11226</locationX>
         <locationY>708</locationY>
         <filterLogic>and</filterLogic>
         <filters>
@@ -3031,7 +3109,7 @@
         <object>Opportunity</object>
     </recordUpdates>
     <start>
-        <locationX>8839</locationX>
+        <locationX>9186</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Check_isnew</targetReference>

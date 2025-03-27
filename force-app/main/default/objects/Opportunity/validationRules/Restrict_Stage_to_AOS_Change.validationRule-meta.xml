@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Restrict_Stage_to_AOS_Change</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISCHANGED(StageName),
+    ISPICKVAL(StageName, &quot;AOS&quot;),
+    NOT(ISPICKVAL(AOS_Stage__c, &quot;Initiate&quot;))
+)</errorConditionFormula>
+    <errorMessage>Stage can be changed to &apos;AOS&apos; only when &apos;AOS Stage&apos; is set to &apos;Initiated&apos;.</errorMessage>
+</ValidationRule>

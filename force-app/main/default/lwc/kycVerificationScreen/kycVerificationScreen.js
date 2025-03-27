@@ -74,6 +74,7 @@ export default class KycVerificationScreen extends LightningElement {
         ],
         'Documents Delivered': [
             { label: 'Documents Delivered', value: 'Documents Delivered' },
+            { label: 'Original Cheque', value: 'Original Cheque' },
 
         ],
         'Cancelled': [
@@ -176,7 +177,8 @@ export default class KycVerificationScreen extends LightningElement {
                 recordId:this.recordId,
                 documentType:this.selectedDocumentType,
             });
-    
+
+            console.log('fileSizes-->',JSON.stringify(fileSizes));
             let isValid = true;
     
             // Process the response from Apex

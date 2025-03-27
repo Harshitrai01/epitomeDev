@@ -66,12 +66,13 @@ export default class DownloadDocumentCmp extends NavigationMixin(LightningElemen
     async fetchContactDocuments() {
         try {
             this.isLoading = true;
-            const files = await getRelatedFilesByContactId({ contactId: this.selectedContactId });
+            const files = await getRelatedFilesByContactId({ contactId: this.selectedContactId, oppId: this.recordId });
+            console.log('files---->', files);
             if (files && files.length > 0) {
                 this.filesList = files.map(file => ({
-                    label: file.Title,
-                    value: file.ContentDocumentId,
-                    documentType: file.DocumentType,
+                    label: file.title,
+                    value: file.contentDocumentId,
+                    documentType: file.documentType,
                     url: `/sfc/servlet.shepherd/document/download/${file.ContentDocumentId}`
                 }));
                 this.showNoDataMessage = false;
@@ -92,16 +93,22 @@ export default class DownloadDocumentCmp extends NavigationMixin(LightningElemen
      * @param {Event} event - The event triggered when the preview button is clicked.
      */
     previewFile(event) {
-        const documentId = event.target.dataset.id;
-        this[NavigationMixin.Navigate]({
-            type: 'standard__namedPage',
-            attributes: {
-                pageName: 'filePreview'
-            },
-            state: {
-                selectedRecordId: documentId
-            }
-        });
+        console.log('event--->', JSON.stringify(event));
+        try {
+            const documentId = event.target.dataset.id;
+            this[NavigationMixin.Navigate]({
+                type: 'standard__namedPage',
+                attributes: {
+                    pageName: 'filePreview'
+                },
+                state: {
+                    selectedRecordId: documentId
+                }
+            });
+        } catch (error) {
+            console.error('Error fetching contact documents:', error);
+            this.showToast('Error', error.body?.message || 'An error occurred while previewing the document.', 'error');
+        }
     }
 
     /**
@@ -109,10 +116,32 @@ export default class DownloadDocumentCmp extends NavigationMixin(LightningElemen
      * @param {Event} event - The event triggered when the download button is clicked.
      */
     downloadFile(event) {
+        console.log('event--->', JSON.stringify(event));
+
+        // Extract the documentId from the event
         const documentId = event.target.dataset.id;
+        console.log('documentId---->', documentId);
+
+        // Find the file in the filesList
         const file = this.filesList.find(file => file.value === documentId);
+        console.log('file--->', JSON.stringify(file));
+
         if (file) {
-            window.open(file.url, '_blank');
+            // Construct the URL dynamically if it is undefined or invalid
+            let fileUrl = file.url;
+            if (!fileUrl || fileUrl.includes('undefined')) {
+                // Update the URL with the correct documentId
+                fileUrl = `/sfc/servlet.shepherd/document/download/${documentId}`;
+            }
+
+            console.log('Updated fileUrl--->', fileUrl);
+
+            // Open the file in a new tab
+            if (fileUrl) {
+                window.open(fileUrl, '_blank');
+            } else {
+                this.showToast('Error', 'Invalid file URL.', 'error');
+            }
         } else {
             this.showToast('Error', 'File not found.', 'error');
         }

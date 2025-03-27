@@ -11,11 +11,10 @@ Ver   Date         Author               Modification
 *********************************************************
 */
 public class EasebuzzInstaCollectService {
-    private static String API_URL;
-    private static String RETRIEVE_URL;
-    private static String MERCHANT_KEY;
-    private static String MERCHANT_SALT;
-
+	public static String API_URL { get; set; }
+    public static String RETRIEVE_URL { get; set; }
+    public static String MERCHANT_KEY { get; set; }
+    public static String MERCHANT_SALT { get; set; }
     /*
     *********************************************************
     @Method Name    : initializeMetadata

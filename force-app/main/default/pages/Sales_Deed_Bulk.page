@@ -1,32 +1,32 @@
-<apex:page renderAs="pdf">
+<apex:page renderAs="pdf" standardController="Opportunity" showHeader="false" sidebar="false" extensions="SalesDeedBulkController">
     <h2 style="text-align: center;">SALE DEED</h2>
     
-    <p style="margin-bottom: 10px;">This Sale Deed is made and executed on this the ____ day of ___________, 2025 at SRO, Choutuppal, Yadadri-Bhuvanagiri District, Telangana – Pin 508252.</p>
+    <p style="margin-bottom: 10px;">This Sale Deed is made and executed on this the {!currentDate} at SRO, Choutuppal, Yadadri-Bhuvanagiri District, Telangana – Pin 508252.</p>
 
     <p style="margin-bottom: 10px;">
-        <strong>EPITOME PROJECTS LLP</strong> (CIN No. AAR-2975, PAN: AASFV6192L),<br/>
+        1.   <strong>EPITOME PROJECTS LLP</strong> (CIN No. AAR-2975, PAN: AASFV6192L),<br/>
         registered in India, having its office at: Plot No.C2, Commercial Sector III, Huda Techno Enclave, Sy.No.64, Madhapur (V), Serilingampally (M), Ranga Reddy District, Telangana Pin Code: 500081.<br/>
         (Hereinafter referred to as the "Landowner No. 1")
     </p>
 
     <p style="margin-bottom: 10px;">
-        <strong>SANDEEPA JETTA</strong> W/o. SRIKANTH JETTA, aged about 33 years, Occupation: Housewife,<br/>
+        2.   <strong>SANDEEPA JETTA</strong> W/o. SRIKANTH JETTA, aged about 33 years, Occupation: Housewife,<br/>
         R/o. H.No.2-1-27/30, Saraswathi Colony, Uppal Khalsa (M), Uppal, Medchal-Malkajigiri, Telangana, Pin Code: 500039.<br/>
         (Hereinafter referred to as the "Landowner No. 2")
     </p>
 
     <p style="margin-bottom: 10px;">
-        <strong>VAKATI BHAGYA SREE</strong> D/o. V. GNANAIAH, aged about 29 years, Occupation: Private Employee,<br/>
+        3.   <strong>VAKATI BHAGYA SREE</strong> D/o. V. GNANAIAH, aged about 29 years, Occupation: Private Employee,<br/>
         R/o. H.No.30-276/42/14/A, Brundavan Colony, Near Petrol Bunk, Old Safilguda, Malkajgiri, Hyderabad, Telangana, Pin Code: 500056.<br/>
         (Hereinafter S.No.3 referred to as the “Landowner No.3”)
     </p>
   
-<p style="margin-bottom: 10px;">
-    <strong>KUMBHAM SRINIVAS REDDY</strong> S/o. RANGA REDDY, aged about 46 years, Occupation: Farmer,<br/>
-   R/o. H.No.1-34, Kalvakuntla (V), Munugode (M), Nalgonda District, Telangana. Pin Code: 504244.<br/>
-    Aadhaar No. XXXX XXXX 6872.<br/>
-    (Hereinafter referred to as the "Landowner No. 4")
-</p>
+    <p style="margin-bottom: 10px;">
+        4.  <strong>KUMBHAM SRINIVAS REDDY</strong> S/o. RANGA REDDY, aged about 46 years, Occupation: Farmer,<br/>
+       R/o. H.No.1-34, Kalvakuntla (V), Munugode (M), Nalgonda District, Telangana. Pin Code: 504244.<br/>
+        Aadhaar No. XXXX XXXX 6872.<br/>
+        (Hereinafter referred to as the "Landowner No. 4")
+    </p>
     
 <p style="margin-bottom: 10px;">
     <strong>S.No.2 to 4 represented by their Development Agreement cum General Power of Attorney Holder:</strong>
@@ -52,16 +52,17 @@
     IN FAVOUR OF:
     </p>
     
-    <p style="margin-bottom: 10px;">
-    <strong>1. MEKALA SRINIVAS</strong>, S/o. MEKALA RAMDAS, aged about 39 years, Occupation: Bank Employee,<br/>
-    R/o. H.No. 4-85, Padkal, Jakranpalle, Nizamabad, Telangana, 503175, <br/>
-    Aadhar No. 7191 6393 8047, PAN: AZJPM3550F, Phone No. 9849145015.<br/>
-    </p>
-    <p style="margin-bottom: 10px;">
-    <strong>2. XXXXXXXXXXXXXX</strong>, S/o. XXXXXXXXXXXXXXX, aged about 39 years, Occupation: Bank Employee,<br/>
-     R/o. H.No. 4-85, Padkal, Jakranpalle, Nizamabad, Telangana, 503175, <br/>
-    Aadhar No. 7191 6393 8047, PAN: AZJPM3550F, Phone No. 984914501br/>
-    </p>
+            <apex:repeat value="{!contactDetailsList}" var="contactDetail">
+                <p style="margin-bottom: 10px;">
+                    <strong>{!contactDetail.Salutation} {!contactDetail.name}</strong>, aged {!contactDetail.age} years, 
+                    <strong>Occupation</strong>: {!contactDetail.occupation}, 
+                    <strong>Address</strong>: {!contactDetail.address}, 
+                    <strong>Aadhar No.</strong>: {!contactDetail.maskedAadhaar},
+                    <strong>Pan No.</strong>: {!contactDetail.maskedAadhaar},
+                    <strong>Phone</strong>: {!contactDetail.maskedAadhaar}
+                </p>
+            </apex:repeat>
+    
         <p style="margin-bottom: 10px;">
         (Hereinafter referred to as the "Vendee/s") of the OTHER PART.
     </p>
@@ -209,28 +210,29 @@
      </p>
     
       <p style="margin-bottom: 10px; margin-left: 15px;">
- <strong>WHEREAS:</strong>,the Vendor has offered to sell the open land bearing Plot No. 2802, admeasuring 266.65 Sq. Yards (or) 222.96 Sq. Mtrs., in Sy. Nos. 646/P, 647, 648, 666, 667/P, 683/P, 684/P, 685/P, 686/P, 687/P, 688, 689, 690, 691, 694, 695, 697, 702/P, 703 and 704 of Thangadpally Village, Choutuppal Mandal, Yadadri-Bhuvanagiri District, Telangana State,  (Hereinafter referred to as the “SCHEDULE PROPERTY”, which is more clearly described in the Schedule hereunder), to the Vendee/s for a total sale consideration of Rs. 23,46,520/- (Rupees Twenty Three Lakhs, Forty Six Thousand, Five Hundred and Twenty only) (i.e., @ Rs.8800/- per Sq. Yd.) and the Vendee/s has agreed to purchase the same for the said consideration from the Vendor. 
+ <strong>WHEREAS:</strong>,the Vendor has offered to sell the open land bearing Plot No. {!opportunityRecord.Unit__r.Name}, admeasuring <apex:outputText value="{!opportunityRecord.Unit__r.Plot_Size__c}" /> Sq. Yds (or) &nbsp;<apex:outputText value="{0,number,###.##} Sq. Mtrs.">
+                    <apex:param value="{!plotSizeInSqM}" />
+                </apex:outputText>, in Sy. Nos. {!opportunityRecord.Unit__r.Survey_Number__c} of {!opportunityRecord.Unit__r.Address__Street__s},{!opportunityRecord.Unit__r.Address__City__s},{!opportunityRecord.Unit__r.Address__StateCode__s},{!opportunityRecord.Unit__r.Address__CountryCode__s},{!opportunityRecord.Unit__r.Address__PostalCode__s},  (Hereinafter referred to as the “<b>SCHEDULE PROPERTY</b>”, which is more clearly described in the Schedule hereunder), to the Vendee/s for a total sale consideration of Rs. {!opportunityRecord.Sale_Value_Amount__c}/- ({!saleAmountInWords}) (i.e., @ Rs. {!opportunityRecord.Unit__r.Survey_Number__c}/- per Sq. Yd.) and the Vendee/s has agreed to purchase the same for the said consideration from the Vendor. 
     </p>
     
       <p style="margin-bottom: 10px; margin-left: 15px;">
- <strong>WHEREAS:</strong>,the Vendor has already received from the said Vendee/s the sale consideration of Rs. 23,46,520/- (Rupees Twenty Three Lakhs, Forty Six Thousand, Five Hundred and Twenty only) as mentioned in the manner below and the receipt of which sum the Vendor hereby admits and acknowledges in favor of the Vendee/s:
+ <strong>WHEREAS:</strong>,the Vendor has already received from the said Vendee/s the sale consideration of Rs. {!opportunityRecord.Collected_Amount__c}/- ({!paidAmountInWords}) as mentioned in the manner below and the receipt of which sum the Vendor hereby admits and acknowledges in favor of the Vendee/s:
     </p>
     
-    <p style="margin-bottom: 10px; margin-left: 20px;">
-        a. An amount Rs. 50,000/- (Rupees Fifty Thousand only) paid through transfer vide Transaction / Ref. No. DUN2285456 dated 30-09-2024. 
-    </p>
-    <p style="margin-bottom: 10px; margin-left: 20px;">
-        b. An amount of Rs.50,000/- (Rupees Fifty Thousand only) paid through transfer vide Transaction / Ref. No. DUN2285332 dated 30-09-2024.  
-    </p>
-    <p style="margin-bottom: 10px; margin-left: 20px;">
-        c. An amount of Rs.21,11,000/- (Rupees Twenty One Lakhs, Eleven Thousand only) paid by availing loan from State Bank of India through Bankers Cheque bearing No. “847345” dated 27-01-2025. 
-    </p>
-    <p style="margin-bottom: 10px; margin-left: 20px;">
-        d. An amount of Rs.1,35,520/- (Rupees One Lakh, Thirty Five Thousand, Five Hundred and Twenty only) paid by availing loan from State Bank of India through Bankers Cheque bearing No. “847346” dated 27-01-2025. 
-    </p>
+            <ul style="margin-bottom: 10px; padding-left: 20px;">
+                <apex:repeat value="{!approvedPayments}" var="payment">
+                    <li>
+                        <strong>Amount in Words:</strong> {!payment.amountInWords} <br/>
+                        <strong>Payment Date:</strong> {!payment.paymentDate} <br/>
+                        <strong>Payment Mode:</strong> {!payment.paymentMode} <br/>
+                        <strong>Transaction ID:</strong> {!payment.transactionId}
+                    </li>
+                    <hr/>
+                </apex:repeat>
+            </ul>
     
     <p style="margin-bottom: 10px;">
-       NOW THEREFORE, this deed of sale witnesseth that in pursuance of the said agreement and in consideration of the sum Rs. 23,46,520/- (Rupees Twenty Three Lakhs, Forty Six Thousand, Five Hundred and Twenty only) received by the Vendor from the Vendee/s, the said Vendor as absolute owner of the Schedule Property described in the schedule hereto and more clearly delineated in the plan annexed with the boundaries thereof shown in RED COLOUR does hereby transfer, convey and assign free from all encumbrances all the Schedule Property to hold the same to the said Vendee/s as absolute owner together with appurtenances belonging hereto and all the estate, right, title, interest and claim whatsoever of the Vendor in or to the Schedule Property hereby conveyed. The Vendee/s shall hold and enjoy the same as absolute owner.
+       NOW THEREFORE, this deed of sale witnesseth that in pursuance of the said agreement and in consideration of the sum Rs. {!opportunityRecord.Collected_Amount__c}/- ({!paidAmountInWords}) received by the Vendor from the Vendee/s, the said Vendor as absolute owner of the Schedule Property described in the schedule hereto and more clearly delineated in the plan annexed with the boundaries thereof shown in RED COLOUR does hereby transfer, convey and assign free from all encumbrances all the Schedule Property to hold the same to the said Vendee/s as absolute owner together with appurtenances belonging hereto and all the estate, right, title, interest and claim whatsoever of the Vendor in or to the Schedule Property hereby conveyed. The Vendee/s shall hold and enjoy the same as absolute owner.
     </p>
     
 <p style="margin-bottom: 10px;  font-weight:bold">
@@ -290,7 +292,9 @@
 </p>
     
 <p style="margin-bottom: 10px;">
-All that the part and parcel of the land marked as Plot No. 2802, admeasuring 266.65 Sq. Yds (or) 222.96 Sq. Mtrs, in Sy.Nos. 646/P, 647, 648, 666, 667/P, 683/P, 684/P, 685/P, 686/P, 687/P, 688, 689, 690, 691, 694, 695, 697, 702/P, 703 and 704 within Thangedpally Village, Choutuppal Mandal, Yadadri - Bhuvanagiri District, under Choutuppal Municipality, Telangana. This Plot/s is/are an integral part of the 'EPITOME
+All that the part and parcel of the land marked as Plot No. {!opportunityRecord.Unit__r.Name}, admeasuring &nbsp;<apex:outputText value="{!opportunityRecord.Unit__r.Plot_Size__c}" /> Sq. Yds (or) <apex:outputText value="{0,number,###.##} Sq. Mtrs.">
+                    <apex:param value="{!plotSizeInSqM}" />
+                </apex:outputText>, in Sy.Nos. {!opportunityRecord.Unit__r.Survey_Number__c} within {!opportunityRecord.Unit__r.Address__Street__s},{!opportunityRecord.Unit__r.Address__City__s},{!opportunityRecord.Unit__r.Address__StateCode__s},{!opportunityRecord.Unit__r.Address__CountryCode__s},{!opportunityRecord.Unit__r.Address__PostalCode__s}. This Plot/s is/are an integral part of the 'EPITOME
     </p>
     
     
@@ -309,19 +313,19 @@ INTEGRATED CITY' project, which comprises residential plots covering a total are
         </tr>
         <tr>
             <td style="padding: 10px; border: 1px solid black;">North</td>
-            <td style="padding: 10px; border: 1px solid black;">Plot No. 2081 </td>
+            <td style="padding: 10px; border: 1px solid black;">{!opportunityRecord.Unit__r.North__c} </td>
         </tr>
         <tr>
             <td style="padding: 10px; border: 1px solid black;">South</td>
-            <td style="padding: 10px; border: 1px solid black;">Plot No. 2083</td>
+            <td style="padding: 10px; border: 1px solid black;">{!opportunityRecord.Unit__r.South__c}</td>
         </tr>
         <tr>
             <td style="padding: 10px; border: 1px solid black;">East</td>
-            <td style="padding: 10px; border: 1px solid black;">Proposed 40’ Ft Road</td>
+            <td style="padding: 10px; border: 1px solid black;">{!opportunityRecord.Unit__r.East__c}</td>
         </tr>
         <tr>
             <td style="padding: 10px; border: 1px solid black;">West</td>
-            <td style="padding: 10px; border: 1px solid black;">Plot No. 2071</td>
+            <td style="padding: 10px; border: 1px solid black;">{!opportunityRecord.Unit__r.West__c}</td>
         </tr>
     </table>
     
@@ -346,12 +350,12 @@ As clearly shown in RED Color in the Plan annexed hereto.
         </tr>
         <tr>
             <td style="padding: 8px; border: 1px solid black;">1</td>
-            <td style="padding: 8px; border: 1px solid black;">THANGEDPALLY VILLAGE, CHOUTUPPAL MANDAL,YADADRI-BHONGIR DISTRICT </td>
-             <td style="padding: 8px; border: 1px solid black;">2802</td>
-             <td style="padding: 8px; border: 1px solid black;">646/P, 647, 648, 666, 667/P, 683/P, 684/P, 685/P, 686/P, 687/P, 688, 689, 690, 691, 694, 695, 697, 702/P, 703 and 704 </td>
-             <td style="padding: 8px; border: 1px solid black;">266.65 </td>
-             <td style="padding: 8px; border: 1px solid black;">Rs.8800/- </td>
-             <td style="padding: 8px; border: 1px solid black;">Rs.23,46,520/-</td>
+            <td style="padding: 8px; border: 1px solid black;">{!opportunityRecord.Unit__r.Address__Street__s},{!opportunityRecord.Unit__r.Address__City__s},{!opportunityRecord.Unit__r.Address__StateCode__s},{!opportunityRecord.Unit__r.Address__CountryCode__s},{!opportunityRecord.Unit__r.Address__PostalCode__s} </td>
+             <td style="padding: 8px; border: 1px solid black;">{!opportunityRecord.Unit__r.Name}</td>
+             <td style="padding: 8px; border: 1px solid black;">{!opportunityRecord.Unit__r.Survey_Number__c}</td>
+             <td style="padding: 8px; border: 1px solid black;">{!opportunityRecord.Unit__r.Plot_Size__c}</td>
+             <td style="padding: 8px; border: 1px solid black;">Rs.{!opportunityRecord.Unit__r.Plot_Price__c}/- </td>
+             <td style="padding: 8px; border: 1px solid black;">Rs.{!opportunityRecord.Sale_Value_Amount__c}/-</td>
         </tr>
         
           

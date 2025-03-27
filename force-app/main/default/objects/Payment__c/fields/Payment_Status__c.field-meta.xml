@@ -29,6 +29,11 @@
                 <default>false</default>
                 <label>UserCancelled</label>
             </value>
+            <value>
+                <fullName>Initiated</fullName>
+                <default>false</default>
+                <label>initiated</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

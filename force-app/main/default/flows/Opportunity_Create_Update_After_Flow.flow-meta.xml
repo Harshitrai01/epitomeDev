@@ -3,7 +3,7 @@
     <actionCalls>
         <name>Notification_To_Lead</name>
         <label>Notification To Lead</label>
-        <locationX>1128</locationX>
+        <locationX>1276</locationX>
         <locationY>755</locationY>
         <actionName>customNotificationAction</actionName>
         <actionType>customNotificationAction</actionType>
@@ -47,8 +47,8 @@
     <actionCalls>
         <name>Send_Email_to_Customer</name>
         <label>Send Email to Customer</label>
-        <locationX>864</locationX>
-        <locationY>971</locationY>
+        <locationX>968</locationX>
+        <locationY>1679</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
         <connector>
@@ -90,9 +90,32 @@
     </actionCalls>
     <apiVersion>63.0</apiVersion>
     <assignments>
+        <name>Assign_Additonal_Charges</name>
+        <label>Assign Additonal Charges</label>
+        <locationX>924</locationX>
+        <locationY>863</locationY>
+        <assignmentItems>
+            <assignToReference>Loop_On_Additional_Charges.Final_Charges__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Loop_On_Additional_Charges.Charges__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>additonalCharges</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_On_Additional_Charges</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_On_Additional_Charges</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>Assignment</name>
         <label>Assignment</label>
-        <locationX>1128</locationX>
+        <locationX>1276</locationX>
         <locationY>647</locationY>
         <assignmentItems>
             <assignToReference>RecipentIds</assignToReference>
@@ -109,7 +132,7 @@
         <name>Check_for_Stage_Value</name>
         <label>Check for Stage Value</label>
         <locationX>908</locationX>
-        <locationY>1763</locationY>
+        <locationY>2471</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Check_for_stage_value_Booked</name>
@@ -199,8 +222,8 @@
     <decisions>
         <name>Check_when_Stage_is_changed</name>
         <label>Check when Stage is changed</label>
-        <locationX>1128</locationX>
-        <locationY>1379</locationY>
+        <locationX>1244</locationX>
+        <locationY>2087</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>when_stage_is_changed</name>
@@ -219,10 +242,35 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Not_Null</name>
+        <label>Not Null</label>
+        <locationX>968</locationX>
+        <locationY>647</locationY>
+        <defaultConnector>
+            <targetReference>update_unit_status_to_available</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Additonal_Charges_Not_NULL</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Additional_Charges</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Loop_On_Additional_Charges</targetReference>
+            </connector>
+            <label>Additonal Charges Not NULL</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Null_check_for_Lead</name>
         <label>Null check for Lead</label>
         <locationX>182</locationX>
-        <locationY>2171</locationY>
+        <locationY>2879</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Check_for_lead_not_null</name>
@@ -244,7 +292,7 @@
         <name>Null_check_for_plot</name>
         <label>Null check for plot</label>
         <locationX>182</locationX>
-        <locationY>1871</locationY>
+        <locationY>2579</locationY>
         <defaultConnector>
             <targetReference>Null_check_for_Lead</targetReference>
         </defaultConnector>
@@ -269,7 +317,7 @@
         <name>Null_check_for_plot_blocked_stage</name>
         <label>Null check for plot blocked stage</label>
         <locationX>710</locationX>
-        <locationY>1871</locationY>
+        <locationY>2579</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Check_for_Plot_not_null_2</name>
@@ -291,7 +339,7 @@
         <name>Null_check_for_plot_registration_stage</name>
         <label>Null check for plot registration stage</label>
         <locationX>1238</locationX>
-        <locationY>1871</locationY>
+        <locationY>2579</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Check_for_Plot_not_null_3</name>
@@ -312,7 +360,7 @@
     <decisions>
         <name>Update_Decision</name>
         <label>Update Decision</label>
-        <locationX>1128</locationX>
+        <locationX>1244</locationX>
         <locationY>431</locationY>
         <defaultConnector>
             <isGoTo>true</isGoTo>
@@ -344,7 +392,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>update_unit_status_to_available</targetReference>
+                <targetReference>Get_Additional_Charges</targetReference>
             </connector>
             <label>Status Updated to Dropped</label>
         </rules>
@@ -398,6 +446,20 @@
     </formulas>
     <interviewLabel>Opportunity Create &amp; Update(After Flow) {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Opportunity Create &amp; Update(After Flow)</label>
+    <loops>
+        <name>Loop_On_Additional_Charges</name>
+        <label>Loop On Additional Charges</label>
+        <locationX>836</locationX>
+        <locationY>755</locationY>
+        <collectionReference>Get_Additional_Charges</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Assign_Additonal_Charges</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_Additional_Charges</targetReference>
+        </noMoreValuesConnector>
+    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -418,10 +480,31 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordLookups>
+        <name>Get_Additional_Charges</name>
+        <label>Get Additional Charges</label>
+        <locationX>968</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Not_Null</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Plot__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Unit__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Additional_Charges__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Get_Contact_Records</name>
         <label>Get Contact Records</label>
-        <locationX>864</locationX>
-        <locationY>863</locationY>
+        <locationX>968</locationX>
+        <locationY>1571</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Send_Email_to_Customer</targetReference>
@@ -443,8 +526,8 @@
     <recordLookups>
         <name>get_Email_Template_for_Dropped</name>
         <label>get Email Template for Dropped</label>
-        <locationX>864</locationX>
-        <locationY>755</locationY>
+        <locationX>968</locationX>
+        <locationY>1463</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_Contact_Records</targetReference>
@@ -464,8 +547,8 @@
     <recordLookups>
         <name>get_Organization_Wide_Address</name>
         <label>get Organization Wide Address</label>
-        <locationX>864</locationX>
-        <locationY>647</locationY>
+        <locationX>968</locationX>
+        <locationY>1355</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>get_Email_Template_for_Dropped</targetReference>
@@ -485,7 +568,7 @@
     <recordLookups>
         <name>GetRecordsCustomNotification</name>
         <label>GetRecordsCustomNotification</label>
-        <locationX>1128</locationX>
+        <locationX>1276</locationX>
         <locationY>539</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -504,10 +587,20 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
+        <name>Update_Additional_Charges</name>
+        <label>Update Additional Charges</label>
+        <locationX>836</locationX>
+        <locationY>1055</locationY>
+        <connector>
+            <targetReference>update_unit_status_to_available</targetReference>
+        </connector>
+        <inputReference>additonalCharges</inputReference>
+    </recordUpdates>
+    <recordUpdates>
         <name>Update_Lead_Record</name>
         <label>Update Lead Record</label>
-        <locationX>864</locationX>
-        <locationY>1187</locationY>
+        <locationX>968</locationX>
+        <locationY>1895</locationY>
         <connector>
             <targetReference>Check_when_Stage_is_changed</targetReference>
         </connector>
@@ -531,7 +624,7 @@
         <name>Update_Lead_record_to_Booked</name>
         <label>Update Lead record to Booked</label>
         <locationX>50</locationX>
-        <locationY>2279</locationY>
+        <locationY>2987</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -552,7 +645,7 @@
         <name>Update_Plot_record_to_Booked</name>
         <label>Update Plot record to Booked</label>
         <locationX>50</locationX>
-        <locationY>1979</locationY>
+        <locationY>2687</locationY>
         <connector>
             <targetReference>Null_check_for_Lead</targetReference>
         </connector>
@@ -576,7 +669,7 @@
         <name>Update_plot_stage_to_available</name>
         <label>Update plot stage to available</label>
         <locationX>578</locationX>
-        <locationY>1979</locationY>
+        <locationY>2687</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -585,6 +678,12 @@
                 <elementReference>$Record.Unit__c</elementReference>
             </value>
         </filters>
+        <inputAssignments>
+            <field>Plot_Price__c</field>
+            <value>
+                <elementReference>$Record.Unit__r.Base_Price_per_Sq_Ft__c</elementReference>
+            </value>
+        </inputAssignments>
         <inputAssignments>
             <field>Status__c</field>
             <value>
@@ -597,7 +696,7 @@
         <name>Update_Plot_stage_to_sold</name>
         <label>Update Plot stage to sold</label>
         <locationX>1106</locationX>
-        <locationY>1979</locationY>
+        <locationY>2687</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -614,8 +713,8 @@
     <recordUpdates>
         <name>update_Unit_field_to_Null_on_Opportunity_Record</name>
         <label>update Unit field to Null on Opportunity Record</label>
-        <locationX>864</locationX>
-        <locationY>1079</locationY>
+        <locationX>968</locationX>
+        <locationY>1787</locationY>
         <connector>
             <targetReference>Update_Lead_Record</targetReference>
         </connector>
@@ -627,8 +726,8 @@
     <recordUpdates>
         <name>update_unit_status_to_available</name>
         <label>update unit status to available</label>
-        <locationX>864</locationX>
-        <locationY>539</locationY>
+        <locationX>968</locationX>
+        <locationY>1247</locationY>
         <connector>
             <targetReference>get_Organization_Wide_Address</targetReference>
         </connector>
@@ -640,6 +739,12 @@
                 <elementReference>$Record.Unit__c</elementReference>
             </value>
         </filters>
+        <inputAssignments>
+            <field>Plot_Price__c</field>
+            <value>
+                <elementReference>$Record.Unit__r.Base_Price_per_Sq_Ft__c</elementReference>
+            </value>
+        </inputAssignments>
         <inputAssignments>
             <field>Status__c</field>
             <value>
@@ -659,6 +764,14 @@
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
+    <variables>
+        <name>additonalCharges</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Additional_Charges__c</objectType>
+    </variables>
     <variables>
         <name>RecipentIds</name>
         <dataType>String</dataType>

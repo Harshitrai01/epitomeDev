@@ -4,9 +4,8 @@
     <active>true</active>
     <errorConditionFormula>AND(
     $RecordType.Name = &quot;Loan&quot;,
-    ISCHANGED(Status),
     ISPICKVAL(Status, &quot;Eligible&quot;),
     ISBLANK(Loan_Eligible_Amount__c)
 )</errorConditionFormula>
-    <errorMessage>Loan Eligible Amount is required when the Status is changed to Eligible.</errorMessage>
+    <errorMessage>Loan Eligible Amount is required when the Status is Eligible.</errorMessage>
 </ValidationRule>

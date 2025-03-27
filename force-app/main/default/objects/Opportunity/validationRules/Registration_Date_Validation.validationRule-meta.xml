@@ -2,6 +2,6 @@
 <ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Registration_Date_Validation</fullName>
     <active>true</active>
-    <errorConditionFormula>Date_of_Registration__c  &lt; TODAY()</errorConditionFormula>
+    <errorConditionFormula>AND(ISCHANGED(Date_of_Registration__c ),Date_of_Registration__c  &lt; TODAY())</errorConditionFormula>
     <errorMessage>Registration Date cannot be in the past. Please enter today’s date or a future date.</errorMessage>
 </ValidationRule>

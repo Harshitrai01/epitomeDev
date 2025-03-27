@@ -4,8 +4,12 @@
     <active>true</active>
     <errorConditionFormula>AND(
     ISCHANGED(StageName),
-    ISPICKVAL(StageName, &quot;Registration Initiate&quot;),
-    Outstanding_Amount__c &gt; 0  
+    ISPICKVAL(StageName, &quot;Reg Initiate&quot;),
+    IF(
+        ISPICKVAL(Funding_Type__c, &quot;Own Fund&quot;),
+        Outstanding_Amount__c &lt;&gt; 0,
+        Loan_Outstanding_Amount__c &lt;&gt; 0
+    )
 )</errorConditionFormula>
     <errorMessage>Please Settle all the Payments.</errorMessage>
 </ValidationRule>

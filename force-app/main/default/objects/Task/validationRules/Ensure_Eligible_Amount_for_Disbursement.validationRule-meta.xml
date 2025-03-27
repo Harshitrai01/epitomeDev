@@ -4,7 +4,6 @@
     <active>true</active>
     <errorConditionFormula>AND(
     $RecordType.DeveloperName = &quot;Loan&quot;,
-    ISCHANGED(Status),
     ISPICKVAL(Status, &quot;Disbursement&quot;),
     ISBLANK( Loan_Sanctioned_Amount__c )
 )</errorConditionFormula>

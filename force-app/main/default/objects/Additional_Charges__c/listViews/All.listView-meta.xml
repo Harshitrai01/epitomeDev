@@ -7,6 +7,7 @@
     <columns>Additional_Charges__c</columns>
     <columns>Values__c</columns>
     <columns>Charges__c</columns>
+    <columns>Final_Charges__c</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>
 </ListView>

@@ -14,6 +14,7 @@ const FIELDS = [
     'Unit__c.Plot_Size__c',
     'Unit__c.Status__c',
     'Unit__c.Base_Price_per_Sq_Ft__c',
+    'Unit__c.Plot_Price__c',
     ];
 
 const PLOTFIELDS = [
@@ -132,6 +133,7 @@ export default class QuoteGenerationComponent extends NavigationMixin(LightningE
                 plotStatus: this.unit.data.fields.Status__c.value,
                 phaseName:this.phaseName,
                 basePricePerSqYard:this.unit.data.fields.Base_Price_per_Sq_Ft__c.value,
+                finalPlotPrice:this.unit.data.fields.Plot_Price__c.value,
 
             };
             this.records = [...this.records, newRecord];
@@ -162,7 +164,7 @@ export default class QuoteGenerationComponent extends NavigationMixin(LightningE
             const quoteRecords = this.records.map(record => ({
                 Lead__c: this.leadid,
                 Plot__c: record.plotRecordId,
-                Base_Price_Per_Sq_Yard__c:record.basePricePerSqYard,
+                Base_Price_Per_Sq_Yard__c:record.finalPlotPrice,
                 Time_To_Pay_In_Days__c:30
             }));
 

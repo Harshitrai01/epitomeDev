@@ -1,6 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
+        <name>Copy_1_of_send_Notification_to_CRM_Agent</name>
+        <label>Copy 1 of send Notification to CRM Agent</label>
+        <locationX>578</locationX>
+        <locationY>755</locationY>
+        <actionName>customNotificationAction</actionName>
+        <actionType>customNotificationAction</actionType>
+        <connector>
+            <targetReference>update_is_original_cheque_uploaded_to_true</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>customNotifTypeId</name>
+            <value>
+                <elementReference>Copy_1_of_get_Custom_Notification.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientIds</name>
+            <value>
+                <elementReference>OwnerIdList</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>title</name>
+            <value>
+                <stringValue>Original Cheque Uploaded</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>body</name>
+            <value>
+                <stringValue>Original Cheque for {!$Record.Name} has been uploaded</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>targetId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>customNotificationAction</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
         <name>send_Notification_to_CRM_Agent</name>
         <label>send Notification to CRM Agent</label>
         <locationX>314</locationX>
@@ -58,10 +102,26 @@
             <targetReference>get_Custom_Notification</targetReference>
         </connector>
     </assignments>
+    <assignments>
+        <name>Copy_1_of_Assign_owner_Id</name>
+        <label>Copy 1 of Assign owner Id</label>
+        <locationX>578</locationX>
+        <locationY>539</locationY>
+        <assignmentItems>
+            <assignToReference>OwnerIdList</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Copy_1_of_get_Custom_Notification</targetReference>
+        </connector>
+    </assignments>
     <decisions>
         <name>check_decision</name>
         <label>check decision</label>
-        <locationX>314</locationX>
+        <locationX>446</locationX>
         <locationY>431</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -122,11 +182,40 @@
             </connector>
             <label>NOC Uploaded</label>
         </rules>
+        <rules>
+            <name>Original_Cheque_uploaded</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Document_Type__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Sub_Document_Type__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Original Cheque</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.is_Original_Cheque_Uploaded__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_Assign_owner_Id</targetReference>
+            </connector>
+            <label>Original Cheque uploaded</label>
+        </rules>
     </decisions>
     <decisions>
         <name>Inserted_Updated</name>
         <label>Inserted/Updated</label>
-        <locationX>578</locationX>
+        <locationX>776</locationX>
         <locationY>323</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -172,6 +261,27 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Copy_1_of_get_Custom_Notification</name>
+        <label>Copy 1 of get Custom Notification</label>
+        <locationX>578</locationX>
+        <locationY>647</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Copy_1_of_send_Notification_to_CRM_Agent</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Opportunity_Notification</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>CustomNotificationType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <recordLookups>
         <name>get_AOS_record_type</name>
         <label>get AOS record type</label>
@@ -258,6 +368,19 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <recordUpdates>
+        <name>update_is_original_cheque_uploaded_to_true</name>
+        <label>update is original cheque uploaded to true</label>
+        <locationX>578</locationX>
+        <locationY>863</locationY>
+        <inputAssignments>
+            <field>is_Original_Cheque_Uploaded__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
         <name>update_status</name>
         <label>update status</label>
         <locationX>50</locationX>
@@ -289,7 +412,7 @@
         <object>Task</object>
     </recordUpdates>
     <start>
-        <locationX>452</locationX>
+        <locationX>650</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Inserted_Updated</targetReference>

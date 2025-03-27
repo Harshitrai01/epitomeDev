@@ -661,6 +661,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Original Cheque</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Original Sale Deed</fullName>
             <default>false</default>
         </values>

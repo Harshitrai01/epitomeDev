@@ -133,16 +133,16 @@ public with sharing class bookingFormController {
                     accObj.Name = String.isNotBlank(bookingFormDataObj.accountName) ? bookingFormDataObj.accountName: null;
                     accObj.Phone =  String.isNotBlank(bookingFormDataObj.accountContactNo) ? bookingFormDataObj.accountContactNo: null;
                     accObj.Email__c =  String.isNotBlank(bookingFormDataObj.accountEmailId) ? bookingFormDataObj.accountEmailId: null;
-                    accObj.BillingStreet= String.isNotBlank(bookingFormDataObj.accountPermanentAddressStreet) ? bookingFormDataObj.accountPermanentAddressStreet: null;
-                    accObj.BillingCity= String.isNotBlank(bookingFormDataObj.accountPermanentAddressCity) ? bookingFormDataObj.accountPermanentAddressCity: null;
-                    accObj.BillingCountry= String.isNotBlank(bookingFormDataObj.accountPermanentAddressCountry) ? bookingFormDataObj.accountPermanentAddressCountry: null;
-                    accObj.BillingState= String.isNotBlank(bookingFormDataObj.accountPermanentAddressState) ? bookingFormDataObj.accountPermanentAddressState: null;
-                    accObj.BillingPostalCode= String.isNotBlank(bookingFormDataObj.accountPermanentAddressPostalCode) ? bookingFormDataObj.accountPermanentAddressPostalCode: null;
-                    accObj.ShippingStreet= String.isNotBlank(bookingFormDataObj.accountCorrespondenceAddressStreet) ? bookingFormDataObj.accountCorrespondenceAddressStreet: null;
-                    accObj.ShippingCity= String.isNotBlank(bookingFormDataObj.accountCorrespondenceAddressCity) ? bookingFormDataObj.accountCorrespondenceAddressCity: null;
-                    accObj.ShippingCountry= String.isNotBlank(bookingFormDataObj.accountCorrespondenceAddressCountry) ? bookingFormDataObj.accountCorrespondenceAddressCountry: null;
-                    accObj.ShippingState= String.isNotBlank(bookingFormDataObj.accountCorrespondenceAddressState) ? bookingFormDataObj.accountCorrespondenceAddressState: null;
-                    accObj.ShippingPostalCode= String.isNotBlank(bookingFormDataObj.accountCorrespondenceAddressPostalCode) ? bookingFormDataObj.accountCorrespondenceAddressPostalCode: null;
+                    accObj.Permanent_Address__Street__s= String.isNotBlank(bookingFormDataObj.accountPermanentAddressStreet) ? bookingFormDataObj.accountPermanentAddressStreet: null;
+                    accObj.Permanent_Address__City__s= String.isNotBlank(bookingFormDataObj.accountPermanentAddressCity) ? bookingFormDataObj.accountPermanentAddressCity: null;
+                    accObj.Permanent_Address__CountryCode__s= String.isNotBlank(bookingFormDataObj.accountPermanentAddressCountry) ? bookingFormDataObj.accountPermanentAddressCountry: null;
+                    accObj.Permanent_Address__StateCode__s= String.isNotBlank(bookingFormDataObj.accountPermanentAddressState) ? bookingFormDataObj.accountPermanentAddressState: null;
+                    accObj.Permanent_Address__PostalCode__s= String.isNotBlank(bookingFormDataObj.accountPermanentAddressPostalCode) ? bookingFormDataObj.accountPermanentAddressPostalCode: null;
+                    accObj.Correspondence_Address__Street__s= String.isNotBlank(bookingFormDataObj.accountCorrespondenceAddressStreet) ? bookingFormDataObj.accountCorrespondenceAddressStreet: null;
+                    accObj.Correspondence_Address__City__s= String.isNotBlank(bookingFormDataObj.accountCorrespondenceAddressCity) ? bookingFormDataObj.accountCorrespondenceAddressCity: null;
+                    accObj.Correspondence_Address__CountryCode__s= String.isNotBlank(bookingFormDataObj.accountCorrespondenceAddressCountry) ? bookingFormDataObj.accountCorrespondenceAddressCountry: null;
+                    accObj.Correspondence_Address__StateCode__s= String.isNotBlank(bookingFormDataObj.accountCorrespondenceAddressState) ? bookingFormDataObj.accountCorrespondenceAddressState: null;
+                    accObj.Correspondence_Address__PostalCode__s= String.isNotBlank(bookingFormDataObj.accountCorrespondenceAddressPostalCode) ? bookingFormDataObj.accountCorrespondenceAddressPostalCode: null;
                     accObj.Same_As_Permanent_Address__c= Boolean.valueOf(bookingFormDataObj.accountSameAsPermanentAddress);
                     upsert accObj;
                     system.debug('bookingFormDataObj.quoteI11111111111d'+quoteId);
@@ -258,16 +258,16 @@ public with sharing class bookingFormController {
                 accObj.Name = String.isNotBlank(bookingFormDataObj.accountName) ? bookingFormDataObj.accountName: null;
                 accObj.Phone =  String.isNotBlank(bookingFormDataObj.accountContactNo) ? bookingFormDataObj.accountContactNo: null;
                 accObj.Email__c =  String.isNotBlank(bookingFormDataObj.accountEmailId) ? bookingFormDataObj.accountEmailId: null;
-                accObj.BillingStreet= String.isNotBlank(bookingFormDataObj.accountPermanentAddressStreet) ? bookingFormDataObj.accountPermanentAddressStreet: null;
-                accObj.BillingCity= String.isNotBlank(bookingFormDataObj.accountPermanentAddressCity) ? bookingFormDataObj.accountPermanentAddressCity: null;
-                accObj.BillingCountry= String.isNotBlank(bookingFormDataObj.accountPermanentAddressCountry) ? bookingFormDataObj.accountPermanentAddressCountry: null;
-                accObj.BillingState= String.isNotBlank(bookingFormDataObj.accountPermanentAddressState) ? bookingFormDataObj.accountPermanentAddressState: null;
-                accObj.BillingPostalCode= String.isNotBlank(bookingFormDataObj.accountPermanentAddressPostalCode) ? bookingFormDataObj.accountPermanentAddressPostalCode: null;
-                accObj.ShippingStreet= String.isNotBlank(bookingFormDataObj.accountCorrespondenceAddressStreet) ? bookingFormDataObj.accountCorrespondenceAddressStreet: null;
-                accObj.ShippingCity= String.isNotBlank(bookingFormDataObj.accountCorrespondenceAddressCity) ? bookingFormDataObj.accountCorrespondenceAddressCity: null;
-                accObj.ShippingCountry= String.isNotBlank(bookingFormDataObj.accountCorrespondenceAddressCountry) ? bookingFormDataObj.accountCorrespondenceAddressCountry: null;
-                accObj.ShippingState= String.isNotBlank(bookingFormDataObj.accountCorrespondenceAddressState) ? bookingFormDataObj.accountCorrespondenceAddressState: null;
-                accObj.ShippingPostalCode= String.isNotBlank(bookingFormDataObj.accountCorrespondenceAddressPostalCode) ? bookingFormDataObj.accountCorrespondenceAddressPostalCode: null;
+                accObj.Permanent_Address__Street__s= String.isNotBlank(bookingFormDataObj.accountPermanentAddressStreet) ? bookingFormDataObj.accountPermanentAddressStreet: null;
+                accObj.Permanent_Address__City__s= String.isNotBlank(bookingFormDataObj.accountPermanentAddressCity) ? bookingFormDataObj.accountPermanentAddressCity: null;
+                accObj.Permanent_Address__CountryCode__s= String.isNotBlank(bookingFormDataObj.accountPermanentAddressCountry) ? bookingFormDataObj.accountPermanentAddressCountry: null;
+                accObj.Permanent_Address__StateCode__s= String.isNotBlank(bookingFormDataObj.accountPermanentAddressState) ? bookingFormDataObj.accountPermanentAddressState: null;
+                accObj.Permanent_Address__PostalCode__s= String.isNotBlank(bookingFormDataObj.accountPermanentAddressPostalCode) ? bookingFormDataObj.accountPermanentAddressPostalCode: null;
+                accObj.Correspondence_Address__Street__s= String.isNotBlank(bookingFormDataObj.accountCorrespondenceAddressStreet) ? bookingFormDataObj.accountCorrespondenceAddressStreet: null;
+                accObj.Correspondence_Address__City__s= String.isNotBlank(bookingFormDataObj.accountCorrespondenceAddressCity) ? bookingFormDataObj.accountCorrespondenceAddressCity: null;
+                accObj.Correspondence_Address__CountryCode__s= String.isNotBlank(bookingFormDataObj.accountCorrespondenceAddressCountry) ? bookingFormDataObj.accountCorrespondenceAddressCountry: null;
+                accObj.Correspondence_Address__StateCode__s= String.isNotBlank(bookingFormDataObj.accountCorrespondenceAddressState) ? bookingFormDataObj.accountCorrespondenceAddressState: null;
+                accObj.Correspondence_Address__PostalCode__s= String.isNotBlank(bookingFormDataObj.accountCorrespondenceAddressPostalCode) ? bookingFormDataObj.accountCorrespondenceAddressPostalCode: null;
                 accObj.Same_As_Permanent_Address__c= Boolean.valueOf(bookingFormDataObj.accountSameAsPermanentAddress);
                 upsert accObj;
                     
@@ -318,7 +318,8 @@ public with sharing class bookingFormController {
                             plotsToUpdate.add(new Unit__c(
                                 Id = plot.plotName,
                                 Contact__c = contactId,
-                                Status__c='Blocked'
+                                Status__c='Blocked',
+                                Plot_Price__c=String.isNotBlank(plot.unitFinalPlotPrize) ? Decimal.valueOf(plot.unitFinalPlotPrize) : null
                             ));
 
                             // Create Opportunity
@@ -333,7 +334,7 @@ public with sharing class bookingFormController {
                                 ContactId = contactId, // Direct assignment (No Double Loop!)
                                 Bulk_Booking__c=true,
                                 Contact__c = contactId,
-                                Sale_Value_Amount__c=String.isNotBlank(plot.unitPlotPrize) ? Decimal.valueOf(plot.unitPlotPrize): null
+                                Sale_Value_Amount__c=String.isNotBlank(plot.unitFinalPlotPrize) ? Decimal.valueOf(plot.unitFinalPlotPrize): null
                                 //OwnerId=getCRMUserId()
                             ));
                         }
@@ -357,7 +358,9 @@ public with sharing class bookingFormController {
                             //Quote_Name__c = opp.Name,
                             Opportunity__c = opp.Id,
                              Status__c='Accepted',
-                             Base_Price_Per_Sq_Yard__c = opp.Sale_Value_Amount__c
+                             Base_Price_Per_Sq_Yard__c = opp.Sale_Value_Amount__c,
+                             Time_To_Pay_In_Days__c=30,
+                             Plot__c=opp.Unit__c
                         ));
                     }
                     if (!quotesToInsert.isEmpty()) {
@@ -524,9 +527,9 @@ public with sharing class bookingFormController {
         public static Account getAccountDetails(Id accountId) {
             try {
                 return [
-                    SELECT Id, Name, Phone, Email__c, BillingStreet, BillingCity, BillingCountry, 
-                            BillingState, BillingPostalCode, ShippingStreet, ShippingCity, 
-                            ShippingCountry, ShippingState, ShippingPostalCode, 
+                    SELECT Id, Name, Phone, Email__c, Permanent_Address__City__s, Permanent_Address__Street__s, Permanent_Address__PostalCode__s, 
+                            Permanent_Address__StateCode__s, Permanent_Address__CountryCode__s, Correspondence_Address__City__s, Correspondence_Address__CountryCode__s, 
+                            Correspondence_Address__PostalCode__s, Correspondence_Address__StateCode__s, Correspondence_Address__Street__s, 
                             Same_As_Permanent_Address__c
                     FROM Account
                     WHERE Id = :accountId
@@ -613,7 +616,7 @@ public with sharing class bookingFormController {
     @AuraEnabled(cacheable=true) 
         public static Unit__c getPlotDetails(String recordId) {
             try {
-                return [SELECT Id, Name, Plot_Facing__c, Plot_Price__c, Plot_Size__c, Unit_Code__c,Phase__c, Phase__r.Name
+                return [SELECT Id, Name, Plot_Facing__c, Plot_Price__c, Plot_Size__c, Unit_Code__c,Phase__c, Phase__r.Name,Base_Price_per_Sq_Ft__c
                         FROM Unit__c WHERE Id = :recordId LIMIT 1];
             } catch (Exception e) {
                 throw new AuraHandledException('Error fetching Plot details: ' + e.getMessage());
@@ -663,8 +666,11 @@ public with sharing class bookingFormController {
         public String unitPlotFacing { get; set; }
         public String unitPlotPhase { get; set; }
         public String unitPlotUnitCode { get; set; }
-        public String unitPlotPrize { get; set; }
+        public String unitActualPlotPrize { get; set; }
+        public String unitFinalPlotPrize { get; set; }
         public String unitPlotSize { get; set; }
+         public String projectId { get; set; }
+        public String phaseId { get; set; }
     }
 
     /**
@@ -737,8 +743,6 @@ public with sharing class bookingFormController {
         public String leadId;
         public String saleValueAmount;
         public String contactId;
-        public String projectId;
-        public String phaseId;
         public List<ListOfCoApplicant> listOfCoApplicant;        
     }
 

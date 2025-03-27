@@ -18,4 +18,8 @@
         <masterLabel>UserCancelled</masterLabel>
         <translation><!-- UserCancelled --></translation>
     </picklistValues>
+    <picklistValues>
+        <masterLabel>initiated</masterLabel>
+        <translation><!-- initiated --></translation>
+    </picklistValues>
 </CustomFieldTranslation>

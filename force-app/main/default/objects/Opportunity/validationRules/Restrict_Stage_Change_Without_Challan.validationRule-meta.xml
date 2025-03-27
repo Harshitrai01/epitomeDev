@@ -7,5 +7,5 @@
     ISPICKVAL(StageName, &quot;Registration Initiate&quot;),
     NOT(INCLUDES(Sub_Document_Type__c, &quot;Challan&quot;))
 )</errorConditionFormula>
-    <errorMessage>You cannot change the Stage to &apos;Registration Initiate&apos; unless &apos;Challan&apos; is selected in Sub Document Type.</errorMessage>
+    <errorMessage>You cannot change the Stage to &apos;Registration Initiate&apos; unless &apos;Challan&apos; is not uploaded.</errorMessage>
 </ValidationRule>

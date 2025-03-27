@@ -5,6 +5,7 @@
     <errorConditionFormula>OR(
     AND(
         ISCHANGED(StageName),
+        NOT(ISPICKVAL(PRIORVALUE(StageName), &quot;Cancelled&quot;)),
         NOT(
             OR(
                 AND(
@@ -74,8 +75,7 @@
                     ISPICKVAL(PRIORVALUE(StageName), &quot;Registration Scheduled&quot;)
                 ),
                 AND(
-                    ISPICKVAL(StageName, &quot;Document Delivery&quot;),
-                    ISPICKVAL(PRIORVALUE(StageName), &quot;Registered&quot;)
+                    ISPICKVAL(StageName, &quot;Cancelled&quot;)
                 )
             )
         )

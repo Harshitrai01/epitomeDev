@@ -37,7 +37,33 @@ public with sharing class QuotationCostingSheetController {
     public static void SaveOpportunityRecord(List<Opportunity>oppList) {
         try {
             if (oppList != null && !oppList.isEmpty() && !String.isBlank(oppList[0].Id) && oppList[0].Sale_Value_Amount__c!=null) {
+                String oppId= (String) oppList[0].Id;
+                Opportunity opp = [Select Id,Unit__c From Opportunity Where Id=:oppId];
+                String oldPlotId='';
+                String newPlotId='';
+                if(opp!=null){
+                    oldPlotId=opp.Unit__c;
+                    newPlotId= (String) oppList[0].Unit__c;
+                }
                 update oppList;
+                if(oldPlotId!='' && newPlotId!='' && oldPlotId!=newPlotId){
+                    List<Unit__c> plotToUpdate=[Select Id,Status__c From Unit__c Where ID=:newPlotId OR ID=:oldPlotId Limit 2];
+                    List<Unit__c> updatedPlots = New List<Unit__c>();
+                    if(plotToUpdate!=null){
+                        for(Unit__c plot:plotToUpdate){
+                            if(plot.Id==newPlotId){
+                                plot.Status__c='Blocked';
+                            }else if(plot.Id==oldPlotId){
+                                plot.Status__c='Available';
+                            }
+                            updatedPlots.add(plot);
+                        }
+                        if(!updatedPlots.isEmpty()){
+                            update updatedPlots;
+                        }
+                    }
+                    
+                }
             }
         }
         catch(Exception ex) {
@@ -46,13 +72,27 @@ public with sharing class QuotationCostingSheetController {
     }
     
     @AuraEnabled
-    public static void submitForApproval(Id recordId) {
+    public static void savePlot(List<Unit__c> plotRecords) {
+        try {	
+            if(plotRecords!=null && !plotRecords.isEmpty()){
+                update plotRecords;
+            }
+        } catch (Exception ex) {
+            throw new AuraHandledException('Error In Saving Plot Record: ' + ex.getMessage());
+        }
+    }
+    
+    @AuraEnabled
+    public static void submitForApproval(Id recordId, String userId) {
         try {
             Approval.ProcessSubmitRequest req = new Approval.ProcessSubmitRequest();
             req.setObjectId(recordId);
-            req.setComments('Quote Approval Request.');
+            req.setComments('Quote Approval Request');
             req.setNextApproverIds(null);
             req.setProcessDefinitionNameOrId('Quote_Approval_Process');
+            if(userId!=''){
+            	req.setSubmitterId(userId);
+            }
 
             Approval.ProcessResult result = Approval.process(req);
             if (result.isSuccess()) {
@@ -66,10 +106,54 @@ public with sharing class QuotationCostingSheetController {
     }
     
     @AuraEnabled
-    public static void FinalizeQuote(List<Quote__c> quoteRecords) {
+    public static void FinalizeQuote(List<Quote__c> quoteRecord) {
         try {
-            if (quoteRecords != null && !quoteRecords.isEmpty()) {
-                update quoteRecords;
+            if (quoteRecord != null && !quoteRecord.isEmpty()) {
+                update quoteRecord;
+                String quoteId = (String) quoteRecord[0].Id;
+                
+                List<Quote__c> quoteRecords = [Select Id,Plot__c,Rate_Per_Sq_Yd__c,Premium_Plots__c,East__c,Registration_Charges__c,
+                                               Corpus_Fund_and_Club_House_Payable__c,Other_Corners__c,Legal_And_Documentation_Charges__c,
+                                               Price_For_North_East__c,X100_Ft_Road_Plots__c
+                                               From Quote__c Where Id=:quoteId];
+                // For Updating Additonal Charges
+                String plotId ='';
+                if(quoteRecords[0].Plot__c!=null){
+                    plotId=(String) quoteRecords[0].Plot__c;
+                    List<Additional_Charges__c> additonalCharges = new List<Additional_Charges__c>();
+                    List<Additional_Charges__c> additonalChargesToUpdate = new List<Additional_Charges__c>();
+                    if(plotId!=null && plotId!=''){
+                        additonalCharges = [Select Id,Plot__c,Additional_Charges__c,Values__c,Charges__c,Final_Charges__c From Additional_Charges__c
+                                            Where Plot__c=:plotId];
+                        if(additonalCharges!=null && !additonalCharges.isEmpty()){
+                            for(Additional_Charges__c adc : additonalCharges){
+                                if(adc.Values__c=='100 Ft Road Plots' && quoteRecords[0].X100_Ft_Road_Plots__c != null){
+                                    adc.Final_Charges__c=quoteRecords[0].X100_Ft_Road_Plots__c;
+                                }else if(adc.Values__c=='Price For North East' && quoteRecords[0].Price_For_North_East__c != null){
+                                    adc.Final_Charges__c=quoteRecords[0].Price_For_North_East__c;
+                                }else if(adc.Values__c=='Legal And Documentation Charges' && quoteRecords[0].Legal_And_Documentation_Charges__c != null){
+                                    adc.Final_Charges__c=quoteRecords[0].Legal_And_Documentation_Charges__c;
+                                }else if(adc.Values__c=='Other Corners' && quoteRecords[0].Other_Corners__c != null){
+                                    adc.Final_Charges__c=quoteRecords[0].Other_Corners__c;
+                                }else if(adc.Values__c=='Corpus Fund and Club House Payable' && quoteRecords[0].Corpus_Fund_and_Club_House_Payable__c != null){
+                                    adc.Final_Charges__c=quoteRecords[0].Corpus_Fund_and_Club_House_Payable__c;
+                                }else if(adc.Values__c=='Registration Charges As Applicable On The Day Of Registration' && quoteRecords[0].Registration_Charges__c != null){
+                                    adc.Final_Charges__c=quoteRecords[0].Registration_Charges__c;
+                                }else if(adc.Values__c=='East' && quoteRecords[0].East__c != null){
+                                    adc.Final_Charges__c=quoteRecords[0].East__c;
+                                }else if(adc.Values__c=='Premium Plots' && quoteRecords[0].Premium_Plots__c != null){
+                                    adc.Final_Charges__c=quoteRecords[0].Premium_Plots__c;
+                                }else if(adc.Values__c=='Rate Per Sq. Yd' && quoteRecords[0].Rate_Per_Sq_Yd__c != null){
+                                    adc.Final_Charges__c=quoteRecords[0].Rate_Per_Sq_Yd__c;
+                                }
+                                additonalChargesToUpdate.add(adc);
+                            }
+                            if(!additonalChargesToUpdate.isEmpty()){
+                                update additonalChargesToUpdate;
+                            }
+                        }
+                    }
+                }
             }
         }
         catch(Exception ex) {
@@ -132,7 +216,7 @@ public with sharing class QuotationCostingSheetController {
                 IsLocked__c,Approval_Status__c,Lead__r.Email,Is_Final__c,
                 Opportunity__r.Contact__r.Name, Opportunity__r.Contact__r.Email, Plot__r.Phase__r.Name, 
                 Plot__r.Phase__r.Project__r.Name, Plot__r.Phase__r.Project_Type__c,Plot__r.Plot_Dimension__c,Opportunity__c,Total_Sale_Value__c,
-                Final_Base_Price__c,Total_Unit_Cost__c,Time_To_Pay_In_Days__c,Quote_Name__c,Lead__c
+                Final_Base_Price__c,Total_Unit_Cost__c,Time_To_Pay_In_Days__c,Quote_Name__c,Lead__c,Plot__r.Plot_Price__c,Lead__r.OwnerId
                 FROM Quote__c where Id =: recordId 
             ];
             
@@ -140,7 +224,7 @@ public with sharing class QuotationCostingSheetController {
             String plotId='';
             plotId=quoteObj.Plot__c;
             if(plotId!=null && plotId!=''){
-                additonalCharges = [Select Id,Plot__c,Additional_Charges__c,Values__c,Charges__c From Additional_Charges__c
+                additonalCharges = [Select Id,Plot__c,Additional_Charges__c,Values__c,Charges__c,Final_Charges__c From Additional_Charges__c
 									Where Plot__c=:plotId];
             }
             
@@ -176,8 +260,8 @@ public with sharing class QuotationCostingSheetController {
     public static Opportunity getOppDetails(String oppId){
         try{
             List<Opportunity> oppList= [Select Id,Contact__c,Contact__r.Email,Account.Name,Unit__r.Phase__r.Name,
-                                        Plot_Name__c, Plot_Size__c,Sale_Value_Amount__c,Collected_Amount__c,
-                                        Outstanding_Amount__c,Unit__r.Base_Price_per_Sq_Ft__c
+                                        Plot_Name__c, Plot_Size__c,Sale_Value_Amount__c,Collected_Amount__c,OwnerId,
+                                        Outstanding_Amount__c,Unit__r.Base_Price_per_Sq_Ft__c,Unit__r.Plot_Price__c
                                         From Opportunity Where Id=:oppId Limit 1];
             if(oppList!=null){
                 return oppList[0];

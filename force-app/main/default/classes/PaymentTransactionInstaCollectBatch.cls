@@ -191,7 +191,14 @@ global class PaymentTransactionInstaCollectBatch implements Database.Batchable<s
                     }
                 }
                 if (!recordIds.isEmpty()) {
-                    submitForApproval(recordIds);
+                    List<Payment__c> pList = [Select Id,Opportunity__r.OwnerId From Payment__c Where Id IN:recordIds];
+                    Map<String,String> paymentIdToOppOwnerId = New Map<String,String>();
+                    if(pList!=null){
+                        for(Payment__c p:pList){
+                            paymentIdToOppOwnerId.put(p.Id,p.Opportunity__r.OwnerId);
+                        }
+                    }
+                    submitForApproval(recordIds,paymentIdToOppOwnerId);
                     if(!idToEmailMap.isEmpty()){
                         System.enqueueJob(new PaymentReceiptQueueable(idToEmailMap, recordIds));
                     }
@@ -242,16 +249,23 @@ global class PaymentTransactionInstaCollectBatch implements Database.Batchable<s
     @param          : List<Id> recordIds - The list of payment record IDs to submit for approval.
     ********************************************************
     */
-    public static void submitForApproval(List<Id> recordIds) {
+    public static void submitForApproval(List<Id> recordIds, Map<String,String> paymentIdToOppOwnerId) {
         try {
             List<Approval.ProcessSubmitRequest> submitRequests = new List<Approval.ProcessSubmitRequest>();
             
             for (Id recordId : recordIds) {
+                String userId='';
+                if(paymentIdToOppOwnerId.ContainsKey(recordId)){
+                    userId=paymentIdToOppOwnerId.get(recordId);
+                }
                 Approval.ProcessSubmitRequest req = new Approval.ProcessSubmitRequest();
                 req.setObjectId(recordId);
                 req.setComments('Approval Request For Payment');
                 req.setNextApproverIds(null);
                 req.setProcessDefinitionNameOrId('Payment_Approval_Process');
+                if(userId!=''){
+                    req.setSubmitterId(userId);
+                }
                 submitRequests.add(req);
             }
             

@@ -154,6 +154,7 @@ description: Checks the size of uploaded files and processes them accordingly. W
         List<ContentDocument> filesToDelete = new List<ContentDocument>();
         List<ContentVersion> filesToUpdate = new List<ContentVersion>();
         String opportunityName = '';
+        String plotName='';
         
         try {
             // Validate input parameters
@@ -162,9 +163,10 @@ description: Checks the size of uploaded files and processes them accordingly. W
             }
             
             // Fetch the Opportunity Name using recordId
-            Opportunity opp = [SELECT Name FROM Opportunity WHERE Id = :recordId LIMIT 1];
+            Opportunity opp = [SELECT Name, Plot_Name__c FROM Opportunity WHERE Id = :recordId LIMIT 1];
             if (opp != null) {
                 opportunityName = opp.Name;
+                plotName=opp.Plot_Name__c;
             }
             
             // Deserialize JSON input
@@ -198,6 +200,7 @@ description: Checks the size of uploaded files and processes them accordingly. W
             }
             
             // Query file sizes
+            String firstDocumentType = files.isEmpty() ? null : files.get(0).get('fileType');
             List<ContentVersion> contents;
             if(!test.isrunningtest()){
 					contents= [SELECT ContentSize, Id, Title, ContentDocumentId FROM ContentVersion 
@@ -205,7 +208,7 @@ description: Checks the size of uploaded files and processes them accordingly. W
             }else{
                 contents= [SELECT ContentSize, Id, Title, ContentDocumentId FROM ContentVersion];  
             }
-            
+            system.debug('contents--->'+contents);
             // Categorize files based on size
             for (ContentVersion content : contents) {
                 if (content.ContentSize > maxSize) {
@@ -234,13 +237,13 @@ description: Checks the size of uploaded files and processes them accordingly. W
                 // Delete old files of the same type
                 if (firstFileType != null) {
                     List<ContentDocument> oldFiles = [
-                        SELECT Id FROM ContentDocument 
-                        WHERE Id IN (
-                            SELECT ContentDocumentId FROM ContentVersion 
-                            WHERE Title LIKE :firstFileType + '__%'
-                        )
-                    ];
-                    
+    SELECT Id FROM ContentDocument 
+    WHERE Id IN (
+        SELECT ContentDocumentId FROM ContentVersion 
+        WHERE Title LIKE :(firstFileType + '__%__' + plotName + '__' + opportunityName)
+    )
+];
+                    system.debug('oldFiles----->'+oldFiles);
                     if (!oldFiles.isEmpty()) {
                         delete oldFiles; // Delete as the current user
                     }
@@ -249,7 +252,7 @@ description: Checks the size of uploaded files and processes them accordingly. W
                 // Rename and update files
                 for (ContentVersion content : filesToUpdate) {
                     if (fileTypeMap.containsKey(content.ContentDocumentId)) {
-                        content.Title = fileTypeMap.get(content.ContentDocumentId) + '__' + content.Title + '__' + opportunityName;
+                        content.Title = fileTypeMap.get(content.ContentDocumentId) + '__' + content.Title + '__' + plotName + '__'+ opportunityName;
                     }
                 }
                 

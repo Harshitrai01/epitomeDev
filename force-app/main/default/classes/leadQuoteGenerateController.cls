@@ -183,6 +183,24 @@ public with sharing class leadQuoteGenerateController {
             throw new AuraHandledException('Error creating Lead_Plot__c records: ' + ex.getMessage());
         }
     }
+    
+    @AuraEnabled
+    public static List<Quote__c> saveLeadQuoteRecords(List<Quote__c> quoteRecords) {
+        try {
+            if (quoteRecords != null && !quoteRecords.isEmpty()) {
+                insert quoteRecords;
+                Set<Id> quoteIds = new Set<Id>();
+                for (Quote__c quote : quoteRecords) {
+                    quoteIds.add(quote.Id);
+                }
+                return [SELECT Id, Name, Quote_Name__c, Plot__r.Name, Plot__r.Plot_Size__c  
+                        FROM Quote__c WHERE Id IN :quoteIds];
+            }
+            return null;
+        } catch (Exception ex) {
+            throw new AuraHandledException('Error creating Quote__c records: ' + ex.getMessage());
+        }
+    }
 
     /*
     *********************************************************

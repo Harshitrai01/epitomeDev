@@ -8,6 +8,7 @@ import submitForApproval from '@salesforce/apex/QuotationCostingSheetController.
 import SaveOpportunityRecord from '@salesforce/apex/QuotationCostingSheetController.SaveOpportunityRecord';
 import sendEmail from '@salesforce/apex/QuotationCostingSheetController.sendEmail';
 import getOppDetails from '@salesforce/apex/QuotationCostingSheetController.getOppDetails';
+import savePlot from '@salesforce/apex/QuotationCostingSheetController.savePlot';
 import { CurrentPageReference } from 'lightning/navigation';
 
 export default class QuotationCostingSheet extends LightningElement {
@@ -48,7 +49,6 @@ export default class QuotationCostingSheet extends LightningElement {
             this.quoteId=this.recordId;
         }
         this.editable = pageRef.state?.c__editable === 'true';
-        console.log('Editable-->>',this.editable);
     }
 
     phaseName='';
@@ -75,7 +75,9 @@ export default class QuotationCostingSheet extends LightningElement {
     ratePerSqYd = 0;
     totalSaleValue;
     plotId;
-
+    finalPlotPrice;
+    leadOwnerId='';
+    oppOwnerId='';
     connectedCallback() {
         try {
             this.isLoading = true;
@@ -88,6 +90,8 @@ export default class QuotationCostingSheet extends LightningElement {
                     this.isFinal=this.quoteData?.Is_Final__c || false;
                     this.quoteName=this.quoteData?.Quote_Name__c || this.quoteData?.Name || '';
                     this.plotId=this.quoteData?.Plot__c;
+                    this.leadOwnerId=this.quoteData?.Lead__r?.OwnerId || '';
+                    console.log('Lead Owner->',this.leadOwnerId);
                     if(this.isLocked==true || this.quoteData?.Approval_Status__c!='Accepted'){
                         this.isFinalizedQuoteDisabled=true;
                     }
@@ -97,67 +101,68 @@ export default class QuotationCostingSheet extends LightningElement {
                     this.isChecked=this.quoteData?.IsSample__c || false;
                     this.totalSaleValue=this.quoteData?.Total_Sale_Value__c || 0 ;
                     this.additionalChargeData.forEach((charge) => {
+                        let finalCharges = charge.Final_Charges__c || charge.Charges__c || 0;
                         switch (charge.Values__c) {
                             case "100 Ft Road Plots":
                                 this.hundredFtRoadPlots = charge.Charges__c || 0;
-                                if(!this.quoteData?.X100_Ft_Road_Plots__c){
-                                    this.quoteRecordToSave['X100_Ft_Road_Plots__c']  = parseFloat(this.hundredFtRoadPlots);
+                                if(this.quoteData?.X100_Ft_Road_Plots__c==null){
+                                    this.quoteRecordToSave['X100_Ft_Road_Plots__c']  = parseFloat(finalCharges);
                                     this.toUpdate=true;
                                 }
                                 break;
                             case "Price For North East":
                                 this.priceForNorthEast = charge.Charges__c || 0;
-                                if(!this.quoteData?.Price_For_North_East__c){
-                                    this.quoteRecordToSave['Price_For_North_East__c']  = parseFloat(this.priceForNorthEast);
+                                if(this.quoteData?.Price_For_North_East__c==null){
+                                    this.quoteRecordToSave['Price_For_North_East__c']  = parseFloat(finalCharges);
                                     this.toUpdate=true;
                                 }
                                 break;
                             case "Legal And Documentation Charges":
                                 this.legalAndDocumentationCharges = charge.Charges__c || 0;
-                                if(!this.quoteData?.Legal_And_Documentation_Charges__c){
-                                    this.quoteRecordToSave['Legal_And_Documentation_Charges__c']  = parseFloat(this.legalAndDocumentationCharges);
+                                if(this.quoteData?.Legal_And_Documentation_Charges__c==null){
+                                    this.quoteRecordToSave['Legal_And_Documentation_Charges__c']  = parseFloat(finalCharges);
                                     this.toUpdate=true;
                                 }
                                 break;
                             case "Other Corners":
                                 this.otherCorners = charge.Charges__c || 0;
-                                if(!this.quoteData?.Other_Corners__c){
-                                    this.quoteRecordToSave['Other_Corners__c']  = parseFloat(this.otherCorners);
+                                if(this.quoteData?.Other_Corners__c==null){
+                                    this.quoteRecordToSave['Other_Corners__c']  = parseFloat(finalCharges);
                                     this.toUpdate=true;
                                 }
                                 break;
                             case "Corpus Fund and Club House Payable":
                                 this.corpusFundAndClubHousePayable = charge.Charges__c || 0;
-                                if(!this.quoteData?.Corpus_Fund_and_Club_House_Payable__c){
-                                    this.quoteRecordToSave['Corpus_Fund_and_Club_House_Payable__c']  = parseFloat(this.corpusFundAndClubHousePayable);
+                                if(this.quoteData?.Corpus_Fund_and_Club_House_Payable__c==null){
+                                    this.quoteRecordToSave['Corpus_Fund_and_Club_House_Payable__c']  = parseFloat(finalCharges);
                                     this.toUpdate=true;
                                 }
                                 break;
                             case "Registration Charges As Applicable On The Day Of Registration":
                                 this.registrationChargesAsApplicable = charge.Charges__c || 0;
-                                if(!this.quoteData?.Registration_Charges__c){
-                                    this.quoteRecordToSave['Registration_Charges__c']  = parseFloat(this.registrationChargesAsApplicable);
+                                if(this.quoteData?.Registration_Charges__c==null){
+                                    this.quoteRecordToSave['Registration_Charges__c']  = parseFloat(finalCharges);
                                     this.toUpdate=true;
                                 }
                                 break;
                             case "East":
                                 this.east = charge.Charges__c || 0;
-                                if(!this.quoteData?.East__c){
-                                    this.quoteRecordToSave['East__c']  = parseFloat(this.east);
+                                if(this.quoteData?.East__c==null){
+                                    this.quoteRecordToSave['East__c']  = parseFloat(finalCharges);
                                     this.toUpdate=true;
                                 }
                                 break;
                             case "Premium Plots":
                                 this.premiumPlots = charge.Charges__c || 0;
-                                if(!this.quoteData?.Premium_Plots__c){
-                                    this.quoteRecordToSave['Premium_Plots__c']  = parseFloat(this.premiumPlots);
+                                if(this.quoteData?.Premium_Plots__c==null){
+                                    this.quoteRecordToSave['Premium_Plots__c']  = parseFloat(finalCharges);
                                     this.toUpdate=true;
                                 }
                                 break;
                             case "Rate Per Sq. Yd":
                                 this.ratePerSqYd = charge.Charges__c || 0;
-                                if(!this.quoteData?.Rate_Per_Sq_Yd__c){
-                                    this.quoteRecordToSave['Rate_Per_Sq_Yd__c']  = parseFloat(this.ratePerSqYd);
+                                if(this.quoteData?.Rate_Per_Sq_Yd__c==null){
+                                    this.quoteRecordToSave['Rate_Per_Sq_Yd__c']  = parseFloat(finalCharges);
                                     this.toUpdate=true;
                                 }
                                 break;
@@ -183,6 +188,7 @@ export default class QuotationCostingSheet extends LightningElement {
                     this.plotUnitCode=this.quoteData?.Plot__r?.Unit_Code__c || '';
                     this.plotBasePrice=this.quoteData?.Plot__r?.Base_Price_per_Sq_Ft__c || '';
                     this.basePricePerSqYard=this.plotBasePrice;
+                    this.finalPlotPrice=this.quoteData?.Base_Price_Per_Sq_Yard__c || '';
                     this.plotDimension=this.quoteData?.Plot_Dimension__c || this.quoteData?.Plot__r?.Plot_Dimension__c || '';
 
                     this.basePriceOriginalValue = this.quoteData.BasePriceperSqFt__c;
@@ -195,23 +201,22 @@ export default class QuotationCostingSheet extends LightningElement {
                     this.TotalChargeAmount = this.quoteData.Total_Charge_Amount__c
                     this.TotalGstforCharge = this.quoteData.Total_Gst_For_Charge__c
                     this.AllInclusivePrice = this.quoteData.All_Inclusive_Price__c
-                    console.log('This to Update',this.toUpdate);
                     // For Handeling Change Price Quote Save Record;
                     if(this.editable){
                         this.quoteRecordToSave['Opportunity__c']=this.oppId;
                         this.quoteRecordToSave['Plot__c']=this.plotId;
                         this.quoteRecordToSave['Lead__c']=this.quoteData?.Lead__c;
-                        this.quoteRecordToSave['X100_Ft_Road_Plots__c']  = parseFloat(this.hundredFtRoadPlots);
-                        this.quoteRecordToSave['Price_For_North_East__c']  = parseFloat(this.priceForNorthEast);
-                        this.quoteRecordToSave['Legal_And_Documentation_Charges__c']  = parseFloat(this.legalAndDocumentationCharges);
-                        this.quoteRecordToSave['Other_Corners__c']  = parseFloat(this.otherCorners);
-                        this.quoteRecordToSave['Corpus_Fund_and_Club_House_Payable__c']  = parseFloat(this.corpusFundAndClubHousePayable);
-                        this.quoteRecordToSave['Registration_Charges__c']  = parseFloat(this.registrationChargesAsApplicable);
-                        this.quoteRecordToSave['East__c']  = parseFloat(this.east);
-                        this.quoteRecordToSave['Premium_Plots__c']  = parseFloat(this.premiumPlots);
-                        this.quoteRecordToSave['Rate_Per_Sq_Yd__c']  = parseFloat(this.ratePerSqYd);
+                        this.quoteRecordToSave['X100_Ft_Road_Plots__c']  = parseFloat(this.quoteData.X100_Ft_Road_Plots__c);
+                        this.quoteRecordToSave['Price_For_North_East__c']  = parseFloat(this.quoteData.Price_For_North_East__c);
+                        this.quoteRecordToSave['Legal_And_Documentation_Charges__c']  = parseFloat(this.quoteData.Legal_And_Documentation_Charges__c);
+                        this.quoteRecordToSave['Other_Corners__c']  = parseFloat(this.quoteData.Other_Corners__c);
+                        this.quoteRecordToSave['Corpus_Fund_and_Club_House_Payable__c']  = parseFloat(this.quoteData.Corpus_Fund_and_Club_House_Payable__c);
+                        this.quoteRecordToSave['Registration_Charges__c']  = parseFloat(this.quoteData.Registration_Charges__c);
+                        this.quoteRecordToSave['East__c']  = parseFloat(this.quoteData.East__c);
+                        this.quoteRecordToSave['Premium_Plots__c']  = parseFloat(this.quoteData.Premium_Plots__c);
+                        this.quoteRecordToSave['Rate_Per_Sq_Yd__c']  = parseFloat(this.quoteData.Rate_Per_Sq_Yd__c);
                         this.quoteRecordToSave['Time_To_Pay_In_Days__c']  = this.quoteData?.Time_To_Pay_In_Days__c;
-                        this.quoteRecordToSave['Base_Price_Per_Sq_Yard__c']  = this.quoteData?.Base_Price_Per_Sq_Yard__c;
+                        this.quoteRecordToSave['Base_Price_Per_Sq_Yard__c']  = this.finalPlotPrice;
                     }
                     if(this.toUpdate){
                         this.isLoading=true;
@@ -239,7 +244,9 @@ export default class QuotationCostingSheet extends LightningElement {
                     this.plotName1=result?.Plot_Name__c || '';
                     this.plotSize1=result?.Plot_Size__c || '';
                     this.totalSaleValue1=result?.Sale_Value_Amount__c || '';
-                    this.plotBasePrice1=result?.Unit__r?.Base_Price_per_Sq_Ft__c || '';
+                    this.plotBasePrice1=result?.Unit__r?.Plot_Price__c || '';
+                    this.oppOwnerId=result?.OwnerId || '';
+                    console.log('Opp Owner->',this.oppOwnerId);
                 } else {
                     console.log('No Opportunity Found');
                 }
@@ -265,7 +272,13 @@ export default class QuotationCostingSheet extends LightningElement {
     handleSendForApproval(){
         this.handleSaveRecord();
         this.isLoading = true;
-        submitForApproval({recordId: this.quoteId})
+        let userId='';
+        if(this.oppOwnerId!=''){
+            userId=this.oppOwnerId;
+        }else if(this.leadOwnerId!=''){
+            userId=this.leadOwnerId;
+        }
+        submitForApproval({recordId: this.quoteId, userId:userId})
                 .then(() => {
                     this.isLoading = false;
                     this.displayMessage('Success','success','Quote Sent For Approval');
@@ -281,14 +294,14 @@ export default class QuotationCostingSheet extends LightningElement {
     handleSaveRecord(){
         this.isLoading = true;
         this.quoteRecordToSave['Id']  = this.quoteId;
+        this.quoteRecordToSave['Plot__c']  = this.plotId;
         this.quoteRecordToSave['IsSample__c']  = this.isChecked;
 
         if(this.editable==true){
             this.quoteRecordToSave['Id']  =  null;
         }
         let recordToSave=[this.quoteRecordToSave];
-        console.log('Records To Save-->>',recordToSave);
-
+        
         SaveRecord({quoteRecords: recordToSave})
                 .then((result) => {
                     this.isLoading = false;
@@ -326,8 +339,8 @@ export default class QuotationCostingSheet extends LightningElement {
                 .then((result) => {
                     this.isLoading = false;
                         this.displayMessage('Success','success','Quote Finalized Sucessfully');
-                        if(this.oppId!=''){
-                            this.sendEmailForPlotSwap(this.plotName1,this.plotSize1,this.plotBasePrice1,this.totalSaleValue1,this.basePricePerSqYard);
+                        if(this.oppId!='' && !this.editable){
+                            this.sendEmailForPlotSwap(this.plotName1,this.plotSize1,this.plotBasePrice1,this.totalSaleValue1,this.finalPlotPrice);
                         }
                     window.location.reload();
                 })
@@ -342,15 +355,32 @@ export default class QuotationCostingSheet extends LightningElement {
         let recordToSave=[{
             'Id':this.quoteId,
             'IsLocked__c':true,
-            'Is_Final__c':true,
-            'Name':'Finalized - '+this.plotName
+            'Is_Final__c':true
         }]
+
         this.isLoading = true;
-        finalizeQuote({quoteRecords: recordToSave})
+        finalizeQuote({quoteRecord: recordToSave})
                 .then(() => {
                     console.log('Quote__c records updated successfully.');
                     //this.displayMessage('Success','success','Quote Finalized Sucessfully');
                     this.isLoading = false;
+
+                    // Saving Final Price On Plot When Quote Is Finalized
+                    if(this.plotId!=null && this.plotId!=''){
+                        let plotRecordToSave={};
+                        plotRecordToSave['Id']=this.plotId;
+                        plotRecordToSave['Plot_Price__c']=this.finalPlotPrice;
+                        plotRecordToSave=[plotRecordToSave];
+
+                        savePlot({plotRecords: plotRecordToSave})
+                                .then((result) => {
+                                    console.log('Plot Record Saved Succesfully.');
+                                })
+                                .catch(error => {
+                                    console.error('Error updating records:', error);
+                                    this.displayMessage('Error','error',error.body.message);
+                                });
+                    }
                     this.saveOppRecord();
                     // window.location.reload();
                 })

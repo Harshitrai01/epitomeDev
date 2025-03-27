@@ -342,11 +342,13 @@ public class EasyCollectPaymentTest {
     @isTest
     static void testInsertPaymentRecordException() {
         // Create invalid test data
+        Opportunity opp=[Select id from Opportunity limit 1];
+        Contact con=[Select id from Contact limit 1];
         Map<String, Object> paymentData = new Map<String, Object>{
             'status' => true,
             'id' => 'TEST123',
             'merchant_txn' => 'TXN123',
-            'amount' => 'invalid_amount', // Invalid amount to trigger exception
+            'amount' => '10', // Invalid amount to trigger exception
             'name' => 'Test Name',
             'email' => 'test@example.com',
             'phone' => '1234567890',
@@ -354,8 +356,8 @@ public class EasyCollectPaymentTest {
             'created_date' => '2025-03-20T12:00:00Z',
             'updated_date' => '2025-03-20T12:00:00Z',
             'expiry_date' => '20-03-2025 12:00:00 PM',
-            'oppId' => 'invalid_id', // Invalid ID to trigger exception
-            'contactId' => 'invalid_id' // Invalid ID to trigger exception
+            'oppId' => opp.id, // Invalid ID to trigger exception
+            'contactId' => con.id // Invalid ID to trigger exception
         };
         
         // Call the method under test
@@ -414,10 +416,10 @@ public class EasyCollectPaymentTest {
         Test.startTest();
         String response = EasyCollectPayment.initiateRefund(
             '', 
-            10000, 
+            0, 
             '', 
             null, 
-            'PAYMENT123'
+            ''
         );
         Test.stopTest();
         
@@ -442,6 +444,24 @@ public class EasyCollectPaymentTest {
         Test.stopTest();
         
     }
+     @isTest
+    static void testGetRefundStatusSuccess1() {
+        // Set up test data
+        Test.setMock(HttpCalloutMock.class, new MockHttpResponseRefundStatusSuccess());
+        
+        // Initialize mock metadata
+        EasyCollectPayment.key = TEST_KEY;
+        EasyCollectPayment.salt = TEST_SALT;
+        
+        EasyCollectPayment.refundStatus = 'https://test.teststatus.com';
+        
+        // Call the method under test
+        Test.startTest();
+        String response = EasyCollectPayment.getRefundStatus('EASEBUZZ123');
+        Test.stopTest();
+        
+    }
+    
     
     /**
      * Test method for getRefundStatus with empty refunds

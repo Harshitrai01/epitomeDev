@@ -53,7 +53,7 @@ description: Generates a PDF, attaches it to the primary contact, and updates th
                 
                 // Fetch the Opportunity record
                 System.debug('Fetching Opportunity Record...');
-                Opportunity opp = [SELECT Id, Name, Sub_Document_Type__c FROM Opportunity WHERE Id = :opportunityId LIMIT 1];
+                Opportunity opp = [SELECT Id, Name, Sub_Document_Type__c,Plot_Name__c FROM Opportunity WHERE Id = :opportunityId LIMIT 1];
                 
                 // Generate the PDF from the provided Visualforce Page
                 System.debug('Generating PDF from VF Page...');
@@ -85,7 +85,7 @@ description: Generates a PDF, attaches it to the primary contact, and updates th
                 }else{
                     
                     // Generate the ContentDocument Title using the Opportunity Name and newValue
-                    String fileName = newValue + '__' + opp.Name;
+                    String fileName = newValue + '__' +opp.Plot_Name__c+'__'+ opp.Name;
                     
                     // Check if a document with the same title already exists for the Contact
                     System.debug('Checking if document already exists...');
@@ -137,6 +137,7 @@ description: Generates a PDF, attaches it to the primary contact, and updates th
                     }
                     
                     // Save the updated Opportunity record as the current user
+                    system.debug('opp----->'+opp);
                     update opp; // Update as the current user
                     System.debug('Opportunity updated successfully.');
                 }

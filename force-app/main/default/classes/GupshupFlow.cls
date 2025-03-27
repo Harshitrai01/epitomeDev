@@ -29,10 +29,9 @@ public class GupshupFlow {
                 'recordId' => obj,
                 'flowName' => flowConfigName
             };
-
-            // Create and start the flow interview
-            Flow.Interview myFlow = Flow.Interview.createInterview('Gupshup_Send_Cancellation_Email', flowInputs);
-            myFlow.start();
+                
+                    Flow.Interview myFlow = Flow.Interview.createInterview('Gupshup_Send_Cancellation_Email', flowInputs);
+                    myFlow.start();
         } catch (Exception ex) {
             // Log the error and throw an AuraHandledException
             System.debug('Error In Calling Sub Flow: ' + ex.getMessage());

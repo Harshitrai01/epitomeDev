@@ -266,16 +266,6 @@
                 <identifier>RecordTime_Of_Registration__cField</identifier>
             </fieldInstance>
         </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.is_NOC_Uploaded__c</fieldItem>
-                <identifier>Recordis_NOC_Uploaded__cField</identifier>
-            </fieldInstance>
-        </itemInstances>
         <name>Facet-bda0868e-f60d-43d1-bc15-da4b2cf8d682</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -326,16 +316,6 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Probability</fieldItem>
-                <identifier>RecordProbabilityField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
                 <fieldItem>Record.Desired_Status__c</fieldItem>
                 <identifier>RecordDesired_Status__cField</identifier>
             </fieldInstance>
@@ -368,6 +348,16 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.NOC__c</fieldItem>
                 <identifier>RecordNOC_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.is_NOC_Uploaded__c</fieldItem>
+                <identifier>Recordis_NOC_Uploaded__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-f31cfb4a-cff9-4183-ab78-8e77ec6894f0</name>
@@ -761,6 +751,16 @@
                 <identifier>RecordLoan_Sanctioned_Amount_cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Loan_Outstanding_Amount__c</fieldItem>
+                <identifier>RecordLoan_Outstanding_Amount_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-3b3987e0-3313-4187-8d25-38c02f72f7ab</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -805,18 +805,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Total_Collected_Amount__c</fieldItem>
-                <identifier>RecordTotal_Collected_Amount_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Amount_To_Refund__c</fieldItem>
-                <identifier>RecordAmount_To_Refund_cField</identifier>
+                <fieldItem>Record.Collected_Amount_From_Payment__c</fieldItem>
+                <identifier>RecordCollected_Amount_From_Payment_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-d2248209-31ed-494a-9a02-74728fd1c6b1</name>
@@ -839,8 +829,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Outstanding_Amount__c</fieldItem>
-                <identifier>RecordOutstanding_Amount_cField</identifier>
+                <fieldItem>Record.Payment_Outstanding_Amount__c</fieldItem>
+                <identifier>RecordPayment_Outstanding_Amount_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-ef366256-0127-40bd-9e04-0dda3532daf4</name>
@@ -1406,6 +1396,11 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>actionNames</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>New</value>
+                        </valueListItems>
+                    </valueList>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>maxRecordsToDisplay</name>

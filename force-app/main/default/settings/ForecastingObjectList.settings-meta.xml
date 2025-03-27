@@ -31,7 +31,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000ApTjl</field>
-            <label>First Booking Amount</label>
+            <label>Booking Amount</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
@@ -118,6 +118,10 @@
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Cw1rF</field>
+            <label>Outstanding Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcPcL</field>
             <label>Visited Date Time</label>
         </forecastingObjectListLabelMappings>
@@ -152,6 +156,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZ3xZ</field>
             <label>AOS Authority Person</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CqiCX</field>
+            <label>Loan Outstanding Amount</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.TYPE</field>
@@ -288,6 +296,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNgz</field>
             <label>Allotment Letter Submitted</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000D5pX3</field>
+            <label>is Original Cheque Uploaded</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000Bo43h</field>
@@ -696,6 +708,7 @@
             <field>00NO400000AwRtJ</field>
             <field>00NO400000BZ45d</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000ApTjl</field>
             <field>00NO400000B51Er</field>
             <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
@@ -723,7 +736,6 @@
             <field>00NfK000003tpHw</field>
             <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
-            <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
             <field>00NO400000AtMUL</field>
@@ -731,12 +743,14 @@
             <field>00NO400000AcOGT</field>
             <field>00NO400000COBHx</field>
             <field>00NO400000CPd46</field>
+            <field>00NO400000D5pX3</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
             <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
+            <field>00NO400000CqiCX</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
@@ -749,6 +763,7 @@
             <field>00NO400000Bs7B3</field>
             <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
+            <field>00NO400000Cw1rF</field>
             <field>00NO400000AcOgH</field>
             <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
@@ -838,7 +853,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000ApTjl</field>
-            <label>First Booking Amount</label>
+            <label>Booking Amount</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>FORECASTEDMFJVALUE</field>
@@ -925,6 +940,10 @@
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Cw1rF</field>
+            <label>Outstanding Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcPcL</field>
             <label>Visited Date Time</label>
         </forecastingObjectListLabelMappings>
@@ -959,6 +978,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZ3xZ</field>
             <label>AOS Authority Person</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CqiCX</field>
+            <label>Loan Outstanding Amount</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.TYPE</field>
@@ -1095,6 +1118,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNgz</field>
             <label>Allotment Letter Submitted</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000D5pX3</field>
+            <label>is Original Cheque Uploaded</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000Bo43h</field>
@@ -1503,6 +1530,7 @@
             <field>00NO400000AwRtJ</field>
             <field>00NO400000BZ45d</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000ApTjl</field>
             <field>00NO400000B51Er</field>
             <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
@@ -1530,7 +1558,6 @@
             <field>00NfK000003tpHw</field>
             <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
-            <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
             <field>00NO400000AtMUL</field>
@@ -1538,12 +1565,14 @@
             <field>00NO400000AcOGT</field>
             <field>00NO400000COBHx</field>
             <field>00NO400000CPd46</field>
+            <field>00NO400000D5pX3</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
             <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
+            <field>00NO400000CqiCX</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
@@ -1556,6 +1585,7 @@
             <field>00NO400000Bs7B3</field>
             <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
+            <field>00NO400000Cw1rF</field>
             <field>00NO400000AcOgH</field>
             <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
@@ -1645,7 +1675,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000ApTjl</field>
-            <label>First Booking Amount</label>
+            <label>Booking Amount</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
@@ -1732,6 +1762,10 @@
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Cw1rF</field>
+            <label>Outstanding Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcPcL</field>
             <label>Visited Date Time</label>
         </forecastingObjectListLabelMappings>
@@ -1766,6 +1800,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZ3xZ</field>
             <label>AOS Authority Person</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CqiCX</field>
+            <label>Loan Outstanding Amount</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.TYPE</field>
@@ -1902,6 +1940,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNgz</field>
             <label>Allotment Letter Submitted</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000D5pX3</field>
+            <label>is Original Cheque Uploaded</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000Bo43h</field>
@@ -2310,6 +2352,7 @@
             <field>00NO400000AwRtJ</field>
             <field>00NO400000BZ45d</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000ApTjl</field>
             <field>00NO400000B51Er</field>
             <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
@@ -2337,7 +2380,6 @@
             <field>00NfK000003tpHw</field>
             <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
-            <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
             <field>00NO400000AtMUL</field>
@@ -2345,12 +2387,14 @@
             <field>00NO400000AcOGT</field>
             <field>00NO400000COBHx</field>
             <field>00NO400000CPd46</field>
+            <field>00NO400000D5pX3</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
             <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
+            <field>00NO400000CqiCX</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
@@ -2363,6 +2407,7 @@
             <field>00NO400000Bs7B3</field>
             <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
+            <field>00NO400000Cw1rF</field>
             <field>00NO400000AcOgH</field>
             <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
@@ -2452,7 +2497,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000ApTjl</field>
-            <label>First Booking Amount</label>
+            <label>Booking Amount</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
@@ -2539,6 +2584,10 @@
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Cw1rF</field>
+            <label>Outstanding Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcPcL</field>
             <label>Visited Date Time</label>
         </forecastingObjectListLabelMappings>
@@ -2573,6 +2622,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZ3xZ</field>
             <label>AOS Authority Person</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CqiCX</field>
+            <label>Loan Outstanding Amount</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.TYPE</field>
@@ -2709,6 +2762,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNgz</field>
             <label>Allotment Letter Submitted</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000D5pX3</field>
+            <label>is Original Cheque Uploaded</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000Bo43h</field>
@@ -3122,6 +3179,7 @@
             <field>00NO400000AwRtJ</field>
             <field>00NO400000BZ45d</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000ApTjl</field>
             <field>00NO400000B51Er</field>
             <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
@@ -3149,7 +3207,6 @@
             <field>00NfK000003tpHw</field>
             <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
-            <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
             <field>00NO400000AtMUL</field>
@@ -3157,12 +3214,14 @@
             <field>00NO400000AcOGT</field>
             <field>00NO400000COBHx</field>
             <field>00NO400000CPd46</field>
+            <field>00NO400000D5pX3</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
             <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
+            <field>00NO400000CqiCX</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
@@ -3175,6 +3234,7 @@
             <field>00NO400000Bs7B3</field>
             <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
+            <field>00NO400000Cw1rF</field>
             <field>00NO400000AcOgH</field>
             <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
@@ -3264,7 +3324,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000ApTjl</field>
-            <label>First Booking Amount</label>
+            <label>Booking Amount</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
@@ -3351,6 +3411,10 @@
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Cw1rF</field>
+            <label>Outstanding Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcPcL</field>
             <label>Visited Date Time</label>
         </forecastingObjectListLabelMappings>
@@ -3385,6 +3449,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZ3xZ</field>
             <label>AOS Authority Person</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CqiCX</field>
+            <label>Loan Outstanding Amount</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.TYPE</field>
@@ -3521,6 +3589,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNgz</field>
             <label>Allotment Letter Submitted</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000D5pX3</field>
+            <label>is Original Cheque Uploaded</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000Bo43h</field>
@@ -3929,6 +4001,7 @@
             <field>00NO400000AwRtJ</field>
             <field>00NO400000BZ45d</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000ApTjl</field>
             <field>00NO400000B51Er</field>
             <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
@@ -3956,7 +4029,6 @@
             <field>00NfK000003tpHw</field>
             <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
-            <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
             <field>00NO400000AtMUL</field>
@@ -3964,12 +4036,14 @@
             <field>00NO400000AcOGT</field>
             <field>00NO400000COBHx</field>
             <field>00NO400000CPd46</field>
+            <field>00NO400000D5pX3</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
             <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
+            <field>00NO400000CqiCX</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
@@ -3982,6 +4056,7 @@
             <field>00NO400000Bs7B3</field>
             <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
+            <field>00NO400000Cw1rF</field>
             <field>00NO400000AcOgH</field>
             <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
@@ -4071,7 +4146,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000ApTjl</field>
-            <label>First Booking Amount</label>
+            <label>Booking Amount</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
@@ -4158,6 +4233,10 @@
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Cw1rF</field>
+            <label>Outstanding Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcPcL</field>
             <label>Visited Date Time</label>
         </forecastingObjectListLabelMappings>
@@ -4192,6 +4271,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZ3xZ</field>
             <label>AOS Authority Person</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CqiCX</field>
+            <label>Loan Outstanding Amount</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.TYPE</field>
@@ -4328,6 +4411,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNgz</field>
             <label>Allotment Letter Submitted</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000D5pX3</field>
+            <label>is Original Cheque Uploaded</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000Bo43h</field>
@@ -4741,6 +4828,7 @@
             <field>00NO400000AwRtJ</field>
             <field>00NO400000BZ45d</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000ApTjl</field>
             <field>00NO400000B51Er</field>
             <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
@@ -4768,7 +4856,6 @@
             <field>00NfK000003tpHw</field>
             <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
-            <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
             <field>00NO400000AtMUL</field>
@@ -4776,12 +4863,14 @@
             <field>00NO400000AcOGT</field>
             <field>00NO400000COBHx</field>
             <field>00NO400000CPd46</field>
+            <field>00NO400000D5pX3</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
             <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
+            <field>00NO400000CqiCX</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
@@ -4794,6 +4883,7 @@
             <field>00NO400000Bs7B3</field>
             <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
+            <field>00NO400000Cw1rF</field>
             <field>00NO400000AcOgH</field>
             <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
@@ -4883,7 +4973,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000ApTjl</field>
-            <label>First Booking Amount</label>
+            <label>Booking Amount</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
@@ -4970,6 +5060,10 @@
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Cw1rF</field>
+            <label>Outstanding Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcPcL</field>
             <label>Visited Date Time</label>
         </forecastingObjectListLabelMappings>
@@ -5004,6 +5098,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZ3xZ</field>
             <label>AOS Authority Person</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CqiCX</field>
+            <label>Loan Outstanding Amount</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.TYPE</field>
@@ -5140,6 +5238,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNgz</field>
             <label>Allotment Letter Submitted</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000D5pX3</field>
+            <label>is Original Cheque Uploaded</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000Bo43h</field>
@@ -5548,6 +5650,7 @@
             <field>00NO400000AwRtJ</field>
             <field>00NO400000BZ45d</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000ApTjl</field>
             <field>00NO400000B51Er</field>
             <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
@@ -5575,7 +5678,6 @@
             <field>00NfK000003tpHw</field>
             <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
-            <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
             <field>00NO400000AtMUL</field>
@@ -5583,12 +5685,14 @@
             <field>00NO400000AcOGT</field>
             <field>00NO400000COBHx</field>
             <field>00NO400000CPd46</field>
+            <field>00NO400000D5pX3</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
             <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
+            <field>00NO400000CqiCX</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
@@ -5601,6 +5705,7 @@
             <field>00NO400000Bs7B3</field>
             <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
+            <field>00NO400000Cw1rF</field>
             <field>00NO400000AcOgH</field>
             <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
@@ -5690,7 +5795,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000ApTjl</field>
-            <label>First Booking Amount</label>
+            <label>Booking Amount</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
@@ -5777,6 +5882,10 @@
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Cw1rF</field>
+            <label>Outstanding Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcPcL</field>
             <label>Visited Date Time</label>
         </forecastingObjectListLabelMappings>
@@ -5811,6 +5920,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZ3xZ</field>
             <label>AOS Authority Person</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CqiCX</field>
+            <label>Loan Outstanding Amount</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.TYPE</field>
@@ -5947,6 +6060,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNgz</field>
             <label>Allotment Letter Submitted</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000D5pX3</field>
+            <label>is Original Cheque Uploaded</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000Bo43h</field>
@@ -6360,6 +6477,7 @@
             <field>00NO400000AwRtJ</field>
             <field>00NO400000BZ45d</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000ApTjl</field>
             <field>00NO400000B51Er</field>
             <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
@@ -6387,7 +6505,6 @@
             <field>00NfK000003tpHw</field>
             <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
-            <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
             <field>00NO400000AtMUL</field>
@@ -6395,12 +6512,14 @@
             <field>00NO400000AcOGT</field>
             <field>00NO400000COBHx</field>
             <field>00NO400000CPd46</field>
+            <field>00NO400000D5pX3</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
             <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
+            <field>00NO400000CqiCX</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
@@ -6413,6 +6532,7 @@
             <field>00NO400000Bs7B3</field>
             <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
+            <field>00NO400000Cw1rF</field>
             <field>00NO400000AcOgH</field>
             <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
@@ -6502,7 +6622,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000ApTjl</field>
-            <label>First Booking Amount</label>
+            <label>Booking Amount</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
@@ -6589,6 +6709,10 @@
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Cw1rF</field>
+            <label>Outstanding Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcPcL</field>
             <label>Visited Date Time</label>
         </forecastingObjectListLabelMappings>
@@ -6623,6 +6747,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZ3xZ</field>
             <label>AOS Authority Person</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CqiCX</field>
+            <label>Loan Outstanding Amount</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.TYPE</field>
@@ -6759,6 +6887,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNgz</field>
             <label>Allotment Letter Submitted</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000D5pX3</field>
+            <label>is Original Cheque Uploaded</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000Bo43h</field>
@@ -7167,6 +7299,7 @@
             <field>00NO400000AwRtJ</field>
             <field>00NO400000BZ45d</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000ApTjl</field>
             <field>00NO400000B51Er</field>
             <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
@@ -7194,7 +7327,6 @@
             <field>00NfK000003tpHw</field>
             <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
-            <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
             <field>00NO400000AtMUL</field>
@@ -7202,12 +7334,14 @@
             <field>00NO400000AcOGT</field>
             <field>00NO400000COBHx</field>
             <field>00NO400000CPd46</field>
+            <field>00NO400000D5pX3</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
             <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
+            <field>00NO400000CqiCX</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
@@ -7220,6 +7354,7 @@
             <field>00NO400000Bs7B3</field>
             <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
+            <field>00NO400000Cw1rF</field>
             <field>00NO400000AcOgH</field>
             <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
@@ -7309,7 +7444,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000ApTjl</field>
-            <label>First Booking Amount</label>
+            <label>Booking Amount</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
@@ -7396,6 +7531,10 @@
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Cw1rF</field>
+            <label>Outstanding Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcPcL</field>
             <label>Visited Date Time</label>
         </forecastingObjectListLabelMappings>
@@ -7430,6 +7569,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZ3xZ</field>
             <label>AOS Authority Person</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CqiCX</field>
+            <label>Loan Outstanding Amount</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.TYPE</field>
@@ -7566,6 +7709,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNgz</field>
             <label>Allotment Letter Submitted</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000D5pX3</field>
+            <label>is Original Cheque Uploaded</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000Bo43h</field>
@@ -7979,6 +8126,7 @@
             <field>00NO400000AwRtJ</field>
             <field>00NO400000BZ45d</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000ApTjl</field>
             <field>00NO400000B51Er</field>
             <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
@@ -8006,7 +8154,6 @@
             <field>00NfK000003tpHw</field>
             <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
-            <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
             <field>00NO400000AtMUL</field>
@@ -8014,12 +8161,14 @@
             <field>00NO400000AcOGT</field>
             <field>00NO400000COBHx</field>
             <field>00NO400000CPd46</field>
+            <field>00NO400000D5pX3</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
             <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
+            <field>00NO400000CqiCX</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
@@ -8032,6 +8181,7 @@
             <field>00NO400000Bs7B3</field>
             <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
+            <field>00NO400000Cw1rF</field>
             <field>00NO400000AcOgH</field>
             <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
@@ -8121,7 +8271,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000ApTjl</field>
-            <label>First Booking Amount</label>
+            <label>Booking Amount</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
@@ -8208,6 +8358,10 @@
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Cw1rF</field>
+            <label>Outstanding Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcPcL</field>
             <label>Visited Date Time</label>
         </forecastingObjectListLabelMappings>
@@ -8242,6 +8396,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZ3xZ</field>
             <label>AOS Authority Person</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CqiCX</field>
+            <label>Loan Outstanding Amount</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.TYPE</field>
@@ -8378,6 +8536,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNgz</field>
             <label>Allotment Letter Submitted</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000D5pX3</field>
+            <label>is Original Cheque Uploaded</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000Bo43h</field>
@@ -8786,6 +8948,7 @@
             <field>00NO400000AwRtJ</field>
             <field>00NO400000BZ45d</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000ApTjl</field>
             <field>00NO400000B51Er</field>
             <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
@@ -8813,7 +8976,6 @@
             <field>00NfK000003tpHw</field>
             <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
-            <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
             <field>00NO400000AtMUL</field>
@@ -8821,12 +8983,14 @@
             <field>00NO400000AcOGT</field>
             <field>00NO400000COBHx</field>
             <field>00NO400000CPd46</field>
+            <field>00NO400000D5pX3</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
             <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
+            <field>00NO400000CqiCX</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
@@ -8839,6 +9003,7 @@
             <field>00NO400000Bs7B3</field>
             <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
+            <field>00NO400000Cw1rF</field>
             <field>00NO400000AcOgH</field>
             <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
@@ -8928,7 +9093,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000ApTjl</field>
-            <label>First Booking Amount</label>
+            <label>Booking Amount</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
@@ -9015,6 +9180,10 @@
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Cw1rF</field>
+            <label>Outstanding Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcPcL</field>
             <label>Visited Date Time</label>
         </forecastingObjectListLabelMappings>
@@ -9049,6 +9218,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZ3xZ</field>
             <label>AOS Authority Person</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CqiCX</field>
+            <label>Loan Outstanding Amount</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.TYPE</field>
@@ -9185,6 +9358,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNgz</field>
             <label>Allotment Letter Submitted</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000D5pX3</field>
+            <label>is Original Cheque Uploaded</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000Bo43h</field>
@@ -9598,6 +9775,7 @@
             <field>00NO400000AwRtJ</field>
             <field>00NO400000BZ45d</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000ApTjl</field>
             <field>00NO400000B51Er</field>
             <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
@@ -9625,7 +9803,6 @@
             <field>00NfK000003tpHw</field>
             <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
-            <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
             <field>00NO400000AtMUL</field>
@@ -9633,12 +9810,14 @@
             <field>00NO400000AcOGT</field>
             <field>00NO400000COBHx</field>
             <field>00NO400000CPd46</field>
+            <field>00NO400000D5pX3</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
             <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
+            <field>00NO400000CqiCX</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
@@ -9651,6 +9830,7 @@
             <field>00NO400000Bs7B3</field>
             <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
+            <field>00NO400000Cw1rF</field>
             <field>00NO400000AcOgH</field>
             <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>
@@ -9740,7 +9920,7 @@
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000ApTjl</field>
-            <label>First Booking Amount</label>
+            <label>Booking Amount</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.FISCAL_QUARTER</field>
@@ -9827,6 +10007,10 @@
             <label>Opportunity Name</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
+            <field>00NO400000Cw1rF</field>
+            <label>Outstanding Amount</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
             <field>00NO400000AcPcL</field>
             <label>Visited Date Time</label>
         </forecastingObjectListLabelMappings>
@@ -9861,6 +10045,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000BZ3xZ</field>
             <label>AOS Authority Person</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000CqiCX</field>
+            <label>Loan Outstanding Amount</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>OPPORTUNITY.TYPE</field>
@@ -9997,6 +10185,10 @@
         <forecastingObjectListLabelMappings>
             <field>00NO400000AcNgz</field>
             <label>Allotment Letter Submitted</label>
+        </forecastingObjectListLabelMappings>
+        <forecastingObjectListLabelMappings>
+            <field>00NO400000D5pX3</field>
+            <label>is Original Cheque Uploaded</label>
         </forecastingObjectListLabelMappings>
         <forecastingObjectListLabelMappings>
             <field>00NO400000Bo43h</field>
@@ -10405,6 +10597,7 @@
             <field>00NO400000AwRtJ</field>
             <field>00NO400000BZ45d</field>
             <field>00NO400000AcNkD</field>
+            <field>00NO400000ApTjl</field>
             <field>00NO400000B51Er</field>
             <field>00NO400000AwMTp</field>
             <field>00NfK000003tpHv</field>
@@ -10432,7 +10625,6 @@
             <field>00NfK000003tpHw</field>
             <field>00NO400000BvEJF</field>
             <field>00NO400000AcO8P</field>
-            <field>00NO400000ApTjl</field>
             <field>00NO400000AcOA1</field>
             <field>00NO400000AcaW9</field>
             <field>00NO400000AtMUL</field>
@@ -10440,12 +10632,14 @@
             <field>00NO400000AcOGT</field>
             <field>00NO400000COBHx</field>
             <field>00NO400000CPd46</field>
+            <field>00NO400000D5pX3</field>
             <field>00NO400000AqT49</field>
             <field>00NO400000AcOI5</field>
             <field>00NO400000AcOUz</field>
             <field>00NO400000B52HN</field>
             <field>00NO400000B8kk5</field>
             <field>00NO400000AtZQn</field>
+            <field>00NO400000CqiCX</field>
             <field>00NO400000AzD0i</field>
             <field>00NO400000Atat7</field>
             <field>00NfK000003tpHy</field>
@@ -10458,6 +10652,7 @@
             <field>00NO400000Bs7B3</field>
             <field>00NO400000Bofb7</field>
             <field>00NO400000AqGPV</field>
+            <field>00NO400000Cw1rF</field>
             <field>00NO400000AcOgH</field>
             <field>00NO400000Bs8nA</field>
             <field>00NO400000BFTzR</field>

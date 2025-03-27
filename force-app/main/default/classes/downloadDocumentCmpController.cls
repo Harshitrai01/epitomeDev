@@ -121,12 +121,23 @@ public with sharing class downloadDocumentCmpController {
     **********
     */
     @AuraEnabled(cacheable=true)
-    public static List<FileWrapper> getRelatedFilesByContactId(Id contactId) {
+    public static List<FileWrapper> getRelatedFilesByContactId(Id contactId, Id oppId) {
         try {
             // Null check: Ensure contactId is not empty
             if (String.isEmpty(contactId)) {
                 throw new AuraHandledException('Contact ID is required.');
             }
+
+            // Null check: Ensure opportunityId is not empty
+            if (String.isEmpty(oppId)) {
+                throw new AuraHandledException('Opportunity ID is required.');
+            }
+
+            Opportunity opp = [SELECT Id, Name,Plot_Name__c FROM Opportunity WHERE Id = :oppId LIMIT 1];
+
+if (opp == null) {
+    throw new AuraHandledException('Opportunity is Empty.');
+}
 
             // Query all ContentDocumentLinks associated with the given Contact
             List<ContentDocumentLink> files = [SELECT ContentDocumentId FROM ContentDocumentLink WHERE LinkedEntityId = :contactId];
@@ -139,10 +150,12 @@ public with sharing class downloadDocumentCmpController {
 
             // Fetch document details from ContentVersion, including Document_Type__c
             List<ContentVersion> docs = [
-                SELECT ContentDocumentId, Title, Document_Type__c 
-                FROM ContentVersion 
-                WHERE ContentDocumentId IN :fileIDs
-            ];
+    SELECT ContentDocumentId, Title, Document_Type__c
+    FROM ContentVersion
+    WHERE ContentDocumentId IN :fileIDs
+    AND Title LIKE :('%' +'__'+opp.Plot_Name__c+'__'+opp.Name)
+];
+
 
             // Create a list of wrapper objects
             List<FileWrapper> wrapperList = new List<FileWrapper>();

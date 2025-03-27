@@ -1,5 +1,6 @@
 import { LightningElement, wire, track, api } from 'lwc';
 import OPPORTUNITY_OBJECT_NAME from '@salesforce/schema/Opportunity';
+import ACCOUNT_OBJECT_NAME from '@salesforce/schema/Account';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { NavigationMixin } from 'lightning/navigation';
 import { CloseActionScreenEvent } from 'lightning/actions';
@@ -28,7 +29,8 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     isLoading = false;
     unitPlotFacing;
     unitPlotSize;
-    unitPlotPrize;
+    unitActualPlotPrize;
+    unitFinalPlotPrize;
     unitPlotUnitCode;
     unitPlotName;
     unitPlotPhase;
@@ -55,7 +57,7 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
         ];
     }
 
-    contactValue = 'No';
+    contactValue = 'Yes';
     get contactOptions() {
         return [
             { label: 'Yes', value: 'Yes' },
@@ -67,8 +69,6 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     @track bookingFormData = {
         typeOfBooking: '',
         accountId: null,
-        projectId: '',
-        phaseId: '',
         accountName: '',
         accountEmailId: '',
         accountContactNo: '',
@@ -88,8 +88,14 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     }
 
     @track picklistOptions = {
-        typeOfBookingOptions: []
+        typeOfBookingOptions: [],
+      permanentAddressCountryOptions: [],
+        permanentAddressStateMapOptions: {},
+        correspondenceAddressCountryOptions: [],
+        correspondenceAddressStateMapOptions: {}
     }
+
+     
 
     connectedCallback() {
         this.fetchProject();
@@ -97,7 +103,13 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
         this.addContact();
         this.isAccountExist = true;
     }
+      get getCountryOptions() {
+        return this.picklistOptions.countryOptions;
+    }
 
+    get getProvinceOptions() {
+        return this.picklistOptions.stateOptions;
+    }
 
     @wire(getObjectInfo, { objectApiName: OPPORTUNITY_OBJECT_NAME })
     opportunityObjectInfo;
@@ -113,35 +125,146 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
         }
     }
 
+    @wire(getObjectInfo, { objectApiName: ACCOUNT_OBJECT_NAME })
+    accountObjectInfo;
+
+@wire(getPicklistValues, { recordTypeId: '$accountObjectInfo.data.defaultRecordTypeId', fieldApiName: 'Account.Permanent_Address__CountryCode__s' })
+    wiredPermanentAddressCountryPicklistValues({ error, data }) {
+        if (data) {
+            this.picklistOptions.permanentAddressCountryOptions = [...data.values];
+        } else if (error) {
+            this.showToast('Error', error.message, 'error');
+            this.handleCancelClick();
+        }
+    }
+
+    @wire(getPicklistValues, { recordTypeId: '$accountObjectInfo.data.defaultRecordTypeId', fieldApiName: 'Account.Permanent_Address__StateCode__s' })
+    wiredPermanentAddressStatePicklistValues({ error, data }) {
+        if (data) {
+            const validForNumberToCountry = Object.fromEntries(Object.entries(data.controllerValues).map(([key, value]) => [value, key]));
+            this.picklistOptions.permanentAddressStateMapOptions = data.values.reduce((accumulatedStates, state) => {
+                const countryIsoCode = validForNumberToCountry[state.validFor[0]];
+                return { ...accumulatedStates, [countryIsoCode]: [...(accumulatedStates?.[countryIsoCode] || []), state] };
+            }, {});
+        } else if (error) {
+            this.showToast('Error', error.message, 'error');
+            this.handleCancelClick();
+        }
+    }
+
+    @wire(getPicklistValues, { recordTypeId: '$accountObjectInfo.data.defaultRecordTypeId', fieldApiName: 'Account.Correspondence_Address__CountryCode__s' })
+    wiredCorrespondenceAddressCountryPicklistValues({ error, data }) {
+        if (data) {
+            this.picklistOptions.correspondenceAddressCountryOptions = [...data.values];
+        } else if (error) {
+            this.showToast('Error', error.message, 'error');
+            this.handleCancelClick();
+        }
+    }
+
+    @wire(getPicklistValues, { recordTypeId: '$accountObjectInfo.data.defaultRecordTypeId', fieldApiName: 'Account.Correspondence_Address__StateCode__s' })
+    wiredCorrespondenceAddressStatePicklistValues({ error, data }) {
+        if (data) {
+            const validForNumberToCountry = Object.fromEntries(Object.entries(data.controllerValues).map(([key, value]) => [value, key]));
+            this.picklistOptions.correspondenceAddressStateMapOptions = data.values.reduce((accumulatedStates, state) => {
+                const countryIsoCode = validForNumberToCountry[state.validFor[0]];
+                return { ...accumulatedStates, [countryIsoCode]: [...(accumulatedStates?.[countryIsoCode] || []), state] };
+            }, {});
+        } else if (error) {
+            this.showToast('Error', error.message, 'error');
+            this.handleCancelClick();
+        }
+    }
+
+    get permanentAddressCountryOptions() {
+        return this.picklistOptions.permanentAddressCountryOptions || [];
+    }
+
+    get permanentAddressStateOptions() {
+        return this.picklistOptions.permanentAddressStateMapOptions[this.bookingFormData.accountPermanentAddressCountry] || [];
+    }
+    get correspondenceAddressCountryOptions() {
+        return this.picklistOptions.correspondenceAddressCountryOptions || [];
+    }
+    get correspondenceAddressStateOptions() {
+        return this.picklistOptions.correspondenceAddressStateMapOptions[this.bookingFormData.accountCorrespondenceAddressCountry] || [];
+    }
+
     handleProjectSelection(event) {
-        this.bookingFormData.projectId = event.detail.value;
-        this.fetchPhase();
-        console.log('this.bookingFormData.projectId--------->', this.bookingFormData.projectId);
+        this.updateBookingData(event, 'projectId');
     }
 
     handlePhaseSelection(event) {
-        if (!this.bookingFormData.projectId) {
-            // Show an error message (you can use toast or set an error variable)
-            this.showToast('Error', 'Please select a project first.', 'error');
-            return;
-        }
-        this.bookingFormData.phaseId = event.detail.value;
-        console.log('this.bookingFormData.phaseId--------->', this.bookingFormData.phaseId);
+        this.updateBookingData(event, 'phaseId');
     }
-    lookupRecord(event) {
-        if (event.detail && event.detail.selectedRecord) {
-            console.log('Selected Record:', JSON.stringify(event.detail.selectedRecord, null, 2));
 
-            console.log('Selected Record:', event.detail.selectedRecord);
-            this.selectedRecord = '';
-            this.template.querySelector('c-generate-custom-lookup').clearSelection();
-            console.log('Selected Record:', JSON.stringify(this.selectedRecord, null, 2));
-            this.selectedRecord = event.detail.selectedRecord; // Store selected record
-        } else {
-            console.log('No record selected. Clearing value...');
-            this.selectedRecord = null; // Clear value if no record is selected
+    updateBookingData(event, fieldName) {
+        try {
+            debugger;
+            const contactId = parseInt(event.currentTarget.dataset.contactId, 10);
+            const plotId = event.currentTarget.dataset.plotId ? parseInt(event.currentTarget.dataset.plotId, 10) : null;
+            const value = event.detail.value;
+
+            let updatedBookingFormData = JSON.parse(JSON.stringify(this.bookingFormData));
+
+            const contactIndex = updatedBookingFormData.listOfCoApplicant.findIndex(contact => contact.id === contactId);
+
+            if (contactIndex !== -1) {
+                if (plotId) {
+                    // Update plot-related data
+                    const plotIndex = updatedBookingFormData.listOfCoApplicant[contactIndex].plots.findIndex(plot => plot.id === plotId);
+                    if (plotIndex !== -1) {
+                        updatedBookingFormData.listOfCoApplicant[contactIndex].plots[plotIndex][fieldName] = value;
+
+                        // Reset plot data when project or phase changes
+                        if (fieldName === 'projectId' || fieldName === 'phaseId') {
+                         const lookupComponent = this.template.querySelector(`c-generate-custom-lookup[data-contact-id="${contactId}"][data-plot-id="${plotId}"]`);
+    
+    if (lookupComponent) {
+        lookupComponent.clearSelection();
+    }
+
+                            updatedBookingFormData.listOfCoApplicant[contactIndex].plots[plotIndex].plotName = null;
+                            updatedBookingFormData.listOfCoApplicant[contactIndex].plots[plotIndex].unitPlotName = ''; // Reset plotId
+                            updatedBookingFormData.listOfCoApplicant[contactIndex].plots[plotIndex].unitPlotFacing = '';
+                            updatedBookingFormData.listOfCoApplicant[contactIndex].plots[plotIndex].unitActualPlotPrize = '';
+                            updatedBookingFormData.listOfCoApplicant[contactIndex].plots[plotIndex].unitFinalPlotPrize = '';
+                            updatedBookingFormData.listOfCoApplicant[contactIndex].plots[plotIndex].unitPlotSize = '';
+                            updatedBookingFormData.listOfCoApplicant[contactIndex].plots[plotIndex].unitPlotUnitCode = '';
+                            updatedBookingFormData.listOfCoApplicant[contactIndex].plots[plotIndex].unitPlotPhase = '';
+
+                            if (fieldName === 'projectId') {
+                                this.fetchPhase(value); // Fetch new phases when project changes
+                            }
+                        }
+                    }
+                } else {
+                    // Update contact-related data
+                    updatedBookingFormData.listOfCoApplicant[contactIndex][fieldName] = this.processFieldValue(fieldName, value);
+                }
+            }
+
+            this.bookingFormData = updatedBookingFormData; // Assign back to trigger UI refresh
+            console.log(`Updated bookingFormData after updating ${fieldName}:`, JSON.stringify(this.bookingFormData));
+        } catch (error) {
+            console.error(`❌ Error updating ${fieldName}:`, error);
         }
     }
+
+    // lookupRecord(event) {
+    //     if (event.detail && event.detail.selectedRecord) {
+    //         console.log('Selected Record:', JSON.stringify(event.detail.selectedRecord, null, 2));
+
+    //         console.log('Selected Record:', event.detail.selectedRecord);
+    //         this.selectedRecord = '';
+    //         this.template.querySelector('c-generate-custom-lookup').clearSelection();
+    //         console.log('Selected Record:', JSON.stringify(this.selectedRecord, null, 2));
+    //         this.selectedRecord = event.detail.selectedRecord; // Store selected record
+    //     } else {
+    //         console.log('No record selected. Clearing value...');
+    //         this.selectedRecord = null; // Clear value if no record is selected
+    //     }
+    // }
     handleAccountChange(event) {
         try {
             switch (event.target.name) {
@@ -177,44 +300,39 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     }
 
 
-    lookupRecord(event){
+    lookupRecord(event) {
         debugger
-        console.log('event---'+JSON.stringify(event.detail));
-        if(event.detail.selectedRecord != null){
+        console.log('event---' + JSON.stringify(event.detail));
+        if (event.detail.selectedRecord != null) {
             this.selectedPlotIds.push(event.detail.selectedRecord.Id);
         }
-        console.log('eventAdd---'+JSON.stringify(this.selectedPlotIds));
+        console.log('eventAdd---' + JSON.stringify(this.selectedPlotIds));
     }
 
-    lookupRecordRemove(event){
+    lookupRecordRemove(event) {
         debugger;
-        if(this.selectedPlotIds.includes(event.detail.selectedRecord.Id)){
+        if (this.selectedPlotIds.includes(event.detail.selectedRecord.Id)) {
             let data = this.selectedPlotIds.filter(item => item != event.detail.selectedRecord.Id);
             this.selectedPlotIds = data;
         }
-        console.log('eventRemove---'+JSON.stringify(this.selectedPlotIds));
+        console.log('eventRemove---' + JSON.stringify(this.selectedPlotIds));
     }
 
 
     handleValueChange(event) {
         debugger
         try {
-             if (!this.bookingFormData.phaseId) {
-               
-                this.showToast('Error', 'Please select a phase first.', 'error');
-                return;
-            }
 
             const contactId = parseInt(event.currentTarget.dataset.contactId, 10);
             const plotId = event.currentTarget.dataset.plotId ? parseInt(event.currentTarget.dataset.plotId, 10) : null;
             const fieldName = event.target.name;
-    const value = fieldName === 'plotName' ? event.detail.selectedRecord?.Id || null : event.detail.value;
+            const value = fieldName === 'plotName' ? event.detail.selectedRecord?.Id || null : event.detail.value;
 
             this.selectedRecordId = value; // Update selected record ID
-             if(event.detail.selectedRecord != null){
-            this.selectedPlotIds.push(event.detail.selectedRecord.Id);
-        }
-        
+            if (event.detail.selectedRecord != null) {
+                this.selectedPlotIds.push(event.detail.selectedRecord.Id);
+            }
+
             console.log('Selected Record ID:', this.selectedRecordId);
 
             // if (!this.bookingFormData.phaseId) {
@@ -223,13 +341,19 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
             //     return;
             // }
 
-            if (fieldName === 'contactDOB') {
-                let isValidDOB = this.validateDateOfBirth(value, event);
-                if (!isValidDOB) return; // Stop further execution if validation fails
+            // if (fieldName === 'contactDOB') {
+            //     let isValidDOB = this.validateDateOfBirth(value, event);
+            //     if (!isValidDOB) return; // Stop further execution if validation fails
+            // }
+
+
+            if (fieldName === 'unitOppAmount') {
+                let isValidAmount = this.validateUnitOppAmount(value, event);
+                if (!isValidAmount) return; // Stop further execution if validation fails
             }
 
             if (fieldName === 'plotName') {
-                if (!value || value===null) { // When input is cleared
+                if (!value || value === null) { // When input is cleared
                     this.clearPlotValues(plotId, contactId);
                     return;
                 }
@@ -252,7 +376,8 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
                             if (data) {
                                 console.log('Plot Data:', data);
                                 this.unitPlotFacing = data.Plot_Facing__c || '';
-                                this.unitPlotPrize = data.Plot_Price__c || '';
+                                this.unitActualPlotPrize = data.Base_Price_per_Sq_Ft__c || '';
+                                this.unitFinalPlotPrize = data.Plot_Price__c || '';
                                 this.unitPlotSize = data.Plot_Size__c || '';
                                 this.unitPlotUnitCode = data.Unit_Code__c || '';
                                 this.unitPlotPhase = data.Phase__r ? data.Phase__r.Name : '';
@@ -286,7 +411,8 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
                     plot.plotunitsname = this.unitPlotName;
                     plot.unitPlotFacing = this.unitPlotFacing;
                     plot.unitPlotSize = this.unitPlotSize;
-                    plot.unitPlotPrize = this.unitPlotPrize;
+                    plot.unitFinalPlotPrize = this.unitFinalPlotPrize;
+                    plot.unitActualPlotPrize = this.unitActualPlotPrize;
                     plot.unitPlotUnitCode = this.unitPlotUnitCode;
                     plot.unitPlotPhase = this.unitPlotPhase;
                 }
@@ -301,39 +427,49 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
         );
     }
 
-    validateDateOfBirth(value, event) {
-        let selectedDate = new Date(value);
-        let today = new Date();
-        let eighteenYearsBack = new Date();
-        eighteenYearsBack.setFullYear(today.getFullYear() - 18);
-
-        // Check if the selected date is in the future
-        if (selectedDate > today) {
-            this.showToast('Error', 'Date of Birth cannot be a future date.', 'error');
-            event.target.value = null; // Reset field
+    validateUnitOppAmount(value, event) {
+        if (value <= 0) {
+            this.showToast('Error', 'Amount must be greater than zero.', 'error');
+            event.target.value = null; // Reset the field
             return false;
         }
-
-        // Check if the applicant is at least 18 years old
-        let age = this.getAgeDifferenceInYears(today, selectedDate);
-        if (age < 18) {
-            this.showToast('Error', 'Applicant must be at least 18 years old.', 'error');
-            event.target.value = null; // Reset field
-            return false;
-        }
-        return true; // If validation passes
+        return true;
     }
+
+
+    // validateDateOfBirth(value, event) {
+    //     let selectedDate = new Date(value);
+    //     let today = new Date();
+    //     let eighteenYearsBack = new Date();
+    //     eighteenYearsBack.setFullYear(today.getFullYear() - 18);
+
+    //     // Check if the selected date is in the future
+    //     if (selectedDate > today) {
+    //         this.showToast('Error', 'Date of Birth cannot be a future date.', 'error');
+    //         event.target.value = null; // Reset field
+    //         return false;
+    //     }
+
+    //     // Check if the applicant is at least 18 years old
+    //     let age = this.getAgeDifferenceInYears(today, selectedDate);
+    //     if (age < 18) {
+    //         this.showToast('Error', 'Applicant must be at least 18 years old.', 'error');
+    //         event.target.value = null; // Reset field
+    //         return false;
+    //     }
+    //     return true; // If validation passes
+    // }
 
     clearPlotValues(plotId, contactId) {
         debugger
-        // Create a deep copy to trigger LWC reactivity
-        const lookupComponents = this.template.querySelectorAll('c-custom-lookup-cmp');
+        // // Create a deep copy to trigger LWC reactivity
+        // const lookupComponents = this.template.querySelectorAll('c-custom-lookup-cmp');
 
-        lookupComponents.forEach(lookup => {
-            if (lookup.contactId === contactId && lookup.plotId === plotId) {
-                lookup.clearSelection();  // Call child method to reset only the correct lookup
-            }
-        });
+        // lookupComponents.forEach(lookup => {
+        //     if (lookup.contactId === contactId && lookup.plotId === plotId) {
+        //         lookup.clearSelection();  // Call child method to reset only the correct lookup
+        //     }
+        // });
         let updatedBookingFormData = JSON.parse(JSON.stringify(this.bookingFormData));
 
         // Find the correct co-applicant
@@ -355,7 +491,8 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
                     plotunitsname: null,
                     unitPlotFacing: null,
                     unitPlotSize: null,
-                    unitPlotPrize: null,
+                    unitActualPlotPrize: null,
+                    unitFinalPlotPrize: null,
                     unitPlotUnitCode: null,
                     unitPlotPhase: null
                 };
@@ -370,7 +507,8 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
 
         if (this.selectedRecordId === plotId) {
             this.unitPlotFacing = null;
-            this.unitPlotPrize = null;
+            this.unitActualPlotPrize = null;
+            this.unitFinalPlotPrize = null;
             this.unitPlotSize = null;
             this.unitPlotUnitCode = null;
             this.unitPlotPhase = null;
@@ -485,17 +623,26 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
                     this.bookingFormData['accountName'] = account.Name || '';
                     this.bookingFormData['accountContactNo'] = account.Phone || '';
                     this.bookingFormData['accountEmailId'] = account.Email__c || '';
-                    this.bookingFormData['accountPermanentAddressStreet'] = account.BillingStreet || '';
-                    this.bookingFormData['accountPermanentAddressCity'] = account.BillingCity || '';
-                    this.bookingFormData['accountPermanentAddressCountry'] = account.BillingCountry || '';
-                    this.bookingFormData['accountPermanentAddressState'] = account.BillingState || '';
-                    this.bookingFormData['accountPermanentAddressPostalCode'] = account.BillingPostalCode || '';
-                    this.bookingFormData['accountCorrespondenceAddressStreet'] = account.ShippingStreet || '';
-                    this.bookingFormData['accountCorrespondenceAddressCity'] = account.ShippingCity || '';
-                    this.bookingFormData['accountCorrespondenceAddressCountry'] = account.ShippingCountry || '';
-                    this.bookingFormData['accountCorrespondenceAddressState'] = account.ShippingState || '';
-                    this.bookingFormData['accountCorrespondenceAddressPostalCode'] = account.ShippingPostalCode || '';
+                    this.bookingFormData['accountPermanentAddressStreet'] = account.Permanent_Address__Street__s || '';
+                    this.bookingFormData['accountPermanentAddressCity'] = account.Permanent_Address__City__s || '';
+                    this.bookingFormData['accountPermanentAddressCountry'] = account.Permanent_Address__CountryCode__s || '';
+                    this.bookingFormData['accountPermanentAddressState'] = account.Permanent_Address__StateCode__s || '';
+                    this.bookingFormData['accountPermanentAddressPostalCode'] = account.Permanent_Address__PostalCode__s || '';
+                    this.bookingFormData['accountCorrespondenceAddressStreet'] = account.Correspondence_Address__Street__s || '';
+                    this.bookingFormData['accountCorrespondenceAddressCity'] = account.Correspondence_Address__City__s || '';
+                    this.bookingFormData['accountCorrespondenceAddressCountry'] = account.Correspondence_Address__CountryCode__s || '';
+                    this.bookingFormData['accountCorrespondenceAddressState'] = account.Correspondence_Address__StateCode__s || '';
+                    this.bookingFormData['accountCorrespondenceAddressPostalCode'] = account.Correspondence_Address__PostalCode__s || '';
                     this.bookingFormData['accountSameAsPermanentAddress'] = account.Same_As_Permanent_Address__c || false;
+
+                    // Set default contact value to 'Yes' when an account is selected
+                    this.bookingFormData.listOfCoApplicant = this.bookingFormData.listOfCoApplicant.map(contact => {
+                        return {
+                            ...contact,
+                            contactValue: 'Yes', // Default to 'Yes'
+                            isContactExist: false // Ensure the contact combobox is visible
+                        };
+                    });
 
                     this.fetchContacts();
                 })
@@ -503,13 +650,12 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
                     console.error('Error fetching account details:', error);
                 });
         } else {
-            // this.isAccountSelected=false;
-            // this.clearAllContacts();
             this.isAccountSelected = false;
             this.clearAllContacts();
             this.clearAccountData();
         }
     }
+
 
     fetchProject() {
         debugger
@@ -532,9 +678,9 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
             });
     }
 
-    fetchPhase() {
+    fetchPhase(selectedProjectId) {
         console.log('Fetching phases for Account:', this.bookingFormData.accountId);
-        getPhases({ projectId: this.bookingFormData.projectId })
+        getPhases({ projectId: selectedProjectId })
             .then((data) => {
                 if (data && data.length > 0) {
                     this.phases = data.map((phase) => ({
@@ -721,38 +867,40 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     }
 
     handleSave(event) {
-        debugger
-        this.isLoading = true;
-        if (!this.validateFields()) {
-            this.isLoading = false;
+            debugger
+            this.isLoading = true;
+            if (!this.validateFields()) {
+                this.isLoading = false;
+                return;
+            }
+              if (!this.validatePlotNames()) {
+            this.showToast('Error', 'Select a valid plot.', 'error');
             return;
         }
-          if (!this.validatePlotNames()) {
-        this.showToast('Error', 'Select a valid plot.', 'error');
-        return;
-    }
-         this.collectFormData(); // Collect data when Save is clicked
+        this.collectFormData(); // Collect data when Save is clicked
     }
     validatePlotNames() {
-    // if (!this.bookingFormData || !this.bookingFormData.listOfCoApplicant) {
-    //     return false; // Ensure co-applicant data exists
-    // }
 
-    // Loop through each co-applicant
-    for (let coApplicant of this.bookingFormData.listOfCoApplicant) {
-        if (coApplicant.plots) {
-            // Check if any plot has an empty or null plotName
-            for (let plot of coApplicant.plots) {
-                if (!plot.plotName || plot.plotName.trim() === '') {
-                    return false; // If any plotName is missing, return false
+        // if (!this.bookingFormData || !this.bookingFormData.listOfCoApplicant) {
+        //     return false; // Ensure co-applicant data exists
+        // }
 
+        // Loop through each co-applicant
+        for (let coApplicant of this.bookingFormData.listOfCoApplicant) {
+            if (coApplicant.plots) {
+                // Check if any plot has an empty or null plotName
+                for (let plot of coApplicant.plots) {
+                    if (!plot.plotName || plot.plotName.trim() === '') {
+                        this.isLoading = false;
+                        return false; // If any plotName is missing, return false
+
+                    }
                 }
             }
         }
+
+        return true; // All plots have valid names
     }
-    
-    return true; // All plots have valid names
-}
 
 
     collectFormData() {
@@ -821,7 +969,7 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
             contactId: null,
             isContactExist: true,
             isPrimaryPayer: false, // Default to false
-            plots: [{ id: this.nextId++, plotName: '', unitOppAmount: '', plotunitsname: '', unitPlotFacing: '', unitPlotPhase: '', unitPlotUnitCode: '', unitPlotPrize: '', unitPlotSize: '', showAddMoreButton: true, showRemoveButton: false }],
+            plots: [{ id: this.nextId++, plotName: '', unitOppAmount: '', plotunitsname: '', unitPlotFacing: '', unitPlotPhase: '', unitPlotUnitCode: '', unitActualPlotPrize: '', unitFinalPlotPrize: '', unitPlotSize: '', projectId: '', phaseId: '', showAddMoreButton: true, showRemoveButton: false }],
             showAddMoreButton: false,// Initially empty plots for this contact
         };
         // Add the new contact to the listOfCoApplicant array with the existing list
@@ -852,8 +1000,11 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
                 unitPlotFacing: '',
                 unitPlotPhase: '',
                 unitPlotUnitCode: '',
-                unitPlotPrize: '',
+                unitActualPlotPrize: '',
+                unitFinalPlotPrize: '',
                 unitPlotSize: '',
+                projectId: '',
+                phaseId: '',
                 showAddMoreButton: false,
                 showRemoveButton: true
             };
@@ -866,69 +1017,69 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
         }
     }
 
-removeContact(event) {
-    const contactId = parseInt(event.target.dataset.contactId, 10); // Get the ID of the contact
+    removeContact(event) {
+        const contactId = parseInt(event.target.dataset.contactId, 10); // Get the ID of the contact
 
-    // Find the contact before removing it
-    const contactToRemove = this.bookingFormData.listOfCoApplicant.find(
-        contact => contact.id === contactId
-    );
-
-    if (contactToRemove) {
-        // Extract all plot names from the contact
-        const plotsToRemove = contactToRemove.plots.map(plot => plot.plotName);
-
-        // Remove these plot names from selectedPlotIds
-        this.selectedPlotIds = this.selectedPlotIds.filter(
-            plotName => !plotsToRemove.includes(plotName)
+        // Find the contact before removing it
+        const contactToRemove = this.bookingFormData.listOfCoApplicant.find(
+            contact => contact.id === contactId
         );
 
-        console.log("Updated selectedPlotIds:", this.selectedPlotIds);
-    }
+        if (contactToRemove) {
+            // Extract all plot names from the contact
+            const plotsToRemove = contactToRemove.plots.map(plot => plot.plotName);
 
-    // Remove the contact from the list
-    this.bookingFormData.listOfCoApplicant = this.bookingFormData.listOfCoApplicant.filter(
-        contact => contact.id !== contactId
-    );
+            // Remove these plot names from selectedPlotIds
+            this.selectedPlotIds = this.selectedPlotIds.filter(
+                plotName => !plotsToRemove.includes(plotName)
+            );
 
-    this.updateContactButtons();
-}
-
-removePlot(event) {
-    const contactId = parseInt(event.target.dataset.contactId, 10); // Get the ID of the contact
-    const plotId = parseInt(event.target.dataset.plotId, 10); // Get the ID of the plot
-
-    // Find the contact
-    const contactIndex = this.bookingFormData.listOfCoApplicant.findIndex(
-        contact => contact.id === contactId
-    );
-
-    if (contactIndex !== -1) {
-        let contact = this.bookingFormData.listOfCoApplicant[contactIndex];
-
-        // Find the plot by ID to get the plotName
-        const plotToRemove = contact.plots.find(plot => plot.id === plotId);
-        if (!plotToRemove) {
-            console.warn("Plot not found for removal");
-            return;
+            console.log("Updated selectedPlotIds:", this.selectedPlotIds);
         }
-        const plotName = plotToRemove.plotName; // Get the plot name
 
-        // Remove the plot from the contact's list
-        contact.plots = contact.plots.filter(plot => plot.id !== plotId);
+        // Remove the contact from the list
+        this.bookingFormData.listOfCoApplicant = this.bookingFormData.listOfCoApplicant.filter(
+            contact => contact.id !== contactId
+        );
 
-        // Update the contact in bookingFormData
-        this.bookingFormData.listOfCoApplicant[contactIndex] = contact;
-
-        // Call any required UI update methods
-        this.updatePlotButtons(contactIndex);
-
-        // Remove from selectedPlotIds using plotName
-        this.selectedPlotIds = this.selectedPlotIds.filter(name => name !== plotName);
-
-        console.log('Updated selectedPlotIds:', this.selectedPlotIds);
+        this.updateContactButtons();
     }
-}
+
+    removePlot(event) {
+        const contactId = parseInt(event.target.dataset.contactId, 10); // Get the ID of the contact
+        const plotId = parseInt(event.target.dataset.plotId, 10); // Get the ID of the plot
+
+        // Find the contact
+        const contactIndex = this.bookingFormData.listOfCoApplicant.findIndex(
+            contact => contact.id === contactId
+        );
+
+        if (contactIndex !== -1) {
+            let contact = this.bookingFormData.listOfCoApplicant[contactIndex];
+
+            // Find the plot by ID to get the plotName
+            const plotToRemove = contact.plots.find(plot => plot.id === plotId);
+            if (!plotToRemove) {
+                console.warn("Plot not found for removal");
+                return;
+            }
+            const plotName = plotToRemove.plotName; // Get the plot name
+
+            // Remove the plot from the contact's list
+            contact.plots = contact.plots.filter(plot => plot.id !== plotId);
+
+            // Update the contact in bookingFormData
+            this.bookingFormData.listOfCoApplicant[contactIndex] = contact;
+
+            // Call any required UI update methods
+            this.updatePlotButtons(contactIndex);
+
+            // Remove from selectedPlotIds using plotName
+            this.selectedPlotIds = this.selectedPlotIds.filter(name => name !== plotName);
+
+            console.log('Updated selectedPlotIds:', this.selectedPlotIds);
+        }
+    }
 
 
     updateContactButtons() {
@@ -981,7 +1132,7 @@ removePlot(event) {
     handlePermanentAddressChange(event) {
         this.bookingFormData.accountPermanentAddressStreet = event.detail.street;
         this.bookingFormData.accountPermanentAddressCity = event.detail.city;
-        this.bookingFormData.accountPermanentAddressState = event.detail.province;
+        this.bookingFormData.accountPermanentAddressState = (this.bookingFormData.accountPermanentAddressCountry === event.detail.country) ? event.detail.province : '';
         this.bookingFormData.accountPermanentAddressCountry = event.detail.country;
         this.bookingFormData.accountPermanentAddressPostalCode = event.detail.postalCode;
 
@@ -997,7 +1148,7 @@ removePlot(event) {
     handleCorrespondenceAddressChange(event) {
         this.bookingFormData.accountCorrespondenceAddressStreet = event.detail.street;
         this.bookingFormData.accountCorrespondenceAddressCity = event.detail.city;
-        this.bookingFormData.accountCorrespondenceAddressState = event.detail.province;
+        this.bookingFormData.accountCorrespondenceAddressState = this.bookingFormData.accountCorrespondenceAddressCountry === event.detail.country ? event.detail.province : '';
         this.bookingFormData.accountCorrespondenceAddressCountry = event.detail.country;
         this.bookingFormData.accountCorrespondenceAddressPostalCode = event.detail.postalCode;
     }

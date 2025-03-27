@@ -1,5 +1,6 @@
 import { LightningElement, wire, track, api } from 'lwc';
 import OPPORTUNITY_OBJECT_NAME from '@salesforce/schema/Opportunity';
+import ACCOUNT_OBJECT_NAME from '@salesforce/schema/Account';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { NavigationMixin } from 'lightning/navigation';
 import { CloseActionScreenEvent } from 'lightning/actions';
@@ -71,7 +72,11 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     }
 
     @track picklistOptions = {
-        typeOfBookingOptions: []
+        typeOfBookingOptions: [],
+        permanentAddressCountryOptions: [],
+        permanentAddressStateMapOptions: {},
+        correspondenceAddressCountryOptions: [],
+        correspondenceAddressStateMapOptions: {}
     }
 
     value = 'No';
@@ -110,6 +115,71 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
             this.showToast('Error', error.message, 'error');
             this.handleCancelClick();
         }
+    }
+
+     @wire(getObjectInfo, { objectApiName: ACCOUNT_OBJECT_NAME })
+    accountObjectInfo;
+
+@wire(getPicklistValues, { recordTypeId: '$accountObjectInfo.data.defaultRecordTypeId', fieldApiName: 'Account.Permanent_Address__CountryCode__s' })
+    wiredPermanentAddressCountryPicklistValues({ error, data }) {
+        if (data) {
+            this.picklistOptions.permanentAddressCountryOptions = [...data.values];
+        } else if (error) {
+            this.showToast('Error', error.message, 'error');
+            this.handleCancelClick();
+        }
+    }
+
+    @wire(getPicklistValues, { recordTypeId: '$accountObjectInfo.data.defaultRecordTypeId', fieldApiName: 'Account.Permanent_Address__StateCode__s' })
+    wiredPermanentAddressStatePicklistValues({ error, data }) {
+        if (data) {
+            const validForNumberToCountry = Object.fromEntries(Object.entries(data.controllerValues).map(([key, value]) => [value, key]));
+            this.picklistOptions.permanentAddressStateMapOptions = data.values.reduce((accumulatedStates, state) => {
+                const countryIsoCode = validForNumberToCountry[state.validFor[0]];
+                return { ...accumulatedStates, [countryIsoCode]: [...(accumulatedStates?.[countryIsoCode] || []), state] };
+            }, {});
+        } else if (error) {
+            this.showToast('Error', error.message, 'error');
+            this.handleCancelClick();
+        }
+    }
+
+    @wire(getPicklistValues, { recordTypeId: '$accountObjectInfo.data.defaultRecordTypeId', fieldApiName: 'Account.Correspondence_Address__CountryCode__s' })
+    wiredCorrespondenceAddressCountryPicklistValues({ error, data }) {
+        if (data) {
+            this.picklistOptions.correspondenceAddressCountryOptions = [...data.values];
+        } else if (error) {
+            this.showToast('Error', error.message, 'error');
+            this.handleCancelClick();
+        }
+    }
+
+    @wire(getPicklistValues, { recordTypeId: '$accountObjectInfo.data.defaultRecordTypeId', fieldApiName: 'Account.Correspondence_Address__StateCode__s' })
+    wiredCorrespondenceAddressStatePicklistValues({ error, data }) {
+        if (data) {
+            const validForNumberToCountry = Object.fromEntries(Object.entries(data.controllerValues).map(([key, value]) => [value, key]));
+            this.picklistOptions.correspondenceAddressStateMapOptions = data.values.reduce((accumulatedStates, state) => {
+                const countryIsoCode = validForNumberToCountry[state.validFor[0]];
+                return { ...accumulatedStates, [countryIsoCode]: [...(accumulatedStates?.[countryIsoCode] || []), state] };
+            }, {});
+        } else if (error) {
+            this.showToast('Error', error.message, 'error');
+            this.handleCancelClick();
+        }
+    }
+
+    get permanentAddressCountryOptions() {
+        return this.picklistOptions.permanentAddressCountryOptions || [];
+    }
+
+    get permanentAddressStateOptions() {
+        return this.picklistOptions.permanentAddressStateMapOptions[this.bookingFormData.accountPermanentAddressCountry] || [];
+    }
+    get correspondenceAddressCountryOptions() {
+        return this.picklistOptions.correspondenceAddressCountryOptions || [];
+    }
+    get correspondenceAddressStateOptions() {
+        return this.picklistOptions.correspondenceAddressStateMapOptions[this.bookingFormData.accountCorrespondenceAddressCountry] || [];
     }
 
     handleAccountCheckboxChange(event) {
@@ -220,7 +290,7 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     handlePermanentAddressChange(event) {
         this.bookingFormData.accountPermanentAddressStreet = event.detail.street;
         this.bookingFormData.accountPermanentAddressCity = event.detail.city;
-        this.bookingFormData.accountPermanentAddressState = event.detail.province;
+        this.bookingFormData.accountPermanentAddressState = (this.bookingFormData.accountPermanentAddressCountry === event.detail.country) ? event.detail.province : '';
         console.log('this.bookingFormData.accountPermanentAddressState--->', event.detail.state);
         console.log('this.bookingFormData.accountPermanentAddressState--->', event.detail.province);
         this.bookingFormData.accountPermanentAddressCountry = event.detail.country;
@@ -239,7 +309,7 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
     handleCorrespondenceAddressChange(event) {
         this.bookingFormData.accountCorrespondenceAddressStreet = event.detail.street;
         this.bookingFormData.accountCorrespondenceAddressCity = event.detail.city;
-        this.bookingFormData.accountCorrespondenceAddressState = event.detail.province;
+        this.bookingFormData.accountCorrespondenceAddressState = this.bookingFormData.accountCorrespondenceAddressCountry === event.detail.country ? event.detail.province : '';
         this.bookingFormData.accountCorrespondenceAddressCountry = event.detail.country;
         this.bookingFormData.accountCorrespondenceAddressPostalCode = event.detail.postalCode;
     }
@@ -329,16 +399,16 @@ export default class BookingForm extends NavigationMixin(LightningElement) {
                     this.bookingFormData['accountName'] = account.Name || '';
                     this.bookingFormData['accountContactNo'] = account.Phone || '';
                     this.bookingFormData['accountEmailId'] = account.Email__c || '';
-                    this.bookingFormData['accountPermanentAddressStreet'] = account.BillingStreet || '';
-                    this.bookingFormData['accountPermanentAddressCity'] = account.BillingCity || '';
-                    this.bookingFormData['accountPermanentAddressCountry'] = account.BillingCountry || '';
-                    this.bookingFormData['accountPermanentAddressState'] = account.BillingState || '';
-                    this.bookingFormData['accountPermanentAddressPostalCode'] = account.BillingPostalCode || '';
-                    this.bookingFormData['accountCorrespondenceAddressStreet'] = account.ShippingStreet || '';
-                    this.bookingFormData['accountCorrespondenceAddressCity'] = account.ShippingCity || '';
-                    this.bookingFormData['accountCorrespondenceAddressCountry'] = account.ShippingCountry || '';
-                    this.bookingFormData['accountCorrespondenceAddressState'] = account.ShippingState || '';
-                    this.bookingFormData['accountCorrespondenceAddressPostalCode'] = account.ShippingPostalCode || '';
+                    this.bookingFormData['accountPermanentAddressStreet'] = account.Permanent_Address__Street__s || '';
+                    this.bookingFormData['accountPermanentAddressCity'] = account.Permanent_Address__City__s || '';
+                    this.bookingFormData['accountPermanentAddressCountry'] = account.Permanent_Address__CountryCode__s || '';
+                    this.bookingFormData['accountPermanentAddressState'] = account.Permanent_Address__StateCode__s || '';
+                    this.bookingFormData['accountPermanentAddressPostalCode'] = account.Permanent_Address__PostalCode__s || '';
+                    this.bookingFormData['accountCorrespondenceAddressStreet'] = account.Correspondence_Address__Street__s || '';
+                    this.bookingFormData['accountCorrespondenceAddressCity'] = account.Correspondence_Address__City__s || '';
+                    this.bookingFormData['accountCorrespondenceAddressCountry'] = account.Correspondence_Address__CountryCode__s || '';
+                    this.bookingFormData['accountCorrespondenceAddressState'] = account.Correspondence_Address__StateCode__s || '';
+                    this.bookingFormData['accountCorrespondenceAddressPostalCode'] = account.Correspondence_Address__PostalCode__s || '';
                     this.bookingFormData['accountSameAsPermanentAddress'] = account.Same_As_Permanent_Address__c || false;
 
                     this.recordFilter = {

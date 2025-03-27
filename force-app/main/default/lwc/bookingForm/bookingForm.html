@@ -140,6 +140,8 @@
 													country={bookingFormData.accountPermanentAddressCountry}
 													province={bookingFormData.accountPermanentAddressState}
 													postal-code={bookingFormData.accountPermanentAddressPostalCode}
+													country-options={permanentAddressCountryOptions}
+                                                        province-options={permanentAddressStateOptions}
 													onchange={handlePermanentAddressChange} required>
 												</lightning-input-address>
 											</lightning-layout-item>
@@ -158,6 +160,8 @@
 														country={bookingFormData.accountCorrespondenceAddressCountry}
 														province={bookingFormData.accountCorrespondenceAddressState}
 														postal-code={bookingFormData.accountCorrespondenceAddressPostalCode}
+														country-options={correspondenceAddressCountryOptions}
+                                                            province-options={correspondenceAddressStateOptions}
 														onchange={handleCorrespondenceAddressChange}
 														disabled={bookingFormData.accountSameAsPermanentAddress}>
 													</lightning-input-address>
@@ -175,6 +179,8 @@
 														country={bookingFormData.accountCorrespondenceAddressCountry}
 														province={bookingFormData.accountCorrespondenceAddressState}
 														postal-code={bookingFormData.accountCorrespondenceAddressPostalCode}
+														country-options={correspondenceAddressCountryOptions}
+                                                            province-options={correspondenceAddressStateOptions}
 														onchange={handleCorrespondenceAddressChange}
 														required={bookingFormData.accountSameAsPermanentAddressNeeded}>
 													</lightning-input-address>
@@ -344,7 +350,7 @@
 													value={bookingFormData.quoteunitPlotFacing} required disabled>
 												</lightning-input>
 											</lightning-layout-item>
-											<lightning-layout-item flexibility="auto" padding="around-small" size="12"
+											<!-- <lightning-layout-item flexibility="auto" padding="around-small" size="12"
 												small-device-size="12" medium-device-size="6" large-device-size="6">
 												<lightning-input label="Plot Number" type="text" name="unitPlotUnitCode"
 													onchange={handleValueChange}
@@ -352,7 +358,7 @@
 												</lightning-input>
 
 
-											</lightning-layout-item>
+											</lightning-layout-item> -->
 											<lightning-layout-item flexibility="auto" padding="around-small" size="12"
 												small-device-size="12" medium-device-size="6" large-device-size="6">
 												<lightning-input data-label="primaryApplicantRequiredFields"

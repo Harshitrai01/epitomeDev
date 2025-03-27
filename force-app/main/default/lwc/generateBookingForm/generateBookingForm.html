@@ -26,7 +26,7 @@
                                     <lightning-accordion allow-multiple-sections-open
                                         active-section-name={activeSections} class="applicant-details-sections">
                                         <!-- Project Information Section -->
-                                        <lightning-accordion-section name="C" label="Project Information">
+                                        <!-- <lightning-accordion-section name="C" label="Project Information">
                                             <lightning-layout multiple-rows>
                                                 <lightning-layout-item flexibility="auto" padding="around-small"
                                                     size="12" small-device-size="12" medium-device-size="6"
@@ -47,18 +47,8 @@
                                                         data-label="primaryApplicantRequiredFields" required>
                                                     </lightning-combobox>
                                                 </lightning-layout-item>
-                                                <lightning-layout-item flexibility="auto" padding="around-small"
-                                                    size="12" small-device-size="12" medium-device-size="6"
-                                                    large-device-size="6">
-                                                    <lightning-combobox data-label="primaryApplicantRequiredFields"
-                                                        type="text" variant="standard" name="typeOfBooking"
-                                                        label="Type of Booking" onchange={handleAccountChange}
-                                                        value={bookingFormData.typeOfBooking}
-                                                        options={picklistOptions.typeOfBookingOptions} required>
-                                                    </lightning-combobox>
-                                                </lightning-layout-item>
                                             </lightning-layout>
-                                        </lightning-accordion-section>
+                                        </lightning-accordion-section> -->
 
                                         <!-- Primary Information Section -->
                                         <lightning-accordion-section name="A" label="Primary Information"
@@ -122,6 +112,17 @@
                                                         onchange={handleAccountChange}
                                                         value={bookingFormData.accountContactNo} required>
                                                     </lightning-input>
+
+                                                </lightning-layout-item>
+                                                <lightning-layout-item flexibility="auto" padding="around-small"
+                                                    size="12" small-device-size="12" medium-device-size="6"
+                                                    large-device-size="6">
+                                                    <lightning-combobox data-label="primaryApplicantRequiredFields"
+                                                        type="text" variant="standard" name="typeOfBooking"
+                                                        label="Type of Booking" onchange={handleAccountChange}
+                                                        value={bookingFormData.typeOfBooking}
+                                                        options={picklistOptions.typeOfBookingOptions} required>
+                                                    </lightning-combobox>
                                                 </lightning-layout-item>
                                                 <lightning-layout-item flexibility="auto" padding="around-small"
                                                     size="12" small-device-size="12" medium-device-size="12"
@@ -146,6 +147,8 @@
                                                         country={bookingFormData.accountPermanentAddressCountry}
                                                         province={bookingFormData.accountPermanentAddressState}
                                                         postal-code={bookingFormData.accountPermanentAddressPostalCode}
+                                                        country-options={permanentAddressCountryOptions}
+                                                        province-options={permanentAddressStateOptions}
                                                         onchange={handlePermanentAddressChange} required>
                                                     </lightning-input-address>
                                                 </lightning-layout-item>
@@ -166,6 +169,8 @@
                                                             country={bookingFormData.accountCorrespondenceAddressCountry}
                                                             province={bookingFormData.accountCorrespondenceAddressState}
                                                             postal-code={bookingFormData.accountCorrespondenceAddressPostalCode}
+                                                            country-options={correspondenceAddressCountryOptions}
+                                                            province-options={correspondenceAddressStateOptions}
                                                             onchange={handleCorrespondenceAddressChange}
                                                             disabled={bookingFormData.accountSameAsPermanentAddress}>
                                                         </lightning-input-address>
@@ -184,6 +189,8 @@
                                                             country={bookingFormData.accountCorrespondenceAddressCountry}
                                                             province={bookingFormData.accountCorrespondenceAddressState}
                                                             postal-code={bookingFormData.accountCorrespondenceAddressPostalCode}
+                                                            country-options={correspondenceAddressCountryOptions}
+                                                            province-options={correspondenceAddressStateOptions}
                                                             onchange={handleCorrespondenceAddressChange}
                                                             required={bookingFormData.accountSameAsPermanentAddressNeeded}>
                                                         </lightning-input-address>
@@ -322,32 +329,62 @@
                                                                         padding="around-small" size="12"
                                                                         small-device-size="12" medium-device-size="6"
                                                                         large-device-size="6">
-                                                                        
-                                                                        <!-- <lightning-record-picker label="Select Plot"
+                                                                        <lightning-combobox name="project"
+                                                                            label="Select Project"
+                                                                            placeholder="Select Project"
+                                                                            options={projects}
+                                                                            data-contact-id={contact.id}
+                                                                            data-plot-id={plot.id}
+                                                                            onchange={handleProjectSelection}
+                                                                            value={plot.projectId}
+                                                                            data-label="primaryApplicantRequiredFields"
+                                                                            required>
+                                                                        </lightning-combobox>
+                                                                    </lightning-layout-item>
+                                                                    <!-- <template if:true={plot.projectId}> -->
+                                                                    <lightning-layout-item flexibility="auto"
+                                                                        padding="around-small" size="12"
+                                                                        small-device-size="12" medium-device-size="6"
+                                                                        large-device-size="6">
+                                                                        <lightning-combobox name="progress"
+                                                                            label="Select Phase"
+                                                                            placeholder="Select Phase" options={phases}
+                                                                            data-contact-id={contact.id}
+                                                                            data-plot-id={plot.id}
+                                                                            onchange={handlePhaseSelection}
+                                                                            value={plot.phaseId}
+                                                                            data-label="primaryApplicantRequiredFields"
+                                                                            required>
+                                                                        </lightning-combobox>
+                                                                    </lightning-layout-item>
+                                                                    <!-- </template>
+                                                                    <template if:true={plot.phaseId}> -->
+                                                                    <lightning-layout-item flexibility="auto"
+                                                                        padding="around-small" size="12"
+                                                                        small-device-size="12" medium-device-size="6"
+                                                                        large-device-size="6">
+                                                                        <!-- 
+                                                                        <lightning-record-picker label="Select Plot"
                                                                             object-api-name="Unit__c"
                                                                             onchange={handleValueChange} name="plotName"
                                                                             data-contact-id={contact.id}
                                                                             data-plot-id={plot.id}
-                                                                            filter={plot.filterCriteria}
                                                                             data-label="primaryApplicantRequiredFields"
                                                                             required></lightning-record-picker> -->
-                                                                     <span class="required">*</span>
-    <c-generate-custom-lookup
-     
-        icon-name="standard:account"
-        name="plotName"
-        s-object-api-name="Unit__c"
-        label="Select Plot"
-        data-contact-id={contact.id}
-        data-plot-id={plot.id}
-        onlookupupdate={handleValueChange}
-        selectedplotid={selectedPlotIds}
-        onlookupremove={lookupRecordRemove}
-        placeholder="search.."
-        phase-id={bookingFormData.phaseId}
-        project-id={bookingFormData.projectId}
-        >
-    </c-generate-custom-lookup>
+                                                                        <span class="required">*</span>
+                                                                        <c-generate-custom-lookup
+                                                                            icon-name="standard:account" name="plotName"
+                                                                            s-object-api-name="Unit__c"
+                                                                            label="Select Plot"
+                                                                            data-contact-id={contact.id}
+                                                                            data-plot-id={plot.id}
+                                                                            onlookupupdate={handleValueChange}
+                                                                            selectedplotid={selectedPlotIds}
+                                                                            onlookupremove={lookupRecordRemove}
+                                                                            placeholder="search.."
+                                                                            phase-id={plot.phaseId}
+                                                                            project-id={plot.projectId}>
+                                                                        </c-generate-custom-lookup>
 
 
                                                                         <!-- Calling custom searchable combobox from child component-->
@@ -362,6 +399,7 @@
                                                                             phase-id={bookingFormData.phaseId}> -->
                                                                         <!-- </c-custom-lookup-cmp> -->
                                                                     </lightning-layout-item>
+                                                                    <!-- </template> -->
                                                                     <lightning-layout-item flexibility="auto"
                                                                         padding="around-small" size="12"
                                                                         small-device-size="12" medium-device-size="6"
@@ -370,8 +408,7 @@
                                                                             data-label="primaryApplicantRequiredFields"
                                                                             type="number" data-contact-id={contact.id}
                                                                             data-plot-id={plot.id} variant="standard"
-                                                                            name="unitOppAmount"
-                                                                            label="First Booking Amount"
+                                                                            name="unitOppAmount" label="Booking Amount"
                                                                             onchange={handleValueChange}
                                                                             value={plot.unitOppAmount}
                                                                             formatter="currency" step="0.01" required>
@@ -393,13 +430,27 @@
                                                                         padding="around-small" size="12"
                                                                         small-device-size="12" medium-device-size="6"
                                                                         large-device-size="6">
-                                                                        <lightning-input label="Plot Price" type="text"
-                                                                            name="unitPlotPrize"
+                                                                        <lightning-input
+                                                                            label="Actual Plot Price Per Sq. Yard"
+                                                                            type="text" name="unitActualPlotPrize"
                                                                             data-contact-id={contact.id}
                                                                             data-plot-id={plot.id}
                                                                             onchange={handleValueChange}
-                                                                            value={plot.unitPlotPrize} required
+                                                                            value={plot.unitActualPlotPrize} required
                                                                             disabled></lightning-input>
+                                                                    </lightning-layout-item>
+                                                                    <lightning-layout-item flexibility="auto"
+                                                                        padding="around-small" size="12"
+                                                                        small-device-size="12" medium-device-size="6"
+                                                                        large-device-size="6">
+                                                                        <lightning-input
+                                                                            label="Final Plot Price Per Sq. Yard"
+                                                                            type="text" name="unitFinalPlotPrize"
+                                                                            data-contact-id={contact.id}
+                                                                            data-plot-id={plot.id}
+                                                                            onchange={handleValueChange}
+                                                                            value={plot.unitFinalPlotPrize} required>
+                                                                        </lightning-input>
                                                                     </lightning-layout-item>
                                                                     <lightning-layout-item flexibility="auto"
                                                                         padding="around-small" size="12"
@@ -413,7 +464,7 @@
                                                                             value={plot.unitPlotFacing} required
                                                                             disabled></lightning-input>
                                                                     </lightning-layout-item>
-                                                                    <lightning-layout-item flexibility="auto"
+                                                                    <!-- <lightning-layout-item flexibility="auto"
                                                                         padding="around-small" size="12"
                                                                         small-device-size="12" medium-device-size="6"
                                                                         large-device-size="6">
@@ -424,7 +475,7 @@
                                                                             onchange={handleValueChange}
                                                                             value={plot.unitPlotUnitCode} required
                                                                             disabled></lightning-input>
-                                                                    </lightning-layout-item>
+                                                                    </lightning-layout-item> -->
                                                                 </lightning-layout>
                                                             </lightning-accordion-section>
                                                         </div>

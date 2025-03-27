@@ -53,20 +53,16 @@ export default class generateCustomLookup extends LightningElement {
     @api
     clearSelection() {
         debugger
-        console.log('Clearing selected record...');
-
-        this.selectedRecord = null; // Reset selected record
-        // Clear search input value
-
+       
         this.handleRemove();
-        this.searchKey = '';
+       // this.searchKey = '';
     }
 
 
 
     // update searchKey property on input field change  
     handleKeyChange(event) {
-        debugger
+        
            if (!this.phaseId || this.phaseId===null) {
                    this.searchKey = '';
                 this.showToast('Error', 'Please select a phase first.', 'error');

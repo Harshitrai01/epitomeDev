@@ -4,8 +4,8 @@
             <label class="slds-form-element__label" for="combobox-id-1">{label}</label>
             <div class="lookupInputContainer slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click"
                 aria-expanded="false" aria-haspopup="listbox" role="combobox">
-                <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_left-right slds-required" role="none">
-                    <div class="searchBoxWrapper slds-show slds-required" style="margin-left: -15px;">
+                <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_left-right slds-required" role="none" style="margin-left: -15px;">
+                    <div class="searchBoxWrapper slds-show slds-required" >
                         <!--Lookup Input Field-->
                         <lightning-input type="search" data-source="searchInputField" onclick={toggleResult}
                             onchange={handleKeyChange} is-loading={isSearchLoading} value={searchKey}
@@ -13,7 +13,7 @@
 
                     </div>
                     <!--Lookup Selected record pill container start-->
-                    <div class="pillDiv slds-hide" style="margin-left: -15px;">
+                    <div class="pillDiv slds-hide" >
                         <span class="slds-icon_container slds-combobox__input-entity-icon">
                             <lightning-icon icon-name={iconName} size="x-small"
                                 alternative-text="icon"></lightning-icon>

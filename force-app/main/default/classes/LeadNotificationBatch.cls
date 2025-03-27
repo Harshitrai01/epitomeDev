@@ -41,88 +41,96 @@ description: The execute method of the batch class, which processes the fetched 
 */
     public void execute(Database.BatchableContext bc, List<Lead> scope) {
         // Fetch the custom setting to determine if notifications should be sent to managers
-        Pre_Sales_Data__c customSetting = [
+        list<Pre_Sales_Data__c> customSetting = [
             SELECT Value__c 
             FROM Pre_Sales_Data__c 
             WHERE Name = 'Send to Manager' 
             LIMIT 1
         ];
-        
+         system.debug('150 '+customSetting);
         // Check if the custom setting is null or empty
-        if (customSetting == null || String.isEmpty(customSetting.Value__c)) {
-            System.debug('Custom setting "Send to Manager" not found or is empty.');
-        }else{
-            
-            // Determine if notifications should be sent to managers
-            Boolean sendToManager = customSetting.Value__c.equalsIgnoreCase('true');
-            System.debug('Send to Manager: ' + sendToManager);
-            
-            // Fetch the custom notification type
-            CustomNotificationType notificationType = [
-                SELECT Id, DeveloperName 
-                FROM CustomNotificationType 
-                WHERE DeveloperName = 'Lead_Assignment_Notification'
-            ];
-            
-            // Initialize collections to store user IDs and leads
-            Set<String> ids = new Set<String>();
-            Map<String, String> userToManager = new Map<String, String>();
-            List<Lead> userLeads = new List<Lead>();
-            
-            // Iterate through the leads and collect user IDs
-            for (Lead l : scope) {
-                system.debug('User.SObjectType --------'+User.SObjectType);
-                system.debug('l.OwnerId.getSObjectType()-------'+l.OwnerId.getSObjectType());
-                if (l.OwnerId.getSObjectType() == User.SObjectType) {
-                    ids.add(l.OwnerId);
-                    userLeads.add(l);
-                }
-            }
-            
-            // If notifications should be sent to managers, fetch manager IDs
-            if (sendToManager) {
-                List<User> users = [SELECT Id, ManagerId FROM User WHERE Id IN :ids];
-                for (User usr : users) {
-                    userToManager.put(usr.Id, usr.ManagerId);
-                }
-            }
-            
-            System.debug('Map user to Manager: ' + userToManager);
-            
-            // If no user leads are found, exit the method
-            if (userLeads.isEmpty()) {
-                System.debug('No User Leads Found');
+        if(!customSetting.isEmpty()){
+            if (customSetting == null || String.isEmpty(customSetting[0].Value__c)) {
+                System.debug('Custom setting "Send to Manager" not found or is empty.');
             }else{
                 
-                // Send notifications to lead owners and optionally their managers
+                // Determine if notifications should be sent to managers
+                Boolean sendToManager = customSetting[0].Value__c.equalsIgnoreCase('true');
+                System.debug('Send to Manager: ' + sendToManager);
+                
+                // Fetch the custom notification type
+                CustomNotificationType notificationType = [
+                    SELECT Id, DeveloperName 
+                    FROM CustomNotificationType 
+                    WHERE DeveloperName = 'Lead_Assignment_Notification'
+                ];
+                
+                // Initialize collections to store user IDs and leads
+                Set<String> ids = new Set<String>();
+                Map<String, String> userToManager = new Map<String, String>();
+                List<Lead> userLeads = new List<Lead>();
+                
+                // Iterate through the leads and collect user IDs
                 for (Lead l : scope) {
+                    System.debug('-=-=-=-'+l);
+                    system.debug('User.SObjectType --------'+User.SObjectType);
+                    system.debug('l.OwnerId.getSObjectType()-------'+l.OwnerId.getSObjectType());
                     if (l.OwnerId.getSObjectType() == User.SObjectType) {
-                        Set<String> userIds = new Set<String>();
-                        userIds.add(l.OwnerId);
-                        System.debug('Owner ID: ' + l.OwnerId);
-                        
-                        // Add the manager's ID if applicable
-                        if (sendToManager && userToManager.containsKey(l.OwnerId) && userToManager.get(l.OwnerId) != null) {
-                            userIds.add(userToManager.get(l.OwnerId));
-                            System.debug('Owner Manager ID: ' + userToManager.get(l.OwnerId));
+                        ids.add(l.OwnerId);
+                        userLeads.add(l);
+                    }
+                }
+                
+                // If notifications should be sent to managers, fetch manager IDs
+                if (sendToManager) {
+                    system.debug('85---'+ids);
+                    List<User> users = [SELECT Id, ManagerId FROM User WHERE Id IN :ids];
+                    system.debug('87---'+users);
+                    if(users.size()>0){
+                        for (User usr : users) {
+                            userToManager.put(usr.Id, usr.ManagerId);
                         }
-                        
-                        // Create and send the custom notification
-                        Messaging.CustomNotification notification = new Messaging.CustomNotification();
-                        notification.setTitle('Unopenned Lead ALERT');
-                        notification.setBody('You have an Unopenned Lead.');
-                        notification.setNotificationTypeId(notificationType.Id);
-                        notification.setTargetId(l.Id);
-                        
-                        try {
-                            notification.send(userIds);	
-                        } catch (Exception e) {
-                            System.debug('Problem sending notification: ' + e.getMessage());
+                    }
+                }
+                
+                System.debug('Map user to Manager: ' + userToManager);
+                
+                // If no user leads are found, exit the method
+                if (userLeads.isEmpty()) {
+                    System.debug('No User Leads Found');
+                }else{
+                    
+                    // Send notifications to lead owners and optionally their managers
+                    for (Lead l : scope) {
+                        if (l.OwnerId.getSObjectType() == User.SObjectType) {
+                            Set<String> userIds = new Set<String>();
+                            userIds.add(l.OwnerId);
+                            System.debug('Owner ID: ' + l.OwnerId);
+                            
+                            // Add the manager's ID if applicable
+                            if (sendToManager && userToManager.containsKey(l.OwnerId) && userToManager.get(l.OwnerId) != null) {
+                                userIds.add(userToManager.get(l.OwnerId));
+                                System.debug('Owner Manager ID: ' + userToManager.get(l.OwnerId));
+                            }
+                            
+                            // Create and send the custom notification
+                            Messaging.CustomNotification notification = new Messaging.CustomNotification();
+                            notification.setTitle('Unopenned Lead ALERT');
+                            notification.setBody('You have an Unopenned Lead.');
+                            notification.setNotificationTypeId(notificationType.Id);
+                            notification.setTargetId(l.Id);
+                            
+                            try {
+                                notification.send(userIds);	
+                            } catch (Exception e) {
+                                System.debug('Problem sending notification: ' + e.getMessage());
+                            }
                         }
                     }
                 }
             }
         }
+        
     }
     
     /*
@@ -136,6 +144,7 @@ description: The finish method of the batch class, which reschedules the batch j
 **********
 */
     public void finish(Database.BatchableContext bc) {
+  
         // Fetch the custom setting to determine the interval for rescheduling
         Pre_Sales_Data__c customSetting = [
             SELECT Value__c 
@@ -143,7 +152,7 @@ description: The finish method of the batch class, which reschedules the batch j
             WHERE Name = 'Minutes' 
             LIMIT 1
         ];
-        
+       
         // Fetch any existing scheduled jobs with the same name
         List<CronTrigger> scheduledJobs = [
             SELECT Id, State, CronJobDetail.Name  
@@ -175,7 +184,7 @@ description: The finish method of the batch class, which reschedules the batch j
         String nextFireTime = ss + ' ' + min + ' ' + hour + ' ' + day + ' ' + month + ' ?';
         
         // Reschedule the batch job
-        try {
+           try {
             System.schedule(jobName, nextFireTime, new LeadNotificationBatch());
         } catch (Exception e) {
             throw new AuraHandledException('Failed to schedule job: ' + e.getMessage());

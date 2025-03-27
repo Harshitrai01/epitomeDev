@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>KYC_Verification_Logic</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISCHANGED(KYC_Verification__c),
+    ISPICKVAL(KYC_Verification__c, &quot;Initiated&quot;),
+    NOT(ISPICKVAL(StageName, &quot;KYC Verification&quot;))
+)</errorConditionFormula>
+    <errorMessage>KYC Verification cannot be set to &apos;Initiated&apos; unless the Stage is &apos;KYC Verification&apos;.</errorMessage>
+</ValidationRule>

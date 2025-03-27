@@ -43,7 +43,7 @@ description: Initializes the controller and fetches data related to the Opportun
                     opportunityRecord = [SELECT Id, AccountId, Account.Name, Contact__r.Salutation, Account.BillingStreet, 
                                          Account.BillingCity, Account.BillingState, Account.BillingCountry, Account.BillingPostalCode,
                                          Contact__r.Aadhaar_Card__c, Contact__r.Date_Of_Birth__c, Unit__r.Name, Unit__r.Plot_Size__c,
-                                         Unit__r.North__c, Unit__r.South__c,Unit__r.West__c, Unit__r.East__c,
+                                         Unit__r.North__c, Unit__r.South__c,Unit__r.West__c, Unit__r.East__c,Unit__r.AOS_Authority_Person__c,
                                          Unit__r.Plot_Price__c, Sale_Value_Amount__c, Collected_Amount__c, Outstanding_Amount__c,Unit__r.Base_Price_per_Sq_Ft__c
                                          FROM Opportunity WHERE Id = :opportunityId LIMIT 1];
                 } catch (Exception e) {
@@ -132,6 +132,13 @@ description: Initializes the controller and fetches data related to the Opportun
                         }
                     } catch (Exception e) {
                         // Handle errors while fetching payment details
+                        System.debug('Error fetching Payments: ' + e.getMessage());
+                    }
+                    try{
+                        system.debug('aosAuthorityPerson---->'+opportunityRecord.Unit__r.AOS_Authority_Person__c);
+                        User aosAuthorityPerson=[SELECT Id FROM User WHERE Id=:opportunityRecord.Unit__r.AOS_Authority_Person__c];
+                        system.debug('aosAuthorityPerson---->'+aosAuthorityPerson);
+                    } catch(Exception e) {
                         System.debug('Error fetching Payments: ' + e.getMessage());
                     }
                 }

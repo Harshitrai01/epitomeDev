@@ -120,6 +120,11 @@
                 <default>false</default>
                 <label>System Generated Form 32</label>
             </value>
+            <value>
+                <fullName>Original Cheque</fullName>
+                <default>false</default>
+                <label>Original Cheque</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
     <visibleLines>4</visibleLines>

@@ -11,6 +11,10 @@
         <translation><!-- Failure --></translation>
     </picklistValues>
     <picklistValues>
+        <masterLabel>Initiated</masterLabel>
+        <translation><!-- Initiated --></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>Success</masterLabel>
         <translation><!-- Success --></translation>
     </picklistValues>
