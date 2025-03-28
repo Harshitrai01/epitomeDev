@@ -159,14 +159,14 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-    <label>Lead Quote</label>
+    <label>Quotation</label>
     <nameField>
         <displayFormat>Q-{0000}</displayFormat>
         <label>Name</label>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Lead Quotes</pluralLabel>
+    <pluralLabel>Quotations</pluralLabel>
     <searchLayouts></searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>

@@ -72,7 +72,7 @@ export default class PlotSwapping extends LightningElement {
         const newRecord = {
                 id: this.wireRecordId,
                 plotRecordId: this.selectedRecordId,
-                basePricePerSqYard: this.unit.data.fields.Plot_Price__c.value,
+                basePricePerSqYard: this.unit.data.fields.Base_Price_per_Sq_Ft__c.value,
                 plotName:this.unit.data.fields.Name.value
             };
         this.records = [...this.records, newRecord];

@@ -134,7 +134,6 @@ export default class QuoteGenerationComponent extends NavigationMixin(LightningE
                 phaseName:this.phaseName,
                 basePricePerSqYard:this.unit.data.fields.Base_Price_per_Sq_Ft__c.value,
                 finalPlotPrice:this.unit.data.fields.Plot_Price__c.value,
-
             };
             this.records = [...this.records, newRecord];
             this.showToast('Success', 'The Plot has been added successfully!', 'success');
@@ -164,7 +163,7 @@ export default class QuoteGenerationComponent extends NavigationMixin(LightningE
             const quoteRecords = this.records.map(record => ({
                 Lead__c: this.leadid,
                 Plot__c: record.plotRecordId,
-                Base_Price_Per_Sq_Yard__c:record.finalPlotPrice,
+                Base_Price_Per_Sq_Yard__c:record.basePricePerSqYard,
                 Time_To_Pay_In_Days__c:30
             }));
 

@@ -97,9 +97,6 @@
         <assignmentItems>
             <assignToReference>Loop_On_Additional_Charges.Final_Charges__c</assignToReference>
             <operator>Assign</operator>
-            <value>
-                <elementReference>Loop_On_Additional_Charges.Charges__c</elementReference>
-            </value>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>additonalCharges</assignToReference>
@@ -741,9 +738,6 @@
         </filters>
         <inputAssignments>
             <field>Plot_Price__c</field>
-            <value>
-                <elementReference>$Record.Unit__r.Base_Price_per_Sq_Ft__c</elementReference>
-            </value>
         </inputAssignments>
         <inputAssignments>
             <field>Status__c</field>

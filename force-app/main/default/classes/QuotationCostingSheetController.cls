@@ -216,7 +216,7 @@ public with sharing class QuotationCostingSheetController {
                 Plot_Dimension__c,Total_Basic_Cost__c,Total_Gst_For_Charge__c,Total_Charge_Amount__c,AgreementValueWithGst__c,
                 Base_Price_Per_Sq_Yard__c,Price_For_North_East__c,Other_Corners__c,East__c,X100_Ft_Road_Plots__c,Premium_Plots__c,
                 Rate_Per_Sq_Yd__c,Corpus_Fund_and_Club_House_Payable__c,Legal_And_Documentation_Charges__c,Registration_Charges__c,
-                IsLocked__c,Approval_Status__c,Lead__r.Email,Is_Final__c,
+                IsLocked__c,Approval_Status__c,Lead__r.Email,Is_Final__c,Total_Additional_Charges__c,
                 Opportunity__r.Contact__r.Name, Opportunity__r.Contact__r.Email, Plot__r.Phase__r.Name, 
                 Plot__r.Phase__r.Project__r.Name, Plot__r.Phase__r.Project_Type__c,Plot__r.Plot_Dimension__c,Opportunity__c,Total_Sale_Value__c,
                 Final_Base_Price__c,Total_Unit_Cost__c,Time_To_Pay_In_Days__c,Quote_Name__c,Lead__c,Plot__r.Plot_Price__c,Lead__r.OwnerId

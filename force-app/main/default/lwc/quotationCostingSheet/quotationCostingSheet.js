@@ -78,6 +78,7 @@ export default class QuotationCostingSheet extends LightningElement {
     finalPlotPrice;
     leadOwnerId='';
     oppOwnerId='';
+    totalAdditonalCharges;
     connectedCallback() {
         try {
             this.isLoading = true;
@@ -100,69 +101,70 @@ export default class QuotationCostingSheet extends LightningElement {
                     }
                     this.isChecked=this.quoteData?.IsSample__c || false;
                     this.totalSaleValue=this.quoteData?.Total_Sale_Value__c || 0 ;
+                    this.totalAdditonalCharges=this.quoteData?.Total_Additional_Charges__c || 0;
                     this.additionalChargeData.forEach((charge) => {
-                        let finalCharges = charge.Final_Charges__c || charge.Charges__c || 0;
+                        let finalCharges = charge.Final_Charges__c ?? charge.Charges__c ?? 0;
                         switch (charge.Values__c) {
                             case "100 Ft Road Plots":
                                 this.hundredFtRoadPlots = charge.Charges__c || 0;
                                 if(this.quoteData?.X100_Ft_Road_Plots__c==null){
-                                    this.quoteRecordToSave['X100_Ft_Road_Plots__c']  = parseFloat(finalCharges);
+                                    this.quoteRecordToSave['X100_Ft_Road_Plots__c']  = parseFloat(finalCharges) || 0;
                                     this.toUpdate=true;
                                 }
                                 break;
                             case "Price For North East":
                                 this.priceForNorthEast = charge.Charges__c || 0;
                                 if(this.quoteData?.Price_For_North_East__c==null){
-                                    this.quoteRecordToSave['Price_For_North_East__c']  = parseFloat(finalCharges);
+                                    this.quoteRecordToSave['Price_For_North_East__c']  = parseFloat(finalCharges) || 0;
                                     this.toUpdate=true;
                                 }
                                 break;
                             case "Legal And Documentation Charges":
                                 this.legalAndDocumentationCharges = charge.Charges__c || 0;
                                 if(this.quoteData?.Legal_And_Documentation_Charges__c==null){
-                                    this.quoteRecordToSave['Legal_And_Documentation_Charges__c']  = parseFloat(finalCharges);
+                                    this.quoteRecordToSave['Legal_And_Documentation_Charges__c']  = parseFloat(finalCharges) || 0;
                                     this.toUpdate=true;
                                 }
                                 break;
                             case "Other Corners":
                                 this.otherCorners = charge.Charges__c || 0;
                                 if(this.quoteData?.Other_Corners__c==null){
-                                    this.quoteRecordToSave['Other_Corners__c']  = parseFloat(finalCharges);
+                                    this.quoteRecordToSave['Other_Corners__c']  = parseFloat(finalCharges) || 0;
                                     this.toUpdate=true;
                                 }
                                 break;
                             case "Corpus Fund and Club House Payable":
                                 this.corpusFundAndClubHousePayable = charge.Charges__c || 0;
                                 if(this.quoteData?.Corpus_Fund_and_Club_House_Payable__c==null){
-                                    this.quoteRecordToSave['Corpus_Fund_and_Club_House_Payable__c']  = parseFloat(finalCharges);
+                                    this.quoteRecordToSave['Corpus_Fund_and_Club_House_Payable__c']  = parseFloat(finalCharges) || 0;
                                     this.toUpdate=true;
                                 }
                                 break;
                             case "Registration Charges As Applicable On The Day Of Registration":
                                 this.registrationChargesAsApplicable = charge.Charges__c || 0;
                                 if(this.quoteData?.Registration_Charges__c==null){
-                                    this.quoteRecordToSave['Registration_Charges__c']  = parseFloat(finalCharges);
+                                    this.quoteRecordToSave['Registration_Charges__c']  = parseFloat(finalCharges) || 0;
                                     this.toUpdate=true;
                                 }
                                 break;
                             case "East":
                                 this.east = charge.Charges__c || 0;
                                 if(this.quoteData?.East__c==null){
-                                    this.quoteRecordToSave['East__c']  = parseFloat(finalCharges);
+                                    this.quoteRecordToSave['East__c']  = parseFloat(finalCharges) || 0;
                                     this.toUpdate=true;
                                 }
                                 break;
                             case "Premium Plots":
                                 this.premiumPlots = charge.Charges__c || 0;
                                 if(this.quoteData?.Premium_Plots__c==null){
-                                    this.quoteRecordToSave['Premium_Plots__c']  = parseFloat(finalCharges);
+                                    this.quoteRecordToSave['Premium_Plots__c']  = parseFloat(finalCharges) || 0;
                                     this.toUpdate=true;
                                 }
                                 break;
                             case "Rate Per Sq. Yd":
                                 this.ratePerSqYd = charge.Charges__c || 0;
                                 if(this.quoteData?.Rate_Per_Sq_Yd__c==null){
-                                    this.quoteRecordToSave['Rate_Per_Sq_Yd__c']  = parseFloat(finalCharges);
+                                    this.quoteRecordToSave['Rate_Per_Sq_Yd__c']  = parseFloat(finalCharges) || 0;
                                     this.toUpdate=true;
                                 }
                                 break;
@@ -188,7 +190,7 @@ export default class QuotationCostingSheet extends LightningElement {
                     this.plotUnitCode=this.quoteData?.Plot__r?.Unit_Code__c || '';
                     this.plotBasePrice=this.quoteData?.Plot__r?.Base_Price_per_Sq_Ft__c || '';
                     this.basePricePerSqYard=this.plotBasePrice;
-                    this.finalPlotPrice=this.quoteData?.Base_Price_Per_Sq_Yard__c || '';
+                    this.finalPlotPrice=this.quoteData?.Base_Price_Per_Sq_Yard__c || this.basePricePerSqYard || 0;
                     this.plotDimension=this.quoteData?.Plot_Dimension__c || this.quoteData?.Plot__r?.Plot_Dimension__c || '';
 
                     this.basePriceOriginalValue = this.quoteData.BasePriceperSqFt__c;

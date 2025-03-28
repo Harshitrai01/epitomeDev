@@ -81,11 +81,13 @@
 				<lightning-layout-item size="2" padding="around-medium" class="slds-align_absolute-left">
 					
 					<template if:false={isLocked}>
+						<template if:false={editable}>
 						<div style="margin-bottom:10px">
 						<lightning-button variant="brand" label="Send For Approval" title="Save" disabled={showSentForApproval}
 							onclick={handleSendForApproval}>
 						</lightning-button>
 						</div>
+						</template>
 					</template>
 
 					<template if:false={isFinal}>
@@ -150,18 +152,6 @@
 											<td>Plot Size</td>
 											<td>{plotSize}</td>
 										</tr>
-										<tr>
-											<td>Flat Number</td>
-											<td>{plotFlatNumber}</td>
-										</tr>
-										<tr>
-											<td>Floor Number</td>
-											<td>{plotFloorNumber}</td>
-										</tr>
-										<tr>
-											<td>Unit Code</td>
-											<td>{plotUnitCode}</td>
-										</tr>
 									</template>
 								</tbody>
 							</table>
@@ -195,11 +185,6 @@
 									</tr>
 									<template if:true={isPlot}>
 										<tr>
-											<td>Unit Code</td>
-											<td>{plotUnitCode}</td>
-											<td>{plotUnitCode}</td>
-										</tr>
-										<tr>
 											<td>Plot Dimension</td>
 											<td>{plotDimension}</td>
 											<td>{plotDimension}</td>
@@ -224,14 +209,14 @@
 										</td>
 									</tr>
 									<tr class="importantRow">
-										<td class="slds-cell-wrap">Total Unit Cost</td>
+										<td class="slds-cell-wrap">Total Additional Charge</td>
 										<td>
-											<lightning-formatted-number value={quoteData.Total_Unit_Cost__c}
+											<lightning-formatted-number value={quoteData.Total_Additional_Charges__c}
 												format-style="decimal" minimum-integer-digits="2">
 											</lightning-formatted-number>
 										</td>
 										<td>
-											<lightning-formatted-number value={quoteData.Total_Unit_Cost__c}
+											<lightning-formatted-number value={quoteData.Total_Additional_Charges__c}
 												format-style="decimal" minimum-integer-digits="2">
 											</lightning-formatted-number>
 										</td>
